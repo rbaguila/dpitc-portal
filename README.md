@@ -1,5 +1,8 @@
 #Clearmin Web Template
 
+![Clearmin template](preview.png)
+
+
 Bootstrap 3 dashboard / webapp / admin template
 
 **Check the demo : http://cm.paomedia.com/**
