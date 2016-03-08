@@ -107,7 +107,7 @@ You got two different way to restore this state :
 *   **Server-side** (recommended) : when your server receive a cookie named "cm-menu-toggled" with value "true", just add `.cm-menu-toggled` class to the body tag.
 *   **Client-side** : Nothing to do, `.cm-menu-toggled` is automaticaly added to the body when needed but it can cause a blinking reflow on certain browsers (e.g. Google Chrome)
 
-### Credits
+## Credits
 
 *   [Bootstrap](http://getbootstrap.com/) css front-end framework.
 *   [jQuery](http://jquery.com/) fast, small, and feature-rich JavaScript library.
