@@ -1,6 +1,10 @@
+#Clearmin Web Template
+
 Bootstrap 3 dashboard / webapp / admin template
 
 **Check the demo : http://cm.paomedia.com/**
+
+**More doc inside the repo**
 
 Browser support : ie9+, (Chrome, firefox, opera, safari), mobile browsers
 
