@@ -25,6 +25,7 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'User',
+	'signin logo': ['../images/pcarrd_logo.gif', 150, 150]
 });
 
 // Load your project's Models
