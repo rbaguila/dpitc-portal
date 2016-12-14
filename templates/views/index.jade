@@ -1,49 +1,46 @@
 extends ../layouts/default
 
 block content
+	//- Dynamic Slider from the database
+	#myCarousel.carousel.slide(data-ride='carousel')
+		//- Carousel indicators were declared here
+		ol.carousel-indicators
+			each image in slider
+				//- if image.order is equal to 0 the first indicator will have a class 'active'
+				//- else it will not have a class 'active'
+				if image.order == "0"
+					li(data-target="#myCarousel" data-slide-to='#{image.order}' class="active")
+				else 
+					li(data-target="#myCarousel" data-slide-to='#{image.order}')
 
-	div(id="myCarousel" class="carousel slide" data-ride="carousel")
-		<ol class="carousel-indicators">
-		li(data-target="#myCarousel" data-slide-to="0" class="active")
-		li(data-target="#myCarousel" data-slide-to="1" class="")
-		li(data-target="#myCarousel" data-slide-to="2" class="")
-		</ol>
-
+		//- Carousel proper - the images will be loop in the slider queried from the controller
 		div(class="carousel-inner" role="listbox")
-			div(class="item active")
-				img(class="first-slide" src="/images/slider/1.jpg" alt="First slide")
-				div(class="container")
-					div(class="carousel-caption")
-						h1 Example headline.
-						p Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.
-						p <a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a>
-
-			div(class="item")
-				img(class="second-slide" src="/images/slider/2.jpg" alt="Second slide")
-				div(class="container")
-					div(class="carousel-caption")
-						h1 Example headline.
-						p Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.
-						p <a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a>
-
-			div(class="item")
-				img(class="third-slide" src="/images/slider/3.jpg" alt="Third slide")
-				div(class="container")
-					div(class="carousel-caption")
-						h1 Example headline.
-						p Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.
-						p <a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a>
+			each image in slider
+				//- if image.order is equal to 0 the first indicator will have a class 'active'
+				//- else it will not have a class 'active'
+				if image.order == "0"
+					div(class="item active")
+						img(src=image._.heroImage.limit(1020,500))
+						div(class="container")
+							div(class="carousel-caption")
+								h2= image.caption
+								a(class="btn btn-lg btn-primary" href="#" role="button")= image.buttonText
+				else 
+					div(class="item")
+						//- img(class="first-slide" src="/images/slider/1.jpg" alt="First slide")
+						img(src=image._.heroImage.limit(1020,500))
+						div(class="container")
+							div(class="carousel-caption")
+								h2= image.caption
+								a(class="btn btn-lg btn-primary" href="#" role="button")= image.buttonText
 			
-			<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-			</a>
-			<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-			</a>
+			a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
+				span.glyphicon.glyphicon-chevron-left
+			a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
+				span.glyphicon.glyphicon-chevron-right
 
 
+	
 	.container: .jumbotron
 		img(src='/images/logo.png')
 		h1 Welcome
@@ -64,6 +61,5 @@ block content
 		hr
 		p Remember to <a href='https://github.com/keystonejs/keystone' target='_blank'>Star KeystoneJS on GitHub</a> and
 			| <a href='https://twitter.com/keystonejs' target='_blank'>follow @keystonejs</a> on twitter for updates.
-
 
 
