@@ -34,6 +34,7 @@ block content
 								h2= image.caption
 								a(class="btn btn-lg btn-primary" href="#" role="button")= image.buttonText
 			
+			//- left amd right arrows
 			a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
 				span.glyphicon.glyphicon-chevron-left
 			a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
@@ -41,25 +42,72 @@ block content
 
 
 	
-	.container: .jumbotron
-		img(src='/images/logo.png')
-		h1 Welcome
-		p This is your new <a href='http://keystonejs.com' target='_blank'>KeystoneJS</a> website.
-		p It includes the latest versions of
-			| <a href='http://getbootstrap.com/' target='_blank'>Bootstrap</a>
-			| and <a href='http://www.jquery.com/' target='_blank'>jQuery</a>.
-		p Visit the <a href='http://keystonejs.com/guide' target='_blank'>Getting Started</a> guide to learn how to customise it.
-		hr
-		if user && user.canAccessKeystone
-			p
-				a(href='/keystone').btn.btn-lg.btn-primary Open the Admin UI
-		else
-			p We have created a default Admin user for you with the email <strong>aroinand@gmail.com</strong> and the password <strong>admin</strong>.
-			p
-				a(href='/keystone/signin', style='margin-right: 10px').btn.btn-lg.btn-primary Sign in
-				|  to use the Admin UI.
-		hr
-		p Remember to <a href='https://github.com/keystonejs/keystone' target='_blank'>Star KeystoneJS on GitHub</a> and
-			| <a href='https://twitter.com/keystonejs' target='_blank'>follow @keystonejs</a> on twitter for updates.
+	.container: .row(style="padding:5px")
+		.text-center
+			h2 Exhibits
+			h4 Showcase of the best outputs in agriculture and aquatic research and development
+
+		.row
+			.col-sm-6
+				.panel.panel-primary
+					.panel-heading
+						.panel-title Cacao
+					.panel-body 
+						img( src="/images/exhibit/cacao.jpg" height="150px" style="float: left; margin: 5px;")
+						h4 Showcase of the best outputs in agriculture and aquatic research and development
+						a(class="btn btn-lg btn-primary" href="#" role="button") Learn More
+
+			.col-sm-6
+				.panel.panel-primary
+					.panel-heading
+						.panel-title Knifefish
+					.panel-body 
+						img( src="/images/exhibit/knifefish.jpg" height="150px" style="float: left; margin: 5px;")
+						h4 Showcase of the best outputs in agriculture and aquatic research and development
+						a(class="btn btn-lg btn-primary" href="#" role="button") Learn More
+
+			.col-sm-6
+				.panel.panel-primary
+					.panel-heading
+						.panel-title Mangrove
+					.panel-body 
+						img( src="/images/exhibit/mangrove.jpg" height="150px" style="float: left; margin: 5px;")
+						h4 Showcase of the best outputs in agriculture and aquatic research and development
+						a(class="btn btn-lg btn-primary" href="#" role="button") Learn More
+
+			.col-sm-6
+				.panel.panel-primary
+					.panel-heading
+						.panel-title Big Eyelet
+					.panel-body 
+						img( src="/images/exhibit/bigeyelet.jpg" height="150px" style="float: left; margin: 5px;")
+						h4 Showcase of the best outputs in agriculture and aquatic research and development
+						a(class="btn btn-lg btn-primary" href="#" role="button") Learn More
+
+	.jumbotron
+		.container: .row
+			.col-sm-6
+				.h3 Pushing the Best of the Strategic Industry Science and Technology Program for Agri-Aqua Growth (SIPAG) through FIESTA
+					
+				.p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla laboriosam cumque saepe aliquid aliquam doloremque quam, alias ipsam aperiam. Reprehenderit, dolorem!
+				
+				br
+
+				a(class="btn btn-lg btn-warning" href="#" role="button") Register Now
+
+			.col-sm-6
+				<iframe src="https://www.youtube.com/embed/YBx_Ypr2g_E" width="560" height="315" frameborder="0" allowfullscreen=""></iframe>
+	
+	div(style="margin-top: 60px; padding-left: 10vw; padding-right: 10vw;").jumbotron.text-center
+		h2 We'll handle the back end, you handle the front
+		p KeystoneJS isn't opinionated about how you design or build the front-end of your site. Use jQuery, Angular, React.js with LESS, SASS or css-modules and any node.js template language.
+		div We've made this demo site with Bootstrap, Jade and LESS to show how simple it can be to get going, and included some themes from <a href="https://bootswatch.com/?ref=keystonejs" target="_blank">bootswatch</a>. Try them out by selecting below:
+		if themes && themes.length
+			hr(style="margin-bottom: 3em; margin-top: 3em;")
+			ul.nav.nav-pills
+				each theme in themes
+					li(class=currentTheme === theme ? 'active' : '')
+						a(href='/?theme=' + theme)= theme
+
 
 

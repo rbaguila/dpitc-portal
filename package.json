@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "keystone": "^0.3.19",
     "async": "^1.5.0",
+    "dotenv": "^2.0.0",
+    "keystone": "^4.0.0-beta.1",
     "lodash": "^4.13.1",
-    "dotenv": "^2.0.0"
+    "csv": "^0.4.6"
   },
   "devDependencies": {
     "eslint": "^2.12.0",
