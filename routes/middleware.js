@@ -18,7 +18,9 @@ var _ = require('lodash');
 	or replace it with your own templates / logic.
 */
 exports.initLocals = function (req, res, next) {
-	res.locals.navLinks = [
+	// NavLinks = keystone.list('NavLink');
+	res.locals.navLinks = 
+	[
 		{ label: 'Exhibits', key: 'home', href: '/' },
 		{ label: 'Technologies', key: 'tech', href: '/tech' },
 		{ label: 'Community', key: 'community', href: '/community' },

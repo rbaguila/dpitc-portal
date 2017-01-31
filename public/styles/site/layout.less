@@ -5,10 +5,10 @@
 */
 
 .navbar-style1{
-	// position: absolute;
+	position: absolute;
   z-index: 8;
   width: 100%;
-	background: rgba(0, 0, 0, 0.9);
+	background: rgba(0, 0, 0, 0);
   margin-bottom: 0px;
   border-radius: 0px;
 }
@@ -24,11 +24,12 @@
 }
 
 .not-active{
-	color: #AAAAAA;	
+	color: #EEF;	
 }
 
 .active{
 	color: white;	
+	font-weight: bold;
 }
 
 .nav>li>a.active:hover, .nav>li>a.active:focus { 
@@ -76,8 +77,14 @@
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.1);
-  text-align: left;
+  padding-bottom: 50px;
+  //background-color: rgba(0, 0, 0, 0.1);
+  //text-align: left;
+}
+
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption > h2 {
+  margin-top: 10px;
 }
 
 /* Declare heights because of positioning of img element */

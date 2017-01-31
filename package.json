@@ -4,10 +4,10 @@
   "private": true,
   "dependencies": {
     "async": "^1.5.0",
+    "csv": "^0.4.6",
     "dotenv": "^2.0.0",
     "keystone": "^4.0.0-beta.1",
-    "lodash": "^4.13.1",
-    "csv": "^0.4.6"
+    "lodash": "^4.13.1"
   },
   "devDependencies": {
     "eslint": "^2.12.0",
