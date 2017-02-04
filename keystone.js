@@ -70,8 +70,12 @@ keystone.set('nav', {
 	posts: ['posts', 'post-categories'],
 	exhibits: 'exhibits',
 	sliders: 'sliders',
-	// pages: 'pages,',
-	// basePages: 'base-pages',
+	'pages': [
+		'BasePage',
+		'Page'
+	],
+	// basePages: 'BasePage',
+	// pages: 'Page,',
 	galleries: 'galleries',
 	enquiries: 'enquiries',
 	users: 'users',
