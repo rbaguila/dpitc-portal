@@ -4,7 +4,7 @@ exports = module.exports = function (req, res) {
 
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
-
+	console.log("Slug: " + req.params.post);
 	// Set locals
 	locals.section = 'blog';
 	locals.filters = {
