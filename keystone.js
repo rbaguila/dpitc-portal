@@ -76,7 +76,7 @@ keystone.set('nav', {
 		'BasePage',
 		'Page'
 	],
-	// basePages: 'BasePage',
+	technologies: 'technologies',
 	// pages: 'Page,',
 	galleries: 'galleries',
 	enquiries: 'enquiries',
