@@ -11,7 +11,7 @@ exports = module.exports = function(req, res) {
   
   var exhibits;
   
-  keystone.list('Exhibit').model.find().sort('title').exec(function (err, results) {
+  keystone.list('Exhibit').model.find({}, {title: 1, "image.url":1, "content.brief":1, _id:0}).sort('title').exec(function (err, results) {
 
 				if (err || !results.length) {
 					return next(err);
