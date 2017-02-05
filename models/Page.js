@@ -8,5 +8,5 @@ var Page = new keystone.List('Page', {
 Page.add({  
 		content: { type: Types.Html, wysiwyg: true }
 });
-// Page.schema.statics.view_name = 'generic_page';  
+Page.schema.statics.view_name = 'generic_page';  
 Page.register(); 
