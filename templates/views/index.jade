@@ -43,48 +43,57 @@ block content
 			//- 	span.glyphicon.glyphicon-chevron-right
 
 
-	
-	.container: .row(style="padding:5px")
-		.text-center
-			h2 Exhibits
-			h4 Showcase of the best outputs in agriculture and aquatic research and development
+	.container: .row
+		.col-md-9
+			center 
+				h2 FIESTA
+				h4 Showcase of the best outputs in agriculture and aquatic research and development
+			div.slick-slider
+				div
+					center 
+						a#pop(href="#")
+							img( src="/images/exhibit/cacao.jpg" id="imageresource" height="250px")
+				div
+					center 
+						img( src="/images/exhibit/cacao.jpg" height="250px")
+				div
+					center 
+						img( src="/images/exhibit/cacao.jpg" height="250px")
+				div
+					center 
+						img( src="/images/exhibit/cacao.jpg" height="250px")
+				div
+					center 
+						img( src="/images/exhibit/cacao.jpg" height="250px")		
+		.col-md-3
+			center
+				h2 Upcoming Exhibits
+				
+				mixin item(title, content)
+					a.list-group-item(href="#")
+						h4.list-group-item-heading #{title}
+						p.list-group-item-text #{content}
 
-		.row
-			.col-sm-6
-				.panel.panel-primary
-					.panel-heading
-						.panel-title Cacao
-					.panel-body 
-						img( src="/images/exhibit/cacao.jpg" height="150px" style="float: left; margin: 5px;")
-						h4 Showcase of the best outputs in agriculture and aquatic research and development
-						a(class="btn btn-lg btn-primary" href="#" role="button") Learn More
+				div.list-group
+					+item("FIESTA Abaca", "Feb 25, 2017")
+					+item("Coconut FIESTA", "Mar 4, 2017")
+					+item("SARAI Exhibit", "Mar 11, 2017")
+					+item("SIPAG Fiesta", "Mar 30, 2017")
+					+item("Fiesta Cacao", "May 4, 2017")
 
-			.col-sm-6
-				.panel.panel-primary
-					.panel-heading
-						.panel-title Knifefish
-					.panel-body 
-						img( src="/images/exhibit/knifefish.jpg" height="150px" style="float: left; margin: 5px;")
-						h4 Showcase of the best outputs in agriculture and aquatic research and development
-						a(class="btn btn-lg btn-primary" href="#" role="button") Learn More
-
-			.col-sm-6
-				.panel.panel-primary
-					.panel-heading
-						.panel-title Mangrove
-					.panel-body 
-						img( src="/images/exhibit/mangrove.jpg" height="150px" style="float: left; margin: 5px;")
-						h4 Showcase of the best outputs in agriculture and aquatic research and development
-						a(class="btn btn-lg btn-primary" href="#" role="button") Learn More
-
-			.col-sm-6
-				.panel.panel-primary
-					.panel-heading
-						.panel-title Big Eyelet
-					.panel-body 
-						img( src="/images/exhibit/bigeyelet.jpg" height="150px" style="float: left; margin: 5px;")
-						h4 Showcase of the best outputs in agriculture and aquatic research and development
-						a(class="btn btn-lg btn-primary" href="#" role="button") Learn More
+	div(class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
+		div.modal-dialog(role="document")
+			div.modal-content
+				div.modal-header
+					button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+						span(aria-hidden="true") &times;
+					h5.modal-title Title
+					
+				div.modal-body Sample body
+					img( src="" id="imagepreview" style="width: 400px; height: 264px;")
+				
+				div.modal-footer
+					button(type="button" class="btn btn-default" data-dismiss="modal") Close
 
 	.jumbotron
 		.container: .row

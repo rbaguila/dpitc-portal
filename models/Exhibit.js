@@ -13,13 +13,20 @@ var Exhibit = new keystone.List('Exhibit', {
 
 Exhibit.add({
 	title: { type: String, required: true },
+	commodity: { type: String },
+	dateStarted: { type: Types.Date},
+	dateFinished: { type: Types.Date},
+	venue: { type: String },
+	consortium: { type: String },
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
-	image: { type: Types.CloudinaryImage },
+	coverImage: { type: Types.CloudinaryImage },
+	images: { type: Types.CloudinaryImages },
 	content: {
 		brief: { type: Types.Html, wysiwyg: true, height: 150 },
 		extended: { type: Types.Html, wysiwyg: true, height: 400 },
 	},
+	tags: { type: String }
 });
 
 Exhibit.schema.virtual('content.full').get(function () {
