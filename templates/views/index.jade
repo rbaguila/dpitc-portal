@@ -172,9 +172,16 @@ block content
 					button(type="button" class="btn btn-success" data-dismiss="modal") View More
 					button(type="button" class="btn btn-default" data-dismiss="modal") Close
 
-	div(style='float:right; z-index:100; right:0px; top:400px; background-color:#FFF; width:40;height:40; padding:6px; position: fixed; border-radius:20px;')
+	div(style='float:right; z-index:100; right:0px; top:400px; background-color:#EEE; width:40;height:40; padding:6px; position: fixed; border-radius:20px;')
 		a(href='#')
-			img( src="/images/community.png" height="40px")
+			img( src="/images/community.png" height="25px")
+
+	div(style='float:right; z-index:100; right:0px; top:450px;  position: fixed; ')
+		form.search-form(action='')
+			.form-group.has-feedback
+				label.sr-only(for='search') SEARCH
+				input#search.form-control(type='text', name='search', placeholder='search')
+				span.glyphicon.glyphicon-search.form-control-feedback
 				
 
 	//- .jumbotron
