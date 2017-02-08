@@ -21,7 +21,8 @@ exports.initLocals = function (req, res, next) {
 	// NavLinks = keystone.list('NavLink');
 	res.locals.navLinks = 
 	[
-		{ label: 'Exhibits', key: 'home', href: '/' },
+		{ label: 'Home', key: 'home', href: '/' },
+		{ label: 'Fiesta', key: 'fiesta', href: '/fiesta' },
 		{ label: 'Technologies', key: 'tech', href: '/tech' },
 		{ label: 'Community', key: 'community', href: '/community' },
 		{ label: 'About DPITC', key: 'about', href: '/about' },
