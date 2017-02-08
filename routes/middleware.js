@@ -22,7 +22,7 @@ exports.initLocals = function (req, res, next) {
 	res.locals.navLinks = 
 	[
 		{ label: 'Home', key: 'home', href: '/' },
-		{ label: 'Fiesta', key: 'fiesta', href: '/fiesta' },
+		{ label: 'FIESTA', key: 'fiesta', href: '/fiesta' },
 		{ label: 'Technologies', key: 'tech', href: '/tech' },
 		{ label: 'Community', key: 'community', href: '/community' },
 		{ label: 'About DPITC', key: 'about', href: '/about' },
