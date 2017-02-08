@@ -1,0 +1,130 @@
+#community_block,
+#tech_block {
+   padding-bottom: 30px;
+}
+
+#community_block .row,
+#tech_block .row {
+   margin: 0px;
+}
+
+.tech-category {
+  text-align: left;
+  background: gray;
+  margin: 23px 0px;
+  color: white;
+  font-weight: bold;
+  padding-left: 5px;
+  font-size: 13px;
+  font-family: "Arial Narrow";
+}
+
+#community_block .btn {
+   background: #92cd00;
+   border-color: #92cd00;
+}
+
+#exhibit_block {
+   background: #1784fb;
+}
+
+.featured {
+   position: absolute;
+   z-index: 10;
+   background: #1784fb;
+   padding: 5px;
+   color: #fff;
+   text-align: center;
+   width: 100%;
+} 
+
+.fh5co-features-style-4 .fh5co-section-heading .fh5co-heading,
+.fh5co-features-style-4 .fh5co-section-heading p {
+   color: #fff;
+}
+
+.fh5co-features-style-4 .fh5co-feature-item {
+   border-radius: 0px;
+}
+
+.fh5co-features-style-4 .fh5co-feature-item .fh5co-feature-img{
+   background: #fff;
+}
+
+.fh5co-project-style-3 .fh5co-project-item .fh5co-overlay{
+   background: #000;
+}
+
+.fh5co-project-style-3 .fh5co-project-item .fh5co-text{
+   height: 100%;
+   bottom: 0px;
+}
+
+.fh5co-project-style-3 .fh5co-project-item .fh5co-text h4 {
+   color: #fff;
+}
+
+.fh5co-project-style-3 .fh5co-project-item:hover h3, 
+.fh5co-project-style-3 .fh5co-project-item:hover h4,
+.fh5co-project-style-3 .fh5co-project-item:hover p{
+   text-decoration: underline;
+}
+
+.fh5co-content-style-2 .fh5co-gallery .fh5co-link-block .fh5co-overlay{
+   background: #92cd00;
+   border-radius: 0px;
+}
+
+.fh5co-content-style-2 .fh5co-gallery .fh5co-link-block {
+   border-radius: 0px;
+}
+
+.fh5co-content-style-2 .fh5co-gallery .fh5co-link-block .fh5co-text {
+    position: absolute;
+    top: 30%;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+    padding: 0px 20px;
+    border-radius: 0px;
+}
+
+
+.header-toolbar {
+   height:35px;
+   width: 100%;
+   position: absolute;
+   z-index: 20;
+}
+
+.fh5co-project-style-3  .container .row .col-md-8 p{
+   color: #fff;
+}
+
+.tech-icon {
+   position: absolute;
+   top: 0;
+   right: 0;
+   margin: 10px;
+   width: 50px;
+   height: 50px;
+   background: #fff;
+   border-radius: 50%;
+   z-index: 30;
+}
+
+a#featured_video_btn {
+   background-color: orange;
+   border-color: orange;
+    line-height: 36px;
+    font-size: 20px;
+}
+
+.fh5co-content-style-9 {
+   padding-bottom: 0px;
+}
+
+.button-link{
+	margin-bottom: 0px;
+	margin-top: 20px;
+}
