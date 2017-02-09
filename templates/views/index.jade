@@ -20,7 +20,7 @@ block content
 				//- else it will not have a class 'active'
 				if image.order == "0"
 					div(class="item active")
-						img(src=image._.heroImage.limit(1020,500))
+						img(src='/images/main_banner.png')
 						div(class="container")
 							div(class="carousel-caption")
 								!= image.caption
@@ -84,18 +84,20 @@ block content
 		.row
 			.col-md-12
 				center
-					img.img-responsive(src='/images/fiesta-2.png', alt='Image' width="1200px;" height="200px;")
+					img.img-responsive(src='/images/fiesta-3.png', alt='Image' width="1200px;" height="200px;")
 		.container
-			.row.p-b
+			.row.p-b(style="margin-bottom:30px")
+				//- .col-md-12
+					center
+						//- h2.fh5co-heading-fiesta FIESTA
 				.col-md-12
-					h2.fh5co-heading-fiesta FIESTA
-				.col-md-8
-					p.fiesta We develop new technologies and innovations that increase farm yield and crop productivity, produce pest resistant and drought tolerant seeds, and develop healthier swine and goat stocks resilient in diseases, among other breakthroughs.
+					p.fiesta(style="color:black") FIESTA(Farm and Industry Encounters through Science and Technology  Agenda) is anintegrated event on S&T and product promotion, technology matching, and product launch. 
+
 		.row.p-b
 			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
 				a.fh5co-project-item(href='#', style='background-image: url(/images/fiesta/potato.jpg);', target='_blank')
 					img.img-responsive.sr-only(src='/images/fiesta/potato.jpg')
-					.fh5co-overlay
+					.fh5co-overlay(style="background-color: rgb(18, 81, 4)")
 					.fh5co-text
 						.tech-category CLARRDEC
 						h3 Sweet Potato
@@ -103,9 +105,9 @@ block content
 						p Venue: Tarlac College of Agriculture
 
 			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='#', style='background-image: url(/images/fiesta/sipagfiesta.png);', target='_blank')
+				a.fh5co-project-item(href='/sipag-fiesta', style='background-image: url(/images/fiesta/sipagfiesta.png);', target='_blank')
 					img.img-responsive.sr-only(src='/images/fiesta/sipagfiesta.png')
-					.fh5co-overlay
+					.fh5co-overlay(style="background-color: rgb(18, 81, 4)")
 					.fh5co-text
 						.tech-category PCAARRD
 						h3 SIPAG FIESTA
@@ -115,7 +117,7 @@ block content
 			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
 				a.fh5co-project-item(href='#', style='background-image: url(/images/fiesta/rootcrop.jpg);', target='_blank')
 					img.img-responsive.sr-only(src='/images/fiesta/rootcrop.jpg')
-					.fh5co-overlay
+					.fh5co-overlay(style="background-color: rgb(18, 81, 4)")
 					.fh5co-text
 						.tech-category VICARP
 						h3 Rootcrop
@@ -125,7 +127,7 @@ block content
 			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
 				a.fh5co-project-item(href='', style='background-image: url(/images/fiesta/kalabaw.jpg);', target='_blank')
 					img.img-responsive.sr-only(src='/images/fiesta/kalabaw.jpg')
-					.fh5co-overlay
+					.fh5co-overlay(style="background-color: rgb(18, 81, 4)")
 					.fh5co-text
 						.tech-category CLARRDEC
 						h3 Pistang Kalabaw
@@ -135,7 +137,7 @@ block content
 			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
 				a.fh5co-project-item(href='#', style='background-image: url(/images/fiesta/seaweed.jpg);', target='_blank')
 					img.img-responsive.sr-only(src='/images/fiesta/seaweed.jpg')
-					.fh5co-overlay
+					.fh5co-overlay(style="background-color: rgb(18, 81, 4)")
 					.fh5co-text
 						.tech-category SMARRDEC
 						h3 Seaweed
@@ -145,7 +147,7 @@ block content
 			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
 				a.fh5co-project-item(href='#', style='background-image: url(/images/fiesta/sardines.jpg);', target='_blank')
 					img.img-responsive.sr-only(src='/images/fiesta/sardines.jpg')
-					.fh5co-overlay
+					.fh5co-overlay(style="background-color: rgb(18, 81, 4)")
 					.fh5co-text
 						.tech-category WESMARRDEC
 						h3 Sardines
@@ -289,7 +291,7 @@ block content
 					.fh5co-overlay
 					.fh5co-text
 						.tech-category NATURAL RESOURCE
-						h3 Bamboo: green gold from the forests
+						h3 Bamboo: rgb(18, 81, 4) gold from the forests
 			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
 				a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/tilapia.jpg);', target='_blank')
 					img.img-responsive.sr-only(src='/images/exhibit/tilapia.jpg', alt='Image')

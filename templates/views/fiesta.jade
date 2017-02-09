@@ -20,7 +20,7 @@ block content
 				//- else it will not have a class 'active'
 				if image.order == "0"
 					div(class="item active")
-						img(src=image._.heroImage.limit(1020,500))
+						img(src='images/fiesta_banner.png')
 						div(class="container")
 							div(class="carousel-caption")
 								!= image.caption
@@ -41,28 +41,145 @@ block content
 			//-   span.glyphicon.glyphicon-chevron-left
 			//- a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
 			//-   span.glyphicon.glyphicon-chevron-right
-		
-	div(style='float:right; z-index:100; right:0px; top:100px; background-color:#EEE; width:40;height:40; padding:6px; position: fixed; border-radius:20px;')
-		a(href='#')
-			img( src="/images/community.png" height="30px")
 
-	div(style='float:right; z-index:100; right:0px; top:150px;  position: fixed; ')
-		form.search-form(action='')
-			.form-group.has-feedback
-				label.sr-only(for='search') Search
-				input#search.form-control(type='text', name='search', placeholder='Search')
-				span.glyphicon.glyphicon-search.form-control-feedback
-					
-	.jumbotron
-		.container: .row
-			.col-sm-6
-				.h3 Pushing the Best of the Strategic Industry Science and Technology Program for Agri-Aqua Growth (SIPAG) through FIESTA
-					
-				.p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla laboriosam cumque saepe aliquid aliquam doloremque quam, alias ipsam aperiam. Reprehenderit, dolorem!
+
+	.container: .row
+		.col-md-12
+			center 
+				h2 FIESTA
+				h4 Showcase of the best outputs in agriculture and aquatic research and development
+			center 
+				h2 On-going Fiesta
+			div.slick-slider
+				div
+					center 
+						a#pop(href="/sipag-fiesta")
+							img( src="/images/exhibit/sipagfiesta.png" id="imageresource" height="250px")
+				div
+					center 
+						img( src="/images/exhibit/knifefish.jpg" height="250px")
+				div
+					center 
+						img( src="/images/exhibit/mango.jpg" height="250px")
+				div
+					center 
+						img( src="/images/exhibit/bigeyelet.jpg" height="250px")
+				div
+					center 
+						img( src="/images/exhibit/cacao.jpg" height="250px")    
+		//- .col-md-3
+		//- 	center
+		//- 		h2 Upcoming Exhibits
 				
-				br
+		//- 		mixin item(title, content)
+		//- 			a.list-group-item(href="#")
+		//- 				h4.list-group-item-heading #{title}
+		//- 				p.list-group-item-text #{content}
 
-				a(class="btn btn-lg btn-warning" href="#" role="button") Register Now
+		//- 		div.list-group
+		//- 			+item("FIESTA Abaca", "Feb 25, 2017")
+		//- 			+item("Coconut FIESTA", "Mar 4, 2017")
+		//- 			+item("SARAI Exhibit", "Mar 11, 2017")
+		//- 			+item("SIPAG Fiesta", "Mar 30, 2017")
+	.container: .row
+		.col-md-12
+			center 
+				h2 Upcoming Fiesta
+			div.slick-slider
+				div
+					center 
+						a#pop(href="/sipag-fiesta")
+							img( src="/images/exhibit/sipagfiesta.png" id="imageresource" height="250px")
+				div(style="margin-right:0px")
+					center 
+						img( src="/images/exhibit/knifefish.jpg" height="250px")
+				div
+					center 
+						img( src="/images/exhibit/mango.jpg" height="250px")
+				div
+					center 
+						img( src="/images/exhibit/bigeyelet.jpg" height="250px")
+				div
+					center 
+						img( src="/images/exhibit/cacao.jpg" height="250px")
+	.container: .row
+		.col-md-12
+			center 
+				h2 Past Fiesta
+			div.slick-slider
+				div
+					center 
+						a#pop(href="/sipag-fiesta")
+							img( src="/images/exhibit/sipagfiesta.png" id="imageresource" height="250px")
+				div
+					center 
+						img( src="/images/exhibit/knifefish.jpg" height="250px")
+				div
+					center 
+						img( src="/images/exhibit/mango.jpg" height="250px")
+				div
+					center 
+						img( src="/images/exhibit/bigeyelet.jpg" height="250px")
+				div
+					center 
+						img( src="/images/exhibit/cacao.jpg" height="250px") 
 
-			.col-sm-6
-				<iframe src="https://www.youtube.com/embed/YBx_Ypr2g_E" width="560" height="315" frameborder="0" allowfullscreen=""></iframe>
+
+	div(class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
+		div.modal-dialog(role="document")
+			div.modal-content
+				div.modal-header
+					button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+						span(aria-hidden="true") &times;
+					h5.modal-title SIPAG FIESTA
+					
+				div.modal-body
+					center
+						img( src="" id="imagepreview" height="200px")
+						p
+						h4 Commodity: ALL
+						h4 Date: March 2, 2016 - March 4, 2016
+						h4 Venue: PCAARRD Complex
+				
+				div.modal-footer
+					button(type="button" class="btn btn-success" data-dismiss="modal") View More
+					button(type="button" class="btn btn-default" data-dismiss="modal") Close
+
+	div(style='float:right; z-index:100; right:0px; top:400px; background-color:#FFF; width:40;height:40; padding:6px; position: fixed; border-radius:20px;')
+		a(href='#')
+			img( src="/images/community.png" height="40px")
+				
+
+	//- .jumbotron
+	//- 	.container: .row
+	//- 		.col-sm-6
+	//- 			.h3 Pushing the Best of the Strategic Industry Science and Technology Program for Agri-Aqua Growth (SIPAG) through FIESTA
+					
+	//- 			.p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla laboriosam cumque saepe aliquid aliquam doloremque quam, alias ipsam aperiam. Reprehenderit, dolorem!
+				
+	//- 			br
+
+	//- 			a(class="btn btn-lg btn-warning" href="#" role="button") Register Now
+
+	//- 		.col-sm-6
+	//- 			<iframe src="https://www.youtube.com/embed/YBx_Ypr2g_E" width="560" height="315" frameborder="0" allowfullscreen=""></iframe>
+
+
+
+
+
+
+
+	//- div(style="margin-top: 60px; padding-left: 10vw; padding-right: 10vw;").jumbotron.text-center
+	//-   h2 We'll handle the back end, you handle the front
+	//-   p KeystoneJS isn't opinionated about how you design or build the front-end of your site. Use jQuery, Angular, React.js with LESS, SASS or css-modules and any node.js template language.
+	//-   div We've made this demo site with Bootstrap, Jade and LESS to show how simple it can be to get going, and included some themes from <a href="https://bootswatch.com/?ref=keystonejs" target="_blank">bootswatch</a>. Try them out by selecting below:
+	//-   if themes && themes.length
+	//-     hr(style="margin-bottom: 3em; margin-top: 3em;")
+	//-     ul.nav.nav-pills
+	//-       each theme in themes
+	//-         li(class=currentTheme === theme ? 'active' : '')
+	//-           a(href='/?theme=' + theme)= theme
+
+
+
