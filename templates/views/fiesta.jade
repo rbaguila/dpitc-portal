@@ -145,41 +145,13 @@ block content
 					button(type="button" class="btn btn-success" data-dismiss="modal") View More
 					button(type="button" class="btn btn-default" data-dismiss="modal") Close
 
-	div(style='float:right; z-index:100; right:0px; top:400px; background-color:#FFF; width:40;height:40; padding:6px; position: fixed; border-radius:20px;')
+	div(style='float:right; z-index:100; right:0px; top:100px; background-color:#EEE; width:40;height:40; padding:6px; position: fixed; border-radius:20px;')
 		a(href='#')
-			img( src="/images/community.png" height="40px")
-				
+			img( src="/images/community.png" height="30px")
 
-	//- .jumbotron
-	//- 	.container: .row
-	//- 		.col-sm-6
-	//- 			.h3 Pushing the Best of the Strategic Industry Science and Technology Program for Agri-Aqua Growth (SIPAG) through FIESTA
-					
-	//- 			.p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla laboriosam cumque saepe aliquid aliquam doloremque quam, alias ipsam aperiam. Reprehenderit, dolorem!
-				
-	//- 			br
-
-	//- 			a(class="btn btn-lg btn-warning" href="#" role="button") Register Now
-
-	//- 		.col-sm-6
-	//- 			<iframe src="https://www.youtube.com/embed/YBx_Ypr2g_E" width="560" height="315" frameborder="0" allowfullscreen=""></iframe>
-
-
-
-
-
-
-
-	//- div(style="margin-top: 60px; padding-left: 10vw; padding-right: 10vw;").jumbotron.text-center
-	//-   h2 We'll handle the back end, you handle the front
-	//-   p KeystoneJS isn't opinionated about how you design or build the front-end of your site. Use jQuery, Angular, React.js with LESS, SASS or css-modules and any node.js template language.
-	//-   div We've made this demo site with Bootstrap, Jade and LESS to show how simple it can be to get going, and included some themes from <a href="https://bootswatch.com/?ref=keystonejs" target="_blank">bootswatch</a>. Try them out by selecting below:
-	//-   if themes && themes.length
-	//-     hr(style="margin-bottom: 3em; margin-top: 3em;")
-	//-     ul.nav.nav-pills
-	//-       each theme in themes
-	//-         li(class=currentTheme === theme ? 'active' : '')
-	//-           a(href='/?theme=' + theme)= theme
-
-
-
+	div(style='float:right; z-index:100; right:0px; top:150px;  position: fixed; ')
+		form.search-form(action='')
+			.form-group.has-feedback
+				label.sr-only(for='search') Search
+				input#search.form-control(type='text', name='search', placeholder='Search')
+				span.glyphicon.glyphicon-search.form-control-feedback
