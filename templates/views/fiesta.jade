@@ -20,7 +20,7 @@ block content
 				//- else it will not have a class 'active'
 				if image.order == "0"
 					div(class="item active")
-						img(src='images/fiesta_banner.png')
+						img(src=image._.heroImage.limit(1020,500))
 						div(class="container")
 							div(class="carousel-caption")
 								!= image.caption
@@ -88,7 +88,7 @@ block content
 			div.slick-slider
 				div
 					center 
-						a#pop(href="/sipag-fiesta")
+						a(href="/sipag-fiesta")
 							img( src="/images/exhibit/sipagfiesta.png" id="imageresource" height="250px")
 				div(style="margin-right:0px")
 					center 

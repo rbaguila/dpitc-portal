@@ -2,49 +2,41 @@ extends ../layouts/default
 
 block content
 	//- Dynamic Slider from the database
-	//- #myCarousel.carousel.slide(data-ride='carousel')
-	//- 	//- Carousel indicators were declared here
-	//- 	ol.carousel-indicators
-	//- 		each image in slider
-	//- 			//- if image.order is equal to 0 the first indicator will have a class 'active'
-	//- 			//- else it will not have a class 'active'
-	//- 			if image.order == "0"
-	//- 				li(data-target="#myCarousel" data-slide-to='#{image.order}' class="active")
-	//- 			else 
-	//- 				li(data-target="#myCarousel" data-slide-to='#{image.order}')
-
-	//- 	//- Carousel proper - the images will be loop in the slider queried from the controller
-	//- 	div(class="carousel-inner" role="listbox")
-	//- 		each image in slider
-	//- 			//- if image.order is equal to 0 the first indicator will have a class 'active'
-	//- 			//- else it will not have a class 'active'
-	//- 			if image.order == "0"
-	//- 				div(class="item active")
-	//- 					img(src='images/fiesta_banner.png')
-	//- 					div(class="container")
-	//- 						div(class="carousel-caption")
-	//- 							!= image.caption
-	//- 							if image.buttonText != ""
-	//- 								a(class="btn btn-lg btn-primary" href="#" role="button")= image.buttonText
-	//- 			else 
-	//- 				div(class="item")
-	//- 					//- img(class="first-slide" src="/images/slider/1.jpg" alt="First slide")
-	//- 					img(src=image._.heroImage.limit(1020,500))
-	//- 					div(class="container")
-	//- 						div(class="carousel-caption" style="text-align: right")
-	//- 							h2= image.caption
-	//- 							if image.buttonText != ""
-	//- 								a(class="btn btn-lg btn-primary" href="#" role="button")= image.buttonText
-
 	#myCarousel.carousel.slide(data-ride='carousel')
 		//- Carousel indicators were declared here
 		ol.carousel-indicators
-			li(data-target="#myCarousel" data-slide-to='0' class="active")
+			each image in slider
+				//- if image.order is equal to 0 the first indicator will have a class 'active'
+				//- else it will not have a class 'active'
+				if image.order == "0"
+					li(data-target="#myCarousel" data-slide-to='#{image.order}' class="active")
+				else 
+					li(data-target="#myCarousel" data-slide-to='#{image.order}')
 
 		//- Carousel proper - the images will be loop in the slider queried from the controller
 		div(class="carousel-inner" role="listbox")
-			div(class="item active")
-				img(src='/images/sipag_banner.png' width="1020" height="500")
+			each image in slider
+				//- if image.order is equal to 0 the first indicator will have a class 'active'
+				//- else it will not have a class 'active'
+				if image.order == "0"
+					div(class="item active")
+						img(src=image._.heroImage.limit(1020,500))
+						div(class="container")
+							div(class="carousel-caption")
+								!= image.caption
+								if image.buttonText != ""
+									a(class="btn btn-lg btn-primary" href="#" role="button")= image.buttonText
+				else 
+					div(class="item")
+						//- img(class="first-slide" src="/images/slider/1.jpg" alt="First slide")
+						img(src=image._.heroImage.limit(1020,500))
+						div(class="container")
+							div(class="carousel-caption" style="text-align: right")
+								h2= image.caption
+								if image.buttonText != ""
+									a(class="btn btn-lg btn-primary" href="#" role="button")= image.buttonText
+
+	
 
 	
 

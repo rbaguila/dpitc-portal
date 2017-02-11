@@ -20,7 +20,7 @@ block content
 				//- else it will not have a class 'active'
 				if image.order == "0"
 					div(class="item active")
-						img(src='/images/main_banner.png')
+						img(src=image._.heroImage.limit(1020,500))
 						div(class="container")
 							div(class="carousel-caption")
 								!= image.caption

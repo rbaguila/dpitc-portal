@@ -10,7 +10,7 @@ exports = module.exports = function (req, res) {
 	locals.section = 'home';
 
 	// Load the galleries by sortOrder
-	view.query('slider', keystone.list('Slider').model.find().sort('sortOrder'));
+	view.query('slider', keystone.list('Slider').model.find({ "route": "/" }).sort('sortOrder'));
 
 	// Render the view
 	view.render('index');
