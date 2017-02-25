@@ -10,8 +10,8 @@ var keystone = require('keystone');
 // and documentation.
 
 keystone.init({
-	'name': 'PCAARRD DPITC',
-	'brand': 'PCAARRD DPITC',
+	'name': 'DPITC',
+	'brand': 'DPITC',
 
 	'less': 'public',
 	'static': 'public',
