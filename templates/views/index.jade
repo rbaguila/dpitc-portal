@@ -2,39 +2,40 @@ extends ../layouts/default
 
 block content
 	//- Dynamic Slider from the database
-	#myCarousel.carousel.slide(data-ride='carousel')
-		//- Carousel indicators were declared here
-		ol.carousel-indicators
-			each image in slider
-				//- if image.order is equal to 0 the first indicator will have a class 'active'
-				//- else it will not have a class 'active'
-				if image.order == "0"
-					li(data-target="#myCarousel" data-slide-to='#{image.order}' class="active")
-				else 
-					li(data-target="#myCarousel" data-slide-to='#{image.order}')
+	.container
+		#myCarousel.carousel.slide(data-ride='carousel')
+			//- Carousel indicators were declared here
+			ol.carousel-indicators
+				each image in slider
+					//- if image.order is equal to 0 the first indicator will have a class 'active'
+					//- else it will not have a class 'active'
+					if image.order == "0"
+						li(data-target="#myCarousel" data-slide-to='#{image.order}' class="active")
+					else 
+						li(data-target="#myCarousel" data-slide-to='#{image.order}')
 
-		//- Carousel proper - the images will be loop in the slider queried from the controller
-		div(class="carousel-inner" role="listbox")
-			each image in slider
-				//- if image.order is equal to 0 the first indicator will have a class 'active'
-				//- else it will not have a class 'active'
-				if image.order == "0"
-					div(class="item active")
-						img(src=image._.heroImage.limit(1020,500))
-						div(class="container")
-							div(class="carousel-caption")
-								!= image.caption
-								if image.buttonText != ""
-									a(class="btn btn-lg btn-primary" href="#" role="button")= image.buttonText
-				else 
-					div(class="item")
-						//- img(class="first-slide" src="/images/slider/1.jpg" alt="First slide")
-						img(src=image._.heroImage.limit(1020,500))
-						div(class="container")
-							div(class="carousel-caption" style="text-align: right")
-								h2= image.caption
-								if image.buttonText != ""
-									a(class="btn btn-lg btn-primary" href="#" role="button")= image.buttonText
+			//- Carousel proper - the images will be loop in the slider queried from the controller
+			div(class="carousel-inner" role="listbox")
+				each image in slider
+					//- if image.order is equal to 0 the first indicator will have a class 'active'
+					//- else it will not have a class 'active'
+					if image.order == "0"
+						div(class="item active")
+							img(src=image._.heroImage.limit(1020,500))
+							div(class="container")
+								div(class="carousel-caption")
+									!= image.caption
+									if image.buttonText != ""
+										a(class="btn btn-lg btn-primary" href="#" role="button")= image.buttonText
+					else 
+						div(class="item")
+							//- img(class="first-slide" src="/images/slider/1.jpg" alt="First slide")
+							img(src=image._.heroImage.limit(1020,500))
+							div(class="container")
+								div(class="carousel-caption" style="text-align: right")
+									h2= image.caption
+									if image.buttonText != ""
+										a(class="btn btn-lg btn-primary" href="#" role="button")= image.buttonText
 			
 			//- left amd right arrows
 			//- a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
@@ -42,6 +43,33 @@ block content
 			//- a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
 			//- 	span.glyphicon.glyphicon-chevron-right
 
+	ul.social-sharing.fixed
+		li.title
+			| Join
+			br 
+			| Us
+			img.arrow(src='http://d2sh4fq2xsdeg9.cloudfront.net/application/assets/genx/images/share-arrow.png', alt='')
+		
+		li.community
+			a(target='_blank', href='https://www.facebook.com/Thomson.Reuters.Foundation.News', style='width: 52px;')
+				img( src="/images/community.png" title="Community" height="40px")
+
+		li.facebook
+			a(target='_blank', href='https://www.facebook.com/Thomson.Reuters.Foundation.News', style='width: 52px;')
+				i.fa.fa-facebook
+		li.twitter
+			a(target='_blank', href='https://twitter.com/alertnet', style='width: 52px;')
+				i.fa.fa-twitter
+		li.youtube
+			a(target='_blank', href='https://www.youtube.com/user/thomsonreutersfdn', style='width: 52px;')
+				i.fa.fa-youtube
+		li.newsletter
+			a(target='_blank', href='http://surveys.trust.org/s3/Newsletter-Subscription', style='width: 52px;')
+				i.fa.fa-envelope
+	
+	//- div(style='float:right; z-index:100; right:0px; top:100px; background-color:#EEE; width:40;height:40; padding:6px; position: fixed; border-radius:20px;')
+		a(href='#')
+			img( src="/images/community.png" title="Community" height="30px")
 
 	//- .container: .row
 		.col-md-9
@@ -176,9 +204,7 @@ block content
 					button(type="button" class="btn btn-success" data-dismiss="modal") View More
 					button(type="button" class="btn btn-default" data-dismiss="modal") Close
 
-	div(style='float:right; z-index:100; right:0px; top:100px; background-color:#EEE; width:40;height:40; padding:6px; position: fixed; border-radius:20px;')
-		a(href='#')
-			img( src="/images/community.png" title="Community" height="30px")
+	
 
 	//- div(style='float:right; z-index:100; right:0px; top:150px;  position: fixed; ')
 	//- 	form.search-form(action='')
