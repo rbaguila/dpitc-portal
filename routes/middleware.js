@@ -23,9 +23,9 @@ exports.initLocals = function (req, res, next) {
 	[
 		{ label: 'Home', key: 'home', href: '/' },
 		{ label: 'FIESTA', key: 'fiesta', href: '/fiesta' },
-		{ label: 'Technologies', key: 'tech', href: '/tech' },
+		{ label: 'Technology', key: 'tech', href: '/tech' },
 		{ label: 'Community', key: 'community', href: '/community' },
-		{ label: 'About DPITC', key: 'about', href: '/about' },
+		{ label: 'E-Resources', key: 'e-resources', href: '/about' },
 		// { label: 'Home', key: 'home', href: '/' },
 		// { label: 'Blog', key: 'blog', href: '/blog' },
 		// { label: 'Gallery', key: 'gallery', href: '/gallery' },

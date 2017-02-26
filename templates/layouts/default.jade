@@ -60,15 +60,18 @@ html
 						a.navbar-brand(href='/')
 							img(src= "/images/dost-pcaarrd-white-logo.png" height="85px" width="470px") 
 					.collapse.navbar-collapse
-						ul.nav.navbar-nav.navbar-right.links(style="margin-top:18px")
+						ul.nav.navbar-nav.navbar-right.links
 							each link in navLinks
 								li: a(href=link.href, class=section == link.key ? 'active' :"not-active")= link.label
-							if user
-								if user.canAccessKeystone
-									//- li: a(href='/keystone') Open Keystone
-								li: a(href='/keystone/signout', class="not-active") Sign Out
-							else
-								li: a(href='/keystone/signin', class="not-active") Sign In
+							li: a(href='#', class="not-active") 
+								button#versionbutton ALPHA VERSION
+
+							//- if user
+							//- 	if user.canAccessKeystone
+							//- 		//- li: a(href='/keystone') Open Keystone
+							//- 	li: a(href='/keystone/signout', class="not-active") Sign Out
+							//- else
+							//- 	li: a(href='/keystone/signin', class="not-active") Sign In
 						//- ul.nav.navbar-nav.navbar-right
 						//- 	if user
 						//- 		if user.canAccessKeystone
