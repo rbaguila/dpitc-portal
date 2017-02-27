@@ -2,7 +2,7 @@ extends ../layouts/default
 
 block content
 	//- Dynamic Slider from the database
-	.container
+	.container.no-padding
 		#myCarousel.carousel.slide(data-ride='carousel')
 			//- Carousel indicators were declared here
 			ol.carousel-indicators
@@ -51,20 +51,20 @@ block content
 			img.arrow(src='http://d2sh4fq2xsdeg9.cloudfront.net/application/assets/genx/images/share-arrow.png', alt='')
 		
 		li.community
-			a(target='_blank', href='https://www.facebook.com/Thomson.Reuters.Foundation.News', style='width: 52px;')
+			a(target='_blank', href='https://www.facebook.com/Thomson.Reuters.Foundation.News')
 				img( src="/images/community.png" title="Community" height="40px")
 
 		li.facebook
-			a(target='_blank', href='https://www.facebook.com/Thomson.Reuters.Foundation.News', style='width: 52px;')
+			a(target='_blank', href='https://www.facebook.com/Thomson.Reuters.Foundation.News')
 				i.fa.fa-facebook
 		li.twitter
-			a(target='_blank', href='https://twitter.com/alertnet', style='width: 52px;')
+			a(target='_blank', href='https://twitter.com/alertnet')
 				i.fa.fa-twitter
 		li.youtube
-			a(target='_blank', href='https://www.youtube.com/user/thomsonreutersfdn', style='width: 52px;')
+			a(target='_blank', href='https://www.youtube.com/user/thomsonreutersfdn')
 				i.fa.fa-youtube
 		li.newsletter
-			a(target='_blank', href='http://surveys.trust.org/s3/Newsletter-Subscription', style='width: 52px;')
+			a(target='_blank', href='http://surveys.trust.org/s3/Newsletter-Subscription')
 				i.fa.fa-envelope
 	
 	//- div(style='float:right; z-index:100; right:0px; top:100px; background-color:#EEE; width:40;height:40; padding:6px; position: fixed; border-radius:20px;')
@@ -108,13 +108,13 @@ block content
 					+item("SARAI Exhibit", "Mar 11, 2017")
 					+item("SIPAG Fiesta", "Mar 30, 2017")
 
-	#fiesta_block.fh5co-project-style-3
+	#fiesta_block.fh5co-project-style-3.container
 		.row
 			.col-md-12
 				center
 					img.img-responsive(src='/images/fiesta_cover.png', alt='Image' width="1300px;" height="200px;")
 		.container
-			.row.p-b(style="margin-bottom:30px")
+			.row(style="margin-bottom:30px")
 				//- .col-md-12
 					center
 						//- h2.fh5co-heading-fiesta FIESTA
@@ -123,7 +123,7 @@ block content
 						strong
 							p.fiesta(style="color:black") Celebrate our Filipino culture while promoting Science and Technology through the festivals hosted by different provinces in the country. 
 
-		.row.p-b
+		.row
 			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
 				a.fh5co-project-item(href='#', style='background-image: url(/images/fiesta/potato.jpg);', target='_blank')
 					img.img-responsive.sr-only(src='/images/fiesta/potato.jpg')
@@ -215,177 +215,178 @@ block content
 
 
 	#tech_block.fh5co-project-style-3
-		.container
-			.row.p-b
+		.container.no-padding
+			.row
 				.col-md-12
 					h2.fh5co-heading Technologies
 				.col-md-8
-					p Improve your production by exploring the different technologies you can use to manage your crops and livestock.
-		.row.p-b
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='http://www.pcaarrd.dost.gov.ph/home/portal/index.php/quick-information-dispatch/2583-new-fusarium-wilt-resistant-cavendish-passed-export-market-standards', style='background-image: url(/images/exhibit/cavendish.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/exhibit/cavendish.jpg', alt='Image')
-					.tech-icon
-						img(src='/images/exhibit/agri.png')
-					.fh5co-overlay
-					.fh5co-text
-						.tech-category AGRICULTURE
-						h3 Cavendish resistant to Fusarium Wilt
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='http://www.pcaarrd.dost.gov.ph/home/portal/index.php/quick-information-dispatch/2659-biofloc-technology-to-reduce-risk-of-diseases-and-enhance-nutrition-in-shrimp-farms', style='background-image: url(/images/exhibit/shrimp.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/exhibit/shrimp.jpg', alt='Image')
-					.tech-icon
-						img(src='/images/exhibit/aqua.png')
-					.fh5co-overlay
-					.fh5co-text
-						.tech-category AQUATIC RESOURCE
-						h3 Shrimp biofloc technology
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='http://www.pcaarrd.dost.gov.ph/home/portal/index.php/quick-information-dispatch/2673-carrageenan-boosts-rice-production', style='background-image: url(/images/exhibit/cpgr.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/exhibit/cpgr.jpg', alt='Image')
-					.tech-icon
-						img(src='/images/exhibit/aqua.png')
-					.fh5co-overlay
-					.fh5co-text
-						.tech-category AQUATIC RESOURCE
-						h3 Carrageenan Plant Growth Regulator (CPGR)
-			.clearfix.visible-sm-block
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='http://www.pcaarrd.dost.gov.ph/home/portal/index.php/quick-information-dispatch/2581-somatic-embryogenesis-a-promising-technology-to-mass-propagate-coconut', style='background-image: url(/images/exhibit/coco.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/exhibit/coco.jpg', alt='Image')
-					.tech-icon
-						img(src='/images/exhibit/agri.png')
-					.fh5co-overlay
-					.fh5co-text
-						.tech-category AGRICULTURE
-						h3 Coconut Somatic Embryogenesis
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='http://www.pcaarrd.dost.gov.ph/home/portal/index.php/quick-information-dispatch/2664-restoring-the-country-s-coral-reefs-through-filipinnovation', style='background-image: url(/images/exhibit/coral.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/exhibit/coral.jpg', alt='Image')
-					.tech-icon
-						img(src='/images/exhibit/aqua.png')
-					.fh5co-overlay
-					.fh5co-text
-						.tech-category AGRICULTURE
-						h3 Corals asexual reproduction
-			.clearfix.visible-sm-block
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='http://www.pcaarrd.dost.gov.ph/home/portal/index.php/quick-information-dispatch/2666-sarai-smarter-moves-for-a-competitive-agriculture', style='background-color:yellow;padding-top:50%;', target='_blank')
-					h2(style='color: darkgreen;font-weight: bold;') Smarter Agriculture
-					.tech-icon
-						img(src='/images/exhibit/nr.png')
-					.fh5co-overlay
-					.fh5co-text
-						.tech-category NATURAL RESOURCE
-						h4 | Smarter Approaches to Reinvigorate Agriculture as an Industry in the Philippines (SARAI)
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='http://www.pcaarrd.dost.gov.ph/home/portal/index.php/quick-information-dispatch/2676-swine-genomics-to-help-improve-the-industry-s-productivity', style='background-image: url(/images/exhibit/pigs.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/exhibit/pigs.jpg', alt='Image')
-					.tech-icon
-						img(src='/images/exhibit/agri.png')
-					.fh5co-overlay
-					.fh5co-text
-						.tech-category AGRICULTURE
-						h3 Swine genomics
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/abaca.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/exhibit/abaca.jpg', alt='Image')
-					.tech-icon
-						img(src='/images/exhibit/agri.png')
-					.fh5co-overlay
-					.fh5co-text
-						.tech-category AGRICULTURE
-						h3 Adding higher value to abaca
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/bamboo.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/exhibit/bamboo.jpg', alt='Image')
-					.tech-icon
-						img(src='/images/exhibit/nr.png')
-					.fh5co-overlay
-					.fh5co-text
-						.tech-category NATURAL RESOURCE
-						h3 Bamboo: rgb(18, 81, 4) gold from the forests
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/tilapia.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/exhibit/tilapia.jpg', alt='Image')
-					.tech-icon
-						img(src='/images/exhibit/aqua.png')
-					.fh5co-overlay
-					.fh5co-text
-						.tech-category AQUATIC RESOURCE
-						h3 Tilapia farming technologies
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/coffee.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/exhibit/coffee.jpg', alt='Image')
-					.tech-icon
-						img(src='/images/exhibit/agri.png')
-					.fh5co-overlay
-					.fh5co-text
-						.tech-category AGRICULTURE
-						h3 Quality planting materials for a better coffee
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/peanuts.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/exhibit/peanuts.jpg', alt='Image')
-					.tech-icon
-						img(src='/images/exhibit/agri.png')
-					.fh5co-overlay
-					.fh5co-text
-						.tech-category AGRICULTURE
-						h3 Enhancing peanut productivity
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/bigeyelet.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/exhibit/bigeyelet.jpg', alt='Image')
-					.tech-icon
-						img(src='/images/exhibit/aqua.png')
-					.fh5co-overlay
-					.fh5co-text
-						.tech-category AQUACULTURE
-						h3 Big Eyelet
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/biofloc.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/exhibit/biofloc.jpg', alt='Image')
-					.tech-icon
-						img(src='/images/exhibit/nr.png')
-					.fh5co-overlay
-					.fh5co-text
-						.tech-category NATURAL RESOURCE
-						h3 Biofloc
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/knifefish.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/exhibit/knifefish.jpg', alt='Image')
-					.tech-icon
-						img(src='/images/exhibit/aqua.png')
-					.fh5co-overlay
-					.fh5co-text
-						.tech-category AQUACULTURE
-						h3 Knifefish
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/mango.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/exhibit/mango.jpg', alt='Image')
-					.tech-icon
-						img(src='/images/exhibit/agri.png')
-					.fh5co-overlay
-					.fh5co-text
-						.tech-category AGRICULTURE
-						h3 Mango
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/mangrove.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/exhibit/mangrove.jpg', alt='Image')
-					.tech-icon
-						img(src='/images/exhibit/nr.png')
-					.fh5co-overlay
-					.fh5co-text
-						.tech-category NATURAL RESOURCE
-						h3 Mangrove
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/aquaculture.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/exhibit/aquaculture.jpg', alt='Image')
-					.tech-icon
-						img(src='/images/exhibit/aqua.png')
-					.fh5co-overlay
-					.fh5co-text
-						.tech-category AQUACULTURE
-						h3 Aquaculture
+					p Improve your production by exploring the different technologies you can use to manage your crops and livestock.	
+		.container.no-padding
+			.row
+				.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+					a.fh5co-project-item(href='http://www.pcaarrd.dost.gov.ph/home/portal/index.php/quick-information-dispatch/2583-new-fusarium-wilt-resistant-cavendish-passed-export-market-standards', style='background-image: url(/images/exhibit/cavendish.jpg);', target='_blank')
+						img.img-responsive.sr-only(src='/images/exhibit/cavendish.jpg', alt='Image')
+						.tech-icon
+							img(src='/images/exhibit/agri.png')
+						.fh5co-overlay
+						.fh5co-text
+							.tech-category AGRICULTURE
+							h3 Cavendish resistant to Fusarium Wilt
+				.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+					a.fh5co-project-item(href='http://www.pcaarrd.dost.gov.ph/home/portal/index.php/quick-information-dispatch/2659-biofloc-technology-to-reduce-risk-of-diseases-and-enhance-nutrition-in-shrimp-farms', style='background-image: url(/images/exhibit/shrimp.jpg);', target='_blank')
+						img.img-responsive.sr-only(src='/images/exhibit/shrimp.jpg', alt='Image')
+						.tech-icon
+							img(src='/images/exhibit/aqua.png')
+						.fh5co-overlay
+						.fh5co-text
+							.tech-category AQUATIC RESOURCE
+							h3 Shrimp biofloc technology
+				.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+					a.fh5co-project-item(href='http://www.pcaarrd.dost.gov.ph/home/portal/index.php/quick-information-dispatch/2673-carrageenan-boosts-rice-production', style='background-image: url(/images/exhibit/cpgr.jpg);', target='_blank')
+						img.img-responsive.sr-only(src='/images/exhibit/cpgr.jpg', alt='Image')
+						.tech-icon
+							img(src='/images/exhibit/aqua.png')
+						.fh5co-overlay
+						.fh5co-text
+							.tech-category AQUATIC RESOURCE
+							h3 Carrageenan Plant Growth Regulator (CPGR)
+				.clearfix.visible-sm-block
+				.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+					a.fh5co-project-item(href='http://www.pcaarrd.dost.gov.ph/home/portal/index.php/quick-information-dispatch/2581-somatic-embryogenesis-a-promising-technology-to-mass-propagate-coconut', style='background-image: url(/images/exhibit/coco.jpg);', target='_blank')
+						img.img-responsive.sr-only(src='/images/exhibit/coco.jpg', alt='Image')
+						.tech-icon
+							img(src='/images/exhibit/agri.png')
+						.fh5co-overlay
+						.fh5co-text
+							.tech-category AGRICULTURE
+							h3 Coconut Somatic Embryogenesis
+				.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+					a.fh5co-project-item(href='http://www.pcaarrd.dost.gov.ph/home/portal/index.php/quick-information-dispatch/2664-restoring-the-country-s-coral-reefs-through-filipinnovation', style='background-image: url(/images/exhibit/coral.jpg);', target='_blank')
+						img.img-responsive.sr-only(src='/images/exhibit/coral.jpg', alt='Image')
+						.tech-icon
+							img(src='/images/exhibit/aqua.png')
+						.fh5co-overlay
+						.fh5co-text
+							.tech-category AGRICULTURE
+							h3 Corals asexual reproduction
+				.clearfix.visible-sm-block
+				.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+					a.fh5co-project-item(href='http://www.pcaarrd.dost.gov.ph/home/portal/index.php/quick-information-dispatch/2666-sarai-smarter-moves-for-a-competitive-agriculture', style='background-color:yellow;padding-top:50%;', target='_blank')
+						h2(style='color: darkgreen;font-weight: bold;') Smarter Agriculture
+						.tech-icon
+							img(src='/images/exhibit/nr.png')
+						.fh5co-overlay
+						.fh5co-text
+							.tech-category NATURAL RESOURCE
+							h4 | Smarter Approaches to Reinvigorate Agriculture as an Industry in the Philippines (SARAI)
+				.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+					a.fh5co-project-item(href='http://www.pcaarrd.dost.gov.ph/home/portal/index.php/quick-information-dispatch/2676-swine-genomics-to-help-improve-the-industry-s-productivity', style='background-image: url(/images/exhibit/pigs.jpg);', target='_blank')
+						img.img-responsive.sr-only(src='/images/exhibit/pigs.jpg', alt='Image')
+						.tech-icon
+							img(src='/images/exhibit/agri.png')
+						.fh5co-overlay
+						.fh5co-text
+							.tech-category AGRICULTURE
+							h3 Swine genomics
+				.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+					a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/abaca.jpg);', target='_blank')
+						img.img-responsive.sr-only(src='/images/exhibit/abaca.jpg', alt='Image')
+						.tech-icon
+							img(src='/images/exhibit/agri.png')
+						.fh5co-overlay
+						.fh5co-text
+							.tech-category AGRICULTURE
+							h3 Adding higher value to abaca
+				.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+					a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/bamboo.jpg);', target='_blank')
+						img.img-responsive.sr-only(src='/images/exhibit/bamboo.jpg', alt='Image')
+						.tech-icon
+							img(src='/images/exhibit/nr.png')
+						.fh5co-overlay
+						.fh5co-text
+							.tech-category NATURAL RESOURCE
+							h3 Bamboo: rgb(18, 81, 4) gold from the forests
+				.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+					a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/tilapia.jpg);', target='_blank')
+						img.img-responsive.sr-only(src='/images/exhibit/tilapia.jpg', alt='Image')
+						.tech-icon
+							img(src='/images/exhibit/aqua.png')
+						.fh5co-overlay
+						.fh5co-text
+							.tech-category AQUATIC RESOURCE
+							h3 Tilapia farming technologies
+				.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+					a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/coffee.jpg);', target='_blank')
+						img.img-responsive.sr-only(src='/images/exhibit/coffee.jpg', alt='Image')
+						.tech-icon
+							img(src='/images/exhibit/agri.png')
+						.fh5co-overlay
+						.fh5co-text
+							.tech-category AGRICULTURE
+							h3 Quality planting materials for a better coffee
+				.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+					a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/peanuts.jpg);', target='_blank')
+						img.img-responsive.sr-only(src='/images/exhibit/peanuts.jpg', alt='Image')
+						.tech-icon
+							img(src='/images/exhibit/agri.png')
+						.fh5co-overlay
+						.fh5co-text
+							.tech-category AGRICULTURE
+							h3 Enhancing peanut productivity
+				.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+					a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/bigeyelet.jpg);', target='_blank')
+						img.img-responsive.sr-only(src='/images/exhibit/bigeyelet.jpg', alt='Image')
+						.tech-icon
+							img(src='/images/exhibit/aqua.png')
+						.fh5co-overlay
+						.fh5co-text
+							.tech-category AQUACULTURE
+							h3 Big Eyelet
+				.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+					a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/biofloc.jpg);', target='_blank')
+						img.img-responsive.sr-only(src='/images/exhibit/biofloc.jpg', alt='Image')
+						.tech-icon
+							img(src='/images/exhibit/nr.png')
+						.fh5co-overlay
+						.fh5co-text
+							.tech-category NATURAL RESOURCE
+							h3 Biofloc
+				.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+					a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/knifefish.jpg);', target='_blank')
+						img.img-responsive.sr-only(src='/images/exhibit/knifefish.jpg', alt='Image')
+						.tech-icon
+							img(src='/images/exhibit/aqua.png')
+						.fh5co-overlay
+						.fh5co-text
+							.tech-category AQUACULTURE
+							h3 Knifefish
+				.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+					a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/mango.jpg);', target='_blank')
+						img.img-responsive.sr-only(src='/images/exhibit/mango.jpg', alt='Image')
+						.tech-icon
+							img(src='/images/exhibit/agri.png')
+						.fh5co-overlay
+						.fh5co-text
+							.tech-category AGRICULTURE
+							h3 Mango
+				.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+					a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/mangrove.jpg);', target='_blank')
+						img.img-responsive.sr-only(src='/images/exhibit/mangrove.jpg', alt='Image')
+						.tech-icon
+							img(src='/images/exhibit/nr.png')
+						.fh5co-overlay
+						.fh5co-text
+							.tech-category NATURAL RESOURCE
+							h3 Mangrove
+				.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+					a.fh5co-project-item(href='#', style='background-image: url(/images/exhibit/aquaculture.jpg);', target='_blank')
+						img.img-responsive.sr-only(src='/images/exhibit/aquaculture.jpg', alt='Image')
+						.tech-icon
+							img(src='/images/exhibit/aqua.png')
+						.fh5co-overlay
+						.fh5co-text
+							.tech-category AQUACULTURE
+							h3 Aquaculture
 		//- .row.p
 		//- 	.col-md-12.text-center
 		//- 		p.button-link
@@ -393,13 +394,40 @@ block content
 		//- 				span(style='vertical-align:middle;') See more of our technologies
 		//- 				i.icon.icon-chevron-right(style='font-size:20px;vertical-align:middle;')		
 	
+	//- #community_block
+	//- 	.row
+	//- 		.col-md-12.absolute
+	//- 			center
+	//- 				img.img-responsive(src='/images/community.jpg', width="1300px;" height="200px;")
+	//- 		div(class="container")
+	//- 			div(class="community-caption")
+	//- 				h2 Community
+	//- 				h4 Join the conversation. Know more about the country’s <br /> agriculture and aquaculture natural resources. 
 	#community_block
-		.row
-			.col-md-12.absolute
-				center
-					img.img-responsive(src='/images/community.jpg', width="1300px;" height="200px;")
-			div(class="container")
-				div(class="community-caption")
-					h2 Community
-					h4 Join the conversation. Know more about the country’s <br /> agriculture and aquaculture natural resources. 
-
+		.container
+			.row
+				.col-xs-12
+					.row.more-information
+						.col-xs-12
+							.col-xs-12
+								em About DOST PCAARRD Innovation and Technology Center
+								span dpitc.net
+							.details-box.col-xs-12
+								.col-md-6.image
+									a(href='#')
+										img(src='/images/community.jpg', height="270px" width="402px")
+								.col-md-6.description
+									p
+										| DPITC is where DOST-PCAARRD presents, promotes and, commercializes its Science and Technology products to the public. DPITC embodies DOST-PCAARRD’s vision for a world-class ‘one-stop service facility’ where the department and council’s network of allied agencies converge and offers major information-communication services, technology transfer, commercialization services and training-capacity building.
+									
+								a(target='_blank', href='http://www.trust.org/under-reported-stories/')
+									span.button Find out more
+							.col-xs-12.subscribe-container
+								.subscribe
+									h2
+										em Newsletter
+										|  sign up:
+									form#newsletter(target='_blank', method='get', action='http://surveys.trust.org/s3/Newsletter-Subscription?email=')
+										input#email(name='email', type='text', placeholder="What's your email?")
+										.button(onclick="document.forms['newsletter'].submit();")
+											i.fa.fa-chevron-right
