@@ -1,9 +1,9 @@
 $(document).ready(function(){
-	$('.slick-slider').slick({
-		lazyLoad: 'ondemand',
-	  slidesToShow: 3,
-	  slidesToScroll: 1
-	});
+	// $('.slick-slider').slick({
+	// 	lazyLoad: 'ondemand',
+	//   slidesToShow: 3,
+	//   slidesToScroll: 1
+	// });
 
 	$('#btn-exhibit').css('background', 'rgba(255,255,255,0.1)');
 
@@ -37,8 +37,25 @@ $(document).ready(function(){
     $('#'+e.target.id).addClass('current-img');
   });
 
-  changeMainImg();
+  // changeMainImg();
 });
+
+function toggleButton() {
+    var x = document.getElementById('searchDiv');
+    
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+        document.getElementById('carousel').style.marginTop = "10px";
+        document.getElementById('toggleIcon').className = "fa";
+        document.getElementById('toggleIcon').className += " fa-close";
+
+    } else {
+        x.style.display = 'none';
+        document.getElementById('carousel').style.marginTop = "85px";
+        document.getElementById('toggleIcon').className = "fa";
+        document.getElementById('toggleIcon').className += " fa-search";
+    }
+}
 
 function changeMainImg(){
   setTimeout(function(){
