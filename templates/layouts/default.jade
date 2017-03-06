@@ -64,7 +64,7 @@ html
 						ul.nav.navbar-nav.navbar-right.links
 							each link in navLinks
 								li: a(href=link.href, class=section == link.key ? 'active' :"not-active")= link.label
-							li: a(href='#', class="not-active" onclick="toggleButton()") 
+							li: a(class="not-active" onclick="toggleButton()") 
 								i.fa.fa-search#toggleIcon
 							li: a(href='#', class="not-active") 
 								button#versionbutton ALPHA VERSION
