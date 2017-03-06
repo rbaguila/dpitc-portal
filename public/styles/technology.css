@@ -16,17 +16,13 @@
 	font-family: "Arial Narrow";
 }
 
-#community_block .btn {
-	 background: #92cd00;
-	 border-color: #92cd00;
-}
-
 #exhibit_block {
 	 background: #1784fb;
 }
 
 #fiesta_block {
 	 background: #fff;
+	 margin-top:20px;
 }
 
 .featured {
@@ -129,7 +125,7 @@
 	 height: 50px;
 	 background: #fff;
 	 border-radius: 50%;
-	 z-index: 30;
+	 z-index: 0;
 }
 
 a#featured_video_btn {
