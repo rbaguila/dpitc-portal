@@ -2,7 +2,7 @@ extends ../layouts/default
 
 block content
 	//- Dynamic Slider from the database
-	.container.no-padding
+	.container(style="margin-top:100px;").no-padding
 		#myCarousel.carousel.slide(data-ride='carousel')
 			//- Carousel indicators were declared here
 			ol.carousel-indicators
@@ -44,27 +44,30 @@ block content
 			//- 	span.glyphicon.glyphicon-chevron-right
 
 	ul.social-sharing.fixed
-		li.title
+		//- li.title
 			| Join
 			br 
 			| Us
 			img.arrow(src='https://d2sh4fq2xsdeg9.cloudfront.net/application/assets/genx/images/share-arrow.png', alt='')
 		
 		li.community
-			a(target='_blank', href='#')
-				img( src="/images/community.png" title="Community" height="40px")
+			a(target='_blank', href='#' title="Join our community")
+				img( src="/images/community.png" height="40px")
 
 		li.facebook
-			a(target='_blank', href='#')
+			a(target='_blank', href='https://www.facebook.com/PCAARRD' title="Like us on Facebook")
 				i.fa.fa-facebook
 		li.twitter
-			a(target='_blank', href='#')
+			a(target='_blank', href='https://twitter.com/dostpcaarrd' title="Follow us on Twitter")
 				i.fa.fa-twitter
 		li.youtube
-			a(target='_blank', href='#')
+			a(target='_blank', href='https://www.youtube.com/channel/UCcrb__kJo7NCYYlbjwAGVwA' title="Subscribe on our channel")
 				i.fa.fa-youtube
+		li.google
+			a(target='_blank', href='https://plus.google.com/+DOSTPCAARRD' title="Add us to your circle")
+				i.fa.fa-google-plus
 		li.newsletter
-			a(target='_blank', href='#')
+			a(target='_blank', href='#' title="Subscribe on our newsletter")
 				i.fa.fa-envelope
 	
 	//- div(style='float:right; z-index:100; right:0px; top:100px; background-color:#EEE; width:40;height:40; padding:6px; position: fixed; border-radius:20px;')
