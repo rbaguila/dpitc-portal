@@ -22,10 +22,10 @@ exports.initLocals = function (req, res, next) {
 	res.locals.navLinks = 
 	[
 		{ label: 'Home', key: 'home', href: '/' },
-		{ label: 'FIESTA', key: 'fiesta', href: '/fiesta' },
+		{ label: 'FIESTA', key: 'fiesta', href: '/#' },
 		{ label: 'Technology', key: 'tech', href: '/tech' },
 		{ label: 'Community', key: 'community', href: '/community' },
-		{ label: 'E-Resources', key: 'e-resources', href: '/about' },
+		{ label: 'eResources', key: 'e-resources', href: '/eresources' },
 		// { label: 'Home', key: 'home', href: '/' },
 		// { label: 'Blog', key: 'blog', href: '/blog' },
 		// { label: 'Gallery', key: 'gallery', href: '/gallery' },
