@@ -8,8 +8,8 @@ block content
 					form(method="GET" action='/search')
 						input#global-search-input-box(type='text', placeholder='Search news, fiesta, technologies', name='searchKey', autofocus='')
 						input.searchButton(type='submit', border='0', value='Search')
-			
-		
+
+
 	//- Dynamic Slider from the database
 	#carousel.container(style="margin-top:85px;").no-padding
 		#myCarousel.carousel.slide(data-ride='carousel')
@@ -20,7 +20,7 @@ block content
 					//- else it will not have a class 'active'
 					if image.order == "0"
 						li(data-target="#myCarousel" data-slide-to='#{image.order}' class="active")
-					else 
+					else
 						li(data-target="#myCarousel" data-slide-to='#{image.order}')
 
 			//- Carousel proper - the images will be loop in the slider queried from the controller
@@ -36,7 +36,7 @@ block content
 									!= image.caption
 									if image.buttonText != ""
 										a(class="btn btn-lg btn-primary" href="#" role="button")= image.buttonText
-					else 
+					else
 						div(class="item")
 							//- img(class="first-slide" src="/images/slider/1.jpg" alt="First slide")
 							img(src=image._.heroImage.limit(1020,500))
@@ -45,7 +45,7 @@ block content
 									h2= image.caption
 									if image.buttonText != ""
 										a(class="btn btn-lg btn-primary" href="#" role="button")= image.buttonText
-			
+
 			//- left amd right arrows
 			//- a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
 			//- 	span.glyphicon.glyphicon-chevron-left
@@ -55,10 +55,10 @@ block content
 	ul.social-sharing.fixed
 		//- li.title
 			| Join
-			br 
+			br
 			| Us
 			img.arrow(src='https://d2sh4fq2xsdeg9.cloudfront.net/application/assets/genx/images/share-arrow.png', alt='')
-		
+
 		li.community
 			a(target='_blank', href='#' title="Join our community")
 				img( src="/images/community.png" height="40px")
@@ -78,37 +78,37 @@ block content
 		li.newsletter
 			a(href='mailto:pcaarrd@pcaarrd.dost.gov.ph' title="Email Us")
 				i.fa.fa-envelope
-	
+
 	//- div(style='float:right; z-index:100; right:0px; top:100px; background-color:#EEE; width:40;height:40; padding:6px; position: fixed; border-radius:20px;')
 		a(href='#')
 			img( src="/images/community.png" title="Community" height="30px")
 
 	//- .container: .row
 		.col-md-9
-			center 
+			center
 				h2 FIESTA
 				h4 Showcase of the best outputs in agriculture and aquatic research and development
 			div.slick-slider
 				div
-					center 
+					center
 						a#pop(href="#")
 							img( src="/images/exhibit/sipagfiesta.png" id="imageresource" height="250px")
 				div
-					center 
+					center
 						img( src="/images/exhibit/knifefish.jpg" height="250px")
 				div
-					center 
+					center
 						img( src="/images/exhibit/mango.jpg" height="250px")
 				div
-					center 
+					center
 						img( src="/images/exhibit/bigeyelet.jpg" height="250px")
 				div
-					center 
-						img( src="/images/exhibit/cacao.jpg" height="250px")		
+					center
+						img( src="/images/exhibit/cacao.jpg" height="250px")
 		.col-md-3
 			center
 				h2 Upcoming Exhibits
-				
+
 				mixin item(title, content)
 					a.list-group-item(href="#")
 						h4.list-group-item-heading #{title}
@@ -133,7 +133,7 @@ block content
 				.col-md-12
 					center
 						strong
-							p.fiesta(style="color:black") Celebrate our Filipino culture while promoting Science and Technology through the festivals hosted by different provinces in the country. 
+							p.fiesta(style="color:black") Celebrate our Filipino culture while promoting Science and Technology through the festivals hosted by different provinces in the country.
 
 		.row
 			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
@@ -184,7 +184,7 @@ block content
 						.tech-category SMARRDEC
 						h3 Seaweed
 						p Date: Nov 27-28, 2014
-						p Venue: Passig Islet, Davao del Sur 
+						p Venue: Passig Islet, Davao del Sur
 
 			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
 				a.fh5co-project-item(href='#', style='background-image: url(/images/fiesta/sardines.jpg);', target='_blank')
@@ -203,7 +203,7 @@ block content
 					button(type="button" class="close" data-dismiss="modal" aria-label="Close")
 						span(aria-hidden="true") &times;
 					h5.modal-title SIPAG FIESTA
-					
+
 				div.modal-body
 					center
 						img( src="" id="imagepreview" height="200px")
@@ -211,12 +211,12 @@ block content
 						h4 Commodity: ALL
 						h4 Date: March 2, 2016 - March 4, 2016
 						h4 Venue: PCAARRD Complex
-				
+
 				div.modal-footer
 					button(type="button" class="btn btn-success" data-dismiss="modal") View More
 					button(type="button" class="btn btn-default" data-dismiss="modal") Close
 
-	
+
 
 	//- div(style='float:right; z-index:100; right:0px; top:150px;  position: fixed; ')
 	//- 	form.search-form(action='')
@@ -234,7 +234,7 @@ block content
 						h2.fh5co-heading Technologies
 				.col-md-12
 					center
-						p(style="color:white") Improve your production by exploring the different technologies you can use to manage your crops and livestock.	
+						p(style="color:white") Improve your production by exploring the different technologies you can use to manage your crops and livestock.
 		.container.no-padding
 			.row
 				.col-md-2.col-sm-6.col-xs-12.tech-item
@@ -404,8 +404,8 @@ block content
 		//- 		p.button-link
 		//- 			a.btn.btn-primary.btn-lg(href='#', style='line-height:30px')
 		//- 				span(style='vertical-align:middle;') See more of our technologies
-		//- 				i.icon.icon-chevron-right(style='font-size:20px;vertical-align:middle;')		
-	
+		//- 				i.icon.icon-chevron-right(style='font-size:20px;vertical-align:middle;')
+
 	#block
 		.row
 			.col-md-12.col-xs-12
@@ -413,7 +413,7 @@ block content
 					div(class="community-caption")
 						center
 							h2 Community
-							h4 Join the conversation. Know more about the country’s agriculture and aquaculture natural resources. 
+							h4 Join the conversation. Know more about the country’s agriculture and aquaculture natural resources.
 							a(href="#")
 								button(class="btn btn-lg btn-warning") Join us by filling up this form!
 

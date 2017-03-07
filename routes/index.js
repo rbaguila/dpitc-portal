@@ -50,8 +50,11 @@ exports = module.exports = function (app) {
 	});
 	
 	app.all('/contact', routes.views.contact);
-	
-	app.get('/:slug', page_router);  
+
+	//Community
+	app.get('/community', routes.views.community)
+
+	app.get('/:slug', page_router);
 
 	app.get('/api/exhibits', routes.api.exhibit);
 

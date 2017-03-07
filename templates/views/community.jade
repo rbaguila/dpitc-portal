@@ -1,0 +1,8 @@
+extends ../layouts/default
+
+block content
+  div.community-body
+    each item in data.trainings
+      p
+        span item.title
+        span item.startDate
