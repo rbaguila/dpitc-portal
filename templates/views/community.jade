@@ -1,8 +1,19 @@
 extends ../layouts/default
 
 block content
-  div.community-body
-    each item in data.trainings
-      p
-        span item.title
-        span item.startDate
+  .community-body
+    .container
+      .row
+        .col-md-5
+          h3 
+            i.fa.fa-graduation-cap(aria-hidden='true')
+            &nbsp;Trainings
+          hr
+          ul.list-group
+            each training in trainings
+              li.list-group-item
+                a(href="#")
+                  h4 #{training.title}
+                !{training.description.brief}
+        .col-md-5
+        .col-md-2

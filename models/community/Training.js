@@ -15,9 +15,9 @@ Training.add({
   title: { type: String, required: true, default: '', index: true },
   startDate: { type: Types.Date },
   endDate: { type: Types.Date },
-  content: {
+  description: {
     brief: { type: Types.Html, wysiwyg: true, height: 150 },
-    extended: { type: Types.Html, wysiwyg: true, height: 400 },
+    full: { type: Types.Html, wysiwyg: true, height: 400 },
   },
   image: { type: Types.CloudinaryImage }
   // categories: { type: Types.Relationship, ref: 'ISPCategory', many: true}
