@@ -41,6 +41,14 @@ exports = module.exports = function (app) {
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
 	app.get('/gallery', routes.views.gallery);
+	app.get('/search/', function(req,res){
+		var searchKey = req.query.searchKey;
+		res.writeHead(301,
+		  {Location: 'https://pcaarrd-km.herokuapp.com/#/result/all?searchKey='+searchKey}
+		);
+		res.end();
+	});
+	
 	app.all('/contact', routes.views.contact);
 	
 	app.get('/:slug', page_router);  
