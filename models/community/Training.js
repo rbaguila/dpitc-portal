@@ -20,7 +20,7 @@ Training.add({
     full: { type: Types.Html, wysiwyg: true, height: 400 },
   },
   image: { type: Types.CloudinaryImage }
-  // categories: { type: Types.Relationship, ref: 'ISPCategory', many: true}
+  // categories: { type: Types.Relationship, ref: 'ISPCategory', many: true }
 });
 
 Training.defaultColumns = 'title, startDate, endDate'
