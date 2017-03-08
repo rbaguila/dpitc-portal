@@ -23,5 +23,5 @@ Training.add({
   // categories: { type: Types.Relationship, ref: 'ISPCategory', many: true }
 });
 
-Training.defaultColumns = 'title, startDate, endDate'
+Training.defaultColumns = 'title, startDate, endDate, image'
 Training.register();
