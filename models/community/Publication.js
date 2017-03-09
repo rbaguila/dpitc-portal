@@ -9,14 +9,20 @@ var Types = keystone.Field.Types;
 
 var Publication = new keystone.List('Publication', {
   map: { name: 'title' }
-})
+});
 
-// var uploadStorage = new keystone.Storage({
-//   adapter: keystone.Storage.Adapters.FS,
-//   fs: {
-//     path: keystone.expan
-//   }
-// })
+var storage = new keystone.Storage({
+  adapter: keystone.Storage.Adapters.FS,
+  fs: {
+    path: keystone.expandPath('./../dpitc-uploads'),
+    publicPath: '/public/uploads/files', // path where files will be served
+    //NOTE: Should be able to slug title. But How???
+    generateFilename: function(file) {
+      return file.originalname;
+    },
+    whenExists: 'overwrite'
+  }
+});
 
 Publication.add(
   {title: {
@@ -51,6 +57,10 @@ Publication.add(
   {cover: {
     type: Types.CloudinaryImage
   }},
+  {file: {
+    type: Types.File,
+    storage: storage
+  }},
   'Editors',
   {technicalEditor: {
     type: String
@@ -84,5 +94,5 @@ Publication.add(
   // categories: { type: Types.Relationship, ref: 'ISPCategory', many: true}
 );
 
-Publication.defaultColumns = 'title, publicationType, publicationLine, publicationYear'
+Publication.defaultColumns = 'title, publicationType, publicationLine, publicationYear, cover'
 Publication.register();
