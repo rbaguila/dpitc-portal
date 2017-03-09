@@ -11,6 +11,13 @@ var Publication = new keystone.List('Publication', {
   map: { name: 'title' }
 })
 
+// var uploadStorage = new keystone.Storage({
+//   adapter: keystone.Storage.Adapters.FS,
+//   fs: {
+//     path: keystone.expan
+//   }
+// })
+
 Publication.add(
   {title: {
     type: String,

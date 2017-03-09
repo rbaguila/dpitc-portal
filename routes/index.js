@@ -56,6 +56,13 @@ exports = module.exports = function (app) {
 	app.get('/community', routes.communityViews.community);
 	app.get('/eresources', routes.communityViews.eresources);
 
+	//File Upload Route
+  app.get('/api/fileupload/list', keystone.middleware.api, routes.api.fileupload.list);
+  app.get('/api/fileupload/:id', keystone.middleware.api, routes.api.fileupload.get);
+  app.all('/api/fileupload/:id/update', keystone.middleware.api, routes.api.fileupload.update);
+  app.all('/api/fileupload/create', keystone.middleware.api, routes.api.fileupload.create);
+  app.get('/api/fileupload/:id/remove', keystone.middleware.api, routes.api.fileupload.remove);
+
 	app.get('/:slug', page_router);
 
 	app.get('/api/exhibits', routes.api.exhibit);
