@@ -11,66 +11,6 @@ var Publication = new keystone.List('Publication', {
   map: { name: 'title' }
 })
 
-// Publication.add({
-//   title: {
-//     type: String,
-//     required: true,
-//     default: ''
-//   },
-//   publicationType: {
-//     type: Types.Select,
-//     options: [
-//       'Book',
-//       'Leaflet',
-//       'Brochure',
-//       'Flyer',
-//       'Comics',
-//       'Primer'
-//       ],
-//     emptyOption: false
-//   },
-//   publicationLine: {
-//     type: String,
-//     default: ''
-//   },
-//   publicationYear: {
-//     type: Number,
-//     min: [1970, 'Invalid Publication Year'],
-//     max: (new Date()).getFullYear()
-//   },
-//   publisher: {
-//     type: String
-//   },
-//   technicalEditor: {
-//     type: String
-//   },
-//   volumeEditor: {
-//     type: String
-//   },
-//   layoutArtist: {
-//     type: String
-//   },
-//   printer: {
-//     type: String
-//   },
-//   format: {
-//     type: String
-//   },
-//   ISSN: {
-//     type: String
-//   },
-//   ISBN: {
-//     type: String,
-//     dependsOn: { publicationType: 'Book' }
-//   },
-//   price: {
-//     type: Number,
-//     min: 0
-//   }
-
-//   // categories: { type: Types.Relationship, ref: 'ISPCategory', many: true}
-// });
-
 Publication.add(
   {title: {
     type: String,
@@ -100,6 +40,9 @@ Publication.add(
     type: Number,
     min: [1970, 'Invalid Publication Year'],
     max: (new Date()).getFullYear()
+  }},
+  {cover: {
+    type: Types.CloudinaryImage
   }},
   'Editors',
   {technicalEditor: {
