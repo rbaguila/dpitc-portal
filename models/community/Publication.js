@@ -61,6 +61,19 @@ Publication.add(
     type: Types.File,
     storage: storage
   }},
+  'Categories',
+  {industry: {
+    type: Types.Relationship,
+    ref: 'Industry'
+  }},
+  {sector: {
+    type: Types.Relationship,
+    ref: 'Sector',
+    filters: { industry: ':industry' }
+  }},
+  {commodity: {
+    type: Types.Relationship, ref: 'Commodity'
+  }},
   'Editors',
   {technicalEditor: {
     type: String
@@ -97,6 +110,11 @@ Publication.add(
 
   // categories: { type: Types.Relationship, ref: 'ISPCategory', many: true}
 );
+
+// Publication.model.findOne().populate('sector industries').exec(function(err, post) {
+//   console.log(publication.sector.name)
+// })
+// http://keystonejs.com/docs/database/#relationships
 
 Publication.defaultColumns = 'title, publicationType, publicationLine, publicationYear, cover'
 Publication.register();
