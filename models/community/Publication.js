@@ -17,9 +17,9 @@ var storage = new keystone.Storage({
     path: keystone.expandPath('./../dpitc-uploads'),
     publicPath: '/public/uploads/files', // path where files will be served
     //NOTE: Should be able to slug title. But How???
-    generateFilename: function(file) {
-      return file.originalname;
-    },
+    // generateFilename: function(file) {
+    //   return file.originalname;
+    // },
     whenExists: 'overwrite'
   }
 });
@@ -85,6 +85,10 @@ Publication.add(
   }},
   {format: {
     type: String
+  }},
+  {numberOfPages: {
+    type: Number,
+    min: 0
   }},
   {price: {
     type: Number,
