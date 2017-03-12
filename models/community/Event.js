@@ -19,7 +19,7 @@ Event.add({
     brief: { type: Types.Html, wysiwyg: true, height: 150 },
     full: { type: Types.Html, wysiwyg: true, height: 400 },
   },
-  image: { type: Types.CloudinaryImage }
+  image: { type: Types.CloudinaryImage, autoCleanup: true }
   // categories: { type: Types.Relationship, ref: 'ISPCategory', many: true}
 });
 

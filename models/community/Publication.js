@@ -55,11 +55,16 @@ Publication.add(
     max: (new Date()).getFullYear()
   }},
   {cover: {
-    type: Types.CloudinaryImage
+    type: Types.CloudinaryImage,
+    autoCleanup: true
   }},
   {file: {
     type: Types.File,
     storage: storage
+  }},
+  {description: {
+    type: Types.Textarea,
+    height: 150
   }},
   'Categories',
   {industry: {
@@ -111,6 +116,7 @@ Publication.add(
 );
 
 // http://keystonejs.com/docs/database/#relationships
+
 
 Publication.defaultColumns = 'title, publicationType, publicationLine, publicationYear, cover'
 

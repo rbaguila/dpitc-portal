@@ -26,6 +26,10 @@ block content
     .container.margin-top
       .row
         .col-md-8
-          | publications go here
+          .row
+            each publication in publications
+              .col-md-4
+                img(src=publication._.cover.fit(100, 200, {}))
+                | #{publication.title}
         .col-md-4
           | sidebar goes here

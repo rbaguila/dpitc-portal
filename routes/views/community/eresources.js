@@ -5,5 +5,7 @@ exports = module.exports = function (req, res) {
   var locals = res.locals;
   locals.section = 'eresources';
 
+  view.query('publications', keystone.list('Publication').model.find())
+
   view.render('community/eresources');
 }
