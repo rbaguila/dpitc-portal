@@ -7,7 +7,8 @@ var Types = keystone.Field.Types;
  */
 
 var Sector = new keystone.List('Sector', {
-  autokey: { from: 'name', path: 'key', unique: true }
+  autokey: { from: 'name', path: 'key', unique: true },
+  drilldown: 'industry'
 });
 
 Sector.add({

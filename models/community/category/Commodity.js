@@ -6,7 +6,8 @@ var Types = keystone.Field.Types;
  */
 
 var Commodity = new keystone.List('Commodity', {
-  autokey: { from: 'name', path: 'key', unique: true }
+  autokey: { from: 'name', path: 'key', unique: true },
+  drilldown: 'sector'
 });
 
 Commodity.add({
