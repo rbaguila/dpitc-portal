@@ -7,5 +7,5 @@ exports = module.exports = function (req, res) {
 
   view.query('publications', keystone.list('Publication').model.find())
 
-  view.render('community/eresources');
+  view.render('community/eresources', {loginRedirect: '/eresources'});
 }

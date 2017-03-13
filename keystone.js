@@ -81,9 +81,8 @@ keystone.set('nav', {
 	galleries: 'galleries',
 	enquiries: 'enquiries',
 	users: 'users',
-	Community: ['trainings', 'events', 'discussions'],
-	Categories: ['industries', 'sectors', 'commodities'],
-	'E-Resources': ['publications']
+	Community: ['trainings', 'events', 'discussions', 'publications'],
+	Categories: ['industries', 'sectors', 'commodities']
 });
 
 // optional, will force cloudinary to serve images over https

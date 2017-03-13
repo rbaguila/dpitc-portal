@@ -8,5 +8,5 @@ exports = module.exports = function (req, res) {
   view.query('trainings', keystone.list('Training').model.find());
   view.query('events', keystone.list('Event').model.find());
 
-  view.render('community/community');
+  view.render('community/community', {loginRedirect: '/community'});
 }

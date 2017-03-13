@@ -80,7 +80,35 @@ html
             //-     li: a(href='/keystone/signout') Sign Out
             //-   else
             //-     li: a(href='/keystone/signin') Sign In
+      
+      //- NAVBAR
+      div#community-nav.navbar-fixed-top
+        ol.breadcrumb.community-breadcrumb
+          li
+            a(href="/") Home
+          li
+            | Community
 
+        #user-login-links
+          if user
+            //- if user.canAccessKeystone
+              //- li: a(href='/keystone') Open Keystone
+            span.user-name #{user.name.full}&nbsp;&nbsp;
+            i.fa.fa-bell-o(aria-hidden="true")
+            | &nbsp;&nbsp;&nbsp;&nbsp;
+            a(href='/keystone/signout', class="not-active login-link") Sign Out
+          else
+            a(href='/keystone/signin?from=' + loginRedirect, class="not-active login-link") Sign In
+
+        //- ul.nav.navbar-nav.navbar-right
+        //-   if user
+        //-     if user.canAccessKeystone
+        //-       li: a(href='/keystone') Open Keystone
+        //-     li: a(href='/keystone/signout') Sign Out
+        //-   else
+        //-     li: a(href='/keystone/signin') Sign In
+
+      //- END NAVBAR
 
     //- BODY
     #body
