@@ -78,10 +78,9 @@ keystone.set('nav', {
 	],
 	technologies: 'technologies',
 	// pages: 'Page,',
-	galleries: 'galleries',
 	enquiries: 'enquiries',
 	users: 'users',
-	Community: ['trainings', 'events', 'discussions', 'publications'],
+	Community: ['trainings', 'events', 'discussions', 'publications', 'links', 'galleries', 'videos'],
 	Categories: ['industries', 'sectors', 'commodities']
 });
 

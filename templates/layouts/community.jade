@@ -86,8 +86,10 @@ html
         ol.breadcrumb.community-breadcrumb
           li
             a(href="/") Home
-          li
-            | Community
+          each breadcrumb in breadcrumbs
+              li
+                a(href=breadcrumb.link) #{breadcrumb.text}
+              
 
         #user-login-links
           if user

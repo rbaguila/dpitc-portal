@@ -15,66 +15,9 @@ block content
           hr
           ul.list-group
             each training in trainings
-              li.list-group-item
-                a(href="#")
-                  h4 #{training.title}
-                | !{training.description.brief}
-          a(href="#") More
-          br
-          br
-
-          h3
-            i.fa.fa-book(aria-hidden='true')
-            | &nbsp;Publications
-          hr
-          ul.list-group
-            each training in trainings
-              li.list-group-item
-                a(href="#")
-                  h4 #{training.title}
-                | !{training.description.brief}
-          a(href="#") More
-          br
-          br
-
-          h3
-            i.fa.fa-comments-o(aria-hidden='true')
-            | &nbsp;Multimedia
-          hr
-          ul.list-group
-            each training in trainings
-              li.list-group-item
-                a(href="#")
-                  h4 #{training.title}
-                | !{training.description.brief}
-          br
-          br
-
-        .col-md-5
-          h3
-            i.fa.fa-graduation-cap(aria-hidden='true')
-            | &nbsp;Training
-          hr
-          ul.list-group
-            each training in trainings
-              li.list-group-item
-                a(href="#")
-                  h4 #{training.title}
-                | !{training.description.brief}
-          a(href="#") More
-          br
-          br
-
-          h3
-            i.fa.fa-graduation-cap(aria-hidden='true')
-            | &nbsp;Blogs
-          hr
-          ul.list-group
-            each training in trainings
-              li.list-group-item
-                a(href="#")
-                  h4 #{training.title}
-                | !{training.description.brief}
+              a(href="#").list-group-item
+                h4.list-group-item-heading #{training.title}
+                p.list-group-item-text !{training.description.brief}
           a(href="#") More
           br
           br
@@ -85,13 +28,52 @@ block content
           hr
           ul.list-group
             each event in events
-              li.list-group-item
-                a(href="#")
-                  h4 #{event.title}
-                | !{event.description.brief}
+              a(href="#").list-group-item
+                h4.list-group-item-heading #{event.title}
+                p.list-group-item-text !{event.description.brief}
           a(href="#") More
           br
           br
+
+          h3
+            i.fa.fa-comments-o(aria-hidden='true')
+            | &nbsp;Multimedia
+          hr
+          ul.list-group
+            each training in trainings
+              a(href="#").list-group-item
+                h4.list-group-item-heading #{training.title}
+                p.list-group-item-text !{training.description.brief}
+          br
+          br
+
+        .col-md-5
+          h3
+            i.fa.fa-graduation-cap(aria-hidden='true')
+            | &nbsp;Training
+          hr
+          ul.list-group
+            each training in trainings
+              a(href="#").list-group-item
+                h4.list-group-item-heading #{training.title}
+                p.list-group-item-text !{training.description.brief}
+          a(href="#") More
+          br
+          br
+
+          h3
+            i.fa.fa-graduation-cap(aria-hidden='true')
+            | &nbsp;Blogs
+          hr
+          ul.list-group
+            each training in trainings
+              a(href="#").list-group-item
+                h4.list-group-item-heading #{training.title}
+                p.list-group-item-text !{training.description.brief}
+          a(href="#") More
+          br
+          br
+
 
           h3
             i.fa.fa-calendar(aria-hidden='true')
@@ -99,8 +81,16 @@ block content
           hr
           ul.list-group
             each event in events
-              li.list-group-item
-                a(href="#")
-                  h4 #{event.title}
-                | !{event.description.brief}
+              a(href="#").list-group-item
+                h4.list-group-item-heading #{event.title}
+                p.list-group-item-text !{event.description.brief}
         .col-md-2
+          ul.list-group
+            li.list-group-item
+              h4 WELCOME TO PCAARRD KM COMMUNITY
+              h4 Insights. Collboration. Innovations.
+              ul
+                li 1234 Comments
+                li 1234 Likes
+                li 1234 Happy
+                li 1234 Sad
