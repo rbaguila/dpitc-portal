@@ -7,25 +7,24 @@ var Types = keystone.Field.Types;
  */
 
 var Discussion = new keystone.List('Discussion', {
-map: { name: 'title' }
+  map: { name: 'title' }
 });
 
 Discussion.add({
-title: {
-  type: String,
-  required: true,
-  default: ''
-},
-content: {
-  brief: {
-    type: String
+  title: {
+    type: String,
+    required: true,
+    default: ''
   },
-  full: {
-    type: String
+  content: {
+    brief: {
+      type: String
+    },
+    full: {
+      type: String
+    }
   }
-}
-//categories, comments
-
+  //categories, comments
 })
 
 Discussion.defaultColumns = 'title';

@@ -80,7 +80,7 @@ keystone.set('nav', {
 	// pages: 'Page,',
 	enquiries: 'enquiries',
 	users: 'users',
-	Community: ['trainings', 'events', 'discussions', 'publications', 'links', 'galleries', 'videos'],
+	Community: ['trainings', 'events', 'discussions', 'publications', 'links', 'galleries', 'videos', 'memos'],
 	Categories: ['industries', 'sectors', 'commodities']
 });
 
