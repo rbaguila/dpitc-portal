@@ -3,14 +3,28 @@ extends ../../layouts/community
 block content
 
   .community-body
+    #eresources-content
+      .container
+        .row
+          .col-md-8
+            .row
+              each publication in publications
+                .col-sm-6.col-md-4
+                  .thumbnail
+                    a(href=publication.file.url,download)
+                      img(src=publication._.cover.fit(100, 200, {}))
+                      .caption
+                        h4 #{publication.title}
+                        p #{publication.description}
 
-    .container.margin-top
-      .row
-        .col-md-8
-          .row
-            each publication in publications
-              .col-md-4
-                img(src=publication._.cover.fit(100, 200, {}))
-                | #{publication.title}
-        .col-md-4
-          | sidebar goes here
+          .col-md-4
+            .list-group
+              li.list-group-item.list-group-item-header Industries
+              each industry in industries
+                a.list-group-item #{industry.name}
+              li.list-group-item.list-group-item-header Sectors
+              each sector in sectors
+                a.list-group-item #{sector.name}
+              li.list-group-item.list-group-item-header Commodities
+              each commodity in commodities
+                a.list-group-item #{commodity.name}

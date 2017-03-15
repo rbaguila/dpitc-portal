@@ -11,11 +11,16 @@ var Publication = new keystone.List('Publication', {
   map: { name: 'title' }
 });
 
-var storage = new keystone.Storage({
+var localStorage = new keystone.Storage({
   adapter: keystone.Storage.Adapters.FS,
+  schema: {
+    originalname: true,
+    url: true,
+    path: true
+  },
   fs: {
     path: keystone.expandPath('./../dpitc-uploads'),
-    publicPath: '/public/uploads/files', // path where files will be served
+    publicPath: '/files', // path where files will be served
     //NOTE: Should be able to slug title. But How???
     // generateFilename: function(file) {
     //   return file.originalname;
@@ -60,7 +65,7 @@ Publication.add(
   }},
   {file: {
     type: Types.File,
-    storage: storage
+    storage: localStorage
   }},
   {description: {
     type: Types.Textarea,
@@ -118,7 +123,7 @@ Publication.add(
 // http://keystonejs.com/docs/database/#relationships
 
 
-Publication.defaultColumns = 'title, publicationType, publicationLine, publicationYear, cover'
+Publication.defaultColumns = 'title, publicationType, publicationYear, file, cover'
 
 Publication.register();
 
