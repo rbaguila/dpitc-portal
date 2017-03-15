@@ -6,18 +6,20 @@ block content
     #eresources-content
       .container
         .row
-          .col-md-8
+          .col-md-9
             .row
               each publication in publications
-                .col-sm-6.col-md-4
+                .col-sm-6.col-md-3
                   .thumbnail
-                    a(href=publication.file.url,download)
-                      img(src=publication._.cover.fit(100, 200, {}))
-                      .caption
-                        h4 #{publication.title}
-                        p #{publication.description}
+                    .publication-col
+                      a(href=publication.file.url,download)
+                        .cover
+                          img(src=publication._.cover.fit(100, 200, {}))
+                        .title
+                          h3
+                            small #{publication.get('title.trunc')}
 
-          .col-md-4
+          .col-md-3
             .list-group
               li.list-group-item.list-group-item-header Industries
               each industry in industries

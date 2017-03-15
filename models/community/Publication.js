@@ -122,6 +122,14 @@ Publication.add(
 
 // http://keystonejs.com/docs/database/#relationships
 
+Publication.schema.virtual('title.trunc').get(function() {
+  var truncated = this.title
+
+  if (truncated.length > 36) {
+    truncated = truncated.substring(0, 35) + '...'
+  }
+  return truncated
+})
 
 Publication.defaultColumns = 'title, publicationType, publicationYear, file, cover'
 
