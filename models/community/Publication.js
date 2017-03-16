@@ -19,8 +19,8 @@ var localStorage = new keystone.Storage({
     path: true
   },
   fs: {
-    path: keystone.expandPath('./../dpitc-uploads'),
-    publicPath: '/files', // path where files will be served
+    path: keystone.expandPath('public/uploads/files'),
+    publicPath: '/public/files', // path where files will be served
     //NOTE: Should be able to slug title. But How???
     // generateFilename: function(file) {
     //   return file.originalname;
