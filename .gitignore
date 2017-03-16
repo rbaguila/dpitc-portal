@@ -32,3 +32,4 @@ node_modules
 
 # Ignore file uploads
 public/uploads/
+public/uploads/files/
