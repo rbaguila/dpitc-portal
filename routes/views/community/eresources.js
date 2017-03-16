@@ -11,8 +11,19 @@ exports = module.exports = function (req, res) {
 
   view.query('publications', keystone.list('Publication').model.find())
 
-  view.render('community/eresources', {loginRedirect: '/eresources', breadcrumbs: [
+  var viewStyle = req.query.view == undefined ? 'grid' : req.query.view
+  var pageData = {
+    loginRedirect: '/eresources',
+    breadcrumbs: [
       { text: 'E Resources', link: '/eresources'},
     ]
-  });
+  }
+
+  if (viewStyle == 'list') {
+    //render list layout
+    view.render('community/eresources-list', pageData);
+  } else {
+    //render grid layout by default
+    view.render('community/eresources-grid', pageData);
+  }
 }
