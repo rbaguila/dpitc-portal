@@ -50,7 +50,7 @@ exports = module.exports = function (app) {
 		res.end();
 	});
 
-	app.all('/contact', routes.views.contact);
+	// app.all('/contact', routes.views.contact);
 
 	//Community
 	app.get('/community', routes.communityViews.community);
