@@ -20,7 +20,15 @@ Post.add({
 	content: {
 		brief: { type: Types.Html, wysiwyg: true, height: 150 },
 		extended: { type: Types.Html, wysiwyg: true, height: 400 },
-	},
+	}},
+	'Home Slider',
+	{
+	caption: { type: Types.Html, wysiwyg: true, height: 150 },
+	order: { type: String },
+	position: { type: Types.Select, options: 'center, top-left, top-right, center-left, center-right,bottom-left, bottom-right, top-center, bottom-center', default: 'center', index: true },
+	buttonColor: { type: Types.Select, options: 'red, yellow, green, blue, black, white', default: 'blue', },
+	buttonTextColor: { type: Types.Select, options: 'black, white', default: 'white', },
+
 	categories: { type: Types.Relationship, ref: 'PostCategory', many: true },
 });
 

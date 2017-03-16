@@ -56,6 +56,9 @@
   border-color: #204d74;
 } 
 
+.page-header{
+	margin-top: 100px;
+}
 .jumbotron{
   margin-bottom: 0px;
 }
@@ -88,14 +91,19 @@
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
-  z-index: 10;
-  //padding-bottom: 50px;
-  top: 20px;
-  left: 30px;
-  width: 95%;
-  padding: 5px;
-  //background-color: rgba(0, 0, 0, 0.1);
-  //text-align: left;
+  text-align: right; 
+  font-size: 2.2em; 
+  margin-left: 3em; 
+  background-color: rgba(1,1,1,0.5); 
+  padding: 0.3em; 
+  line-height: 1em;
+	bottom: 1.5em;
+  right: 0.7em;	
+}
+.more-news{
+	position: absolute;
+	bottom: 1em;
+  right: 1.8em;	
 }
 
 /* Since positioning the image, we need to help out the caption */
@@ -115,6 +123,15 @@
   left: 0;
   min-width: 100%;
   height: 500px;
+}
+
+.news-link{
+	color: white;
+}
+
+.news-link:hover{
+	text-decoration: underline;
+	color: white;
 }
 
 .slick-prev:before, .slick-next:before { 
@@ -610,3 +627,6 @@
     -webkit-appearance: none;
     -webkit-border-radius: 0px;
 }
+
+
+//blogs

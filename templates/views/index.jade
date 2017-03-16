@@ -15,7 +15,7 @@ block content
 		#myCarousel.carousel.slide(data-ride='carousel')
 			//- Carousel indicators were declared here
 			ol.carousel-indicators
-				each image in slider
+				each image in posts
 					//- if image.order is equal to 0 the first indicator will have a class 'active'
 					//- else it will not have a class 'active'
 					if image.order == "0"
@@ -25,26 +25,32 @@ block content
 
 			//- Carousel proper - the images will be loop in the slider queried from the controller
 			div(class="carousel-inner" role="listbox")
-				each image in slider
+				each image in posts
 					//- if image.order is equal to 0 the first indicator will have a class 'active'
 					//- else it will not have a class 'active'
 					if image.order == "0"
 						div(class="item active")
-							img(src=image._.heroImage.limit(1020,500))
+							img(src=image._.image.limit(1020,500))
 							div(class="container")
-								div(class="carousel-caption")
-									!= image.caption
-									if image.buttonText != ""
+								if image.caption
+									div(class="carousel-caption")
+										a(href='/blog/post/' + image.slug).news-link 
+											!= image.caption
+								a(class="btn btn-primary more-news" href="blog") Click Here For More News
+										//- i.fa.fa-newspaper-o.fa-fw
+									//- if image.buttonText != ""
 										a(class="btn btn-lg btn-primary" href="#" role="button")= image.buttonText
 					else
 						div(class="item")
 							//- img(class="first-slide" src="/images/slider/1.jpg" alt="First slide")
-							img(src=image._.heroImage.limit(1020,500))
+							img(src=image._.image.limit(1020,500))
 							div(class="container")
-								div(class="carousel-caption" style="text-align: right")
-									h2= image.caption
-									if image.buttonText != ""
-										a(class="btn btn-lg btn-primary" href="#" role="button")= image.buttonText
+								if image.caption
+									div(class="carousel-caption")
+										a(href='/blog/post/' + image.slug).news-link 
+											!= image.caption
+								a(class="btn btn-primary more-news" href="blog") Click Here For More News
+
 
 			//- left amd right arrows
 			//- a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
