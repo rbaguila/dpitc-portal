@@ -20,7 +20,7 @@ var localStorage = new keystone.Storage({
   },
   fs: {
     path: keystone.expandPath('public/uploads/files'),
-    publicPath: '/public/files', // path where files will be served
+    publicPath: '/uploads/files/', // path where files will be served
     //NOTE: Should be able to slug title. But How???
     // generateFilename: function(file) {
     //   return file.originalname;
