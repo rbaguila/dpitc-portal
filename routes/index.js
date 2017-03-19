@@ -42,8 +42,11 @@ exports = module.exports = function (app) {
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
 	app.get('/gallery', routes.views.gallery);
-	app.get('/elearning/courses', routes.views.courses.courseList);
-	app.get('/elearning/courses/:courseslug', routes.views.courses.course);
+	
+	// Elearning Routes
+	app.get('/elearning', routes.views.elearning.main);
+	app.get('/elearning/courses/page?', routes.views.elearning.courseList);
+	app.get('/elearning/courses/:courseslug', routes.views.elearning.course);
 	app.get('/search/', function(req,res){
 		var searchKey = req.query.searchKey;
 		res.writeHead(301,
