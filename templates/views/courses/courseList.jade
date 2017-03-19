@@ -1,0 +1,43 @@
+extends ../../layouts/default
+
+block intro
+	.container
+		h2 All Courses
+	
+block content
+	.container
+		if data.courses.length
+			.row
+				each course in data.courses
+					.col-xs-6.col-md-3
+						.thumbnail
+							img.card-img-top(src='https://img.youtube.com/vi/'+ course.videoId +'/mqdefault.jpg', height="150px")
+							.caption
+								h3= course.title
+								p= course.content.brief
+								br
+								p
+									a.btn.btn-info.btn-block(href=course.url) Learn more
+		else
+			h3.text-muted There are no courses yet.
+
+//block intro
+	.container
+		h2 Recommended Courses
+	
+//block content
+	.container
+		if data.userRecommendedCourses.length
+			.row
+				each course in data.userRecommendedCourses
+					.col-xs-6.col-md-3
+						.thumbnail
+							img.card-img-top(src='https://img.youtube.com/vi/'+ course.videoId +'/mqdefault.jpg', height="150px")
+							.caption
+								h3= course.title
+								p= course.content.brief
+								br
+								p
+									a.btn.btn-info.btn-block(href=course.url) Learn more
+		else
+			h3.text-muted Failed to generate recommended courses.
