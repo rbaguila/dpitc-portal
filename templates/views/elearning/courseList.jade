@@ -1,0 +1,47 @@
+extends ../../layouts/default
+
+block css
+	link(rel="stylesheet" type="text/css" href="/styles/course.css")
+
+mixin allcourses(courses)
+	h2.text-center All Courses
+	if courses.results.length
+		.row.equal-height
+			each course in courses.results
+				.col-xs-6.col-md-3
+					.thumbnail
+						if course.thumbnail.exists
+							img.card-img-top(src=course.thumbnail alt="course.title")
+						else if course.videoId
+							img.card-img-top(src='https://img.youtube.com/vi/'+ course.videoId +'/mqdefault.jpg', height="150px")
+						else
+							img.card-img-top(src="/images/image-not-available-th.png" alt=course.title, height="150px")
+						.caption
+							h3= course.title.substring(0, 50)
+							p= course.content.brief.substring(0, 100)
+							br
+							p
+								a.btn.btn-info.btn-block(href=course.url) Learn more
+	else
+		h3.text-muted There are no courses yet.
+	ul.pagination.pull-right
+		li
+			a(href="/elearning/courses/page?page="+courses.previous aria-label="Previous")
+				span(aria-hidden="true")&laquo
+		each page in courses.pages
+			if page==courses.currentPage
+				li.active
+					a(href="/elearning/courses/page?page="+page)= page
+			else
+				li
+					a(href="/elearning/courses/page?page="+page)= page
+
+		li
+			a(href="/elearning/courses/page?page="+courses.next aria-label="Next")
+				span(aria-hidden="true")&raquo
+
+block content
+	.container
+		.panel.panel-default
+			.panel-body
+				+allcourses(data.courses)

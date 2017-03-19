@@ -1,0 +1,84 @@
+extends ../../layouts/default
+
+block css
+  link(rel="stylesheet" type="text/css" href="/styles/course.css")
+
+mixin allCourses(courses)
+  h2.text-center All Courses
+  if courses.length
+    .row.equal-height
+      each course in courses
+        .col-xs-6.col-md-3
+          .thumbnail
+            if course.thumbnail.exists
+              img.card-img-top(src=course.thumbnail alt="course.title")
+            else if course.videoId
+              img.card-img-top(src='https://img.youtube.com/vi/'+ course.videoId +'/mqdefault.jpg', height="150px")
+            else
+              img.card-img-top(src="/images/image-not-available-th.png" alt=course.title, height="150px")
+            .caption
+              h3= course.title.substring(0, 50)
+              p= course.content.brief.substring(0, 100)
+              br
+              p
+                a.btn.btn-info.btn-block(href=course.url) Learn more
+  else
+    h3.text-muted There are no courses yet.
+
+mixin popularCourses(courses)
+  h2.text-center Popular Courses
+  if courses.length
+    .row.equal-height
+      each course in courses
+        .col-xs-6.col-md-3
+          .thumbnail
+            if course.thumbnail.exists
+              img.card-img-top(src=course.thumbnail alt="course.title")
+            else if course.videoId
+              img.card-img-top(src='https://img.youtube.com/vi/'+ course.videoId +'/mqdefault.jpg', height="150px")
+            else
+              img.card-img-top(src="/images/image-not-available-th.png" alt=course.title, height="150px")
+            .caption
+              h3= course.title.substring(0, 50)
+              p= course.content.brief.substring(0, 100)
+              br
+              p
+                a.btn.btn-info.btn-block(href=course.url) Learn more
+  else
+    h3.text-muted There are no courses yet.
+
+mixin recommendedCourses(courses)
+  h2.text-center Recommended Courses
+  if courses.length
+    .row.equal-height
+      each course in courses
+        .col-xs-6.col-md-3
+          .thumbnail
+            if course.thumbnail.exists
+              img.card-img-top(src=course.thumbnail alt="course.title")
+            else if course.videoId
+              img.card-img-top(src='https://img.youtube.com/vi/'+ course.videoId +'/mqdefault.jpg', height="150px")
+            else
+              img.card-img-top(src="/images/image-not-available-th.png" alt=course.title, height="150px")
+            .caption
+              h3= course.title.substring(0, 50)
+              p= course.content.brief.substring(0, 100)
+              br
+              p
+                a.btn.btn-info.btn-block(href=course.url) Learn more
+  else
+    h3.text-muted There are no courses yet.
+
+
+block content
+  .container
+    .panel.panel-default
+        .panel-body
+          +popularCourses(data.popularCourses)
+    .panel.panel-default
+        .panel-body
+          +recommendedCourses(data.recommendedCourses)
+    .panel.panel-default
+      .panel-body
+        +allCourses(data.courses)
+    
