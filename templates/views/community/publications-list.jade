@@ -10,6 +10,7 @@ block publications
               img(src=publication._.cover.fit(100, 180, {}))
 
             .details
-              h3
-                small #{publication.get('title.trunc')}
+              h4 #{publication.get('title.trunc')}
               p #{publication.description}
+              .publication-meta
+                | Type: #{publication.publicationType}
