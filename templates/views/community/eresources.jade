@@ -7,17 +7,7 @@ block content
       .container
         .row
           .col-md-9
-            .row
-              each publication in publications
-                .col-sm-6.col-md-3
-                  .thumbnail
-                    .publication-col
-                      a(href=publication.file.url,download)
-                        .cover
-                          img(src=publication._.cover.fit(100, 200, {}))
-                        .title
-                          h3
-                            small #{publication.get('title.trunc')}
+            block publications
 
           .col-md-3
             .list-group
