@@ -25,5 +25,5 @@ exports = module.exports = function (req, res) {
   } else {
     //render grid layout by default
     view.render('community/publications-grid', pageData);
-  }
+
 }
