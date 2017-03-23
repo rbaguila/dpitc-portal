@@ -1,0 +1,39 @@
+extends ../../layouts/community
+
+block content
+
+  .community-body
+    #eresources-content
+      .container
+        .row
+          .col-md-9
+            nav.navbar.navbar-default
+              .container-fluid
+                //- Mobile menu
+                .navbar-header
+                  button(type="button", data-toggle="collapsed", aria-expanded="false", data-target="#publicatons-filter").navbar-toggle.collapsed
+                    span.sr-only Toggle navigation
+                    span.icon-bar
+
+                .collapse.navbar-collapse#publications-filter
+                  a(href="/eresources?view=grid")
+                    button(type="button",aria-label="Grid View").btn.btn-default
+                      span(aria-hidden="true").glyphicon.glyphicon-th
+                  a(href="/eresources?view=list")
+                    button(type="button",aria-label="List View").btn.btn-default
+                      span(aria-hidden="true").glyphicon.glyphicon-th-list
+
+
+            block publications
+
+          .col-md-3
+            .list-group
+              li.list-group-item.list-group-item-header Industries
+              each industry in industries
+                a.list-group-item #{industry.name}
+              li.list-group-item.list-group-item-header Sectors
+              each sector in sectors
+                a.list-group-item #{sector.name}
+              li.list-group-item.list-group-item-header Commodities
+              each commodity in commodities
+                a.list-group-item #{commodity.name}
