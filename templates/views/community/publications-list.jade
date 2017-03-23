@@ -11,6 +11,6 @@ block publications
 
             .details
               h4 #{publication.get('title.trunc')}
-              p #{publication.description}
+              p #{publication.get('description.trunc')}
               .publication-meta
                 | Type: #{publication.publicationType}
