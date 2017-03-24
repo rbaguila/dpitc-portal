@@ -21,9 +21,9 @@ exports = module.exports = function (req, res) {
 
   if (viewStyle == 'list') {
     //render list layout
-    view.render('community/publications-list', pageData);
+    view.render('eresources/publications-list', pageData);
   } else {
     //render grid layout by default
-    view.render('community/publications-grid', pageData);
+    view.render('eresources/publications-grid', pageData);
   }
 }
