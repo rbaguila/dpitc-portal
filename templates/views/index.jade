@@ -5,7 +5,7 @@ block content
 		.row
 			.col-md-12
 				center
-					form(method="GET" action='/search')
+					form(method="GET" action='/search' target='_blank')
 						input#global-search-input-box(type='text', placeholder='Search news, fiesta, technologies', name='searchKey', autofocus='')
 						input.searchButton(type='submit', border='0', value='Search')
 
@@ -36,7 +36,6 @@ block content
 									div(class="carousel-caption")
 										a(href='/blog/post/' + image.slug).news-link 
 											!= image.caption
-								a(class="btn btn-primary more-news" href="blog") Click Here For More News
 										//- i.fa.fa-newspaper-o.fa-fw
 									//- if image.buttonText != ""
 										a(class="btn btn-lg btn-primary" href="#" role="button")= image.buttonText
@@ -49,7 +48,7 @@ block content
 									div(class="carousel-caption")
 										a(href='/blog/post/' + image.slug).news-link 
 											!= image.caption
-								a(class="btn btn-primary more-news" href="blog") Click Here For More News
+								//- a(class="btn btn-primary more-news" href="blog") Click Here For More News
 
 
 			//- left amd right arrows
@@ -420,7 +419,7 @@ block content
 						center
 							h2 Community
 							h4 Join the conversation. Know more about the country’s agriculture and aquaculture natural resources.
-							a(href="#")
+							a(href="https://docs.google.com/forms/d/15q4z6gcBt51RZpKc_9MWFsKHlXq8PAMoCMKDXKI5tdw/edit" target="_blank")
 								button(class="btn btn-lg btn-warning") Join us by filling up this form!
 
 	#community_block

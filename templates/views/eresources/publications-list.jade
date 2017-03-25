@@ -1,0 +1,16 @@
+extends ./eresources
+
+block publications
+  .row
+    each publication in publications
+      .col-xs-12
+        .thumbnail
+          .publication-col-list
+            .cover
+              img(src=publication._.cover.fit(100, 180, {}))
+
+            .details
+              h4 #{publication.get('title.trunc')}
+              p #{publication.get('description.trunc')}
+              .publication-meta
+                | Type: #{publication.publicationType}

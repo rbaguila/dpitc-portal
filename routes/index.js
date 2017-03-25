@@ -31,6 +31,7 @@ keystone.pre('render', middleware.flashMessages);
 var routes = {
 	views: importRoutes('./views'),
 	communityViews: importRoutes('./views/community'),
+	eresourcesViews: importRoutes('./views/eresources'),
 	api: importRoutes('./api'),
 };
 
@@ -59,7 +60,7 @@ exports = module.exports = function (app) {
 
 	//Community
 	app.get('/community', routes.communityViews.community);
-	app.get('/eresources', routes.communityViews.eresources);
+	app.get('/eresources', routes.eresourcesViews.eresources);
 
 	//File Upload Route
   app.get('/api/fileupload/list', keystone.middleware.api, routes.api.fileupload.list);
