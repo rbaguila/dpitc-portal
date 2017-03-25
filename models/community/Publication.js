@@ -45,7 +45,9 @@ Publication.add(
       'Comics',
       'Primer'
       ],
-    emptyOption: false
+    emptyOption: false,
+    initial: true,
+    required: true
   }},
   {publicationLine: {
     type: String,
@@ -127,6 +129,15 @@ Publication.schema.virtual('title.trunc').get(function() {
 
   if (truncated.length > 36) {
     truncated = truncated.substring(0, 35) + '...'
+  }
+  return truncated
+})
+
+Publication.schema.virtual('description.trunc').get(function() {
+  var truncated = this.description
+
+  if (truncated.length > 121) {
+    truncated = truncated.substring(0, 120) + '...'
   }
   return truncated
 })
