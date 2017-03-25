@@ -19,6 +19,10 @@ exports.create = {
 		}
 	],
 
+/*	industry: { type: Types.Select, required: true, options: 'Agriculture, Aquatic Resources, Natural Resources', default: 'Agriculture'},
+    sector: { type: Types.Select, required: true, options: 'Crops, Livestock, Inland Aquatic, Marine Resources, Ocean Environment Services (OES), Forestry, Inland Environment Services (IES)', default: 'Crops'},
+*/    
+	
 	Course: [
 		{
 			'title': 'Stages Corn',
