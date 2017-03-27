@@ -134,6 +134,8 @@ Publication.schema.virtual('title.trunc').get(function() {
 })
 
 Publication.schema.virtual('description.trunc').get(function() {
+  if (!this.description) return
+
   var truncated = this.description
 
   if (truncated.length > 121) {
