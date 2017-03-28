@@ -21,29 +21,46 @@ mixin allCourses(courses)
               p= course.content.brief.substring(0, 100)
               br
               p
+                span.glyphicon.glyphicon-thumbs-up(aria-hidden="true")=course.reactions.likes
+                span.glyphicon.glyphicon-chevron-up(aria-hidden="true")=course.reactions.happy
+                span.glyphicon.glyphicon-chevron-down(aria-hidden="true")=course.reactions.sad
+                
                 a.btn.btn-info.btn-block(href=course.url) Learn more
   else
     h3.text-muted There are no courses yet.
 
-mixin popularCourses(courses)
-  h2.text-center Popular Courses
-  if courses.length
+mixin popularLO(learningObjects)
+  h2.text-center Popular
+  if learningObjects.length
     .row.equal-height
-      each course in courses
+      each learningObject in learningObjects
         .col-xs-6.col-md-3
           .thumbnail
-            if course.thumbnail.exists
-              img.card-img-top(src=course.thumbnail alt="course.title")
-            else if course.videoId
-              img.card-img-top(src='https://img.youtube.com/vi/'+ course.videoId +'/mqdefault.jpg', height="150px")
+            if learningObject.thumbnail.exists
+              img.card-img-top(src=learningObject.thumbnail alt="learningObject.title")
+            
             else
-              img.card-img-top(src="/images/image-not-available-th.png" alt=course.title, height="150px")
+              img.card-img-top(src="/images/image-not-available-th.png" alt=learningObject.title, height="150px")
             .caption
-              h3= course.title.substring(0, 50)
-              p= course.content.brief.substring(0, 100)
-              br
-              p
-                a.btn.btn-info.btn-block(href=course.url) Learn more
+              .row
+                h3= learningObject.title.substring(0, 50)
+              .row
+                p= learningObject.content.brief.substring(0, 100)
+              hr
+              .row
+                .col-xs-3
+                  p= learningObject.reactions.likes.length
+                    span.glyphicon.glyphicon-thumbs-up(aria-hidden="true")
+                  
+                .col-xs-2
+                  span.glyphicon.glyphicon-chevron-up(aria-hidden="true")
+                  p= learningObject.reactions.happy.length
+                .col-xs-4
+                  span.glyphicon.glyphicon-chevron-down(aria-hidden="true")
+                  p= learningObject.reactions.sad.length
+              hr
+              .row
+                a.btn.btn-info.btn-block(href=learningObject.url) Learn more
   else
     h3.text-muted There are no courses yet.
 
@@ -74,7 +91,7 @@ block content
   .container
     .panel.panel-default
         .panel-body
-          +popularCourses(data.popularCourses)
+          +popularLO(data.popularLO)
     .panel.panel-default
         .panel-body
           +recommendedCourses(data.recommendedCourses)
