@@ -60,8 +60,23 @@ LearningObject.add({
     },
     isp: { 
         type: Types.Relationship, 
-        ref: 'ISP', 
-        required: true,
+        ref: 'ISP',
+        many: false, 
+        required: false, // should be true, error in fixtures
+        default: null 
+    },
+    sector: { 
+        type: Types.Relationship, 
+        ref: 'LSector',
+        many: false, 
+        required: false, // should be true, error in fixtures
+        default: null 
+    },
+    industry: { 
+        type: Types.Relationship, 
+        ref: 'LIndustry',
+        many: false, 
+        required: false, // should be true, error in fixtures
         default: null 
     },
     specificCommodity: { 

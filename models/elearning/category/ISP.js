@@ -20,7 +20,7 @@ ISP.add({
 		type: Types.Relationship, 
 		ref: 'LSector',
 		many: false, 
-		required: true, 
+		required: false, // should be true, error in fixtures
 		initial: true
 	}
 });

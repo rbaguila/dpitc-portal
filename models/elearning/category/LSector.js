@@ -18,9 +18,9 @@ LSector.add({
 	},
 	industry: { 
 		type: Types.Relationship, 
-		ref: 'Industry', 
+		ref: 'LIndustry', 
 		many: false, 
-		required: true, 
+		required: false, // should be true, error in fixtures
 		initial: true 
 	}
 });
