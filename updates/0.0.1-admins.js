@@ -23,6 +23,35 @@ exports.create = {
 	/*ELearning Fixtures*/
 
   /*
+    LUser
+  */
+
+  LUser: [
+    {
+      'name.first': 'Juan', 
+      'name.last': 'Dela Cruz', 
+      'email': 'jdelacruz@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Juan'
+    },
+     {
+      'name.first': 'John', 
+      'name.last': 'Smith', 
+      'email': 'jsmith@gmail.com', 
+      'password': 'password', 
+      '__ref': 'John'
+    },
+     {
+      'name.first': 'Jane', 
+      'name.last': 'Doe', 
+      'email': 'jdoe@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Jane'
+    }
+  ],
+
+
+  /*
     Categories:
       LIndustry
       - LSector
@@ -378,6 +407,11 @@ exports.create = {
       'tags': ['corn', 'agriculture'],
       'createdAt': Date.now,
       'updatedAt': Date.now,
+      'reactions': {
+        'likes': ['Juan', 'John', 'Jane'],
+        'happy': ['Juan', 'John'],
+        'sad': ['Juan'],
+      },
       '__ref': 'stagescorn-lo',
 
     },
@@ -396,6 +430,11 @@ exports.create = {
       'tags': ['corn', 'agriculture'],
       'createdAt': Date.now,
       'updatedAt': Date.now,
+      'reactions': {
+        'likes': ['Juan', 'John', 'Jane'],
+        'happy': ['Juan', 'John'],
+        'sad': ['Juan'],
+      },
       '__ref': 'soilfertilization-lo',
     },
     { 
@@ -413,6 +452,11 @@ exports.create = {
       'tags': ['corn', 'agriculture'],
       'createdAt': Date.now,
       'updatedAt': Date.now,
+      'reactions': {
+        'likes': ['Juan', 'John', 'Jane'],
+        'happy': ['Juan', 'John'],
+        'sad': ['Juan'],
+      },
       '__ref': 'landpreparation-lo',
     },
     { 
@@ -430,6 +474,11 @@ exports.create = {
       'tags': ['corn', 'agriculture'],
       'createdAt': Date.now,
       'updatedAt': Date.now,
+      'reactions': {
+        'likes': ['Juan', 'John', 'Jane'],
+        'happy': ['Juan', 'John'],
+        'sad': ['Juan'],
+      },
       '__ref': 'grainquality-lo',
     },
     { 
@@ -447,6 +496,11 @@ exports.create = {
       'tags': ['corn', 'agriculture'],
       'createdAt': Date.now,
       'updatedAt': Date.now,
+      'reactions': {
+        'likes': ['Juan', 'John', 'Jane'],
+        'happy': ['Juan', 'John'],
+        'sad': ['Juan'],
+      },
       '__ref': 'feedingprogram-lo',
     },
     { 
@@ -463,6 +517,11 @@ exports.create = {
       'industry': 'agri-industry',
       'tags': ['corn', 'agriculture'],
       'createdAt': Date.now,  
+      'reactions': {
+        'likes': ['Juan', 'John', 'Jane'],
+        'happy': ['Juan', 'John'],
+        'sad': ['Juan'],
+      },
       'updatedAt': Date.now,
       '__ref': 'biotechbtcorn-lo',
     },
@@ -824,6 +883,7 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': 'Aquafeeds',
       'tags': ['aquafeeds', 'aquatic resources'],
+      '__ref': 'aquafeeds-lo',
     },
     { 
       'title': 'Learning about Milkfish',
@@ -1183,6 +1243,10 @@ exports.create = {
       'title': 'Corn Chapter',
       'state': 'published',
       'author': 'admin',
+      'content': {
+        'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
+        'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
+      },
       'publishedAt': Date.now,
       'outline': [
         'biotechbtcorn-lo', 
@@ -1192,34 +1256,61 @@ exports.create = {
         'soilfertilization-lo',
         'stagescorn-lo'
       ],
+      'reactions': {
+        'likes': ['Juan', 'John', 'Jane'],
+        'happy': ['Juan', 'John'],
+        'sad': ['Juan'],
+      },
       '__ref': 'corn-chapter',
     },
     {
       'title': 'Legume Chapter',
       'state': 'published',
       'author': 'admin',
+      'content': {
+        'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
+        'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
+      },
       'publishedAt': Date.now,
       'outline': [
         'mungbean-lo',
         'peanut-lo'
       ],
+      'reactions': {
+        'likes': ['Juan', 'John', 'Jane'],
+        'happy': ['Juan', 'John'],
+        'sad': ['Juan'],
+      },
       '__ref': 'legume-chapter',
     },
     {
       'title': 'Rootcrop Chapter',
       'state': 'published',
       'author': 'admin',
+      'content': {
+        'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
+        'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
+      },
       'publishedAt': Date.now,
       'outline': [
         'sweetpotato-lo',
         'whitepotato-lo'
       ],
+      'reactions': {
+        'likes': ['Juan', 'John', 'Jane'],
+        'happy': ['Juan', 'John'],
+        'sad': ['Juan'],
+      },
       '__ref': 'rootcrop-chapter',
     },
     {
       'title': 'Tropical Fruit Chapter',
       'state': 'published',
       'author': 'admin',
+      'content': {
+        'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
+        'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
+      },
       'publishedAt': Date.now,
       'outline': [
         'durian-lo',
@@ -1228,8 +1319,33 @@ exports.create = {
         'papaya-lo',
         'pineapple-lo'
       ],
+      'reactions': {
+        'likes': ['Juan', 'John', 'Jane'],
+        'happy': ['Juan', 'John'],
+        'sad': ['Juan'],
+      },
       '__ref': 'tropicalfruit-chapter',
-    }
+    },
+    {
+      'title': 'Feed Resources Chapter',
+      'state': 'published',
+      'author': 'admin',
+      'content': {
+        'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
+        'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
+      },
+      'publishedAt': Date.now,
+      'outline': [
+        'aquafeeds-lo'
+      ],
+      'reactions': {
+        'likes': ['Juan', 'John', 'Jane'],
+        'happy': ['Juan', 'John'],
+        'sad': ['Juan'],
+      },
+      '__ref': 'feedres-chapter',
+    },
+
   ],
 
   Course: [
@@ -1237,6 +1353,10 @@ exports.create = {
       'title': 'Agriculture Course',
       'state': 'published',
       'author': 'admin',
+      'content': {
+        'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
+        'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
+      },
       'publishedAt': Date.now,
       'outline': [
         'corn-chapter',
@@ -1244,21 +1364,31 @@ exports.create = {
         'rootcrop-chapter',
         'legume-chapter'
       ],
+      'reactions': {
+        'likes': ['Juan', 'John', 'Jane'],
+        'happy': ['Juan', 'John'],
+        'sad': ['Juan'],
+      },
+    },
+    {
+      'title': 'Aquatic Resources Course',
+      'state': 'published',
+      'author': 'admin',
+      'content': {
+        'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
+        'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
+      },
+      'publishedAt': Date.now,
+      'outline': [
+        'feedres-chapter',
+      ],
+      'reactions': {
+        'likes': ['Juan', 'John', 'Jane'],
+        'happy': ['Juan', 'John'],
+        'sad': ['Juan'],
+      },
     }
   ],
 
-  /*
-    LUser
-  */
-
-  LUser: [
-    {
-      'name.first': 'Juan', 
-      'name.last': 'Dela Cruz', 
-      'email': 'jdelacruz@gmail.com', 
-      'password': 'password', 
-      '__ref': 'Juan'
-    }
-  ]
-
+  
 };
