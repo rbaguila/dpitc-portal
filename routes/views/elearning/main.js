@@ -1,6 +1,11 @@
 var keystone = require('keystone');
 var async = require('async');
 
+var Course = keystone.list('Course');
+var Chapter = keystone.list('Chapter');
+var LearningObject = keystone.list('Chapter');
+var LUser = keystone.list('LUser');
+
 exports = module.exports = function(req, res) {
 
   var view = new keystone.View(req, res);
@@ -13,25 +18,93 @@ exports = module.exports = function(req, res) {
     popularCourses: [],
     recommendedCourses: [],
     coursesTaken: [],
+
+    chapters: [],
+    learningObjects: [],
+    popularLO: [],
+    recommendedLO: [],
+    learningObjectsTaken: [],
   };
+
   var tempRecommended = [];
   var tempCourses = [];
   var classifications = ["specificCommodity", "isp", "sector", "industry"];
   var counts = ["specCommCount", "ispCount", "sectorCount", "industryCount"];
 
-  view.on('init', function(next){
-   var q = keystone.list('Course').model.find().where('state', 'published')
-    .sort('-PublishedAt')
-    .limit(4)
-    .exec(function(err, results){
-      locals.data.courses = results;
+  var userIds = [];
 
+  /* select Courses */
+  view.on('init', function(next){
+    Course.model.find()
+      .where('state', 'published')
+      .sort('-PublishedAt')
+      .limit(4)
+      .exec(function(err, results){
+        locals.data.courses = results;
+
+        next(err);
+      });
+  });
+
+  /* select Chapters */
+  view.on('init', function(next){
+    Chapter.model.find()
+      .where('state', 'published')
+      .sort('-PublishedAt')
+      .limit(4)
+      .exec(function(err, results){
+        locals.data.chapters = results;
+
+        next(err);
+      });
+  });
+
+  /* select LearningObjects */
+  view.on('init', function(next){
+    LearningObject.model.find()
+      .where('state', 'published')
+      .sort('-PublishedAt')
+      .limit(4)
+      .exec(function(err, results){
+        locals.data.learningObjects = results;
+
+        next(err);
+      });
+  });
+
+  // TO DO
+  /* select popular Learning Objects */
+  view.on('init', function(next){
+    LearningObject.model.find()
+      .where('state', 'published')
+      .sort('-PublishedAt')
+      .limit(8)
+      .exec(function(err, results){
+        locals.data.popularLO = results;
+
+        // hold
+        for(var i=0; i<4; i++){
+          console.log(results[i].author.name);
+          console.log(results[i].reactions);
+          console.log(results[i].reactions.likes);
+          console.log(results[i].reactions.likes.length);
+        }
+        next(err);
+      });
+  });  
+
+  /*view.on('init', function(next){
+    LearningObject.model.aggregate([])
+
+    async.each(learningObjects, function(learningObject, next) {
+
+    }, function(err) {
       next(err);
     });
   });
-
+*/
   view.on('init', function(next){
-    var q = keystone.list('Course').model.find();
+    var q = Course.model.find();
 
     q.exec(function(err, results){
         tempCourses = results;
@@ -40,7 +113,7 @@ exports = module.exports = function(req, res) {
   });
 
   view.on('init', function(next){
-    var q = keystone.list('Learner').model.findOne();
+    var q = keystone.list('LUser').model.findOne();
 
     q.exec(function(err, result){
         
@@ -117,16 +190,7 @@ exports = module.exports = function(req, res) {
     next();
   });
 
-  view.on('init', function(next){
-   var q = keystone.list('Course').model.find().where('state', 'published')
-    .sort('-PublishedAt')
-    .limit(4)
-    .exec(function(err, results){
-      locals.data.popularCourses = results;
 
-      next(err);
-    });
-  });  
 
 
   // Render the view
