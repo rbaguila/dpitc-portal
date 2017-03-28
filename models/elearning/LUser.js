@@ -17,6 +17,11 @@ LUser.add({
 	//	preference: { type: Types.Relationship, ref: 'ISP', many: true },
 });
 
+
+LUser.relationship({ ref: 'LearningContent', refPath: 'reactions.likes'});
+LUser.relationship({ ref: 'LearningContent', refPath: 'reactions.happy'});
+LUser.relationship({ ref: 'LearningContent', refPath: 'reactions.sad'});
+
 /**
  * Registration
  */
