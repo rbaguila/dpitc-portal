@@ -3,7 +3,7 @@ var async = require('async');
 
 var Course = keystone.list('Course');
 var Chapter = keystone.list('Chapter');
-var LearningObject = keystone.list('Chapter');
+var LearningObject = keystone.list('LearningObject');
 var LUser = keystone.list('LUser');
 
 exports = module.exports = function(req, res) {
@@ -81,10 +81,8 @@ exports = module.exports = function(req, res) {
 
         // hold
         for(var i=0; i<4; i++){
-          console.log(results[i].author.name);
-          console.log(results[i].reactions);
-          console.log(results[i].reactions.likes);
-          console.log(results[i].reactions.likes.length);
+          console.log(results[i]);
+         
         }
         next(err);
       });

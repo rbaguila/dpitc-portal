@@ -1,0 +1,46 @@
+extends ../../layouts/default
+
+mixin currentCourse(course)
+  .container-fluid
+    .row
+      h3= course.title
+    .row
+      if course.thumbnail.exists
+        .col-md-8
+          p= course.content.extended
+        .col-md-4
+          img(src=course._.thumbnail alt=course.title).img-rounded
+      else
+        p= course.content.extended
+      br
+    .row
+      .col-md-10
+        .panel
+          table.table.table-hover
+            thead
+              th Chapters in #{course.title}
+
+            tbody
+              each chapter in course.outline
+                tr.media
+                  td
+                    .media-left
+                      if chapter.thumbnail.exists
+                        a(href=chapter.url)
+                          img(src=chapter._.thumbnail.limit(64,64) alt=chapter.title).img-rounded.media-object
+                      else
+                        a(href=chapter.url)
+                          img(src="/images/image-not-available.png" alt=course.title height="100px" width="100px").img-rounded.media-object
+                    .media-body
+                      a(href=chapter.url)
+                        h4.media-heading= chapter.title
+                        span= chapter.content.brief
+
+block content
+  .container
+    .panel.panel-default
+      .panel-body
+        +currentCourse(data.currCourse)
+      .panel-footer
+        p.text-right.
+         Author: #{data.currCourse.author.name.last},  #{data.currCourse.author.name.first}

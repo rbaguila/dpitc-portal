@@ -1,0 +1,45 @@
+extends ../../layouts/default
+
+mixin currentChapter(chapter)
+  .container-fluid
+    .row
+      h3= chapter.title
+    .row
+      if chapter.thumbnail.exists
+        .col-md-8
+          p= chapter.content.extended
+        .col-md-4
+          img(src=chapter._.thumbnail alt=chapter.title).img-rounded
+      else
+        p= chapter.content.extended
+      br
+    .row
+      .col-md-10
+        .panel
+          table.table.table-hover
+            thead
+              th Lessons in #{chapter.title}
+
+            tbody
+              each learningObject in chapter.outline
+                tr.media
+                  td
+                    .media-left
+                      if learningObject.thumbnail.exists
+                        a(href=learningObject.url)
+                          img(src=learningObject._.thumbnail.limit(64,64) alt=learningObject.title).img-rounded.media-object
+                      else
+                        a(href=learningObject.url)
+                          img(src="/images/image-not-available.png" alt=learningObject.title height="100px" width="100px").img-rounded.media-object
+                    .media-body
+                      a(href=learningObject.url)
+                        h4.media-heading= learningObject.title
+                        span= learningObject.content.brief
+
+block content
+  .container
+    .panel.panel-default
+      .panel-body
+        +currentChapter(data.currChapter)
+      .panel-footer
+       
