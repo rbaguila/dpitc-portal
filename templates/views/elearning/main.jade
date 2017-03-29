@@ -65,7 +65,7 @@ mixin popularLO(learningObjects)
     h3.text-muted There are no courses yet.
 
 mixin recommendedCourses(courses)
-  h2.text-center Recommended Courses
+  h2.text-center Recommended Learning Materials
   if courses.length
     .row.equal-height
       each course in courses
@@ -94,7 +94,7 @@ block content
           +popularLO(data.popularLO)
     .panel.panel-default
         .panel-body
-          +recommendedCourses(data.recommendedCourses)
+          +recommendedCourses(data.recommendedLearningObjects)
     .panel.panel-default
       .panel-body
         +allCourses(data.courses)

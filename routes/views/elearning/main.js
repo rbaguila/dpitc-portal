@@ -15,19 +15,16 @@ exports = module.exports = function(req, res) {
   locals.section = 'courses';
   locals.data = {
     courses: [],
-    popularCourses: [],
-    recommendedCourses: [],
-    coursesTaken: [],
+    recommendedLearningObjects: [],
+    learningObjectsTaken: [],
 
     chapters: [],
     learningObjects: [],
     popularLO: [],
-    recommendedLO: [],
-    learningObjectsTaken: [],
   };
 
   var tempRecommended = [];
-  var tempCourses = [];
+  var tempLearningObjects = [];
   var classifications = ["specificCommodity", "isp", "sector", "industry"];
   var counts = ["specCommCount", "ispCount", "sectorCount", "industryCount"];
 
@@ -104,16 +101,16 @@ exports = module.exports = function(req, res) {
   });
 */
   view.on('init', function(next){
-    var q = Course.model.find();
+    var q = keystone.list('LearningObject').model.find();
 
     q.exec(function(err, results){
-        tempCourses = results;
+        tempLearningObjects = results;
         next(err);
     });
   });
 
   view.on('init', function(next){
-    var q = keystone.list('LUser').model.findOne();
+    var q = keystone.list('LUser').model.findOne().where('email', 'jdelacruz@gmail.com');
 
     q.exec(function(err, result){
         
@@ -124,49 +121,68 @@ exports = module.exports = function(req, res) {
   });
 
   view.on('init', function(next){
-    var q = keystone.list('Course').model.find().where('_id').in(locals.data.currentLearner.coursesTaken);
+    var q = keystone.list('LearningObject').model.find().where('_id').in(locals.data.currentLearner.learningObjectsTaken);
 
     q.exec(function(err, results){
-        locals.data.coursesTaken = results;
+        locals.data.learningObjectsTaken = results;
         next(err);
     });
   });
 
   view.on('init', function(next){
-    async.each(tempCourses, function (course, next) {
-        if(notYetTaken(course, locals.data.coursesTaken)==0){
-            next();
-        }
-        else{
-            for(var j=0;j<classifications.length;j++){
-                var count = 0;
-                if(course[classifications[j]]!=null){
-                    for(var i=0;i<locals.data.coursesTaken.length;i++){
-                        if(locals.data.coursesTaken[i][classifications[j]]!=null&&course[classifications[j]]==locals.data.coursesTaken[i][classifications[j]]){
-                            count++;
-                        }
-                    }
-                }
-                course[counts[j]] = count;
-            }
-            var score = (4 * (course.specCommCount)) + (3 * (course.ispCount)) + (2 * (course.sectorCount)) + (1 * (course.industryCount));
-            if(score>0){//change this to change the threshold of score or compute for a just right threshold
-                course.score = score;
-                tempRecommended.push(course);
-            }
-            next();
-        }
-    }, function (err) {
-        next(err);
-    });
+    if(locals.data.learningObjectsTaken.length>0){
+      async.each(tempLearningObjects, function (learningObject, next) {
+          if(notYetTaken(learningObject, locals.data.learningObjectsTaken)==0){
+              next();
+          }
+          else{
+              for(var j=0;j<classifications.length;j++){
+                  var count = 0; 
+                  if(learningObject[classifications[j]]!=null){
+                    var learningObjectClassId = learningObject[classifications[j]] + "";
+                      for(var i=0;i<locals.data.learningObjectsTaken.length;i++){
+                          var eachTakenClassId = locals.data.learningObjectsTaken[i][classifications[j]] + "";
+                          if(eachTakenClassId!=null&&learningObjectClassId==eachTakenClassId){
+                              count++;
+                          }
+                      }
+                  }
+                  learningObject[counts[j]] = count;
+              }
+              var score = (4 * (learningObject.specCommCount)) + (3 * (learningObject.ispCount)) + (2 * (learningObject.sectorCount)) + (1 * (learningObject.industryCount));
+              if(score>0){//change this to change the threshold of score or compute for a just right threshold
+                  learningObject.score = score;
+                  tempRecommended.push(learningObject);
+              }
+              next();
+          }
+      }, function (err) {
+          next(err);
+      });
+    }
+    else{
+      //TO DO
+      /*
+      if(locals.data.learningObjectsTaken.length==0){
+        var q = keystone.list('LearningObject').model.find().where('ISP').in(locals.data.currentLearner.preference);
+
+        q.exec(function(err, results){
+            locals.data.preferredISPs = results;
+            next(err);
+        });
+      }
+      */
+      //get the preferred ISPS here for the initial recommended learning materials
+      next();
+    }
   });
 
-  function notYetTaken(course, coursesTaken){
+  function notYetTaken(learningObject, learningObjectsTaken){
     var flag = 0;
-    var courseId = course._id + "";
-    for(var i=0;i<coursesTaken.length;i++){
-        var coursesTakenId = coursesTaken[i]._id + "";
-        if(courseId==coursesTakenId){
+    var learningObjectId = learningObject._id + "";
+    for(var i=0;i<learningObjectsTaken.length;i++){
+        var learningObjectsTakenId = learningObjectsTaken[i]._id + "";
+        if(learningObjectId==learningObjectsTakenId){
             flag = 1;
             return 0;
         }
@@ -175,18 +191,24 @@ exports = module.exports = function(req, res) {
   }
 
   view.on('init', function(next){
-    tempRecommended.sort(function(a,b){
-        return parseFloat(b.score) - parseFloat(a.score);
-    });
-    locals.data.recommendedCourses = tempRecommended.slice(0, 4);//temporary
-    //locals.data.recommendedCourses = tempRecommended.slice(0, 36);//final, 36 recommended videos in youtube too
-    /*for(var i=0;i<tempRecommended.length;i++){
-        //console.log("SPECIFIC COMMODITY " + tempRecommended[i].specCommCount);
-        //console.log("ISP " + tempRecommended[i].ispCount);
-        //console.log("Sector " + tempRecommended[i].sectorCount);
-        //console.log("Industry " + tempRecommended[i].industryCount);
-        console.log("FINAL SCORE: " + tempRecommended[i].score);
-    }*/
+    locals.data.recommendedLearningObjects = [];
+    if(tempRecommended.length>0){
+      tempRecommended.sort(function(a,b){
+          return parseFloat(b.score) - parseFloat(a.score);
+      });
+      locals.data.recommendedLearningObjects = tempRecommended.slice(0, 4);//temporary
+      //locals.data.recommendedLearningObjects = tempRecommended.slice(0, 36);//final, 36 recommended videos in youtube too
+      /*for(var i=0;i<tempRecommended.length;i++){
+          //console.log("SPECIFIC COMMODITY " + tempRecommended[i].specCommCount);
+          //console.log("ISP " + tempRecommended[i].ispCount);
+          //console.log("Sector " + tempRecommended[i].sectorCount);
+          //console.log("Industry " + tempRecommended[i].industryCount);
+          console.log("FINAL SCORE: " + tempRecommended[i].score);
+      }*/
+    }
+    else{
+      locals.data.recommendedLearningObjects = tempLearningObjects.slice(0, 4);
+    }
     next();
   });
 

@@ -12,7 +12,7 @@ exports = module.exports = function(req, res){
     locals.data = {
         courses: [],
         course: [],
-        recommendedCourses: [],
+        recommendedLearningObjects: [],
     };
 
     var classifications = ["specificCommodity", "isp", "sector", "industry"];
@@ -54,8 +54,8 @@ exports = module.exports = function(req, res){
                             break;
                         }
                     }*/
-                    if(flag==0&&resultId!==currentCourseId && locals.data.recommendedCourses.length<3){
-                        locals.data.recommendedCourses.push(results[i]);
+                    if(flag==0&&resultId!==currentCourseId && locals.data.recommendedLearningObjects.length<3){
+                        locals.data.recommendedLearningObjects.push(results[i]);
                     }
                 }
                 next(err);
@@ -66,14 +66,14 @@ exports = module.exports = function(req, res){
         }
     });
     view.on('init', function (next) {
-        if(locals.data.recommendedCourses.length<3){
+        if(locals.data.recommendedLearningObjects.length<3){
             keystone.list('Course').model.find().where('isp', locals.data.course.isp).exec(function (err, results) {
                 var currentCourseId = locals.data.course._id + "";
                 for(var i=0;i<results.length;i++){
                     var resultId = results[i]._id + "";
                     var flag = 0;
-                    for(var j=0;j<locals.data.recommendedCourses.length;j++){
-                        var courseId = locals.data.recommendedCourses[j]._id + "";
+                    for(var j=0;j<locals.data.recommendedLearningObjects.length;j++){
+                        var courseId = locals.data.recommendedLearningObjects[j]._id + "";
                         if(resultId==courseId){
                             flag = 1;
                             break;
@@ -90,10 +90,10 @@ exports = module.exports = function(req, res){
                         }
                     }
                     */
-                    if(flag==0&&resultId!=currentCourseId && locals.data.recommendedCourses.length<3){
-                        locals.data.recommendedCourses.push(results[i]);
+                    if(flag==0&&resultId!=currentCourseId && locals.data.recommendedLearningObjects.length<3){
+                        locals.data.recommendedLearningObjects.push(results[i]);
                     }
-                    if(locals.data.recommendedCourses.length>=3){
+                    if(locals.data.recommendedLearningObjects.length>=3){
                         break;
                     }
                 }
@@ -105,14 +105,14 @@ exports = module.exports = function(req, res){
         }
     });
     view.on('init', function (next) {
-        if(locals.data.recommendedCourses.length<3){
+        if(locals.data.recommendedLearningObjects.length<3){
             keystone.list('Course').model.find().where('sector', locals.data.course.sector).exec(function (err, results) {
                 var currentCourseId = locals.data.course._id + "";
                 for(var i=0;i<results.length;i++){
                     var resultId = results[i]._id + "";
                     var flag = 0;
-                    for(var j=0;j<locals.data.recommendedCourses.length;j++){
-                        var courseId = locals.data.recommendedCourses[j]._id + "";
+                    for(var j=0;j<locals.data.recommendedLearningObjects.length;j++){
+                        var courseId = locals.data.recommendedLearningObjects[j]._id + "";
                         if(resultId==courseId){
                             flag = 1;
                             break;
@@ -130,10 +130,10 @@ exports = module.exports = function(req, res){
                     }
                     */
 
-                    if(flag==0&&resultId!=currentCourseId && locals.data.recommendedCourses.length<3){
-                        locals.data.recommendedCourses.push(results[i]);
+                    if(flag==0&&resultId!=currentCourseId && locals.data.recommendedLearningObjects.length<3){
+                        locals.data.recommendedLearningObjects.push(results[i]);
                     }
-                    if(locals.data.recommendedCourses.length>=3){
+                    if(locals.data.recommendedLearningObjects.length>=3){
                         break;
                     }
                 }
@@ -146,14 +146,14 @@ exports = module.exports = function(req, res){
         
     });
     view.on('init', function (next) {
-        if(locals.data.recommendedCourses.length<3){
+        if(locals.data.recommendedLearningObjects.length<3){
             keystone.list('Course').model.find().where('industry', locals.data.course.industry).exec(function (err, results) {
                 var currentCourseId = locals.data.course._id + "";
                 for(var i=0;i<results.length;i++){
                     var resultId = results[i]._id + "";
                     var flag = 0;
-                    for(var j=0;j<locals.data.recommendedCourses.length;j++){
-                        var courseId = locals.data.recommendedCourses[j]._id + "";
+                    for(var j=0;j<locals.data.recommendedLearningObjects.length;j++){
+                        var courseId = locals.data.recommendedLearningObjects[j]._id + "";
                         if(resultId==courseId){
                             flag = 1;
                             break;
@@ -171,10 +171,10 @@ exports = module.exports = function(req, res){
                     }
                     */
                     
-                    if(flag==0&&resultId!=currentCourseId && locals.data.recommendedCourses.length<3){
-                        locals.data.recommendedCourses.push(results[i]);
+                    if(flag==0&&resultId!=currentCourseId && locals.data.recommendedLearningObjects.length<3){
+                        locals.data.recommendedLearningObjects.push(results[i]);
                     }
-                    if(locals.data.recommendedCourses.length>=3){
+                    if(locals.data.recommendedLearningObjects.length>=3){
                         break;
                     }
                 }
