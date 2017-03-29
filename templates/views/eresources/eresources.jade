@@ -42,9 +42,18 @@ block content
                           a(href='#') One more separated link
 
                   form.navbar-form.navbar-left
-                    .form-group
-                      input.form-control(type='text', placeholder='Search')
-                    button.btn.btn-default(type='submit') Submit
+                    //- button(type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false").btn.btn-default.dropdown-toggle Industry&nbsp;
+                      span.caret
+                    ul.dropdown-menu
+                      li
+                        a(href="#") Agriculture
+                        a(href="#") Aquatic Resources
+                        a(href="#") Cakes
+                    .input-group
+                      input(type="text",placeholder="Search...").form-control
+                      span.input-group-btn
+                        button(type="button").btn.btn-default.form-control Go
+
                   ul.nav.navbar-nav.navbar-right
                     li
                       a(href="/eresources?view=grid")
