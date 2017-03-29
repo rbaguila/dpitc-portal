@@ -54,7 +54,7 @@ LearningObject.schema.virtual('content.full').get(function () {
   return this.content.extended || this.content.brief;
 });
 
-//TODO
+
 LearningObject.schema.virtual('url').get(function(){
   return '/elearning/learning-object/'+this.slug;
 });

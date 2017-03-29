@@ -407,19 +407,20 @@ exports.create = {
       'tags': ['corn', 'agriculture'],
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'reactions': {
-        'likes': ['Juan', 'John', 'Jane'],
-        'happy': ['Juan', 'John'],
-        'sad': ['Juan'],
-      },
+      
+      'likes': ['Juan', 'John', 'Jane'],
+      'happy': ['Juan', 'John'],
+      'sad': ['Juan'],
+      
+      'video': 'stagescorn-yt',
       '__ref': 'stagescorn-lo',
 
     },
     { 
       'title': 'Soil Fertilization',
       'state': 'published',
-      'publishedAt': Date.now,
       'author': 'admin',
+      'publishedAt': Date.now,
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
         'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
@@ -430,18 +431,19 @@ exports.create = {
       'tags': ['corn', 'agriculture'],
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'reactions': {
-        'likes': ['Juan', 'John', 'Jane'],
-        'happy': ['Juan', 'John'],
-        'sad': ['Juan'],
-      },
+      
+      'likes': ['Juan', 'John', 'Jane'],
+      'happy': ['Juan', 'John'],
+      'sad': ['Juan'],
+      
+      'video': 'soilfertilization-yt',
       '__ref': 'soilfertilization-lo',
     },
     { 
       'title': 'Land Preparation',
       'state': 'published',
-      'publishedAt': Date.now,
       'author': 'admin',
+      'publishedAt': Date.now,
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
         'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
@@ -452,18 +454,19 @@ exports.create = {
       'tags': ['corn', 'agriculture'],
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'reactions': {
-        'likes': ['Juan', 'John', 'Jane'],
-        'happy': ['Juan', 'John'],
-        'sad': ['Juan'],
-      },
+       
+      'likes': ['Juan', 'John', 'Jane'],
+      'happy': ['Juan', 'John'],
+      'sad': ['Juan'],
+      
+      'video': 'landpreparation-yt',
       '__ref': 'landpreparation-lo',
     },
     { 
       'title': 'Grain Quality',
       'state': 'published',
-      'publishedAt': Date.now,
       'author': 'admin',
+      'publishedAt': Date.now,
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
         'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
@@ -474,18 +477,19 @@ exports.create = {
       'tags': ['corn', 'agriculture'],
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'reactions': {
-        'likes': ['Juan', 'John', 'Jane'],
-        'happy': ['Juan', 'John'],
-        'sad': ['Juan'],
-      },
+      
+      'likes': ['Juan', 'John', 'Jane'],
+      'happy': ['Juan', 'John'],
+      'sad': ['Juan'],
+      
+      'video': 'grainquality-yt',
       '__ref': 'grainquality-lo',
     },
     { 
       'title': 'Feeding Program',
       'state': 'published',
-      'publishedAt': Date.now,
       'author': 'admin',
+      'publishedAt': Date.now,
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
         'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
@@ -496,18 +500,19 @@ exports.create = {
       'tags': ['corn', 'agriculture'],
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'reactions': {
-        'likes': ['Juan', 'John', 'Jane'],
-        'happy': ['Juan', 'John'],
-        'sad': ['Juan'],
-      },
+      
+      'likes': ['Juan', 'John', 'Jane'],
+      'happy': ['Juan', 'John'],
+      'sad': ['Juan'],
+      
+      'video': 'feedingprogram-yt',
       '__ref': 'feedingprogram-lo',
     },
     { 
       'title': 'Biotech BtCorn',
       'state': 'published',
-      'publishedAt': Date.now,
       'author': 'admin',
+      'publishedAt': Date.now,
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
         'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
@@ -517,17 +522,19 @@ exports.create = {
       'industry': 'agri-industry',
       'tags': ['corn', 'agriculture'],
       'createdAt': Date.now,  
-      'reactions': {
-        'likes': ['Juan', 'John', 'Jane'],
-        'happy': ['Juan', 'John'],
-        'sad': ['Juan'],
-      },
+      
+      'likes': ['Juan', 'John', 'Jane'],
+      'happy': ['Juan', 'John'],
+      'sad': ['Juan'],
+      
       'updatedAt': Date.now,
+      'video': 'biotechbtcorn-yt',
       '__ref': 'biotechbtcorn-lo',
     },
     { 
       'title': 'Planting Abaca',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Abaca description',
@@ -542,6 +549,7 @@ exports.create = {
     { 
       'title': 'Planting Banana',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Banana description',
@@ -556,6 +564,7 @@ exports.create = {
     { 
       'title': 'Planting Coconut',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Coconut description',
@@ -570,6 +579,7 @@ exports.create = {
     { 
       'title': 'Planting Coffee',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Coffee description',
@@ -584,6 +594,7 @@ exports.create = {
     { 
       'title': 'Planting Mungbean',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Mungbean description',
@@ -599,6 +610,7 @@ exports.create = {
     { 
       'title': 'Planting Peanut',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Peanut description',
@@ -614,6 +626,7 @@ exports.create = {
     { 
       'title': 'Planting Mango',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Mango description',
@@ -628,6 +641,7 @@ exports.create = {
     { 
       'title': 'Planting Rice',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Rice description',
@@ -642,6 +656,7 @@ exports.create = {
     { 
       'title': 'Planting Sweet Potato',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Sweet Potato description',
@@ -657,6 +672,7 @@ exports.create = {
     { 
       'title': 'Planting White Potato',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting White Potato description',
@@ -672,6 +688,7 @@ exports.create = {
     { 
       'title': 'Planting Sugarcane',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Sugarcane description',
@@ -686,6 +703,7 @@ exports.create = {
     { 
       'title': 'Planting Pineapple',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Pineapple description',
@@ -701,6 +719,7 @@ exports.create = {
     { 
       'title': 'Planting Papaya',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Papaya description',
@@ -716,6 +735,7 @@ exports.create = {
     { 
       'title': 'Planting Citrus',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Citrus description',
@@ -731,6 +751,7 @@ exports.create = {
     { 
       'title': 'Planting Jackfruit',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Jackfruit description',
@@ -746,6 +767,7 @@ exports.create = {
     { 
       'title': 'Planting Durian',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Durian description',
@@ -761,6 +783,7 @@ exports.create = {
     { 
       'title': 'Planting Vegetable',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Vegetable description',
@@ -775,6 +798,7 @@ exports.create = {
     { 
       'title': 'Learning about Feed Resources',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Feed Resources description',
@@ -789,6 +813,7 @@ exports.create = {
     { 
       'title': 'Learning about Dairy Goat',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Dairy Goat description',
@@ -803,6 +828,7 @@ exports.create = {
     { 
       'title': 'Learning about Slaughter Goat',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Slaughter Goat description',
@@ -817,6 +843,7 @@ exports.create = {
     { 
       'title': 'Learning about Dairy Buffalo',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Dairy Buffalo description',
@@ -831,6 +858,7 @@ exports.create = {
     { 
       'title': 'Learning about Swine',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Swine description',
@@ -845,6 +873,7 @@ exports.create = {
     { 
       'title': 'Learning about Duck',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Duck description',
@@ -859,6 +888,7 @@ exports.create = {
     { 
       'title': 'Learning about Native Chicken',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Native Chicken description',
@@ -873,6 +903,7 @@ exports.create = {
     { 
       'title': 'Learning about Aquafeeds',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Aquafeeds description',
@@ -888,6 +919,7 @@ exports.create = {
     { 
       'title': 'Learning about Milkfish',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Milkfish description',
@@ -902,6 +934,7 @@ exports.create = {
     { 
       'title': 'Learning about Mangrove Crab (Mudcrab)',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Mangrove Crab (Mudcrab) description',
@@ -916,6 +949,7 @@ exports.create = {
     { 
       'title': 'Learning about Tilapia',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Tilapia description',
@@ -930,6 +964,7 @@ exports.create = {
     { 
       'title': 'Learning about Shrimp',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Shrimp description',
@@ -944,6 +979,7 @@ exports.create = {
     { 
       'title': 'Learning about Mussel',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Mussel description',
@@ -958,6 +994,7 @@ exports.create = {
     { 
       'title': 'Learning about Blue Swimming Crab',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Blue Swimming Crab description',
@@ -972,6 +1009,7 @@ exports.create = {
     { 
       'title': 'Learning about Abalone',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Abalone description',
@@ -986,6 +1024,7 @@ exports.create = {
     { 
       'title': 'Learning about Oyster',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Oyster description',
@@ -1000,6 +1039,7 @@ exports.create = {
     { 
       'title': 'Learning about Sardines',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Sardines description',
@@ -1014,6 +1054,7 @@ exports.create = {
     { 
       'title': 'Learning about Sea Cucumber',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Sea Cucumber description',
@@ -1028,6 +1069,7 @@ exports.create = {
     { 
       'title': 'Learning about Seaweeds',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Seaweeds description',
@@ -1042,6 +1084,7 @@ exports.create = {
     { 
       'title': 'Learning about Tuna',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Tuna description',
@@ -1056,6 +1099,7 @@ exports.create = {
     { 
       'title': 'Learning about Bathymetry',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Bathymetry description',
@@ -1070,6 +1114,7 @@ exports.create = {
     { 
       'title': 'Learning about Corals',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Corals description',
@@ -1084,6 +1129,7 @@ exports.create = {
     { 
       'title': 'Learning about Fishing Maps',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Fishing Maps description',
@@ -1098,6 +1144,7 @@ exports.create = {
     { 
       'title': 'Learning about Harmful Algal Blooms',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Harmful Algal Blooms description',
@@ -1112,6 +1159,7 @@ exports.create = {
     { 
       'title': 'Learning about Cacao',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Cacao description',
@@ -1126,6 +1174,7 @@ exports.create = {
     { 
       'title': 'Learning about Bamboo',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Bamboo description',
@@ -1140,6 +1189,7 @@ exports.create = {
     { 
       'title': 'Learning about Sago',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Sago description',
@@ -1154,6 +1204,7 @@ exports.create = {
     { 
       'title': 'Learning about Rubber',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Rubber description',
@@ -1168,6 +1219,7 @@ exports.create = {
     { 
       'title': 'Learning about Industrial Tree Plantation',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Industrial Tree Plantation description',
@@ -1182,6 +1234,7 @@ exports.create = {
     { 
       'title': 'Learning about Biodiversity',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Biodiversity description',
@@ -1196,6 +1249,7 @@ exports.create = {
     { 
       'title': 'Learning about Climate Change',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Climate Change description',
@@ -1210,6 +1264,7 @@ exports.create = {
     { 
       'title': 'Learning about Watershed',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Watershed description',
@@ -1224,6 +1279,7 @@ exports.create = {
     { 
       'title': 'Learning about Mangrove',
       'state': 'published',
+      'author': 'admin',
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Mangrove description',
@@ -1256,11 +1312,12 @@ exports.create = {
         'soilfertilization-lo',
         'stagescorn-lo'
       ],
-      'reactions': {
-        'likes': ['Juan', 'John', 'Jane'],
-        'happy': ['Juan', 'John'],
-        'sad': ['Juan'],
-      },
+      
+      'likes': ['Juan', 'John', 'Jane'],
+      'happy': ['Juan', 'John'],
+      'sad': ['Juan'],
+      
+      
       '__ref': 'corn-chapter',
     },
     {
@@ -1276,11 +1333,12 @@ exports.create = {
         'mungbean-lo',
         'peanut-lo'
       ],
-      'reactions': {
-        'likes': ['Juan', 'John', 'Jane'],
-        'happy': ['Juan', 'John'],
-        'sad': ['Juan'],
-      },
+      
+      'likes': ['Juan', 'John', 'Jane'],
+      'happy': ['Juan', 'John'],
+      'sad': ['Juan'],
+      
+      
       '__ref': 'legume-chapter',
     },
     {
@@ -1296,11 +1354,12 @@ exports.create = {
         'sweetpotato-lo',
         'whitepotato-lo'
       ],
-      'reactions': {
-        'likes': ['Juan', 'John', 'Jane'],
-        'happy': ['Juan', 'John'],
-        'sad': ['Juan'],
-      },
+      
+      'likes': ['Juan', 'John', 'Jane'],
+      'happy': ['Juan', 'John'],
+      'sad': ['Juan'],
+      
+      
       '__ref': 'rootcrop-chapter',
     },
     {
@@ -1319,11 +1378,12 @@ exports.create = {
         'papaya-lo',
         'pineapple-lo'
       ],
-      'reactions': {
-        'likes': ['Juan', 'John', 'Jane'],
-        'happy': ['Juan', 'John'],
-        'sad': ['Juan'],
-      },
+      
+      'likes': ['Juan', 'John', 'Jane'],
+      'happy': ['Juan', 'John'],
+      'sad': ['Juan'],
+      
+      
       '__ref': 'tropicalfruit-chapter',
     },
     {
@@ -1338,11 +1398,12 @@ exports.create = {
       'outline': [
         'aquafeeds-lo'
       ],
-      'reactions': {
-        'likes': ['Juan', 'John', 'Jane'],
-        'happy': ['Juan', 'John'],
-        'sad': ['Juan'],
-      },
+     
+      'likes': ['Juan', 'John', 'Jane'],
+      'happy': ['Juan', 'John'],
+      'sad': ['Juan'],
+      
+      
       '__ref': 'feedres-chapter',
     },
 
@@ -1364,11 +1425,12 @@ exports.create = {
         'rootcrop-chapter',
         'legume-chapter'
       ],
-      'reactions': {
-        'likes': ['Juan', 'John', 'Jane'],
-        'happy': ['Juan', 'John'],
-        'sad': ['Juan'],
-      },
+      
+      'likes': ['Juan', 'John', 'Jane'],
+      'happy': ['Juan', 'John'],
+      'sad': ['Juan'],
+      
+      
     },
     {
       'title': 'Aquatic Resources Course',
@@ -1382,11 +1444,12 @@ exports.create = {
       'outline': [
         'feedres-chapter',
       ],
-      'reactions': {
-        'likes': ['Juan', 'John', 'Jane'],
-        'happy': ['Juan', 'John'],
-        'sad': ['Juan'],
-      },
+      
+      'likes': ['Juan', 'John', 'Jane'],
+      'happy': ['Juan', 'John'],
+      'sad': ['Juan'],
+      
+      
     }
   ],
 

@@ -50,29 +50,27 @@ LearningContent.add({
     required: false, 
     many: true 
   },
-  reactions: {
-    likes: { 
-      type: Types.Relationship,
-      ref: 'LUser',
-      many: true,
-      required: false,
-      
-    },
-    happy: { 
-      type: Types.Relationship,
-      ref: 'LUser',
-      many: true,
-      required: false,
-      
-    },
-    sad: { 
-      type: Types.Relationship,
-      ref: 'LUser',
-      many: true,
-      required: false,
-      
-    },  
+  likes: { 
+    type: Types.Relationship,
+    ref: 'LUser',
+    many: true,
+    required: false,
+    
   },
+  happy: { 
+    type: Types.Relationship,
+    ref: 'LUser',
+    many: true,
+    required: false,
+    
+  },
+  sad: { 
+    type: Types.Relationship,
+    ref: 'LUser',
+    many: true,
+    required: false,
+    
+  },  
   tags: { 
     type: Types.TextArray, 
     collapse: true 
