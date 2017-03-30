@@ -98,6 +98,7 @@ exports = module.exports = function(req, res) {
     });
   });
 */
+  //get all the learning objects
   view.on('init', function(next){
     var q = keystone.list('LearningObject').model.find();
 
@@ -107,6 +108,8 @@ exports = module.exports = function(req, res) {
     });
   });
 
+  //TO DO
+  //get the current logged in user
   view.on('init', function(next){
     var q = keystone.list('LUser').model.findOne().where('email', 'jdelacruz@gmail.com');
 
@@ -118,6 +121,7 @@ exports = module.exports = function(req, res) {
     });
   });
 
+  //get the Learning Objects Taken by the current logged-in user
   view.on('init', function(next){
     var q = keystone.list('LearningObject').model.find().where('_id').in(locals.data.currentLearner.learningObjectsTaken);
 
@@ -127,6 +131,7 @@ exports = module.exports = function(req, res) {
     });
   });
 
+  //compute for the score of each learning objects based on the ISP, sector and industry tags of the learning objects taken by the logged-in user
   view.on('init', function(next){
     if(locals.data.learningObjectsTaken.length>0){
       async.each(tempLearningObjects, function (learningObject, next) {
@@ -175,6 +180,7 @@ exports = module.exports = function(req, res) {
     }
   });
 
+  //function for checking if the specific course was already taken by the logged in user
   function notYetTaken(learningObject, learningObjectsTaken){
     var flag = 0;
     var learningObjectId = learningObject._id + "";
@@ -188,6 +194,7 @@ exports = module.exports = function(req, res) {
     if(flag==0) return 1;
   }
 
+  //sort the learning objects based on their score then get the top N or top 3 learning objects
   view.on('init', function(next){
     locals.data.recommendedLearningObjects = [];
     if(tempRecommended.length>0){
@@ -209,9 +216,6 @@ exports = module.exports = function(req, res) {
     }
     next();
   });
-
-
-
 
   // Render the view
   view.render('elearning/main');

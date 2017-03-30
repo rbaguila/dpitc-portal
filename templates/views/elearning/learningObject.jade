@@ -18,8 +18,19 @@ mixin learningObject(currLO)
           &nbsp;
 
 mixin recommendedTopics(recLO)
-  .container-fluid
-    .row
+  each lo in recLO
+    .media
+      .media-left
+        if lo.thumbnail.exists
+          a(href=lo.url)
+            img(src=lo._.thumbnail.limit(100, 100) alt=lo.video.title).img-rounded
+        else
+          a(href=lo.url)
+            img(src="/images/image-not-available.png", alt=lo.title, height="100px", weight="100px").img-rounded
+      .media-body
+        a(href=lo.url)
+          h5=lo.title
+          span= lo.content.brief.substring(0, 50)
 
 mixin otherTopics(otherLO)
   each lo in otherLO
