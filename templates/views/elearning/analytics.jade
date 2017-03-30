@@ -1,0 +1,27 @@
+extends ../../layouts/default
+
+block css
+  link(rel="stylesheet" type="text/css" href="/styles/course.css")
+
+mixin Reactions(reactions)
+  h4.text Reactions
+
+mixin Comments(comments)
+  h4.text Comments
+
+mixin Views(views)
+  h4.text Views
+
+block content
+  h3.text-center ELearning Analytics
+  .container
+    .panel.panel-default
+      .panel-body
+        +Reactions(data.reactions)
+    .panel.panel-default
+      .panel-body
+        +Comments(data.comments)
+    .panel.panel-default
+      .panel-body
+        +Views(data.views)
+    

@@ -7,40 +7,43 @@ var Types = keystone.Field.Types;
  */
 
 var Analytics = new keystone.List('Analytics', {
-	autokey: { from: 'name', path: 'key', unique: true },
-	drilldown: 'sector'
+	autokey: { from: 'name', path: 'key', unique: true }
 });
 
 Analytics.add({
-	learningObject: { 
+	learningObjects: { 
 		type: Types.Relationship, 
 		ref: 'LearningObject',
-		many: false, 
+		many: true, 
+		required: false, // should be true, error in fixtures
+		initial: true
+	}
+	/*
+	,
+	IPSs: {
+		type: Types.Relationship, 
+		ref: 'ISP',
+		many: true, 
 		required: false, // should be true, error in fixtures
 		initial: true
 	},
-	likesCount: { 
-		type: Types.Number, 
-		default: 0
-	},
-	happyCount: { 
-		type: Types.Number, 
-		default: 0
-	},
-	sadCount: { 
-		type: Types.Number, 
-		default: 0
-	},
-	commentsCount: {
-		type: Types.Number,
-		default: 0
-	},
-	viewsCount: {
-		type: Types.Number,
-		default: 0
+	LIndustrys: {
+		type: Types.Relationship, 
+		ref: 'LIndustry',
+		many: true, 
+		required: false, // should be true, error in fixtures
+		initial: true
 	}
+	LSectors: {
+		type: Types.Relationship, 
+		ref: 'LSector',
+		many: true, 
+		required: false, // should be true, error in fixtures
+		initial: true
+	}
+	*/
 });
 
-Analytics.defaultColumns = 'name, sector'
+Analytics.defaultColumns = 'learningObjects'
 
 Analytics.register();

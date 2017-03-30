@@ -50,7 +50,8 @@ exports = module.exports = function (app) {
 	app.get('/elearning/course/:courseslug', routes.views.elearning.courseOutline);
 	app.get('/elearning/chapter/:chapterslug', routes.views.elearning.chapterOutline);
 	app.get('/elearning/learning-object/:learningobjectslug', routes.views.elearning.learningObject);
-
+	app.get('/elearning/analytics', routes.views.elearning.analytics);
+	
 	app.get('/search/', function(req,res){
 		var searchKey = req.query.searchKey;
 		res.writeHead(301,
