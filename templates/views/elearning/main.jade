@@ -22,9 +22,9 @@ mixin allCourses(courses)
               p= course.content.brief.substring(0, 100)
               br
               p
-                span.glyphicon.glyphicon-thumbs-up(aria-hidden="true")=course.reactions.likes
-                span.glyphicon.glyphicon-chevron-up(aria-hidden="true")=course.reactions.happy
-                span.glyphicon.glyphicon-chevron-down(aria-hidden="true")=course.reactions.sad
+                span.glyphicon.glyphicon-thumbs-up(aria-hidden="true")=course.likes.length
+                span.glyphicon.glyphicon-chevron-up(aria-hidden="true")=course.happy.length
+                span.glyphicon.glyphicon-chevron-down(aria-hidden="true")=course.sad.length
                 
                 a.btn.btn-info.btn-block(href=course.url) Learn more
   else
@@ -50,15 +50,15 @@ mixin popularLO(learningObjects)
               hr
               .row
                 .col-xs-3
-                  p= learningObject.reactions.likes.length
+                  p= learningObject.likes.length
                     span.glyphicon.glyphicon-thumbs-up(aria-hidden="true")
                   
                 .col-xs-2
                   span.glyphicon.glyphicon-chevron-up(aria-hidden="true")
-                  p= learningObject.reactions.happy.length
+                  p= learningObject.happy.length
                 .col-xs-4
                   span.glyphicon.glyphicon-chevron-down(aria-hidden="true")
-                  p= learningObject.reactions.sad.length
+                  p= learningObject.sad.length
               hr
               .row
                 a.btn.btn-info.btn-block(href=learningObject.url) Learn more
