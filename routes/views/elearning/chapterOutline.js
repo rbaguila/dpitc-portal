@@ -13,6 +13,13 @@ exports = module.exports = function (req, res) {
     currChapter: [],
   };
 
+  locals.currslug = req.params.chapterslug;
+  locals.viewStyle = req.query.view == undefined ? 'list' : req.query.view;
+  var page = req.query.page == undefined ? 1 : req.query.view;
+
+  var searchTerm = req.query.term
+  var searchCategory = req.query.category
+
   // Load the current chapter
   view.on('init', function(next){
     Chapter.model.findOne({

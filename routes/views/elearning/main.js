@@ -35,6 +35,7 @@ exports = module.exports = function(req, res) {
     Course.model.find()
       .where('state', 'published')
       .sort('-PublishedAt')
+      .populate('likes happy sad comments')
       .limit(4)
       .exec(function(err, results){
         locals.data.courses = results;
@@ -48,6 +49,7 @@ exports = module.exports = function(req, res) {
     Chapter.model.find()
       .where('state', 'published')
       .sort('-PublishedAt')
+      .populate('likes happy sad comments')
       .limit(4)
       .exec(function(err, results){
         locals.data.chapters = results;
@@ -61,6 +63,7 @@ exports = module.exports = function(req, res) {
     LearningObject.model.find()
       .where('state', 'published')
       .sort('-PublishedAt')
+      .populate('likes happy sad comments')
       .limit(4)
       .exec(function(err, results){
         locals.data.learningObjects = results;
@@ -75,15 +78,11 @@ exports = module.exports = function(req, res) {
     LearningObject.model.find()
       .where('state', 'published')
       .sort('-PublishedAt')
+      .populate('likes happy sad comments')
       .limit(8)
       .exec(function(err, results){
         locals.data.popularLO = results;
 
-        // hold
-        for(var i=0; i<4; i++){
-          console.log(results[i]);
-         
-        }
         next(err);
       });
   });  

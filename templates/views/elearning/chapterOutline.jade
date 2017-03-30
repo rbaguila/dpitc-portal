@@ -1,6 +1,42 @@
 extends ../../layouts/default
 
-mixin currentChapter(chapter)
+mixin currentChapter-grid(chapter)
+  .container-fluid
+    .row
+      h3= chapter.title
+    .row
+      if chapter.thumbnail.exists
+        .col-md-8
+          p= chapter.content.extended
+        .col-md-4
+          img(src=chapter._.thumbnail alt=chapter.title).img-rounded
+      else
+        p= chapter.content.extended
+      br
+    .row
+    
+      if chapter.outline.length
+        .row.equal-height
+          each lo in chapter.outline
+            .col-xs-6.col-md-3
+              .thumbnail
+                if lo.thumbnail.exists
+                  img.card-img-top(src=lo.thumbnail alt="lo.title")
+                else if lo.videoId
+                  img.card-img-top(src='https://img.youtube.com/vi/'+ lo.videoId +'/mqdefault.jpg', height="150px")
+                else
+                  img.card-img-top(src="/images/image-not-available-th.png" alt=lo.title, height="150px")
+                .caption
+                  h3= lo.title.substring(0, 50)
+                  p= lo.content.brief.substring(0, 100)
+                  br
+                  p
+                    a.btn.btn-info.btn-block(href=lo.url) Learn more
+      else
+        h3.text-muted There are no chapters yet.
+
+
+mixin currentChapter-list(chapter)
   .container-fluid
     .row
       h3= chapter.title
@@ -21,25 +57,56 @@ mixin currentChapter(chapter)
               th Lessons in #{chapter.title}
 
             tbody
-              each learningObject in chapter.outline
+              each lo in chapter.outline
                 tr.media
                   td
                     .media-left
-                      if learningObject.thumbnail.exists
-                        a(href=learningObject.url)
-                          img(src=learningObject._.thumbnail.limit(64,64) alt=learningObject.title).img-rounded.media-object
+                      if lo.thumbnail.exists
+                        a(href=lo.url)
+                          img(src=lo._.thumbnail.limit(64,64) alt=lo.title).img-rounded.media-object
                       else
-                        a(href=learningObject.url)
-                          img(src="/images/image-not-available.png" alt=learningObject.title height="100px" width="100px").img-rounded.media-object
+                        a(href=lo.url)
+                          img(src="/images/image-not-available.png" alt=lo.title height="100px" width="100px").img-rounded.media-object
                     .media-body
-                      a(href=learningObject.url)
-                        h4.media-heading= learningObject.title
-                        span= learningObject.content.brief
+                      a(href=lo.url)
+                        h4.media-heading= lo.title
+                        span= lo.content.brief
+
+block search
+  .container
+    .row
+      nav.navbar.navbar-default
+        .container-fluid
+          //- Mobile menu
+          .navbar-header
+            button(type="button", data-toggle="collapse", aria-expanded="false", data-target="#publications-filter").navbar-toggle.collapsed
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+
+          #publications-filter.collapse.navbar-collapse
+            ul.nav.navbar-nav
+            form.navbar-form.navbar-left
+              .form-group
+                input.form-control(type='text', placeholder='Search')
+              button.btn.btn-default(type='submit') Submit
+            ul.nav.navbar-nav.navbar-right
+              li
+                a(href="/elearning/chapter/"+currslug+"?view=grid")
+                  span(aria-hidden="true").glyphicon.glyphicon-th
+              li
+                a(href="/elearning/chapter/"+currslug+"?view=list")
+                  span(aria-hidden="true").glyphicon.glyphicon-th-list
 
 block content
+  block search
   .container
     .panel.panel-default
       .panel-body
-        +currentChapter(data.currChapter)
+        if viewStyle == 'grid'
+          +currentChapter-grid(data.currChapter)
+        else
+          +currentChapter-list(data.currChapter)
       .panel-footer
        

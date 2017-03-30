@@ -1,11 +1,13 @@
 extends ../../layouts/default
 
-//- block css
+block css
 //-   link(rel="stylesheet" type="text/css" href="/styles/elearning/elearning.css")
   
 
+
 mixin allCourses(courses)
-  h2.text-center All Courses
+  a(href='/elearning/courses')
+    h2.text-center All Courses
   if courses.length
     .row.equal-height
       each course in courses
@@ -18,14 +20,17 @@ mixin allCourses(courses)
             else
               img.card-img-top(src="/images/image-not-available-th.png" alt=course.title, height="150px")
             .caption
-              h3= course.title.substring(0, 50)
-              p= course.content.brief.substring(0, 100)
-              br
-              p
-                span.glyphicon.glyphicon-thumbs-up(aria-hidden="true")=course.likes.length
-                span.glyphicon.glyphicon-chevron-up(aria-hidden="true")=course.happy.length
-                span.glyphicon.glyphicon-chevron-down(aria-hidden="true")=course.sad.length
-                
+              .row
+                h3= course.title.substring(0, 50)
+              .row
+                p= course.content.brief.substring(0, 100)
+              hr
+              .row
+                p
+                  span.glyphicon.glyphicon-thumbs-up(aria-hidden="true")  #{course.likes.length} &nbsp;
+                  span.glyphicon.glyphicon-chevron-up(aria-hidden="true")  #{course.happy.length} &nbsp;
+                  span.glyphicon.glyphicon-chevron-down(aria-hidden="true")  #{course.sad.length} &nbsp;
+              .row
                 a.btn.btn-info.btn-block(href=course.url) Learn more
   else
     h3.text-muted There are no courses yet.
@@ -87,16 +92,52 @@ mixin recommendedCourses(courses)
   else
     h3.text-muted There are no courses yet.
 
+block search
+  .container
+    .row
+      .col-md-9
+        nav.navbar.navbar-default
+          .container-fluid
+            //- Mobile menu
+            .navbar-header
+              button(type="button", data-toggle="collapse", aria-expanded="false", data-target="#publications-filter").navbar-toggle.collapsed
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+
+            #publications-filter.collapse.navbar-collapse
+              ul.nav.navbar-nav
+              form.navbar-form.navbar-left
+                .form-group
+                  input.form-control(type='text', placeholder='Search')
+                button.btn.btn-default(type='submit') Submit
+              ul.nav.navbar-nav.navbar-right
+                li
+                  a(href="/elearning?view=grid")
+                    span(aria-hidden="true").glyphicon.glyphicon-th
+                li
+                  a(href="/elearning?view=list")
+                    span(aria-hidden="true").glyphicon.glyphicon-th-list
+
+
+
 
 block content
+  block search
+  
+       
+  
   .container
-    .panel.panel-default
+    //- .panel.panel-default
         .panel-body
           +popularLO(data.popularLO)
-    .panel.panel-default
+    //- .panel.panel-default
         .panel-body
           +recommendedCourses(data.recommendedLearningObjects)
     .panel.panel-default
-      .panel-body
+      .panel-heading
+        .panel-body
         +allCourses(data.courses)
     
+      

@@ -16,6 +16,14 @@ exports = module.exports = function (req, res) {
     chapters: [],
   };
 
+  locals.currslug = req.params.courseslug;
+  locals.viewStyle = req.query.view == undefined ? 'list' : req.query.view;
+  var page = req.query.page == undefined ? 1 : req.query.view;
+
+  var searchTerm = req.query.term
+  var searchCategory = req.query.category
+
+
   // Load the current course
   view.on('init', function(next){
     Course.model.findOne({
