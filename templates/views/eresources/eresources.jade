@@ -7,72 +7,7 @@ block content
       .container
         .row
           .col-md-9
-            nav.navbar.navbar-default
-              .container-fluid
-                //- Mobile menu
-                .navbar-header
-                  button(type="button", data-toggle="collapse", aria-expanded="false", data-target="#publications-filter").navbar-toggle.collapsed
-                    span.sr-only Toggle navigation
-                    span.icon-bar
-                    span.icon-bar
-                    span.icon-bar
-                  //- a(href="#").navbar-brand Brand?
-
-                #publications-filter.collapse.navbar-collapse
-                  ul.nav.navbar-nav
-
-                    //- li
-                      a(href='#') Link
-                    //- li.dropdown
-                      a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                        | All
-                        span.caret
-                      ul.dropdown-menu
-                        li
-                          a(href='#') Title
-                        li
-                          a(href='#') Another action
-                        li
-                          a(href='#') Something else here
-                        li.divider(role='separator')
-                        li
-                          a(href='#') Separated link
-                        li.divider(role='separator')
-                        li
-                          a(href='#') One more separated link
-
-                  form.navbar-form.navbar-left
-                    //- button(type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false").btn.btn-default.dropdown-toggle Industry&nbsp;
-                      span.caret
-                    ul.dropdown-menu
-                      li
-                        a(href="#") Agriculture
-                        a(href="#") Aquatic Resources
-                        a(href="#") Cakes
-                    .input-group
-                      input(type="text",placeholder="Search...").form-control
-                      span.input-group-btn
-                        button(type="button").btn.btn-default.form-control Go
-
-                  ul.nav.navbar-nav.navbar-right
-                    li
-                      a(href="/eresources?view=grid")
-                        span(aria-hidden="true").glyphicon.glyphicon-th
-                    li
-                      a(href="/eresources?view=list")
-                        span(aria-hidden="true").glyphicon.glyphicon-th-list
-
-
-            block publications
+            | publications
 
           .col-md-3
-            .list-group
-              li.list-group-item.list-group-item-header Industries
-              each industry in industries
-                a.list-group-item #{industry.name}
-              li.list-group-item.list-group-item-header Sectors
-              each sector in sectors
-                a.list-group-item #{sector.name}
-              li.list-group-item.list-group-item-header Commodities
-              each commodity in commodities
-                a.list-group-item #{commodity.name}
+            | categories
