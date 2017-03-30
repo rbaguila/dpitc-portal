@@ -7,7 +7,22 @@ block content
       .container
         .row
           .col-md-9
-            | publications
+            h3 Latest Publications
+            hr
+            row
+              each publication in publications
+                .col-md-2
+                  img(src=publication._.cover.fit(100, 180, {}))
+                  br
+                  | #{publication.title}
+                  br
+                  | #{publication.publicationType}
 
           .col-md-3
-            | categories
+            h3 Categories
+            hr
+
+        .row
+          .col-md-9
+            h3 Links
+            hr

@@ -20,6 +20,10 @@ Link.add({
     type: Types.Textarea,
     height: 80
   },
+  image: {
+    type: Types.CloudinaryImage,
+    autoCleanup: true
+  },
   industry: {
     type: Types.Relationship,
     ref: 'Industry'
