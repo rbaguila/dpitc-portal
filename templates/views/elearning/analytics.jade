@@ -5,23 +5,47 @@ block css
 
 mixin Reactions(reactions)
   h4.text Reactions
+  h5= reactions
+
+mixin Likes(likes)
+  h4.text Likes
+  h5= likes
+
+mixin Happy(happy)
+  h4.text Happy
+  h5= happy
+
+mixin Sad(sad)
+  h4.text Sad
+  h5= sad
 
 mixin Comments(comments)
   h4.text Comments
+  h5= comments
 
-mixin Views(views)
+//mixin Views(views)
   h4.text Views
+  h5= views
 
 block content
   h3.text-center ELearning Analytics
   .container
     .panel.panel-default
       .panel-body
-        +Reactions(data.reactions)
+        +Reactions(data.totalReactionsLO)
+    .panel.panel-default
+      .panel-body
+        +Likes(data.totalLikesLO)
+    .panel.panel-default
+      .panel-body
+        +Happy(data.totalHappyLO)
+    .panel.panel-default
+      .panel-body
+        +Sad(data.totalSadLO)
     .panel.panel-default
       .panel-body
         +Comments(data.comments)
-    .panel.panel-default
+    //.panel.panel-default
       .panel-body
         +Views(data.views)
     

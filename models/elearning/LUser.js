@@ -18,9 +18,9 @@ LUser.add({
 });
 
 
-LUser.relationship({ ref: 'LearningContent', refPath: 'reactions.likes'});
-LUser.relationship({ ref: 'LearningContent', refPath: 'reactions.happy'});
-LUser.relationship({ ref: 'LearningContent', refPath: 'reactions.sad'});
+LUser.relationship({ ref: 'LearningContent', refPath: 'likes'});
+LUser.relationship({ ref: 'LearningContent', refPath: 'happy'});
+LUser.relationship({ ref: 'LearningContent', refPath: 'sad'});
 
 /**
  * Registration

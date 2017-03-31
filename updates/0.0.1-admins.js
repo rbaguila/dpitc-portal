@@ -34,19 +34,278 @@ exports.create = {
       'password': 'password', 
       '__ref': 'Juan'
     },
-     {
+    {
       'name.first': 'John', 
       'name.last': 'Smith', 
       'email': 'jsmith@gmail.com', 
       'password': 'password', 
       '__ref': 'John'
     },
-     {
+    {
       'name.first': 'Jane', 
       'name.last': 'Doe', 
       'email': 'jdoe@gmail.com', 
       'password': 'password', 
       '__ref': 'Jane'
+    },
+    {
+      'name.first': 'Albert', 
+      'name.last': 'Kim', 
+      'email': 'akim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Albert'
+    },
+    {
+      'name.first': 'Bryan', 
+      'name.last': 'Kim', 
+      'email': 'bkim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Bryan'
+    },
+    {
+      'name.first': 'Carl', 
+      'name.last': 'Kim', 
+      'email': 'ckim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Lee'
+    },
+    {
+      'name.first': 'Daniel', 
+      'name.last': 'Kim', 
+      'email': 'dkim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Daniel'
+    },
+    {
+      'name.first': 'Ellen', 
+      'name.last': 'Kim', 
+      'email': 'ekim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Ellen'
+    },
+    {
+      'name.first': 'Ferdinand', 
+      'name.last': 'Kim', 
+      'email': 'fkim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Ferdinand'
+    },
+    {
+      'name.first': 'Gerald', 
+      'name.last': 'Kim', 
+      'email': 'gkim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Gerald'
+    },
+    {
+      'name.first': 'Harold', 
+      'name.last': 'Kim', 
+      'email': 'hkim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Harold'
+    },
+    {
+      'name.first': 'Irish', 
+      'name.last': 'Kim', 
+      'email': 'ikim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Irish'
+    },
+    {
+      'name.first': 'Jeff', 
+      'name.last': 'Kim', 
+      'email': 'jkim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Jeff'
+    },
+    {
+      'name.first': 'Karl', 
+      'name.last': 'Kim', 
+      'email': 'kkim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Karl'
+    },
+    {
+      'name.first': 'Logan', 
+      'name.last': 'Kim', 
+      'email': 'lkim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Logan'
+    },
+    {
+      'name.first': 'Manuel', 
+      'name.last': 'Kim', 
+      'email': 'mkim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Manuel'
+    },
+    {
+      'name.first': 'Natalie', 
+      'name.last': 'Kim', 
+      'email': 'nkim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Natalie'
+    },
+    {
+      'name.first': 'Oliver', 
+      'name.last': 'Kim', 
+      'email': 'okim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Oliver'
+    },
+    {
+      'name.first': 'Patricia', 
+      'name.last': 'Kim', 
+      'email': 'pkim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Patricia'
+    },
+    {
+      'name.first': 'Queen', 
+      'name.last': 'Kim', 
+      'email': 'qkim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Queen'
+    },
+    {
+      'name.first': 'Rona', 
+      'name.last': 'Kim', 
+      'email': 'rkim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Rona'
+    },
+    {
+      'name.first': 'Sally', 
+      'name.last': 'Kim', 
+      'email': 'skim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Sally'
+    },
+    {
+      'name.first': 'Tim', 
+      'name.last': 'Kim', 
+      'email': 'tkim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Tim'
+    },
+    {
+      'name.first': 'Uvin', 
+      'name.last': 'Kim', 
+      'email': 'ukim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Uvin'
+    },
+    {
+      'name.first': 'Vince', 
+      'name.last': 'Kim', 
+      'email': 'vkim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Vince'
+    },
+    {
+      'name.first': 'Wilson', 
+      'name.last': 'Kim', 
+      'email': 'wkim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Wilson'
+    },
+    {
+      'name.first': 'Xyrus', 
+      'name.last': 'Kim', 
+      'email': 'xkim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Xyrus'
+    },
+    {
+      'name.first': 'Yvette', 
+      'name.last': 'Kim', 
+      'email': 'ykim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Yvette'
+    },
+    {
+      'name.first': 'Zend', 
+      'name.last': 'Kim', 
+      'email': 'zkim@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Zend'
+    },
+    {
+      'name.first': 'Henry', 
+      'name.last': 'Lee', 
+      'email': 'hlee@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Henry'
+    },
+    {
+      'name.first': 'Angelica', 
+      'name.last': 'Lee', 
+      'email': 'alee@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Angelica'
+    },
+    {
+      'name.first': 'Kris', 
+      'name.last': 'Lee', 
+      'email': 'klee@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Kris'
+    },
+    {
+      'name.first': 'Luhan', 
+      'name.last': 'Lee', 
+      'email': 'llee@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Luhan'
+    },
+    {
+      'name.first': 'Amber', 
+      'name.last': 'Lee', 
+      'email': 'alee@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Amber'
+    },
+    {
+      'name.first': 'Victoria', 
+      'name.last': 'Lee', 
+      'email': 'vlee@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Victoria'
+    },
+    {
+      'name.first': 'Krystal', 
+      'name.last': 'Lee', 
+      'email': 'klee@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Krystal'
+    },
+    {
+      'name.first': 'Gary', 
+      'name.last': 'Lee', 
+      'email': 'glee@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Gary'
+    },
+    {
+      'name.first': 'Joon', 
+      'name.last': 'Lee', 
+      'email': 'jlee@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Joon'
+    },
+    {
+      'name.first': 'Cena', 
+      'name.last': 'Lee', 
+      'email': 'clee@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Cena'
+    },
+    {
+      'name.first': 'Justin', 
+      'name.last': 'Lee', 
+      'email': 'jlee@gmail.com', 
+      'password': 'password', 
+      '__ref': 'Justin'
     }
   ],
 
@@ -408,9 +667,9 @@ exports.create = {
       'createdAt': Date.now,
       'updatedAt': Date.now,
       
-      'likes': ['Juan', 'John', 'Jane'],
-      'happy': ['Juan', 'John'],
-      'sad': ['Juan'],
+      'likes': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena'],
+      'happy': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
+      'sad': ['Ferdinand', 'Gerald', 'Harold', 'Henry', 'Irish', 'Joon', 'Jeff'],
       
       'video': 'stagescorn-yt',
       '__ref': 'stagescorn-lo',
@@ -432,9 +691,9 @@ exports.create = {
       'createdAt': Date.now,
       'updatedAt': Date.now,
       
-      'likes': ['Juan', 'John', 'Jane'],
-      'happy': ['Juan', 'John'],
-      'sad': ['Juan'],
+      'likes': ['Ferdinand', 'Gerald', 'Harold', 'Henry', 'Irish', 'Joon', 'Jeff'],
+      'happy': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena'],
+      'sad': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
       
       'video': 'soilfertilization-yt',
       '__ref': 'soilfertilization-lo',
@@ -455,9 +714,9 @@ exports.create = {
       'createdAt': Date.now,
       'updatedAt': Date.now,
        
-      'likes': ['Juan', 'John', 'Jane'],
-      'happy': ['Juan', 'John'],
-      'sad': ['Juan'],
+      'likes': ['Juan', 'John', 'Jane', 'Amber', 'Angelica'],
+      'happy': ['Henry', 'Irish', 'Joon', 'Jeff', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
+      'sad': ['Ferdinand', 'Gerald', 'Harold'],
       
       'video': 'landpreparation-yt',
       '__ref': 'landpreparation-lo',
@@ -478,9 +737,9 @@ exports.create = {
       'createdAt': Date.now,
       'updatedAt': Date.now,
       
-      'likes': ['Juan', 'John', 'Jane'],
+      'likes': ['Juan', 'John', 'Jane', 'Amber', 'Angelica'],
       'happy': ['Juan', 'John'],
-      'sad': ['Juan'],
+      'sad': ['Ferdinand', 'Gerald', 'Harold'],
       
       'video': 'grainquality-yt',
       '__ref': 'grainquality-lo',
@@ -501,9 +760,9 @@ exports.create = {
       'createdAt': Date.now,
       'updatedAt': Date.now,
       
-      'likes': ['Juan', 'John', 'Jane'],
-      'happy': ['Juan', 'John'],
-      'sad': ['Juan'],
+      'likes': ['Ferdinand', 'Gerald', 'Harold', 'Henry', 'Irish', 'Joon', 'Jeff'],
+      'happy': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena'],
+      'sad': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
       
       'video': 'feedingprogram-yt',
       '__ref': 'feedingprogram-lo',
@@ -523,9 +782,9 @@ exports.create = {
       'tags': ['corn', 'agriculture'],
       'createdAt': Date.now,  
       
-      'likes': ['Juan', 'John', 'Jane'],
-      'happy': ['Juan', 'John'],
-      'sad': ['Juan'],
+      'likes': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
+      'happy': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena'],
+      'sad': ['Ferdinand', 'Gerald', 'Harold', 'Henry', 'Irish', 'Joon', 'Jeff'],
       
       'updatedAt': Date.now,
       'video': 'biotechbtcorn-yt',
@@ -545,6 +804,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
       'tags': ['abaca', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Ferdinand', 'Gerald', 'Harold', 'Henry', 'Irish', 'Joon', 'Jeff'],
+      'happy': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena'],
+      'sad': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Planting Banana',
@@ -560,6 +827,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
       'tags': ['banana', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
+      'happy': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena'],
+      'sad': ['Ferdinand', 'Gerald', 'Harold', 'Henry', 'Irish', 'Joon', 'Jeff'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Planting Coconut',
@@ -575,6 +850,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
       'tags': ['coconut', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Juan', 'John', 'Jane'],
+      'happy': ['Juan', 'John'],
+      'sad': ['Zend'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Planting Coffee',
@@ -590,6 +873,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
       'tags': ['coffee', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Justin', 'Krystal', 'Kris', 'Karl', 'Luhan', 'Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      'happy': ['Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      'sad': ['Sally', 'Tim', 'Uvin', 'Vince', 'Victoria', 'Wilson', 'Xyrus', 'Yvette', 'Zend'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Planting Mungbean',
@@ -605,6 +896,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': 'Mungbean',
       'tags': ['mungbean', 'legume', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Sally', 'Tim', 'Uvin', 'Vince', 'Victoria', 'Wilson', 'Xyrus', 'Yvette', 'Zend'],
+      'happy': ['Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      'sad': ['Justin', 'Krystal', 'Kris', 'Karl', 'Luhan', 'Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      
+      'updatedAt': Date.now,
       '__ref': 'mungbean-lo',
     },
     { 
@@ -621,6 +920,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': 'Peanut',
       'tags': ['peanut', 'legume', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Sally', 'Tim', 'Uvin', 'Vince', 'Victoria', 'Wilson', 'Xyrus', 'Yvette', 'Zend'],
+      'happy': ['Justin', 'Krystal', 'Kris', 'Karl', 'Luhan', 'Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      'sad': ['Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      
+      'updatedAt': Date.now,
       '__ref': 'peanut-lo',
     },
     { 
@@ -637,6 +944,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
       'tags': ['mango', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Juan', 'John', 'Jane'],
+      'happy': ['Juan', 'John'],
+      'sad': ['Juan'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Planting Rice',
@@ -652,6 +967,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
       'tags': ['rice', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Justin', 'Krystal', 'Kris', 'Karl', 'Luhan', 'Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      'happy': ['Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      'sad': ['Sally', 'Tim', 'Uvin', 'Vince', 'Victoria', 'Wilson', 'Xyrus', 'Yvette', 'Zend'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Planting Sweet Potato',
@@ -667,6 +990,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': 'Sweet Potato',
       'tags': ['sweet potato','rootcrop', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Juan', 'John', 'Jane'],
+      'happy': ['Juan', 'John'],
+      'sad': ['Juan'],
+      
+      'updatedAt': Date.now,
       '__ref': 'sweetpotato-lo',
     },
     { 
@@ -683,6 +1014,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': 'White Potato',
       'tags': [ 'white potato', 'rootcrop', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Sally', 'Tim', 'Uvin', 'Vince', 'Victoria', 'Wilson', 'Xyrus', 'Yvette', 'Zend'],
+      'happy': ['Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      'sad': ['Justin', 'Krystal', 'Kris', 'Karl', 'Luhan', 'Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      
+      'updatedAt': Date.now,
       '__ref': 'whitepotato-lo',
     },
     { 
@@ -699,6 +1038,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
       'tags': ['sugarcane', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Sally', 'Tim', 'Uvin', 'Vince', 'Victoria', 'Wilson', 'Xyrus', 'Yvette', 'Zend'],
+      'happy': ['Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      'sad': ['Justin', 'Krystal', 'Kris', 'Karl', 'Luhan', 'Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Planting Pineapple',
@@ -714,6 +1061,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': 'Pineapple',
       'tags': ['pineapple', 'tropical fruit', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Juan', 'John', 'Jane'],
+      'happy': ['Juan', 'John'],
+      'sad': ['Xyrus'],
+      
+      'updatedAt': Date.now,
       '__ref': 'pineapple-lo',
     },
     { 
@@ -730,6 +1085,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': 'Papaya',
       'tags': ['papaya', 'tropical fruit', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Sally', 'Tim', 'Uvin', 'Vince', 'Victoria', 'Wilson', 'Xyrus', 'Yvette', 'Zend', 'Justin', 'Krystal', 'Kris', 'Karl', 'Luhan', 'Logan'],
+      'happy': ['Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      'sad': ['Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      
+      'updatedAt': Date.now,
       '__ref': 'papaya-lo',
     },
     { 
@@ -746,6 +1109,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': 'Citrus',
       'tags': ['citrus', 'tropical fruit', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      'happy': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
+      'sad': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
+      
+      'updatedAt': Date.now,
       '__ref': 'citrus-lo',
     },
     { 
@@ -762,6 +1133,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': 'Jackfruit',
       'tags': ['jackfruit', 'tropical fru', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
+      'happy': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
+      'sad': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      
+      'updatedAt': Date.now,
       '__ref': 'jackfruit-lo',
     },
     { 
@@ -778,6 +1157,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': 'Durian',
       'tags': ['durian', 'tropical fruit', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
+      'happy': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      'sad': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
+      
+      'updatedAt': Date.now,
       '__ref': 'durian-lo',
     },
     { 
@@ -794,6 +1181,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
       'tags': ['vegetable', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      'happy': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
+      'sad': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Feed Resources',
@@ -809,6 +1204,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
       'tags': ['feed resources', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
+      'happy': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
+      'sad': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Dairy Goat',
@@ -824,6 +1227,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
       'tags': ['dairy goat', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
+      'happy': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      'sad': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Slaughter Goat',
@@ -839,6 +1250,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
       'tags': ['slaughter goat', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      'happy': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
+      'sad': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Dairy Buffalo',
@@ -854,6 +1273,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
       'tags': ['dairy buffalo', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Juan', 'John'],
+      'happy': ['Juan'],
+      'sad': ['Kris'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Swine',
@@ -869,6 +1296,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
       'tags': ['corn', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      'happy': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
+      'sad': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Duck',
@@ -884,6 +1319,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
       'tags': ['duck', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      'happy': ['Ferdinand','Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
+      'sad': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Native Chicken',
@@ -899,6 +1342,14 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
       'tags': ['native chicken', 'agriculture'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['John'],
+      'happy': ['Juan', 'John'],
+      'sad': [],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Aquafeeds',
@@ -914,6 +1365,14 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': 'Aquafeeds',
       'tags': ['aquafeeds', 'aquatic resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
+      'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
+      'sad': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      
+      'updatedAt': Date.now,
       '__ref': 'aquafeeds-lo',
     },
     { 
@@ -930,6 +1389,14 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': null,
       'tags': ['milkfish', 'aquatic resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
+      'sad': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Mangrove Crab (Mudcrab)',
@@ -945,6 +1412,14 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': null,
       'tags': ['mangrove crab', 'aquatic resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver'],
+      'happy': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      'sad': ['Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Tilapia',
@@ -960,6 +1435,14 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': null,
       'tags': ['tilapia', 'aquatic resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
+      'sad': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Shrimp',
@@ -975,6 +1458,14 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': null,
       'tags': ['shrimp', 'aquatic resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
+      'happy': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      'sad': ['Juan'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Mussel',
@@ -990,6 +1481,14 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': null,
       'tags': ['mussel', 'aquatic resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
+      'sad': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Blue Swimming Crab',
@@ -1005,6 +1504,14 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': null,
       'tags': ['blue swimming crab', 'aquatic resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
+      'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
+      'sad': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Abalone',
@@ -1020,6 +1527,14 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': null,
       'tags': ['abalone', 'aquatic resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Juan', 'John', 'Jane', 'Justin'],
+      'happy': ['Juan'],
+      'sad': ['Juan'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Oyster',
@@ -1035,6 +1550,14 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': null,
       'tags': ['oyster', 'aquatic resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
+      'sad': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Sardines',
@@ -1050,6 +1573,14 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': null,
       'tags': ['sardines', 'aquatic resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
+      'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
+      'sad': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Sea Cucumber',
@@ -1065,6 +1596,14 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': null,
       'tags': ['sea cucumber', 'aquatic resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Juan'],
+      'happy': ['Juan'],
+      'sad': ['John', 'Jane', 'Justin'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Seaweeds',
@@ -1080,6 +1619,14 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': null,
       'tags': ['seaweeds', 'aquatic resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
+      'sad': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Tuna',
@@ -1095,6 +1642,14 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': null,
       'tags': ['tuna', 'aquatic resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
+      'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
+      'sad': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Bathymetry',
@@ -1110,6 +1665,14 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': null,
       'tags': ['bathymetry', 'aquatic resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      'happy': ['Ferdinand','Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
+      'sad': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Corals',
@@ -1125,6 +1688,14 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': null,
       'tags': ['corals', 'aquatic resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      'happy': ['Ferdinand','Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
+      'sad': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Fishing Maps',
@@ -1140,6 +1711,14 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': null,
       'tags': ['fishing maps', 'aquatic resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris', 'Angelica', 'Bryan', 'Daniel', 'Ferdinand', 'Henry', 'Harold', 'Juan'],
+      'happy': ['Gary', 'Gerald', 'Irish'],
+      'sad': ['John', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Harmful Algal Blooms',
@@ -1155,6 +1734,14 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': null,
       'tags': ['algal blooms', 'aquatic resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
+      'happy': ['Gary', 'Gerald', 'Irish'],
+      'sad': ['Angelica', 'Bryan', 'Daniel', 'Ferdinand', 'Henry', 'Harold', 'Juan', 'John', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Cacao',
@@ -1170,6 +1757,14 @@ exports.create = {
       'industry': 'natural-industry',
       'specificCommodity': null,
       'tags': ['cacao', 'natural resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
+      'happy': ['Gary', 'Gerald', 'Irish', 'Henry', 'Harold'],
+      'sad': ['Angelica', 'Bryan', 'Daniel', 'Ferdinand', 'Juan', 'John', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Bamboo',
@@ -1185,6 +1780,14 @@ exports.create = {
       'industry': 'natural-industry',
       'specificCommodity': null,
       'tags': ['bamboo', 'natural resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Harold', 'Juan', 'John', 'Jane', 'Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
+      'happy': ['Gary', 'Gerald', 'Irish'],
+      'sad': ['Angelica', 'Bryan', 'Daniel', 'Ferdinand', 'Henry', 'Justin', 'Joon', 'Jeff'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Sago',
@@ -1200,6 +1803,14 @@ exports.create = {
       'industry': 'natural-industry',
       'specificCommodity': null,
       'tags': ['sago', 'natural resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
+      'happy': ['Angelica', 'Bryan', 'Gary', 'Gerald', 'Irish'],
+      'sad': ['Daniel', 'Ferdinand', 'Henry', 'Harold', 'Juan', 'John', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Rubber',
@@ -1215,6 +1826,14 @@ exports.create = {
       'industry': 'natural-industry',
       'specificCommodity': null,
       'tags': ['rubber', 'natural resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
+      'happy': ['Gary', 'Gerald', 'Irish', 'Daniel', 'Ferdinand'],
+      'sad': ['Angelica', 'Bryan', 'Henry', 'Harold', 'Juan', 'John', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Industrial Tree Plantation',
@@ -1230,6 +1849,14 @@ exports.create = {
       'industry': 'natural-industry',
       'specificCommodity': null,
       'tags': ['industrial tree plantation', 'natural resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
+      'happy': ['Gary', 'Gerald', 'Irish', 'Harold', 'Juan', 'John'],
+      'sad': ['Angelica', 'Bryan', 'Daniel', 'Ferdinand', 'Henry', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Biodiversity',
@@ -1245,6 +1872,14 @@ exports.create = {
       'industry': 'natural-industry',
       'specificCommodity': null,
       'tags': ['biodiversity', 'natural resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris', 'Ferdinand', 'Henry', 'Harold'],
+      'happy': ['Gary', 'Gerald', 'Irish'],
+      'sad': ['Angelica', 'Bryan', 'Daniel', 'Juan', 'John', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Climate Change',
@@ -1260,6 +1895,14 @@ exports.create = {
       'industry': 'natural-industry',
       'specificCommodity': null,
       'tags': ['climate change', 'natural resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
+      'happy': ['Gary', 'Gerald', 'Irish', 'Angelica', 'Bryan', 'Daniel', 'Ferdinand'],
+      'sad': ['Henry', 'Harold', 'Juan', 'John', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Watershed',
@@ -1275,6 +1918,14 @@ exports.create = {
       'industry': 'natural-industry',
       'specificCommodity': null,
       'tags': ['watershed', 'natural resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
+      'happy': ['Gary', 'Gerald', 'Irish', 'Bryan', 'Daniel', 'Ferdinand', 'Henry', 'Harold', 'Juan', 'John', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      'sad': ['Angelica'],
+      
+      'updatedAt': Date.now
     },
     { 
       'title': 'Learning about Mangrove',
@@ -1290,6 +1941,14 @@ exports.create = {
       'industry': 'natural-industry',
       'specificCommodity': null,
       'tags': ['mangrove', 'natural resources'],
+
+      'createdAt': Date.now,  
+      
+      'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
+      'happy': ['Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
+      'sad': ['Angelica', 'Bryan', 'Daniel', 'Ferdinand', 'Henry', 'Harold', 'Juan', 'John', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      
+      'updatedAt': Date.now
     },
   ],
   

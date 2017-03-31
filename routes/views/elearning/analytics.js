@@ -68,21 +68,26 @@ exports = module.exports = function(req, res){
 
         q.exec(function(err, results){
             learningObjects = results;
+            locals.data.totalReactionsLO = 0;
+            locals.data.totalLikesLO = 0;
+            locals.data.totalHappyLO = 0;
+            locals.data.totalSadLO = 0;
+            locals.data.totalCommentsLO = 0;
             for(var i=0;i<learningObjects.length;i++){
                 var temp = learningObjects[i].likes.length + learningObjects[i].happy.length + learningObjects[i].sad.length;
-                locals.data.eachReactionsLO.push(temp);
+                //locals.data.eachReactionsLO.push(temp);
                 locals.data.totalReactionsLO += temp;
 
-                locals.data.eachLikesLO.push(learningObjects[i].likes.length);
+                //locals.data.eachLikesLO.push(learningObjects[i].likes.length);
                 locals.data.totalLikesLO += learningObjects[i].likes.length;
 
-                locals.data.eachHappyLO.push(learningObjects[i].happy.length);
+                //locals.data.eachHappyLO.push(learningObjects[i].happy.length);
                 locals.data.totalHappyLO += learningObjects[i].happy.length;
 
-                locals.data.eachSadLO.push(learningObjects[i].sad.length);
+                //locals.data.eachSadLO.push(learningObjects[i].sad.length);
                 locals.data.totalSadLO += learningObjects[i].sad.length;
 
-                locals.data.eachCommentsLO.push(learningObjects[i].comments.length);
+                //locals.data.eachCommentsLO.push(learningObjects[i].comments.length);
                 locals.data.totalCommentsLO += learningObjects[i].comments.length;
 
                 //locals.data.eachViewsLO.push(learningObjects[i].views.length);

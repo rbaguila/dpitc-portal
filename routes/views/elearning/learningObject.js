@@ -32,7 +32,7 @@ exports = module.exports = function (req, res) {
     .exec(function(err, result){
       if(result != null){
         locals.data.currLO = result;
-        console.log(result);
+        //console.log(result);
       } else {
         return res.status(404).send(keystone.wrapHTMLError('Sorry, LearningObject:' + req.params.learningobjectslug +' not found! (404)'));
       }
