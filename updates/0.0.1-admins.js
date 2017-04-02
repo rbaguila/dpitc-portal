@@ -32,6 +32,7 @@ exports.create = {
       'name.last': 'Dela Cruz', 
       'email': 'jdelacruz@gmail.com', 
       'password': 'password', 
+      'isAdmin': false,
       '__ref': 'Juan'
     },
     {
@@ -39,13 +40,15 @@ exports.create = {
       'name.last': 'Smith', 
       'email': 'jsmith@gmail.com', 
       'password': 'password', 
+      'isAdmin': false, 
       '__ref': 'John'
     },
     {
       'name.first': 'Jane', 
       'name.last': 'Doe', 
       'email': 'jdoe@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Jane'
     },
     {
@@ -53,20 +56,23 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'akim@gmail.com', 
       'password': 'password', 
+      'isAdmin': false, 
       '__ref': 'Albert'
     },
     {
       'name.first': 'Bryan', 
       'name.last': 'Kim', 
       'email': 'bkim@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Bryan'
     },
     {
       'name.first': 'Carl', 
       'name.last': 'Kim', 
       'email': 'ckim@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Lee'
     },
     {
@@ -74,48 +80,55 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'dkim@gmail.com', 
       'password': 'password', 
+      'isAdmin': false, 
       '__ref': 'Daniel'
     },
     {
       'name.first': 'Ellen', 
       'name.last': 'Kim', 
       'email': 'ekim@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Ellen'
     },
     {
       'name.first': 'Ferdinand', 
       'name.last': 'Kim', 
       'email': 'fkim@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Ferdinand'
     },
     {
       'name.first': 'Gerald', 
       'name.last': 'Kim', 
       'email': 'gkim@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Gerald'
     },
     {
       'name.first': 'Harold', 
       'name.last': 'Kim', 
       'email': 'hkim@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Harold'
     },
     {
       'name.first': 'Irish', 
       'name.last': 'Kim', 
       'email': 'ikim@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Irish'
     },
     {
       'name.first': 'Jeff', 
       'name.last': 'Kim', 
       'email': 'jkim@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Jeff'
     },
     {
@@ -123,6 +136,7 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'kkim@gmail.com', 
       'password': 'password', 
+      'isAdmin': false, 
       '__ref': 'Karl'
     },
     {
@@ -130,13 +144,15 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'lkim@gmail.com', 
       'password': 'password', 
+      'isAdmin': false, 
       '__ref': 'Logan'
     },
     {
       'name.first': 'Manuel', 
       'name.last': 'Kim', 
       'email': 'mkim@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Manuel'
     },
     {
@@ -144,34 +160,39 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'nkim@gmail.com', 
       'password': 'password', 
+      'isAdmin': false, 
       '__ref': 'Natalie'
     },
     {
       'name.first': 'Oliver', 
       'name.last': 'Kim', 
       'email': 'okim@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Oliver'
     },
     {
       'name.first': 'Patricia', 
       'name.last': 'Kim', 
       'email': 'pkim@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Patricia'
     },
     {
       'name.first': 'Queen', 
       'name.last': 'Kim', 
       'email': 'qkim@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Queen'
     },
     {
       'name.first': 'Rona', 
       'name.last': 'Kim', 
       'email': 'rkim@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Rona'
     },
     {
@@ -179,13 +200,15 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'skim@gmail.com', 
       'password': 'password', 
+      'isAdmin': false, 
       '__ref': 'Sally'
     },
     {
       'name.first': 'Tim', 
       'name.last': 'Kim', 
       'email': 'tkim@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Tim'
     },
     {
@@ -193,6 +216,7 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'ukim@gmail.com', 
       'password': 'password', 
+      'isAdmin': false, 
       '__ref': 'Uvin'
     },
     {
@@ -200,111 +224,127 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'vkim@gmail.com', 
       'password': 'password', 
+      'isAdmin': false, 
       '__ref': 'Vince'
     },
     {
       'name.first': 'Wilson', 
       'name.last': 'Kim', 
       'email': 'wkim@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Wilson'
     },
     {
       'name.first': 'Xyrus', 
       'name.last': 'Kim', 
       'email': 'xkim@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Xyrus'
     },
     {
       'name.first': 'Yvette', 
       'name.last': 'Kim', 
       'email': 'ykim@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Yvette'
     },
     {
       'name.first': 'Zend', 
       'name.last': 'Kim', 
       'email': 'zkim@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Zend'
     },
     {
       'name.first': 'Henry', 
       'name.last': 'Lee', 
       'email': 'hlee@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Henry'
     },
     {
       'name.first': 'Angelica', 
       'name.last': 'Lee', 
       'email': 'alee@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Angelica'
     },
     {
       'name.first': 'Kris', 
       'name.last': 'Lee', 
       'email': 'klee@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Kris'
     },
     {
       'name.first': 'Luhan', 
       'name.last': 'Lee', 
       'email': 'llee@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Luhan'
     },
     {
       'name.first': 'Amber', 
       'name.last': 'Lee', 
       'email': 'alee@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Amber'
     },
     {
       'name.first': 'Victoria', 
       'name.last': 'Lee', 
       'email': 'vlee@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Victoria'
     },
     {
       'name.first': 'Krystal', 
       'name.last': 'Lee', 
       'email': 'klee@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Krystal'
     },
     {
       'name.first': 'Gary', 
       'name.last': 'Lee', 
       'email': 'glee@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Gary'
     },
     {
       'name.first': 'Joon', 
       'name.last': 'Lee', 
       'email': 'jlee@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Joon'
     },
     {
       'name.first': 'Cena', 
       'name.last': 'Lee', 
       'email': 'clee@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Cena'
     },
     {
       'name.first': 'Justin', 
       'name.last': 'Lee', 
       'email': 'jlee@gmail.com', 
-      'password': 'password', 
+      'password': 'password',  
+      'isAdmin': false,
       '__ref': 'Justin'
     }
   ],
@@ -1971,12 +2011,6 @@ exports.create = {
         'soilfertilization-lo',
         'stagescorn-lo'
       ],
-      
-      'likes': ['Juan', 'John', 'Jane'],
-      'happy': ['Juan', 'John'],
-      'sad': ['Juan'],
-      
-      
       '__ref': 'corn-chapter',
     },
     {
@@ -1991,13 +2025,7 @@ exports.create = {
       'outline': [
         'mungbean-lo',
         'peanut-lo'
-      ],
-      
-      'likes': ['Juan', 'John', 'Jane'],
-      'happy': ['Juan', 'John'],
-      'sad': ['Juan'],
-      
-      
+      ], 
       '__ref': 'legume-chapter',
     },
     {
@@ -2013,12 +2041,6 @@ exports.create = {
         'sweetpotato-lo',
         'whitepotato-lo'
       ],
-      
-      'likes': ['Juan', 'John', 'Jane'],
-      'happy': ['Juan', 'John'],
-      'sad': ['Juan'],
-      
-      
       '__ref': 'rootcrop-chapter',
     },
     {
@@ -2037,12 +2059,6 @@ exports.create = {
         'papaya-lo',
         'pineapple-lo'
       ],
-      
-      'likes': ['Juan', 'John', 'Jane'],
-      'happy': ['Juan', 'John'],
-      'sad': ['Juan'],
-      
-      
       '__ref': 'tropicalfruit-chapter',
     },
     {
@@ -2057,12 +2073,6 @@ exports.create = {
       'outline': [
         'aquafeeds-lo'
       ],
-     
-      'likes': ['Juan', 'John', 'Jane'],
-      'happy': ['Juan', 'John'],
-      'sad': ['Juan'],
-      
-      
       '__ref': 'feedres-chapter',
     },
 
@@ -2085,11 +2095,6 @@ exports.create = {
         'legume-chapter'
       ],
       
-      'likes': ['Juan', 'John', 'Jane'],
-      'happy': ['Juan', 'John'],
-      'sad': ['Juan'],
-      
-      
     },
     {
       'title': 'Aquatic Resources Course',
@@ -2103,11 +2108,6 @@ exports.create = {
       'outline': [
         'feedres-chapter',
       ],
-      
-      'likes': ['Juan', 'John', 'Jane'],
-      'happy': ['Juan', 'John'],
-      'sad': ['Juan'],
-      
       
     }
   ],
