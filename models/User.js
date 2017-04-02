@@ -35,3 +35,5 @@ User.relationship({ ref: 'Course', refPath: 'author'});
  */
 User.defaultColumns = 'name, email, isAdmin';
 User.register();
+
+exports = module.exports = User
