@@ -21,6 +21,19 @@ block content
             a(href="#") More
             br
             br
+            
+            h3
+              i.fa.fa-calendar(aria-hidden='true')
+              | &nbsp;Events
+            hr
+            ul.list-group
+              each event in events
+                a(href="#").list-group-item
+                  h4.list-group-item-heading #{event.title}
+                  p.list-group-item-text !{event.description.brief}
+            a(href="#") More
+            br
+            br
 
             h3
               i.fa.fa-comments-o(aria-hidden='true')
