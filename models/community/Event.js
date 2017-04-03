@@ -13,8 +13,8 @@ var Event = new keystone.List('Event', {
 
 Event.add({
   title: { type: String, required: true, default: '', index: true },
-  startDate: { type: Types.Date },
-  endDate: { type: Types.Date },
+  startDate: { type: Types.Datetime },
+  endDate: { type: Types.Datetime },
   description: {
     brief: { type: Types.Html, wysiwyg: true, height: 150 },
     full: { type: Types.Html, wysiwyg: true, height: 400 },

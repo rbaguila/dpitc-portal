@@ -7,7 +7,9 @@ var DiscussionComment = new keystone.List('DiscussionComment' , {
 });
 
 DiscussionComment.add({
-
+  discussion: { type: Types.Relationship, ref: 'Discussion'}
 });
 
 DiscussionComment.register();
+
+exports = module.exports = DiscussionComment

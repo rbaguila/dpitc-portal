@@ -1,0 +1,144 @@
+.container-fluid
+  .row
+    .section.col-md-3
+      .section-title
+        <span class='glyphicon glyphicon-calendar'></span>
+        | Events
+        .title-hr.col-xs-12
+      .section-content
+        if events.length
+          each event in events
+            .event.row
+              a.event-date.col-xs-2.col-md-4(href="#")
+                p.day #{event._.startDate.format('DD')}
+                p.mon #{event._.startDate.format('MMM').toUpperCase()}
+              .event-details.col-xs-10.col-md-8
+                p.text-muted AGRICULTURE
+                a(href="#") #{event.title} 
+            hr
+        else
+          .row 
+            .col-md-12
+              br
+              h4.empty.text-muted No upcoming events
+
+    .section.col-md-6
+      .section-title.focus.row 
+        .title.col-md-5.col-xs-4
+          .skew.col-xs-12
+          .skewed-text Latest Blogs
+      .section-content
+        if blogPosts.length
+          each blog in blogPosts
+            .blog.row
+              .blog-avatar
+                if blog.author.picture
+                  a(href="#").author-image
+                    //- Include image here
+                    img(src='images/community/director-news.jpg').img-responsive
+                else
+                  .glyphicon.glyphicon-user
+              .blog-content
+                .content-header
+                  h4
+                    a(href="#").title #{blog.title}
+                    
+                  a(href="#").name.text-muted By #{blog.author.name.full} &nbsp
+                  a(href="#").time-since.text-muted #{blog._.publishedDate.moment().fromNow()}
+                .content-body
+                  - console.log(validationErrors)
+                  p !{blog.content.brief}
+            hr
+        else
+          .row 
+            .col-md-12
+              br
+              h4.empty.text-muted No recent blogs
+      br
+      
+      .section-title.focus.row 
+        .title.col-md-5.col-xs-4
+          .skew.col-xs-12
+          .skewed-text Discussions
+      .section-content
+        if !discussions.length
+          .discussion.row
+            .stat
+              .box
+                .count 0
+                div followers
+              .box
+                .count 4
+                div comments
+              .box
+                .count 34
+                div views
+            .summary
+              h4
+                a(href="#").title This is a debatable topic that is being debated
+              span.badge.tag Agriculture
+          hr
+          
+          .discussion.row
+            .stat
+              .box
+                .count 0
+                div followers
+              .box
+                .count 56
+                div comments
+              .box
+                .count 1024
+                div views
+            .summary
+              h4
+                a(href="#").title This is a debatable topic that is being debated
+              span.badge.tag Agriculture
+              span.badge.tag Problem
+          hr
+              
+        else
+          .row 
+            .col-md-12
+              br
+              h4.empty.text-muted No ongoing discussions
+          
+        
+    .section.col-md-3
+      .section-title Join the Community
+        .title-hr.btm.col-xs-12
+      .section-content
+        form(method="post").sign-up.row
+          input(type="hidden" name="action" value="sign-up")
+          .col-xs-6.col-md-12.col-lg-6(class=validationErrors.name ? 'has-error' : null)
+            input(type="text" name="fname" placeholder="First Name" required).form-control
+          .col-xs-6.col-md-12.col-lg-6
+            input(type="text" name="lname" placeholder="Last Name" required).form-control
+          .col-md-12
+            input(type="email" name="email" placeholder="Email Address" required).form-control
+          .col-md-12
+            input(type="password" name="password" placeholder="Password" required).form-control
+          .col-md-12
+            label Location
+            input(type="text" name="street1" placeholder="Street Address(Optional)").form-control
+          .col-xs-8.col-md-12.col-lg-8
+            input(type="text" name="suburb" placeholder="City/Suburb" required).form-control
+          .col-xs-4.col-md-12.col-lg-4
+            input(type="text" name="state" placeholder="Province" required).form-control
+          .col-md-12
+            label(for="datepicker-dropdown") Birthday
+            include datepicker-dropdown.jade
+          .col-md-12
+            label.radio-inline
+              input(type="radio" name="sex" value="Male" checked)
+              p Male
+            label.radio-inline
+              input(type="radio" name="sex" value="Female") 
+              p Female
+          .col-md-12.submit
+            button(type="submit").btn.btn-success Sign up
+            p 
+              | Already have an account?
+              a(href="#") &nbspLog in
+  
+  br

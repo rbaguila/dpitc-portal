@@ -77,7 +77,7 @@ keystone.set('nav', {
 		'Page'
 	],
 	users: 'users',
-	Community: ['trainings', 'events', 'discussions', 'publications', 'links', 'galleries', 'videos', 'memos'],
+	Community: ['blog-posts', 'trainings', 'events', 'discussions', 'publications', 'links', 'galleries', 'videos', 'memos'],
 	Categories: ['industries', 'sectors', 'commodities'],
 	ELearning: ['LearningObject', 'Chapter', 'Course', 'LearningContent', 'ISP', 'LIndustry', 'LSector', 'LOGallery', 'LOLink', 'LOVideo'],
 });
@@ -86,7 +86,7 @@ keystone.set('nav', {
 keystone.set('cloudinary secure', true);
 
 
-// signin redirection to User 
+// signin redirection to User
 keystone.set('signin redirect', function(user, loginRedirect, req, res){
   var url = (user.isAdmin) ? '/keystone' : loginRedirect;
   res.redirect(url);

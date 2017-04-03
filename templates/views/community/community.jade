@@ -1,93 +1,82 @@
 extends ../../layouts/community
 
 block content
+  
+  if !user
+    include community-public.jade
+  else
+    .community-body
+      .container
+        .row
+          .col-md-5
+            h3
+              i.fa.fa-comments-o(aria-hidden='true')
+              | &nbsp;Discussion
+            hr
+            ul.list-group
+              each training in trainings
+                a(href="#").list-group-item
+                  h4.list-group-item-heading #{training.title}
+                  p.list-group-item-text !{training.description.brief}
+            a(href="#") More
+            br
+            br
 
-  .community-body
-    .container-fluid
-      .row
-        .col-md-5
-          h3
-            i.fa.fa-comments-o(aria-hidden='true')
-            | &nbsp;Discussion
-          hr
-          ul.list-group
-            each training in trainings
-              a(href="#").list-group-item
-                h4.list-group-item-heading #{training.title}
-                p.list-group-item-text !{training.description.brief}
-          a(href="#") More
-          br
-          br
+            h3
+              i.fa.fa-comments-o(aria-hidden='true')
+              | &nbsp;Multimedia
+            hr
+            ul.list-group
+              each training in trainings
+                a(href="#").list-group-item
+                  h4.list-group-item-heading #{training.title}
+                  p.list-group-item-text !{training.description.brief}
+            br
+            br
 
-          h3
-            i.fa.fa-calendar(aria-hidden='true')
-            | &nbsp;Events
-          hr
-          ul.list-group
-            each event in events
-              a(href="#").list-group-item
-                h4.list-group-item-heading #{event.title}
-                p.list-group-item-text !{event.description.brief}
-          a(href="#") More
-          br
-          br
+          .col-md-5
+            h3
+              i.fa.fa-graduation-cap(aria-hidden='true')
+              | &nbsp;Training
+            hr
+            ul.list-group
+              each training in trainings
+                a(href="#").list-group-item
+                  h4.list-group-item-heading #{training.title}
+                  p.list-group-item-text !{training.description.brief}
+            a(href="#") More
+            br
+            br
 
-          h3
-            i.fa.fa-comments-o(aria-hidden='true')
-            | &nbsp;Multimedia
-          hr
-          ul.list-group
-            each training in trainings
-              a(href="#").list-group-item
-                h4.list-group-item-heading #{training.title}
-                p.list-group-item-text !{training.description.brief}
-          br
-          br
+            h3
+              i.fa.fa-graduation-cap(aria-hidden='true')
+              | &nbsp;Blogs
+            hr
+            ul.list-group
+              each training in trainings
+                a(href="#").list-group-item
+                  h4.list-group-item-heading #{training.title}
+                  p.list-group-item-text !{training.description.brief}
+            a(href="#") More
+            br
+            br
 
-        .col-md-5
-          h3
-            i.fa.fa-graduation-cap(aria-hidden='true')
-            | &nbsp;Training
-          hr
-          ul.list-group
-            each training in trainings
-              a(href="#").list-group-item
-                h4.list-group-item-heading #{training.title}
-                p.list-group-item-text !{training.description.brief}
-          a(href="#") More
-          br
-          br
-
-          h3
-            i.fa.fa-graduation-cap(aria-hidden='true')
-            | &nbsp;Blogs
-          hr
-          ul.list-group
-            each training in trainings
-              a(href="#").list-group-item
-                h4.list-group-item-heading #{training.title}
-                p.list-group-item-text !{training.description.brief}
-          a(href="#") More
-          br
-          br
-
-
-          h3
-            i.fa.fa-calendar(aria-hidden='true')
-            | &nbsp;Support
-          hr
-          ul.list-group
-            each event in events
-              a(href="#").list-group-item
-                h4.list-group-item-heading #{event.title}
-                p.list-group-item-text !{event.description.brief}
-        .col-md-2
-          ul.list-group
-            li.list-group-item
-              h4 WELCOME TO PCAARRD KM COMMUNITY
-              h4 Insights. Collboration. Innovations.
-              ul
-                li 1234 Comments
-                li 1234 Likes
-                li 1234 Happy
-                li 1234 Sad
+            h3
+              i.fa.fa-calendar(aria-hidden='true')
+              | &nbsp;Support
+            hr
+            ul.list-group
+              each event in events
+                a(href="#").list-group-item
+                  h4.list-group-item-heading #{event.title}
+                  p.list-group-item-text !{event.description.brief}
+          .col-md-2
+            ul.list-group
+              li.list-group-item
+                h4 WELCOME TO PCAARRD KM COMMUNITY
+                h4 Insights. Collboration. Innovations.
+                ul
+                  li 1234 Comments
+                  li 1234 Likes
+                  li 1234 Happy
+                  li 1234 Sad
