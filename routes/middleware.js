@@ -25,7 +25,7 @@ exports.initLocals = function (req, res, next) {
 		{ label: 'FIESTA', key: 'fiesta', href: '/#' },
 		{ label: 'Technology', key: 'tech', href: '/tech' },
 		{ label: 'Community', key: 'community', href: '/community' },
-		{ label: 'eResources', key: 'e-resources', href: '/eresources' },
+		{ label: 'eResources', key: 'eresources', href: '/eresources' },
 		// { label: 'Home', key: 'home', href: '/' },
 		// { label: 'Blog', key: 'blog', href: '/blog' },
 		// { label: 'Gallery', key: 'gallery', href: '/gallery' },

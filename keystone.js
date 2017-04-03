@@ -19,7 +19,7 @@ keystone.init({
 	'views': 'templates/views',
 	'view engine': 'jade',
 
-	'emails': 'templates/emails',
+	// 'emails': 'templates/emails',
 
 	'auto update': true,
 	'session': true,
@@ -46,41 +46,39 @@ keystone.set('routes', require('./routes'));
 
 // Setup common locals for your emails. The following are required by Keystone's
 // default email templates, you may remove them if you're using your own.
-keystone.set('email locals', {
-	logo_src: '/images/logo-email.gif',
-	logo_width: 194,
-	logo_height: 76,
-	theme: {
-		email_bg: '#f9f9f9',
-		link_color: '#2697de',
-		buttons: {
-			color: '#fff',
-			background_color: '#2697de',
-			border_color: '#1a7cb7',
-		},
-	},
-});
+// keystone.set('email locals', {
+// 	logo_src: '/images/logo-email.gif',
+// 	logo_width: 194,
+// 	logo_height: 76,
+// 	theme: {
+// 		email_bg: '#f9f9f9',
+// 		link_color: '#2697de',
+// 		buttons: {
+// 			color: '#fff',
+// 			background_color: '#2697de',
+// 			border_color: '#1a7cb7',
+// 		},
+// 	},
+// });
 
 // Load your project's email test routes
-keystone.set('email tests', require('./routes/emails'));
+// keystone.set('email tests', require('./routes/emails'));
 
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
 	posts: ['posts', 'post-categories'],
 	'contents': [
-		'exhibits',
+		// 'exhibits',
 		'sliders'
 	],
 	'pages': [
 		'BasePage',
 		'Page'
 	],
-	technologies: 'technologies',
-	// pages: 'Page,',
-	galleries: 'galleries',
-	enquiries: 'enquiries',
 	users: 'users',
+	Community: ['trainings', 'events', 'discussions', 'publications', 'links', 'galleries', 'videos', 'memos'],
+	Categories: ['industries', 'sectors', 'commodities']
 });
 
 // optional, will force cloudinary to serve images over https
