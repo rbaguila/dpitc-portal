@@ -40,16 +40,5 @@ exports = module.exports = function(req, res) {
 
   });
 
-  // async.each(locals.data.categories, function(category, next) {
-  //       keystone.list('Products').model.count().where('categories').in([category.id]).exec(function(err, count) {
-  //         category.postCount = count;
-  //         next(err);
-  //       });
-
-  //     }, function(err) {
-  //       next(err);
-  //     });
-
-
   view.render('eresources/eresources', pageData);
 }
