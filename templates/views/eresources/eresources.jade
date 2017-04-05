@@ -7,22 +7,48 @@ block content
       .container
         .row
           .col-md-9
-            h3 Latest Publications
-            hr
-            row
+            .section-header
+              .title Latest Publications
+              .triangle
+
+            hr.clear
+            .row
               each publication in publications
                 .col-md-2
-                  img(src=publication._.cover.fit(100, 180, {}))
-                  br
-                  | #{publication.title}
-                  br
-                  | #{publication.publicationType}
+                  a(href="/eresources/publication/"+publication._id)
+                    img(src=publication._.cover.fit(100, 180, {}))
+                    br
+                    | #{publication.title}
+              .col-xs-12.more-link
+                a(href="/eresources/publications") More Publications
 
           .col-md-3
-            h3 Categories
-            hr
+            .minor-section-header
+              .title Top Categories
+              .colored-bar
+            .row
+              //- if data.industries && data.industries.length
+              each industry in data.industries
+                  .col-xs-12
+                    | #{industry.name} &nbsp;
+                    span.badge #{industry.publicationCount}
+
 
         .row
           .col-md-9
-            h3 Links
-            hr
+            .section-header
+              .title Links
+              .triangle
+            hr.clear
+            .row
+              each link in links
+                .col-xs-12.eresources-link
+                  img(src=link._.image.fill(200, 150, {})).image
+                  .data
+                    .title
+                      a(href=link.url) #{link.name}
+                    .description #{link.description}
+              .col-xs-12.more-link
+                a(href="/eresources/links") More Links
+
+
