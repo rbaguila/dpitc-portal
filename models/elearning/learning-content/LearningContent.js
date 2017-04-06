@@ -44,33 +44,6 @@ LearningContent.add({
       height: 400 
     },
   },
-  comments: { 
-    type: Types.Relationship, 
-    ref: 'LOComment', 
-    required: false, 
-    many: true 
-  },
-  likes: { 
-    type: Types.Relationship,
-    ref: 'LUser',
-    many: true,
-    required: false,
-    
-  },
-  happy: { 
-    type: Types.Relationship,
-    ref: 'LUser',
-    many: true,
-    required: false,
-    
-  },
-  sad: { 
-    type: Types.Relationship,
-    ref: 'LUser',
-    many: true,
-    required: false,
-    
-  },  
   tags: { 
     type: Types.TextArray, 
     collapse: true 

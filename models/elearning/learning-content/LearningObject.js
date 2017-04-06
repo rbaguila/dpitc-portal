@@ -48,6 +48,30 @@ LearningObject.add({
     default: null, 
     required: false 
   },
+  comments: { 
+    type: Types.Relationship, 
+    ref: 'LOComment', 
+    required: false, 
+    many: true 
+  },
+  likes: { 
+    type: Types.Relationship,
+    ref: 'LUser',
+    many: true,
+    required: false,
+  },
+  happy: { 
+    type: Types.Relationship,
+    ref: 'LUser',
+    many: true,
+    required: false,
+  },
+  sad: { 
+    type: Types.Relationship,
+    ref: 'LUser',
+    many: true,
+    required: false,
+  },  
 });
 
 LearningObject.schema.virtual('content.full').get(function () {
