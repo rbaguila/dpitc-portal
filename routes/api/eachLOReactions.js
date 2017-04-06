@@ -13,6 +13,7 @@ exports = module.exports = function(req, res) {
 
   var totalReactions= 0;
 
+  //TO DO MAY MALI PA DITO!
   keystone.list('LearningObject').model.find().exec(function (err, results) {
 
 				if (err || !results.length) {
