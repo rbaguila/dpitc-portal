@@ -851,7 +851,8 @@ exports.create = {
       'happy': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena'],
       'sad': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
       
-      'updatedAt': Date.now
+      'updatedAt': Date.now,
+      '__ref': 'plantingabaca-lo'
     },
     { 
       'title': 'Planting Banana',
@@ -874,7 +875,8 @@ exports.create = {
       'happy': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena'],
       'sad': ['Ferdinand', 'Gerald', 'Harold', 'Henry', 'Irish', 'Joon', 'Jeff'],
       
-      'updatedAt': Date.now
+      'updatedAt': Date.now,
+      '__ref': 'plantingbanana-lo'
     },
     { 
       'title': 'Planting Coconut',
@@ -897,7 +899,8 @@ exports.create = {
       'happy': ['Juan', 'John'],
       'sad': ['Zend'],
       
-      'updatedAt': Date.now
+      'updatedAt': Date.now,
+      '__ref': 'plantingcoconut-lo'
     },
     { 
       'title': 'Planting Coffee',
@@ -920,7 +923,8 @@ exports.create = {
       'happy': ['Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'sad': ['Sally', 'Tim', 'Uvin', 'Vince', 'Victoria', 'Wilson', 'Xyrus', 'Yvette', 'Zend'],
       
-      'updatedAt': Date.now
+      'updatedAt': Date.now,
+      '__ref': 'plantingcoffee-lo'
     },
     { 
       'title': 'Planting Mungbean',
@@ -991,7 +995,8 @@ exports.create = {
       'happy': ['Juan', 'John'],
       'sad': ['Juan'],
       
-      'updatedAt': Date.now
+      'updatedAt': Date.now,
+      '__ref': 'plantingmango-lo'
     },
     { 
       'title': 'Planting Rice',
@@ -1014,7 +1019,8 @@ exports.create = {
       'happy': ['Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'sad': ['Sally', 'Tim', 'Uvin', 'Vince', 'Victoria', 'Wilson', 'Xyrus', 'Yvette', 'Zend'],
       
-      'updatedAt': Date.now
+      'updatedAt': Date.now,
+      '__ref': 'plantingrice-lo'
     },
     { 
       'title': 'Planting Sweet Potato',
@@ -1085,7 +1091,8 @@ exports.create = {
       'happy': ['Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'sad': ['Justin', 'Krystal', 'Kris', 'Karl', 'Luhan', 'Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       
-      'updatedAt': Date.now
+      'updatedAt': Date.now,
+      '__ref': 'sugarcane-lo'
     },
     { 
       'title': 'Planting Pineapple',
@@ -2110,6 +2117,190 @@ exports.create = {
       ],
       
     }
+  ],
+
+  LOComment: [
+    { 
+      'content': 'Hello po!', 
+      'author': 'Angelica', 
+      'learningObject': 'aquafeeds-lo',
+      'dateCreated': '2017-01-12'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Amber', 
+      'learningObject': 'pineapple-lo',
+      'dateCreated': '2017-01-28'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Albert', 
+      'learningObject': 'papaya-lo',
+      'dateCreated': '2017-01-18'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Bryan', 
+      'learningObject': 'citrus-lo',
+      'dateCreated': '2017-01-10'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Cena', 
+      'learningObject': 'jackfruit-lo',
+      'dateCreated': '2017-02-09'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Daniel', 
+      'learningObject': 'durian-lo',
+      'dateCreated': '2017-02-26'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Ellen', 
+      'learningObject': 'whitepotato-lo',
+      'dateCreated': '2017-02-07'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Ferdinand', 
+      'learningObject': 'sweetpotato-lo',
+      'dateCreated': '2017-03-01'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Gerald', 
+      'learningObject': 'peanut-lo',
+      'dateCreated': '2017-03-11'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Gary', 
+      'learningObject': 'mungbean-lo',
+      'dateCreated': '2017-03-09'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Henry', 
+      'learningObject': 'stagescorn-lo',
+      'dateCreated': '2017-03-16'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Harold', 
+      'learningObject': 'soilfertilization-lo',
+      'dateCreated': '2017-03-19'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Irish', 
+      'learningObject': 'landpreparation-lo',
+      'dateCreated': '2017-03-20'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Juan', 
+      'learningObject': 'biotechbtcorn-lo',
+      'dateCreated': '2017-03-21'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'John', 
+      'learningObject': 'feedingprogram-lo',
+      'dateCreated': '2017-03-22'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Jane', 
+      'learningObject': 'grainquality-lo',
+      'dateCreated': '2017-03-25'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Justin', 
+      'learningObject': 'sugarcane-lo',
+      'dateCreated': '2017-03-26'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Joon', 
+      'learningObject': 'plantingrice-lo',
+      'dateCreated': '2017-03-20'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Jeff', 
+      'learningObject': 'plantingmango-lo',
+      'dateCreated': '2017-03-23'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Kris', 
+      'learningObject': 'plantingcoffee-lo',
+      'dateCreated': '2017-03-23'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Karl', 
+      'learningObject': 'plantingcoconut-lo',
+      'dateCreated': '2017-03-24'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Krystal', 
+      'learningObject': 'plantingbanana-lo',
+      'dateCreated': '2017-03-28'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Luhan', 
+      'learningObject': 'plantingabaca-lo',
+      'dateCreated': '2017-03-22'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Logan', 
+      'learningObject': 'pineapple-lo',
+      'dateCreated': '2017-03-17'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Manuel', 
+      'learningObject': 'aquafeeds-lo',
+      'dateCreated': '2017-03-16'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Natalie', 
+      'learningObject': 'papaya-lo',
+      'dateCreated': '2017-03-17'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Oliver', 
+      'learningObject': 'citrus-lo',
+      'dateCreated': '2017-03-04'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Patricia', 
+      'learningObject': 'jackfruit-lo',
+      'dateCreated': '2017-04-05'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Queen', 
+      'learningObject': 'whitepotato-lo',
+      'dateCreated': '2017-04-04'
+    },
+    { 
+      'content': 'Hello po!', 
+      'author': 'Rona', 
+      'learningObject': 'durian-lo',
+      'dateCreated': '2017-04-03'
+    },
+
   ],
 
   
