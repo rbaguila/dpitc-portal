@@ -50,6 +50,5 @@ exports = module.exports = function(req, res) {
   //       next(err);
   //     });
 
-
   view.render('eresources/eresources', pageData);
 }
