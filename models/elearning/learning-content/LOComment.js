@@ -14,6 +14,15 @@ LOComment.add({
 	author: {
 		type: Types.Relationship,
 		ref: 'LUser'
+	},
+	learningObject: {
+		type: Types.Relationship,
+		ref: 'LearningObject'
+	},
+	dateCreated: {
+		type: Types.Date, 
+		index: true, 
+		default: Date.now 
 	}
 });
 

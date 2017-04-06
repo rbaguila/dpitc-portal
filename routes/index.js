@@ -76,6 +76,9 @@ exports = module.exports = function (app) {
 	app.get('/:slug', page_router);
 
 	app.get('/api/exhibits', routes.api.exhibit);
+	app.get('/api/LOReactions', routes.api.LOReactions);
+	app.get('/api/eachLOReactions/:type', routes.api.eachLOReactions);
+	app.get('/api/LOComments/:year', routes.api.LOComments);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

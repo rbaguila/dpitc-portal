@@ -1,28 +1,50 @@
 extends ../../layouts/default
 
 block css
-  link(rel="stylesheet" type="text/css" href="/styles/course.css")
+  link(rel="stylesheet" type="text/css" href="/styles/analytics.css")
 
-mixin Reactions(reactions)
+//block js
+  script(src='/js/d3/d3.min.js')
+
+mixin Reactions(maxreactions, minreactions)
   h4.text Reactions
-  h5= reactions
+    .row
+      .col-md-6.col-xs-6
+        div(id="reactionsPieChart")
+      .col-md-3.col-xs-6
+        .thumbnail
+          if maxreactions.thumbnail.exists
+            img.card-img-top(src=maxreactions.thumbnail alt="maxreactions.title")
+          else if maxreactions.videoId
+            img.card-img-top(src='https://img.youtube.com/vi/'+ maxreactions.videoId +'/mqdefault.jpg', height="130px")
+          else
+            img.card-img-top(src="/images/image-not-available-th.png" alt=maxreactions.title, height="130px")
+          .caption
+            .row
+              h4= maxreactions.title.substring(0, 50)
+        hr
+        div(id="maxReactionsPieChart")
+      .col-md-3.col-xs-6
+        .thumbnail
+          if minreactions.thumbnail.exists
+            img.card-img-top(src=minreactions.thumbnail alt="minreactions.title")
+          else if minreactions.videoId
+            img.card-img-top(src='https://img.youtube.com/vi/'+ minreactions.videoId +'/mqdefault.jpg', height="130px")
+          else
+            img.card-img-top(src="/images/image-not-available-th.png" alt=minreactions.title, height="130px")
+          .caption
+            .row
+              h4= minreactions.title.substring(0, 50)
+        hr
+        div(id="minReactionsPieChart")
 
-mixin Likes(likes)
-  h4.text Likes
-  h5= likes
-
-mixin Happy(happy)
-  h4.text Happy
-  h5= happy
-
-mixin Sad(sad)
-  h4.text Sad
-  h5= sad
-
-mixin Comments(comments)
+mixin Comments()
   h4.text Comments
-  h5= comments
-
+  .row
+      .col-md-6.col-xs-6
+        div(id="commentsGraph")
+      .col-md-3.col-xs-6
+      .col-md-3.col-xs-6
 //mixin Views(views)
   h4.text Views
   h5= views
@@ -32,20 +54,14 @@ block content
   .container
     .panel.panel-default
       .panel-body
-        +Reactions(data.totalReactionsLO)
+        +Reactions(data.maxReactionsLearningObject, data.minReactionsLearningObject)
     .panel.panel-default
       .panel-body
-        +Likes(data.totalLikesLO)
-    .panel.panel-default
-      .panel-body
-        +Happy(data.totalHappyLO)
-    .panel.panel-default
-      .panel-body
-        +Sad(data.totalSadLO)
-    .panel.panel-default
-      .panel-body
-        +Comments(data.comments)
+        +Comments()
     //.panel.panel-default
       .panel-body
         +Views(data.views)
-    
+  script(src='/js/learningObjectReactions.js')
+  script(src='/js/maxLearningObjectReactions.js')
+  script(src='/js/minLearningObjectReactions.js')
+  script(src='/js/learningObjectComments.js')
