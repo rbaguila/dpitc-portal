@@ -51,6 +51,8 @@ exports = module.exports = function (app) {
 	app.get('/elearning/chapter/:chapterslug?', routes.views.elearning.chapterOutline);
 	app.get('/elearning/learning-object/:learningobjectslug', routes.views.elearning.learningObject);
 	app.get('/elearning/analytics', routes.views.elearning.analytics);
+	app.get('/elearning/signup', routes.views.elearning.registerLUser);
+	app.post('/elearning/signup', routes.views.elearning.registerLUser);
 	
 	app.get('/search/', function(req,res){
 		var searchKey = req.query.searchKey;
