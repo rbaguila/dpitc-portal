@@ -56,6 +56,8 @@ exports = module.exports = function (app) {
 	//Community
 	app.get('/community', routes.communityViews.community);
 	app.get('/eresources', routes.eresourcesViews.eresources);
+	app.get('/eresources/publications', routes.eresourcesViews.publications);
+	app.get('/eresources/publication/:publication', routes.eresourcesViews.publication);
 
 	//File Upload Route
   app.get('/api/fileupload/list', keystone.middleware.api, routes.api.fileupload.list);

@@ -1,22 +1,14 @@
 var keystone = require('keystone');
+var async = require('async');
 
-exports = module.exports = function (req, res) {
+exports = module.exports = function(req, res) {
   var view = new keystone.View(req, res);
   var locals = res.locals;
   locals.section = 'eresources';
 
-  view.query('industries', keystone.list('Industry').model.find())
-  view.query('sectors', keystone.list('Sector').model.find())
-  view.query('commodities', keystone.list('Commodity').model.find())
-
-
-  var viewStyle = req.query.view == undefined ? 'grid' : req.query.view
-  var searchTerm = req.query.term
-  var searchCategory = req.query.category
-
-
-  view.query('publications', keystone.list('Publication').model.find())
-
+  locals.data = {
+    industries: []
+  }
 
   var pageData = {
     loginRedirect: '/eresources',
@@ -25,11 +17,38 @@ exports = module.exports = function (req, res) {
     ]
   }
 
-  if (viewStyle == 'list') {
-    //render list layout
-    view.render('eresources/publications-list', pageData);
-  } else {
-    //render grid layout by default
-    view.render('eresources/publications-grid', pageData);
-  }
+  view.query('publications', keystone.list('Publication').model.find().limit(10));
+  view.query('links', keystone.list('Link').model.find().limit(3))
+
+  view.on('init', function(next) {
+    keystone.list('Industry').model.find().exec(function(err, result) {
+      if (err) {
+        return next(err);
+      }
+      locals.data.industries = result;
+      // next(err)
+      async.each(locals.data.industries, function(industry, next) {
+        keystone.list('Publication').model.count().where('industry').in([industry.id]).exec(function(err, count) {
+          industry.publicationCount = count;
+          next(err);
+        });
+      }, function(err) {
+          next(err);
+        }
+      );
+    });
+
+  });
+
+  // async.each(locals.data.categories, function(category, next) {
+  //       keystone.list('Products').model.count().where('categories').in([category.id]).exec(function(err, count) {
+  //         category.postCount = count;
+  //         next(err);
+  //       });
+
+  //     }, function(err) {
+  //       next(err);
+  //     });
+
+  view.render('eresources/eresources', pageData);
 }
