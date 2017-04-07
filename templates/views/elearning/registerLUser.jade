@@ -1,0 +1,47 @@
+extends ../../layouts/elearning
+
+
+block signup 
+  form.contact-form(method="post")
+    .row      
+      input(type="hidden", name="action", value="user.create")
+      .form-group
+        label.control-label Name
+        .row
+          .col-xs-6.col-md-6
+            input.form-control.input-box(type='text', name='first', value=formData.first, placeholder='First Name')
+          .col-xs-6.col-md-6
+            input.form-control.input-box(type='text', name='last', value=formData.last, placeholder='Last Name')
+      .form-group
+        label.control-label Email
+        .row
+          .col-xs-6.col-md-12
+            input.form-control.input-box(type='email', name='email', value=formData.email, placeholder='Email')
+      .form-group
+        label.control-label Address
+        .row
+          .col-xs-6.col-md-12
+            input.form-control.input-box(type='text', name='address', value=formData.address, placeholder='Address')
+      .form-group
+        label.control-label Password
+        .row
+          .col-xs-6.col-md-6
+            input.form-control.input-box(type='password', name='password', value=formData.password, placeholder='Password')
+          .col-xs-6.col-md-6
+            input.form-control.input-box(type='password', name='password_confirm', value=formData.password_confirm, placeholder='Retype password')
+    hr
+    .row.pull-right
+      button(type='submit').btn.btn-primary Sign Up
+
+block content
+  .elearning-body
+    .container
+      .row
+        .col-xs-12.col-md-6.col-md-offset-3
+          .panel.panel-default
+            .panel-body
+              if user
+                p You are already logged in.
+              else
+                p Fill form in order to sign up.
+                block signup

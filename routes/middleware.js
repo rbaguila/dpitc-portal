@@ -26,6 +26,7 @@ exports.initLocals = function (req, res, next) {
 		{ label: 'Technology', key: 'tech', href: '/tech' },
 		{ label: 'Community', key: 'community', href: '/community' },
 		{ label: 'eResources', key: 'eresources', href: '/eresources' },
+		{ label: 'eLearning', key: 'elearning', href: '/elearning'},
 		// { label: 'Home', key: 'home', href: '/' },
 		// { label: 'Blog', key: 'blog', href: '/blog' },
 		// { label: 'Gallery', key: 'gallery', href: '/gallery' },

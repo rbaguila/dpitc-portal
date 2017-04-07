@@ -1,0 +1,69 @@
+extends ../../layouts/default
+
+block css
+  link(rel="stylesheet" type="text/css" href="/styles/analytics.css")
+
+//block js
+  script(src='/js/d3/d3.min.js')
+
+mixin Reactions(maxreactions, minreactions)
+  h4.text Reactions
+    .row
+      .col-md-6.col-xs-6
+        div(id="reactionsPieChart")
+      .col-md-3.col-xs-6
+        .thumbnail
+          if maxreactions.thumbnail.exists
+            img.card-img-top(src=maxreactions.thumbnail alt="maxreactions.title")
+          else if maxreactions.videoId
+            img.card-img-top(src='https://img.youtube.com/vi/'+ maxreactions.videoId +'/mqdefault.jpg', height="130px")
+          else
+            img.card-img-top(src="/images/image-not-available-th.png" alt=maxreactions.title, height="130px")
+          .caption
+            .row
+              h4= maxreactions.title.substring(0, 50)
+        hr
+        div(id="maxReactionsPieChart")
+      .col-md-3.col-xs-6
+        .thumbnail
+          if minreactions.thumbnail.exists
+            img.card-img-top(src=minreactions.thumbnail alt="minreactions.title")
+          else if minreactions.videoId
+            img.card-img-top(src='https://img.youtube.com/vi/'+ minreactions.videoId +'/mqdefault.jpg', height="130px")
+          else
+            img.card-img-top(src="/images/image-not-available-th.png" alt=minreactions.title, height="130px")
+          .caption
+            .row
+              h4= minreactions.title.substring(0, 50)
+        hr
+        div(id="minReactionsPieChart")
+
+mixin Comments()
+  h4.text Comments
+  .row
+      .col-md-6.col-xs-6
+        div(id="commentsGraph")
+      .col-md-3.col-xs-6
+        div(id="maxCommentsGraph")
+      .col-md-3.col-xs-6
+        //to do again
+//mixin Views(views)
+  h4.text Views
+  h5= views
+
+block content
+  h3.text-center ELearning Analytics
+  .container
+    .panel.panel-default
+      .panel-body
+        +Reactions(data.maxReactionsLearningObject, data.minReactionsLearningObject)
+    .panel.panel-default
+      .panel-body
+        +Comments()
+    //.panel.panel-default
+      .panel-body
+        +Views(data.views)
+  script(src='/js/learningObjectReactions.js')
+  script(src='/js/maxLearningObjectReactions.js')
+  script(src='/js/minLearningObjectReactions.js')
+  script(src='/js/learningObjectComments.js')

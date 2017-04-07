@@ -1,0 +1,116 @@
+body {
+    padding-top: 80px;
+    background-color: rgba(250,250,250,1);
+    padding-bottom: 120px;
+}
+
+/*
+  Vertical Thumbnails
+*/
+
+.label {
+    display: inline-block;
+    padding: .2em .6em .3em;
+}
+
+.thumbnail.right-caption > img {
+    float: left;
+    margin-right: 9px;
+}
+
+.thumbnail.right-caption {
+    float: left;
+}
+
+.thumbnail.right-caption > .caption {
+    padding: 4px;
+}
+
+
+@media only screen and (min-width : 481px) {
+    .row.equal-height {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .row.equal-height > [class*='col-'] {
+        display: flex;
+        flex-direction: column;
+    }
+    .row.equal-height.row:after,
+    .row.equal-height.row:before {
+        display: flex;
+    }
+
+    .row.equal-height > [class*='col-'] > .thumbnail,
+    .row.equal-height > [class*='col-'] > .thumbnail > .caption {
+        display: flex;
+        flex: 1 0 auto;
+        flex-direction: column;
+    }
+    .row.equal-height > [class*='col-'] > .thumbnail > .caption > .flex-text {
+        flex-grow: 1;
+    }
+    .row.equal-height > [class*='col-'] > .thumbnail > img {
+        width: 100%;
+        height: 200px; /* force image's height */
+
+        /* force image fit inside it's "box" */
+        -webkit-object-fit: cover;
+           -moz-object-fit: cover;
+            -ms-object-fit: cover;
+             -o-object-fit: cover;
+                object-fit: cover;
+    }
+}
+
+.elearning-body {
+  /*margin-top: 85px;*/
+  /*130 to accomodate main header (logo + links) and blue community header*/
+  margin-top: 130px;
+}
+
+#elearning-nav {
+  margin-top: 85px;
+  height: 45px;
+  background-color:#3062B7;
+
+}
+
+.elearning-breadcrumb {
+  background-color: unset;
+  padding: 10px 15px 9px 15px;
+  float: left;
+}
+
+.elearning-breadcrumb li a {
+  color: #FBFBFB;
+  text-transform: uppercase;
+}
+
+.elearning-breadcrumb li a:hover {
+  color: #c3d8f7;
+}
+
+.elearning-breadcrumb li:last-child {
+  color: #FBFBFB;
+  text-transform: uppercase;
+}
+
+#user-login-links {
+  float: right;
+  padding: 10px 15px 9px 15px;
+  color: #FBFBFB;
+}
+
+.login-link {
+  color: #FBFBFB;
+}
+
+.login-link:hover {
+  color: #c3d8f7;
+}
+
+
+.container.margin-top {
+  margin-top: 20px;
+}

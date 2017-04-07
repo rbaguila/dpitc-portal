@@ -1,0 +1,72 @@
+extends ../../layouts/default
+
+mixin learningObject(currLO)
+  .container-fluid
+    .row
+      if currLO.video
+        .col-md-8.embed-responsive-item
+          iframe(width="640", height="360", src="https://www.youtube.com/embed/"+currLO.video.videoId, frameborder="0", allowfullscreen)
+    .row
+      p.text-info Uploaded: #{currLO.publishedAt.toDateString()}
+    .row
+      p= currLO.content.extended
+      br
+    .row
+      p Related: &nbsp;
+      each tag in currLO.tags
+        span.label.label-info  #{tag} &nbsp;
+
+mixin recommendedTopics(recLO)
+  each lo in recLO
+    .media
+      .media-left
+        if lo.thumbnail.exists
+          a(href=lo.url)
+            img(src=lo._.thumbnail.limit(100, 100) alt=lo.video.title).img-rounded
+        else
+          a(href=lo.url)
+            img(src="/images/image-not-available.png", alt=lo.title, height="100px", weight="100px").img-rounded
+      .media-body
+        a(href=lo.url)
+          h5=lo.title
+          span= lo.content.brief.substring(0, 50)
+
+mixin otherTopics(otherLO)
+  each lo in otherLO
+    .media
+      .media-left
+        if lo.thumbnail.exists
+          a(href=lo.url)
+            img(src=lo._.thumbnail.limit(100, 100) alt=lo.video.title).img-rounded
+        else
+          a(href=lo.url)
+            img(src="/images/image-not-available.png", alt=lo.title, height="100px", weight="100px").img-rounded
+      .media-body
+        a(href=lo.url)
+          h5=lo.title
+          span= lo.content.brief.substring(0, 50)
+
+
+
+block content
+  .container
+    .row
+      .col-md-8
+        .panel.panel-info
+          .panel-body
+            +learningObject(data.currLO)
+          .panel-footer
+            p.text-info.text-right Author: #{data.currLO.author.name.last}, #{data.currLO.author.name.first}
+
+      .col-md-4
+        .row
+          .panel.panel-info
+            .panel-heading Recommended Topics
+            .panel-body
+              +recommendedTopics(data.recommendedLO)
+        .row
+          .panel.panel-info
+            .panel-heading 
+              a(href="/elearning/courses") Other Topics
+            .panel-body
+              +otherTopics(data.otherLO)
