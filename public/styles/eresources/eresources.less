@@ -8,70 +8,71 @@
   color: #515151;
 }
 
-
-/* GRID STYLE */
-.publication-col-grid {
-  text-align: center;
-}
-
-.publication-col-grid .cover {
-  margin: 0 auto;
-  width: 100px;
-  height: 180px;
-  position: relative;
-}
-
-.publication-col-grid .cover img {
-  position: absolute;
-  bottom: 0;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-}
-
-.publication-col-grid .title {
-  height: 50px;
-}
-
-/* LIST STYLE */
-.publication-col-list {
-  height: 180px;
-  padding: 10px;
-}
-
-.publication-col-list .cover {
+.eresources-link .image{
   float: left;
-  /*margin-right: 20px;*/
-  height: 100%;
-  width: 120px;
-  margin-right: 10px;
-  position: relative;
+  margin-right: 20px;
 }
 
-.publication-col-list .cover img {
-  position: absolute;
-  bottom: 0;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
+.eresources-link {
+  margin-bottom: 20px;
 }
 
-.publication-col-list .details {
-  height: 100%;
-  max-height: 100%;
-  overflow: hidden;
+.eresources-link .title {
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-bottom: 10px;
 }
 
-.publication-meta {
-  margin-top: 15px;
+.more-link {
+  margin-bottom: 20px;
+  text-align: right;
 }
 
-#publications-filter {
+.section-header {
+  width: 100%;
+}
+
+@header-color: #3062B7;
+
+.section-header .title {
+  height: 45px;
+  background-color: @header-color;
+  color: #FFFFFF;
+  float: left;
+  font-weight: bold;
+  font-size: 1.5em;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+.section-header .triangle {
+  width: 0;
+  height: 0;
+  border-top: 45px solid @header-color;
+  border-right: 45px solid transparent;
+  float: left;
+}
+
+.clear {
+  clear: both;
+}
+
+.minor-section-header {
 
 }
 
-#publications-filter .view-button {
-  padding: 0;
+.minor-section-header .title {
+  font-weight: bold;
+  font-size: 1.5em;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.minor-section-header .colored-bar {
+  height: 4px;
+  width: 100%;
+  background-color: @header-color;
 }

@@ -3,7 +3,9 @@
 #community_block .row,
 #tech_block .row {
 	 margin-top: 20px;
+	 margin-bottom: 20px;
 }
+
 
 .tech-category {
 	text-align: left;

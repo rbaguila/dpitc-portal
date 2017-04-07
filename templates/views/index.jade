@@ -11,7 +11,7 @@ block content
 
 
 	//- Dynamic Slider from the database
-	#carousel.container(style="margin-top:85px;").no-padding
+	#carousel.container(style="margin-top:100px; margin-bottom:40px;").no-padding
 		#myCarousel.carousel.slide(data-ride='carousel')
 			//- Carousel indicators were declared here
 			ol.carousel-indicators
@@ -50,19 +50,7 @@ block content
 											!= image.caption
 								//- a(class="btn btn-primary more-news" href="blog") Click Here For More News
 
-
-			//- left amd right arrows
-			//- a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
-			//- 	span.glyphicon.glyphicon-chevron-left
-			//- a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
-			//- 	span.glyphicon.glyphicon-chevron-right
-
 	ul.social-sharing.fixed
-		//- li.title
-			| Join
-			br
-			| Us
-			img.arrow(src='https://d2sh4fq2xsdeg9.cloudfront.net/application/assets/genx/images/share-arrow.png', alt='')
 
 		li.community
 			a(target='_blank', href='#' title="Join our community")
@@ -84,46 +72,26 @@ block content
 			a(href='mailto:pcaarrd@pcaarrd.dost.gov.ph' title="Email Us")
 				i.fa.fa-envelope
 
-	//- div(style='float:right; z-index:100; right:0px; top:100px; background-color:#EEE; width:40;height:40; padding:6px; position: fixed; border-radius:20px;')
-		a(href='#')
-			img( src="/images/community.png" title="Community" height="30px")
 
-	//- .container: .row
-		.col-md-9
-			center
-				h2 FIESTA
-				h4 Showcase of the best outputs in agriculture and aquatic research and development
-			div.slick-slider
-				div
+	#tech_block.fh5co-project-style-3
+		.container.no-padding
+			.row
+				.col-md-12
 					center
-						a#pop(href="#")
-							img( src="/images/exhibit/sipagfiesta.png" id="imageresource" height="250px")
-				div
+						h2.fh5co-heading Latest Videos
+				//- .col-md-12
 					center
-						img( src="/images/exhibit/knifefish.jpg" height="250px")
-				div
-					center
-						img( src="/images/exhibit/mango.jpg" height="250px")
-				div
-					center
-						img( src="/images/exhibit/bigeyelet.jpg" height="250px")
-				div
-					center
-						img( src="/images/exhibit/cacao.jpg" height="250px")
-		.col-md-3
-			center
-				h2 Upcoming Exhibits
+						p(style="color:white") Watch the latest videos from the DPITC Youtube Channel.
+				.col-md-3.no-padding
+					//- img.img-responsive(src='https://i.ytimg.com/vi/egHmYYaOM58/hqdefault.jpg') 
+					iframe(src='https://www.youtube.com/embed/egHmYYaOM58', frameborder='0', allowfullscreen='')
 
-				mixin item(title, content)
-					a.list-group-item(href="#")
-						h4.list-group-item-heading #{title}
-						p.list-group-item-text #{content}
-
-				div.list-group
-					+item("FIESTA Abaca", "Feb 25, 2017")
-					+item("Coconut FIESTA", "Mar 4, 2017")
-					+item("SARAI Exhibit", "Mar 11, 2017")
-					+item("SIPAG Fiesta", "Mar 30, 2017")
+				.col-md-3.no-padding
+					iframe(src='https://www.youtube.com/embed/T2ncBhZf_KE', frameborder='0', allowfullscreen='')
+				.col-md-3.no-padding
+					iframe(src='https://www.youtube.com/embed/xDhow54fx3o', frameborder='0', allowfullscreen='') 
+				.col-md-3.no-padding
+					iframe(src='https://www.youtube.com/embed/ChOu6IDu-KQ', frameborder='0', allowfullscreen='')
 
 	#fiesta_block.fh5co-project-style-3.container
 		.row
@@ -200,35 +168,6 @@ block content
 						h3 Sardines
 						p Date: Oct 9-10, 2014
 						p Venue: Western Mindanao  State University, Zamboanga City
-
-	//- div(class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
-		div.modal-dialog(role="document")
-			div.modal-content
-				div.modal-header
-					button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-						span(aria-hidden="true") &times;
-					h5.modal-title SIPAG FIESTA
-
-				div.modal-body
-					center
-						img( src="" id="imagepreview" height="200px")
-						p
-						h4 Commodity: ALL
-						h4 Date: March 2, 2016 - March 4, 2016
-						h4 Venue: PCAARRD Complex
-
-				div.modal-footer
-					button(type="button" class="btn btn-success" data-dismiss="modal") View More
-					button(type="button" class="btn btn-default" data-dismiss="modal") Close
-
-
-
-	//- div(style='float:right; z-index:100; right:0px; top:150px;  position: fixed; ')
-	//- 	form.search-form(action='')
-	//- 		.form-group.has-feedback
-	//- 			label.sr-only(for='search') Search
-	//- 			input#search.form-control(type='text', name='search', placeholder='Search')
-	//- 			span.glyphicon.glyphicon-search.form-control-feedback
 
 
 	#tech_block.fh5co-project-style-3
