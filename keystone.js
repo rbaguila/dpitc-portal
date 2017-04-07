@@ -25,10 +25,7 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'User',
-	'signin logo': ['../images/pcarrd_logo.gif', 150, 150],
-
-	'ga property': process.env.GA_SITE_PROPERTY,
-	'ga domain': process.env.GA_SITE_DOMAIN,
+	'signin logo': ['../images/pcarrd_logo.gif', 150, 150]
 });
 
 // Load your project's Models
@@ -42,8 +39,6 @@ keystone.set('locals', {
 	env: keystone.get('env'),
 	utils: keystone.utils,
 	editable: keystone.content.editable,
-	ga_property: keystone.get('ga property'),
-	ga_domain: keystone.get('ga domain'),
 });
 
 // Load your project's Routes
@@ -83,10 +78,7 @@ keystone.set('nav', {
 	],
 	users: 'users',
 	Community: ['trainings', 'events', 'discussions', 'publications', 'links', 'galleries', 'videos', 'memos'],
-	Categories: ['industries', 'sectors', 'commodities'],
-	ELearning: ['LearningObject', 'Chapter', 'Course',  'LUser'],
-	ElearningCategories: ['ISP', 'LIndustry', 'LSector'],
-	ELearningMultimedia: ['LOGallery', 'LOLink', 'LOVideo'],
+	Categories: ['industries', 'sectors', 'commodities']
 });
 
 // optional, will force cloudinary to serve images over https
