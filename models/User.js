@@ -25,9 +25,6 @@ User.schema.virtual('canAccessKeystone').get(function () {
  * Relationships
  */
 User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
-User.relationship({ ref: 'LearningObject', refPath: 'author'});
-User.relationship({ ref: 'Chapter', refPath: 'author'});
-User.relationship({ ref: 'Course', refPath: 'author'});
 
 
 /**
@@ -35,5 +32,3 @@ User.relationship({ ref: 'Course', refPath: 'author'});
  */
 User.defaultColumns = 'name, email, isAdmin';
 User.register();
-
-exports = module.exports = User
