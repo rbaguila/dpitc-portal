@@ -20,6 +20,8 @@ Chapter.add({
 	},
 });
 
+Chapter.relationship({ ref: 'Course', refPath: 'outline' });
+
 Chapter.schema.virtual('url').get(function(){
   return '/elearning/chapter/'+this.slug;
 });

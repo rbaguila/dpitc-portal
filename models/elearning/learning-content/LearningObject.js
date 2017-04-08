@@ -74,6 +74,8 @@ LearningObject.add({
   },  
 });
 
+LearningObject.relationship({ ref: 'Chapter', refPath: 'outline' });
+
 LearningObject.schema.virtual('content.full').get(function () {
   return this.content.extended || this.content.brief;
 });
