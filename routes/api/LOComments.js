@@ -11,9 +11,10 @@ exports = module.exports = function(req, res) {
   res.contentType('application/json');
   
   var LOComments = [];
-	//TO DO--- include the year in the parameter
-	keystone.list('LOComment').model.find().exec(function (err, results) {
+	var start = new Date(req.params.year, 0, 1);
+	var end = new Date(req.params.year, 11, 31);
 
+	keystone.list('LOComment').model.find().where('dateCreated').gte(start).lt(end).exec(function (err, results) {
 		if (err || !results.length) {
 			return next(err);
 		}

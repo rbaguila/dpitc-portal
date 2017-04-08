@@ -1,11 +1,11 @@
-var margin = {
+    var margin = {
     top: 30,
     right: 20,
     bottom: 30,
     left: 40
     },
     width = 500 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+    height = 400 - margin.top - margin.bottom;
     var x = d3.scaleBand()
           .range([0, width])
           .padding(0.1);
@@ -21,6 +21,9 @@ var margin = {
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     var months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+
+    //TO DO
+    //GET THE CURRENT YEAR OR BASE SA GUSTO OR NAKALAGAY SA UI
 
     d3.json("/api/LOComments/2017", function(error, json) {
         var tally = {};
@@ -64,7 +67,7 @@ var margin = {
         .attr("y", -(margin.top / 2 ))
         .attr("class", "title")
         .style("text-anchor", "middle")
-        .text("Number of Comments for the Current Year");
+        .text("Total Number of Comments for the Current Year");
         svgComment.selectAll(".bar")
         .data(commentdata)
         .enter().append("rect")

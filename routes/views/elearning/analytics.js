@@ -17,9 +17,14 @@ exports = module.exports = function(req, res){
 
     locals.data = {
         maxReactionsLearningObject: [],
-        minReactionsLearningObject: []
+        minReactionsLearningObject: [],
+        recentLOComment1: [],
+        recentLOComment2: [],
     };
-   
+    
+    var recent1;
+    var recent2;
+
     view.on('init', function(next){
 
         var q = keystone.list('LearningObject').model.find();
@@ -40,6 +45,36 @@ exports = module.exports = function(req, res){
             next(err);
         });
     });
+
+    view.on('init', function(next){
+
+        var q = keystone.list('LOComment').model.find().sort('-dateCreated');
+
+        q.exec(function(err, results){
+            recent1 = results[0];
+            recent2 = results[1];
+            next(err);
+        });
+    });
+
+    view.on('init', function(next){
+        var q = keystone.list('LearningObject').model.find().where('_id', recent1.learningObject);
+
+        q.exec(function(err, result){
+            locals.data.recentLOComment1 = result[0];
+            next(err);
+        });
+    });
+
+    view.on('init', function(next){
+        var q = keystone.list('LearningObject').model.find().where('_id', recent2.learningObject);
+
+        q.exec(function(err, result){
+            locals.data.recentLOComment2 = result[0];
+            next(err);
+        });
+    });
+
     //Render the view
     view.render('elearning/analytics');
 
