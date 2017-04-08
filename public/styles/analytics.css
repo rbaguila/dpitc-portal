@@ -4,14 +4,14 @@
 .bar:hover {
     fill: brown;
 }
-.axisComment {
+.axis {
     font: 12px sans-serif;
 }
-.axisComment path, .axisComment line {
+.axis path, .axis line {
     fill: none;
     stroke: #000;
     shape-rendering: crispEdges;
 }
-.xComment.axisComment path {
+.x.axis path {
     display: none;
 }

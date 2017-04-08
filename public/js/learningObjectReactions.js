@@ -35,6 +35,7 @@
     "pieDistance": 32
     },
     "inner": {
+    "format": "value",
     "hideWhenLessThanPercentage": 3
     },
     "mainLabel": {

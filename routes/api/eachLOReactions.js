@@ -23,11 +23,12 @@ exports = module.exports = function(req, res) {
 				for(var i=0;i<results.length;i++){
 					totalReactions = 0;
 					totalReactions += results[i].likes.length + results[i].happy.length + results[i].sad.length;
-					results.reactions = totalReactions;
+					results[i].reactions = totalReactions;
 				}
 				results.sort(function(a,b){
 			        return parseFloat(b.reactions) - parseFloat(a.reactions);
 			    });
+			    
 			    var eachLOReaction = {};
 			    var eachLearningObjReactionsJSON;
 			    if(req.params.type=="highest"){
