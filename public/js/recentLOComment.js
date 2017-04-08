@@ -1,7 +1,7 @@
     var recentLOCommentMargin = {
     top: 30,
     right: 30,
-    bottom: 30,
+    bottom: 50,
     left: 40
     },
     recentLOCommentWidth = 250 - recentLOCommentMargin.left - recentLOCommentMargin.right,
@@ -21,15 +21,16 @@
     .attr("height", recentLOCOmmentHeight + recentLOCommentMargin.top + recentLOCommentMargin.bottom)
     .append("g")
     .attr("transform", "translate(" + recentLOCommentMargin.left + "," + recentLOCommentMargin.top + ")");
-    var months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+    var months = [ "Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" ];
 
     //TO DO
     //GET THE CURRENT YEAR OR BASE SA GUSTO OR NAKALAGAY SA UI
 
     d3.json("/api/recentLOComments/2017/0", function(error, json) {
-        console.log("FIRST" + json[0].dateCreated);
-        console.log("FIRST" + json[1].dateCreated);
         var tally = {};
+        for(var a=0;a<months.length;a++){
+            tally[months[a]] = 0;
+        }
         for(var i=0;i<json.length;i++){
             var temp = d3.isoParse(json[i].dateCreated);
             var temp2 = temp.getMonth();
@@ -56,7 +57,12 @@
         recentSvgComment.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + recentLOCOmmentHeight + ")")
-        .call(recentLOCommentxAxis);
+        .call(recentLOCommentxAxis)
+        .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("dx", "-.8em")
+        .attr("dy", "-.55em")
+        .attr("transform", "rotate(-90)" );
         recentSvgComment.append("g")
         .attr("class", "y axis")
         .call(recentLOCommentyAxis)
@@ -97,15 +103,16 @@
     .attr("height", recentLOCOmmentHeight + recentLOCommentMargin.top + recentLOCommentMargin.bottom)
     .append("g")
     .attr("transform", "translate(" + recentLOCommentMargin.left + "," + recentLOCommentMargin.top + ")");
-    var months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+    var months = [ "Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" ];
 
     //TO DO
     //GET THE CURRENT YEAR OR BASE SA GUSTO OR NAKALAGAY SA UI
 
     d3.json("/api/recentLOComments/2017/1", function(error, json) {
-        console.log("SECOND" + json[0].dateCreated);
-        console.log("SECOND" + json[1].dateCreated);
         var tally = {};
+        for(var a=0;a<months.length;a++){
+            tally[months[a]] = 0;
+        }
         for(var i=0;i<json.length;i++){
             var temp = d3.isoParse(json[i].dateCreated);
             var temp2 = temp.getMonth();
@@ -132,7 +139,12 @@
         recentSvgComment2.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + recentLOCOmmentHeight + ")")
-        .call(recentLOCommentxAxis);
+        .call(recentLOCommentxAxis)
+        .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("dx", "-.8em")
+        .attr("dy", "-.55em")
+        .attr("transform", "rotate(-90)" );
         recentSvgComment2.append("g")
         .attr("class", "y axis")
         .call(recentLOCommentyAxis)
