@@ -13,6 +13,14 @@ exports = module.exports = function(req, res) {
 
   // Set locals
   locals.section = 'courses';
+
+  var pageData = {
+    loginRedirect: '/elearning',
+    breadcrumbs: [
+      { text: 'elearning', link: '/elearning'},
+    ]
+  }
+
   locals.data = {
     courses: [],
     recommendedLearningObjects: [],
@@ -217,6 +225,6 @@ exports = module.exports = function(req, res) {
   });
 
   // Render the view
-  view.render('elearning/main');
+  view.render('elearning/main', pageData);
 
 };
