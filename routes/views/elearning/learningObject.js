@@ -188,6 +188,6 @@ exports = module.exports = function (req, res) {
   });
 
   // Render the view
-  view.render('elearning/learningObject');
+  view.render('elearning/learningObject', pageData);
 
 };
