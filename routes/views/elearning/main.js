@@ -4,7 +4,7 @@ var async = require('async');
 var Course = keystone.list('Course');
 var Chapter = keystone.list('Chapter');
 var LearningObject = keystone.list('LearningObject');
-var LUser = keystone.list('LUser');
+var User = keystone.list('User');
 
 exports = module.exports = function(req, res) {
 
@@ -118,7 +118,7 @@ exports = module.exports = function(req, res) {
   //TO DO
   //get the current logged in user
   view.on('init', function(next){
-    var q = keystone.list('LUser').model.findOne().where('email', 'jdelacruz@gmail.com');
+    var q = keystone.list('User').model.findOne().where('email', 'jdelacruz@gmail.com');
 
     q.exec(function(err, result){
         

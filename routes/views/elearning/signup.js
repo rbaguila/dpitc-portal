@@ -1,15 +1,30 @@
 var keystone = require('keystone');
-var LUser = keystone.list('LUser');
+var User = keystone.list('User');
 
 exports = module.exports = function (req, res) {
 
   var view = new keystone.View(req, res);
   var locals = res.locals;
 
+  
+
+  locals.data = {
+    validationErrors: [],
+  };
+
   locals.formData = req.body || {};
 
-  view.on('post', { action: 'user.create' }, function(next) {
-      var newUser = new LUser.model({
+  var pageData = {
+    loginRedirect: '/elearning',
+    breadcrumbs: [
+      { text: 'elearning', link: '/elearning' },
+      // still need breadcrumb for course
+    ]
+  };
+
+  view.on('post', { action: 'user.signup' }, function(next) {
+      console.log(locals.formData.first);
+      var newUser = new User.model({
         name: {
           first: locals.formData.first,
           last: locals.formData.last
@@ -19,20 +34,20 @@ exports = module.exports = function (req, res) {
       var updater = newUser.getUpdateHandler(req);
 
       updater.process(req.body, {
-        fields: 'email, address, password',
+        fields: 'email, password',
         flashErrors: true,
         logErrors: true
       }, function(err,result) {
         if (err) {    
-          data.validationErrors = err.errors; 
+          locals.data.validationErrors = err.errors; 
         } else {
           req.flash('success', 'Account created. Please sign in.');         
-          return res.redirect('/elearning');
+          return res.redirect('/keystone/signin');
         }
         next();
       });
 
     });
 
-  view.render('elearning/registerLUser');
+  view.render('elearning/signup', pageData);
 };

@@ -101,6 +101,8 @@ html
             a(href='/keystone/signout', class="not-active login-link") Sign Out
           else
             a(href='/keystone/signin?from=' + loginRedirect, class="not-active login-link") Sign In
+            | &nbsp;&nbsp;&nbsp;&nbsp;
+            a(href='/elearning/signup?from=' + loginRedirect, class="not-active login-link") Sign Up
 
         //- ul.nav.navbar-nav.navbar-right
         //-   if user
@@ -114,6 +116,7 @@ html
 
     //- BODY
     #body
+      .elearning-body
 
       //- NOTE:
       //- There is no .container wrapping class around body blocks to allow more flexibility in design.

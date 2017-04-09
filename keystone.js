@@ -92,6 +92,13 @@ keystone.set('nav', {
 // optional, will force cloudinary to serve images over https
 keystone.set('cloudinary secure', true);
 
+
+// signin redirection to User 
+keystone.set('signin redirect', function(user, loginRedirect, req, res){
+  var url = (user.isAdmin) ? '/keystone' : loginRedirect;
+  res.redirect(url);
+});
+
 // Start Keystone to connect to your database and initialise the web server
 
 keystone.start();
