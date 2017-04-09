@@ -10,18 +10,18 @@ exports = module.exports = function(req, res) {
   //  the content of the response.
   res.contentType('application/json');
   
-  var LOComments = [];
+  var LOViews = [];
 	var start = new Date(req.params.year, 0, 1);
 	var end = new Date(req.params.year, 11, 31);
 	
-	//change this before deplyoning, use createdAt instead
-	keystone.list('LOComment').model.find().where('dateCreated').gte(start).lt(end).exec(function (err, results) {
+	//change this before deploying, use createdAt instead
+	keystone.list('LOView').model.find().where('dateViewed').gte(start).lt(end).exec(function (err, results) {
 		if (err || !results.length) {
 			return next(err);
 		}
-		LOComments = results;
-		var LOCommentsJSON = JSON.stringify(LOComments);
-		res.send(LOCommentsJSON);
+		LOViews = results;
+		var LOViewsJSON = JSON.stringify(LOViews);
+		res.send(LOViewsJSON);
 		//next();
 	});
 };

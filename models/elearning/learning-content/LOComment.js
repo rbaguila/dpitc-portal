@@ -19,7 +19,7 @@ LOComment.add({
 		type: Types.Relationship,
 		ref: 'LearningObject'
 	},
-	dateCreated: {
+	dateCreated: {//remove this before deploying, use createdAt instead
 		type: Types.Date, 
 		index: true, 
 		default: Date.now 

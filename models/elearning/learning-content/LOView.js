@@ -16,7 +16,7 @@ LOView.add({
 		type: Types.Relationship,
 		ref: 'LearningObject'
 	},
-	dateViewed: {
+	dateViewed: {//change this before deplyoning, use createdAt instead
 		type: Types.Date, 
 		index: true, 
 		default: Date.now 

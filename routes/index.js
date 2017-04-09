@@ -84,6 +84,8 @@ exports = module.exports = function (app) {
 	app.get('/api/eachLOReactions/:type', routes.api.eachLOReactions);
 	app.get('/api/LOComments/:year', routes.api.LOComments);
 	app.get('/api/recentLOComments/:year/:recent', routes.api.eachLOComment);
+	app.get('/api/LOViews/:year', routes.api.LOViews);
+	app.get('/api/recentLOViews/:year/:recent', routes.api.eachLOView);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
