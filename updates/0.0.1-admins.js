@@ -16,8 +16,8 @@ exports.create = {
 			'password': 'admin', 
 			'isAdmin': true,
 			'__ref': 'admin'
-		}
-	],
+		},
+	//],
 
 
 	/*ELearning Fixtures*/
@@ -26,7 +26,7 @@ exports.create = {
     LUser
   */
 
-  LUser: [
+  //LUser: [
     {
       'name.first': 'Juan', 
       'name.last': 'Dela Cruz', 
