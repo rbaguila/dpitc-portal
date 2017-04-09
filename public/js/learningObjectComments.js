@@ -1,11 +1,11 @@
-var margin = {
+    var margin = {
     top: 30,
     right: 20,
-    bottom: 30,
+    bottom: 70,
     left: 40
     },
     width = 500 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+    height = 400 - margin.top - margin.bottom;
     var x = d3.scaleBand()
           .range([0, width])
           .padding(0.1);
@@ -20,12 +20,19 @@ var margin = {
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-    var months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+    var months = [ "Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" ];
+
+    //TO DO
+    //GET THE CURRENT YEAR OR BASE SA GUSTO OR NAKALAGAY SA UI
 
     d3.json("/api/LOComments/2017", function(error, json) {
         var tally = {};
+        for(var a=0;a<months.length;a++){
+            tally[months[a]] = 0;
+        }
+
         for(var i=0;i<json.length;i++){
-            var temp = d3.isoParse(json[i].dateCreated);
+            var temp = d3.isoParse(json[i].dateCreated);//change this before deplyoning, use createdAt instead
             var temp2 = temp.getMonth();
             var date = months[temp2];
             tally[date] = (tally[date]||0) + 1;
@@ -50,7 +57,12 @@ var margin = {
         svgComment.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
+        .call(xAxis)
+        .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("dx", "-.8em")
+        .attr("dy", "-.55em")
+        .attr("transform", "rotate(-90)" );
         svgComment.append("g")
         .attr("class", "y axis")
         .call(yAxis)
@@ -64,7 +76,7 @@ var margin = {
         .attr("y", -(margin.top / 2 ))
         .attr("class", "title")
         .style("text-anchor", "middle")
-        .text("Number of Comments for the Current Year");
+        .text("Total Number of Comments for the Current Year");
         svgComment.selectAll(".bar")
         .data(commentdata)
         .enter().append("rect")

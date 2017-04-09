@@ -2303,5 +2303,212 @@ exports.create = {
 
   ],
 
+  LOView: [
+    { 
+      'LUser': 'Angelica', 
+      'learningObject': 'aquafeeds-lo',
+      'dateViewed': '2017-01-12'
+    },
+    { 
+      'LUser': 'Amber', 
+      'learningObject': 'pineapple-lo',
+      'dateViewed': '2017-01-28'
+    },
+    { 
+      'LUser': 'Sally', 
+      'learningObject': 'pineapple-lo',
+      'dateViewed': '2017-01-28'
+    },
+    { 
+      'LUser': 'Tim', 
+      'learningObject': 'pineapple-lo',
+      'dateViewed': '2017-01-28'
+    },
+    { 
+      'LUser': 'Uvin', 
+      'learningObject': 'pineapple-lo',
+      'dateViewed': '2017-01-28'
+    },
+    { 
+      'LUser': 'Albert', 
+      'learningObject': 'papaya-lo',
+      'dateViewed': '2017-01-18'
+    },
+    { 
+      'LUser': 'Bryan', 
+      'learningObject': 'citrus-lo',
+      'dateViewed': '2017-01-10'
+    },
+    { 
+      'LUser': 'Cena', 
+      'learningObject': 'jackfruit-lo',
+      'dateViewed': '2017-02-09'
+    },
+    { 
+      'LUser': 'Daniel', 
+      'learningObject': 'durian-lo',
+      'dateViewed': '2017-02-26'
+    },
+    { 
+      'LUser': 'Ellen', 
+      'learningObject': 'whitepotato-lo',
+      'dateViewed': '2017-02-07'
+    },
+    { 
+      'LUser': 'Ferdinand', 
+      'learningObject': 'sweetpotato-lo',
+      'dateViewed': '2017-03-01'
+    },
+    { 
+      'LUser': 'Victoria', 
+      'learningObject': 'sweetpotato-lo',
+      'dateViewed': '2017-03-01'
+    },
+    { 
+      'LUser': 'Vince', 
+      'learningObject': 'sweetpotato-lo',
+      'dateViewed': '2017-03-01'
+    },
+    { 
+      'LUser': 'Gerald', 
+      'learningObject': 'peanut-lo',
+      'dateViewed': '2017-03-11'
+    },
+    { 
+      'LUser': 'Gary', 
+      'learningObject': 'mungbean-lo',
+      'dateViewed': '2017-02-09'
+    },
+    { 
+      'LUser': 'Henry', 
+      'learningObject': 'stagescorn-lo',
+      'dateViewed': '2017-02-16'
+    },
+    { 
+      'LUser': 'Harold', 
+      'learningObject': 'soilfertilization-lo',
+      'dateViewed': '2017-02-19'
+    },
+    { 
+      'LUser': 'Irish', 
+      'learningObject': 'landpreparation-lo',
+      'dateViewed': '2017-02-20'
+    },
+    { 
+      'LUser': 'Juan', 
+      'learningObject': 'biotechbtcorn-lo',
+      'dateViewed': '2017-02-21'
+    },
+    { 
+      'LUser': 'John', 
+      'learningObject': 'feedingprogram-lo',
+      'dateViewed': '2017-02-22'
+    },
+    { 
+      'LUser': 'Jane', 
+      'learningObject': 'grainquality-lo',
+      'dateViewed': '2017-03-25'
+    },
+    { 
+      'LUser': 'Wilson', 
+      'learningObject': 'grainquality-lo',
+      'dateViewed': '2017-03-25'
+    },
+    { 
+      'LUser': 'Yvette', 
+      'learningObject': 'grainquality-lo',
+      'dateViewed': '2017-03-25'
+    },
+    { 
+      'LUser': 'Xyrus', 
+      'learningObject': 'grainquality-lo',
+      'dateViewed': '2017-03-25'
+    },
+    { 
+      'LUser': 'Justin', 
+      'learningObject': 'sugarcane-lo',
+      'dateViewed': '2017-03-26'
+    },
+    { 
+      'LUser': 'Joon', 
+      'learningObject': 'plantingrice-lo',
+      'dateViewed': '2017-03-20'
+    },
+    { 
+      'LUser': 'Jeff', 
+      'learningObject': 'plantingmango-lo',
+      'dateViewed': '2017-03-23'
+    },
+    { 
+      'LUser': 'Kris', 
+      'learningObject': 'plantingcoffee-lo',
+      'dateViewed': '2017-03-23'
+    },
+    { 
+      'LUser': 'Karl', 
+      'learningObject': 'plantingcoconut-lo',
+      'dateViewed': '2017-03-24'
+    },
+    { 
+      'LUser': 'Krystal', 
+      'learningObject': 'plantingbanana-lo',
+      'dateViewed': '2017-03-28'
+    },
+    { 
+      'LUser': 'Zend', 
+      'learningObject': 'plantingbanana-lo',
+      'dateViewed': '2017-03-28'
+    },
+    { 
+      'LUser': 'Luhan', 
+      'learningObject': 'plantingabaca-lo',
+      'dateViewed': '2017-03-22'
+    },
+    { 
+      'LUser': 'Logan', 
+      'learningObject': 'pineapple-lo',
+      'dateViewed': '2017-04-17'
+    },
+    { 
+      'LUser': 'Manuel', 
+      'learningObject': 'aquafeeds-lo',
+      'dateViewed': '2017-04-16'
+    },
+    { 
+      'LUser': 'Natalie', 
+      'learningObject': 'papaya-lo',
+      'dateViewed': '2017-04-17'
+    },
+    { 
+      'LUser': 'Oliver', 
+      'learningObject': 'citrus-lo',
+      'dateViewed': '2017-04-04'
+    },
+    { 
+      'LUser': 'Patricia', 
+      'learningObject': 'jackfruit-lo',
+      'dateViewed': '2017-04-05'
+    },
+    { 
+      'LUser': 'Queen', 
+      'learningObject': 'whitepotato-lo',
+      'dateViewed': '2017-04-04'
+    },
+    { 
+      'LUser': 'Rona', 
+      'learningObject': 'durian-lo',
+      'dateViewed': '2017-04-03'
+    },
+    { 
+      'LUser': 'Cena', 
+      'learningObject': 'durian-lo',
+      'dateViewed': '2017-04-03'
+    },
+    { 
+      'LUser': 'Albert', 
+      'learningObject': 'durian-lo',
+      'dateViewed': '2017-04-03'
+    },
+  ]
   
 };

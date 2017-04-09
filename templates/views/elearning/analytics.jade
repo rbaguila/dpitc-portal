@@ -38,18 +38,68 @@ mixin Reactions(maxreactions, minreactions)
         hr
         div(id="minReactionsPieChart")
 
-mixin Comments()
+mixin Comments(recentComment1, recentComment2)
   h4.text Comments
   .row
       .col-md-6.col-xs-6
         div(id="commentsGraph")
       .col-md-3.col-xs-6
-        div(id="maxCommentsGraph")
+        .thumbnail
+          if recentComment1.thumbnail.exists
+            img.card-img-top(src=recentComment1.thumbnail alt="recentComment1.title")
+          else if recentComment1.videoId
+            img.card-img-top(src='https://img.youtube.com/vi/'+ recentComment1.videoId +'/mqdefault.jpg', height="130px")
+          else
+            img.card-img-top(src="/images/image-not-available-th.png" alt=recentComment1.title, height="130px")
+          .caption
+            .row
+              h4= recentComment1.title.substring(0, 50)
+        hr
+        div(id="recentCommentGraph")
       .col-md-3.col-xs-6
-        //to do again
-//mixin Views(views)
+        .thumbnail
+          if recentComment2.thumbnail.exists
+            img.card-img-top(src=recentComment2.thumbnail alt="recentComment2.title")
+          else if recentComment2.videoId
+            img.card-img-top(src='https://img.youtube.com/vi/'+ recentComment2.videoId +'/mqdefault.jpg', height="130px")
+          else
+            img.card-img-top(src="/images/image-not-available-th.png" alt=recentComment2.title, height="130px")
+          .caption
+            .row
+              h4= recentComment2.title.substring(0, 50)
+        hr
+        div(id="recentCommentGraph2")
+mixin Views(recentView1, recentView2)
   h4.text Views
-  h5= views
+  .row
+      .col-md-6.col-xs-6
+        div(id="viewsGraph")
+      .col-md-3.col-xs-6
+        .thumbnail
+          if recentView1.thumbnail.exists
+            img.card-img-top(src=recentView1.thumbnail alt="recentView1.title")
+          else if recentView1.videoId
+            img.card-img-top(src='https://img.youtube.com/vi/'+ recentView1.videoId +'/mqdefault.jpg', height="130px")
+          else
+            img.card-img-top(src="/images/image-not-available-th.png" alt=recentView1.title, height="130px")
+          .caption
+            .row
+              h4= recentView1.title.substring(0, 50)
+        hr
+        div(id="recentViewGraph")
+      .col-md-3.col-xs-6
+        .thumbnail
+          if recentView2.thumbnail.exists
+            img.card-img-top(src=recentView2.thumbnail alt="recentView2.title")
+          else if recentView2.videoId
+            img.card-img-top(src='https://img.youtube.com/vi/'+ recentView2.videoId +'/mqdefault.jpg', height="130px")
+          else
+            img.card-img-top(src="/images/image-not-available-th.png" alt=recentView2.title, height="130px")
+          .caption
+            .row
+              h4= recentView2.title.substring(0, 50)
+        hr
+        div(id="recentViewGraph2")
 
 block content
   h3.text-center ELearning Analytics
@@ -59,11 +109,14 @@ block content
         +Reactions(data.maxReactionsLearningObject, data.minReactionsLearningObject)
     .panel.panel-default
       .panel-body
-        +Comments()
-    //.panel.panel-default
+        +Comments(data.recentLOComment1, data.recentLOComment2)
+    .panel.panel-default
       .panel-body
-        +Views(data.views)
+        +Views(data.recentLOView1, data.recentLOView2)
   script(src='/js/learningObjectReactions.js')
   script(src='/js/maxLearningObjectReactions.js')
   script(src='/js/minLearningObjectReactions.js')
   script(src='/js/learningObjectComments.js')
+  script(src='/js/recentLOComment.js')
+  script(src='/js/learningObjectViews.js')
+  script(src='/js/recentLOView.js')
