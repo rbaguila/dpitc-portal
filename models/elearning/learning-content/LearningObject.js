@@ -56,25 +56,26 @@ LearningObject.add({
   },
   likes: { 
     type: Types.Relationship,
-    ref: 'LUser',
+    ref: 'User',
     many: true,
     required: false,
   },
   happy: { 
     type: Types.Relationship,
-    ref: 'LUser',
+    ref: 'User',
     many: true,
     required: false,
   },
   sad: { 
     type: Types.Relationship,
-    ref: 'LUser',
+    ref: 'User',
     many: true,
     required: false,
   },  
 });
 
 LearningObject.relationship({ ref: 'Chapter', refPath: 'outline' });
+LearningObject.relationship({ ref: 'User', refPath: 'learningObjectsTaken' });
 
 LearningObject.schema.virtual('content.full').get(function () {
   return this.content.extended || this.content.brief;

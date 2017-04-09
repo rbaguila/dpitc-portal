@@ -10,7 +10,7 @@ var LOView = new keystone.List('LOView', {
 LOView.add({
 	LUser: {
 		type: Types.Relationship,
-		ref: 'LUser'
+		ref: 'User'
 	},
 	learningObject: {
 		type: Types.Relationship,
