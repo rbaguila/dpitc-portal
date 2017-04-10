@@ -7,10 +7,12 @@ block publications
         .thumbnail
           .publication-col-list
             .cover
-              img(src=publication._.cover.fit(100, 180, {}))
+              a(href="/eresources/publication/"+publication._id)
+                img(src=publication._.cover.fit(100, 180, {}))
 
             .details
-              h4 #{publication.get('title.trunc')}
+              a(href="/eresources/publication/"+publication._id)
+                h4 #{publication.get('title.trunc')}
               p #{publication.get('description.trunc')}
               .publication-meta
                 | Type: #{publication.publicationType}

@@ -6,7 +6,7 @@ block publications
       .col-sm-6.col-md-3
         .thumbnail
           .publication-col-grid
-            a(href=publication.file.url,download)
+            a(href="/eresources/publication/"+publication._id)
               .cover
                 img(src=publication._.cover.fit(100, 180, {}))
               .title
