@@ -83,8 +83,12 @@ block content
 
             br
             if publication.industry
-              span.label.label-default #{publication.industry.name}&nbsp;
+              span.label.label-default #{publication.industry.name}
+              | &nbsp;
+
             if publication.sector
-              span.label.label-default #{publication.sector.name}&nbsp;
+              span.label.label-default #{publication.sector.name}
+              | &nbsp;
+
             if publication.commodity
               span.label.label-default #{publication.commodity.name}
