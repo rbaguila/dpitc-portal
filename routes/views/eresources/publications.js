@@ -23,7 +23,7 @@ exports = module.exports = function (req, res) {
     loginRedirect: '/eresources/publications',
     breadcrumbs: [
       { text: 'E Resources', link: '/eresources'},
-      { text: 'Publications', link: '/publications'},
+      { text: 'Publications', link: '/eresources/publications'},
     ]
   }
 
