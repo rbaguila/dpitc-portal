@@ -1,0 +1,114 @@
+extends ../../layouts/elearning
+
+block css
+
+block search
+  .container
+    .row
+      nav.navbar.navbar-default
+        .container-fluid
+          //- Mobile menu
+          .navbar-header
+            button(type="button", data-toggle="collapse", aria-expanded="false", data-target="#publications-filter").navbar-toggle.collapsed
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+
+          #publications-filter.collapse.navbar-collapse
+            ul.nav.navbar-nav
+            form.navbar-form.navbar-right
+              .form-group
+                input.form-control(type='text', placeholder='Search')
+              button.btn.btn-default(type='submit')
+                span.glyphicon.glyphicon-search(aria-hidden="true")
+                
+
+mixin popular(learningObjects)
+  a(href='/elearning/popular')
+    h2.text-center Popular
+  if learningObjects.length
+    .row.equal-height
+      each learningObject in learningObjects
+        .col-xs-6.col-md-3
+          .thumbnail
+            if learningObject.thumbnail.exists
+              img.card-img-top(src=learningObject.thumbnail alt="learningObject.title")
+            else if learningObject.videoId
+              img.card-img-top(src='https://img.youtube.com/vi/'+ learningObject.videoId +'/mqdefault.jpg', height="150px")
+            else
+              img.card-img-top(src="/images/image-not-available-th.png" alt=learningObject.title, height="150px")
+            .caption
+              .row
+                h3= learningObject.title.substring(0, 50)
+              .row
+                p= learningObject.content.brief.substring(0, 100)
+              hr
+              .row
+                a.btn.btn-info.btn-block(href=learningObject.url) Learn more
+  else
+    h3.text-muted There are no courses yet.
+
+mixin allCourses(courses)
+  a(href='/elearning/courses')
+    h2.text-center All Courses
+  if courses.length
+    .row.equal-height
+      each course in courses
+        .col-xs-6.col-md-3
+          .thumbnail
+            if course.thumbnail.exists
+              img.card-img-top(src=course.thumbnail alt="course.title")
+            else
+              img.card-img-top(src="/images/image-not-available-th.png" alt=course.title, height="150px")
+            .caption
+              .row
+                h3= course.title.substring(0, 50)
+              .row
+                p= course.content.brief.substring(0, 100)
+              hr
+              .row
+                a.btn.btn-info.btn-block(href=course.url) Learn more
+  else
+    h3.text-muted There are no courses yet.
+
+
+mixin recommended(learningObjects)
+  a(href='/elearning/'+user.id+'/recommended')
+    h2.text-center Recommended
+  if learningObjects.length
+    .row.equal-height
+      each learningObject in learningObjects
+        .col-xs-6.col-md-3
+          .thumbnail
+            if learningObject.thumbnail.exists
+              img.card-img-top(src=learningObject.learningObject alt="course.title")
+             else
+              img.card-img-top(src="/images/image-not-available-th.png" alt=learningObject.title, height="150px")
+            .caption
+              .row
+                h3= learningObject.title.substring(0, 50)
+              .row
+                p= learningObject.content.brief.substring(0, 100)
+              hr
+              .row
+                a.btn.btn-info.btn-block(href=learningObject.url) Learn more
+  else
+    h3.text-muted There are no courses yet.
+
+
+block content
+  block search
+  .container
+    .panel.panel-default
+      .panel-body
+        +popular(learningObjects)
+  .container
+    .panel.panel-default
+      .panel-body
+        +allCourses(courses)
+  if user
+    .container
+      .panel.panel-default
+        .panel-body
+          +recommended(learningObjects)
