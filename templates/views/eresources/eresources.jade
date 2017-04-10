@@ -18,7 +18,7 @@ block content
                   a(href="/eresources/publication/"+publication._id)
                     img(src=publication._.cover.fit(100, 180, {}))
                     br
-                    | #{publication.title}
+                    | #{publication.get('title.trunc')}
               .col-xs-12.more-link
                 a(href="/eresources/publications") More Publications
 
