@@ -12,16 +12,8 @@ var LearningObject = new keystone.List('LearningObject', {
 });
 
 LearningObject.add({
-  images: { 
-    type: Types.Relationship, 
-    ref: 'LOGallery', 
-    index: true 
-  },
-  video: { 
-    type: Types.Relationship, 
-    ref: 'LOVideo', 
-    index: true
-  },
+  
+}, 'Category', {
   isp: { 
     type: Types.Relationship, 
     ref: 'ISP',
@@ -48,6 +40,29 @@ LearningObject.add({
     default: null, 
     required: false 
   },
+}, 'Media', {
+  gallery: { 
+    type: Types.Relationship, 
+    ref: 'LOGallery', 
+    index: true 
+  },
+  video: { 
+    type: Types.Relationship, 
+    ref: 'LOVideo', 
+    index: true
+  },
+  links: {
+    type: Types.Relationship,
+    ref: 'LOLink',
+    many: true,
+    index: true
+  },
+  files: {
+    type: Types.Relationship,
+    ref: 'FileUpload',
+    many: true
+  }
+}, 'Reaction', {
   comments: { 
     type: Types.Relationship, 
     ref: 'LOComment', 
@@ -72,7 +87,7 @@ LearningObject.add({
     many: true,
     required: false,
   },  
-});
+} );
 
 LearningObject.relationship({ ref: 'Chapter', refPath: 'outline' });
 LearningObject.relationship({ ref: 'User', refPath: 'learningObjectsTaken' });

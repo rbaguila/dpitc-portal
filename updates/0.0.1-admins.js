@@ -693,7 +693,7 @@ exports.create = {
     {
       'title': 'Stages Corn',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque. ',
@@ -703,7 +703,6 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'tags': ['corn', 'agriculture'],
       'createdAt': Date.now,
       'updatedAt': Date.now,
       
@@ -718,7 +717,7 @@ exports.create = {
     { 
       'title': 'Soil Fertilization',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
@@ -727,7 +726,6 @@ exports.create = {
       'isp': 'corn-isp',
       'sector': 'crops-sector',
       'industry': 'agri-industry',
-      'tags': ['corn', 'agriculture'],
       'createdAt': Date.now,
       'updatedAt': Date.now,
       
@@ -741,7 +739,7 @@ exports.create = {
     { 
       'title': 'Land Preparation',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
@@ -750,7 +748,6 @@ exports.create = {
       'isp': 'corn-isp',
       'sector': 'crops-sector',
       'industry': 'agri-industry',
-      'tags': ['corn', 'agriculture'],
       'createdAt': Date.now,
       'updatedAt': Date.now,
        
@@ -764,7 +761,7 @@ exports.create = {
     { 
       'title': 'Grain Quality',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
@@ -773,7 +770,6 @@ exports.create = {
       'isp': 'corn-isp',
       'sector': 'crops-sector',
       'industry': 'agri-industry',
-      'tags': ['corn', 'agriculture'],
       'createdAt': Date.now,
       'updatedAt': Date.now,
       
@@ -787,7 +783,7 @@ exports.create = {
     { 
       'title': 'Feeding Program',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
@@ -796,7 +792,6 @@ exports.create = {
       'isp': 'corn-isp',
       'sector': 'crops-sector',
       'industry': 'agri-industry',
-      'tags': ['corn', 'agriculture'],
       'createdAt': Date.now,
       'updatedAt': Date.now,
       
@@ -810,7 +805,7 @@ exports.create = {
     { 
       'title': 'Biotech BtCorn',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
@@ -819,7 +814,6 @@ exports.create = {
       'isp': 'corn-isp',
       'sector': 'crops-sector',
       'industry': 'agri-industry',
-      'tags': ['corn', 'agriculture'],
       'createdAt': Date.now,  
       
       'likes': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
@@ -833,7 +827,7 @@ exports.create = {
     { 
       'title': 'Planting Abaca',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Abaca description',
@@ -843,7 +837,6 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'tags': ['abaca', 'agriculture'],
 
       'createdAt': Date.now,  
       
@@ -857,7 +850,7 @@ exports.create = {
     { 
       'title': 'Planting Banana',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Banana description',
@@ -867,7 +860,6 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'tags': ['banana', 'agriculture'],
 
       'createdAt': Date.now,  
       
@@ -881,7 +873,7 @@ exports.create = {
     { 
       'title': 'Planting Coconut',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Coconut description',
@@ -891,7 +883,6 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'tags': ['coconut', 'agriculture'],
 
       'createdAt': Date.now,  
       
@@ -905,7 +896,7 @@ exports.create = {
     { 
       'title': 'Planting Coffee',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Coffee description',
@@ -915,7 +906,6 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'tags': ['coffee', 'agriculture'],
 
       'createdAt': Date.now,  
       
@@ -929,7 +919,7 @@ exports.create = {
     { 
       'title': 'Planting Mungbean',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Mungbean description',
@@ -939,7 +929,6 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': 'Mungbean',
-      'tags': ['mungbean', 'legume', 'agriculture'],
 
       'createdAt': Date.now,  
       
@@ -953,7 +942,7 @@ exports.create = {
     { 
       'title': 'Planting Peanut',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Peanut description',
@@ -963,8 +952,6 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': 'Peanut',
-      'tags': ['peanut', 'legume', 'agriculture'],
-
       'createdAt': Date.now,  
       
       'likes': ['Sally', 'Tim', 'Uvin', 'Vince', 'Victoria', 'Wilson', 'Xyrus', 'Yvette', 'Zend'],
@@ -977,7 +964,7 @@ exports.create = {
     { 
       'title': 'Planting Mango',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Mango description',
@@ -987,7 +974,6 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'tags': ['mango', 'agriculture'],
 
       'createdAt': Date.now,  
       
@@ -1001,7 +987,7 @@ exports.create = {
     { 
       'title': 'Planting Rice',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Rice description',
@@ -1011,7 +997,6 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'tags': ['rice', 'agriculture'],
 
       'createdAt': Date.now,  
       
@@ -1025,7 +1010,7 @@ exports.create = {
     { 
       'title': 'Planting Sweet Potato',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Sweet Potato description',
@@ -1035,8 +1020,6 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': 'Sweet Potato',
-      'tags': ['sweet potato','rootcrop', 'agriculture'],
-
       'createdAt': Date.now,  
       
       'likes': ['Juan', 'John', 'Jane'],
@@ -1049,7 +1032,7 @@ exports.create = {
     { 
       'title': 'Planting White Potato',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting White Potato description',
@@ -1059,7 +1042,6 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': 'White Potato',
-      'tags': [ 'white potato', 'rootcrop', 'agriculture'],
 
       'createdAt': Date.now,  
       
@@ -1073,7 +1055,7 @@ exports.create = {
     { 
       'title': 'Planting Sugarcane',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Sugarcane description',
@@ -1083,7 +1065,6 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'tags': ['sugarcane', 'agriculture'],
 
       'createdAt': Date.now,  
       
@@ -1097,7 +1078,7 @@ exports.create = {
     { 
       'title': 'Planting Pineapple',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Pineapple description',
@@ -1107,7 +1088,6 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': 'Pineapple',
-      'tags': ['pineapple', 'tropical fruit', 'agriculture'],
 
       'createdAt': Date.now,  
       
@@ -1121,7 +1101,7 @@ exports.create = {
     { 
       'title': 'Planting Papaya',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Papaya description',
@@ -1131,7 +1111,6 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': 'Papaya',
-      'tags': ['papaya', 'tropical fruit', 'agriculture'],
 
       'createdAt': Date.now,  
       
@@ -1145,7 +1124,7 @@ exports.create = {
     { 
       'title': 'Planting Citrus',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Citrus description',
@@ -1155,7 +1134,6 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': 'Citrus',
-      'tags': ['citrus', 'tropical fruit', 'agriculture'],
 
       'createdAt': Date.now,  
       
@@ -1169,7 +1147,7 @@ exports.create = {
     { 
       'title': 'Planting Jackfruit',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Jackfruit description',
@@ -1179,7 +1157,6 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': 'Jackfruit',
-      'tags': ['jackfruit', 'tropical fru', 'agriculture'],
 
       'createdAt': Date.now,  
       
@@ -1193,7 +1170,7 @@ exports.create = {
     { 
       'title': 'Planting Durian',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Durian description',
@@ -1203,7 +1180,6 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': 'Durian',
-      'tags': ['durian', 'tropical fruit', 'agriculture'],
 
       'createdAt': Date.now,  
       
@@ -1217,7 +1193,7 @@ exports.create = {
     { 
       'title': 'Planting Vegetable',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Vegetable description',
@@ -1227,8 +1203,6 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'tags': ['vegetable', 'agriculture'],
-
       'createdAt': Date.now,  
       
       'likes': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
@@ -1240,7 +1214,7 @@ exports.create = {
     { 
       'title': 'Learning about Feed Resources',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Feed Resources description',
@@ -1250,8 +1224,6 @@ exports.create = {
       'sector': 'livestock-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'tags': ['feed resources', 'agriculture'],
-
       'createdAt': Date.now,  
       
       'likes': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
@@ -1263,7 +1235,7 @@ exports.create = {
     { 
       'title': 'Learning about Dairy Goat',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Dairy Goat description',
@@ -1273,7 +1245,6 @@ exports.create = {
       'sector': 'livestock-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'tags': ['dairy goat', 'agriculture'],
 
       'createdAt': Date.now,  
       
@@ -1286,7 +1257,7 @@ exports.create = {
     { 
       'title': 'Learning about Slaughter Goat',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Slaughter Goat description',
@@ -1296,8 +1267,6 @@ exports.create = {
       'sector': 'livestock-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'tags': ['slaughter goat', 'agriculture'],
-
       'createdAt': Date.now,  
       
       'likes': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
@@ -1309,7 +1278,7 @@ exports.create = {
     { 
       'title': 'Learning about Dairy Buffalo',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Dairy Buffalo description',
@@ -1319,8 +1288,6 @@ exports.create = {
       'sector': 'livestock-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'tags': ['dairy buffalo', 'agriculture'],
-
       'createdAt': Date.now,  
       
       'likes': ['Juan', 'John'],
@@ -1332,7 +1299,7 @@ exports.create = {
     { 
       'title': 'Learning about Swine',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Swine description',
@@ -1342,8 +1309,6 @@ exports.create = {
       'sector': 'livestock-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'tags': ['corn', 'agriculture'],
-
       'createdAt': Date.now,  
       
       'likes': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
@@ -1355,7 +1320,7 @@ exports.create = {
     { 
       'title': 'Learning about Duck',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Duck description',
@@ -1365,7 +1330,6 @@ exports.create = {
       'sector': 'livestock-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'tags': ['duck', 'agriculture'],
 
       'createdAt': Date.now,  
       
@@ -1378,7 +1342,7 @@ exports.create = {
     { 
       'title': 'Learning about Native Chicken',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Native Chicken description',
@@ -1388,8 +1352,6 @@ exports.create = {
       'sector': 'livestock-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'tags': ['native chicken', 'agriculture'],
-
       'createdAt': Date.now,  
       
       'likes': ['John'],
@@ -1401,7 +1363,7 @@ exports.create = {
     { 
       'title': 'Learning about Aquafeeds',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Aquafeeds description',
@@ -1411,8 +1373,6 @@ exports.create = {
       'sector': 'inlandaq-sector',
       'industry': 'aqua-industry',
       'specificCommodity': 'Aquafeeds',
-      'tags': ['aquafeeds', 'aquatic resources'],
-
       'createdAt': Date.now,  
       
       'likes': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
@@ -1425,7 +1385,7 @@ exports.create = {
     { 
       'title': 'Learning about Milkfish',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Milkfish description',
@@ -1435,8 +1395,6 @@ exports.create = {
       'sector': 'inlandaq-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'tags': ['milkfish', 'aquatic resources'],
-
       'createdAt': Date.now,  
       
       'likes': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
@@ -1448,7 +1406,7 @@ exports.create = {
     { 
       'title': 'Learning about Mangrove Crab (Mudcrab)',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Mangrove Crab (Mudcrab) description',
@@ -1458,8 +1416,6 @@ exports.create = {
       'sector': 'inlandaq-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'tags': ['mangrove crab', 'aquatic resources'],
-
       'createdAt': Date.now,  
       
       'likes': ['Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver'],
@@ -1471,7 +1427,7 @@ exports.create = {
     { 
       'title': 'Learning about Tilapia',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Tilapia description',
@@ -1481,8 +1437,6 @@ exports.create = {
       'sector': 'inlandaq-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'tags': ['tilapia', 'aquatic resources'],
-
       'createdAt': Date.now,  
       
       'likes': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
@@ -1494,7 +1448,7 @@ exports.create = {
     { 
       'title': 'Learning about Shrimp',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Shrimp description',
@@ -1504,8 +1458,6 @@ exports.create = {
       'sector': 'inlandaq-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'tags': ['shrimp', 'aquatic resources'],
-
       'createdAt': Date.now,  
       
       'likes': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
@@ -1517,7 +1469,7 @@ exports.create = {
     { 
       'title': 'Learning about Mussel',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Mussel description',
@@ -1527,8 +1479,6 @@ exports.create = {
       'sector': 'inlandaq-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'tags': ['mussel', 'aquatic resources'],
-
       'createdAt': Date.now,  
       
       'likes': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
@@ -1540,7 +1490,7 @@ exports.create = {
     { 
       'title': 'Learning about Blue Swimming Crab',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Blue Swimming Crab description',
@@ -1550,7 +1500,6 @@ exports.create = {
       'sector': 'marineres-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'tags': ['blue swimming crab', 'aquatic resources'],
 
       'createdAt': Date.now,  
       
@@ -1563,7 +1512,7 @@ exports.create = {
     { 
       'title': 'Learning about Abalone',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Abalone description',
@@ -1573,8 +1522,6 @@ exports.create = {
       'sector': 'marineres-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'tags': ['abalone', 'aquatic resources'],
-
       'createdAt': Date.now,  
       
       'likes': ['Juan', 'John', 'Jane', 'Justin'],
@@ -1586,7 +1533,7 @@ exports.create = {
     { 
       'title': 'Learning about Oyster',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Oyster description',
@@ -1596,8 +1543,6 @@ exports.create = {
       'sector': 'marineres-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'tags': ['oyster', 'aquatic resources'],
-
       'createdAt': Date.now,  
       
       'likes': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
@@ -1609,7 +1554,7 @@ exports.create = {
     { 
       'title': 'Learning about Sardines',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Sardines description',
@@ -1619,8 +1564,6 @@ exports.create = {
       'sector': 'marineres-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'tags': ['sardines', 'aquatic resources'],
-
       'createdAt': Date.now,  
       
       'likes': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
@@ -1632,7 +1575,7 @@ exports.create = {
     { 
       'title': 'Learning about Sea Cucumber',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Sea Cucumber description',
@@ -1642,7 +1585,6 @@ exports.create = {
       'sector': 'marineres-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'tags': ['sea cucumber', 'aquatic resources'],
 
       'createdAt': Date.now,  
       
@@ -1655,7 +1597,7 @@ exports.create = {
     { 
       'title': 'Learning about Seaweeds',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Seaweeds description',
@@ -1665,8 +1607,6 @@ exports.create = {
       'sector': 'marineres-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'tags': ['seaweeds', 'aquatic resources'],
-
       'createdAt': Date.now,  
       
       'likes': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
@@ -1678,7 +1618,7 @@ exports.create = {
     { 
       'title': 'Learning about Tuna',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Tuna description',
@@ -1688,8 +1628,6 @@ exports.create = {
       'sector': 'marineres-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'tags': ['tuna', 'aquatic resources'],
-
       'createdAt': Date.now,  
       
       'likes': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
@@ -1701,7 +1639,7 @@ exports.create = {
     { 
       'title': 'Learning about Bathymetry',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Bathymetry description',
@@ -1711,8 +1649,6 @@ exports.create = {
       'sector': 'oes-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'tags': ['bathymetry', 'aquatic resources'],
-
       'createdAt': Date.now,  
       
       'likes': ['Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
@@ -1724,7 +1660,7 @@ exports.create = {
     { 
       'title': 'Learning about Corals',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Corals description',
@@ -1734,8 +1670,6 @@ exports.create = {
       'sector': 'oes-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'tags': ['corals', 'aquatic resources'],
-
       'createdAt': Date.now,  
       
       'likes': ['Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
@@ -1747,7 +1681,7 @@ exports.create = {
     { 
       'title': 'Learning about Fishing Maps',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Fishing Maps description',
@@ -1757,7 +1691,6 @@ exports.create = {
       'sector': 'oes-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'tags': ['fishing maps', 'aquatic resources'],
 
       'createdAt': Date.now,  
       
@@ -1770,7 +1703,7 @@ exports.create = {
     { 
       'title': 'Learning about Harmful Algal Blooms',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Harmful Algal Blooms description',
@@ -1780,7 +1713,6 @@ exports.create = {
       'sector': 'oes-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'tags': ['algal blooms', 'aquatic resources'],
 
       'createdAt': Date.now,  
       
@@ -1793,7 +1725,7 @@ exports.create = {
     { 
       'title': 'Learning about Cacao',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Cacao description',
@@ -1803,8 +1735,6 @@ exports.create = {
       'sector': 'forestry-sector',
       'industry': 'natural-industry',
       'specificCommodity': null,
-      'tags': ['cacao', 'natural resources'],
-
       'createdAt': Date.now,  
       
       'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
@@ -1816,7 +1746,7 @@ exports.create = {
     { 
       'title': 'Learning about Bamboo',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Bamboo description',
@@ -1826,8 +1756,6 @@ exports.create = {
       'sector': 'forestry-sector',
       'industry': 'natural-industry',
       'specificCommodity': null,
-      'tags': ['bamboo', 'natural resources'],
-
       'createdAt': Date.now,  
       
       'likes': ['Harold', 'Juan', 'John', 'Jane', 'Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
@@ -1839,7 +1767,7 @@ exports.create = {
     { 
       'title': 'Learning about Sago',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Sago description',
@@ -1849,8 +1777,6 @@ exports.create = {
       'sector': 'forestry-sector',
       'industry': 'natural-industry',
       'specificCommodity': null,
-      'tags': ['sago', 'natural resources'],
-
       'createdAt': Date.now,  
       
       'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
@@ -1862,7 +1788,7 @@ exports.create = {
     { 
       'title': 'Learning about Rubber',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Rubber description',
@@ -1872,7 +1798,6 @@ exports.create = {
       'sector': 'forestry-sector',
       'industry': 'natural-industry',
       'specificCommodity': null,
-      'tags': ['rubber', 'natural resources'],
 
       'createdAt': Date.now,  
       
@@ -1885,7 +1810,7 @@ exports.create = {
     { 
       'title': 'Learning about Industrial Tree Plantation',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Industrial Tree Plantation description',
@@ -1895,7 +1820,6 @@ exports.create = {
       'sector': 'forestry-sector',
       'industry': 'natural-industry',
       'specificCommodity': null,
-      'tags': ['industrial tree plantation', 'natural resources'],
 
       'createdAt': Date.now,  
       
@@ -1908,7 +1832,7 @@ exports.create = {
     { 
       'title': 'Learning about Biodiversity',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Biodiversity description',
@@ -1918,7 +1842,6 @@ exports.create = {
       'sector': 'ies-sector',
       'industry': 'natural-industry',
       'specificCommodity': null,
-      'tags': ['biodiversity', 'natural resources'],
 
       'createdAt': Date.now,  
       
@@ -1931,7 +1854,7 @@ exports.create = {
     { 
       'title': 'Learning about Climate Change',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Climate Change description',
@@ -1941,7 +1864,6 @@ exports.create = {
       'sector': 'ies-sector',
       'industry': 'natural-industry',
       'specificCommodity': null,
-      'tags': ['climate change', 'natural resources'],
 
       'createdAt': Date.now,  
       
@@ -1954,7 +1876,7 @@ exports.create = {
     { 
       'title': 'Learning about Watershed',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Watershed description',
@@ -1964,8 +1886,6 @@ exports.create = {
       'sector': 'ies-sector',
       'industry': 'natural-industry',
       'specificCommodity': null,
-      'tags': ['watershed', 'natural resources'],
-
       'createdAt': Date.now,  
       
       'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
@@ -1977,7 +1897,7 @@ exports.create = {
     { 
       'title': 'Learning about Mangrove',
       'state': 'published',
-      'author': 'admin',
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Mangrove description',
@@ -1987,8 +1907,6 @@ exports.create = {
       'sector': 'ies-sector',
       'industry': 'natural-industry',
       'specificCommodity': null,
-      'tags': ['mangrove', 'natural resources'],
-
       'createdAt': Date.now,  
       
       'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
@@ -2004,7 +1922,7 @@ exports.create = {
     {
       'title': 'Corn Chapter',
       'state': 'published',
-      'author': 'admin',
+      
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
         'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
@@ -2023,7 +1941,7 @@ exports.create = {
     {
       'title': 'Legume Chapter',
       'state': 'published',
-      'author': 'admin',
+      
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
         'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
@@ -2038,7 +1956,7 @@ exports.create = {
     {
       'title': 'Rootcrop Chapter',
       'state': 'published',
-      'author': 'admin',
+      
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
         'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
@@ -2053,7 +1971,7 @@ exports.create = {
     {
       'title': 'Tropical Fruit Chapter',
       'state': 'published',
-      'author': 'admin',
+      
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
         'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
@@ -2071,7 +1989,7 @@ exports.create = {
     {
       'title': 'Feed Resources Chapter',
       'state': 'published',
-      'author': 'admin',
+      
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
         'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
@@ -2089,7 +2007,7 @@ exports.create = {
     {
       'title': 'Agriculture Course',
       'state': 'published',
-      'author': 'admin',
+      
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
         'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
@@ -2106,7 +2024,7 @@ exports.create = {
     {
       'title': 'Aquatic Resources Course',
       'state': 'published',
-      'author': 'admin',
+      
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
         'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
