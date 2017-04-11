@@ -45,15 +45,17 @@ exports = module.exports = function (app) {
 	app.get('/gallery', routes.views.gallery);
 	
 	// Elearning Routes
-	app.get('/elearning', routes.views.elearning.main);
+	app.get('/elearning', routes.views.elearning.elearning);
 	app.get('/elearning/courses?', routes.views.elearning.courseList);
 	app.get('/elearning/course/:courseslug?', routes.views.elearning.courseOutline);
 	app.get('/elearning/chapter/:chapterslug?', routes.views.elearning.chapterOutline);
 	app.get('/elearning/learning-object/:learningobjectslug', routes.views.elearning.learningObject);
 	app.get('/elearning/analytics', routes.views.elearning.analytics);
-	app.get('/elearning/signup', routes.views.elearning.registerLUser);
-	app.post('/elearning/signup', routes.views.elearning.registerLUser);
-	
+	app.get('/elearning/signup?', routes.views.elearning.signup);
+	app.post('/elearning/signup?', routes.views.elearning.signup);
+	app.get('/elearning/popular?', routes.views.elearning.popular);
+	app.get('/elearning/:userid/recommended?', routes.views.elearning.recommended);
+
 	app.get('/search/', function(req,res){
 		var searchKey = req.query.searchKey;
 		res.writeHead(301,

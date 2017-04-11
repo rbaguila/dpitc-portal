@@ -1,4 +1,4 @@
-extends ../../layouts/default
+extends ../../layouts/elearning
 
 mixin learningObject(currLO)
   .container-fluid
@@ -6,12 +6,22 @@ mixin learningObject(currLO)
       if currLO.video
         .col-md-8.embed-responsive-item
           iframe(width="640", height="360", src="https://www.youtube.com/embed/"+currLO.video.videoId, frameborder="0", allowfullscreen)
+    //- .row
+      if currLO.gallery
+        h3 Gallery
+        each image in currLO.gallery.images
+          img(src=image.)
+    .row
+      if currLO.links.exists
+        h3 Related Articles:
+        each link in currLO.links
+          a(href=link.url) #{link.name}   
     .row
       p.text-info Uploaded: #{currLO.publishedAt.toDateString()}
     .row
       p= currLO.content.extended
       br
-    .row
+    //- .row
       p Related: &nbsp;
       each tag in currLO.tags
         span.label.label-info  #{tag} &nbsp;
@@ -55,7 +65,7 @@ block content
         .panel.panel-info
           .panel-body
             +learningObject(data.currLO)
-          .panel-footer
+          //- .panel-footer
             p.text-info.text-right Author: #{data.currLO.author.name.last}, #{data.currLO.author.name.first}
 
       .col-md-4

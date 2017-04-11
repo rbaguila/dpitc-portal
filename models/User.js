@@ -11,8 +11,18 @@ User.add({
 	name: { type: Types.Name, required: true, index: true },
 	email: { type: Types.Email, initial: true, required: true, index: true },
 	password: { type: Types.Password, initial: true, required: true },
+  address: { 
+    type: String, 
+    required: false 
+  },
+  learningObjectsTaken: { 
+    // max of 100 to be considered for threshold purposes and mean newly taken courses / recent
+    type: Types.Relationship, 
+    ref: 'LearningObject', 
+    many: true 
+  },
 }, 'Permissions', {
-	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
+	isAdmin: { type: Boolean, label: 'Can access Keystone', index: false },
 });
 
 // Provide access to Keystone

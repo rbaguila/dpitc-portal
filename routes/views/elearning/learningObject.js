@@ -2,6 +2,7 @@ var keystone = require('keystone');
 var async = require('async');
 var LearningObject = keystone.list('LearningObject');
 var Course = keystone.list('Course');
+var User = keystone.list('User');
 
 exports = module.exports = function (req, res) {
 
@@ -17,26 +18,58 @@ exports = module.exports = function (req, res) {
     learningObjectsTaken: [],
   };
 
+  var pageData = {
+    loginRedirect: '/elearning',
+    breadcrumbs: [
+      { text: 'elearning', link: '/elearning' },
+      // still need breadcrumb for course
+    ]
+  }
+
+  var currentLO = [];
   var tempRecommended = [];
   var tempLearningObjects = [];
   var classifications = ["specificCommodity", "isp", "sector", "industry"];
   var counts = ["specCommCount", "ispCount", "sectorCount", "industryCount"];
 
-  // Load the current learning object
+  // Load the currentLO
+  // Add currentLO to currentUser's learningObjectsTaken
   view.on('init', function(next){
+    var currentUser = locals.user;
+    var currentLO;
+
+    // Get user by userId
     LearningObject.model.findOne({
       slug: req.params.learningobjectslug,
       state: 'published',
-    })  
+    })
     .populate('author images video isp sector industry')
-    .exec(function(err, result){
-      if(result != null){
-        locals.data.currLO = result;
-        //console.log(result);
-      } else {
-        return res.status(404).send(keystone.wrapHTMLError('Sorry, LearningObject:' + req.params.learningobjectslug +' not found! (404)'));
+    .exec(function(err, result) {
+      if (err) return next(err);
+      if (result.length == 0) {
+        return callback(res.status(404).send(keystone.wrapHTMLError('Sorry, LearningObject:' + req.params.learningobjectslug +' not found! (404)')));
       }
-      next(err);
+      currentLO = result;
+      locals.data.currLO = result;
+
+      // TODO refactor breadcrumbs
+      pageData.breadcrumbs.push(  { text: locals.data.currLO.title, link: '/elearning/'+req.params.learningobjectslug } );
+
+
+      if(currentUser){
+        // Update currentUser's learningObjectsTaken
+        User.model.findOneAndUpdate( 
+          { _id: currentUser._id }, 
+          { $addToSet: { learningObjectsTaken: currentLO._id } },
+          function(err, res) {
+            if (err) return next(err);
+            next();  
+          }
+        ); 
+        
+      } else {
+        next();
+      }
     });
   });
 
@@ -72,7 +105,7 @@ exports = module.exports = function (req, res) {
   //TO DO
   //get the current logged in user
   view.on('init', function(next){
-    var q = keystone.list('LUser').model.findOne().where('email', 'jdelacruz@gmail.com');
+    var q = keystone.list('User').model.findOne().where('email', 'jdelacruz@gmail.com');
 
     q.exec(function(err, result){
         
@@ -179,6 +212,6 @@ exports = module.exports = function (req, res) {
   });
 
   // Render the view
-  view.render('elearning/learningObject');
+  view.render('elearning/learningObject', pageData);
 
 };

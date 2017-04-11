@@ -13,7 +13,7 @@ LOComment.add({
 	},
 	author: {
 		type: Types.Relationship,
-		ref: 'LUser'
+		ref: 'User'
 	},
 	learningObject: {
 		type: Types.Relationship,

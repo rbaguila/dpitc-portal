@@ -83,7 +83,7 @@ html
       
       //- NAVBAR
       div#community-nav.navbar-fixed-top
-        //- ol.breadcrumb.community-breadcrumb
+        ol.breadcrumb.community-breadcrumb
           li
             a(href="/") Home
           each breadcrumb in breadcrumbs
@@ -101,6 +101,8 @@ html
             a(href='/keystone/signout', class="not-active login-link") Sign Out
           else
             a(href='/keystone/signin?from=' + loginRedirect, class="not-active login-link") Sign In
+            | &nbsp;&nbsp;&nbsp;&nbsp;
+            a(href='/elearning/signup?from=' + loginRedirect, class="not-active login-link") Sign Up
 
         //- ul.nav.navbar-nav.navbar-right
         //-   if user
@@ -114,20 +116,23 @@ html
 
     //- BODY
     #body
-
+      
       //- NOTE:
       //- There is no .container wrapping class around body blocks to allow more flexibility in design.
       //- Remember to include it in your templates when you override the intro and content blocks!
 
       //- The Intro block appears above flash messages (used for temporary information display)
-      block intro
+      .elearning-body
+        block intro
 
       //- Flash messages allow you to display once-off status messages to users, e.g. form
       //- validation errors, success messages, etc.
-      +flash-messages(messages)
+      .elearning-body
+        +flash-messages(messages)
 
       //- The content block should contain the body of your template's content
-      block content
+      .elearning-body
+        block content
 
 
     footer.page-footer

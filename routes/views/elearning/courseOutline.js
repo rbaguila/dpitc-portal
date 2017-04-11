@@ -10,6 +10,15 @@ exports = module.exports = function (req, res) {
   // Set locals
   locals.section = 'courses';
 
+  var pageData = {
+    loginRedirect: '/elearning',
+    breadcrumbs: [
+      { text: 'elearning', link: '/elearning' },
+    
+    ]
+  }
+
+
   locals.data = {
     currCourse: [],
     courses: [],
@@ -34,6 +43,7 @@ exports = module.exports = function (req, res) {
     .exec(function(err, result){
       if(result != null){
         locals.data.currCourse = result;
+        pageData.breadcrumbs.push(  { text: locals.data.currCourse.title, link: '/elearning/'+req.params.courseslug } );
       } else {
         return res.status(404).send(keystone.wrapHTMLError('Sorry, Course: '+ req.params.courseslug +' not found! (404)'));
       }
@@ -41,7 +51,8 @@ exports = module.exports = function (req, res) {
     });
   });
 
+  
   // Render the view
-  view.render('elearning/courseOutline');
+  view.render('elearning/courseOutline', pageData);
 
 };

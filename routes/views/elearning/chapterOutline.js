@@ -9,6 +9,14 @@ exports = module.exports = function (req, res) {
 
   // Set locals
 
+  var pageData = {
+    loginRedirect: '/elearning',
+    breadcrumbs: [
+      { text: 'elearning', link: '/elearning' },
+      // still need breadcrumb for course
+    ]
+  }
+
   locals.data = {
     currChapter: [],
   };
@@ -30,6 +38,7 @@ exports = module.exports = function (req, res) {
     .exec(function(err, result){
       if(result != null){
         locals.data.currChapter = result;
+        pageData.breadcrumbs.push(  { text: locals.data.currChapter.title, link: '/elearning/'+req.params.chapterslug } );
       } else {
         return res.status(404).send(keystone.wrapHTMLError('Sorry, Chapter:' + req.params.chapterslug +' not found! (404)'));
       }
@@ -38,6 +47,6 @@ exports = module.exports = function (req, res) {
   });
 
   // Render the view
-  view.render('elearning/chapterOutline');
+  view.render('elearning/chapterOutline', pageData);
 
 };
