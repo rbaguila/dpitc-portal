@@ -1,10 +1,4 @@
 var keystone = require('keystone');
-var fs = require('fs');
-//var d3 = require("d3");
-//var jsdom = require("jsdom");
-
-//var document = jsdom.jsdom();
-//var svg = d3.select(document.body).append("svg");
 
 exports = module.exports = function(req, res){
     

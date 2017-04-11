@@ -9,8 +9,9 @@
 
     //TO DO
     //GET THE CURRENT YEAR OR BASE SA GUSTO OR NAKALAGAY SA UI
+    var currentYearLOView= new Date().getFullYear();
 
-    d3.json("/api/LOViews/2017", function(error, json) {
+    d3.json("/api/LOViews/" + currentYearLOView, function(error, json) {
         var tally = {};
         for(var a=0;a<months.length;a++){
             tally[months[a]] = 0;

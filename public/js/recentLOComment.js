@@ -25,8 +25,9 @@
 
     //TO DO
     //GET THE CURRENT YEAR OR BASE SA GUSTO OR NAKALAGAY SA UI
+    var currentYearRecentLOComment1= new Date().getFullYear();
 
-    d3.json("/api/recentLOComments/2017/0", function(error, json) {
+    d3.json("/api/recentLOComments/" + currentYearRecentLOComment1 + "/0", function(error, json) {
         var tally = {};
         for(var a=0;a<months.length;a++){
             tally[months[a]] = 0;
@@ -107,8 +108,9 @@
 
     //TO DO
     //GET THE CURRENT YEAR OR BASE SA GUSTO OR NAKALAGAY SA UI
+    var currentYearRecentLOComment2= new Date().getFullYear();
 
-    d3.json("/api/recentLOComments/2017/1", function(error, json) {
+    d3.json("/api/recentLOComments/" + currentYearRecentLOComment2 + "/1", function(error, json) {
         var tally = {};
         for(var a=0;a<months.length;a++){
             tally[months[a]] = 0;
