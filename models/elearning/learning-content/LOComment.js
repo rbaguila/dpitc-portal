@@ -4,12 +4,12 @@ var Types = keystone.Field.Types;
 var LOComment = new keystone.List('LOComment', {
 	track: true,
 	nocreate: true,
-	hidden: true
+	hidden: false, // should be true
 })
 
 LOComment.add({
 	content: {
-		type: Types.Markdown
+		type: String
 	},
 	author: {
 		type: Types.Relationship,

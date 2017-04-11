@@ -3,6 +3,7 @@ var async = require('async');
 var LearningObject = keystone.list('LearningObject');
 var Course = keystone.list('Course');
 var User = keystone.list('User');
+var LOComment = keystone.list('LOComment');
 
 exports = module.exports = function (req, res) {
 
@@ -13,10 +14,13 @@ exports = module.exports = function (req, res) {
 
   locals.data = {
     currLO: [],
+    comments: [],
     otherLO: [],
     recommendedLO: [],
     learningObjectsTaken: [],
   };
+
+  locals.formData = req.body || {};
 
   var pageData = {
     loginRedirect: '/elearning',
@@ -38,7 +42,6 @@ exports = module.exports = function (req, res) {
     var currentUser = locals.user;
     var currentLO;
 
-    // Get user by userId
     LearningObject.model.findOne({
       slug: req.params.learningobjectslug,
       state: 'published',
@@ -72,6 +75,86 @@ exports = module.exports = function (req, res) {
       }
     });
   });
+
+  //TODO
+  // Add comment
+  view.on('post', { action: 'user.addComment' }, function(next) {
+
+      var currentUser = locals.user;
+      var currentLO;
+
+      LearningObject.model.findOne({
+        slug: req.params.learningobjectslug,
+        state: 'published',
+      })
+      .populate('author images video isp sector industry')
+      .exec(function(err, result) {
+        if (err) return next(err);
+        if (result.length == 0) {
+          return callback(res.status(404).send(keystone.wrapHTMLError('Sorry, LearningObject:' + req.params.learningobjectslug +' not found! (404)')));
+        }
+        currentLO = result;
+        locals.data.currLO = result;
+
+        if (currentUser) {
+          var newComment = new LOComment.model({
+            content: locals.formData.content,
+            author: currentUser,
+            learningObject: currentLO,
+            dateCreated: Date.now
+          });
+
+          console.log(newComment);
+
+          // Add comment to currentLO's comments
+          LearningObject.model.findOneAndUpdate(
+            { _id: currentLO._id },
+            { $addToSet: { comments: newComment._id} }, 
+            function(err, res) {
+              if (err) return next(err);
+              //console.log(res);
+
+              // re-load comments
+              
+              next();
+            });
+           
+        } else {
+          req.flash('error', 'Please sign in to add comments.')
+          return res.redirect('keystone/signin');
+        }
+      });
+
+    });
+
+  // Load comments
+  view.on('init', function(next){
+    var currentLO;
+    LearningObject.model.findOne({
+      slug: req.params.learningobjectslug,
+      state: 'published',
+    })
+    .exec(function(err, result) {
+      if (err) return next(err);
+      currentLO = result;
+
+      LOComment.model.find({ 
+        learningObject: currentLO._id 
+      })
+      .populate('author learningObject')
+      .exec(function(err, comments) {
+        if (err) return next(err);
+
+        locals.data.comments = comments;
+        
+      });
+
+      next();
+    });
+
+  });  
+
+  
 
   // TODO
   // Load other learning objects besides current

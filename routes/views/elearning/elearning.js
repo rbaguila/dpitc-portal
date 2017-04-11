@@ -9,9 +9,6 @@ exports = module.exports = function (req, res) {
   var locals = res.locals;
   locals.section = 'elearning';
 
-  locals.data = {
-    courses: [],
-  }
 
   var pageData = {
     loginRedirect: '/elearning', 

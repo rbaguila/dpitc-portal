@@ -1,5 +1,14 @@
 extends ../../layouts/elearning
 
+block js
+  script.
+    function checkSubmit(e){
+      if(e && e.keyCode == 13)
+        document.commentForm.submit();
+        document.commentForm.clear();
+    }
+    //- document.commentForm.submit();
+
 mixin learningObject(currLO)
   .container-fluid
     .row
@@ -25,6 +34,7 @@ mixin learningObject(currLO)
       p Related: &nbsp;
       each tag in currLO.tags
         span.label.label-info  #{tag} &nbsp;
+
 
 mixin recommendedTopics(recLO)
   each lo in recLO
@@ -56,15 +66,41 @@ mixin otherTopics(otherLO)
           h5=lo.title
           span= lo.content.brief.substring(0, 50)
 
+block addComment
+  form.contact-form(method="post" name="commentForm")
+    .row
+      input(type="hidden" name="action" value="user.addComment")
+      .form-group
+        .row
+          input.form-control(type="text" name="content" placeholder="Write a comment..." value=formData.content)
+        div(onKeyPress="return checkSubmit(event)")
+        //- input(type="submit" style="display:none")
+    //- .row.pull-right       
+      button(type="submit").btn.btn-primary 
+        span.glyphicon.glyphicon-comment(aria-hidden="true")
 
+mixin viewComments(comments)
+  label Comments
+  if comments
+    each comment in comments
+      ul.list-group
+        li.list-group-item
+          blockquote
+            strong 
+            p #{comment.content}
+            footer #{comment.author.name.first} #{comment.author.name.last} on #{comment.dateCreated.toDateString()}
 
 block content
   .container
     .row
       .col-md-8
-        .panel.panel-info
-          .panel-body
-            +learningObject(data.currLO)
+        .row
+          .panel.panel-info
+            .panel-body
+              +learningObject(data.currLO)
+              +viewComments(data.comments)
+              block addComment
+              
           //- .panel-footer
             p.text-info.text-right Author: #{data.currLO.author.name.last}, #{data.currLO.author.name.first}
 
