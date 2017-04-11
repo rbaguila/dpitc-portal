@@ -102,17 +102,18 @@ mixin Views(recentView1, recentView2)
         div(id="recentViewGraph2")
 
 block content
-  h3.text-center ELearning Analytics
-  .container
-    .panel.panel-default
-      .panel-body
-        +Reactions(data.maxReactionsLearningObject, data.minReactionsLearningObject)
-    .panel.panel-default
-      .panel-body
-        +Comments(data.recentLOComment1, data.recentLOComment2)
-    .panel.panel-default
-      .panel-body
-        +Views(data.recentLOView1, data.recentLOView2)
+  .analytics-body
+    h3.text-center ELearning Analytics
+    .container
+      .panel.panel-default
+        .panel-body
+          +Reactions(data.maxReactionsLearningObject, data.minReactionsLearningObject)
+      .panel.panel-default
+        .panel-body
+          +Comments(data.recentLOComment1, data.recentLOComment2)
+      .panel.panel-default
+        .panel-body
+          +Views(data.recentLOView1, data.recentLOView2)
   script(src='/js/learningObjectReactions.js')
   script(src='/js/maxLearningObjectReactions.js')
   script(src='/js/minLearningObjectReactions.js')

@@ -3,7 +3,11 @@ var async = require('async');
 var LearningObject = keystone.list('LearningObject');
 var Course = keystone.list('Course');
 var User = keystone.list('User');
+<<<<<<< HEAD
 var LOComment = keystone.list('LOComment');
+=======
+var LOView = keystone.list('LOView');
+>>>>>>> 91bf87133cbf1607f68cac2a117c4fe91f050294
 
 exports = module.exports = function (req, res) {
 
@@ -30,7 +34,6 @@ exports = module.exports = function (req, res) {
     ]
   }
 
-  var currentLO = [];
   var tempRecommended = [];
   var tempLearningObjects = [];
   var classifications = ["specificCommodity", "isp", "sector", "industry"];
@@ -38,6 +41,7 @@ exports = module.exports = function (req, res) {
 
   // Load the currentLO
   // Add currentLO to currentUser's learningObjectsTaken
+
   view.on('init', function(next){
     var currentUser = locals.user;
     var currentLO;
@@ -154,7 +158,26 @@ exports = module.exports = function (req, res) {
 
   });  
 
-  
+
+  //insert view
+  //TO DO, check if nirefresh lang
+  view.on('init', function(next){
+    var currentUser = locals.user;
+    if(currentUser){
+      var newView = new LOView.model({
+          LUser: currentUser._id,
+          learningObject: locals.data.currLO._id
+      });
+      newView.save(function(err) {
+          //console.log("added the view")
+      });
+      next();
+    }
+    else{
+      next();
+    }
+  });
+
 
   // TODO
   // Load other learning objects besides current
@@ -185,27 +208,21 @@ exports = module.exports = function (req, res) {
     });
   });
 
-  //TO DO
-  //get the current logged in user
-  view.on('init', function(next){
-    var q = keystone.list('User').model.findOne().where('email', 'jdelacruz@gmail.com');
-
-    q.exec(function(err, result){
-        
-        locals.data.currentLearner = result;
-        //console.log(locals.data.currentLearner);
-        next(err);
-    });
-  });
-
   //get the Learning Objects Taken by the current logged-in user
   view.on('init', function(next){
-    var q = LearningObject.model.find().where('_id').in(locals.data.currentLearner.learningObjectsTaken);
+    var currentUser = locals.user;
+    if(currentUser){
+      var q = LearningObject.model.find().where('_id').in(currentUser.learningObjectsTaken);
 
-    q.exec(function(err, results){
-        locals.data.learningObjectsTaken = results;
-        next(err);
-    });
+      q.exec(function(err, results){
+          locals.data.learningObjectsTaken = results;
+          console.log(locals.data.learningObjectsTaken.length);
+          next(err);
+      });
+    }
+    else{
+      next();
+    }
   });
 
   //compute for the score of each learning objects based on the ISP, sector and industry tags of the learning objects taken by the logged-in user
@@ -289,7 +306,9 @@ exports = module.exports = function (req, res) {
       }*/
     }
     else{
-      locals.data.recommendedLO = tempLearningObjects.slice(0, 3);
+      if(tempLearningObjects.length>0){
+        locals.data.recommendedLO = tempLearningObjects.slice(0, 3);
+      }
     }
     next();
   });

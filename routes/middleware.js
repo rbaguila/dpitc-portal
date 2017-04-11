@@ -63,3 +63,21 @@ exports.requireUser = function (req, res, next) {
 		next();
 	}
 };
+
+/**
+	Prevents people from accessing protected pages when they're not the admin
+ */
+exports.requireAdmin = function (req, res, next) {
+	if (!req.user) {
+		//req.flash('error', 'Please sign in to access this page.');
+		res.redirect('/keystone/signin');
+	} else {
+		if(!req.user.isAdmin){
+			//req.flash('error', 'You are not authorized to view this page.');
+			res.redirect('/keystone/signin');
+		}
+		else{
+			next();
+		}
+	}
+};
