@@ -3,11 +3,8 @@ var async = require('async');
 var LearningObject = keystone.list('LearningObject');
 var Course = keystone.list('Course');
 var User = keystone.list('User');
-<<<<<<< HEAD
 var LOComment = keystone.list('LOComment');
-=======
 var LOView = keystone.list('LOView');
->>>>>>> 91bf87133cbf1607f68cac2a117c4fe91f050294
 
 exports = module.exports = function (req, res) {
 
