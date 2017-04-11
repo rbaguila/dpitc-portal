@@ -220,7 +220,9 @@ exports = module.exports = function (req, res) {
       }*/
     }
     else{
-      locals.data.recommendedLO = tempLearningObjects.slice(0, 3);
+      if(tempLearningObjects.length>0){
+        locals.data.recommendedLO = tempLearningObjects.slice(0, 3);
+      }
     }
     next();
   });

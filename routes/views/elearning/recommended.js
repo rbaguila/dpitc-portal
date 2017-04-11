@@ -134,7 +134,9 @@ exports = module.exports = function (req, res) {
       }*/
     }
     else{
-      locals.data.recommendedLearningObjects = tempLearningObjects.slice(0, 4);
+      if(tempLearningObjects.length>0){
+        locals.data.recommendedLearningObjects = tempLearningObjects.slice(0, 4);
+      }
     }
     next();
   });

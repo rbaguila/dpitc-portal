@@ -28,18 +28,19 @@ exports = module.exports = function(req, res){
         var q = keystone.list('LearningObject').model.find();
 
         q.exec(function(err, results){
-            var totalReactions= 0;
-            for(var i=0;i<results.length;i++){
-                totalReactions = 0;
-                totalReactions += results[i].likes.length + results[i].happy.length + results[i].sad.length;
-                results.reactions = totalReactions;
+            if(results!=null){
+                var totalReactions= 0;
+                for(var i=0;i<results.length;i++){
+                    totalReactions = 0;
+                    totalReactions += results[i].likes.length + results[i].happy.length + results[i].sad.length;
+                    results.reactions = totalReactions;
+                }
+                results.sort(function(a,b){
+                    return parseFloat(b.reactions) - parseFloat(a.reactions);
+                });
+                locals.data.maxReactionsLearningObject = results[0];
+                locals.data.minReactionsLearningObject = results[(results.length-1)];
             }
-            results.sort(function(a,b){
-                return parseFloat(b.reactions) - parseFloat(a.reactions);
-            });
-            locals.data.maxReactionsLearningObject = results[0];
-            locals.data.minReactionsLearningObject = results[(results.length-1)];
-            
             next(err);
         });
     });
@@ -54,28 +55,40 @@ exports = module.exports = function(req, res){
         var q = keystone.list('LOComment').model.find().sort('-dateCreated');
 
         q.exec(function(err, results){
-            recentComment1 = results[0];
-            recentComment2 = results[1];
+            if(results!=null){
+                recentComment1 = results[0];
+                recentComment2 = results[1];
+            }
             next(err);
         });
     });
 
     view.on('init', function(next){
-        var q = keystone.list('LearningObject').model.find().where('_id', recentComment1.learningObject);
+        if(recentComment1!=null){
+            var q = keystone.list('LearningObject').model.find().where('_id', recentComment1.learningObject);
 
-        q.exec(function(err, result){
-            locals.data.recentLOComment1 = result[0];
-            next(err);
-        });
+            q.exec(function(err, result){
+                locals.data.recentLOComment1 = result[0];
+                next(err);
+            });
+        }
+        else{
+            next();
+        }
     });
 
     view.on('init', function(next){
-        var q = keystone.list('LearningObject').model.find().where('_id', recentComment2.learningObject);
+        if(recentComment2!=null){
+            var q = keystone.list('LearningObject').model.find().where('_id', recentComment2.learningObject);
 
-        q.exec(function(err, result){
-            locals.data.recentLOComment2 = result[0];
-            next(err);
-        });
+            q.exec(function(err, result){
+                locals.data.recentLOComment2 = result[0];
+                next(err);
+            });
+        }
+        else{
+            next();
+        }
     });
 
     //GET 2 Sample learning Object and show the graph for the number of views
@@ -88,28 +101,40 @@ exports = module.exports = function(req, res){
         var q = keystone.list('LOView').model.find().sort('-dateViewed');
 
         q.exec(function(err, results){
-            recentView1 = results[0];
-            recentView2 = results[1];
+            if(results != null){
+                recentView1 = results[0];
+                recentView2 = results[1];
+            }
             next(err);
         });
     });
 
     view.on('init', function(next){
-        var q = keystone.list('LearningObject').model.find().where('_id', recentView1.learningObject);
+        if(recentView1!=null){
+            var q = keystone.list('LearningObject').model.find().where('_id', recentView1.learningObject);
 
-        q.exec(function(err, result){
-            locals.data.recentLOView1 = result[0];
-            next(err);
-        });
+            q.exec(function(err, result){
+                locals.data.recentLOView1 = result[0];
+                next(err);
+            });
+        }
+        else{
+            next();
+        }
     });
 
     view.on('init', function(next){
-        var q = keystone.list('LearningObject').model.find().where('_id', recentView2.learningObject);
+        if(recentView2!=null){
+            var q = keystone.list('LearningObject').model.find().where('_id', recentView2.learningObject);
 
-        q.exec(function(err, result){
-            locals.data.recentLOView2 = result[0];
-            next(err);
-        });
+            q.exec(function(err, result){
+                locals.data.recentLOView2 = result[0];
+                next(err);
+            });
+        }
+        else{
+            next();
+        }
     });
 
     //Render the view
