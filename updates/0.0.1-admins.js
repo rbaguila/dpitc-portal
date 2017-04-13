@@ -9,16 +9,11 @@
 
 exports.create = {
 	User: [
-		{ 
-			'name.first': 'Roinand', 
-			'name.last': 'Aguila', 
-			'email': 'aroinand@gmail.com', 
-			'password': 'admin', 
-			'isAdmin': true,
-			'__ref': 'admin'
-		},
-	//],
+		{ 'name.first': 'Roinand', 'name.last': 'Aguila', 'email': 'aroinand@gmail.com', 'password': 'admin', 'isAdmin': true }
+	],
+};
 
+/*
 
 	/*ELearning Fixtures*/
 
@@ -2000,9 +1995,7 @@ exports.create = {
       ],
       '__ref': 'feedres-chapter',
     },
-
-  ],
-
+  ]
   Course: [
     {
       'title': 'Agriculture Course',
@@ -2035,190 +2028,6 @@ exports.create = {
       ],
       
     }
-  ],
-
-  LOComment: [
-    { 
-      'content': 'Hello po!', 
-      'author': 'Angelica', 
-      'learningObject': 'aquafeeds-lo',
-      'dateCreated': '2017-01-12'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Amber', 
-      'learningObject': 'pineapple-lo',
-      'dateCreated': '2017-01-28'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Albert', 
-      'learningObject': 'papaya-lo',
-      'dateCreated': '2017-01-18'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Bryan', 
-      'learningObject': 'citrus-lo',
-      'dateCreated': '2017-01-10'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Cena', 
-      'learningObject': 'jackfruit-lo',
-      'dateCreated': '2017-02-09'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Daniel', 
-      'learningObject': 'durian-lo',
-      'dateCreated': '2017-02-26'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Ellen', 
-      'learningObject': 'whitepotato-lo',
-      'dateCreated': '2017-02-07'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Ferdinand', 
-      'learningObject': 'sweetpotato-lo',
-      'dateCreated': '2017-03-01'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Gerald', 
-      'learningObject': 'peanut-lo',
-      'dateCreated': '2017-03-11'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Gary', 
-      'learningObject': 'mungbean-lo',
-      'dateCreated': '2017-03-09'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Henry', 
-      'learningObject': 'stagescorn-lo',
-      'dateCreated': '2017-03-16'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Harold', 
-      'learningObject': 'soilfertilization-lo',
-      'dateCreated': '2017-03-19'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Irish', 
-      'learningObject': 'landpreparation-lo',
-      'dateCreated': '2017-03-20'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Juan', 
-      'learningObject': 'biotechbtcorn-lo',
-      'dateCreated': '2017-03-21'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'John', 
-      'learningObject': 'feedingprogram-lo',
-      'dateCreated': '2017-03-22'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Jane', 
-      'learningObject': 'grainquality-lo',
-      'dateCreated': '2017-03-25'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Justin', 
-      'learningObject': 'sugarcane-lo',
-      'dateCreated': '2017-03-26'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Joon', 
-      'learningObject': 'plantingrice-lo',
-      'dateCreated': '2017-03-20'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Jeff', 
-      'learningObject': 'plantingmango-lo',
-      'dateCreated': '2017-03-23'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Kris', 
-      'learningObject': 'plantingcoffee-lo',
-      'dateCreated': '2017-03-23'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Karl', 
-      'learningObject': 'plantingcoconut-lo',
-      'dateCreated': '2017-03-24'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Krystal', 
-      'learningObject': 'plantingbanana-lo',
-      'dateCreated': '2017-03-28'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Luhan', 
-      'learningObject': 'plantingabaca-lo',
-      'dateCreated': '2017-03-22'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Logan', 
-      'learningObject': 'pineapple-lo',
-      'dateCreated': '2017-03-17'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Manuel', 
-      'learningObject': 'aquafeeds-lo',
-      'dateCreated': '2017-03-16'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Natalie', 
-      'learningObject': 'papaya-lo',
-      'dateCreated': '2017-03-17'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Oliver', 
-      'learningObject': 'citrus-lo',
-      'dateCreated': '2017-03-04'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Patricia', 
-      'learningObject': 'jackfruit-lo',
-      'dateCreated': '2017-04-05'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Queen', 
-      'learningObject': 'whitepotato-lo',
-      'dateCreated': '2017-04-04'
-    },
-    { 
-      'content': 'Hello po!', 
-      'author': 'Rona', 
-      'learningObject': 'durian-lo',
-      'dateCreated': '2017-04-03'
-    },
-
   ],
 
   LOView: [
@@ -2428,5 +2237,36 @@ exports.create = {
       'dateViewed': '2017-04-03'
     },
   ]
-  
+/*
+// This is the long-hand version of the functionality above:
+
+var keystone = require('keystone');
+var async = require('async');
+var User = keystone.list('User');
+
+var admins = [
+  { email: 'user@keystonejs.com', password: 'admin', name: { first: 'Admin', last: 'User' } }
+];
+
+function createAdmin (admin, done) {
+
+  var newAdmin = new User.model(admin);
+
+  newAdmin.isAdmin = true;
+  newAdmin.save(function (err) {
+    if (err) {
+      console.error('Error adding admin ' + admin.email + ' to the database:');
+      console.error(err);
+    } else {
+      console.log('Added admin ' + admin.email + ' to the database.');
+    }
+    done(err);
+  });
+
+}
+
+exports = module.exports = function (done) {
+  async.forEach(admins, createAdmin, done);
 };
+
+*/
