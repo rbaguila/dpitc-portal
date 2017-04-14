@@ -31,6 +31,7 @@ block js
       });
     });
 
+
 mixin learningObject(currLO)
   .container-fluid
     .row
@@ -104,6 +105,8 @@ mixin comment-form(action)
         else
           ul.list-inline
             li: a(href='/keystone/signin').btn.btn-sm.btn-primary Sign in to Comment
+    input(type='hidden', name='action', value='reactions.addLike')
+    button(type='submit').btn.btn-primary.pull-right Add Comment
 
 mixin comment-post(comment)
   if comment.author
@@ -127,6 +130,34 @@ mixin comment-thread(comments)
       li.list-group-item
         +comment-post(comment)
 
+mixin reactions(action)
+  .row
+    .col-md-2
+      form(method='post', style="margin-bottom: 0px; margin-top: 0px;")
+        input(type='hidden', name='action', value='reactions.addLike')
+        button(type='submit').btn.btn-link.btn-lg #{currentLO.likes.length} &nbsp;
+          i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")
+    
+    .col-md-2
+      form(method='post', style="margin-bottom: 0px; margin-top: 0px;")
+        input(type='hidden', name='action', value='reactions.addHappy')
+        button(type='submit').btn.btn-link.btn-lg #{currentLO.happy.length} &nbsp;
+          i.fa.fa-smile-o.fa-lg(aria-hidden="true")
+  
+    .col-md-2
+      form(method='post', style="margin-bottom: 0px; margin-top: 0px;")
+        input(type='hidden', name='action', value='reactions.addSad')
+        button(type='submit').btn.btn-link.btn-lg #{currentLO.sad.length}
+          i.fa.fa-frown-o.fa-lg(aria-hidden="true")
+  //- else
+    .row
+      button(type='submit' disabled='disabled').btn.btn-link.btn-lg #{currentLO.likes.length} &nbsp;
+        i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")
+      button(type='submit' disabled='disabled').btn.btn-link.btn-lg #{currentLO.happy.length} &ensp;
+        i.fa.fa-smile-o.fa-lg(aria-hidden="true")
+      button(type='submit' disabled='disabled').btn.btn-link.btn-lg #{currentLO.sad.length} &ensp;
+        i.fa.fa-frown-o.fa-lg(aria-hidden="true")
+
 block content
   .container
     .row
@@ -134,6 +165,8 @@ block content
         .row
           .panel.panel-info
             .panel-body
+              hr
+              +reactions()
               +learningObject(currentLO)
               +comment-form()
               +comment-thread(comments)

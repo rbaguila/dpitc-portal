@@ -128,6 +128,61 @@ exports = module.exports = function (req, res) {
 
   });
 
+  view.on('post', { action: 'reactions.addLike' }, function (next) {
+
+    // TODO
+    // Check if Learning Object has already been liked
+
+    LearningObject.model.findOneAndUpdate(
+      { _id: locals.currentLO._id }, 
+      { $addToSet: {
+        likes: locals.user._id
+        }
+      }, function (err, res) {
+        if (err) return next(err);
+        console.log('reactions.addLike');
+        next();
+      }
+    );
+
+  });
+
+  view.on('post', { action: 'reactions.addHappy' }, function (next) {
+
+    LearningObject.model.findOneAndUpdate(
+      { _id: locals.currentLO._id }, 
+      { $addToSet: {
+        happy: locals.user._id
+        }
+      }, function (err, res) {
+        if (err) return next(err);
+        console.log('reactions.addHappy');
+
+        next();
+      }
+    );
+
+  });
+
+  view.on('post', { action: 'reactions.addSad' }, function (next) {
+
+    LearningObject.model.findOneAndUpdate(
+      { _id: locals.currentLO._id }, 
+      { $addToSet: {
+        sad: locals.user._id
+        }
+      }, function (err, res) {
+        if (err) return next(err);
+        console.log('reactions.addSad');
+
+        next();
+      }
+    );
+
+  });
+
+
+
 
   // TODO
   // Load other learning objects besides current
