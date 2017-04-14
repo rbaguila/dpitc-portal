@@ -127,22 +127,6 @@ mixin comment-thread(comments)
       li.list-group-item
         +comment-post(comment)
 
-
-
-mixin viewComments(comments)
-  label Comments
-  if comments
-    each comment in comments
-      ul.list-group
-        li.list-group-item
-          blockquote
-            strong 
-            p #{comment.content}
-            footer #{comment.author.name.first} #{comment.author.name.last} on #{comment.dateCreated.toDateString()}
-
-
-
-
 block content
   .container
     .row
@@ -153,10 +137,6 @@ block content
               +learningObject(currentLO)
               +comment-form()
               +comment-thread(comments)
-              //- block addComment
-              
-          //- .panel-footer
-            p.text-info.text-right Author: #{data.currLO.author.name.last}, #{data.currLO.author.name.first}
 
       .col-md-4
         .row
