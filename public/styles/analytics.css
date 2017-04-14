@@ -2,7 +2,7 @@
     fill: steelblue;
 }
 .bar:hover {
-    fill: brown;
+    fill: #c6e2ff;
 }
 .axis {
     font: 12px sans-serif;
@@ -14,4 +14,32 @@
 }
 .x.axis path {
     display: none;
+}
+
+/* make sidebar nav vertical */ 
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+.dashboard{
+	border-left: 1px solid gray;
+}
+
+.centered-panel{
+	background-color: #dff0e7;
 }
