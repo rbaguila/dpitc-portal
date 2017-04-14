@@ -45,13 +45,13 @@ function toggleButton() {
     
     if (x.style.display === 'none') {
         x.style.display = 'block';
-        document.getElementById('carousel').style.marginTop = "10px";
+        document.getElementById('top-page').style.marginTop = "10px";
         document.getElementById('toggleIcon').className = "fa";
         document.getElementById('toggleIcon').className += " fa-close";
 
     } else {
         x.style.display = 'none';
-        document.getElementById('carousel').style.marginTop = "85px";
+        document.getElementById('top-page').style.marginTop = "85px";
         document.getElementById('toggleIcon').className = "fa";
         document.getElementById('toggleIcon').className += " fa-search";
     }
