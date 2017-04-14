@@ -1,9 +1,9 @@
     // Initialize empty array
-    var data = [];
+    var reactionsdata = [];
     // Get JSON data and wait for the response
     d3.json("/api/LOReactions", function(error, json) {
     $.each(json, function(d,i){
-    data.push({
+    reactionsdata.push({
     label: i.label,
     value: i.value
     })
@@ -16,7 +16,7 @@
     "font": "open sans"
     },
     "subtitle": {
-    "text": "Number of Likes, Happy and Sad for all Learning Objects",
+    "text": "Reactions for all Learning Objects",
     "color": "#999999",
     "fontSize": 12,
     "font": "open sans"
@@ -24,11 +24,12 @@
     "titleSubtitlePadding": 9
     },
     "size": {
-    "canvasWidth": 500,
+    "canvasWidth": 290,
+    "canvasHeight": 300,
     "pieOuterRadius": "80%"
     },
     "data": {
-    "content": data
+    "content": reactionsdata
     },
     "labels": {
     "outer": {

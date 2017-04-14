@@ -2,123 +2,95 @@ extends ../../layouts/default
 
 block css
   link(rel="stylesheet" type="text/css" href="/styles/analytics.css")
-  link(rel="stylesheet" type="text/css" href="/styles/elearning/elearning.less")
 
-//block js
-  script(src='/js/d3/d3.min.js')
-
-mixin Reactions(maxreactions, minreactions)
-  h4.text Reactions
+mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers)
     .row
       .col-md-6.col-xs-6
-        div(id="reactionsPieChart")
-      .col-md-3.col-xs-6
-        .thumbnail
-          if maxreactions.thumbnail.exists
-            img.card-img-top(src=maxreactions.thumbnail alt="maxreactions.title")
-          else if maxreactions.videoId
-            img.card-img-top(src='https://img.youtube.com/vi/'+ maxreactions.videoId +'/mqdefault.jpg', height="130px")
-          else
-            img.card-img-top(src="/images/image-not-available-th.png" alt=maxreactions.title, height="130px")
-          .caption
-            .row
-              h4= maxreactions.title.substring(0, 50)
-        hr
-        div(id="maxReactionsPieChart")
-      .col-md-3.col-xs-6
-        .thumbnail
-          if minreactions.thumbnail.exists
-            img.card-img-top(src=minreactions.thumbnail alt="minreactions.title")
-          else if minreactions.videoId
-            img.card-img-top(src='https://img.youtube.com/vi/'+ minreactions.videoId +'/mqdefault.jpg', height="130px")
-          else
-            img.card-img-top(src="/images/image-not-available-th.png" alt=minreactions.title, height="130px")
-          .caption
-            .row
-              h4= minreactions.title.substring(0, 50)
-        hr
-        div(id="minReactionsPieChart")
-
-mixin Comments(recentComment1, recentComment2)
-  h4.text Comments
-  .row
+        div(id="logsGraph")
+        .well.well-sm.centered-panel
+          span.glyphicon.glyphicon-book(aria-hidden='true')
+          |  TOTAL NUMBER OF COURSES: 
+          span= numCourses
+        .well.well-sm.centered-panel
+          span.glyphicon.glyphicon-file(aria-hidden='true')
+          |  TOTAL NUMBER OF LEARNING OBJECTS: 
+          span= numLO
+        .well.well-sm.centered-panel
+          span.glyphicon.glyphicon-user(aria-hidden='true')
+          |  TOTAL NUMBER OF USERS: 
+          span= numUsers
       .col-md-6.col-xs-6
-        div(id="commentsGraph")
-      .col-md-3.col-xs-6
-        .thumbnail
-          if recentComment1.thumbnail.exists
-            img.card-img-top(src=recentComment1.thumbnail alt="recentComment1.title")
-          else if recentComment1.videoId
-            img.card-img-top(src='https://img.youtube.com/vi/'+ recentComment1.videoId +'/mqdefault.jpg', height="130px")
-          else
-            img.card-img-top(src="/images/image-not-available-th.png" alt=recentComment1.title, height="130px")
-          .caption
-            .row
-              h4= recentComment1.title.substring(0, 50)
-        hr
-        div(id="recentCommentGraph")
-      .col-md-3.col-xs-6
-        .thumbnail
-          if recentComment2.thumbnail.exists
-            img.card-img-top(src=recentComment2.thumbnail alt="recentComment2.title")
-          else if recentComment2.videoId
-            img.card-img-top(src='https://img.youtube.com/vi/'+ recentComment2.videoId +'/mqdefault.jpg', height="130px")
-          else
-            img.card-img-top(src="/images/image-not-available-th.png" alt=recentComment2.title, height="130px")
-          .caption
-            .row
-              h4= recentComment2.title.substring(0, 50)
-        hr
-        div(id="recentCommentGraph2")
-mixin Views(recentView1, recentView2)
-  h4.text Views
+        .panel.panel-default
+          .panel-heading
+            h4.panel-title MOST POPULAR
+          .panel-body.bg-success
+            .media
+              .media-left
+                if mostpopular.thumbnail.exists
+                  img(src=mostpopular._.thumbnail.limit(100, 100) alt=mostpopular.video.title).img-circle
+                else
+                  img(src="/images/image-not-available.png", alt=mostpopular.title, height="100px", weight="100px").img-circle
+              .media-body
+                h5=mostpopular.title
+                span= mostpopular.content.brief.substring(0, 50)
+        .panel.panel-default
+          .panel-heading
+            h4.panel-title MOST COMMENTED
+          .panel-body.bg-success
+            .media
+              .media-left
+                if mostcommented.thumbnail.exists
+                  img(src=mostcommented._.thumbnail.limit(100, 100) alt=mostcommented.video.title).img-circle
+                else
+                  img(src="/images/image-not-available.png", alt=mostcommented.title, height="100px", weight="100px").img-circle
+              .media-body
+                h5=mostcommented.title
+                span= mostcommented.content.brief.substring(0, 50)
+        .panel.panel-default
+          .panel-heading
+            h4.panel-title MOST REACTED
+          .panel-body.bg-success
+            .media
+              .media-left
+                if mostreacted.thumbnail.exists
+                  img(src=mostreacted._.thumbnail.limit(100, 100) alt=mostreacted.video.title).img-circle
+                else
+                  img(src="/images/image-not-available.png", alt=mostreacted.title, height="100px", weight="100px").img-circle
+              .media-body
+                h5=mostreacted.title
+                span= mostreacted.content.brief.substring(0, 50)
+        
+mixin Graphs()
   .row
-      .col-md-6.col-xs-6
-        div(id="viewsGraph")
-      .col-md-3.col-xs-6
-        .thumbnail
-          if recentView1.thumbnail.exists
-            img.card-img-top(src=recentView1.thumbnail alt="recentView1.title")
-          else if recentView1.videoId
-            img.card-img-top(src='https://img.youtube.com/vi/'+ recentView1.videoId +'/mqdefault.jpg', height="130px")
-          else
-            img.card-img-top(src="/images/image-not-available-th.png" alt=recentView1.title, height="130px")
-          .caption
-            .row
-              h4= recentView1.title.substring(0, 50)
-        hr
-        div(id="recentViewGraph")
-      .col-md-3.col-xs-6
-        .thumbnail
-          if recentView2.thumbnail.exists
-            img.card-img-top(src=recentView2.thumbnail alt="recentView2.title")
-          else if recentView2.videoId
-            img.card-img-top(src='https://img.youtube.com/vi/'+ recentView2.videoId +'/mqdefault.jpg', height="130px")
-          else
-            img.card-img-top(src="/images/image-not-available-th.png" alt=recentView2.title, height="130px")
-          .caption
-            .row
-              h4= recentView2.title.substring(0, 50)
-        hr
-        div(id="recentViewGraph2")
+    .col-md-4.col-sm-4
+      div(id="reactionsPieChart")
+    .col-md-4.col-sm-4
+      div(id="commentsGraph")
+    .col-md-4.col-sm-4
+      div(id="viewsGraph")
 
 block content
   .analytics-body
-    h3.text-center ELearning Analytics
-    .container
-      .panel.panel-default
-        .panel-body
-          +Reactions(data.maxReactionsLearningObject, data.minReactionsLearningObject)
-      .panel.panel-default
-        .panel-body
-          +Comments(data.recentLOComment1, data.recentLOComment2)
-      .panel.panel-default
-        .panel-body
-          +Views(data.recentLOView1, data.recentLOView2)
-  script(src='/js/learningObjectReactions.js')
-  script(src='/js/maxLearningObjectReactions.js')
-  script(src='/js/minLearningObjectReactions.js')
-  script(src='/js/learningObjectComments.js')
-  script(src='/js/recentLOComment.js')
-  script(src='/js/learningObjectViews.js')
-  script(src='/js/recentLOView.js')
+    .row
+      .col-md-3.col-sm-4.dashboard
+        .sidebar-nav
+          .navbar.navbar-default(role='navigation')
+            .navbar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='.sidebar-navbar-collapse')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              span.visible-xs.navbar-brand Menu
+            .navbar-collapse.collapse.sidebar-navbar-collapse
+              ul.nav.navbar-nav
+                li.active
+                  a(href='/elearning/analytics') Dashboard
+                li
+                  a(href='#') Analytics by Learning Objects
+      .col-md-9.col-sm-4.dashboard
+        +Most(data.mostPopularLO, data.mostCommentedLO, data.mostReactedLO, data.numCourses, data.numLO, data.numUsers)
+        +Graphs()
+  script(src='/js/elearning-graphs/userLogs.js')
+  script(src='/js/elearning-graphs/learningObjectReactions.js')
+  script(src='/js/elearning-graphs/learningObjectCommentsViews.js')

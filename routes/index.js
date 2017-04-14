@@ -42,6 +42,8 @@ exports = module.exports = function (app) {
 	app.get('/fiesta', routes.views.fiesta);
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
+	app.get('/exhibit', routes.views.fiesta);
+	app.get('/exhibit/:exhibit', routes.views.exhibit);
 	app.get('/gallery', routes.views.gallery);
 	
 	// Elearning Routes
@@ -85,11 +87,9 @@ exports = module.exports = function (app) {
 	app.get('/api/exhibits', routes.api.exhibit);
 
 	app.get('/api/LOReactions', routes.api.LOReactions);
-	app.get('/api/eachLOReactions/:type', routes.api.eachLOReactions);
 	app.get('/api/LOComments/:year', routes.api.LOComments);
-	app.get('/api/recentLOComments/:year/:recent', routes.api.eachLOComment);
 	app.get('/api/LOViews/:year', routes.api.LOViews);
-	app.get('/api/recentLOViews/:year/:recent', routes.api.eachLOView);
+	app.get('/api/userlogs/:year', routes.api.userlogs);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

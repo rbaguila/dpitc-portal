@@ -1,0 +1,19 @@
+mixin exhibit(exhibit)
+	article(data-ks-editable=editable(user, { list: 'Exhibit', id: exhibit.id })).media
+		.media-left
+			a(href='/exhibit/' + exhibit.slug)
+				if exhibit.coverImage.exists
+					img(src=exhibit._.coverImage.fit(80,80)).media-object
+				else
+					img(src="http://placehold.it/80x80").media-object
+		.media-body
+			h3.media-heading
+				a(href='/exhibit/' + post.exhibit)= exhibit.title
+			if exhibit.author
+				p.text-muted.text-small
+					//- if post.publishedDate
+					//-   time= post._.publishedDate.format('MMMM Do, YYYY')
+					//-   |  
+					if exhibit.author
+						span by #{post.author.name.full}
+			!= exhibit.content.brief
