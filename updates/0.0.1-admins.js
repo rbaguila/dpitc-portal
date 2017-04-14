@@ -8,19 +8,19 @@
  */
 
 exports.create = {
-	User: [
-		{ 
-			'name.first': 'Roinand', 
-			'name.last': 'Aguila', 
-			'email': 'aroinand@gmail.com', 
-			'password': 'admin', 
-			'isAdmin': true,
-			'__ref': 'admin'
-		},
-	//],
+  User: [
+    { 
+      'name.first': 'Roinand', 
+      'name.last': 'Aguila', 
+      'email': 'aroinand@gmail.com', 
+      'password': 'admin', 
+      'isAdmin': true,
+      '__ref': 'admin'
+    },
+  //],
 
 
-	/*ELearning Fixtures*/
+  /*ELearning Fixtures*/
 
   /*
     LUser

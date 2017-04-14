@@ -83,6 +83,7 @@ exports = module.exports = function (app) {
 	app.get('/:slug', page_router);
 
 	app.get('/api/exhibits', routes.api.exhibit);
+
 	app.get('/api/LOReactions', routes.api.LOReactions);
 	app.get('/api/eachLOReactions/:type', routes.api.eachLOReactions);
 	app.get('/api/LOComments/:year', routes.api.LOComments);
