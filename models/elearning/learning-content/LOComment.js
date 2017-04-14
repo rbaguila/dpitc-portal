@@ -8,22 +8,27 @@ var LOComment = new keystone.List('LOComment', {
 })
 
 LOComment.add({
-	content: {
-		type: String
-	},
 	author: {
 		type: Types.Relationship,
-		ref: 'User'
+		initial: true,
+		ref: 'User',
 	},
 	learningObject: {
 		type: Types.Relationship,
+		initial: true,
 		ref: 'LearningObject'
 	},
-	dateCreated: {//remove this before deploying, use createdAt instead
+	publishedAt: {
 		type: Types.Date, 
 		index: true, 
 		default: Date.now 
 	}
+}, 'Content', {
+	content: {
+		type: Types.Html,
+		wysiwyg: true,
+		height: 300
+	},
 });
 
 LOComment.defaultColumns = 'content';

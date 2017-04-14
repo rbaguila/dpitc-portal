@@ -13,6 +13,11 @@ exports = module.exports = function (req, res) {
 
   // Set locals
 
+  locals.section = 'learningObject';
+  locals.filters = {
+    currentLO: req.params.learningobjectslug
+  }
+
   locals.data = {
     currLO: [],
     comments: [],
@@ -28,6 +33,12 @@ exports = module.exports = function (req, res) {
     breadcrumbs: [
       { text: 'elearning', link: '/elearning' },
       // still need breadcrumb for course
+
+      /*
+      // TODO refactor breadcrumbs
+      pageData.breadcrumbs.push(  { text: locals.data.currLO.title, link: '/elearning/'+locals.filter.currentLO } );
+
+      */
     ]
   }
 
@@ -37,14 +48,10 @@ exports = module.exports = function (req, res) {
   var counts = ["specCommCount", "ispCount", "sectorCount", "industryCount"];
 
   // Load the currentLO
-  // Add currentLO to currentUser's learningObjectsTaken
-
   view.on('init', function(next){
-    var currentUser = locals.user;
-    var currentLO;
 
     LearningObject.model.findOne({
-      slug: req.params.learningobjectslug,
+      slug: locals.filters.currentLO,
       state: 'published',
     })
     .populate('author images video isp sector industry')
@@ -53,18 +60,18 @@ exports = module.exports = function (req, res) {
       if (result.length == 0) {
         return callback(res.status(404).send(keystone.wrapHTMLError('Sorry, LearningObject:' + req.params.learningobjectslug +' not found! (404)')));
       }
-      currentLO = result;
+
+      locals.currentLO = result;
       locals.data.currLO = result;
 
-      // TODO refactor breadcrumbs
-      pageData.breadcrumbs.push(  { text: locals.data.currLO.title, link: '/elearning/'+req.params.learningobjectslug } );
-
-
-      if(currentUser){
-        // Update currentUser's learningObjectsTaken
+      // Add currentLO to currentUser's learningObjectsTaken
+      if(locals.currentUser){
         User.model.findOneAndUpdate( 
           { _id: currentUser._id }, 
-          { $addToSet: { learningObjectsTaken: currentLO._id } },
+          { $addToSet: { 
+            learningObjectsTaken: locals.currentLO._id 
+            } 
+          },
           function(err, res) {
             if (err) return next(err);
             next();  
@@ -77,7 +84,51 @@ exports = module.exports = function (req, res) {
     });
   });
 
-  //TODO
+  // Load comments on the Learning Object
+  view.on('init', function (next) {
+    
+    LOComment.model.find()
+      .where('learningObject', locals.currentLO)
+      .where('author').ne(null)
+      .populate('author')
+      .sort('publishedAt')
+      .exec(function (err, comments) {
+        if (err) return res.err(err);
+        if (!comments) return res.notfound('Learning Object Comments not found.');
+
+        locals.comments = comments;
+        next();
+      });
+  
+  });
+
+  // Create a comment on the Learning Object
+  view.on('post', { action: 'comment.create' }, function (next) {
+
+    var newComment = new LOComment.model({
+      learningObject: locals.currentLO.id,
+      author: locals.user.id,
+    });
+
+    var updater = newComment.getUpdateHandler(req);
+
+    updater.process(req.body, {
+      fields: 'content',
+      flashErrors: true,
+      logErrors: true,
+    }, function (err) {
+      if (err) {
+        validationErrors = err.errors;
+      } else {
+        req.flash('success', 'Your comment was added.');
+        return res.redirect('/elearning/learning-object/' + locals.currentLO.slug + '#comment-id-' + newComment.id);
+      }
+      next();
+    });
+
+  });
+
+  /*//TODO
   // Add comment
   view.on('post', { action: 'user.addComment' }, function(next) {
 
@@ -126,36 +177,6 @@ exports = module.exports = function (req, res) {
         }
       });
 
-    });
-
-  // Load comments
-  view.on('init', function(next){
-    var currentLO;
-    LearningObject.model.findOne({
-      slug: req.params.learningobjectslug,
-      state: 'published',
-    })
-    .exec(function(err, result) {
-      if (err) return next(err);
-      currentLO = result;
-
-      LOComment.model.find({ 
-        learningObject: currentLO._id 
-      })
-      .populate('author learningObject')
-      .exec(function(err, comments) {
-        if (err) return next(err);
-
-        locals.data.comments = comments;
-        
-      });
-
-      next();
-    });
-
-  });  
-
-
   //insert view
   //TO DO, check if nirefresh lang
   view.on('init', function(next){
@@ -174,7 +195,7 @@ exports = module.exports = function (req, res) {
       next();
     }
   });
-
+*/
 
   // TODO
   // Load other learning objects besides current
