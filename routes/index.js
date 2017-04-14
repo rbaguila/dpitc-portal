@@ -42,6 +42,8 @@ exports = module.exports = function (app) {
 	app.get('/fiesta', routes.views.fiesta);
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
+	app.get('/exhibit', routes.views.fiesta);
+	app.get('/exhibit/:exhibit', routes.views.exhibit);
 	app.get('/gallery', routes.views.gallery);
 	
 	// Elearning Routes
