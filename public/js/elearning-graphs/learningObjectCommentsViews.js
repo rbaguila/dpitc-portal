@@ -4,8 +4,8 @@
     bottom: 50,
     left: 40
     },
-    commentviewwidth = 300 - commentviewmargin.left - commentviewmargin.right,
-    commmentviewheight = 280 - commentviewmargin.top - commentviewmargin.bottom;
+    commentviewwidth = 430 - commentviewmargin.left - commentviewmargin.right,
+    commmentviewheight = 300 - commentviewmargin.top - commentviewmargin.bottom;
     var commentviewx = d3.scaleBand()
           .range([0, commentviewwidth])
           .padding(0.1);

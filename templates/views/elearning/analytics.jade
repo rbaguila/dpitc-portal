@@ -6,19 +6,9 @@ block css
 mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers)
     .row
       .col-md-6.col-xs-6
-        div(id="logsGraph")
-        .well.well-sm.centered-panel
-          span.glyphicon.glyphicon-book(aria-hidden='true')
-          |  TOTAL NUMBER OF COURSES: 
-          span= numCourses
-        .well.well-sm.centered-panel
-          span.glyphicon.glyphicon-file(aria-hidden='true')
-          |  TOTAL NUMBER OF LEARNING OBJECTS: 
-          span= numLO
-        .well.well-sm.centered-panel
-          span.glyphicon.glyphicon-user(aria-hidden='true')
-          |  TOTAL NUMBER OF USERS: 
-          span= numUsers
+        div(id="viewsGraph")
+        div(id="commentsGraph")
+        div(id="reactionsPieChart")
       .col-md-6.col-xs-6
         .panel.panel-default
           .panel-heading
@@ -59,16 +49,19 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers)
               .media-body
                 h5=mostreacted.title
                 span= mostreacted.content.brief.substring(0, 50)
-        
-mixin Graphs()
-  .row
-    .col-md-4.col-sm-4
-      div(id="reactionsPieChart")
-    .col-md-4.col-sm-4
-      div(id="commentsGraph")
-    .col-md-4.col-sm-4
-      div(id="viewsGraph")
-
+        .well.well-sm.centered-panel
+          span.glyphicon.glyphicon-book(aria-hidden='true')
+          |  TOTAL NUMBER OF COURSES: 
+          span= numCourses
+        .well.well-sm.centered-panel
+          span.glyphicon.glyphicon-file(aria-hidden='true')
+          |  TOTAL NUMBER OF LEARNING OBJECTS: 
+          span= numLO
+        .well.well-sm.centered-panel
+          span.glyphicon.glyphicon-user(aria-hidden='true')
+          |  TOTAL NUMBER OF USERS: 
+          span= numUsers
+      
 block content
   .analytics-body
     .row
@@ -90,7 +83,5 @@ block content
                   a(href='/elearning/analytics/learning-objects/allindustries') Analytics by Learning Objects
       .col-md-9.col-sm-4.dashboard
         +Most(data.mostPopularLO, data.mostCommentedLO, data.mostReactedLO, data.numCourses, data.numLO, data.numUsers)
-        +Graphs()
-  script(src='/js/elearning-graphs/userLogs.js')
   script(src='/js/elearning-graphs/learningObjectReactions.js')
   script(src='/js/elearning-graphs/learningObjectCommentsViews.js')

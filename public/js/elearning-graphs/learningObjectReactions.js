@@ -11,7 +11,7 @@
     var pie = new d3pie("reactionsPieChart", {
     "header": {
     "title": {
-    "text": "Total Reactions",
+    "text": "Total Number of Reactions",
     "fontSize": 24,
     "font": "open sans"
     },
@@ -24,9 +24,9 @@
     "titleSubtitlePadding": 9
     },
     "size": {
-    "canvasWidth": 290,
+    "canvasWidth": 430,
     "canvasHeight": 300,
-    "pieOuterRadius": "80%"
+    "pieOuterRadius": "90%"
     },
     "data": {
     "content": reactionsdata
