@@ -133,7 +133,7 @@ mixin reactions(action)
     .col-md-1.col-md-push-8.col-xs-1.col-xs-push-8
       form(method='post', style="margin: 0px;")
         input(type='hidden', name='action', value='reactions.addLike')    
-        button(type='submit').btn.btn-link.btn-lg #{currentLO.likes.length} &nbsp; #{user.isLiked}
+        button(type='submit').btn.btn-link.btn-lg #{currentLO.likes.length} &nbsp;
           i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")
     
     .col-md-1.col-md-push-8.col-xs-1.col-xs-push-8
