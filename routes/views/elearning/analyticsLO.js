@@ -1,5 +1,7 @@
 var keystone = require('keystone');
 var LearningObject = keystone.list('LearningObject');
+var LOView = keystone.list('LOView');
+var LOComment = keystone.list('LOComment');
 
 exports = module.exports = function(req, res){
     
@@ -11,7 +13,10 @@ exports = module.exports = function(req, res){
     locals.section = 'analyticsLO';
 
     locals.data = {
-        currentLO: []
+        currentLO: [],
+        numViews: [],
+        numComments: [],
+        numReactions: []
     };
 
     // Load the currentLO
@@ -26,6 +31,33 @@ exports = module.exports = function(req, res){
             return callback(res.status(404).send(keystone.wrapHTMLError('Sorry, LearningObject:' + req.params.learningobjectslug +' not found! (404)')));
           }
           locals.data.currentLO = result;
+          var totalReactions = 0;
+          totalReactions += result.likes.length + result.happy.length + result.sad.length;
+          locals.data.numReactions = totalReactions;
+          next(err);
+        });
+    });
+
+    view.on('init', function(next){
+        LOView.model.count()
+        .where('learningObject', locals.data.currentLO._id)
+        .exec(function(err, count) {
+          if (err) return next(err);
+          if(count!=null){
+            locals.data.numViews = count;
+          }
+          next(err);
+        });
+    });
+
+    view.on('init', function(next){
+        LOComment.model.count()
+        .where('learningObject', locals.data.currentLO._id)
+        .exec(function(err, count) {
+          if (err) return next(err);
+          if(count!=null){
+            locals.data.numComments = count;
+          }
           next(err);
         });
     });

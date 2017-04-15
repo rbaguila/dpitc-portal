@@ -1,4 +1,6 @@
-var keystone = require('keystone');  
+var keystone = require('keystone'); 
+var async = require('async');
+var LearningObject = keystone.list('LearningObject');
 
 exports = module.exports = function(req, res) {
   
@@ -8,61 +10,33 @@ exports = module.exports = function(req, res) {
 	// We want to set the content-type header so that the browser understands
   //  the content of the response.
   res.contentType('application/json');
-  
-  var eachLearningObjReactions = [];
 
-  var totalReactions= 0;
+	LearningObject.model.findOne({
+	    slug: req.params.key
+	})
+	.exec(function(err, result) {
+	   	if(err){
+	    	return next(err);
+	    }
+	    var objarray = [];
 
-  //TO DO MAY MALI PA DITO!
-  keystone.list('LearningObject').model.find().exec(function (err, results) {
+	    var obj = {};
+	    obj.label = "Likes";
+	    obj.value = result.likes.length;
+        objarray.push(obj);
 
-				if (err || !results.length) {
-					return next(err);
-				}
+        obj = {};
+		obj.label = "Happy";
+        obj.value = result.happy.length;
+        objarray.push(obj);
 
-				for(var i=0;i<results.length;i++){
-					totalReactions = 0;
-					totalReactions += results[i].likes.length + results[i].happy.length + results[i].sad.length;
-					results[i].reactions = totalReactions;
-				}
-				results.sort(function(a,b){
-			        return parseFloat(b.reactions) - parseFloat(a.reactions);
-			    });
-			    
-			    var eachLOReaction = {};
-			    var eachLearningObjReactionsJSON;
-			    if(req.params.type=="highest"){
-					eachLOReaction.label = "Likes";
-	                eachLOReaction.value = results[0].likes.length;
-	                eachLearningObjReactions.push(eachLOReaction);
+        obj = {};
+		obj.label = "Sad";
+        obj.value = result.sad.length;
+        objarray.push(obj);
 
-	                eachLOReaction = {};
-					eachLOReaction.label = "Happy";
-	                eachLOReaction.value = results[0].happy.length;
-	                eachLearningObjReactions.push(eachLOReaction);
-
-	                eachLOReaction = {};
-					eachLOReaction.label = "Sad";
-	                eachLOReaction.value = results[0].sad.length;
-	                eachLearningObjReactions.push(eachLOReaction);
-			    }
-			    else if(req.params.type=="lowest"){
-			    	eachLOReaction.label = "Likes";
-	                eachLOReaction.value = results[(results.length-1)].likes.length;
-	                eachLearningObjReactions.push(eachLOReaction);
-
-	                eachLOReaction = {};
-					eachLOReaction.label = "Happy";
-	                eachLOReaction.value = results[(results.length-1)].happy.length;
-	                eachLearningObjReactions.push(eachLOReaction);
-
-	                eachLOReaction = {};
-					eachLOReaction.label = "Sad";
-	                eachLOReaction.value = results[(results.length-1)].sad.length;
-	                eachLearningObjReactions.push(eachLOReaction);
-			    }
-				var eachLearningObjReactionsJSON = JSON.stringify(eachLearningObjReactions);
-  			res.send(eachLearningObjReactionsJSON);
+        var eachLOReactionsJSON = JSON.stringify(objarray);
+  		res.send(eachLOReactionsJSON);
 	});
   
 };

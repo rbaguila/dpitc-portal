@@ -47,7 +47,7 @@ block content
                 td= lo.state
                 td= lo.publishedAt.toDateString()
                 td
-                  a.btn.btn-info(href="/elearning/analytics/" + lo.slug, role="button") SEE ANALYTICS
+                  a.btn.btn-info(href="/elearning/analytics/" + lo.slug + "?key=" + lo.slug, role="button") SEE ANALYTICS
         ul.pagination.pull-right
           li
             a(href="/elearning/analytics/learning-objects/" + data.industryKey + "?page="+data.learningObjects.previous aria-label="Previous")
