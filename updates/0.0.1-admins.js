@@ -2042,181 +2042,181 @@ exports.create = {
       'content': 'Hello po!', 
       'author': 'Angelica', 
       'learningObject': 'aquafeeds-lo',
-      'dateCreated': '2017-01-12'
+      'publishedAt': '2017-01-12'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Amber', 
       'learningObject': 'pineapple-lo',
-      'dateCreated': '2017-01-28'
+      'publishedAt': '2017-01-28'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Albert', 
       'learningObject': 'papaya-lo',
-      'dateCreated': '2017-01-18'
+      'publishedAt': '2017-01-18'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Bryan', 
       'learningObject': 'citrus-lo',
-      'dateCreated': '2017-01-10'
+      'publishedAt': '2017-01-10'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Cena', 
       'learningObject': 'jackfruit-lo',
-      'dateCreated': '2017-02-09'
+      'publishedAt': '2017-02-09'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Daniel', 
       'learningObject': 'durian-lo',
-      'dateCreated': '2017-02-26'
+      'publishedAt': '2017-02-26'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Ellen', 
       'learningObject': 'whitepotato-lo',
-      'dateCreated': '2017-02-07'
+      'publishedAt': '2017-02-07'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Ferdinand', 
       'learningObject': 'sweetpotato-lo',
-      'dateCreated': '2017-03-01'
+      'publishedAt': '2017-03-01'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Gerald', 
       'learningObject': 'peanut-lo',
-      'dateCreated': '2017-03-11'
+      'publishedAt': '2017-03-11'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Gary', 
       'learningObject': 'mungbean-lo',
-      'dateCreated': '2017-03-09'
+      'publishedAt': '2017-03-09'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Henry', 
       'learningObject': 'stagescorn-lo',
-      'dateCreated': '2017-03-16'
+      'publishedAt': '2017-03-16'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Harold', 
       'learningObject': 'soilfertilization-lo',
-      'dateCreated': '2017-03-19'
+      'publishedAt': '2017-03-19'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Irish', 
       'learningObject': 'landpreparation-lo',
-      'dateCreated': '2017-03-20'
+      'publishedAt': '2017-03-20'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Juan', 
       'learningObject': 'biotechbtcorn-lo',
-      'dateCreated': '2017-03-21'
+      'publishedAt': '2017-03-21'
     },
     { 
       'content': 'Hello po!', 
       'author': 'John', 
       'learningObject': 'feedingprogram-lo',
-      'dateCreated': '2017-03-22'
+      'publishedAt': '2017-03-22'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Jane', 
       'learningObject': 'grainquality-lo',
-      'dateCreated': '2017-03-25'
+      'publishedAt': '2017-03-25'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Justin', 
       'learningObject': 'sugarcane-lo',
-      'dateCreated': '2017-03-26'
+      'publishedAt': '2017-03-26'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Joon', 
       'learningObject': 'plantingrice-lo',
-      'dateCreated': '2017-03-20'
+      'publishedAt': '2017-03-20'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Jeff', 
       'learningObject': 'plantingmango-lo',
-      'dateCreated': '2017-03-23'
+      'publishedAt': '2017-03-23'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Kris', 
       'learningObject': 'plantingcoffee-lo',
-      'dateCreated': '2017-03-23'
+      'publishedAt': '2017-03-23'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Karl', 
       'learningObject': 'plantingcoconut-lo',
-      'dateCreated': '2017-03-24'
+      'publishedAt': '2017-03-24'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Krystal', 
       'learningObject': 'plantingbanana-lo',
-      'dateCreated': '2017-03-28'
+      'publishedAt': '2017-03-28'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Luhan', 
       'learningObject': 'plantingabaca-lo',
-      'dateCreated': '2017-03-22'
+      'publishedAt': '2017-03-22'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Logan', 
       'learningObject': 'pineapple-lo',
-      'dateCreated': '2017-03-17'
+      'publishedAt': '2017-03-17'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Manuel', 
       'learningObject': 'aquafeeds-lo',
-      'dateCreated': '2017-03-16'
+      'publishedAt': '2017-03-16'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Natalie', 
       'learningObject': 'papaya-lo',
-      'dateCreated': '2017-03-17'
+      'publishedAt': '2017-03-17'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Oliver', 
       'learningObject': 'citrus-lo',
-      'dateCreated': '2017-03-04'
+      'publishedAt': '2017-03-04'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Patricia', 
       'learningObject': 'jackfruit-lo',
-      'dateCreated': '2017-04-05'
+      'publishedAt': '2017-04-05'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Queen', 
       'learningObject': 'whitepotato-lo',
-      'dateCreated': '2017-04-04'
+      'publishedAt': '2017-04-04'
     },
     { 
       'content': 'Hello po!', 
       'author': 'Rona', 
       'learningObject': 'durian-lo',
-      'dateCreated': '2017-04-03'
+      'publishedAt': '2017-04-03'
     },
 
   ],
@@ -2426,214 +2426,6 @@ exports.create = {
       'LUser': 'Albert', 
       'learningObject': 'durian-lo',
       'dateViewed': '2017-04-03'
-    },
-  ],
-
-  UserLog: [
-    { 
-      'LUser': 'Angelica', 
-      'learningObject': 'aquafeeds-lo',
-      'dateLoggedIn': '2017-01-12',
-    },
-    { 
-      'LUser': 'Amber', 
-      'learningObject': 'pineapple-lo',
-      'dateLoggedIn': '2017-01-28'
-    },
-    { 
-      'LUser': 'Sally', 
-      'learningObject': 'pineapple-lo',
-      'dateLoggedIn': '2017-01-28'
-    },
-    { 
-      'LUser': 'Tim', 
-      'learningObject': 'pineapple-lo',
-      'dateLoggedIn': '2017-01-28'
-    },
-    { 
-      'LUser': 'Uvin', 
-      'learningObject': 'pineapple-lo',
-      'dateLoggedIn': '2017-01-28'
-    },
-    { 
-      'LUser': 'Albert', 
-      'learningObject': 'papaya-lo',
-      'dateLoggedIn': '2017-01-18'
-    },
-    { 
-      'LUser': 'Bryan', 
-      'learningObject': 'citrus-lo',
-      'dateLoggedIn': '2017-01-10'
-    },
-    { 
-      'LUser': 'Cena', 
-      'learningObject': 'jackfruit-lo',
-      'dateLoggedIn': '2017-02-09'
-    },
-    { 
-      'LUser': 'Daniel', 
-      'learningObject': 'durian-lo',
-      'dateLoggedIn': '2017-02-26'
-    },
-    { 
-      'LUser': 'Ellen', 
-      'learningObject': 'whitepotato-lo',
-      'dateLoggedIn': '2017-02-07'
-    },
-    { 
-      'LUser': 'Ferdinand', 
-      'learningObject': 'sweetpotato-lo',
-      'dateLoggedIn': '2017-03-01'
-    },
-    { 
-      'LUser': 'Victoria', 
-      'learningObject': 'sweetpotato-lo',
-      'dateLoggedIn': '2017-03-01'
-    },
-    { 
-      'LUser': 'Vince', 
-      'learningObject': 'sweetpotato-lo',
-      'dateLoggedIn': '2017-03-01'
-    },
-    { 
-      'LUser': 'Gerald', 
-      'learningObject': 'peanut-lo',
-      'dateLoggedIn': '2017-03-11'
-    },
-    { 
-      'LUser': 'Gary', 
-      'learningObject': 'mungbean-lo',
-      'dateLoggedIn': '2017-02-09'
-    },
-    { 
-      'LUser': 'Henry', 
-      'learningObject': 'stagescorn-lo',
-      'dateLoggedIn': '2017-02-16'
-    },
-    { 
-      'LUser': 'Harold', 
-      'learningObject': 'soilfertilization-lo',
-      'dateLoggedIn': '2017-02-19'
-    },
-    { 
-      'LUser': 'Irish', 
-      'learningObject': 'landpreparation-lo',
-      'dateLoggedIn': '2017-02-20'
-    },
-    { 
-      'LUser': 'Juan', 
-      'learningObject': 'biotechbtcorn-lo',
-      'dateLoggedIn': '2017-02-21'
-    },
-    { 
-      'LUser': 'John', 
-      'learningObject': 'feedingprogram-lo',
-      'dateLoggedIn': '2017-02-22'
-    },
-    { 
-      'LUser': 'Jane', 
-      'learningObject': 'grainquality-lo',
-      'dateLoggedIn': '2017-03-25'
-    },
-    { 
-      'LUser': 'Wilson', 
-      'learningObject': 'grainquality-lo',
-      'dateLoggedIn': '2017-03-25'
-    },
-    { 
-      'LUser': 'Yvette', 
-      'learningObject': 'grainquality-lo',
-      'dateLoggedIn': '2017-03-25'
-    },
-    { 
-      'LUser': 'Xyrus', 
-      'learningObject': 'grainquality-lo',
-      'dateLoggedIn': '2017-03-25'
-    },
-    { 
-      'LUser': 'Justin', 
-      'learningObject': 'sugarcane-lo',
-      'dateLoggedIn': '2017-03-26'
-    },
-    { 
-      'LUser': 'Joon', 
-      'learningObject': 'plantingrice-lo',
-      'dateLoggedIn': '2017-03-20'
-    },
-    { 
-      'LUser': 'Jeff', 
-      'learningObject': 'plantingmango-lo',
-      'dateLoggedIn': '2017-03-23'
-    },
-    { 
-      'LUser': 'Kris', 
-      'learningObject': 'plantingcoffee-lo',
-      'dateLoggedIn': '2017-03-23'
-    },
-    { 
-      'LUser': 'Karl', 
-      'learningObject': 'plantingcoconut-lo',
-      'dateLoggedIn': '2017-03-24'
-    },
-    { 
-      'LUser': 'Krystal', 
-      'learningObject': 'plantingbanana-lo',
-      'dateLoggedIn': '2017-03-28'
-    },
-    { 
-      'LUser': 'Zend', 
-      'learningObject': 'plantingbanana-lo',
-      'dateLoggedIn': '2017-03-28'
-    },
-    { 
-      'LUser': 'Luhan', 
-      'learningObject': 'plantingabaca-lo',
-      'dateLoggedIn': '2017-03-22'
-    },
-    { 
-      'LUser': 'Logan', 
-      'learningObject': 'pineapple-lo',
-      'dateLoggedIn': '2017-04-17'
-    },
-    { 
-      'LUser': 'Manuel', 
-      'learningObject': 'aquafeeds-lo',
-      'dateLoggedIn': '2017-04-16'
-    },
-    { 
-      'LUser': 'Natalie', 
-      'learningObject': 'papaya-lo',
-      'dateLoggedIn': '2017-04-17'
-    },
-    { 
-      'LUser': 'Oliver', 
-      'learningObject': 'citrus-lo',
-      'dateLoggedIn': '2017-04-04'
-    },
-    { 
-      'LUser': 'Patricia', 
-      'learningObject': 'jackfruit-lo',
-      'dateLoggedIn': '2017-04-05'
-    },
-    { 
-      'LUser': 'Queen', 
-      'learningObject': 'whitepotato-lo',
-      'dateLoggedIn': '2017-04-04'
-    },
-    { 
-      'LUser': 'Rona', 
-      'learningObject': 'durian-lo',
-      'dateLoggedIn': '2017-04-03'
-    },
-    { 
-      'LUser': 'Cena', 
-      'learningObject': 'durian-lo',
-      'dateLoggedIn': '2017-04-03'
-    },
-    { 
-      'LUser': 'Albert', 
-      'learningObject': 'durian-lo',
-      'dateLoggedIn': '2017-04-03'
     },
   ]
   

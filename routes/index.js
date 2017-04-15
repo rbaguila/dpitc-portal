@@ -54,6 +54,8 @@ exports = module.exports = function (app) {
 	app.get('/elearning/learning-object/:learningobjectslug', routes.views.elearning.learningObject);
 	app.post('/elearning/learning-object/:learningobjectslug', routes.views.elearning.learningObject);
 	app.get('/elearning/analytics', middleware.requireAdmin , routes.views.elearning.analytics);
+	app.get('/elearning/analytics/:learningobjectslug?', middleware.requireAdmin , routes.views.elearning.analyticsLO);
+	app.get('/elearning/analytics/learning-objects/:industry?', middleware.requireAdmin , routes.views.elearning.analyticsLOList);
 	app.get('/elearning/signup?', routes.views.elearning.signup);
 	app.post('/elearning/signup?', routes.views.elearning.signup);
 	app.get('/elearning/popular?', routes.views.elearning.popular);
@@ -72,7 +74,8 @@ exports = module.exports = function (app) {
 	//Community
 	app.get('/community', routes.communityViews.community);
 	app.get('/eresources', routes.eresourcesViews.eresources);
-	app.get('/eresources/publications', routes.eresourcesViews.publications);
+	app.get('/eresources/publications', routes.eresourcesViews.publications); //Redundant
+	app.get('/eresources/publications/:page', routes.eresourcesViews.publications);
 	app.get('/eresources/publication/:publication', routes.eresourcesViews.publication);
 
 	//File Upload Route
@@ -89,7 +92,9 @@ exports = module.exports = function (app) {
 	app.get('/api/LOReactions', routes.api.LOReactions);
 	app.get('/api/LOComments/:year', routes.api.LOComments);
 	app.get('/api/LOViews/:year', routes.api.LOViews);
-	app.get('/api/userlogs/:year', routes.api.userlogs);
+	app.get('/api/views/:key/:year', routes.api.eachLOViews);
+	app.get('/api/comments/:key/:year', routes.api.eachLOComments);
+	app.get('/api/reactions/:key', routes.api.eachLOReactions);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

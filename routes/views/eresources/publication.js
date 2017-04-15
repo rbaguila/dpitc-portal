@@ -13,13 +13,13 @@ exports = module.exports = function(req, res) {
     loginRedirect: '/eresources/publications',
     breadcrumbs: [
       { text: 'E Resources', link: '/eresources'},
-      { text: 'Publications', link: '/publications'},
+      { text: 'Publications', link: '/eresources/publications'},
     ]
   }
 
   var pubId = req.params.publication
 
-  view.query('publication', keystone.list('Publication').model.findOne({_id: pubId}));
+  view.query('publication', keystone.list('Publication').model.findOne({_id: pubId}).populate('industry sector commodity'));
 
   view.render('eresources/publication', pageData);
 

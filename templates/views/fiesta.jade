@@ -1,7 +1,7 @@
 extends ../layouts/default
 
 block content
-	#searchDiv.container(style='display:none;margin-top:85px;')
+	#searchDiv.container(style='display:none;')
 		.row
 			.col-md-12
 				center
@@ -9,7 +9,7 @@ block content
 						input#global-search-input-box(type='text', placeholder='Search news, fiesta, technologies', name='searchKey', autofocus='')
 						input.searchButton(type='submit', border='0', value='Search')
 
-	div#top-page.container(style="margin-top:100px;")
+	div#top-page.container
 		.exhibit-container
 			p.subparts-title(style='background-color: rgba(0, 0, 0, 0.5); z-index: 5; color: white; font-size: 2em; margin-bottom: 10px;')
 				b F

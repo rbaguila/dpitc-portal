@@ -4,8 +4,8 @@
     bottom: 50,
     left: 40
     },
-    commentviewwidth = 300 - commentviewmargin.left - commentviewmargin.right,
-    commmentviewheight = 280 - commentviewmargin.top - commentviewmargin.bottom;
+    commentviewwidth = 430 - commentviewmargin.left - commentviewmargin.right,
+    commmentviewheight = 300 - commentviewmargin.top - commentviewmargin.bottom;
     var commentviewx = d3.scaleBand()
           .range([0, commentviewwidth])
           .padding(0.1);
@@ -34,7 +34,7 @@
             tally[months[a]] = 0;
         }
         for(var i=0;i<json.length;i++){
-            var temp = d3.isoParse(json[i].dateCreated);//change this before deplyoning, use createdAt instead
+            var temp = d3.isoParse(json[i].publishedAt);//change this before deplyoning, use createdAt instead
             var temp2 = temp.getMonth();
             var date = months[temp2];
             tally[date] = (tally[date]||0) + 1;
