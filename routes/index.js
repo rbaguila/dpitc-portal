@@ -92,7 +92,6 @@ exports = module.exports = function (app) {
 	app.get('/api/LOReactions', routes.api.LOReactions);
 	app.get('/api/LOComments/:year', routes.api.LOComments);
 	app.get('/api/LOViews/:year', routes.api.LOViews);
-	app.get('/api/userlogs/:year', routes.api.userlogs);
 	app.get('/api/views/:key/:year', routes.api.eachLOViews);
 	app.get('/api/comments/:key/:year', routes.api.eachLOComments);
 	app.get('/api/reactions/:key', routes.api.eachLOReactions);
