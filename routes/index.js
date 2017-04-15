@@ -49,6 +49,8 @@ exports = module.exports = function (app) {
 	// User
 	app.get('/signup?', routes.views.signup);
 	app.post('/signup?', routes.views.signup);
+	app.get('/profile?', routes.views.profile);
+	app.post('/profile?', routes.views.profile);
 
 	// Elearning Routes
 	app.get('/elearning', routes.views.elearning.elearning);

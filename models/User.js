@@ -11,10 +11,8 @@ User.add({
 	name: { type: Types.Name, required: true, index: true },
 	email: { type: Types.Email, initial: true, required: true, index: true },
 	password: { type: Types.Password, initial: true, required: true },
-  address: { 
-    type: String, 
-    required: false 
-  },
+  photo: { type: Types.CloudinaryImage }
+}, 'Elearning', {
   learningObjectsTaken: { 
     // max of 100 to be considered for threshold purposes and mean newly taken courses / recent
     type: Types.Relationship, 
