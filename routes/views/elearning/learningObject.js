@@ -130,54 +130,151 @@ exports = module.exports = function (req, res) {
 
   view.on('post', { action: 'reactions.addLike' }, function (next) {
 
-    // TODO
     // Check if Learning Object has already been liked
+    LearningObject.model.findOne({
+        slug: locals.filters.currentLO,
+        state: 'published',
+        likes: { $in: [ locals.user._id ] }
+    })
+    .exec(function(err, isLiked){
+      if (err) return next(err);
 
-    LearningObject.model.findOneAndUpdate(
-      { _id: locals.currentLO._id }, 
-      { $addToSet: {
-        likes: locals.user._id
-        }
-      }, function (err, res) {
-        if (err) return next(err);
-        console.log('reactions.addLike');
-        next();
+      // if LO is already liked, remove from array
+      // else add to array
+      if (isLiked) {
+        LearningObject.model.findOneAndUpdate(
+          { _id: locals.currentLO._id }, 
+          { $pull: {
+            likes: locals.user._id
+            }
+          }, function (err, result) {
+            if (err) {
+              return next(err);
+            } else {
+              return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
+            }
+            next();
+          }
+        );
+
+      } else {
+        LearningObject.model.findOneAndUpdate(
+          { _id: locals.currentLO._id }, 
+          { $addToSet: {
+            likes: locals.user._id
+            }
+          }, function (err, result) {
+            if (err) {
+              return next(err);
+            } else {
+              return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
+            }
+            next();
+          }
+        );
+
       }
-    );
-
+    });
+        
   });
 
   view.on('post', { action: 'reactions.addHappy' }, function (next) {
 
-    LearningObject.model.findOneAndUpdate(
-      { _id: locals.currentLO._id }, 
-      { $addToSet: {
-        happy: locals.user._id
-        }
-      }, function (err, res) {
-        if (err) return next(err);
-        console.log('reactions.addHappy');
+    // Check if Learning Object is already in Happy
+    LearningObject.model.findOne({
+        slug: locals.filters.currentLO,
+        state: 'published',
+        happy: { $in: [ locals.user._id ] }
+    })
+    .exec(function(err, isHappy){
+      if (err) return next(err);
 
-        next();
+      // if LO is already in Happy, remove from array
+      // else add to array
+      if (isHappy) {
+        LearningObject.model.findOneAndUpdate(
+          { _id: locals.currentLO._id }, 
+          { $pull: {
+            happy: locals.user._id
+            }
+          }, function (err, result) {
+            if (err) {
+              return next(err);
+            } else {
+              return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
+            }
+            next();
+          }
+        );
+
+      } else {
+        LearningObject.model.findOneAndUpdate(
+          { _id: locals.currentLO._id }, 
+          { $addToSet: {
+            happy: locals.user._id
+            }
+          }, function (err, result) {
+            if (err) {
+              return next(err);
+            } else {
+              return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
+            }
+            next();
+          }
+        );
+
       }
-    );
+    });
 
   });
 
   view.on('post', { action: 'reactions.addSad' }, function (next) {
 
-    LearningObject.model.findOneAndUpdate(
-      { _id: locals.currentLO._id }, 
-      { $addToSet: {
-        sad: locals.user._id
-        }
-      }, function (err, res) {
-        if (err) return next(err);
-        console.log('reactions.addSad');
+    // Check if Learning Object is already in Sad
+    LearningObject.model.findOne({
+        slug: locals.filters.currentLO,
+        state: 'published',
+        sad: { $in: [ locals.user._id ] }
+    })
+    .exec(function(err, isSad){
+      if (err) return next(err);
 
-        next();
+      // if LO is already in Sad, remove from array
+      // else add to array
+      if (isSad) {
+        LearningObject.model.findOneAndUpdate(
+          { _id: locals.currentLO._id }, 
+          { $pull: {
+            sad: locals.user._id
+            }
+          }, function (err, result) {
+            if (err) {
+              return next(err);
+            } else {
+              return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
+            }
+            next();
+          }
+        );
+
+      } else {
+        LearningObject.model.findOneAndUpdate(
+          { _id: locals.currentLO._id }, 
+          { $addToSet: {
+            sad: locals.user._id
+            }
+          }, function (err, result) {
+            if (err) {
+              return next(err);
+            } else {
+              return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
+            }
+            next();
+          }
+        );
+
       }
-    );
+    });
 
   });
 
