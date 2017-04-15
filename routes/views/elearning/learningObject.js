@@ -65,9 +65,9 @@ exports = module.exports = function (req, res) {
       locals.data.currLO = result;
 
       // Add currentLO to currentUser's learningObjectsTaken
-      if(locals.currentUser){
+      if(locals.user){
         User.model.findOneAndUpdate( 
-          { _id: currentUser._id }, 
+          { _id: locals.user._id }, 
           { $addToSet: { 
             learningObjectsTaken: locals.currentLO._id 
             } 
@@ -182,7 +182,24 @@ exports = module.exports = function (req, res) {
   });
 
 
-
+  //insert view
+  //TO DO, check if nirefresh lang
+  view.on('init', function(next){
+    var currentUser = locals.user;
+    if(currentUser){
+      var newView = new LOView.model({
+          LUser: currentUser._id,
+          learningObject: locals.data.currLO._id
+      });
+      newView.save(function(err) {
+          console.log("added the view")
+      });
+      next();
+    }
+    else{
+      next();
+    }
+  });
 
   // TODO
   // Load other learning objects besides current
