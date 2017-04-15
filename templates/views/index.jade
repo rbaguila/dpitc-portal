@@ -1,7 +1,7 @@
 extends ../layouts/default
 
 block content
-	#searchDiv.container(style='display:none;margin-top:85px;')
+	#searchDiv.container(style='display:none;')
 		.row
 			.col-md-12
 				center
@@ -11,7 +11,7 @@ block content
 
 
 	//- Dynamic Slider from the database
-	#top-page(style="margin-top:100px; margin-bottom:40px;").container.no-padding
+	#top-page(style="margin-bottom:40px;").container.no-padding
 		#myCarousel.carousel.slide(data-ride='carousel')
 			//- Carousel indicators were declared here
 			ol.carousel-indicators

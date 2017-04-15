@@ -74,7 +74,8 @@ exports = module.exports = function (app) {
 	//Community
 	app.get('/community', routes.communityViews.community);
 	app.get('/eresources', routes.eresourcesViews.eresources);
-	app.get('/eresources/publications', routes.eresourcesViews.publications);
+	app.get('/eresources/publications', routes.eresourcesViews.publications); //Redundant
+	app.get('/eresources/publications/:page', routes.eresourcesViews.publications);
 	app.get('/eresources/publication/:publication', routes.eresourcesViews.publication);
 
 	//File Upload Route
