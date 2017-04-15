@@ -17,9 +17,9 @@ exports = module.exports = function(req, res) {
 	//CHANGE THIS, FIND THE LEARNING OBJECT WITH HIGHEST NUMBER OF COMMENTS OR RECENT CREATED LO THEN PRCOEED WITH THE SECOND QUERY
 	//change this before deplyoning, use createdAt instead
 	keystone.list('LOComment').model.find()
-	    .sort('-dateCreated')
+	    .sort('-publishedAt')
 	    .exec(function (err, results) {
-	    	keystone.list('LOComment').model.find({learningObject: results[req.params.recent].learningObject}).where('dateCreated').gte(start).lt(end).exec(function(err, results){
+	    	keystone.list('LOComment').model.find({learningObject: results[req.params.recent].learningObject}).where('publishedAt').gte(start).lt(end).exec(function(err, results){
 	    		//console.log(results);
 	    		var eachLOCommentsJSON = JSON.stringify(results);
 				res.send(eachLOCommentsJSON);
