@@ -46,6 +46,10 @@ exports = module.exports = function (app) {
 	app.get('/exhibit/:exhibit', routes.views.exhibit);
 	app.get('/gallery', routes.views.gallery);
 	
+	// User
+	app.get('/signup?', routes.views.signup);
+	app.post('/signup?', routes.views.signup);
+
 	// Elearning Routes
 	app.get('/elearning', routes.views.elearning.elearning);
 	app.get('/elearning/courses?', routes.views.elearning.courseList);
@@ -56,8 +60,7 @@ exports = module.exports = function (app) {
 	app.get('/elearning/analytics', middleware.requireAdmin , routes.views.elearning.analytics);
 	app.get('/elearning/analytics/:learningobjectslug?', middleware.requireAdmin , routes.views.elearning.analyticsLO);
 	app.get('/elearning/analytics/learning-objects/:industry?', middleware.requireAdmin , routes.views.elearning.analyticsLOList);
-	app.get('/elearning/signup?', routes.views.elearning.signup);
-	app.post('/elearning/signup?', routes.views.elearning.signup);
+	
 	app.get('/elearning/popular?', routes.views.elearning.popular);
 	app.get('/elearning/:userid/recommended?', routes.views.elearning.recommended);
 
