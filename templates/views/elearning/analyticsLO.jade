@@ -1,0 +1,26 @@
+extends ../../layouts/elearning-analytics
+
+block css
+  link(rel="stylesheet" type="text/css" href="/styles/analytics.css")
+
+block content
+  .analytics-body
+    .row
+      .col-md-3.col-sm-4.dashboard
+        .sidebar-nav
+          .navbar.navbar-default(role='navigation')
+            .navbar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='.sidebar-navbar-collapse')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              span.visible-xs.navbar-brand Menu
+            .navbar-collapse.collapse.sidebar-navbar-collapse
+              ul.nav.navbar-nav
+                li
+                  a(href='/elearning/analytics') Dashboard
+                li.active
+                  a(href='/elearning/analytics/learning-objects/allindustries') Analytics by Learning Objects
+      .col-md-9.col-sm-4.dashboard
+        h3= data.currentLO.title

@@ -54,6 +54,8 @@ exports = module.exports = function (app) {
 	app.get('/elearning/learning-object/:learningobjectslug', routes.views.elearning.learningObject);
 	app.post('/elearning/learning-object/:learningobjectslug', routes.views.elearning.learningObject);
 	app.get('/elearning/analytics', middleware.requireAdmin , routes.views.elearning.analytics);
+	app.get('/elearning/analytics/:learningobjectslug', middleware.requireAdmin , routes.views.elearning.analyticsLO);
+	app.get('/elearning/analytics/learning-objects/:industry?', middleware.requireAdmin , routes.views.elearning.analyticsLOList);
 	app.get('/elearning/signup?', routes.views.elearning.signup);
 	app.post('/elearning/signup?', routes.views.elearning.signup);
 	app.get('/elearning/popular?', routes.views.elearning.popular);

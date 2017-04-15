@@ -1,4 +1,4 @@
-extends ../../layouts/default
+extends ../../layouts/elearning-analytics
 
 block css
   link(rel="stylesheet" type="text/css" href="/styles/analytics.css")
@@ -87,7 +87,7 @@ block content
                 li.active
                   a(href='/elearning/analytics') Dashboard
                 li
-                  a(href='#') Analytics by Learning Objects
+                  a(href='/elearning/analytics/learning-objects/allindustries') Analytics by Learning Objects
       .col-md-9.col-sm-4.dashboard
         +Most(data.mostPopularLO, data.mostCommentedLO, data.mostReactedLO, data.numCourses, data.numLO, data.numUsers)
         +Graphs()
