@@ -21,12 +21,6 @@ exports.create = {
 
 
   /*ELearning Fixtures*/
-
-  /*
-    LUser
-  */
-
-  //LUser: [
     {
       'name.first': 'Juan', 
       'name.last': 'Dela Cruz', 
@@ -2223,207 +2217,207 @@ exports.create = {
 
   LOView: [
     { 
-      'LUser': 'Angelica', 
+      'user': 'Angelica', 
       'learningObject': 'aquafeeds-lo',
       'dateViewed': '2017-01-12'
     },
     { 
-      'LUser': 'Amber', 
+      'user': 'Amber', 
       'learningObject': 'pineapple-lo',
       'dateViewed': '2017-01-28'
     },
     { 
-      'LUser': 'Sally', 
+      'user': 'Sally', 
       'learningObject': 'pineapple-lo',
       'dateViewed': '2017-01-28'
     },
     { 
-      'LUser': 'Tim', 
+      'user': 'Tim', 
       'learningObject': 'pineapple-lo',
       'dateViewed': '2017-01-28'
     },
     { 
-      'LUser': 'Uvin', 
+      'user': 'Uvin', 
       'learningObject': 'pineapple-lo',
       'dateViewed': '2017-01-28'
     },
     { 
-      'LUser': 'Albert', 
+      'user': 'Albert', 
       'learningObject': 'papaya-lo',
       'dateViewed': '2017-01-18'
     },
     { 
-      'LUser': 'Bryan', 
+      'user': 'Bryan', 
       'learningObject': 'citrus-lo',
       'dateViewed': '2017-01-10'
     },
     { 
-      'LUser': 'Cena', 
+      'user': 'Cena', 
       'learningObject': 'jackfruit-lo',
       'dateViewed': '2017-02-09'
     },
     { 
-      'LUser': 'Daniel', 
+      'user': 'Daniel', 
       'learningObject': 'durian-lo',
       'dateViewed': '2017-02-26'
     },
     { 
-      'LUser': 'Ellen', 
+      'user': 'Ellen', 
       'learningObject': 'whitepotato-lo',
       'dateViewed': '2017-02-07'
     },
     { 
-      'LUser': 'Ferdinand', 
+      'user': 'Ferdinand', 
       'learningObject': 'sweetpotato-lo',
       'dateViewed': '2017-03-01'
     },
     { 
-      'LUser': 'Victoria', 
+      'user': 'Victoria', 
       'learningObject': 'sweetpotato-lo',
       'dateViewed': '2017-03-01'
     },
     { 
-      'LUser': 'Vince', 
+      'user': 'Vince', 
       'learningObject': 'sweetpotato-lo',
       'dateViewed': '2017-03-01'
     },
     { 
-      'LUser': 'Gerald', 
+      'user': 'Gerald', 
       'learningObject': 'peanut-lo',
       'dateViewed': '2017-03-11'
     },
     { 
-      'LUser': 'Gary', 
+      'user': 'Gary', 
       'learningObject': 'mungbean-lo',
       'dateViewed': '2017-02-09'
     },
     { 
-      'LUser': 'Henry', 
+      'user': 'Henry', 
       'learningObject': 'stagescorn-lo',
       'dateViewed': '2017-02-16'
     },
     { 
-      'LUser': 'Harold', 
+      'user': 'Harold', 
       'learningObject': 'soilfertilization-lo',
       'dateViewed': '2017-02-19'
     },
     { 
-      'LUser': 'Irish', 
+      'user': 'Irish', 
       'learningObject': 'landpreparation-lo',
       'dateViewed': '2017-02-20'
     },
     { 
-      'LUser': 'Juan', 
+      'user': 'Juan', 
       'learningObject': 'biotechbtcorn-lo',
       'dateViewed': '2017-02-21'
     },
     { 
-      'LUser': 'John', 
+      'user': 'John', 
       'learningObject': 'feedingprogram-lo',
       'dateViewed': '2017-02-22'
     },
     { 
-      'LUser': 'Jane', 
+      'user': 'Jane', 
       'learningObject': 'grainquality-lo',
       'dateViewed': '2017-03-25'
     },
     { 
-      'LUser': 'Wilson', 
+      'user': 'Wilson', 
       'learningObject': 'grainquality-lo',
       'dateViewed': '2017-03-25'
     },
     { 
-      'LUser': 'Yvette', 
+      'user': 'Yvette', 
       'learningObject': 'grainquality-lo',
       'dateViewed': '2017-03-25'
     },
     { 
-      'LUser': 'Xyrus', 
+      'user': 'Xyrus', 
       'learningObject': 'grainquality-lo',
       'dateViewed': '2017-03-25'
     },
     { 
-      'LUser': 'Justin', 
+      'user': 'Justin', 
       'learningObject': 'sugarcane-lo',
       'dateViewed': '2017-03-26'
     },
     { 
-      'LUser': 'Joon', 
+      'user': 'Joon', 
       'learningObject': 'plantingrice-lo',
       'dateViewed': '2017-03-20'
     },
     { 
-      'LUser': 'Jeff', 
+      'user': 'Jeff', 
       'learningObject': 'plantingmango-lo',
       'dateViewed': '2017-03-23'
     },
     { 
-      'LUser': 'Kris', 
+      'user': 'Kris', 
       'learningObject': 'plantingcoffee-lo',
       'dateViewed': '2017-03-23'
     },
     { 
-      'LUser': 'Karl', 
+      'user': 'Karl', 
       'learningObject': 'plantingcoconut-lo',
       'dateViewed': '2017-03-24'
     },
     { 
-      'LUser': 'Krystal', 
+      'user': 'Krystal', 
       'learningObject': 'plantingbanana-lo',
       'dateViewed': '2017-03-28'
     },
     { 
-      'LUser': 'Zend', 
+      'user': 'Zend', 
       'learningObject': 'plantingbanana-lo',
       'dateViewed': '2017-03-28'
     },
     { 
-      'LUser': 'Luhan', 
+      'user': 'Luhan', 
       'learningObject': 'plantingabaca-lo',
       'dateViewed': '2017-03-22'
     },
     { 
-      'LUser': 'Logan', 
+      'user': 'Logan', 
       'learningObject': 'pineapple-lo',
       'dateViewed': '2017-04-17'
     },
     { 
-      'LUser': 'Manuel', 
+      'user': 'Manuel', 
       'learningObject': 'aquafeeds-lo',
       'dateViewed': '2017-04-16'
     },
     { 
-      'LUser': 'Natalie', 
+      'user': 'Natalie', 
       'learningObject': 'papaya-lo',
       'dateViewed': '2017-04-17'
     },
     { 
-      'LUser': 'Oliver', 
+      'user': 'Oliver', 
       'learningObject': 'citrus-lo',
       'dateViewed': '2017-04-04'
     },
     { 
-      'LUser': 'Patricia', 
+      'user': 'Patricia', 
       'learningObject': 'jackfruit-lo',
       'dateViewed': '2017-04-05'
     },
     { 
-      'LUser': 'Queen', 
+      'user': 'Queen', 
       'learningObject': 'whitepotato-lo',
       'dateViewed': '2017-04-04'
     },
     { 
-      'LUser': 'Rona', 
+      'user': 'Rona', 
       'learningObject': 'durian-lo',
       'dateViewed': '2017-04-03'
     },
     { 
-      'LUser': 'Cena', 
+      'user': 'Cena', 
       'learningObject': 'durian-lo',
       'dateViewed': '2017-04-03'
     },
     { 
-      'LUser': 'Albert', 
+      'user': 'Albert', 
       'learningObject': 'durian-lo',
       'dateViewed': '2017-04-03'
     },

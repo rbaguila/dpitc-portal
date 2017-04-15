@@ -8,7 +8,7 @@ var LOView = new keystone.List('LOView', {
 })
 
 LOView.add({
-	LUser: {
+	user: {
 		type: Types.Relationship,
 		ref: 'User'
 	},

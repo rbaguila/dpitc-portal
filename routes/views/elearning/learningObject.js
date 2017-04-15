@@ -278,6 +278,19 @@ exports = module.exports = function (req, res) {
 
   });
 
+  // Get the loview of current learning object
+  view.on('init', function(next) {
+
+    LOView.model.find({
+      learningObject: locals.currentLO._id
+    })
+    .exec(function(err, results){
+      if(err) next(err);
+      locals.currentLO.loviews = results;
+      next();
+    });
+
+  });
 
   //insert view
   //TO DO, check if nirefresh lang
@@ -285,7 +298,7 @@ exports = module.exports = function (req, res) {
     var currentUser = locals.user;
     if(currentUser){
       var newView = new LOView.model({
-          LUser: currentUser._id,
+          user: currentUser._id,
           learningObject: locals.data.currLO._id
       });
       newView.save(function(err) {

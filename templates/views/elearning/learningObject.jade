@@ -89,12 +89,12 @@ mixin otherTopics(otherLO)
           span= lo.content.brief.substring(0, 50)
 
 mixin comment-form(action)
-  form(method='post', style="margin-bottom: 40px; margin-top: 40px;")
+  form(method='post', style="margin-bottom: 10px; margin-top: 10px;")
     input(type='hidden', name='action', value='comment.create')
     .media
       .pull-left
         if user
-          //- img(src=user.photo.exists ? user._.photo.thumbnail(80,80) : 'http://placehold.it/80x80', alt=user.name.full, width=80, height=80).img-rounded
+          img(src=user.photo.exists ? user._.photo.thumbnail(80,80) : 'http://placehold.it/80x80', alt=user.name.full, width=80, height=80).img-rounded
         else
           img(src='http://placehold.it/80x80', alt='Comment author placeholder', width=80, height=80).img-rounded
       .media-body
@@ -110,7 +110,7 @@ mixin comment-post(comment)
     div(id='comment-id-' + comment.id, style="margin-top: 20px;")
       .media
         .pull-left
-          //- img(src=comment.author.photo.exists ? comment.author._.photo.thumbnail(80,80) : 'http://placehold.it/80x80', alt=comment.author.name.full, width=80, height=80).img-rounded
+          img(src=comment.author.photo.exists ? comment.author._.photo.thumbnail(80,80) : 'http://placehold.it/80x80', alt=comment.author.name.full, width=80, height=80).img-rounded
         .media-body
           p.list-group-item-heading
             strong= comment.author.name.full
@@ -120,32 +120,34 @@ mixin comment-post(comment)
           p.list-group-item-text=comment.content.replace(/\n/g, '<br>')
 
 mixin comment-thread(comments)
-  label Comments
+  +comment-form() 
+  hr
   if comments.length
-    ul.list-group
     for comment in comments
-      li.list-group-item
-        +comment-post(comment)
+      +comment-post(comment)
+      
 
 mixin reactions(action)
-    .col-md-1
-      form(method='post', style="margin-bottom: 0px; margin-top: 0px;")
+  .row
+    p.text-right #{currentLO.loviews.length} Views
+    .col-md-1.col-md-push-8.col-xs-1.col-xs-push-8
+      form(method='post', style="margin: 0px;")
         input(type='hidden', name='action', value='reactions.addLike')    
         button(type='submit').btn.btn-link.btn-lg #{currentLO.likes.length} &nbsp; #{user.isLiked}
           i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")
     
-    .col-md-1
-      form(method='post', style="margin-bottom: 0px; margin-top: 0px;")
+    .col-md-1.col-md-push-8.col-xs-1.col-xs-push-8
+      form(method='post', style="margin: 0px;")
         input(type='hidden', name='action', value='reactions.addHappy')
         button(type='submit').btn.btn-link.btn-lg #{currentLO.happy.length} &nbsp;
           i.fa.fa-smile-o.fa-lg(aria-hidden="true")
   
-    .col-md-1
-      form(method='post', style="margin-bottom: 0px; margin-top: 0px;")
+    .col-md-1.col-md-push-8.col-xs-1.col-xs-push-8
+      form(method='post', style="margin: 0px;")
         input(type='hidden', name='action', value='reactions.addSad')
-        button(type='submit').btn.btn-link.btn-lg #{currentLO.sad.length}
+        button(type='submit').btn.btn-link.btn-lg #{currentLO.sad.length} &nbsp;
           i.fa.fa-frown-o.fa-lg(aria-hidden="true")
-  
+    
 
 block content
   .container
@@ -156,11 +158,13 @@ block content
             .panel-body
               +learningObject(currentLO)
               hr
-              .row
-                +reactions()
-              .row
-                +comment-thread(comments)
-                +comment-form()
+              +reactions()
+        .row
+          .panel.panel-info
+            .panel-body
+              label Comments (#{comments.length})
+              +comment-thread(comments)
+          //- +comment-form()
               
       .col-md-4
         .row
