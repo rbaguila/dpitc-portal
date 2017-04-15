@@ -105,8 +105,6 @@ mixin comment-form(action)
         else
           ul.list-inline
             li: a(href='/keystone/signin').btn.btn-sm.btn-primary Sign in to Comment
-    input(type='hidden', name='action', value='reactions.addLike')
-    button(type='submit').btn.btn-primary.pull-right Add Comment
 
 mixin comment-post(comment)
   if comment.author
