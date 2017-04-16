@@ -23,6 +23,21 @@ block search
               button.btn.btn-default(type='submit')
                 span.glyphicon.glyphicon-search(aria-hidden="true")
                 
+//- mixin reactions(currentLO)
+  .row
+    p.text-right 
+    | #{currentLO.loviews.length} Views
+    | #{currentLO.likes.length} &nbsp;
+    i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")
+    p.text-right
+    | #{currentLO.happy.length} &nbsp;
+    i.fa.fa-smile-o.fa-lg(aria-hidden="true")
+  
+    p.text-right
+    | #{currentLO.sad.length} &nbsp;
+    i.fa.fa-frown-o.fa-lg(aria-hidden="true")
+    
+
 
 mixin popular(learningObjects)
   a(href='/elearning/popular')
@@ -43,6 +58,7 @@ mixin popular(learningObjects)
                 h3= learningObject.title.substring(0, 50)
               .row
                 p= learningObject.content.brief.substring(0, 100)
+                //- +reactions(learningObject)
               hr
               .row
                 a.btn.btn-info.btn-block(href=learningObject.url) Learn more
@@ -102,7 +118,7 @@ block content
   .container
     .panel.panel-default
       .panel-body
-        +popular(learningObjects)
+        +popular(popularLO)
   .container
     .panel.panel-default
       .panel-body

@@ -21,6 +21,8 @@ exports = module.exports = function (req, res) {
     ]
   }
 
+  view.query('learningObjects', keystone.list('LearningObject').model.find().sort('-PublishedAt').limit(12));
+
   var tempRecommended = [];
   var tempLearningObjects = [];
   var classifications = ["specificCommodity", "isp", "sector", "industry"];

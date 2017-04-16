@@ -1,12 +1,17 @@
 var keystone = require('keystone');
 var async = require('async');
+var moment = require('moment');
+
 var Course = keystone.list('Course');
 var Chapter = keystone.list('Chapter');
 var LearningObject = keystone.list('LearningObject');
+var LOView = keystone.list('LOView');
+
 
 exports = module.exports = function (req, res) {
   var view = new keystone.View(req, res);
   var locals = res.locals;
+
   locals.section = 'elearning';
 
   locals.data = {
@@ -22,6 +27,8 @@ exports = module.exports = function (req, res) {
     ]
   }
 
+  locals.popularLO = [];
+
   var tempRecommended = [];
   var tempLearningObjects = [];
   var classifications = ["specificCommodity", "isp", "sector", "industry"];
@@ -29,6 +36,41 @@ exports = module.exports = function (req, res) {
 
   // Load LearningObjects
   view.query('learningObjects', keystone.list('LearningObject').model.find().sort('-PublishedAt').limit(4));
+
+  // Load popular LearningObjects
+  view.on('init', function(next) {
+    var currentDate = moment().toDate();
+    var startDate = moment().subtract(30, 'days').toDate();
+
+    // Get all LOViews withing the past 30 days.
+    LOView.model.find({
+      dateViewed: { 
+        $gte: startDate, 
+        $lt: currentDate
+      }
+      })
+      .populate('learningObject')
+      .sort('-dateViewed')
+      .exec(function(err, results) {
+        if(err) return next(err);
+
+        locals.popularLOViews = results;
+        
+        // Add each LearningObject from popularLOViews to popularLO array
+        async.each(locals.popularLOViews, function(loview, next) {
+
+          if(locals.popularLO.indexOf(loview.learningObject) === -1){
+            locals.popularLO.push(loview.learningObject);  
+          }
+          
+        }, function(err) {
+          next(err);
+        })
+
+        next();
+      });
+  });
+
 
   // Load Courses
   view.query('courses', keystone.list('Course').model.find().sort('-PublishedAt').limit(4));
