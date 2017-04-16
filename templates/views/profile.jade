@@ -1,43 +1,73 @@
 extends ../layouts/default
 
 block js
-  $('.collapse').collapse()
+  | $('.collapse').collapse()
 
 block editProfile 
   label Edit Profile
   .row
-    .col-md-8
-      form.contact-form(method="post")
-        .row      
-          input(type='hidden', name='action',  value='user.editProfile')
-          .form-group
-            label.control-label Name
-            .row
-              .col-xs-6.col-md-6
-                input.form-control.input-box(type='text', name='first', value=formData.first, placeholder=user.name.first)
-                
-              .col-xs-6.col-md-6
-                input.form-control.input-box(type='text', name='last', value=formData.last, placeholder=user.name.last)
-            
-          .form-group
-            label.control-label Email
-            .row
-              .col-xs-6.col-md-12
-                input.form-control.input-box(type='email', name='email', value=formData.email, placeholder=user.email, disabled='disabled')
-          a.btn.btn-link(role='button', data-toggle='collapse', href='#changePassword', aria-hidden='false', aria-controls='changePassword') Change Password
+    form.contact-form(method='post')
+      .row
+        input(type='hidden', name='action', value='profile.uploadPhoto')
+        if user._.photo.exists
+          img(src=user._.photo.limit(150,150), alt=user.name.full).img-rounded.center-block 
+        else 
+          img(src='http://placehold.it/150x150', alt='No Available Photo', width=150, height=150).img-rounded.center-block
+        a.btn.btn-link(role='button', data-toggle='collapse', href='#changePhoto', aria-hidden='false', aria-controls='changePhoto') Change Photo
 
-          .collapse(id='changePassword')
-           .form-group
-            label.control-label Password
+        .collapse(id='changePhoto')
+          .form-group
+            label.control-label Profile Picture
             .row
-              .col-xs-6.col-md-6
-                input.form-control.input-box(type='password', name='password', value=formData.password, placeholder='Password')
-              .col-xs-6.col-md-6
-                input.form-control.input-box(type='password', name='password_confirm', value=formData.password_confirm, placeholder='Retype password')
-        hr
-        .row.pull-right
-          button(type='submit').btn.btn-primary Edit Profile
-    .col-md-4
+              input(type='file', name='photo')
+            hr
+            .row.pull-right
+              button(type='submit').btn.btn-primary Change Photo
+
+  .row
+    form.contact-form(method="post")
+      .row      
+        input(type='hidden', name='action',  value='user.editProfile')
+        .form-group
+          label.control-label Name
+          .row
+            .col-xs-6.col-md-6
+              input.form-control.input-box(type='text', name='first', value=formData.first, placeholder=user.name.first)
+              
+            .col-xs-6.col-md-6
+              input.form-control.input-box(type='text', name='last', value=formData.last, placeholder=user.name.last)
+          
+        .form-group
+          label.control-label Email
+          .row
+            .col-xs-6.col-md-12
+              input.form-control.input-box(type='email', name='email', value=formData.email, placeholder=user.email, disabled='disabled')
+        .form-group
+          
+
+
+      hr
+      .row.pull-right
+        button(type='submit').btn.btn-primary Edit Profile
+  
+  .row  
+    form.contact-form(method="post")
+      .row
+        input(type='hidden', name='action',  value='profile.editPassword')
+        a.btn.btn-link(role='button', data-toggle='collapse', href='#changePassword', aria-hidden='false', aria-controls='changePassword') Change Password
+
+        .collapse(id='changePassword')
+         .form-group
+          label.control-label Password
+          .row
+            .col-xs-6.col-md-6
+              input.form-control.input-box(type='password', name='password', value=formData.password, placeholder='Password')
+            .col-xs-6.col-md-6
+              input.form-control.input-box(type='password', name='password_confirm', value=formData.password_confirm, placeholder='Retype password')
+          hr
+          .row.pull-right
+            button(type='submit').btn.btn-primary Change
+    //- .col-md-4
       img(src=user.photo.exists ? user._.photo.thumbnail(200,200) : 'http://placehold.it/200x200', alt=user.name.full, width=200, height=200).img-rounded.center-block
       hr
       form.contact-form(method='post')
@@ -50,7 +80,7 @@ block content
   .user-form
     .container
       .row
-        .col-xs-12.col-md-10.col-md-offset-1
+        .col-xs-12.col-md-6.col-md-offset-3
           .panel.panel-default
             .panel-body
               if user

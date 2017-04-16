@@ -45,7 +45,7 @@ exports = module.exports = function (app) {
 	app.get('/exhibit', routes.views.fiesta);
 	app.get('/exhibit/:exhibit', routes.views.exhibit);
 	app.get('/gallery', routes.views.gallery);
-	
+
 	// User
 	app.get('/signup?', routes.views.signup);
 	app.post('/signup?', routes.views.signup);
