@@ -17,7 +17,7 @@ exports = module.exports = function(req, res) {
 	//change this before deplyoning, use createdAt instead
 	keystone.list('LOComment').model.find().where('publishedAt').gte(start).lt(end).exec(function (err, results) {
 		if (err || !results.length) {
-			return next(err);
+			//return (err);
 		}
 		LOComments = results;
 		var LOCommentsJSON = JSON.stringify(LOComments);

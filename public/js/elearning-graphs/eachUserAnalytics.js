@@ -13,7 +13,7 @@ function GetURLParameter(sParam)
     }
 }
 
-var key = GetURLParameter('key');
+var id = GetURLParameter('id');
     
 var margin = {
     top: 50,
@@ -36,7 +36,7 @@ var xAxis = d3.axisBottom()
 var yAxis = d3.axisLeft()
     .scale(y);
 
-var svgLOView = d3.select("#loViewsGraph").append("svg")
+var svgUserView = d3.select("#userViewsGraph").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -46,9 +46,9 @@ var months = [ "Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Se
 
 //TO DO
 //GET THE CURRENT YEAR OR BASE SA GUSTO OR NAKALAGAY SA UI
-var currentYearEachLOView= new Date().getFullYear();
+var currentYearEachUserView= new Date().getFullYear();
 
-d3.json("/api/views/"+ key + "/" + currentYearEachLOView, function(error, json) {
+d3.json("/api/userviews/"+ id + "/" + currentYearEachUserView, function(error, json) {
     var tally = {};
 
     if(json.length==0){
@@ -87,7 +87,7 @@ d3.json("/api/views/"+ key + "/" + currentYearEachLOView, function(error, json) 
         return d.frequency;
     })]);
 
-    svgLOView.append("g")
+    svgUserView.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis)
@@ -96,7 +96,7 @@ d3.json("/api/views/"+ key + "/" + currentYearEachLOView, function(error, json) 
         .attr("dx", "-.8em")
         .attr("dy", "-.55em")
         .attr("transform", "rotate(-90)" );
-    svgLOView.append("g")
+    svgUserView.append("g")
         .attr("class", "y axis")
         .call(yAxis)
         .append("text")
@@ -104,13 +104,13 @@ d3.json("/api/views/"+ key + "/" + currentYearEachLOView, function(error, json) 
         .attr("dy", ".71em")
         .style("text-anchor", "end")
         .text("Number of Views");
-    svgLOView.append("text")
+    svgUserView.append("text")
         .attr("x", width / 2 )
         .attr("y", -(margin.top / 2 ))
         .attr("class", "title")
         .style("text-anchor", "middle")
-        .text("Number of Views for the Current Year");
-    svgLOView.selectAll(".bar")
+        .text("Number of Learning Objects Views for the Current Year");
+    svgUserView.selectAll(".bar")
         .data(loviewdata)
         .enter().append("rect")
         .attr("class", "bar")
@@ -130,7 +130,7 @@ d3.json("/api/views/"+ key + "/" + currentYearEachLOView, function(error, json) 
     }
 });
 
-var svgLOComment = d3.select("#loCommentsGraph").append("svg")
+var svgUserComment = d3.select("#userCommentsGraph").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -138,9 +138,10 @@ var svgLOComment = d3.select("#loCommentsGraph").append("svg")
 
 //TO DO
 //GET THE CURRENT YEAR OR BASE SA GUSTO OR NAKALAGAY SA UI
-var currentYearEachLOComment= new Date().getFullYear();
+var currentYearEachUserComment= new Date().getFullYear();
 
-d3.json("/api/comments/"+ key + "/" + currentYearEachLOComment, function(error, json) {
+d3.json("/api/usercomments/"+ id + "/" + currentYearEachUserComment, function(error, json) {
+
     var tally = {};
 
     if(json.length==0){
@@ -179,7 +180,7 @@ d3.json("/api/comments/"+ key + "/" + currentYearEachLOComment, function(error, 
         return d.frequency;
     })]);
 
-    svgLOComment.append("g")
+    svgUserComment.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis)
@@ -188,7 +189,7 @@ d3.json("/api/comments/"+ key + "/" + currentYearEachLOComment, function(error, 
         .attr("dx", "-.8em")
         .attr("dy", "-.55em")
         .attr("transform", "rotate(-90)" );
-    svgLOComment.append("g")
+    svgUserComment.append("g")
         .attr("class", "y axis")
         .call(yAxis)
         .append("text")
@@ -196,13 +197,13 @@ d3.json("/api/comments/"+ key + "/" + currentYearEachLOComment, function(error, 
         .attr("dy", ".71em")
         .style("text-anchor", "end")
         .text("Number of Comments");
-    svgLOComment.append("text")
+    svgUserComment.append("text")
         .attr("x", width / 2 )
         .attr("y", -(margin.top / 2 ))
         .attr("class", "title")
         .style("text-anchor", "middle")
         .text("Number of Comments for the Current Year");
-    svgLOComment.selectAll(".bar")
+    svgUserComment.selectAll(".bar")
         .data(locommentdata)
         .enter().append("rect")
         .attr("class", "bar")
@@ -219,85 +220,5 @@ d3.json("/api/comments/"+ key + "/" + currentYearEachLOComment, function(error, 
     function type(d) {
         d.frequency = +d.frequency;
         return d;
-    }
-});
-
-
-var loreactionsdata = [];
-    // Get JSON data and wait for the response
-d3.json("/api/reactions/"+ key, function(error, json) {
-    if(json.length>0){
-        $.each(json, function(d,i){
-            loreactionsdata.push({
-                label: i.label,
-                value: i.value
-            })
-        })
-        var pie = new d3pie("loReactionsGraph", {
-        "header": {
-            "title": {
-                "text": "Total Reactions",
-                "fontSize": 24,
-                "font": "open sans"
-            },
-            "subtitle": {
-                "text": "Number of Reactions",
-                "color": "#999999",
-                "fontSize": 12,
-                "font": "open sans"
-            },
-            "titleSubtitlePadding": 9
-        },
-        "size": {
-            "canvasWidth": 400,
-            "canvasHeight": 380,
-            "pieOuterRadius": "90%"
-        },
-        "data": {
-            "content": loreactionsdata
-        },
-        "labels": {
-            "outer": {
-                "pieDistance": 32
-            },
-            "inner": {
-                "format": "value",
-                "hideWhenLessThanPercentage": 3
-            },
-            "mainLabel": {
-                "fontSize": 11
-            },
-            "percentage": {
-                "color": "#ffffff",
-                "decimalPlaces": 0
-            },
-            "value": {
-                "color": "#adadad",
-                "fontSize": 11
-            },
-            "lines": {
-                "enabled": true
-            },
-            "truncation": {
-                "enabled": true
-            }
-        },
-        "effects": {
-            "pullOutSegmentOnClick": {
-                "effect": "linear",
-                "speed": 400,
-                "size": 8
-            }
-        },
-        "misc": {
-            "gradient": {
-                "enabled": true,
-                "percentage": 100
-            }
-        }
-        });
-    }
-    else{
-        //TO DO ADD SOME THINGS HERE
     }
 });

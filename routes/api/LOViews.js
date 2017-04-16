@@ -17,7 +17,7 @@ exports = module.exports = function(req, res) {
 	//change this before deploying, use createdAt instead
 	keystone.list('LOView').model.find().where('dateViewed').gte(start).lt(end).exec(function (err, results) {
 		if (err || !results.length) {
-			return next(err);
+			//return (err);
 		}
 		LOViews = results;
 		var LOViewsJSON = JSON.stringify(LOViews);

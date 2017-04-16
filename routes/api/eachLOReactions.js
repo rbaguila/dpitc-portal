@@ -16,7 +16,7 @@ exports = module.exports = function(req, res) {
 	})
 	.exec(function(err, result) {
 	   	if(err){
-	    	return next(err);
+	    	//return (err);
 	    }
 	    var objarray = [];
 

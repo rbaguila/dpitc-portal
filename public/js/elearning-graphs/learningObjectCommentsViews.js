@@ -30,15 +30,26 @@
 
     d3.json("/api/LOComments/" + currentYear, function(error, json) {
         var tally = {};
-        for(var a=0;a<months.length;a++){
-            tally[months[a]] = 0;
+
+        if(json.length==0){
+            for(var i=0;i<12;i++){
+                var date = months[i];
+                tally[date] = 0;
+            }
+
         }
-        for(var i=0;i<json.length;i++){
-            var temp = d3.isoParse(json[i].publishedAt);//change this before deplyoning, use createdAt instead
-            var temp2 = temp.getMonth();
-            var date = months[temp2];
-            tally[date] = (tally[date]||0) + 1;
+        else{
+            for(var a=0;a<months.length;a++){
+                tally[months[a]] = 0;
+            }
+            for(var i=0;i<json.length;i++){
+                var temp = d3.isoParse(json[i].publishedAt);//change this before deplyoning, use createdAt instead
+                var temp2 = temp.getMonth();
+                var date = months[temp2];
+                tally[date] = (tally[date]||0) + 1;
+            }
         }
+        
         var commentData = [];
         for (var date in tally) {
         if (tally.hasOwnProperty(date)) {
@@ -112,14 +123,24 @@
 
     d3.json("/api/LOViews/" + currentYear, function(error, json) {
         var tally = {};
-        for(var a=0;a<months.length;a++){
-            tally[months[a]] = 0;
+
+        if(json.length==0){
+            for(var i=0;i<12;i++){
+                var date = months[i];
+                tally[date] = 0;
+            }
+
         }
-        for(var i=0;i<json.length;i++){
-            var temp = d3.isoParse(json[i].dateViewed);//change this before deplyoning, use createdAt instead
-            var temp2 = temp.getMonth();
-            var date = months[temp2];
-            tally[date] = (tally[date]||0) + 1;
+        else{
+            for(var a=0;a<months.length;a++){
+                tally[months[a]] = 0;
+            }
+            for(var i=0;i<json.length;i++){
+                var temp = d3.isoParse(json[i].dateViewed);//change this before deplyoning, use createdAt instead
+                var temp2 = temp.getMonth();
+                var date = months[temp2];
+                tally[date] = (tally[date]||0) + 1;
+            }
         }
         var viewData = [];
         for (var date in tally) {
