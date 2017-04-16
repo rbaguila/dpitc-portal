@@ -84,6 +84,17 @@ html
 						//- 		li: a(href='/keystone/signout') Sign Out
 						//- 	else
 						//- 		li: a(href='/keystone/signin') Sign In
+			div#community-nav.navbar-fixed-top
+				#user-login-links
+					if user
+						span.user-name #{user.name.full}&nbsp;&nbsp;
+						i.fa.fa-bell-o(aria-hidden="true")
+						| &nbsp;&nbsp;&nbsp;&nbsp;
+						a(href='/keystone/signout', class="not-active login-link") Sign Out
+					else
+						a(href='/keystone/signin?from=' + loginRedirect, class="not-active login-link") Sign In
+						| &nbsp;&nbsp;&nbsp;&nbsp;
+						a(href='/elearning/signup?from=' + loginRedirect, class="not-active login-link") Sign Up
 	
 		//- BODY
 		#body

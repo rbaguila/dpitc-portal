@@ -18,8 +18,11 @@ exports = module.exports = function(req, res) {
     })
     .exec(function(err, result) {
     	LOComment.model.find().where('learningObject', result._id).where('publishedAt').gte(start).lt(end).exec(function(err, results){
-    		var eachCommentsJSON = JSON.stringify(results);
-			res.send(eachCommentsJSON);
+    		if (err || !results.length) {
+          //return (err);
+        }
+        var eachCommentsJSON = JSON.stringify(results);
+        res.send(eachCommentsJSON);
     	});
     });
 

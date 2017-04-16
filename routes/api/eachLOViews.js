@@ -18,8 +18,11 @@ exports = module.exports = function(req, res) {
     })
     .exec(function(err, result) {
     	LOView.model.find().where('learningObject', result._id).where('dateViewed').gte(start).lt(end).exec(function(err, results){
-    		var eachViewsJSON = JSON.stringify(results);
-			res.send(eachViewsJSON);
+    		if (err || !results.length) {
+          //return (err);
+        }
+        var eachViewsJSON = JSON.stringify(results);
+        res.send(eachViewsJSON);
     	});
     });
 

@@ -3,25 +3,18 @@ extends ../../layouts/elearning-analytics
 block css
   link(rel="stylesheet" type="text/css" href="/styles/analytics.css")
 
-mixin Views(currentLO, numViews, numComments, numReactions)
+mixin Views(currentUser, numLOTaken, numComments)
   .row
     .col-md-6.col-xs-6
-      div(id="loViewsGraph")
-    .col-md-6.col-xs-6
       .well.well-sm.centered-panel
-        |  TOTAL NUMBER OF VIEWS: 
-        span= numViews
+        |  LEARNING OBJECTS TAKEN: 
+        span= numLOTaken
+      div(id="userViewsGraph")
+    .col-md-6.col-xs-6
       .well.well-sm.centered-panel
         |  TOTAL NUMBER OF COMMENTS: 
         span= numComments
-      .well.well-sm.centered-panel
-        |  TOTAL NUMBER OF REACTIONS: 
-        span= numReactions
-  .row
-    .col-md-6.col-xs-6
-      div(id="loCommentsGraph")
-    .col-md-6.col-xs-6
-      div(id="loReactionsGraph")
+      div(id="userCommentsGraph")
 
 block content
   .analytics-body
@@ -40,21 +33,20 @@ block content
               ul.nav.navbar-nav
                 li
                   a(href='/elearning/analytics') Dashboard
-                li.active
-                  a(href='/elearning/analytics/learning-objects/allindustries') Analytics by Learning Objects
                 li
+                  a(href='/elearning/analytics/learning-objects/allindustries') Analytics by Learning Objects
+                li.active
                   a(href='/elearning/analytics/users') Analytics by Users
       .col-md-9.col-sm-4.dashboard
         .row
           .media
             .media-left
-              if data.currentLO.thumbnail.exists
-                img(src=data.currentLO._.thumbnail.limit(100, 100) alt=data.currentLO.video.title).img-rounded
+              if data.currentUser.photo.exists
+                img(src=data.currentUser._.photo.limit(100, 100)).img-rounded
               else
-                img(src="/images/image-not-available.png", alt=data.currentLO.title, height="100px", weight="100px").img-rounded
+                img(src="/images/image-not-available.png", height="100px", weight="100px").img-rounded
             .media-body
-              h5=data.currentLO.title
-              span= data.currentLO.author
-              span= data.currentLO.content.brief.substring(0, 50)
-        +Views(data.currentLO, data.numViews, data.numComments, data.numReactions)
-  script(src='/js/elearning-graphs/eachLOAnalytics.js')
+              h5 #{data.currentUser.name.first} #{data.currentUser.name.last}
+              span= data.currentUser.email
+        +Views(data.currentUser, data.numLOTaken, data.numComments)
+  script(src='/js/elearning-graphs/eachUserAnalytics.js')

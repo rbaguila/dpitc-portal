@@ -60,6 +60,8 @@ exports = module.exports = function (app) {
 	app.get('/elearning/learning-object/:learningobjectslug', routes.views.elearning.learningObject);
 	app.post('/elearning/learning-object/:learningobjectslug', routes.views.elearning.learningObject);
 	app.get('/elearning/analytics', middleware.requireAdmin , routes.views.elearning.analytics);
+	app.get('/elearning/analytics/users?', middleware.requireAdmin , routes.views.elearning.analyticsUsersList);
+	app.get('/elearning/analytics/users/:userid?', middleware.requireAdmin , routes.views.elearning.analyticsUsers);
 	app.get('/elearning/analytics/:learningobjectslug?', middleware.requireAdmin , routes.views.elearning.analyticsLO);
 	app.get('/elearning/analytics/learning-objects/:industry?', middleware.requireAdmin , routes.views.elearning.analyticsLOList);
 	
@@ -100,6 +102,8 @@ exports = module.exports = function (app) {
 	app.get('/api/views/:key/:year', routes.api.eachLOViews);
 	app.get('/api/comments/:key/:year', routes.api.eachLOComments);
 	app.get('/api/reactions/:key', routes.api.eachLOReactions);
+	app.get('/api/userviews/:id/:year', routes.api.eachUserViews);
+	app.get('/api/usercomments/:id/:year', routes.api.eachUserComments);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
