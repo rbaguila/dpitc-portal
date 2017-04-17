@@ -11,6 +11,20 @@ exports = module.exports = function (req, res) {
   var view = new keystone.View(req, res);
   var locals = res.locals;
 
+  var pageData = {
+    loginRedirect: '/elearning/learning-object/'+req.params.learningobjectslug,
+    breadcrumbs: [
+      { text: 'elearning', link: '/elearning' },
+      // still need breadcrumb for course
+
+      /*
+      // TODO refactor breadcrumbs
+      pageData.breadcrumbs.push(  { text: locals.data.currLO.title, link: '/elearning/'+locals.filter.currentLO } );
+
+      */
+    ]
+  }
+
   // Set locals
 
   locals.section = 'learningObject';
@@ -28,19 +42,7 @@ exports = module.exports = function (req, res) {
 
   locals.formData = req.body || {};
 
-  var pageData = {
-    loginRedirect: '/elearning',
-    breadcrumbs: [
-      { text: 'elearning', link: '/elearning' },
-      // still need breadcrumb for course
-
-      /*
-      // TODO refactor breadcrumbs
-      pageData.breadcrumbs.push(  { text: locals.data.currLO.title, link: '/elearning/'+locals.filter.currentLO } );
-
-      */
-    ]
-  }
+  
 
   var tempRecommended = [];
   var tempLearningObjects = [];

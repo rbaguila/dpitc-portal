@@ -32,6 +32,7 @@ var routes = {
 	views: importRoutes('./views'),
 	communityViews: importRoutes('./views/community'),
 	eresourcesViews: importRoutes('./views/eresources'),
+	elearningViews: importRoutes('./views/elearning'),
 	api: importRoutes('./api'),
 };
 
@@ -52,23 +53,27 @@ exports = module.exports = function (app) {
 	app.get('/profile?', routes.views.profile);
 	app.post('/profile?', routes.views.profile);
 
-	// Elearning Routes
-	app.get('/profile/elearning/user-activity?', routes.views.elearning.userActivity);
+	// User-Elearning Routes
+	app.get('/profile/elearning/user-activity?', routes.elearningViews.userActivity);
 
-	app.get('/elearning', routes.views.elearning.elearning);
-	app.get('/elearning/courses?', routes.views.elearning.courseList);
-	app.get('/elearning/course/:courseslug?', routes.views.elearning.courseOutline);
-	app.get('/elearning/chapter/:chapterslug?', routes.views.elearning.chapterOutline);
-	app.get('/elearning/learning-object/:learningobjectslug', routes.views.elearning.learningObject);
-	app.post('/elearning/learning-object/:learningobjectslug', routes.views.elearning.learningObject);
-	app.get('/elearning/analytics', middleware.requireAdmin , routes.views.elearning.analytics);
-	app.get('/elearning/analytics/users?', middleware.requireAdmin , routes.views.elearning.analyticsUsersList);
-	app.get('/elearning/analytics/users/:userid?', middleware.requireAdmin , routes.views.elearning.analyticsUsers);
-	app.get('/elearning/analytics/:learningobjectslug?', middleware.requireAdmin , routes.views.elearning.analyticsLO);
-	app.get('/elearning/analytics/learning-objects/:industry?', middleware.requireAdmin , routes.views.elearning.analyticsLOList);
+	// Elearning Routes
+	app.get('/elearning', routes.elearningViews.elearning);
+	app.get('/elearning/courses?', routes.elearningViews.courseList);
+	app.get('/elearning/course/:courseslug?', routes.elearningViews.courseOutline);
+	app.get('/elearning/chapter/:chapterslug?', routes.elearningViews.chapterOutline);
+	app.get('/elearning/learning-object/:learningobjectslug', routes.elearningViews.learningObject);
+	app.post('/elearning/learning-object/:learningobjectslug', routes.elearningViews.learningObject);
+	app.get('/elearning/popular?', routes.elearningViews.popular);
+	app.get('/elearning/:userid/recommended?', middleware.requireUser, routes.elearningViews.recommended);
+
+	// Elearning Analytics
+	app.get('/elearning/analytics', middleware.requireAdmin , routes.elearningViews.analytics);
+	app.get('/elearning/analytics/users?', middleware.requireAdmin , routes.elearningViews.analyticsUsersList);
+	app.get('/elearning/analytics/users/:userid?', middleware.requireAdmin , routes.elearningViews.analyticsUsers);
+	app.get('/elearning/analytics/:learningobjectslug?', middleware.requireAdmin , routes.elearningViews.analyticsLO);
+	app.get('/elearning/analytics/learning-objects/:industry?', middleware.requireAdmin , routes.elearningViews.analyticsLOList);
 	
-	app.get('/elearning/popular?', routes.views.elearning.popular);
-	app.get('/elearning/:userid/recommended?', routes.views.elearning.recommended);
+	
 
 	app.get('/search/', function(req,res){
 		var searchKey = req.query.searchKey;

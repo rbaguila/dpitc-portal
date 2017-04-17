@@ -6,6 +6,13 @@ exports = module.exports = function (req, res) {
   var view = new keystone.View(req, res);
   var locals = res.locals; 
 
+  var pageData = {
+    loginRedirect: '/profile',
+    breadcrumbs: [
+      { text: 'Profile', link: '/profile' },
+    ]
+  }
+
   locals.data = {
     validationErrors: [],
   };
@@ -96,7 +103,6 @@ exports = module.exports = function (req, res) {
     });
   
   });
-
 
   view.render('profile');
 };

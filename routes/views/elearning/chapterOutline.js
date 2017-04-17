@@ -10,7 +10,8 @@ exports = module.exports = function (req, res) {
   // Set locals
 
   var pageData = {
-    loginRedirect: '/elearning',
+    loginRedirect: '/elearning/chapter/'
+    +req.params.chapterslug,
     breadcrumbs: [
       { text: 'elearning', link: '/elearning' },
       // still need breadcrumb for course

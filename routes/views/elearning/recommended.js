@@ -15,9 +15,10 @@ exports = module.exports = function (req, res) {
   }
 
   var pageData = {
-    loginRedirect: '/elearning', 
+    loginRedirect: '/elearning/'+locals.user._id+'/recommended?', 
     breadcrumbs: [
       { text: 'elearning', link: '/elearning' },
+      { text: 'recommended', link: '/elearning/'+locals.user._id+'/recommended?' },
     ]
   }
 

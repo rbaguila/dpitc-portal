@@ -1,4 +1,4 @@
-extends ../layouts/default
+extends ../layouts/elearning
 
 block js
   | $('.collapse').collapse()
@@ -67,6 +67,8 @@ block editProfile
           hr
           .row.pull-right
             button(type='submit').btn.btn-primary Change
+  .row
+    a.btn.btn-link(href='/profile/elearning/user-activity') View Elearning Activity
     //- .col-md-4
       img(src=user.photo.exists ? user._.photo.thumbnail(200,200) : 'http://placehold.it/200x200', alt=user.name.full, width=200, height=200).img-rounded.center-block
       hr

@@ -13,9 +13,10 @@ exports = module.exports = function (req, res) {
   locals.section = 'elearning';
 
   var pageData = {
-    loginRedirect: '/elearning', 
+    loginRedirect: '/elearning/popular?', 
     breadcrumbs: [
       { text: 'elearning', link: '/elearning' },
+      { text: 'popular', link: '/elearning/popular?' },
     ]
   }
 
