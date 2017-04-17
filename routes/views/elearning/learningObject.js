@@ -297,14 +297,36 @@ exports = module.exports = function (req, res) {
   view.on('init', function(next){
     var currentUser = locals.user;
     if(currentUser){
-      var newView = new LOView.model({
-          user: currentUser._id,
-          learningObject: locals.data.currLO._id
+      //check if the user viewed the Learning Object for 1 session (1 day threshold)
+      Date.prototype.addHours = function(h) {    
+        this.setTime(this.getTime() + (h*60*60*1000)); 
+        return this;   
+      }
+      Date.prototype.subtractHours = function(h) {    
+        this.setTime(this.getTime() - (h*60*60*1000)); 
+        return this;   
+      }
+      var start = new Date().subtractHours(12);
+      var end = new Date().addHours(12);
+      LOView.model.count({
+        learningObject: locals.currentLO._id,
+        user: currentUser._id,
+        dateViewed: { $gte: start, $lt: end },
+      })
+      .exec(function(err, count){
+        if(err){
+          next(err)
+        }
+          if(count==0){
+            var newView = new LOView.model({
+              user: currentUser._id,
+              learningObject: locals.data.currLO._id
+            });
+            newView.save(function(err) {
+            });
+          }
+          next();
       });
-      newView.save(function(err) {
-
-      });
-      next();
     }
     else{
       next();
