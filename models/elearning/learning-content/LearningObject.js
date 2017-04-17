@@ -89,7 +89,11 @@ LearningObject.add({
   },  
 } );
 
-LearningObject.relationship({ ref: 'Chapter', refPath: 'outline' });
+
+/*
+// Removed Chapter model for a while, seems unnecessary
+LearningObject.relationship({ ref: 'Chapter', refPath: 'outline' });*/
+LearningObject.relationship({ ref: 'Course', refPath: 'outline' });
 LearningObject.relationship({ ref: 'User', refPath: 'learningObjectsTaken' });
 
 LearningObject.schema.virtual('content.full').get(function () {

@@ -1912,9 +1912,11 @@ exports.create = {
   ],
   
 
-  Chapter: [
+  //Chapter: [
+  Course: [
     {
-      'title': 'Corn Chapter',
+      'title': 'Corn',
+      //'title': 'Corn Chapter',
       'state': 'published',
       
       'content': {
@@ -1933,7 +1935,8 @@ exports.create = {
       '__ref': 'corn-chapter',
     },
     {
-      'title': 'Legume Chapter',
+      'title': 'Legume',
+      //'title': 'Legume Chapter',
       'state': 'published',
       
       'content': {
@@ -1948,7 +1951,8 @@ exports.create = {
       '__ref': 'legume-chapter',
     },
     {
-      'title': 'Rootcrop Chapter',
+      'title': 'Rootcrop',
+      //'title': 'Rootcrop Chapter',
       'state': 'published',
       
       'content': {
@@ -1963,7 +1967,8 @@ exports.create = {
       '__ref': 'rootcrop-chapter',
     },
     {
-      'title': 'Tropical Fruit Chapter',
+      'title': 'Tropical Fruit',
+    //  'title': 'Tropical Fruit Chapter',
       'state': 'published',
       
       'content': {
@@ -1981,7 +1986,8 @@ exports.create = {
       '__ref': 'tropicalfruit-chapter',
     },
     {
-      'title': 'Feed Resources Chapter',
+      'title': 'Feed Resources',
+    //  'title': 'Feed Resources Chapter',
       'state': 'published',
       
       'content': {
@@ -1997,6 +2003,7 @@ exports.create = {
 
   ],
 
+/*
   Course: [
     {
       'title': 'Agriculture Course',
@@ -2030,6 +2037,7 @@ exports.create = {
       
     }
   ],
+*/
 
   LOComment: [
     { 
