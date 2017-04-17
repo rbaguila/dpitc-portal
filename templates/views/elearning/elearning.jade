@@ -119,6 +119,8 @@ block content
     .panel.panel-default
       .panel-body
         +popular(popularLO)
+      .panel-footer
+        a(href='/elearning/learning-objects?').btn.btn-link View All Lessons
   .container
     .panel.panel-default
       .panel-body
@@ -128,3 +130,5 @@ block content
       .panel.panel-default
         .panel-body
           +recommended(data.recommendedLearningObjects)
+        .panel-footer
+          a(href='/elearning/learning-objects?').btn.btn-link View All Lessons

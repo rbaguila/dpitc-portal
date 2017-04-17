@@ -1,0 +1,119 @@
+extends ../../layouts/elearning
+
+mixin allLearningObjects-grid(learningObjects)
+  h2.text-center All Lessons
+  if learningObjects.results.length
+    .row.equal-height
+      each lo in learningObjects.results
+        .col-xs-6.col-md-3
+          .thumbnail
+            if lo.thumbnail.exists
+              img.card-img-top(src=lo.thumbnail alt="lo.title")
+            else
+              img.card-img-top(src="http://placehold.it/118x90" alt=lo.title, height="150px")
+            .caption
+              h3= lo.title.substring(0, 50)
+              p= lo.content.brief.substring(0, 100)
+              br
+              p
+                a.btn.btn-info.btn-block(href=lo.url) Learn more
+  else
+    h3.text-muted There are no lessons yet.
+  ul.pagination.pull-right
+    li
+      a(href="?view=grid&page="+learningObjects.previous aria-label="Previous")
+        span(aria-hidden="true") &laquo
+    each page in learningObjects.pages
+      if page==learningObjects.currentPage
+        li.active
+          a(href="?view=grid&page="+page)= page
+      else
+        li
+          a(href="?view=grid&page="+page)= page
+
+    li
+      a(href="?view=grid&page="+learningObjects.next aria-label="Next")
+        span(aria-hidden="true") &raquo
+
+
+mixin allLearningObjects-list(learningObjects)
+  h2.text-center All Lessons
+  if learningObjects.results.length
+    .row
+      .col-md-10
+        .panel
+          table.table.table-hover
+            thead
+            tbody
+              each lo in learningObjects.results
+                tr.media
+                  td
+                    .media-left
+                      if lo.thumbnail.exists
+                        a(href=lo.url)
+                          img(src=lo._.thumbnail.limit(90,118) alt=chapter.title).img-rounded.media-object
+                      else
+                        a(href=lo.url)
+                          img(src="http://placehold.it/90x118" alt=lo.title, height="90px" width="118px").img-rounded.media-object
+                    .media-body
+                      a(href=lo.url)
+                        h4.media-heading= lo.title
+                        span= lo.content.brief
+
+  else
+    h3.text-muted There are no lessons yet.
+  ul.pagination.pull-right
+    li
+      a(href="?view=list&page="+learningObjects.previous aria-label="Previous")
+        span(aria-hidden="true") &laquo
+    each page in learningObjects.pages
+      if page==learningObjects.currentPage
+        li.active
+          a(href="?view=list&page="+page)= page
+      else
+        li
+          a(href="?view=list&page="+page)= page
+
+    li
+      a(href="?view=list&page="+learningObjects.next aria-label="Next")
+        span(aria-hidden="true") &raquo
+
+
+
+mixin search(learningObjects)
+  .container
+    .row
+      nav.navbar.navbar-default
+        .container-fluid
+          //- Mobile menu
+          .navbar-header
+            button(type="button", data-toggle="collapse", aria-expanded="false", data-target="#publications-filter").navbar-toggle.collapsed
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+
+          #publications-filter.collapse.navbar-collapse
+            ul.nav.navbar-nav
+            form.navbar-form.navbar-left
+              .form-group
+                input.form-control(type='text', placeholder='Search')
+              button.btn.btn-default(type='submit') Submit
+            ul.nav.navbar-nav.navbar-right
+              li
+                a(href="?view=grid&page="+learningObjects.currentPage)
+                  span(aria-hidden="true").glyphicon.glyphicon-th
+              li
+                a(href="?view=list&page="+learningObjects.currentPage)
+                  span(aria-hidden="true").glyphicon.glyphicon-th-list
+
+block content
+  +search(  learningObjects)
+  .container
+    .panel.panel-default
+      .panel-body
+        if viewStyle == 'grid'
+          +allLearningObjects-grid(learningObjects)
+        else
+          +allLearningObjects-list(learningObjects)
+
