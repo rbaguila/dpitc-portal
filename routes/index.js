@@ -53,6 +53,8 @@ exports = module.exports = function (app) {
 	app.post('/profile?', routes.views.profile);
 
 	// Elearning Routes
+	app.get('/profile/elearning/user-activity?', routes.views.elearning.userActivity);
+
 	app.get('/elearning', routes.views.elearning.elearning);
 	app.get('/elearning/courses?', routes.views.elearning.courseList);
 	app.get('/elearning/course/:courseslug?', routes.views.elearning.courseOutline);
