@@ -10,10 +10,10 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers)
         div(id="commentsGraph")
         div(id="reactionsPieChart")
       .col-md-6.col-xs-6
-        .panel.panel-default
+        .panel.panel-info
           .panel-heading
             h4.panel-title MOST POPULAR
-          .panel-body.bg-success
+          .panel-body.bg-grey
             .media
               .media-left
                 if mostpopular.thumbnail.exists
@@ -23,10 +23,10 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers)
               .media-body
                 h5=mostpopular.title
                 span= mostpopular.content.brief.substring(0, 50)
-        .panel.panel-default
+        .panel.panel-info
           .panel-heading
             h4.panel-title MOST COMMENTED
-          .panel-body.bg-success
+          .panel-body.bg-grey
             .media
               .media-left
                 if mostcommented.thumbnail.exists
@@ -36,10 +36,10 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers)
               .media-body
                 h5=mostcommented.title
                 span= mostcommented.content.brief.substring(0, 50)
-        .panel.panel-default
+        .panel.panel-info
           .panel-heading
             h4.panel-title MOST REACTED
-          .panel-body.bg-success
+          .panel-body.bg-grey
             .media
               .media-left
                 if mostreacted.thumbnail.exists

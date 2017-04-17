@@ -21,16 +21,16 @@ exports = module.exports = function (req, res) {
     ]
   }
 
-  view.query('learningObjects', keystone.list('LearningObject').model.find().sort('-PublishedAt').limit(12));
-
   var tempRecommended = [];
   var tempLearningObjects = [];
   var classifications = ["specificCommodity", "isp", "sector", "industry"];
   var counts = ["specCommCount", "ispCount", "sectorCount", "industryCount"];
 
+  /* LOAD RECOMMENDED LEARNING OBJECTS */
+
   //get all the learning objects
   view.on('init', function(next){
-    var q = keystone.list('LearningObject').model.find();
+    var q = LearningObject.model.find();
 
     q.exec(function(err, results){
         tempLearningObjects = results;
@@ -42,11 +42,13 @@ exports = module.exports = function (req, res) {
   view.on('init', function(next){
     var currentUser = locals.user;
     if(currentUser){
-      var q = keystone.list('LearningObject').model.find().where('_id').in(currentUser.learningObjectsTaken);
+      var q = LearningObject.model.find().where('_id').in(currentUser.learningObjectsTaken).populate('isp sector industry');
 
       q.exec(function(err, results){
-          locals.data.learningObjectsTaken = results;
-          console.log(locals.data.learningObjectsTaken.length);
+          if(results!=null||results.length>0){
+            locals.data.learningObjectsTaken = results;
+          }
+          //console.log(locals.data.learningObjectsTaken.length);
           next(err);
       });
     }
@@ -68,10 +70,12 @@ exports = module.exports = function (req, res) {
                   if(learningObject[classifications[j]]!=null){
                     var learningObjectClassId = learningObject[classifications[j]] + "";
                       for(var i=0;i<locals.data.learningObjectsTaken.length;i++){
-                          var eachTakenClassId = locals.data.learningObjectsTaken[i][classifications[j]] + "";
-                          if(eachTakenClassId!=null&&learningObjectClassId==eachTakenClassId){
+                        if(locals.data.learningObjectsTaken[i][classifications[j]]!=null){
+                          var eachTakenClassId = locals.data.learningObjectsTaken[i][classifications[j]]._id + "";
+                          if(learningObjectClassId==eachTakenClassId){
                               count++;
                           }
+                        }
                       }
                   }
                   learningObject[counts[j]] = count;
@@ -125,19 +129,19 @@ exports = module.exports = function (req, res) {
       tempRecommended.sort(function(a,b){
           return parseFloat(b.score) - parseFloat(a.score);
       });
-      locals.data.recommendedLearningObjects = tempRecommended.slice(0, 4);//temporary
+      locals.data.recommendedLearningObjects = tempRecommended.slice(0, 12);//temporary
       //locals.data.recommendedLearningObjects = tempRecommended.slice(0, 36);//final, 36 recommended videos in youtube too
       /*for(var i=0;i<tempRecommended.length;i++){
           //console.log("SPECIFIC COMMODITY " + tempRecommended[i].specCommCount);
           //console.log("ISP " + tempRecommended[i].ispCount);
           //console.log("Sector " + tempRecommended[i].sectorCount);
           //console.log("Industry " + tempRecommended[i].industryCount);
-          console.log("FINAL SCORE: " + tempRecommended[i].score);
+          console.log(tempRecommended[i].title + " - FINAL SCORE: " + tempRecommended[i].score);
       }*/
     }
     else{
       if(tempLearningObjects.length>0){
-        locals.data.recommendedLearningObjects = tempLearningObjects.slice(0, 4);
+        locals.data.recommendedLearningObjects = tempLearningObjects.slice(0, 12);
       }
     }
     next();

@@ -126,7 +126,7 @@ block content
     .panel.panel-default
       .panel-body
         if viewStyle == 'grid'
-          +recommendedLO-grid(learningObjects)
+          +recommendedLO-grid(data.recommendedLearningObjects)
         else
-          +recommendedLO-list(learningObjects)
+          +recommendedLO-list(data.recommendedLearningObjects)
 
