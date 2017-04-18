@@ -104,5 +104,5 @@ exports = module.exports = function (req, res) {
   
   });
 
-  view.render('profile');
+  view.render('profile', pageData);
 };
