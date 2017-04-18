@@ -33,3 +33,6 @@ node_modules
 # Ignore file uploads
 public/uploads/
 public/uploads/files/
+
+# Bower dependency directory (https://bower.io/)
+public/bower_components/
