@@ -1,0 +1,15 @@
+{
+  "name": "pcaarrd-dpitc",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lightgallery": "^1.3.9",
+    "theia-sticky-sidebar": "^1.6.0"
+  }
+}
