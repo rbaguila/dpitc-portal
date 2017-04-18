@@ -19,6 +19,14 @@ exports = module.exports = function(req, res){
         numUsers: []
     };
 
+    var pageData = {
+        loginRedirect: '/elearning', 
+        breadcrumbs: [
+          { text: 'elearning', link: '/elearning' },
+          { text: 'elearning analytics', link: '/elearning/analytics'}
+        ]
+    }
+
     var tempLearningObjects = [];
     var tempLearningObjects2 = [];
 
@@ -137,6 +145,6 @@ exports = module.exports = function(req, res){
     });
 
     //Render the view
-    view.render('elearning/analytics');
+    view.render('elearning/analytics', pageData);
 
 };

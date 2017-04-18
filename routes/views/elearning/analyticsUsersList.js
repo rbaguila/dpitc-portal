@@ -14,6 +14,14 @@ exports = module.exports = function(req, res){
         users: []
     };
 
+    var pageData = {
+        loginRedirect: '/elearning', 
+        breadcrumbs: [
+          { text: 'elearning', link: '/elearning' },
+          { text: 'elearning analytics', link: '/elearning/analytics'}
+        ]
+    }
+
     var page = req.query.page == undefined ? 1 : req.query.view;
 
     view.on('init', function(next){
@@ -31,6 +39,6 @@ exports = module.exports = function(req, res){
     });
 
     //Render the view
-    view.render('elearning/analyticsUsersList');
+    view.render('elearning/analyticsUsersList', pageData);
 
 };

@@ -18,6 +18,14 @@ exports = module.exports = function(req, res){
         numComments: []
     };
 
+    var pageData = {
+        loginRedirect: '/elearning', 
+        breadcrumbs: [
+          { text: 'elearning', link: '/elearning' },
+          { text: 'elearning analytics', link: '/elearning/analytics'}
+        ]
+    }
+
     // Load the currentLO
     view.on('init', function(next){
         User.model.findOne({
@@ -48,6 +56,6 @@ exports = module.exports = function(req, res){
     });
 
     //Render the view
-    view.render('elearning/analyticsUsers');
+    view.render('elearning/analyticsUsers', pageData);
 
 };

@@ -19,6 +19,15 @@ exports = module.exports = function (req, res) {
     ]
   };
 
+  if(locals.user){
+    if(locals.user.isAdmin){
+      pageData.breadcrumbs.push({
+        text: 'elearning analytics',
+        link: '/elearning/analytics'
+      });
+    }
+  }
+
   var viewPage = req.query.viewPage == undefined ? 1 : req.query.viewPage;
   var likePage = req.query.likePage == undefined ? 1 : req.query.likePage;
   

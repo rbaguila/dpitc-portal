@@ -19,6 +19,14 @@ exports = module.exports = function(req, res){
         numReactions: []
     };
 
+    var pageData = {
+        loginRedirect: '/elearning', 
+        breadcrumbs: [
+          { text: 'elearning', link: '/elearning' },
+          { text: 'elearning analytics', link: '/elearning/analytics'}
+        ]
+    }
+
     // Load the currentLO
     view.on('init', function(next){
         LearningObject.model.findOne({
@@ -63,6 +71,6 @@ exports = module.exports = function(req, res){
     });
 
     //Render the view
-    view.render('elearning/analyticsLO');
+    view.render('elearning/analyticsLO', pageData);
 
 };
