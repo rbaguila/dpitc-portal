@@ -41,14 +41,12 @@ block content
                   a(href='/elearning/analytics/recommendedViews') Analytics of Recommended Learning Objects
       .col-md-9.col-sm-4.dashboard
         .row
-          .media
-            .media-left
-              if data.currentUser.photo.exists
-                img(src=data.currentUser._.photo.limit(100, 100)).img-rounded
-              else
-                img(src="/images/image-not-available.png", height="100px", weight="100px").img-rounded
-            .media-body
-              h5 #{data.currentUser.name.first} #{data.currentUser.name.last}
-              span= data.currentUser.email
+          .col-md-12.col-sm-6.user-prof
+            .media
+              .media-left
+                img(src=data.currentUser.photo.exists ? data.currentUser._.photo.limit(80, 80) : 'http://placehold.it/80x80', width=80, height=80).img-circle
+              .media-body
+                h5 #{data.currentUser.name.first} #{data.currentUser.name.last}
+                span= data.currentUser.email
         +Views(data.currentUser, data.numLOTaken, data.numComments)
   script(src='/js/elearning-graphs/eachUserAnalytics.js')

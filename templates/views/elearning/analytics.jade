@@ -16,10 +16,7 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers)
           .panel-body.bg-grey
             .media
               .media-left
-                if mostpopular.thumbnail.exists
-                  img(src=mostpopular._.thumbnail.limit(100, 100) alt=mostpopular.video.title).img-circle
-                else
-                  img(src="/images/image-not-available.png", alt=mostpopular.title, height="100px", weight="100px").img-circle
+                  img(src=mostpopular.thumbnail.exists ? mostpopular._.thumbnail.limit(100, 100) : 'http://placehold.it/100x100', width=100, height=100).img-circle
               .media-body
                 h5=mostpopular.title
                 span= mostpopular.content.brief.substring(0, 50)
@@ -29,10 +26,7 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers)
           .panel-body.bg-grey
             .media
               .media-left
-                if mostcommented.thumbnail.exists
-                  img(src=mostcommented._.thumbnail.limit(100, 100) alt=mostcommented.video.title).img-circle
-                else
-                  img(src="/images/image-not-available.png", alt=mostcommented.title, height="100px", weight="100px").img-circle
+                img(src=mostcommented.thumbnail.exists ? mostcommented._.thumbnail.limit(100, 100) : 'http://placehold.it/100x100', width=100, height=100).img-circle
               .media-body
                 h5=mostcommented.title
                 span= mostcommented.content.brief.substring(0, 50)
@@ -42,10 +36,7 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers)
           .panel-body.bg-grey
             .media
               .media-left
-                if mostreacted.thumbnail.exists
-                  img(src=mostreacted._.thumbnail.limit(100, 100) alt=mostreacted.video.title).img-circle
-                else
-                  img(src="/images/image-not-available.png", alt=mostreacted.title, height="100px", weight="100px").img-circle
+                img(src=mostreacted.thumbnail.exists ? mostreacted._.thumbnail.limit(100, 100) : 'http://placehold.it/100x100', width=100, height=100).img-circle
               .media-body
                 h5=mostreacted.title
                 span= mostreacted.content.brief.substring(0, 50)

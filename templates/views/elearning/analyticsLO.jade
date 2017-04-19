@@ -50,10 +50,7 @@ block content
         .row
           .media
             .media-left
-              if data.currentLO.thumbnail.exists
-                img(src=data.currentLO._.thumbnail.limit(100, 100) alt=data.currentLO.video.title).img-rounded
-              else
-                img(src="/images/image-not-available.png", alt=data.currentLO.title, height="100px", weight="100px").img-rounded
+              img(src=data.currentLO.thumbnail.exists ? data.currentLO._.thumbnail.limit(100, 100) : 'http://placehold.it/100x100', width=100, height=100).img-circle
             .media-body
               h5=data.currentLO.title
               span= data.currentLO.author
