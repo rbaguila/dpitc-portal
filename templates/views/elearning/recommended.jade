@@ -16,7 +16,7 @@ mixin recommendedLO-grid(learningObjects)
               p= learningObject.content.brief.substring(0, 100)
               br
               p
-                a.btn.btn-info.btn-block(href=learningObject.url) Learn more
+                a.btn.btn-info.btn-block(href=learningObject.url + "?type=recommended") Learn more
   else
     h3.text-muted There are no recommended lessons for you yet.
   //- ul.pagination.pull-right
@@ -50,13 +50,13 @@ mixin recommendedLO-list(learningObjects)
                   td
                     .media-left
                       if learningObject._.thumbnail.exists
-                        a(href=learningObject.url)
+                        a(href=learningObject.url + "?type=recommended")
                           img(src=learningObject._.thumbnail.limit(200,150), alt=learningObject.title, height='150px', width='200px').img-rounded.media-object
                       else
-                        a(href=learningObject.url)
+                        a(href=learningObject.url + "?type=recommended")
                           img(src="http://placehold.it/200x150", height="150px", width="200px").img-rounded.media-object
                     .media-body
-                      a(href=learningObject.url)
+                      a(href=learningObject.url + "?type=recommended")
                         h4.media-heading= learningObject.title
                         .row
                           span= learningObject.content.brief

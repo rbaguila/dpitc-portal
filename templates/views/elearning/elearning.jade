@@ -107,7 +107,7 @@ mixin recommended(learningObjects)
                 p= learningObject.content.brief.substring(0, 100)
               hr
               .row
-                a.btn.btn-info.btn-block(href=learningObject.url) Learn more
+                a.btn.btn-info.btn-block(href=learningObject.url + "?type=recommended") Learn more
   else
     h3.text-muted There are no courses yet.
 

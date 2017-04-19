@@ -62,7 +62,7 @@ exports = module.exports = function (app) {
 	app.get('/elearning/course/:courseslug?', routes.elearningViews.courseOutline);
 //	app.get('/elearning/chapter/:chapterslug?', routes.elearningViews.chapterOutline);
 	app.get('/elearning/learning-objects?', routes.elearningViews.learningObjectList);
-	app.get('/elearning/learning-object/:learningobjectslug', routes.elearningViews.learningObject);
+	app.get('/elearning/learning-object/:learningobjectslug?', routes.elearningViews.learningObject);
 	app.post('/elearning/learning-object/:learningobjectslug', routes.elearningViews.learningObject);
 	app.get('/elearning/learning-objects/popular?', routes.elearningViews.popular);
 	app.get('/elearning/:userid/recommended?', middleware.requireUser, routes.elearningViews.recommended);
@@ -70,6 +70,7 @@ exports = module.exports = function (app) {
 	// Elearning Analytics
 	app.get('/elearning/analytics', middleware.requireAdmin , routes.elearningViews.analytics);
 	app.get('/elearning/analytics/users?', middleware.requireAdmin , routes.elearningViews.analyticsUsersList);
+	app.get('/elearning/analytics/recommendedViews', middleware.requireAdmin , routes.elearningViews.analyticsRecommended);
 	app.get('/elearning/analytics/users/:userid?', middleware.requireAdmin , routes.elearningViews.analyticsUsers);
 	app.get('/elearning/analytics/:learningobjectslug?', middleware.requireAdmin , routes.elearningViews.analyticsLO);
 	app.get('/elearning/analytics/learning-objects/:industry?', middleware.requireAdmin , routes.elearningViews.analyticsLOList);
@@ -107,6 +108,7 @@ exports = module.exports = function (app) {
 	app.get('/api/LOReactions', routes.api.LOReactions);
 	app.get('/api/LOComments/:year', routes.api.LOComments);
 	app.get('/api/LOViews/:year', routes.api.LOViews);
+	app.get('/api/recommendedViews/:year', routes.api.recommendedViews);
 	app.get('/api/views/:key/:year', routes.api.eachLOViews);
 	app.get('/api/comments/:key/:year', routes.api.eachLOComments);
 	app.get('/api/reactions/:key', routes.api.eachLOReactions);

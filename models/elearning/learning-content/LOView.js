@@ -20,6 +20,10 @@ LOView.add({
 		type: Types.Date, 
 		index: true, 
 		default: Date.now 
+	},
+	typeOfView: {
+		type: String,
+    	default: null,
 	}
 });
 
