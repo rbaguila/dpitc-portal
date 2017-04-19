@@ -80,9 +80,11 @@ block content
                 li.active
                   a(href='/elearning/analytics') Dashboard
                 li
-                  a(href='/elearning/analytics/learning-objects/allindustries') Analytics by Learning Objects
+                  a(href='/elearning/analytics/learning-objects/allindustries') Analytics of Learning Objects
                 li
-                  a(href='/elearning/analytics/users') Analytics by Users
+                  a(href='/elearning/analytics/users') Analytics of Users
+                li
+                  a(href='/elearning/analytics/recommendedViews') Analytics of Recommended Learning Objects
       .col-md-9.col-sm-4.dashboard
         +Most(data.mostPopularLO, data.mostCommentedLO, data.mostReactedLO, data.numCourses, data.numLO, data.numUsers)
   script(src='/js/elearning-graphs/learningObjectReactions.js')

@@ -2,20 +2,7 @@ extends ../../layouts/elearning-analytics
 
 block css
   link(rel="stylesheet" type="text/css" href="/styles/analytics.css")
-
-mixin Views(currentUser, numLOTaken, numComments)
-  .row
-    .col-md-6.col-xs-6
-      .well.well-sm.centered-panel
-        |  LEARNING OBJECTS TAKEN: 
-        span= numLOTaken
-      div(id="userViewsGraph")
-    .col-md-6.col-xs-6
-      .well.well-sm.centered-panel
-        |  TOTAL NUMBER OF COMMENTS: 
-        span= numComments
-      div(id="userCommentsGraph")
-
+      
 block content
   .analytics-body
     .row
@@ -35,20 +22,12 @@ block content
                   a(href='/elearning/analytics') Dashboard
                 li
                   a(href='/elearning/analytics/learning-objects/allindustries') Analytics of Learning Objects
-                li.active
-                  a(href='/elearning/analytics/users') Analytics of Users
                 li
+                  a(href='/elearning/analytics/users') Analytics of Users
+                li.active
                   a(href='/elearning/analytics/recommendedViews') Analytics of Recommended Learning Objects
       .col-md-9.col-sm-4.dashboard
-        .row
-          .media
-            .media-left
-              if data.currentUser.photo.exists
-                img(src=data.currentUser._.photo.limit(100, 100)).img-rounded
-              else
-                img(src="/images/image-not-available.png", height="100px", weight="100px").img-rounded
-            .media-body
-              h5 #{data.currentUser.name.first} #{data.currentUser.name.last}
-              span= data.currentUser.email
-        +Views(data.currentUser, data.numLOTaken, data.numComments)
-  script(src='/js/elearning-graphs/eachUserAnalytics.js')
+        h4 Total Number of Views of Recommended Learning Objects
+        .col-md-8.col-md-offset-2
+          div(id="recommendedViewsGraph")
+  script(src='/js/elearning-graphs/recommendedViews.js')
