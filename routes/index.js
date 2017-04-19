@@ -75,7 +75,12 @@ exports = module.exports = function (app) {
 	app.get('/elearning/analytics/:learningobjectslug?', middleware.requireAdmin , routes.elearningViews.analyticsLO);
 	app.get('/elearning/analytics/learning-objects/:industry?', middleware.requireAdmin , routes.elearningViews.analyticsLOList);
 	
-	
+	// Elearning File Uploads
+	app.get('/api/elearning/fileupload/list', keystone.middleware.api, routes.api.elearning.fileupload.list);
+  app.get('/api/elearning/fileupload/:id', keystone.middleware.api, routes.api.elearning.fileupload.get);
+  app.all('/api/elearning/fileupload/:id/update', keystone.middleware.api, routes.api.elearning.fileupload.update);
+  app.all('/api/elearning/fileupload/create', keystone.middleware.api, routes.api.elearning.fileupload.create);
+  app.get('/api/elearning/fileupload/:id/remove', keystone.middleware.api, routes.api.elearning.fileupload.remove);
 
 	app.get('/search/', function(req,res){
 		var searchKey = req.query.searchKey;
