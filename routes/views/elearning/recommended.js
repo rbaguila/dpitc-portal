@@ -48,6 +48,23 @@ exports = module.exports = function (req, res) {
     });
   });
 
+  /*
+    TO DO:
+    FIX THIS. CREATE AN API FOR SETTING SCORES THEN THE API FUNCTION MUST RETURN THE JSON OF LEARNING OBJECTS WITH SCORES
+    THEN CONTINUE
+      THINGS TO BE DONE BY THE API:
+        1. get the current logged-in user and his or her learning objects taken
+        2a. do the same algo or
+        2b.
+          for each the learning objects
+            for each LO taken
+              compute for the similarity of the current LO ISP tag to lotaken[i] ISP tag based on the ISP-SECTOR-INDUSTRY relationship
+            compute for the score of the cureent LO by summing up the similarity of current LO to all lotaken
+        3. do the same algo for the liked and happy videos of the user then just add the score to each LO
+        4. do the same algo for the sad videos of the user then subtract the score to each LO
+        5. sort the LO by the final score
+  */
+
   //get the Learning Objects Taken by the current logged-in user
   view.on('init', function(next){
     var currentUser = locals.user;
