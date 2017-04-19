@@ -1,6 +1,7 @@
 var keystone = require('keystone');
 var async = require('async');
 var moment = require('moment');
+var _ = require('lodash');
 
 var Course = keystone.list('Course');
 var Chapter = keystone.list('Chapter');
@@ -13,6 +14,7 @@ exports = module.exports = function (req, res) {
   var locals = res.locals;
 
   locals.section = 'elearning';
+  locals.url = '/elearning/';
 
   locals.data = {
     courses: [],
@@ -38,6 +40,9 @@ exports = module.exports = function (req, res) {
   
   locals.popularLO = [];
 
+  locals.page = req.query.page == undefined ? 1 : req.query.page;
+  locals.perPage = req.query.perPage == undefined ?  6 : req.query.perPage;
+
   var tempRecommended = [];
   var tempLearningObjects = [];
   var classifications = ["specificCommodity", "isp", "sector", "industry"];
@@ -46,10 +51,11 @@ exports = module.exports = function (req, res) {
   // Load LearningObjects
   view.query('learningObjects', keystone.list('LearningObject').model.find().sort('-PublishedAt').limit(4));
 
-  // Load popular LearningObjects
+   // Load popular LearningObjects
   view.on('init', function(next) {
     var currentDate = moment().toDate();
     var startDate = moment().subtract(30, 'days').toDate();
+    var pastLOviews = [];
 
     // Get all LOViews withing the past 30 days.
     LOView.model.find({
@@ -63,22 +69,54 @@ exports = module.exports = function (req, res) {
       .exec(function(err, results) {
         if(err) return next(err);
 
-        locals.popularLOViews = results;
+        pastLOviews = results;
         
-        // Add each LearningObject from popularLOViews to popularLO array
-        async.each(locals.popularLOViews, function(loview, next) {
+        // Get loview.count of all same learningObjects
+        async.each(pastLOviews, function(loview, next) {
+          //console.log(loview.learningObject);
 
-          if(locals.popularLO.indexOf(loview.learningObject) === -1){
-            locals.popularLO.push(loview.learningObject);  
-          }
-          
-        }, function(err) {
-          next(err);
-        })
+          LOView.model.find({
+            dateViewed: {
+              $gte: startDate,
+              $lt: currentDate
+            },
+            learningObject: loview.learningObject._id
+           })
+          .count()
+          .exec(function (err, count) {
+            
+            if (err) return next(err);
+            
+            loview.learningObject.viewCount = count;
+            
+            // Uniquely push to locals.popularLO[]
+            if (locals.popularLO.indexOf(loview.learningObject) === -1) {
+              locals.popularLO.push(loview.learningObject);
+            }            
 
-        next();
+            next();
+          })
+
+      }, function (err) {
+        next(err);
       });
+
+    });
+
   });
+
+  view.on('init', function(next) {
+    // Sort locals.popularLO[]
+    locals.popularLO.sort( function (a, b) {
+      return parseFloat(b.viewCount) - parseFloat(a.viewCount); 
+    });
+
+    // paginate locals.popularLO
+    locals.paginatePopularLO = paginate(locals.popularLO, locals.page, locals.perPage);
+   
+    next();
+  });
+
 
 
   // Load Courses
@@ -264,5 +302,47 @@ exports = module.exports = function (req, res) {
       });
   });
 */
+  
+  // Pagination function for an Array of Objects
+  // Similar to Keystone JS pagination query
+  var paginate = function (array, page, perPage) {
+
+    /*
+      keystone's paginate()
+      total: all matching results (not just on this page)
+      results: array of results for this page
+      currentPage: the index of the current page
+      totalPages: the total number of pages
+      pages: array of pages to display
+      previous: index of the previous page, false if at the first page
+      next: index of the next page, false if at the last page
+      first: the index of the first result included
+      last: index of the last result included
+
+    */
+
+    var pagination = {
+      total: array.length,
+      results: paginateArray(array, perPage, page),
+      currentPage: page,
+      pages: _.range(1, Math.ceil(array.length / perPage)+1),
+      
+    };
+
+    pagination.first = pagination.pages[0];
+    pagination.last = Math.ceil(array.length / perPage);
+
+    pagination.previous = page == pagination.first ? false : page - 1;
+    pagination.next = page == pagination.last ? false : page + 1;
+
+    return pagination;
+  }
+
+  var paginateArray = function (array, page_size, page_number) {
+    --page_number; // because pages logically start with 1, but technically with 0
+    return array.slice(page_number * page_size, (page_number + 1) * page_size);
+  }
+
   view.render('elearning/elearning', pageData);
+
 }

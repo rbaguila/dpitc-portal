@@ -64,7 +64,7 @@ exports = module.exports = function (app) {
 	app.get('/elearning/learning-objects?', routes.elearningViews.learningObjectList);
 	app.get('/elearning/learning-object/:learningobjectslug', routes.elearningViews.learningObject);
 	app.post('/elearning/learning-object/:learningobjectslug', routes.elearningViews.learningObject);
-	app.get('/elearning/popular?', routes.elearningViews.popular);
+	app.get('/elearning/learning-objects/popular?', routes.elearningViews.popular);
 	app.get('/elearning/:userid/recommended?', middleware.requireUser, routes.elearningViews.recommended);
 
 	// Elearning Analytics
