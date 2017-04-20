@@ -1,5 +1,83 @@
 extends ../../layouts/elearning
 
+mixin navigation(action)
+  .container
+    .row
+      nav.navbar.navbar-default
+        .container-fluid
+          //- Mobile menu
+          .navbar-header
+            button(type="button", data-toggle="collapse", aria-expanded="false", data-target="#search-view-nav").navbar-toggle.collapsed
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+
+            
+            .collapse.navbar-collapse(id='search-view-nav')
+              form.navbar-form.navbar-left
+                .form-group
+                  .row
+                    .col-xs-6.col-md-8
+                      input.form-control(type='text', placeholder='Search')
+                    .col-xs-6.col-md-4
+                      button.btn.btn-default(type='submit') Submit
+
+mixin selectView(action)
+  ul.nav.navbar-nav.navbar-right
+    li
+      a(href=url+'page='+page+'&view=grid'+'&duration='+duration)
+        span(aria-hidden="true").glyphicon.glyphicon-th
+    li
+      a(href=url+'page='+page+'&view=list'+'&duration='+duration)
+        span(aria-hidden="true").glyphicon.glyphicon-th-list
+
+mixin selectPage(pagination)
+  ul.pagination.pull-right
+    li
+      if pagination.previous != false
+        a(href=url+'specific='+filters.specificCommodity+'&isp='+filters.isp+'&sector='+filters.sector+'&industry='+filters.industry+'&page='+pagination.previous+'&view='+viewStyle+'&duration='+duration, aria-label="Previous")
+          span(aria-hidden="true") &laquo
+    each page in pagination.pages
+      if page == pagination.currentPage
+        li.active
+          a(href=url+'specific='+filters.specificCommodity+'&isp='+filters.isp+'&sector='+filters.sector+'&industry='+filters.industry+'page='+page+'&view='+viewStyle+'&duration='+duration) #{page}
+      else
+        li
+          a(href=url+'specific='+filters.specificCommodity+'&isp='+filters.isp+'&sector='+filters.sector+'&industry='+filters.industry+'view=grid&page='+page)= page
+    li
+      if pagination.next != false
+        a(href=url+'specific='+filters.specificCommodity+'&isp='+filters.isp+'&sector='+filters.sector+'&industry='+filters.industry+'page='+pagination.next+'&view='+viewStyle+'&duration='+duration aria-label="Next")
+          span(aria-hidden="true") &raquo
+
+mixin learningObjects-grid(learningObjects)
+  .row
+    .col-md-8.col-xs-7
+      h3.text-left Lessons
+      //- small filters:
+        each filter in filters
+          | #{filters.}
+    .col-md-4.col-xs-5.pull-right
+      +selectView()
+  .row.equal-height
+    if learningObjects.length
+      each learningObject in learningObjects
+        .col-xs-6.col-md-4
+          .thumbnail
+            if learningObject.thumbnail.exists
+              img.card-img-top(src=learningObject._.thumbnail.fit(200, 150), alt=learningObject.title, height='150px', width='200px').img-responsive
+            else 
+              img.card-img-top(src="http://placehold.it/300x300?text=No+Available+Image", alt='No Available Image' height='150px', width='200px').img-responsive
+            .caption
+              h3= learningObject.title.substring(0, 50)
+              p= learningObject.content.brief.substring(0, 100)
+              br
+              p
+                a.btn.btn-info.btn-block(href=learningObject.url) Learn more
+    else
+      h3.text-muted Error loading lessons.
+
+
 mixin allLearningObjects-grid(learningObjects)
   h2.text-center All Lessons
   if learningObjects.results.length
@@ -35,6 +113,52 @@ mixin allLearningObjects-grid(learningObjects)
       a(href="?view=grid&page="+learningObjects.next aria-label="Next")
         span(aria-hidden="true") &raquo
 
+mixin learningObjects-list(learningObjects)
+  .row
+    .col-md-8.col-xs-7
+      h3.text-left Lessons
+      //- small filters: 
+    .col-md-4.col-xs-5.pull-right
+      +selectView()
+  .row
+    if learningObjects.length
+      .col-md-12
+        .panel
+          table.table.table-hover
+            thead
+            tbody
+              each learningObject in learningObjects
+                tr.media
+                  td
+                    .media-left
+                      if learningObject.thumbnail.exists
+                        a(href=learningObject.url)
+                          img(src=learningObject._.thumbnail.limit(200,150), alt=learningObject.title, height='150px', width='200px').img-rounded.media-object
+                      else
+                        a(href=learningObject.url)
+                          img(src="http://placehold.it/200x150", height='150px', width='200px').img-rounded.media-object
+                    .media-body
+                      a(href=learningObject.url)
+                        h3.media-heading= learningObject.title
+                        .row
+                          span= learningObject.content.brief
+                        hr
+                        .row
+                          .col-md-2
+                            p #{learningObject.viewCount} Views
+
+                          .col-md-2
+                            p #{learningObject.likes.length} &nbsp;
+                              i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")
+                          .col-md-2
+                            p #{learningObject.happy.length} &nbsp;
+                              i.fa.fa-smile-o.fa-lg(aria-hidden="true")
+                          .col-md-2
+                            p #{learningObject.happy.length} &nbsp;
+                              i.fa.fa-frown-o.fa-lg(aria-hidden="true")
+
+    else
+      h3.text-muted Error loading lessons.
 
 mixin allLearningObjects-list(learningObjects)
   h2.text-center All Lessons
@@ -79,41 +203,16 @@ mixin allLearningObjects-list(learningObjects)
         span(aria-hidden="true") &raquo
 
 
-
-mixin search(learningObjects)
-  .container
-    .row
-      nav.navbar.navbar-default
-        .container-fluid
-          //- Mobile menu
-          .navbar-header
-            button(type="button", data-toggle="collapse", aria-expanded="false", data-target="#publications-filter").navbar-toggle.collapsed
-              span.sr-only Toggle navigation
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar
-
-          #publications-filter.collapse.navbar-collapse
-            ul.nav.navbar-nav
-            form.navbar-form.navbar-left
-              .form-group
-                input.form-control(type='text', placeholder='Search')
-              button.btn.btn-default(type='submit') Submit
-            ul.nav.navbar-nav.navbar-right
-              li
-                a(href="?view=grid&page="+learningObjects.currentPage)
-                  span(aria-hidden="true").glyphicon.glyphicon-th
-              li
-                a(href="?view=list&page="+learningObjects.currentPage)
-                  span(aria-hidden="true").glyphicon.glyphicon-th-list
-
 block content
-  +search(  learningObjects)
+  +navigation()
+
   .container
     .panel.panel-default
       .panel-body
         if viewStyle == 'grid'
-          +allLearningObjects-grid(learningObjects)
+          +learningObjects-grid(learningObjects.results)
         else
-          +allLearningObjects-list(learningObjects)
+          +learningObjects-list(learningObjects.results)
+        +selectPage(learningObjects)
+    
 
