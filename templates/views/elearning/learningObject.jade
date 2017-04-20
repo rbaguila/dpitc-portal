@@ -1,6 +1,25 @@
 extends ../../layouts/elearning
 
+block css
+  link(rel="stylesheet", href="/js/fancybox/jquery.fancybox.css", type="text/css", media="screen")
+
 block js
+  //- For Gallery
+  script(src="/js/fancybox/jquery.fancybox.pack.js")
+  script.
+    jQuery(function($) {
+      $('.gallery-image').fancybox({
+        prevEffect: 'none',
+        nextEffect: 'none',
+        closeBtn: false,
+        helpers: {
+          titl: {},
+          buttons: {}
+        }
+      });
+    });
+
+  //- For Comments
   script.
     jQuery(function($) {
       
@@ -31,6 +50,7 @@ block js
       });
     });
 
+    
 
 mixin files(files)
   .row
@@ -49,23 +69,14 @@ mixin files(files)
 mixin gallery(gallery)
   .row
     label Photo Gallery
-  .row.equal-height
+  .row
     if gallery.images.length
-      each image in gallery.images
-        .col-xs-12.col-md-4
-          .thumbnail
-            img(src=image.limit(400,200), alt=image.name, width='100%', height='200px')
-            .caption
-              button(type='button', data-toggle='modal', data-targets='#image-modal').btn.btn-link View
+      each image, i in gallery.images
+        .col-xs-6.col-sm-4.col-md-4(style='margin-bottom: 30px;')
+          a(href=image.limit(900,600), title=gallery.name+' image '+(i+1), rel=gallery.key).gallery.image
+            img(src=image.fill(300,300), alt=gallery.name+' image '+(i+1)).img-thumbnail
 
-              //- .modal(id='image-modal', role='dialog', aria-labelledby='#photoLabel')
-                .modal-dialog.modal-lg(role='document')
-                  .modal-header
-                    button.close(type='button', data-dismiss='modal', aria-label='Close')
-                      span(aria-hidden='true') &times;
-                  .modal-body
-                    img(src=image.limit(2048,2048) alt=image.name, width='2048', height='2048')
-
+  
 mixin video(action)
 
 mixin links(action)
@@ -106,35 +117,6 @@ mixin learningObject(currentLO)
         span.label.label-info  #{tag} &nbsp;
 
 
-mixin recommendedTopics(recLO)
-  each lo in recLO
-    .media
-      .media-left
-        if lo.thumbnail.exists
-          a(href=lo.url + "?type=recommended")
-            img(src=lo._.thumbnail.limit(100, 100) alt=lo.video.title).img-rounded
-        else
-          a(href=lo.url + "?type=recommended")
-            img(src="/images/image-not-available.png", alt=lo.title, height="100px", weight="100px").img-rounded
-      .media-body
-        a(href=lo.url + "?type=recommended")
-          h5=lo.title
-          span= lo.content.brief.substring(0, 50)
-
-mixin otherTopics(otherLO)
-  each lo in otherLO
-    .media
-      .media-left
-        if lo.thumbnail.exists
-          a(href=lo.url)
-            img(src=lo._.thumbnail.limit(100, 100) alt=lo.video.title).img-rounded
-        else
-          a(href=lo.url)
-            img(src="/images/image-not-available.png", alt=lo.title, height="100px", weight="100px").img-rounded
-      .media-body
-        a(href=lo.url)
-          h5=lo.title
-          span= lo.content.brief.substring(0, 50)
 
 mixin comment-form(action)
   form(method='post', style="margin-bottom: 10px; margin-top: 10px;")
@@ -195,6 +177,37 @@ mixin reactions(action)
         input(type='hidden', name='action', value='reactions.addSad')
         button(type='submit').btn.btn-link.btn-lg #{currentLO.sad.length} &nbsp;
           i.fa.fa-frown-o.fa-lg(aria-hidden="true")
+
+mixin recommendedTopics(recLO)
+  each lo in recLO
+    .media
+      .media-left
+        if lo.thumbnail.exists
+          a(href=lo.url + "?type=recommended")
+            img(src=lo._.thumbnail.limit(100, 100) alt=lo.video.title).img-rounded
+        else
+          a(href=lo.url + "?type=recommended")
+            img(src="http://placehold.it/100x100", alt=lo.title, height="100px", weight="100px").img-rounded
+      .media-body
+        a(href=lo.url + "?type=recommended")
+          h5=lo.title
+          span= lo.content.brief.substring(0, 50)
+
+mixin otherTopics(otherLO)
+  each lo in otherLO
+    .media
+      .media-left
+        if lo.thumbnail.exists
+          a(href=lo.url)
+            img(src=lo._.thumbnail.limit(100, 100) alt=lo.video.title).img-rounded
+        else
+          a(href=lo.url)
+            img(src="http://placehold.it/100x100", alt=lo.title, height="100px", weight="100px").img-rounded
+      .media-body
+        a(href=lo.url)
+          h5=lo.title
+          span= lo.content.brief.substring(0, 50)
+
     
 
 block content
