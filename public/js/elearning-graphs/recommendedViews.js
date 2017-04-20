@@ -4,7 +4,7 @@ var margin = {
     bottom: 70,
     left: 40
     },
-    width = 600 - margin.left - margin.right,
+    width = 400 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
 var x = d3.scaleBand()
@@ -45,15 +45,24 @@ d3.json("/api/recommendedViews/" + currentYearRecView, function(error, json) {
         for(var a=0;a<months.length;a++){
             tally[months[a]] = 0;
         }
+        var numOfRecViews = 0;
+        var numOfNormalViews = 0;
 
         for(var i=0;i<json.length;i++){
-            var temp = d3.isoParse(json[i].dateViewed);//change this before deplyoning, use createdAt instead
-            var temp2 = temp.getMonth();
-            var date = months[temp2];
-            tally[date] = (tally[date]||0) + 1;
+            if(json[i].typeOfView=='recommended'){
+                var temp = d3.isoParse(json[i].dateViewed);//change this before deplyoning, use createdAt instead
+                var temp2 = temp.getMonth();
+                var date = months[temp2];
+                tally[date] = (tally[date]||0) + 1;
+                numOfRecViews++;
+            }
+            else{
+                numOfNormalViews++;
+            }
         }
     }
     var recviewdata = [];
+    var viewratiodata = [];
 
     for (var date in tally) {
         if (tally.hasOwnProperty(date)) {
@@ -63,6 +72,16 @@ d3.json("/api/recommendedViews/" + currentYearRecView, function(error, json) {
             });
         }
     }
+
+    viewratiodata.push({
+        label: "Recommended",
+        value: numOfRecViews
+    });
+    viewratiodata.push({
+        label: "Not Recommended",
+        value: numOfNormalViews
+    });
+
 
     x.domain(recviewdata.map(function (d) {
         return d.date;
@@ -113,4 +132,68 @@ d3.json("/api/recommendedViews/" + currentYearRecView, function(error, json) {
         d.frequency = +d.frequency;
         return d;
     }
+
+    var pie = new d3pie("ratioViewsGraph", {
+        "header": {
+            "title": {
+                "text": "Comparison of Learning Objects Views",
+                "fontSize": 24,
+                "font": "open sans"
+            },
+            "subtitle": {
+                "text": "Recommended vs. Not Recommended Learning Objects Views",
+                "color": "#999999",
+                "fontSize": 12,
+                "font": "open sans"
+            },
+            "titleSubtitlePadding": 9
+        },
+        "size": {
+            "canvasWidth": 470,
+            "canvasHeight": 400,
+            "pieOuterRadius": "80%"
+        },
+        "data": {
+            "content": viewratiodata
+        },
+        "labels": {
+            "outer": {
+                "pieDistance": 32
+            },
+            "inner": {
+                "format": "value",
+                "hideWhenLessThanPercentage": 3
+            },
+            "mainLabel": {
+                "fontSize": 11
+            },
+            "percentage": {
+                "color": "#ffffff",
+                "decimalPlaces": 0
+            },
+            "value": {
+                "color": "#adadad",
+                "fontSize": 11
+            },
+            "lines": {
+                "enabled": true
+            },
+            "truncation": {
+                "enabled": true
+            }
+        },
+        "effects": {
+            "pullOutSegmentOnClick": {
+                "effect": "linear",
+                "speed": 400,
+                "size": 8
+            }
+        },
+        "misc": {
+            "gradient": {
+                "enabled": true,
+                "percentage": 100
+            }
+        }
+    });
 });

@@ -21,7 +21,7 @@ var margin = {
     bottom: 70,
     left: 40
     },
-    width = 400 - margin.left - margin.right,
+    width = 470 - margin.left - margin.right,
     height = 350 - margin.top - margin.bottom;
 
 var x = d3.scaleBand()
@@ -109,7 +109,7 @@ d3.json("/api/userviews/"+ id + "/" + currentYearEachUserView, function(error, j
         .attr("y", -(margin.top / 2 ))
         .attr("class", "title")
         .style("text-anchor", "middle")
-        .text("Number of Learning Objects Views for the Current Year");
+        .text("Number of Learning Objects Viewed for the Current Year");
     svgUserView.selectAll(".bar")
         .data(loviewdata)
         .enter().append("rect")
