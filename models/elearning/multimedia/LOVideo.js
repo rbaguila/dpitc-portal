@@ -2,7 +2,7 @@ var keystone = require('keystone');
 var Types = keystone.Field.Types;
 
 var LOVideo = new keystone.List('LOVideo', {
-
+	autokey: { from: 'title', path: 'key', unique: true },
 });
 
 LOVideo.add({
@@ -21,20 +21,21 @@ LOVideo.add({
 		type: Types.Textarea,
 		height: 80
 	},
-	/*industry: {
-		type: Types.Relationship,
-		ref: 'Industry'
-	},
-	sector: {
-		type: Types.Relationship,
-		ref: 'Sector',
-		filters: { industry: ':industry' }
-	},
-	commodity: {
-		type: Types.Relationship,
-		ref: 'Commodity',
-		filters: { sector: ':sector' }
-	}*/
+});
+
+LOVideo.schema.virtual('videoId').get(function () {
+	var url = this.url;
+  var ID = '';
+  url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+  if(url[2] !== undefined) {
+    ID = url[2].split(/[^0-9a-z_\-]/i);
+    ID = ID[0];
+  }
+  else {
+    ID = url;
+  }
+  return ID;
+
 });
 
 LOVideo.defaultColumns = 'name, url, description';

@@ -2,7 +2,7 @@ var keystone = require('keystone');
 var Types = keystone.Field.Types;
 
 var LOLink = new keystone.List('LOLink', {
-
+	autokey: { from: 'title', path: 'key', unique: true },
 });
 
 LOLink.add({
