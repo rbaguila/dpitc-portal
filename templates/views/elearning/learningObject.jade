@@ -227,11 +227,12 @@ block content
           //- +comment-form()
               
       .col-md-4
-        .row
-          .panel.panel-info
-            .panel-heading Recommended Topics
-            .panel-body
-              +recommendedTopics(data.recommendedLO)
+        if user
+          .row
+            .panel.panel-info
+              .panel-heading Recommended Topics
+              .panel-body
+                +recommendedTopics(data.recommendedLO)
         .row
           .panel.panel-info
             .panel-heading 

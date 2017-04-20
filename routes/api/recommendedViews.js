@@ -15,7 +15,7 @@ exports = module.exports = function(req, res) {
 	var end = new Date(req.params.year, 11, 31);
 	
 	//change this before deploying, use createdAt instead
-	keystone.list('LOView').model.find({typeOfView: 'recommended'}).where('dateViewed').gte(start).lt(end).exec(function (err, results) {
+	keystone.list('LOView').model.find().where('dateViewed').gte(start).lt(end).exec(function (err, results) {
 		if (err || !results.length) {
 			//return (err);
 		}

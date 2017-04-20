@@ -2223,7 +2223,7 @@ exports.create = {
 
   ],
 
-  LOView: [
+  /*LOView: [
     { 
       'user': 'Angelica', 
       'learningObject': 'aquafeeds-lo',
@@ -2429,6 +2429,6 @@ exports.create = {
       'learningObject': 'durian-lo',
       'dateViewed': '2017-04-03'
     },
-  ]
+  ]*/
   
 };
