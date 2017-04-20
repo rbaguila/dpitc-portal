@@ -1,6 +1,8 @@
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
 
+
+
 /**
  * File Upload Model
  * ===========
@@ -14,6 +16,11 @@ var myStorage = new keystone.Storage({
     fs: {
         path: keystone.expandPath('./public/uploads/elearning/files'), // required; path where the files should be stored
         publicPath: '/public/uploads/elearning/files', // path where files will be served
+        schema: {
+          originalname: true,
+          url: true
+        },
+        filename: String
     }
 });
 
@@ -24,7 +31,7 @@ LOFileUpload.add({
   },
   file: { 
     type: Types.File,
-    storage: myStorage
+    storage: myStorage,
   },
   createdTimeStamp: { 
     type: Types.Date,

@@ -31,8 +31,56 @@ block js
       });
     });
 
-mixin learningObject(currLO)
-  .container-fluid
+
+mixin files(files)
+  .row
+    label Files in #{currentLO.title}
+  .row.equal-height
+    if files.length
+      each file in files
+        .col-xs-12.col-md-4
+          .thumbnail
+            embed(src='/uploads/elearning/files/'+file.file.filename, width='100%' height='200px', type='application/pdf')
+            .caption
+              a(href='/uploads/elearning/files/'+file.file.filename,) #{file.name}
+         
+
+
+mixin gallery(gallery)
+  .row
+    label Photo Gallery
+  .row.equal-height
+    if gallery.images.length
+      each image in gallery.images
+        .col-xs-12.col-md-4
+          .thumbnail
+            img(src=image.limit(400,200), alt=image.name, width='100%', height='200px')
+            .caption
+              button(type='button', data-toggle='modal', data-targets='#image-modal').btn.btn-link View
+
+              //- .modal(id='image-modal', role='dialog', aria-labelledby='#photoLabel')
+                .modal-dialog.modal-lg(role='document')
+                  .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                      span(aria-hidden='true') &times;
+                  .modal-body
+                    img(src=image.limit(2048,2048) alt=image.name, width='2048', height='2048')
+
+mixin video(action)
+
+mixin links(action)
+
+mixin tags(action)
+
+mixin learningObject(currentLO)
+  h3 #{currentLO.title}
+  | !{currentLO.content.full}
+  
+  if currentLO.author
+    //- each au in author
+    span Source/s: #{currentLO.author}
+  
+  //- .container-fluid
     .row
       if currLO.video
         .col-md-8.embed-responsive-item
@@ -159,6 +207,18 @@ block content
               +learningObject(currentLO)
               hr
               +reactions()
+        .row
+          if currentLO.gallery
+            .panel.panel-info
+              .panel-body
+                +gallery(currentLO.gallery)
+
+        .row
+          if currentLO.files.length
+            .panel.panel-info
+              .panel-body
+                +files(currentLO.files)
+
         .row
           .panel.panel-info
             .panel-body

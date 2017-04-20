@@ -59,7 +59,7 @@ LearningObject.add({
   },
   files: {
     type: Types.Relationship,
-    ref: 'FileUpload',
+    ref: 'LOFileUpload',
     many: true
   }
 }, 'Reaction', {

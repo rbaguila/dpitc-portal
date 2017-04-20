@@ -11,17 +11,11 @@ exports = module.exports = function (req, res) {
   var view = new keystone.View(req, res);
   var locals = res.locals;
 
+  
   var pageData = {
     loginRedirect: '/elearning/learning-object/'+req.params.learningobjectslug,
     breadcrumbs: [
       { text: 'elearning', link: '/elearning' },
-      // still need breadcrumb for course
-
-      /*
-      // TODO refactor breadcrumbs
-      pageData.breadcrumbs.push(  { text: locals.data.currLO.title, link: '/elearning/'+locals.filter.currentLO } );
-
-      */
     ]
   }
 
@@ -36,10 +30,13 @@ exports = module.exports = function (req, res) {
 
   // Set locals
 
-  locals.section = 'learningObject';
   locals.filters = {
     currentLO: req.params.learningobjectslug
   }
+
+  locals.section = 'learning-object';
+  locals.url = '/elearning/learning-object/'+req.params.learningobjectslug+'?';
+
 
   locals.data = {
     currLO: [],
@@ -58,6 +55,7 @@ exports = module.exports = function (req, res) {
   var classifications = ["specificCommodity", "isp", "sector", "industry"];
   var counts = ["specCommCount", "ispCount", "sectorCount", "industryCount"];
 
+
   // Load the currentLO
   view.on('init', function(next){
 
@@ -65,7 +63,7 @@ exports = module.exports = function (req, res) {
       slug: locals.filters.currentLO,
       state: 'published',
     })
-    .populate('author images video isp sector industry')
+    .populate('gallery video links files isp sector industry')
     .exec(function(err, result) {
       if (err) return next(err);
       if (result.length == 0) {
@@ -95,6 +93,8 @@ exports = module.exports = function (req, res) {
     });
   });
 
+
+  /* COMMENTS */
   // Load comments on the Learning Object
   view.on('init', function (next) {
     
@@ -139,6 +139,8 @@ exports = module.exports = function (req, res) {
 
   });
 
+
+  /* REACTIONS */
   view.on('post', { action: 'reactions.addLike' }, function (next) {
 
     // Check if Learning Object has already been liked
@@ -289,6 +291,7 @@ exports = module.exports = function (req, res) {
 
   });
 
+  /* VIEWS */
   // Get the loview of current learning object
   view.on('init', function(next) {
 
@@ -303,7 +306,7 @@ exports = module.exports = function (req, res) {
 
   });
 
-  //insert view
+  // Insert LOView
   //TO DO, check if nirefresh lang
   view.on('init', function(next){
     var currentUser = locals.user;
