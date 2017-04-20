@@ -12,7 +12,13 @@ var LearningObject = new keystone.List('LearningObject', {
 });
 
 LearningObject.add({
-  
+  author: { // Not the admin but the actual author of the content
+    type: Types.Relationship,
+    ref: 'Author',
+    many: true,
+    required: false,
+    default: null  
+  },
 }, 'Category', {
   isp: { 
     type: Types.Relationship, 

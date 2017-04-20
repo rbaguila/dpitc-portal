@@ -19,10 +19,6 @@ LearningContent.add({
     options: 'draft, published, archived', 
     default: 'draft' 
   },
-  author: { // Not the admin but the actual author of the content
-    type: Types.TextArray, 
-    collapse: true,  
-  },
   publishedAt: { 
     type: Types.Date, 
     index: true, 
