@@ -106,7 +106,18 @@ mixin links(links)
               p.list-group-item-text !{link.description}
 
 
-mixin tags(action)
+mixin tags(tags)
+  .row
+    label Tags:
+  .row
+    if tags.length
+      each tag in tags
+        if tag.category == 'isp'
+          a(href='/elearning/learning-objects?isp='+tag.key) #[span.label.label-primary #{tag.name}] &nbsp;
+        else if tag.category == 'sector'
+          a(href='/elearning/learning-objects?sector='+tag.key) #[span.label.label-success #{tag.name}] &nbsp;
+        else if tag.category == 'industry'
+          a(href='/elearning/learning-objects?industry='+tag.key) #[span.label.label-info #{tag.name}] &nbsp;
 
 mixin learningObject(currentLO)
   .row
@@ -114,11 +125,28 @@ mixin learningObject(currentLO)
     | !{currentLO.content.full}
   .row
     if currentLO.author.length
-      p Source/s:
+      label Source/s:
       each au in currentLO.author
         a(href='#')= au.name
+  +tags(currentLO.tags)
   
+mixin reactions(action)
+  .row
+    small(style='float: right;') Views #[span.badge #{currentLO.loviews.length}]
 
+    form(method='post', style='float: right; margin: 0px;')
+      input(type='hidden', name='action', value='reactions.addSad')  
+      button(type='submit').btn.btn-link 
+        | #{currentLO.sad.length} #[i.fa.fa-frown-o.fa-lg(aria-hidden="true")]
+    form(method='post', style='float: right; margin: 0px;')
+      input(type='hidden', name='action', value='reactions.addHappy')  
+      button(type='submit').btn.btn-link 
+        | #{currentLO.happy.length} #[i.fa.fa-smile-o.fa-lg(aria-hidden="true")]
+    form(method='post', style='float: right; margin: 0px;')
+      input(type='hidden', name='action', value='reactions.addLike')  
+      button(type='submit').btn.btn-link 
+        | #{currentLO.likes.length} #[i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")]
+    
 
 mixin comment-form(action)
   form(method='post', style="margin-bottom: 10px; margin-top: 10px;")
@@ -157,29 +185,7 @@ mixin comment-thread(comments)
   if comments.length
     for comment in comments
       +comment-post(comment)
-      
 
-mixin reactions(action)
-  .row
-    p.text-right Views
-      span.badge  #{currentLO.loviews.length} 
-    .col-md-1.col-md-push-8.col-xs-1.col-xs-push-8
-      form(method='post', style="margin: 0px;")
-        input(type='hidden', name='action', value='reactions.addLike')    
-        button(type='submit').btn.btn-link.btn-lg #{currentLO.likes.length} &nbsp;
-          i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")
-    
-    .col-md-1.col-md-push-8.col-xs-1.col-xs-push-8
-      form(method='post', style="margin: 0px;")
-        input(type='hidden', name='action', value='reactions.addHappy')
-        button(type='submit').btn.btn-link.btn-lg #{currentLO.happy.length} &nbsp;
-          i.fa.fa-smile-o.fa-lg(aria-hidden="true")
-  
-    .col-md-1.col-md-push-8.col-xs-1.col-xs-push-8
-      form(method='post', style="margin: 0px;")
-        input(type='hidden', name='action', value='reactions.addSad')
-        button(type='submit').btn.btn-link.btn-lg #{currentLO.sad.length} &nbsp;
-          i.fa.fa-frown-o.fa-lg(aria-hidden="true")
 
 mixin recommendedTopics(recLO)
   each lo in recLO
@@ -195,6 +201,7 @@ mixin recommendedTopics(recLO)
         a(href=lo.url + "?type=recommended")
           h5=lo.title
           span= lo.content.brief.substring(0, 50)
+
 
 mixin otherTopics(otherLO)
   each lo in otherLO
@@ -212,7 +219,6 @@ mixin otherTopics(otherLO)
           span= lo.content.brief.substring(0, 50)
 
     
-
 block content
   .container
     .row
@@ -225,6 +231,7 @@ block content
               hr
               +reactions()
         .row
+          //- Video Panel
           if currentLO.video
             .panel.panel-info
               .panel-body

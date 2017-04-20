@@ -27,6 +27,10 @@ LSector.add({
 
 LSector.relationship({ ref: 'ISP', path: 'sector' });
 
+LSector.schema.virtual('category').get(function () {
+  return 'sector';
+});
+
 LSector.defaultColumns = 'name, industry'
 
 LSector.register();

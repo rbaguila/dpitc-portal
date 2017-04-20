@@ -74,6 +74,9 @@ exports = module.exports = function (req, res) {
       locals.currentLO = result;
       locals.data.currLO = result;
 
+      // Load tags
+      locals.currentLO.tags = [result.specificCommodity, result.industry, result.sector, result.isp];
+
       // Add currentLO to currentUser's learningObjectsTaken
       if(locals.user){
         User.model.findOneAndUpdate( 
@@ -93,7 +96,6 @@ exports = module.exports = function (req, res) {
       }
     });
   });
-
 
   /* COMMENTS */
   // Load comments on the Learning Object
