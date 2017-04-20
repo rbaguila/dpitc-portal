@@ -77,45 +77,47 @@ mixin gallery(gallery)
             img(src=image.fill(300,300), alt=gallery.name+' image '+(i+1)).img-thumbnail
 
   
-mixin video(action)
+mixin video(video)
+  .row
+    label #{video.title}
+  .row
+    .col-md-8.embed-responsive-item
+      if video.videoId
+        iframe(width="640", height="360", src="https://www.youtube.com/embed/"+video.videoId, frameborder="0", allowfullscreen)
+      
+      else
+        p Video link seems to be broken.
+  hr
+  .row
+    .col-md-8
+      if video.description
+        p #{video.description}
 
-mixin links(action)
+mixin links(links)
+  .row
+    label Related Links
+  .row
+    .col-xs-12.col-sm-12.col-md-12
+      if links.length
+        .list-group
+          each link in links
+            a.list-group-item(href=link.url) 
+              h4.list-group-heading #{link.name}
+              p.list-group-item-text !{link.description}
+
 
 mixin tags(action)
 
 mixin learningObject(currentLO)
-  h3 #{currentLO.title}
-  | !{currentLO.content.full}
+  .row
+    h3 #{currentLO.title}
+    | !{currentLO.content.full}
+  .row
+    if currentLO.author.length
+      p Source/s:
+      each au in currentLO.author
+        a(href='#')= au.name
   
-  if currentLO.author
-    //- each au in author
-    span Source/s: #{currentLO.author}
-  
-  //- .container-fluid
-    .row
-      if currLO.video
-        .col-md-8.embed-responsive-item
-          iframe(width="640", height="360", src="https://www.youtube.com/embed/"+currLO.video.videoId, frameborder="0", allowfullscreen)
-    //- .row
-      if currLO.gallery
-        h3 Gallery
-        each image in currLO.gallery.images
-          img(src=image.)
-    .row
-      if currLO.links.exists
-        h3 Related Articles:
-        each link in currLO.links
-          a(href=link.url) #{link.name}   
-    .row
-      p.text-info Uploaded: #{currLO.publishedAt.toDateString()}
-    .row
-      p= currLO.content.extended
-      br
-    //- .row
-      p Related: &nbsp;
-      each tag in currLO.tags
-        span.label.label-info  #{tag} &nbsp;
-
 
 
 mixin comment-form(action)
@@ -159,7 +161,8 @@ mixin comment-thread(comments)
 
 mixin reactions(action)
   .row
-    p.text-right #{currentLO.loviews.length} Views
+    p.text-right Views
+      span.badge  #{currentLO.loviews.length} 
     .col-md-1.col-md-push-8.col-xs-1.col-xs-push-8
       form(method='post', style="margin: 0px;")
         input(type='hidden', name='action', value='reactions.addLike')    
@@ -215,29 +218,44 @@ block content
     .row
       .col-md-8
         .row
+          //- Main Content and Reactions Panel
           .panel.panel-info
             .panel-body
               +learningObject(currentLO)
               hr
               +reactions()
         .row
+          if currentLO.video
+            .panel.panel-info
+              .panel-body
+                +video(currentLO.video)
+        .row
+          //- Gallery Panel
           if currentLO.gallery
             .panel.panel-info
               .panel-body
                 +gallery(currentLO.gallery)
 
         .row
+          //- Files Panel
           if currentLO.files.length
             .panel.panel-info
               .panel-body
                 +files(currentLO.files)
 
         .row
+          //- Related Links
+          if currentLO.links.length
+            .panel.panel-info
+              .panel-body
+                +links(currentLO.links)
+
+        .row
+          //- Comments Panel
           .panel.panel-info
             .panel-body
               label Comments (#{comments.length})
               +comment-thread(comments)
-          //- +comment-form()
               
       .col-md-4
         .row
