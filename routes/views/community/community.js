@@ -1,7 +1,9 @@
 //COMMUNITY IS STILL UNDER CONSTRUCTION
 
+var exec = require('child_process').exec;
 var keystone = require('keystone');
 var moment = require('moment');
+var util = require('util');
 var User = keystone.list('User');
 
 exports = module.exports = function (req, res) {
@@ -9,6 +11,20 @@ exports = module.exports = function (req, res) {
   var locals = res.locals;
   locals.section = 'community';
   locals.validationErrors = {};
+
+  view.on('init', function(next) {
+    /* Has a daily limit */
+    // var command = 'curl ipinfo.io/' + req.ips + '/geo';
+    // var child = exec(command, function(err, stdout, stderr) {
+    //   if(err) {
+    //     console.log(err);
+    //   }
+    //
+    //   console.log('stdout: ' + stdout);
+    // });
+
+    next();
+  });
 
   view.on('post', {action: 'sign-up'}, function(next) {
     var newUser = new User.model();

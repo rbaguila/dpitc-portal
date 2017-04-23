@@ -10,6 +10,8 @@
   ],
   "dependencies": {
     "lightgallery": "^1.3.9",
-    "theia-sticky-sidebar": "^1.6.0"
+    "theia-sticky-sidebar": "^1.6.0",
+    "ammap3": "^3.21.1",
+    "amcharts3": "^3.21.1"
   }
 }
