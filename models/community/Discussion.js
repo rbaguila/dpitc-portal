@@ -12,8 +12,8 @@ var Discussion = new keystone.List('Discussion', {
 });
 
 Discussion.add({
-  title: { type: String, required: true },
-  industry: { type: Types.Relationship, ref: 'Industry' },
+  title: { type: String, initial: true, required: true, index: true },
+  industry: { type: Types.Relationship, ref: 'Industry', initial: true, index: true },
   sector: { type: Types.Relationship, ref: 'Sector', filters: { industry: ':industry' } },
   commodity: { type: Types.Relationship, ref: 'Commodity', filters: { sector: ':sector' } },
   content: {
