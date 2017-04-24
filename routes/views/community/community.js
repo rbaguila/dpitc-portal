@@ -60,6 +60,7 @@ exports = module.exports = function (req, res) {
   view.query('events', keystone.list('Event').model.find().sort('startDate'));
   view.query('discussions', keystone.list('Discussion').model.find());
   view.query('trainings', keystone.list('Training').model.find());
+  view.query('news', keystone.list('News').model.find().populate('industry').sort('-publishedDate'));
 
   view.render('community/community', {loginRedirect: '/community', section: 'community', breadcrumbs: [
       { text: 'community', link: '/community'},
