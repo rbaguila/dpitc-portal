@@ -77,7 +77,7 @@ keystone.set('nav', {
 		'Page'
 	],
 	users: 'users',
-	Community: ['blog-posts', 'trainings', 'events', 'discussions', 'publications', 'links', 'galleries', 'videos', 'memos', 'news'],
+	Community: ['blog-posts', 'trainings', 'events', 'discussions', 'discussion-comments', 'publications', 'links', 'galleries', 'videos', 'memos', 'news'],
 	Categories: ['industries', 'sectors', 'commodities'],
 	ELearning: ['LearningObject', 'Chapter', 'Course', 'LearningContent', 'ISP', 'LIndustry', 'LSector', 'LOGallery', 'LOLink', 'LOVideo']
 });

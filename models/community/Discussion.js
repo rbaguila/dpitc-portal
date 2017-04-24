@@ -24,7 +24,7 @@ Discussion.add({
   //categories, comments
 })
 
-// Discussion.relationship({ ref: 'DiscussionComment', path: 'discussionComments', refPath: 'discussion' });
+Discussion.relationship({ ref: 'DiscussionComment', path: 'discussionComments', refPath: 'discussion' });
 
 Discussion.defaultColumns = 'title';
 Discussion.register();
