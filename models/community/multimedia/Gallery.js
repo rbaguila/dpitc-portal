@@ -11,6 +11,9 @@ Gallery.add({
   description: { type: Types.Textarea, height: 100 },
 	heroImage: { type: Types.CloudinaryImage },
 	images: { type: Types.CloudinaryImages },
+	industry: { type: Types.Relationship, ref: 'Industry' },
+  sector: { type: Types.Relationship, ref: 'Sector', filters: { industry: ':industry' } },
+  commodity: { type: Types.Relationship, ref: 'Commodity', filters: { sector: ':sector' } }
 });
 
 Gallery.register();

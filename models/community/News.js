@@ -16,7 +16,10 @@ News.add({
   author: { type: Types.Name, required: true },
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft' },
 	publishedDate: { type: Types.Datetime, dependsOn: { state: 'published' } },
-  banner: { type: Types.CloudinaryImage, autoCleanup: true, folder: 'community/news' },
+  image: { type: Types.CloudinaryImage, autoCleanup: true, folder: 'community/news' },
+  industry: { type: Types.Relationship, ref: 'Industry' },
+  sector: { type: Types.Relationship, ref: 'Sector', filters: { industry: ':industry' } },
+  commodity: { type: Types.Relationship, ref: 'Commodity', filters: { sector: ':sector' } },
   content: {
 		brief: { type: Types.Textarea, height: 150, max: 250 },
 		extended: { type: Types.Textarea, height: 400 },

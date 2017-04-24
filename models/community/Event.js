@@ -19,7 +19,10 @@ Event.add({
     brief: { type: Types.Html, wysiwyg: true, height: 150 },
     full: { type: Types.Html, wysiwyg: true, height: 400 },
   },
-  image: { type: Types.CloudinaryImage, autoCleanup: true }
+  image: { type: Types.CloudinaryImage, autoCleanup: true, folder: 'community/events' },
+  industry: { type: Types.Relationship, ref: 'Industry' },
+  sector: { type: Types.Relationship, ref: 'Sector', filters: { industry: ':industry' } },
+  commodity: { type: Types.Relationship, ref: 'Commodity', filters: { sector: ':sector' } }
   // categories: { type: Types.Relationship, ref: 'ISPCategory', many: true}
 });
 
