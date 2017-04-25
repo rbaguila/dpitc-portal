@@ -8,6 +8,7 @@ var LearningContent = require('./LearningContent');
  */
 
 var LearningObject = new keystone.List('LearningObject', {
+  defaultSort: '-publishedAt',
   inherits: LearningContent
 });
 
@@ -111,7 +112,6 @@ LearningObject.schema.virtual('url').get(function(){
   return '/elearning/learning-object/'+this.slug;
 });
 
-LearningObject.sortOrder = '-publishedAt';
 LearningObject.defaultColumns = 'title|20%, author|20%, content.brief|30%, state|10%, publishedAt|10%';
 
 LearningObject.register();
