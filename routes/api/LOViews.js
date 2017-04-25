@@ -21,6 +21,7 @@ exports = module.exports = function(req, res) {
 		}
 		LOViews = results;
 		var LOViewsJSON = JSON.stringify(LOViews);
+		//console.log(LOViewsJSON);
 		res.send(LOViewsJSON);
 		//next();
 	});

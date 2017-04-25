@@ -1,4 +1,4 @@
-.bar {
+/*.bar {
     fill: steelblue;
 }
 .bar:hover {
@@ -15,8 +15,7 @@
 .x.axis path {
     display: none;
 }
-
-/* make sidebar nav vertical */ 
+*/
 @media (min-width: 768px) {
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
@@ -36,12 +35,17 @@
   }
 }
 
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus{
+  background-color:  #3062B7;
+  color: white;
+}
+
 .dashboard{
 	border-left: 1px solid gray;
 }
 
 .centered-panel{
-	background-color: #dff0e7;
+	background-color: #c1d7e2;
 }
 
 .bg-grey{
@@ -50,4 +54,41 @@
 
 .user-prof{
   margin-bottom: 2%;
+}
+
+#userVisitsWorld{
+  height: 500px;
+  min-width: 310px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.highcharts-background{
+
+}
+.highcharts-point{
+  fill: rgba(221,159,159,0.7);
+  stroke: #DD9F9F;
+  stroke-width: 1;
+}
+
+.highcharts-button-box{
+  fill: #f7f7f7;
+  stroke: #cccccc;
+  stroke-width: 1;
+}
+
+.highcharts-color-0{
+  fill: #bbf9b2;
+  stroke: #bbf9b2;
+}
+
+#allVisit{
+  height: 400px;
+  min-width: 310px;
+  margin-bottom: 3%;
+}
+.horizontalLabel{
+  border: 1px solid blue;
+  padding: 1%;
 }
