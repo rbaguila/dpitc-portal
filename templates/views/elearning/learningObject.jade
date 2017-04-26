@@ -4,6 +4,7 @@ block css
   link(rel="stylesheet", href="/js/fancybox/jquery.fancybox.css", type="text/css", media="screen")
 
 block js
+  | $('.collapse').collapse()
   //- For Gallery
   script(src="/js/fancybox/jquery.fancybox.pack.js")
   script.
@@ -49,6 +50,7 @@ block js
         }
       });
     });
+  
 
 block content
   .container
@@ -142,20 +144,46 @@ mixin reactions(action)
   .row
     small(style='float: right;') Views #[span.badge #{currentLO.loviews.length}]
 
-    form(method='post', style='float: right; margin: 0px;')
-      input(type='hidden', name='action', value='reactions.addSad')  
-      button(type='submit').btn.btn-link 
-        | #{currentLO.sad.length} #[i.fa.fa-frown-o.fa-lg(aria-hidden="true")]
-    form(method='post', style='float: right; margin: 0px;')
-      input(type='hidden', name='action', value='reactions.addHappy')  
-      button(type='submit').btn.btn-link 
-        | #{currentLO.happy.length} #[i.fa.fa-smile-o.fa-lg(aria-hidden="true")]
-    form(method='post', style='float: right; margin: 0px;')
-      input(type='hidden', name='action', value='reactions.addLike')  
-      button(type='submit').btn.btn-link 
-        | #{currentLO.likes.length} #[i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")]
+    if user
+      form(method='post', style='float: right; margin: 0px;')
+        input(type='hidden', name='action', value='reactions.addSad')  
+        button(type='submit').btn.btn-link 
+          | #{currentLO.sad.length} #[i.fa.fa-frown-o.fa-lg(aria-hidden="true")]
+      form(method='post', style='float: right; margin: 0px;')
+        input(type='hidden', name='action', value='reactions.addHappy')  
+        button(type='submit').btn.btn-link 
+          | #{currentLO.happy.length} #[i.fa.fa-smile-o.fa-lg(aria-hidden="true")]
+      form(method='post', style='float: right; margin: 0px;')
+        input(type='hidden', name='action', value='reactions.addLike')  
+        button(type='submit').btn.btn-link 
+          | #{currentLO.likes.length} #[i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")]
+      a.btn.btn-link(role='button', data-toggle='collapse', href='#rateLO', aria-hidden='false', aria-controls='rateLO') Rate this Lesson
 
+      .collapse(id='rateLO')
+        hr
+        .row
+          form(method='post').form-horizontal
+            input(type='hidden', name='action', value='reactions.rating')
+            .col-md-10  
+              .form-group(class=validationErrors.rating ? 'has-error' : null required)
+                label.col-sm-2.control-label Rating
+                .radio
+                  each rate in rating  
+                    label 
+                      input(type='radio', name='rating', value=rate.value) 
+                      | #{rate.label}
+            .col-md-2
+              .form-group
+                button(type='submit').btn.btn-primary Submit
+    else
+      a.btn.btn-link(href='/keystone/signin?from='+loginRedirect, style='float: right') #{currentLO.sad.length} #[i.fa.fa-frown-o.fa-lg(aria-hidden="true")]
+      a.btn.btn-link(href='/keystone/signin?from='+loginRedirect, style='float: right') #{currentLO.happy.length} #[i.fa.fa-smile-o.fa-lg(aria-hidden="true")]
+      a.btn.btn-link(href='/keystone/signin?from='+loginRedirect, style='float: right') #{currentLO.likes.length} #[i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")]
+      a.btn.btn-link(href='/keystone/signin?from='+loginRedirect) Sign in to rate this Lesson
 
+      
+
+    
 mixin video(video)
   .row
     label #{video.title}

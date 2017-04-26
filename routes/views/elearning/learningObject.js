@@ -1,18 +1,24 @@
 var keystone = require('keystone');
 var async = require('async');
+
 var LearningObject = keystone.list('LearningObject');
 var Course = keystone.list('Course');
 var User = keystone.list('User');
 var LOComment = keystone.list('LOComment');
 var LOView = keystone.list('LOView');
+var LORating = keystone.list('LORating');
+
 var helper = require('./helper');
+
 
 exports = module.exports = function (req, res) {
 
   var view = new keystone.View(req, res);
   var locals = res.locals;
 
-  
+  locals.rating = LORating.fields.rating.ops;
+  locals.validationErrors = {};
+
   var pageData = {
     loginRedirect: '/elearning/learning-object/'+req.params.learningobjectslug,
     breadcrumbs: [
@@ -96,6 +102,33 @@ exports = module.exports = function (req, res) {
       }
     });
   });
+
+  /* RATING */
+  // Create a feedback on the Learning Object
+  view.on('post', { action: 'reactions.rating' }, function (next) {
+  
+    var newRating = new LORating.model({
+      learningObject: locals.currentLO.id,
+    });
+      
+    var updater = newRating.getUpdateHandler(req);
+
+    updater.process(req.body, {
+      fields: 'rating',
+      flashErrors: true,
+      logErrors: true,
+    }, function (err) {
+      if (err) {
+        validationErrors = err.errors;
+      } else {
+        req.flash('success', 'Your rating was submitted.');
+        return res.redirect('/elearning/learning-object/'+locals.currentLO.slug);
+      }
+      next();
+    });
+
+  });
+
 
   /* COMMENTS */
   // Load comments on the Learning Object
