@@ -50,178 +50,6 @@ block js
       });
     });
 
-    
-
-mixin files(files)
-  .row
-    label Files in #{currentLO.title}
-  .row.equal-height
-    if files.length
-      each file in files
-        .col-xs-12.col-md-4
-          .thumbnail
-            embed(src='/uploads/elearning/files/'+file.file.filename, width='100%' height='200px', type='application/pdf')
-            .caption
-              a(href='/uploads/elearning/files/'+file.file.filename,) #{file.name}
-         
-
-
-mixin gallery(gallery)
-  .row
-    label Photo Gallery
-  .row
-    if gallery.images.length
-      each image, i in gallery.images
-        .col-xs-6.col-sm-4.col-md-4(style='margin-bottom: 30px;')
-          a(href=image.limit(900,600), title=gallery.name+' image '+(i+1), rel=gallery.key).gallery.image
-            img(src=image.fill(300,300), alt=gallery.name+' image '+(i+1)).img-thumbnail
-
-  
-mixin video(video)
-  .row
-    label #{video.title}
-  .row
-    .col-md-8.embed-responsive-item
-      if video.videoId
-        iframe(width="640", height="360", src="https://www.youtube.com/embed/"+video.videoId, frameborder="0", allowfullscreen)
-      
-      else
-        p Video link seems to be broken.
-  hr
-  .row
-    .col-md-8
-      if video.description
-        p #{video.description}
-
-mixin links(links)
-  .row
-    label Related Links
-  .row
-    .col-xs-12.col-sm-12.col-md-12
-      if links.length
-        .list-group
-          each link in links
-            a.list-group-item(href=link.url) 
-              h4.list-group-heading #{link.name}
-              p.list-group-item-text !{link.description}
-
-
-mixin tags(tags)
-  .row
-    label Tags:
-  .row
-    if tags.length
-      each tag in tags
-        if tag != null
-          if tag.category == 'isp'
-            a(href='/elearning/learning-objects?isp='+tag.key) #[span.label.label-primary #{tag.name}] &nbsp;
-          else if tag.category == 'sector'
-            a(href='/elearning/learning-objects?sector='+tag.key) #[span.label.label-success #{tag.name}] &nbsp;
-          else if tag.category == 'industry'
-            a(href='/elearning/learning-objects?industry='+tag.key) #[span.label.label-info #{tag.name}] &nbsp;
-          else if tag.category == 'null'
-            a(href='/elearning/learning-objects?specific='+tag.key) #[span.label.label-info #{tag.name}] &nbsp;
-
-mixin learningObject(currentLO)
-  .row
-    h3 #{currentLO.title}
-    | !{currentLO.content.full}
-  //- .row
-    if currentLO.author.length
-      label Source/s:
-      each au in currentLO.author
-        a(href='#')= au.name
-  +tags(currentLO.tags)
-  
-mixin reactions(action)
-  .row
-    small(style='float: right;') Views #[span.badge #{currentLO.loviews.length}]
-
-    form(method='post', style='float: right; margin: 0px;')
-      input(type='hidden', name='action', value='reactions.addSad')  
-      button(type='submit').btn.btn-link 
-        | #{currentLO.sad.length} #[i.fa.fa-frown-o.fa-lg(aria-hidden="true")]
-    form(method='post', style='float: right; margin: 0px;')
-      input(type='hidden', name='action', value='reactions.addHappy')  
-      button(type='submit').btn.btn-link 
-        | #{currentLO.happy.length} #[i.fa.fa-smile-o.fa-lg(aria-hidden="true")]
-    form(method='post', style='float: right; margin: 0px;')
-      input(type='hidden', name='action', value='reactions.addLike')  
-      button(type='submit').btn.btn-link 
-        | #{currentLO.likes.length} #[i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")]
-    
-
-mixin comment-form(action)
-  form(method='post', style="margin-bottom: 10px; margin-top: 10px;")
-    input(type='hidden', name='action', value='comment.create')
-    .media
-      .pull-left
-        if user
-          img(src=user.photo.exists ? user._.photo.thumbnail(80,80) : 'http://placehold.it/80x80', alt=user.name.full, width=80, height=80).img-rounded
-        else
-          img(src='http://placehold.it/80x80', alt='Comment author placeholder', width=80, height=80).img-rounded
-      .media-body
-        textarea(name='content', placeholder=user ? 'Leave a comment...' : 'Please sign in to comment', disabled=!user, style="margin-bottom: 10px; min-height: 80px; resize: vertical;").form-control
-        if user
-          button(type='submit').btn.btn-primary.pull-right Add Comment
-        else
-          ul.list-inline
-            li: a(href='/keystone/signin').btn.btn-sm.btn-primary Sign in to Comment
-
-mixin comment-post(comment)
-  if comment.author
-    div(id='comment-id-' + comment.id, style="margin-top: 20px;")
-      .media
-        .pull-left
-          img(src=comment.author.photo.exists ? comment.author._.photo.thumbnail(80,80) : 'http://placehold.it/80x80', alt=comment.author.name.full, width=80, height=80).img-rounded
-        .media-body
-          p.list-group-item-heading
-            strong= comment.author.name.full
-            if user && user.id === comment.author.id
-              |  &middot; 
-              a(href='?remove=comment&comment=' + comment.id, title='Delete this comment', rel='tooltip', data-placement='left').comment-delete.js-delete-confirm Delete
-          p.list-group-item-text=comment.content.replace(/\n/g, '<br>')
-
-mixin comment-thread(comments)
-  +comment-form() 
-  hr
-  if comments.length
-    for comment in comments
-      +comment-post(comment)
-
-
-mixin recommendedTopics(recLO)
-  each lo in recLO
-    .media
-      .media-left
-        if lo.thumbnail.exists
-          a(href=lo.url + "?type=recommended")
-            img(src=lo._.thumbnail.limit(100, 100) alt=lo.video.title).img-rounded
-        else
-          a(href=lo.url + "?type=recommended")
-            img(src="http://placehold.it/100x100", alt=lo.title, height="100px", weight="100px").img-rounded
-      .media-body
-        a(href=lo.url + "?type=recommended")
-          h5=lo.title
-          span= lo.content.brief.substring(0, 50)
-
-
-mixin otherTopics(otherLO)
-  each lo in otherLO
-    .media
-      .media-left
-        if lo.thumbnail.exists
-          a(href=lo.url)
-            img(src=lo._.thumbnail.limit(100, 100) alt=lo.video.title).img-rounded
-        else
-          a(href=lo.url)
-            img(src="http://placehold.it/100x100", alt=lo.title, height="100px", weight="100px").img-rounded
-      .media-body
-        a(href=lo.url)
-          h5=lo.title
-          span= lo.content.brief.substring(0, 50)
-
-    
 block content
   .container
     .row
@@ -280,3 +108,179 @@ block content
               a(href="/elearning/courses") Other Topics
             .panel-body
               +otherTopics(data.otherLO)
+    
+mixin learningObject(currentLO)
+  .row
+    h3 #{currentLO.title}
+    | !{currentLO.content.full}
+  //- .row
+    if currentLO.author.length
+      label Source/s:
+      each au in currentLO.author
+        a(href='#')= au.name
+  +tags(currentLO.tags)
+
+
+mixin tags(tags)
+  .row
+    label Tags:
+  .row
+    if tags.length
+      each tag in tags
+        if tag != null
+          if tag.category == 'isp'
+            a(href='/elearning/learning-objects?isp='+tag.key) #[span.label.label-primary #{tag.name}] &nbsp;
+          else if tag.category == 'sector'
+            a(href='/elearning/learning-objects?sector='+tag.key) #[span.label.label-success #{tag.name}] &nbsp;
+          else if tag.category == 'industry'
+            a(href='/elearning/learning-objects?industry='+tag.key) #[span.label.label-info #{tag.name}] &nbsp;
+          else if tag.category == 'null'
+            a(href='/elearning/learning-objects?specific='+tag.key) #[span.label.label-info #{tag.name}] &nbsp;
+
+
+mixin reactions(action)
+  .row
+    small(style='float: right;') Views #[span.badge #{currentLO.loviews.length}]
+
+    form(method='post', style='float: right; margin: 0px;')
+      input(type='hidden', name='action', value='reactions.addSad')  
+      button(type='submit').btn.btn-link 
+        | #{currentLO.sad.length} #[i.fa.fa-frown-o.fa-lg(aria-hidden="true")]
+    form(method='post', style='float: right; margin: 0px;')
+      input(type='hidden', name='action', value='reactions.addHappy')  
+      button(type='submit').btn.btn-link 
+        | #{currentLO.happy.length} #[i.fa.fa-smile-o.fa-lg(aria-hidden="true")]
+    form(method='post', style='float: right; margin: 0px;')
+      input(type='hidden', name='action', value='reactions.addLike')  
+      button(type='submit').btn.btn-link 
+        | #{currentLO.likes.length} #[i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")]
+
+
+mixin video(video)
+  .row
+    label #{video.title}
+  .row
+    .col-md-8.embed-responsive-item
+      if video.videoId
+        iframe(width="640", height="360", src="https://www.youtube.com/embed/"+video.videoId, frameborder="0", allowfullscreen)
+      
+      else
+        p Video link seems to be broken.
+  hr
+  .row
+    .col-md-8
+      if video.description
+        p #{video.description}
+
+
+mixin gallery(gallery)
+  .row
+    label Photo Gallery
+  .row
+    if gallery.images.length
+      each image, i in gallery.images
+        .col-xs-6.col-sm-4.col-md-4(style='margin-bottom: 30px;')
+          a(href=image.limit(900,600), title=gallery.name+' image '+(i+1), rel=gallery.key).gallery.image
+            img(src=image.fill(300,300), alt=gallery.name+' image '+(i+1)).img-thumbnail
+
+
+
+mixin files(files)
+  .row
+    label Files in #{currentLO.title}
+  .row.equal-height
+    if files.length
+      each file in files
+        .col-xs-12.col-md-4
+          .thumbnail
+            embed(src='/uploads/elearning/files/'+file.file.filename, width='100%' height='200px', type='application/pdf')
+            .caption
+              a(href='/uploads/elearning/files/'+file.file.filename,) #{file.name}
+
+
+mixin links(links)
+  .row
+    label Related Links
+  .row
+    .col-xs-12.col-sm-12.col-md-12
+      if links.length
+        .list-group
+          each link in links
+            a.list-group-item(href=link.url) 
+              h4.list-group-heading #{link.name}
+              p.list-group-item-text !{link.description}
+
+
+mixin comment-thread(comments)
+  +comment-form() 
+  hr
+  if comments.length
+    for comment in comments
+      +comment-post(comment)
+
+
+mixin comment-form(action)
+  form(method='post', style="margin-bottom: 10px; margin-top: 10px;")
+    input(type='hidden', name='action', value='comment.create')
+    .media
+      .pull-left
+        if user
+          img(src=user.photo.exists ? user._.photo.thumbnail(80,80) : 'http://placehold.it/80x80', alt=user.name.full, width=80, height=80).img-rounded
+        else
+          img(src='http://placehold.it/80x80', alt='Comment author placeholder', width=80, height=80).img-rounded
+      .media-body
+        textarea(name='content', placeholder=user ? 'Leave a comment...' : 'Please sign in to comment', disabled=!user, style="margin-bottom: 10px; min-height: 80px; resize: vertical;").form-control
+        if user
+          button(type='submit').btn.btn-primary.pull-right Add Comment
+        else
+          ul.list-inline
+            li: a(href='/keystone/signin').btn.btn-sm.btn-primary Sign in to Comment
+
+
+mixin comment-post(comment)
+  if comment.author
+    div(id='comment-id-' + comment.id, style="margin-top: 20px;")
+      .media
+        .pull-left
+          img(src=comment.author.photo.exists ? comment.author._.photo.thumbnail(80,80) : 'http://placehold.it/80x80', alt=comment.author.name.full, width=80, height=80).img-rounded
+        .media-body
+          p.list-group-item-heading
+            strong= comment.author.name.full
+            if user && user.id === comment.author.id
+              |  &middot; 
+              a(href='?remove=comment&comment=' + comment.id, title='Delete this comment', rel='tooltip', data-placement='left').comment-delete.js-delete-confirm Delete
+          p.list-group-item-text=comment.content.replace(/\n/g, '<br>')
+
+
+mixin recommendedTopics(recLO)
+  each lo in recLO
+    .media
+      .media-left
+        if lo.thumbnail.exists
+          a(href=lo.url + "?type=recommended")
+            img(src=lo._.thumbnail.limit(100, 100) alt=lo.video.title).img-rounded
+        else
+          a(href=lo.url + "?type=recommended")
+            img(src="http://placehold.it/100x100", alt=lo.title, height="100px", weight="100px").img-rounded
+      .media-body
+        a(href=lo.url + "?type=recommended")
+          h5=lo.title
+          span= lo.content.brief.substring(0, 50)
+
+
+mixin otherTopics(otherLO)
+  each lo in otherLO
+    .media
+      .media-left
+        if lo.thumbnail.exists
+          a(href=lo.url)
+            img(src=lo._.thumbnail.limit(100, 100) alt=lo.video.title).img-rounded
+        else
+          a(href=lo.url)
+            img(src="http://placehold.it/100x100", alt=lo.title, height="100px", weight="100px").img-rounded
+      .media-body
+        a(href=lo.url)
+          h5=lo.title
+          span= lo.content.brief.substring(0, 50)
+
+    
