@@ -1,5 +1,10 @@
 extends ../../layouts/community
 
+block css
+  link(href="/bower_components/lightgallery/dist/css/lightgallery.min.css", rel="stylesheet")
+  link(href="/bower_components/ammap3/ammap/ammap.css", rel="stylesheet")
+  link(href="/bower_components/amcharts3/amcharts/plugins/export/export.css", rel="stylesheet")
+
 block content
   
   if !user
@@ -93,3 +98,19 @@ block content
                   li 1234 Likes
                   li 1234 Happy
                   li 1234 Sad
+                  
+block js
+  script(src='/bower_components/lightgallery/demo/js/lightgallery.min.js')
+  script(src='/bower_components/lightgallery/demo/js/lg-thumbnail.min.js')
+  script(src='/bower_components/theia-sticky-sidebar/dist/ResizeSensor.js')
+  script(src='/bower_components/theia-sticky-sidebar/dist/theia-sticky-sidebar.js')
+  script(src='bower_components/amcharts3/amcharts/amcharts.js')
+  script(src='bower_components/amcharts3/amcharts/serial.js')
+  script(src='bower_components/amcharts3/amcharts/plugins/export/export.min.js')
+  script(src='/bower_components/ammap3/ammap/ammap.js')
+  script(src='/bower_components/ammap3/ammap/themes/light.js')
+  script(src='/bower_components/ammap3/ammap/maps/js/philippinesLow.js')
+  script(src='/js/dropdown.js')
+  script(src='/js/community-public.js')
+  script(src='/js/ammap.js')
+  script(src='/js/amchart.js')
