@@ -77,7 +77,6 @@ exports = module.exports = function (req, res) {
       // Load tags
       locals.currentLO.tags = [result.specificCommodity, result.industry, result.sector, result.isp];
 
-      console.log(locals.currentLO.tags);
       // Add currentLO to currentUser's learningObjectsTaken
       if(locals.user){
         User.model.findOneAndUpdate( 
