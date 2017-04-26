@@ -4,14 +4,14 @@ var Types = keystone.Field.Types;
 var LORating = new keystone.List('LORating', {
   nocreate: true,
   track: true,
-  //hidden: false, // should be true
 });
 
 LORating.add({
   learningObject: {
     type: Types.Relationship,
     initial: true,
-    ref: 'LearningObject'
+    ref: 'LearningObject',
+    noedit: true,
   },
   rating: { 
     type: Types.Select, 
@@ -21,10 +21,12 @@ LORating.add({
       { value: '3', label: "Neutral" }, 
       { value: '4', label: "Good" }, 
       { value: '5', label: "Excellent" }, 
-    ], required: true
+    ], 
+    required: true,
+    noedit: true,
   },
 });
 
 LORating.defaultSort = '-createdAt';
-LORating.defaultColumns = 'learningObject, createdBy, feedbackRating, createdAt';
+LORating.defaultColumns = 'learningObject, createdBy, rating, createdAt';
 LORating.register();

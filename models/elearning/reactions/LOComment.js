@@ -4,33 +4,25 @@ var Types = keystone.Field.Types;
 var LOComment = new keystone.List('LOComment', {
 	track: true,
 	nocreate: true,
-	hidden: false, // should be true
 })
 
 LOComment.add({
-	author: {
-		type: Types.Relationship,
-		initial: true,
-		ref: 'User',
-	},
 	learningObject: {
 		type: Types.Relationship,
 		initial: true,
-		ref: 'LearningObject'
+		ref: 'LearningObject',
+		noedit: true,
 	},
-	publishedAt: {
-		type: Types.Date, 
-		index: true, 
-		default: Date.now 
-	}
 }, 'Content', {
 	content: {
 		type: Types.Html,
 		wysiwyg: true,
-		height: 300
+		height: 300,
+		noedit: true,
 	},
 });
 
-LOComment.defaultColumns = 'content';
+LOComment.defaultSort = '-createdAt';
+LOComment.defaultColumns = 'learningObject, createdBy, content, createdAt';
 
 LOComment.register();
