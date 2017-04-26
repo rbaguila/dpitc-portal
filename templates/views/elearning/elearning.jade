@@ -49,7 +49,7 @@ mixin popular(learningObjects)
   .row.equal-height
     if learningObjects.length
       each learningObject in learningObjects
-        .col-xs-6.col-md-4
+        .col-xs-6.col-md-3
           .thumbnail
             if learningObject.thumbnail.exists
               img.card-img-top(src=learningObject._.thumbnail.fit(200, 150), alt=learningObject.title, height='150px', width='200px').img-responsive
@@ -75,7 +75,7 @@ mixin allCourses(courses)
             if course.thumbnail.exists
               img.card-img-top(src=course.thumbnail alt="course.title")
             else
-              img.card-img-top(src="/images/image-not-available-th.png" alt=course.title, height="150px")
+              img.card-img-top(src="http://placehold.it/200x150" alt=course.title, height="150px")
             .caption
               .row
                 h3= course.title.substring(0, 50)
@@ -99,7 +99,7 @@ mixin recommended(learningObjects)
             if learningObject.thumbnail.exists
               img.card-img-top(src=learningObject.learningObject alt="course.title")
              else
-              img.card-img-top(src="/images/image-not-available-th.png" alt=learningObject.title, height="150px")
+              img.card-img-top(src="http://placehold.it/200x150" alt=learningObject.title, height="150px")
             .caption
               .row
                 h3= learningObject.title.substring(0, 50)
@@ -114,6 +114,14 @@ mixin recommended(learningObjects)
 
 block content
   +navigation()
+  if user
+    .container
+      .panel.panel-default
+        .panel-body
+          +recommended(data.recommendedLearningObjects)
+        .panel-footer
+          a(href='/elearning/learning-objects?').btn.btn-link View All Recommended Lessons
+
   .container
     .panel.panel-default
       .panel-body
@@ -124,10 +132,4 @@ block content
     .panel.panel-default
       .panel-body
         +allCourses(courses)
-  if user
-    .container
-      .panel.panel-default
-        .panel-body
-          +recommended(data.recommendedLearningObjects)
-        .panel-footer
-          a(href='/elearning/learning-objects?').btn.btn-link View All Lessons
+  

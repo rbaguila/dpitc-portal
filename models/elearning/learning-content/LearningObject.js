@@ -8,6 +8,7 @@ var LearningContent = require('./LearningContent');
  */
 
 var LearningObject = new keystone.List('LearningObject', {
+  defaultSort: '-publishedAt',
   inherits: LearningContent
 });
 

@@ -8,7 +8,8 @@ var LearningContent = require('./LearningContent');
  */
 
 var Course = new keystone.List('Course', {
-	inherits: LearningContent
+	inherits: LearningContent,
+  defaultSort: '-publishedAt',
 });
 
 Course.add({

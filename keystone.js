@@ -79,7 +79,7 @@ keystone.set('nav', {
 	users: 'users',
 	Community: ['trainings', 'events', 'discussions', 'publications', 'links', 'galleries', 'videos', 'memos'],
 	Categories: ['industries', 'sectors', 'commodities'],
-	ELearning: ['LearningObject', 'Chapter', 'Course', 'LearningContent', 'ISP', 'LIndustry', 'LSector', 'LOGallery', 'LOLink', 'LOVideo', 'LOFileUpload'],
+	ELearning: ['LearningObject', 'Chapter', 'Course', 'LearningContent', 'ISP', 'LIndustry', 'LSector', 'LOGallery', 'LOLink', 'LOVideo', 'LOFileUpload',  'Author', 'LOComment', 'Banner'],
 });
 
 // optional, will force cloudinary to serve images over https

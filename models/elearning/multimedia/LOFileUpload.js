@@ -9,7 +9,9 @@ var Types = keystone.Field.Types;
  * A database model for uploading images to the local file system
  */
 
-var LOFileUpload = new keystone.List('LOFileUpload');
+var LOFileUpload = new keystone.List('LOFileUpload', {
+  defaultSort: '-createdTimeStamp',
+});
 
 var myStorage = new keystone.Storage({
     adapter: keystone.Storage.Adapters.FS,
@@ -34,7 +36,7 @@ LOFileUpload.add({
     storage: myStorage,
   },
   createdTimeStamp: { 
-    type: Types.Date,
+    type: Types.Datetime,
     default: Date.now
   },
   description: {

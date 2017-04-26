@@ -126,7 +126,7 @@ mixin learningObject(currentLO)
   .row
     h3 #{currentLO.title}
     | !{currentLO.content.full}
-  .row
+  //- .row
     if currentLO.author.length
       label Source/s:
       each au in currentLO.author
