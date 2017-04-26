@@ -1,6 +1,5 @@
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
-// var DiscussionComment = require('./comments/DiscussionComment');
 
 /**
  * Discussion Model
@@ -8,12 +7,14 @@ var Types = keystone.Field.Types;
  */
 
 var Discussion = new keystone.List('Discussion', {
-  map: { name: 'title' }
+  map: { name: 'title' },
+  autokey: { path: 'slug', from: 'title', unique: true }
 });
 
 Discussion.add({
   title: { type: String, initial: true, required: true, index: true },
-  industry: { type: Types.Relationship, ref: 'Industry', initial: true, index: true },
+  createdAt: { type: Types.Datetime, noedit: true, default: Date.now, index: true },
+  industry: { type: Types.Relationship, ref: 'Industry', required: true, initial: true, index: true },
   sector: { type: Types.Relationship, ref: 'Sector', filters: { industry: ':industry' } },
   commodity: { type: Types.Relationship, ref: 'Commodity', filters: { sector: ':sector' } },
   content: {
@@ -26,5 +27,5 @@ Discussion.add({
 
 Discussion.relationship({ ref: 'DiscussionComment', path: 'discussionComments', refPath: 'discussion' });
 
-Discussion.defaultColumns = 'title';
+Discussion.defaultColumns = 'title, createdAt';
 Discussion.register();

@@ -62,34 +62,23 @@
             .skew.col-xs-12
             .skewed-text Discussions
         .section-content
-          if !discussions.length
+          if discussions.length
+          each discussion in discussions
             .discussion.row
               .stat
                 .box
-                  .count 4
+                  .count
+                    = discussion.comments.length
                   div comments
                 .box
-                  .count 34
+                  .count
+                    = discussion.views.length
                   div views
               .summary
                 h4
-                  a(href="#").title This is a debatable topic that is being debated
+                  a(href="#").title
+                    = discussion.title
                 span.badge.tag Agriculture
-            hr
-            
-            .discussion.row
-              .stat
-                .box
-                  .count 56
-                  div comments
-                .box
-                  .count 1024
-                  div views
-              .summary
-                h4
-                  a(href="#").title This is a debatable topic that is being debated
-                span.badge.tag Agriculture
-                span.badge.tag Problem
             hr
                 
           else

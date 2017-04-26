@@ -9,11 +9,11 @@ DiscussionComment.add({
   author: { type: Types.Relationship, initial: true, ref: 'User', index: true },
 	discussion: { type: Types.Relationship, initial: true, ref: 'Discussion', index: true },
 	commentState: { type: Types.Select, options: ['published', 'draft', 'archived'], default: 'published', index: true },
-	publishedOn: { type: Types.Date, default: Date.now, noedit: true, index: true }
+	publishedOn: { type: Types.Datetime, default: Date.now, noedit: true, index: true }
 });
 
 DiscussionComment.add('Content', {
-  content: { type: Types.Textarea, height: 300 }
+  content: { type: Types.Textarea, height: 300, initial: true }
 });
 
 DiscussionComment.schema.pre('save', function (next) {
@@ -36,5 +36,5 @@ DiscussionComment.schema.post('save', function () {
 });
 
 DiscussionComment.track = true;
-DiscussionComment.defaultColumns = 'author, post, publishedOn, commentState';
+DiscussionComment.defaultColumns = 'discussion, author, post, publishedOn';
 DiscussionComment.register();

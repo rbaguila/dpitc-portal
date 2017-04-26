@@ -58,9 +58,27 @@ exports = module.exports = function (req, res) {
 
   view.query('blogPosts', keystone.list('BlogPost').model.find().populate('author').sort('-publishedDate'));
   view.query('events', keystone.list('Event').model.find().sort('startDate'));
-  view.query('discussions', keystone.list('Discussion').model.find());
   view.query('trainings', keystone.list('Training').model.find());
   view.query('news', keystone.list('News').model.find().populate('industry').sort('-publishedDate'));
+  view.query('comments', keystone.list('DiscussionComment').model.find().populate('discussion', 'author'));
+  view.query('discussionViews', keystone.list('DiscussionView').model.find().populate('discussion'));
+  view.query('discussions', keystone.list('Discussion').model.find())
+    .then(function(err, res, next) {
+      if(err) return next(err);
+
+      for(var i=0; i<res.length; i++) {
+        res[i].comments = locals.comments.filter(function(comment) {
+          return comment.discussion._id.equals(res[i]._id) &&
+                 comment.commentState == 'published';
+        });
+
+        res[i].views = locals.discussionViews.filter(function(view) {
+          return view.discussion._id.equals(res[i]._id);
+        });
+      }
+
+      next(res);
+    });
 
   view.render('community/community', {loginRedirect: '/community', section: 'community', breadcrumbs: [
       { text: 'community', link: '/community'},
