@@ -52,6 +52,18 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers)
           span.glyphicon.glyphicon-user(aria-hidden='true')
           |  NUMBER OF USERS: 
           span= numUsers
+        .well.well-sm.centered-panel
+          span.glyphicon.glyphicon-user(aria-hidden='true')
+          |  NUMBER OF VIEWS: 190918
+        .well.well-sm.centered-panel
+          span.glyphicon.glyphicon-user(aria-hidden='true')
+          |  NUMBER OF REACTIONS: 2190
+        .well.well-sm.centered-panel
+          span.glyphicon.glyphicon-user(aria-hidden='true')
+          |  NUMBER OF COMMENTS: 826
+      .col-md-12.col-xs-12
+        //h3.horizontalLabel Total Number of Vists
+        div(id="allReactions")
       
 block content
   .analytics-body
@@ -78,6 +90,8 @@ block content
                   a(href='/elearning/analytics/recommendedViews') Analytics of Recommended Learning Objects
       .col-md-9.col-sm-4.dashboard
         +Most(data.mostPopularLO, data.mostCommentedLO, data.mostReactedLO, data.numCourses, data.numLO, data.numUsers)
-  //script(src='/js/elearning-graphs/learningObjectReactions.js')
-  //script(src='/js/elearning-graphs/learningObjectCommentsViews.js')
-  script(src='/js/elearning-graphs/userviewmap.js')
+  //- script(src='/js/elearning-graphs/learningObjectReactions.js')
+  //- script(src='/js/elearning-graphs/learningObjectCommentsViews.js')
+//- block js
+  //script(src='/js/elearning-graphs/userviewmap.js')
+  //- script(src='/js/elearning-graphs/try.js')

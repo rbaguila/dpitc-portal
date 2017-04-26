@@ -57,38 +57,33 @@
 }
 
 #userVisitsWorld{
-  height: 500px;
+  height: 400px;
   min-width: 310px;
   max-width: 700px;
-  margin: 0 auto;
+  margin-bottom: 3%;
 }
 
 .highcharts-background{
-
-}
-.highcharts-point{
-  fill: rgba(221,159,159,0.7);
-  stroke: #DD9F9F;
-  stroke-width: 1;
+  stroke-width: 0;
 }
 
-.highcharts-button-box{
-  fill: #f7f7f7;
-  stroke: #cccccc;
-  stroke-width: 1;
-}
-
-.highcharts-color-0{
-  fill: #bbf9b2;
-  stroke: #bbf9b2;
-}
 
 #allVisit{
   height: 400px;
   min-width: 310px;
   margin-bottom: 3%;
 }
-.horizontalLabel{
-  border: 1px solid blue;
-  padding: 1%;
+
+
+#userViewByISP{
+  min-width: 310px;
+  max-width: 700px;
+  height: 400px;
+  margin-bottom: 3%;
+}
+
+#allReactions{
+  height: 400px;
+  min-width: 310px;
+  margin-bottom: 3%;
 }
