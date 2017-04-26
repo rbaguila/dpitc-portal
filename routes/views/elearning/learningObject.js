@@ -136,9 +136,8 @@ exports = module.exports = function (req, res) {
     
     LOComment.model.find()
       .where('learningObject', locals.currentLO)
-      .where('author').ne(null)
-      .populate('author')
-      .sort('publishedAt')
+      .populate('createdBy')
+      .sort('createdAt')
       .exec(function (err, comments) {
         if (err) return res.err(err);
         if (!comments) return res.notfound('Learning Object Comments not found.');
@@ -154,7 +153,6 @@ exports = module.exports = function (req, res) {
 
     var newComment = new LOComment.model({
       learningObject: locals.currentLO.id,
-      author: locals.user.id,
     });
 
     var updater = newComment.getUpdateHandler(req);

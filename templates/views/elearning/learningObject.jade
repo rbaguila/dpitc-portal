@@ -255,7 +255,7 @@ mixin comment-form(action)
         if user
           img(src=user.photo.exists ? user._.photo.thumbnail(80,80) : 'http://placehold.it/80x80', alt=user.name.full, width=80, height=80).img-rounded
         else
-          img(src='http://placehold.it/80x80', alt='Comment author placeholder', width=80, height=80).img-rounded
+          img(src='http://placehold.it/80x80', alt='No Available Image', width=80, height=80).img-rounded
       .media-body
         textarea(name='content', placeholder=user ? 'Leave a comment...' : 'Please sign in to comment', disabled=!user, style="margin-bottom: 10px; min-height: 80px; resize: vertical;").form-control
         if user
@@ -266,20 +266,20 @@ mixin comment-form(action)
 
 
 mixin comment-post(comment)
-  if comment.author
+  if comment.createdBy != null
     div(id='comment-id-' + comment.id, style="margin-top: 20px;")
       .media
         .pull-left
-          img(src=comment.author.photo.exists ? comment.author._.photo.thumbnail(80,80) : 'http://placehold.it/80x80', alt=comment.author.name.full, width=80, height=80).img-rounded
+          img(src=comment.createdBy.photo.exists ? comment.createdBy._.photo.thumbnail(80,80) : 'http://placehold.it/80x80', alt=comment.createdBy.name.full, width=80, height=80).img-rounded
         .media-body
           p.list-group-item-heading
-            strong= comment.author.name.full
-            if user && user.id === comment.author.id
+            strong= comment.createdBy.name.full
+            if user && user.id === comment.createdBy.id
               |  &middot; 
               a(href='?remove=comment&comment=' + comment.id, title='Delete this comment', rel='tooltip', data-placement='left').comment-delete.js-delete-confirm Delete
           p.list-group-item-text=comment.content.replace(/\n/g, '<br>')
-
-
+ 
+ 
 mixin recommendedTopics(recLO)
   each lo in recLO
     .media
