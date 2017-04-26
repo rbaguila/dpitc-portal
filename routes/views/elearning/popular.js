@@ -22,15 +22,6 @@ exports = module.exports = function (req, res) {
     ]
   }
 
-  if(locals.user){
-    if(locals.user.isAdmin){
-      pageData.breadcrumbs.push({
-        text: 'elearning analytics',
-        link: '/elearning/analytics'
-      });
-    }
-  }
-
   locals.popularLO = [];
 
   locals.viewStyle = req.query.view == undefined ? 'grid' : req.query.view;

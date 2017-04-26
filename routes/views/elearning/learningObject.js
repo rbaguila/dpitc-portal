@@ -19,21 +19,7 @@ exports = module.exports = function (req, res) {
   locals.rating = LORating.fields.rating.ops;
   locals.validationErrors = {};
 
-  var pageData = {
-    loginRedirect: '/elearning/learning-object/'+req.params.learningobjectslug,
-    breadcrumbs: [
-      { text: 'elearning', link: '/elearning' },
-    ]
-  }
 
-  if(locals.user){
-    if(locals.user.isAdmin){
-      pageData.breadcrumbs.push({
-        text: 'elearning analytics',
-        link: '/elearning/analytics'
-      });
-    }
-  }
 
   // Set locals
 
@@ -59,6 +45,23 @@ exports = module.exports = function (req, res) {
   locals.formData = req.body || {};
 
   
+  var pageData = {
+    loginRedirect: '/elearning/learning-object/'+req.params.learningobjectslug,
+    breadcrumbs: [
+      { text: 'elearning', link: '/elearning' },
+      { text: req.params.learningobjectslug.replace(/-/g, ' ') , link: '/elearning/learning-object/'+req.params.learningobjectslug }
+    ]
+  }
+
+  if (req.params.courseslug != undefined) {
+    pageData.loginRedirect = '/elearning/'+req.params.courseslug+'/learning-object/'+req.params.learningobjectslug;
+    breadcrumbs = [
+      { text: 'elearning', link: '/elearning' },
+      { text: req.params.courseslug.replace(/-/g, ' '), link: '/elearning/course/'+req.params.courseslug },
+      { text: req.params.learningobjectslug.replace(/-/g, ' '), link: '/elearning/course/'+req.params.courseslug+'/learning-object/'+req.params.learningobjectslug }
+    ]
+  }
+
 
   var tempRecommended = [];
   var tempLearningObjects = [];

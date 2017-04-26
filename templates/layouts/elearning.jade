@@ -82,8 +82,8 @@ html
             //-     li: a(href='/keystone/signin') Sign In
       
       //- NAVBAR
-      div#community-nav.navbar-fixed-top
-        ol.breadcrumb.community-breadcrumb
+      div#elearning-nav.navbar-fixed-top
+        ol.breadcrumb.elearning-breadcrumb
           li
             a(href="/") Home
           each breadcrumb in breadcrumbs
@@ -96,22 +96,16 @@ html
             //- if user.canAccessKeystone
               //- li: a(href='/keystone') Open Keystone
             a(href='/profile').not-active.login-link
-              span.user-name #{user.name.full}&nbsp;&nbsp;
+              span.user-name #{user.name.full} &ensp;
               i.fa.fa-bell-o(aria-hidden="true")
-              | &nbsp;&nbsp;&nbsp;&nbsp;
-            a(href='/keystone/signout', class="not-active login-link") Sign Out
+              | &emsp;
+            a(href='/keystone/signout').not-active.login-link Sign Out
+            | &emsp;
+            a(href='/elearning/analytics').login-link Elearning Analytics
           else
             a(href='/keystone/signin?from=' + loginRedirect, class="not-active login-link") Sign In
-            | &nbsp;&nbsp;&nbsp;&nbsp;
+            | &emsp;
             a(href='/elearning/signup?from=' + loginRedirect, class="not-active login-link") Sign Up
-
-        //- ul.nav.navbar-nav.navbar-right
-        //-   if user
-        //-     if user.canAccessKeystone
-        //-       li: a(href='/keystone') Open Keystone
-        //-     li: a(href='/keystone/signout') Sign Out
-        //-   else
-        //-     li: a(href='/keystone/signin') Sign In
 
       //- END NAVBAR
 
@@ -130,9 +124,10 @@ html
       //- validation errors, success messages, etc.
       .elearning-body
         +flash-messages(messages)
+        block content
 
       //- The content block should contain the body of your template's content
-      .elearning-body
+      //- .elearning-body
         block content
 
 

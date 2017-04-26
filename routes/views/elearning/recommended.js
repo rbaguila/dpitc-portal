@@ -26,15 +26,6 @@ exports = module.exports = function (req, res) {
     ]
   }
 
-  if(locals.user){
-    if(locals.user.isAdmin){
-      pageData.breadcrumbs.push({
-        text: 'elearning analytics',
-        link: '/elearning/analytics'
-      });
-    }
-  }
-
   var tempRecommended = [];
   var tempLearningObjects = [];
 

@@ -32,15 +32,6 @@ exports = module.exports = function (req, res) {
       { text: 'elearning', link: '/elearning' },
     ]
   }
-
-  if(locals.user){
-    if(locals.user.isAdmin){
-      pageData.breadcrumbs.push({
-        text: 'elearning analytics',
-        link: '/elearning/analytics'
-      });
-    }
-  }
   
   locals.popularLO = [];
 

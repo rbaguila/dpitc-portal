@@ -13,18 +13,10 @@ exports = module.exports = function (req, res) {
     loginRedirect: '/elearning/courses?',
     breadcrumbs: [
       { text: 'ELearning', link: '/elearning' },
-      { text: 'Courses', link: '/elearning/courses' },
+      { text: 'Courses', link: '/elearning/courses?' },
     ]
   }
 
-  if(locals.user){
-    if(locals.user.isAdmin){
-      pageData.breadcrumbs.push({
-        text: 'elearning analytics',
-        link: '/elearning/analytics'
-      });
-    }
-  }
 
   locals.data = {
         courses: [],

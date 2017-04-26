@@ -14,18 +14,9 @@ exports = module.exports = function (req, res) {
     loginRedirect: '/elearning/course/'+req.params.courseslug,
     breadcrumbs: [
       { text: 'elearning', link: '/elearning' },
+      { text: req.params.courseslug.replace(/-/g, ' '), link: '/elearning/course/'+req.params.courseslug },
     ]
   }
-
-  if(locals.user){
-    if(locals.user.isAdmin){
-      pageData.breadcrumbs.push({
-        text: 'elearning analytics',
-        link: '/elearning/analytics'
-      });
-    }
-  }
-
 
   locals.data = {
     currCourse: [],
@@ -51,7 +42,6 @@ exports = module.exports = function (req, res) {
     .exec(function(err, result){
       if(result != null){
         locals.data.currCourse = result;
-        pageData.breadcrumbs.push(  { text: locals.data.currCourse.title, link: '/elearning/'+req.params.courseslug } );
       } else {
         return res.status(404).send(keystone.wrapHTMLError('Sorry, Course: '+ req.params.courseslug +' not found! (404)'));
       }

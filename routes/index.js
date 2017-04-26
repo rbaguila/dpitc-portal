@@ -60,7 +60,10 @@ exports = module.exports = function (app) {
 	app.get('/elearning', routes.elearningViews.elearning);
 	app.get('/elearning/courses?', routes.elearningViews.courseList);
 	app.get('/elearning/course/:courseslug?', routes.elearningViews.courseOutline);
-//	app.get('/elearning/chapter/:chapterslug?', routes.elearningViews.chapterOutline);
+	app.get('/elearning/:courseslug/learning-object/:learningobjectslug?', routes.elearningViews.learningObject);
+	app.post('/elearning/:courseslug/learning-object/:learningobjectslug', routes.elearningViews.learningObject);
+
+//	app.get('/elearning/:courseslug/chapter/:chapterslug?', routes.elearningViews.chapterOutline);
 	app.get('/elearning/learning-objects?', routes.elearningViews.learningObjectList);
 	app.get('/elearning/learning-object/:learningobjectslug?', routes.elearningViews.learningObject);
 	app.post('/elearning/learning-object/:learningobjectslug', routes.elearningViews.learningObject);

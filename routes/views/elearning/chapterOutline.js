@@ -7,24 +7,15 @@ exports = module.exports = function (req, res) {
   var view = new keystone.View(req, res);
   var locals = res.locals;
 
-  // Set locals
+  // Set localss
 
   var pageData = {
-    loginRedirect: '/elearning/chapter/'
-    +req.params.chapterslug,
+    loginRedirect: '/elearning/'+req.params.courseslug+'/chapter/'+req.params.chapterslug,
     breadcrumbs: [
       { text: 'elearning', link: '/elearning' },
-      // still need breadcrumb for course
+      { text: req.params.courseslug.replace(/-/g, ' '), link: '/elearning/course/'+req.params.courseslug },
+      { text: req.params.chapterslug.replace(/-/g, ' '), link: '/elearning/course/'+req.params.courseslug+'/chapter/'+req.params.chapterslug }
     ]
-  }
-
-  if(locals.user){
-    if(locals.user.isAdmin){
-      pageData.breadcrumbs.push({
-        text: 'elearning analytics',
-        link: '/elearning/analytics'
-      });
-    }
   }
 
   locals.data = {

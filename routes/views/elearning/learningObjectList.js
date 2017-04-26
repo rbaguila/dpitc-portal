@@ -18,17 +18,8 @@ exports = module.exports = function (req, res) {
     loginRedirect: '/elearning/learning-objects?',
     breadcrumbs: [
       { text: 'ELearning', link: '/elearning' },
-      { text: 'Lessons', link: '/elearning/learning-objects' },
+      { text: 'Lessons', link: '/elearning/learning-objects?' },
     ]
-  }
-
-  if(locals.user){
-    if(locals.user.isAdmin){
-      pageData.breadcrumbs.push({
-        text: 'elearning analytics',
-        link: '/elearning/analytics'
-      });
-    }
   }
 
   locals.viewStyle = req.query.view == undefined ? 'grid' : req.query.view;
@@ -134,9 +125,9 @@ exports = module.exports = function (req, res) {
 
         locals.learningObjects = results;
         
-        console.log(results);
+        //console.log(results);
         
-        console.log(locals.learningObjects);
+        //console.log(locals.learningObjects);
         next(err);
       
       });
