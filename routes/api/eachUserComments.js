@@ -12,7 +12,7 @@ exports = module.exports = function(req, res) {
 	var start = new Date(req.params.year, 0, 1);
 	var end = new Date(req.params.year, 11, 31);
 
-	LOComment.model.find().where('author', req.params.id).where('publishedAt').gte(start).lt(end).exec(function(err, results){
+	LOComment.model.find().where('author', req.params.id).where('createdAt').gte(start).lt(end).exec(function(err, results){
 		if (err || !results.length) {
       //res.send(null);
     }

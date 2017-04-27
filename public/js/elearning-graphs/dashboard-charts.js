@@ -698,7 +698,24 @@ $(function () {
 });
 
 $(function () {
-    //$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
+    //to do, tally
+    /*$.ajax({
+        method: 'GET',
+        url: '/elearning/api/uservisits',
+        success: function (data) {
+            console.log('success', data);
+            var allviewsdata = [];
+            for(var i=0;i<data.length;i++){
+                var temp = [];
+                //console.log(Date.parse(data[i].dateViewed));
+                temp.push(Date.parse(data[i].dateViewed));
+                temp.push(1);
+                allviewsdata.push(temp);
+            }
+            generateAreaChart(allviewsdata);
+        }
+    });*/
+
     var allvisitsdata = [
         [1272326400000,37.43],
         [1272412800000,37.37],
@@ -2463,7 +2480,6 @@ $(function () {
         [1492992000000,143.64]
     ];
     // Create the chart
-    //console.log(Highcharts.getOptions());
     Highcharts.stockChart('allVisit', {
 
 
@@ -2497,9 +2513,43 @@ $(function () {
             }
         }]
     });
-    //});
+    
 });
+/*function generateAreaChart(allviewsdata){
+    Highcharts.stockChart('allVisit', {
 
+
+        rangeSelector: {
+            selected: 1
+        },
+
+        title: {
+            text: 'Total Number of Visits'
+        },
+
+        series: [{
+            name: 'User Visits in All Years',
+            data: allviewsdata,
+            type: 'area',
+            threshold: null,
+            tooltip: {
+                valueDecimals: 2
+            },
+            fillColor: {
+                linearGradient: {
+                    x1: 0,
+                    y1: 0,
+                    x2: 0,
+                    y2: 1
+                },
+                stops: [
+                    [0, Highcharts.getOptions().colors[0]],
+                    [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                ]
+            }
+        }]
+    });
+}*/
 /*$(function () {
     Highcharts.chart('userViewByISP', {
     series: [{
@@ -2818,7 +2868,7 @@ $(function () {
         text: 'Reactions chart'
     },
     xAxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        categories: ['Corn', 'Banana', 'Rice', 'Mango', 'Cacao', 'Coconut', 'Mussel', 'Aquafeeds', 'Native Chicken', 'Peanut', 'Milkfish', 'Bamboo']
     },
     labels: {
         items: [{

@@ -15,7 +15,7 @@ exports = module.exports = function(req, res) {
 	var end = new Date(req.params.year, 11, 31);
 	
 	//change this before deplyoning, use createdAt instead
-	keystone.list('LOComment').model.find().where('publishedAt').gte(start).lt(end).exec(function (err, results) {
+	keystone.list('LOComment').model.find().where('createdAt').gte(start).lt(end).exec(function (err, results) {
 		if (err || !results.length) {
 			//return (err);
 		}

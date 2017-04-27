@@ -17,7 +17,7 @@ exports = module.exports = function(req, res) {
         slug: req.params.key
     })
     .exec(function(err, result) {
-    	LOComment.model.find().where('learningObject', result._id).where('publishedAt').gte(start).lt(end).exec(function(err, results){
+    	LOComment.model.find().where('learningObject', result._id).where('createdAt').gte(start).lt(end).exec(function(err, results){
     		if (err || !results.length) {
           //return (err);
         }

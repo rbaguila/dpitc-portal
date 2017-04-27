@@ -1,4 +1,4 @@
-/*.bar {
+.bar {
     fill: steelblue;
 }
 .bar:hover {
@@ -15,7 +15,7 @@
 .x.axis path {
     display: none;
 }
-*/
+
 @media (min-width: 768px) {
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
@@ -86,4 +86,8 @@
   height: 400px;
   min-width: 310px;
   margin-bottom: 3%;
+}
+
+.white-bg{
+  background-color: white;
 }
