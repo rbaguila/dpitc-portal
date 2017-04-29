@@ -1,0 +1,41 @@
+extends ../../layouts/community
+
+block css
+  link(href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet")
+
+block content
+  .news-body
+    .container
+      .article.row
+        .header
+          .headline #{main.title}
+            br
+            
+          if main.author.picture
+            img(alt="author_image")
+          else
+            span.glyphicon.glyphicon-user.glyph-round
+          .author
+            a(href="#").text-muted By #{main.author.full}
+            .time-since.text-muted
+              span.glyphicon.glyphicon-time
+              span Updated #{main._.publishedDate.format("MMMM, DD YYYY")}
+          br
+              
+        .main.col-md-9
+          .col-xs-12.img-main
+            img(src=main.image.secure_url).img-responsive
+          br
+          p.content #{main.content.extended}
+        .list.col-md-3
+          .title More News
+          .content
+            each sub in news
+              hr
+              .sub
+                .sub-img.pull-left
+                  a(href='/community/news/' + sub.slug)
+                    img(src=sub.image.secure_url).img-responsive
+                .sub-text
+                  a(href='/community/news/' + sub.slug).text-muted #{sub.title}
+              br

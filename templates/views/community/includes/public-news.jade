@@ -1,31 +1,24 @@
 .container-fluid
   .row.full-row
     .col-md-7.image
-      a(href="#")
+      a(href='community/news/'+news[0].slug)
         img(src=news[0].image.secure_url).img-responsive.img-main
         .img-description
-          span.badge.tag 
-            = news[0].industry.name
-          p.title 
-            = news[0].title
+          span.badge.tag #{news[0].industry.name}
+          p.title #{news[0].title}
           br
-          p.description 
-            = news[0].content.brief
+          p.description #{news[0].content.brief}
       
     .col-md-5.summary
       .col-md-12.sub-news
-        a(href="#").image
+        a(href='community/news/'+news[1].slug).image
           img(src=news[1].image.secure_url).img-responsive
           .img-description
-            span.badge.tag 
-              = news[1].industry.name
-            p.title 
-              = news[1].title
+            span.badge.tag #{news[1].industry.name}
+            p.title #{news[1].title}
       .col-md-12.sub-news
-        a(href="#").image
+        a(href='community/news/'+news[2].slug).image
           img(src=news[2].image.secure_url).img-responsive
           .img-description
-            span.badge.tag 
-              = news[2].industry.name
-            p.title 
-              = news[2].title
+            span.badge.tag #{news[2].industry.name}
+            p.title #{news[2].title}
