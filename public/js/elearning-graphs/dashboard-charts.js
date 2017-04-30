@@ -1174,7 +1174,107 @@ function generateComboReactionChart(data){
 });*/
 
 $(function () {
+
+    //TO DO, change this to region para mas madali :(
     // Instanciate the map
+    var corn = ['Abra', 'Agusan del Norte', 'Agusan del Sur', 'Aklan', 'Albay', 'Antique', 'Apayao', 'Aurora', 'Basilan', 'Bataan', 'Batanes', 'Batangas', 'Benguet', 'Biliran', 'Bohol', 'Bukidnon', 'Bulacan', 'Cagayan', 'Camarines Norte', 'Camarines Sur', 'Camiguin'];
+    var banana = ['Capiz', 'Catanduanes', 'Cavite', 'Cebu', 'Compostela Valley', 'Cotabato', 'Davao del Norte', 'Davao del Sur', 'Davao Oriental',  'Dinagat Islands', 'Eastern Samar', 'Guimaras', 'Ifugao', 'Ilocos Norte', 'Ilocos Sur', 'Iloilo', 'Isabela', 'Kalinga', 'La Union', 'Laguna', 'Lanao del Norte'];
+    var rice = ['Pasay', 'Lanao del Sur', 'Leyte', 'Maguindanao', 'Marinduque', 'Masbate', 'Metro Manila', 'Misamis Occidental'];
+    var coconut = ['Rizal', 'Romblon', 'Samar'];
+
+    var provinces = [
+      'Manila',
+      'Abra',
+      'Apayao',
+      'Benguet',
+      'Ifugao',
+      'Kalinga',
+      'Mountain Province',
+      'Ilocos Norte',
+      'Ilocos Sur',
+      'La Union',
+      'Pangasinan',
+      'Batanes',
+      'Cagayan',
+      'Isabela',
+      'Nueva Vizcaya',
+      'Quirino',
+      'Aurora',
+      'Bataan',
+      'Bulacan',
+      'Nueva Ecija',
+      'Pampanga',
+      'Tarlac',
+      'Zambales',
+      'Batangas',
+      'Cavite',
+      'Laguna',
+      'Quezon',
+      'Rizal',
+      'Marinduque' ,
+      'Mindoro Occidental',
+      'Mindoro Oriental',
+      'Palawan',
+      'Romblon',
+      'Albay',
+      'Camarines Norte',
+      'Camarines Sur',
+      'Catanduanes',
+      'Masbate',
+      'Sorsogon',
+      'Aklan',
+      'Antique',
+      'Capiz',
+      'Guimaras',
+      'Iloilo',
+      'Negros Occidental',
+      'Bohol',
+      'Cebu',
+      'Negros Oriental',
+      'Siquijor',
+      'Biliran' ,
+      'Eastern Samar' ,
+      'Leyte',
+      'Northern Samar' ,
+      'Samar',
+      'Southern Leyte' ,
+      'Zamboanga del Norte',
+      'Zamboanga del Sur',
+      'Zamboanga Sibugay',
+      'Bukidnon',
+      'Camiguin',
+      'Lanao del Norte',
+      'Misamis Occidental',
+      'Misamis Oriental',
+      'Compostela Valley',
+      'Davao del Norte',
+      'Davao del Sur',
+      'Davao Occidental',
+      'Davao Oriental',
+      'Cotabato',
+      'Sarangani',
+      'South Cotabato',
+      'Sultan Kudarat',
+      'Agusan del Norte',
+      'Agusan del Sur',
+      'Dinagat Islands',
+      'Surigao del Norte',
+      'Surigao del Sur',
+      'Basilan',
+      'Lanao del Sur' ,
+      'Maguindanao',
+      'Sulu',
+      'Tawi-tawi'
+    ];
+
+    var left = [];
+
+    for(var i=0;i<provinces.length;i++){
+        if(corn.indexOf(provinces[i])==-1&&banana.indexOf(provinces[i])==-1&&rice.indexOf(provinces[i])==-1&&coconut.indexOf(provinces[i])==-1){
+            left.push(provinces[i]);
+        }
+    }
+
     Highcharts.mapChart('popularperregion', {
         chart: {
             spacingBottom: 20
@@ -1190,13 +1290,13 @@ $(function () {
         plotOptions: {
             map: {
                 allAreas: false,
-                joinBy: ['hc-key', 'code'],
+                joinBy: ['name', 'code'],
                 dataLabels: {
                     enabled: true,
                     color: '#FFFFFF',
                     formatter: function () {
                         if (this.point.properties && this.point.properties.labelrank.toString() < 5) {
-                            return this.point.properties['iso-a2'];
+                            return this.point.properties['name'];
                         }
                     },
                     format: null,
@@ -1215,22 +1315,27 @@ $(function () {
 
         series: [{
             name: 'Corn',
-            data: $.map(['ph-mn', 'ph-4218', 'ph-tt', 'ph-bo', 'ph-cb', 'ph-bs', 'ph-2603', 'ph-su','ph-aq','ph-pl', 'ph-ro', 'ph-al', 'ph-cs', 'ph-6999','ph-bn', 'ph-cg', 'ph-pn', 'ph-bt', 'ph-mc', 'ph-qz', 'ph-es', 'ph-le', 'ph-sm', 'ph-ns', 'ph-cm', 'ph-di', 'ph-ds', 'ph-6457', 'ph-6985', 'ph-ii', 'ph-7017', 'ph-7021', 'ph-lg', 'ph-ri', 'ph-ln', 'ph-6991'], function (code) {
+            data: $.map(corn, function (code) {
                 return { code: code };
             })
         }, {
             name: 'Banana',
-            data: $.map(['ph-ls', 'ph-nc', 'ph-mg', 'ph-sk', 'ph-sc', 'ph-sg', 'ph-an', 'ph-ss', 'ph-as', 'ph-do', 'ph-dv', 'ph-bk', 'ph-cl', 'ph-6983', 'ph-6984', 'ph-6987', 'ph-6986', 'ph-6988', 'ph-6989', 'ph-6990', 'ph-6992', 'ph-6995', 'ph-6996', 'ph-6997', 'ph-6998', 'ph-nv'], function (code) {
+            data: $.map(banana, function (code) {
                 return { code: code };
             })
         }, {
             name: 'Rice',
-            data: $.map(['ph-7020', 'ph-7018', 'ph-7022', 'ph-1852', 'ph-7000', 'ph-7001', 'ph-7002', 'ph-7003', 'ph-7004', 'ph-7006', 'ph-7007', 'ph-7008', 'ph-7009', 'ph-7010', 'ph-7011', 'ph-7012', 'ph-7013', 'ph-7014', 'ph-7015', 'ph-7016', 'ph-7019', 'ph-6456', 'ph-zs', 'ph-nd', 'ph-zn', 'ph-md', 'ph-ab', 'ph-2658'], function (code) {
+            data: $.map(rice, function (code) {
                 return { code: code };
             })
         }, {
             name: 'Coconut',
-            data: $.map(['ph-ap', 'ph-au', 'ph-ib', 'ph-if', 'ph-mt', 'ph-qr', 'ph-ne', 'ph-pm', 'ph-ba', 'ph-bg', 'ph-zm', 'ph-cv', 'ph-bu', 'ph-mr', 'ph-sq', 'ph-gu', 'ph-ct', 'ph-mb', 'ph-mq', 'ph-bi', 'ph-sl', 'ph-nr', 'ph-ak', 'ph-cp', 'ph-cn', 'ph-sr', 'ph-in', 'ph-is', 'ph-tr', 'ph-lu'], function (code) {
+            data: $.map(coconut, function (code) {
+                return { code: code };
+            })
+        }, {
+            name: 'None',
+            data: $.map(left, function (code) {
                 return { code: code };
             })
         }]

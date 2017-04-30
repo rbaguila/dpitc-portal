@@ -1,6 +1,6 @@
 var keystone = require('keystone');
 var async = require('async');
-
+var http = require('http');
 var LearningObject = keystone.list('LearningObject');
 var Course = keystone.list('Course');
 var User = keystone.list('User');
@@ -346,9 +346,38 @@ exports = module.exports = function (req, res) {
   // Insert LOView
   //TO DO, check if nirefresh lang
   view.on('init', function(next){
+    //var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
+    //console.log(ip);
+    var ip = '121.54.32.169';
+    /*freegeoip.getLocation(ip, function(err, location) {
+        console.log(location);
+    });*/
+
+    var options = {    
+        host: 'freegeoip.net',    
+        path: '/json/' + ip,
+        method: 'GET'
+    };
+
+    var reqData = http.request(options, function(res) {    
+        //console.log('STATUS: ' + res.statusCode);    
+        //console.log('HEADERS: ' + JSON.stringify(res.headers));    
+        res.setEncoding('utf8');    
+        res.on('data', function (chunk) {   
+            console.log(chunk);
+        });    
+    });
+
+    // write data to request body
+
+    reqData.write('data\n');
+    reqData.write('data\n');
+    reqData.end();
+
+
     var currentUser = locals.user;
     if(currentUser){
-      //check if the user viewed the Learning Object for 1 session (1 day threshold)
+      //check if the user viewed the Learning Object for 1 session (2 hrs threshold)
       Date.prototype.addHours = function(h) {    
         this.setTime(this.getTime() + (h*60*60*1000)); 
         return this;   
@@ -357,8 +386,8 @@ exports = module.exports = function (req, res) {
         this.setTime(this.getTime() - (h*60*60*1000)); 
         return this;   
       }
-      var start = new Date().subtractHours(12);
-      var end = new Date().addHours(12);
+      var start = new Date().subtractHours(1);
+      var end = new Date().addHours(1);
       if(req.query.type==undefined){
         LOView.model.count({
           learningObject: locals.currentLO._id,
