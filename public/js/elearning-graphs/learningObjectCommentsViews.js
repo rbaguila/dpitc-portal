@@ -43,7 +43,7 @@
                 tally[months[a]] = 0;
             }
             for(var i=0;i<json.length;i++){
-                var temp = d3.isoParse(json[i].publishedAt);//change this before deplyoning, use createdAt instead
+                var temp = d3.isoParse(json[i].createdAt);//change this before deplyoning, use createdAt instead
                 var temp2 = temp.getMonth();
                 var date = months[temp2];
                 tally[date] = (tally[date]||0) + 1;

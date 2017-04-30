@@ -1,4 +1,4 @@
-/*.bar {
+.bar {
     fill: steelblue;
 }
 .bar:hover {
@@ -15,7 +15,7 @@
 .x.axis path {
     display: none;
 }
-*/
+
 @media (min-width: 768px) {
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
@@ -77,7 +77,7 @@
 
 #userViewByISP{
   min-width: 310px;
-  max-width: 700px;
+  max-width: 900px;
   height: 400px;
   margin-bottom: 3%;
 }
@@ -86,4 +86,30 @@
   height: 400px;
   min-width: 310px;
   margin-bottom: 3%;
+}
+
+.white-bg{
+  background-color: white;
+}
+
+#allComments{
+  min-width: 310px;
+  height: 350px;
+  margin-bottom: 3%;
+}
+#allReactionsRatio{
+  max-width: 300px;
+  height: 300px;
+  margin: 0 auto
+}
+
+#popularperregion{
+  height: 400px;
+  min-width: 310px;
+  max-width: 600px;
+  margin-bottom: 3%;
+}
+.glyphicon-star{
+  font-size: 20px;
+  color: #F9E051;
 }
