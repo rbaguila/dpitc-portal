@@ -6,12 +6,11 @@ block css
 mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers)
     .row
       .col-md-12.col-xs-12
-        //h3.horizontalLabel Total Number of Vists
+        //- h3.horizontalLabel Total Number of Vists
         div(id="allVisit")
       .col-md-8.col-xs-8
         div(id="userVisitsWorld")
-        div(id="userViewByISP")
-        //div(id="reactionsPieChart")
+        //- div(id="reactionsPieChart")
       .col-md-4.col-xs-4
         .panel.panel-info
           .panel-heading
@@ -40,6 +39,16 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers)
                 img(src=mostreacted.thumbnail.exists ? mostreacted._.thumbnail.limit(50, 50) : 'http://placehold.it/50x50', width=50, height=50).img-circle
               .media-body
                 h5=mostreacted.title
+      .col-md-7.col-xs-7
+        //- h3.horizontalLabel Total Number of Vists
+        div(id="userViewByISP")
+      .col-md-5.col-xs-5
+        //- h3.horizontalLabel Total Number of Vists
+        //- div(id="allReactionsRatio")
+        div(id="popularperregion")
+      .col-md-8.col-xs-8
+        div(id="allComments")
+      .col-md-4.col-xs-4  
         .well.well-sm.centered-panel
           span.glyphicon.glyphicon-book(aria-hidden='true')
           |  NUMBER OF COURSES: 
@@ -62,7 +71,7 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers)
           span.glyphicon.glyphicon-user(aria-hidden='true')
           |  NUMBER OF COMMENTS: 826
       .col-md-12.col-xs-12
-        //h3.horizontalLabel Total Number of Vists
+        //- h3.horizontalLabel Total Number of Vists
         div(id="allReactions")
       
 block content

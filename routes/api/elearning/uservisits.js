@@ -13,7 +13,7 @@ exports = module.exports = function(req, res) {
   //var visits = [];
 	
 	//change this before deploying, use createdAt instead
-	keystone.list('LOView').model.find().exec(function (err, results) {
+	keystone.list('LOView').model.find().sort('dateViewed').exec(function (err, results) {
 		if (err || !results.length) {
 		}
 		//visits = results;

@@ -91,3 +91,21 @@
 .white-bg{
   background-color: white;
 }
+
+#allComments{
+  min-width: 310px;
+  height: 350px;
+  margin-bottom: 3%;
+}
+#allReactionsRatio{
+  max-width: 300px;
+  height: 300px;
+  margin: 0 auto
+}
+
+#popularperregion{
+  height: 400px;
+  min-width: 310px;
+  max-width: 480px;
+  margin: 0 auto
+}
