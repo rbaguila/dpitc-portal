@@ -376,13 +376,13 @@ exports = module.exports = function (req, res) {
         method: 'GET'
     };
 
-    var reqData = http.request(options, function(res) {    
+    var reqData = http.request(options, function(res) {
         //console.log('STATUS: ' + res.statusCode);    
         //console.log('HEADERS: ' + JSON.stringify(res.headers));    
         res.setEncoding('utf8');    
         res.on('data', function (chunk) {   
             var obj = JSON.parse(chunk);
-            //console.log(obj.ip);
+            //console.log(obj);
             if(currentUser){
               if(req.query.type==undefined){
                 LOView.model.count({
@@ -397,7 +397,11 @@ exports = module.exports = function (req, res) {
                     if(count==0){
                       var newView = new LOView.model({
                         user: currentUser._id,
-                        learningObject: locals.data.currLO._id
+                        learningObject: locals.data.currLO._id,
+                        ip: obj.ip,
+                        country_code: obj.country_code,
+                        region: obj.region_name,
+                        city: obj.city
                       });
                       newView.save(function(err) {
                         
@@ -419,7 +423,11 @@ exports = module.exports = function (req, res) {
                       var newView = new LOView.model({
                         user: currentUser._id,
                         learningObject: locals.data.currLO._id,
-                        typeOfView: 'recommended'
+                        typeOfView: 'recommended',
+                        ip: obj.ip,
+                        country_code: obj.country_code,
+                        region: obj.region_name,
+                        city: obj.city
                       });
                       newView.save(function(err) {
                       });
@@ -428,7 +436,28 @@ exports = module.exports = function (req, res) {
               }
             }
             else{
-
+              LOView.model.count({
+                  learningObject: locals.currentLO._id,
+                  ip: obj.ip,
+                  dateViewed: { $gte: start, $lt: end },
+                })
+                .exec(function(err, count){
+                  if(err){
+                    next(err)
+                  }
+                    if(count==0){
+                      var newView = new LOView.model({
+                        learningObject: locals.data.currLO._id,
+                        ip: obj.ip,
+                        country_code: obj.country_code,
+                        region: obj.region_name,
+                        city: obj.city
+                      });
+                      newView.save(function(err) {
+                        
+                      });
+                    }
+                });
             }
         });    
     });

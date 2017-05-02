@@ -9,8 +9,6 @@ exports = module.exports = function(req, res) {
 	// We want to set the content-type header so that the browser understands
   //  the content of the response.
   //res.contentType('application/jsonp');
-  
-  //var visits = [];
 	
 	//change this before deploying, use createdAt instead
 	keystone.list('LOView').model.find().populate('learningObject').exec(function (err, results) {
@@ -24,14 +22,22 @@ exports = module.exports = function(req, res) {
 				var obj = {};
 				obj.region = loview.region;
 				obj.city = loview.city;
-				if(inArrayRegionCity(obj.region, obj.city, region_city)==false){
-					var loList = getLO(obj.region, obj.city, results);
-					keystone.list('ISP').model.find().exec(function (err, resulta) {
-						if (err || !resulta.length) {
-							counter++;
+				var loList = getLO(obj.region, obj.city, results);
+				keystone.list('ISP').model.find().exec(function (err, resulta) {
+					if (err || !resulta.length) {
+						counter++;
+					}
+					else{
+						counter++;
+						var checker = 0;
+						for(var i=0;i<region_city.length;i++){
+							if(region_city[i].region==obj.region&&region_city[i].city==obj.city){
+								checker=1;
+								break;
+							}
 						}
-						else{
-							counter++;
+						if(checker==0){
+							obj.isp = [];
 							for(var i=0;i<resulta.length;i++){
 								resulta[i].score=0;
 								var str = resulta[i]._id+"";
@@ -42,33 +48,29 @@ exports = module.exports = function(req, res) {
 									}
 								}
 								if(resulta[i].score>0){
-									obj[resulta[i].name] = resulta[i].score;
+									//obj[resulta[i].name] = resulta[i].score;
+									
+									var arr = [];
+									arr.push(resulta[i].name);
+									arr.push(resulta[i].score);
+									obj.isp.push(arr);
 								}
 							}
-							region_city.push(obj);
-							if(counter==results.length){
-								//console.log(region_city);
-								res.send(region_city);
+							if(obj.region!=undefined&&obj.city!=undefined){
+								region_city.push(obj);
 							}
 						}
-					});
-				}
-				else{
-					counter++;
-				}
+						if(counter==results.length){
+							res.send(region_city);
+						}
+					}
+				});
 			}, function (err) {
 				next(err);
 			});
 		}
 	});
 };
-
-function inArrayRegionCity(region, city, region_city){
-	for(var i=0;i<region_city.length;i++){
-		if(region_city[i].region==region&&region_city[i].city==city) return true;
-	}
-	return false;
-}
 
 function getLO(region, city, list){
 	var loList = [];

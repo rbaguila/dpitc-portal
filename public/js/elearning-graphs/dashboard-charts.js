@@ -763,85 +763,6 @@ function generateAreaChart(allviewsdata){
         }]
     });
 }
-/*$(function () {
-    Highcharts.chart('userViewByISP', {
-    series: [{
-        type: "treemap",
-        layoutAlgorithm: 'stripes',
-        alternateStartingDirection: true,
-        levels: [{
-            level: 1,
-            layoutAlgorithm: 'sliceAndDice',
-            dataLabels: {
-                enabled: true,
-                align: 'left',
-                verticalAlign: 'top',
-                style: {
-                    fontSize: '15px',
-                    fontWeight: 'bold'
-                }
-            }
-        }],
-        data: [{
-            id: 'A',
-            name: 'Apples',
-            color: Highcharts.getOptions().colors[0]
-        }, {
-            id: 'B',
-            name: 'Bananas',
-            color: Highcharts.getOptions().colors[1]
-        }, {
-            id: 'O',
-            name: 'Oranges',
-            color: Highcharts.getOptions().colors[2]
-        }, {
-            name: 'Anne',
-            parent: 'A',
-            value: 5
-        }, {
-            name: 'Rick',
-            parent: 'A',
-            value: 3
-        }, {
-            name: 'Peter',
-            parent: 'A',
-            value: 4
-        }, {
-            name: 'Anne',
-            parent: 'B',
-            value: 4
-        }, {
-            name: 'Rick',
-            parent: 'B',
-            value: 10
-        }, {
-            name: 'Peter',
-            parent: 'B',
-            value: 1
-        }, {
-            name: 'Anne',
-            parent: 'O',
-            value: 1
-        }, {
-            name: 'Rick',
-            parent: 'O',
-            value: 3
-        }, {
-            name: 'Peter',
-            parent: 'O',
-            value: 3
-        }, {
-            name: 'Susanne',
-            parent: 'Kiwi',
-            value: 2,
-            color: Highcharts.getOptions().colors[3]
-        }]
-    }],
-    title: {
-        text: 'Trending Topics'
-    }
-});
-});*/
 
 $(function () {
     $.ajax({
@@ -1030,239 +951,39 @@ function generateComboReactionChart(data){
     });
 }
 
-/*$(function () {
-    Highcharts.chart('allReactionsRatio', {
-
-        chart: {
-            type: 'solidgauge',
-            marginTop: 50
-        },
-
-        title: {
-            text: 'Activity',
-            style: {
-                fontSize: '24px'
-            }
-        },
-
-        tooltip: {
-            borderWidth: 0,
-            backgroundColor: 'none',
-            shadow: false,
-            style: {
-                fontSize: '16px'
-            },
-            pointFormat: '{series.name}<br><span style="font-size:1em; color: {point.color}; font-weight: bold">{point.y}%</span>',
-            positioner: function (labelWidth) {
-                return {
-                    x: 200 - labelWidth / 2,
-                    y: 180
-                };
-            }
-        },
-
-        pane: {
-            startAngle: 0,
-            endAngle: 360,
-            background: [{ // Track for Move
-                outerRadius: '112%',
-                innerRadius: '88%',
-                backgroundColor: Highcharts.Color(Highcharts.getOptions().colors[0])
-                    .setOpacity(0.3)
-                    .get(),
-                borderWidth: 0
-            }, { // Track for Exercise
-                outerRadius: '87%',
-                innerRadius: '63%',
-                backgroundColor: Highcharts.Color(Highcharts.getOptions().colors[1])
-                    .setOpacity(0.3)
-                    .get(),
-                borderWidth: 0
-            }, { // Track for Stand
-                outerRadius: '62%',
-                innerRadius: '38%',
-                backgroundColor: Highcharts.Color(Highcharts.getOptions().colors[2])
-                    .setOpacity(0.3)
-                    .get(),
-                borderWidth: 0
-            }]
-        },
-
-        yAxis: {
-            min: 0,
-            max: 100,
-            lineWidth: 0,
-            tickPositions: []
-        },
-
-        plotOptions: {
-            solidgauge: {
-                dataLabels: {
-                    enabled: false
-                },
-                linecap: 'round',
-                stickyTracking: false,
-                rounded: true
-            }
-        },
-
-        series: [{
-            name: 'Move',
-            data: [{
-                color: Highcharts.getOptions().colors[0],
-                radius: '112%',
-                innerRadius: '88%',
-                y: 80
-            }]
-        }, {
-            name: 'Exercise',
-            data: [{
-                color: Highcharts.getOptions().colors[1],
-                radius: '87%',
-                innerRadius: '63%',
-                y: 65
-            }]
-        }, {
-            name: 'Stand',
-            data: [{
-                color: Highcharts.getOptions().colors[2],
-                radius: '62%',
-                innerRadius: '38%',
-                y: 50
-            }]
-        }]
-    },
-    function callback() {
-
-        // Move icon
-        this.renderer.path(['M', -8, 0, 'L', 8, 0, 'M', 0, -8, 'L', 8, 0, 0, 8])
-            .attr({
-                'stroke': '#303030',
-                'stroke-linecap': 'round',
-                'stroke-linejoin': 'round',
-                'stroke-width': 2,
-                'zIndex': 10
-            })
-            .translate(190, 26)
-            .add(this.series[2].group);
-
-        // Exercise icon
-        this.renderer.path(['M', -8, 0, 'L', 8, 0, 'M', 0, -8, 'L', 8, 0, 0, 8,
-                'M', 8, -8, 'L', 16, 0, 8, 8])
-            .attr({
-                'stroke': '#ffffff',
-                'stroke-linecap': 'round',
-                'stroke-linejoin': 'round',
-                'stroke-width': 2,
-                'zIndex': 10
-            })
-            .translate(190, 61)
-            .add(this.series[2].group);
-
-        // Stand icon
-        this.renderer.path(['M', 0, 8, 'L', 0, -8, 'M', -8, 0, 'L', 0, -8, 8, 0])
-            .attr({
-                'stroke': '#303030',
-                'stroke-linecap': 'round',
-                'stroke-linejoin': 'round',
-                'stroke-width': 2,
-                'zIndex': 10
-            })
-            .translate(190, 96)
-            .add(this.series[2].group);
-    });
-});*/
-
 $(function () {
     $.ajax({
         method: 'GET',
         url: '/elearning/api/uservisitsbyRegion',
         success: function (data) {
-            //console.log(data);
-            //generateTreeMap2Chart(data);
+            var finaldata = {};
+            var nameISP = {};
+            for(var i=0;i<data.length;i++){
+                var obj = {};
+                var max = -1;
+                var maxISP = "";
+                for(var j=0;j<data[i].isp.length;j++){
+                    if(data[i].isp[j][1]>max){
+                        maxISP = data[i].isp[j][0];
+                        max = data[i].isp[j][1];
+                    }
+                    //console.log(data[i].city + ":" + data[i].isp[j][0] + data[i].isp[j][1]);
+                }
+
+                obj[maxISP] = max.toString();
+                nameISP[maxISP] = maxISP;
+                if(finaldata[data[i].region]==undefined){
+                    finaldata[data[i].region] = {};
+                }
+                finaldata[data[i].region][data[i].city] = obj;
+            }
+            //console.log(finaldata);
+            generateTreeMap2Chart(finaldata, nameISP);
         }
     });
-    var data = {
-        'National Capital Region': {
-            'Metro Manila': {
-                'Corn': '22'
-            },
-            'Caloocan': {
-                'Banana': '32'
-            },
-            'Makati': {
-                'Coconut': '44'
-            },
-            'Marikina': {
-                'Peanut': '55'
-            },
-            'Pasig': {
-                'Rice': '11'
-            }
-        },
-        'Cordillera Administrative Region (CAR)': {
-            'Ifugao': {
-                'Rice': '87'
-            },
-            'Kalinga': {
-                'Coconut': '76'
-            },
-            'Mountain Province': {
-                'Corn': '23'
-            },
-            'Baguio': {
-                'Corn': '23'
-            }
-        },
-        'CALABARZON': {
-            'Cavite': {
-                'Rice': '122'
-            },
-            'Laguna': {
-                'Coconut': '24'
-            },
-            'Batangas': {
-                'Corn': '68'
-            },
-            'Rizal': {
-                'Rice': '356'
-            },
-            'Quezon': {
-                'Coconut': '98'
-            }
-        },
-        'SOCCSKSARGEN': {
-            'Cotabato': {
-                'Rice': '122'
-            },
-            'Sarangani': {
-                'Coconut': '24'
-            },
-            'South Cotabato': {
-                'Corn': '68'
-            },
-            'Sultan Kudarat': {
-                'Rice': '356'
-            },
-            'General Santos': {
-                'Coconut': '98'
-            }
-        },
-        'Central Luzon': {
-            'Aurora': {
-                'Rice': '123'
-            },
-            'Bataan': {
-                'Coconut': '12'
-            }
-        }
-
-    };
-    generateTreeMap2Chart(data);
-
 });
 
-function generateTreeMap2Chart(data){
+function generateTreeMap2Chart(finaldata, nameISP){
     var points = [],
     ispP,
     ispVal,
@@ -1274,16 +995,10 @@ function generateTreeMap2Chart(data){
     isp,
     sector,
     info,
-    infoName = {
-        'Corn': 'Corn',
-        'Rice': 'Rice',
-        'Coconut': 'Coconut',
-        'Peanut': 'Peanut',
-        'Banana': 'Banana',
-    };
+    infoName = nameISP;
 
-    for (isp in data) {
-        if (data.hasOwnProperty(isp)) {
+    for (isp in finaldata) {
+        if (finaldata.hasOwnProperty(isp)) {
             ispVal = 0;
             ispP = {
                 id: 'id_' + ispI,
@@ -1291,8 +1006,8 @@ function generateTreeMap2Chart(data){
                 color: Highcharts.getOptions().colors[ispI]
             };
             sectorI = 0;
-            for (sector in data[isp]) {
-                if (data[isp].hasOwnProperty(sector)) {
+            for (sector in finaldata[isp]) {
+                if (finaldata[isp].hasOwnProperty(sector)) {
                     sectorP = {
                         id: ispP.id + '_' + sectorI,
                         name: sector,
@@ -1300,13 +1015,13 @@ function generateTreeMap2Chart(data){
                     };
                     points.push(sectorP);
                     infoI = 0;
-                    for (info in data[isp][sector]) {
-                        if (data[isp][sector].hasOwnProperty(info)) {
+                    for (info in finaldata[isp][sector]) {
+                        if (finaldata[isp][sector].hasOwnProperty(info)) {
                             infoP = {
                                 id: sectorP.id + '_' + infoI,
                                 name: infoName[info],
                                 parent: sectorP.id,
-                                value: Math.round(+data[isp][sector][info])
+                                value: Math.round(+finaldata[isp][sector][info])
                             };
                             ispVal += infoP.value;
                             points.push(infoP);

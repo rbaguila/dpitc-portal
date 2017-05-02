@@ -33,6 +33,10 @@ LOView.add({
 		type: String, 
 		required: false
 	},
+	country_code:{
+		type: String, 
+		required: false
+	},
 	region: {
 		type: String, 
 		required: false
