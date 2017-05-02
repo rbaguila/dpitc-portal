@@ -11,13 +11,12 @@ exports = module.exports = function (req, res) {
   locals.section = 'courses';
 
   var pageData = {
-    loginRedirect: '/elearning',
+    loginRedirect: '/elearning/course/'+req.params.courseslug,
     breadcrumbs: [
       { text: 'elearning', link: '/elearning' },
-    
+      { text: req.params.courseslug.replace(/-/g, ' '), link: '/elearning/course/'+req.params.courseslug },
     ]
   }
-
 
   locals.data = {
     currCourse: [],
@@ -43,7 +42,6 @@ exports = module.exports = function (req, res) {
     .exec(function(err, result){
       if(result != null){
         locals.data.currCourse = result;
-        pageData.breadcrumbs.push(  { text: locals.data.currCourse.title, link: '/elearning/'+req.params.courseslug } );
       } else {
         return res.status(404).send(keystone.wrapHTMLError('Sorry, Course: '+ req.params.courseslug +' not found! (404)'));
       }

@@ -1,8 +1,5 @@
 extends ../../layouts/elearning
 
-block css
-  link(rel="stylesheet" type="text/css" href="/styles/course.css")
-
 mixin allcourses-grid(courses)
   h2.text-center All Courses
   if courses.results.length
@@ -27,7 +24,7 @@ mixin allcourses-grid(courses)
   ul.pagination.pull-right
     li
       a(href="/elearning/courses?view=grid&page="+courses.previous aria-label="Previous")
-        span(aria-hidden="true")&laquo
+        span(aria-hidden="true") &laquo
     each page in courses.pages
       if page==courses.currentPage
         li.active
@@ -38,7 +35,7 @@ mixin allcourses-grid(courses)
 
     li
       a(href="/elearning/courses?view=grid&page="+courses.next aria-label="Next")
-        span(aria-hidden="true")&raquo
+        span(aria-hidden="true") &raquo
 
 
 mixin allcourses-list(courses)
@@ -70,7 +67,7 @@ mixin allcourses-list(courses)
   ul.pagination.pull-right
     li
       a(href="/elearning/courses?view=list&page="+courses.previous aria-label="Previous")
-        span(aria-hidden="true")&laquo
+        span(aria-hidden="true") &laquo
     each page in courses.pages
       if page==courses.currentPage
         li.active
@@ -81,7 +78,7 @@ mixin allcourses-list(courses)
 
     li
       a(href="/elearning/courses?view=list&page="+courses.next aria-label="Next")
-        span(aria-hidden="true")&raquo
+        span(aria-hidden="true") &raquo
 
 
 

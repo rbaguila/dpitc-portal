@@ -8,16 +8,26 @@ var LearningContent = require('./LearningContent');
  */
 
 var Course = new keystone.List('Course', {
-	inherits: LearningContent
+	inherits: LearningContent,
+  defaultSort: '-publishedAt',
 });
 
 Course.add({
 	outline: {
+    type: Types.Relationship,
+    ref: 'LearningObject',
+    index: true,
+    many: true
+  },
+  /*
+  // Removed Chapter model for a while, seems unnecessary
+  outline: {
 		type: Types.Relationship,
 		ref: 'Chapter',
 		index: true,
 		many: true
-	},
+	},*/
+
 });
 
 Course.schema.virtual('url').get(function(){

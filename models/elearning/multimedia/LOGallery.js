@@ -3,6 +3,7 @@ var Types = keystone.Field.Types;
 
 var LOGallery = new keystone.List('LOGallery', {
 	autokey: { from: 'name', path: 'key', unique: true },
+  defaultSort: '-publishedAt',
 });
 
 LOGallery.add({

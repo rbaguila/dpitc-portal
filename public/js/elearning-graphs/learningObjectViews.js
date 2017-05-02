@@ -13,15 +13,25 @@
 
     d3.json("/api/LOViews/" + currentYearLOView, function(error, json) {
         var tally = {};
-        for(var a=0;a<months.length;a++){
-            tally[months[a]] = 0;
-        }
 
-        for(var i=0;i<json.length;i++){
-            var temp = d3.isoParse(json[i].dateViewed);//change this before deplyoning, use createdAt instead
-            var temp2 = temp.getMonth();
-            var date = months[temp2];
-            tally[date] = (tally[date]||0) + 1;
+        if(json.length==0){
+            for(var i=0;i<12;i++){
+                var date = months[i];
+                tally[date] = 0;
+            }
+
+        }
+        else{
+            for(var a=0;a<months.length;a++){
+                tally[months[a]] = 0;
+            }
+
+            for(var i=0;i<json.length;i++){
+                var temp = d3.isoParse(json[i].dateViewed);//change this before deplyoning, use createdAt instead
+                var temp2 = temp.getMonth();
+                var date = months[temp2];
+                tally[date] = (tally[date]||0) + 1;
+            }
         }
         var viewdata = [];
 

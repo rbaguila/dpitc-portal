@@ -8,11 +8,18 @@ var LearningContent = require('./LearningContent');
  */
 
 var LearningObject = new keystone.List('LearningObject', {
+  defaultSort: '-publishedAt',
   inherits: LearningContent
 });
 
 LearningObject.add({
-  
+  author: { // Not the admin but the actual author of the content
+    type: Types.Relationship,
+    ref: 'Author',
+    many: true,
+    required: false,
+    default: null  
+  },
 }, 'Category', {
   isp: { 
     type: Types.Relationship, 
@@ -59,7 +66,7 @@ LearningObject.add({
   },
   files: {
     type: Types.Relationship,
-    ref: 'FileUpload',
+    ref: 'LOFileUpload',
     many: true
   }
 }, 'Reaction', {
@@ -89,7 +96,11 @@ LearningObject.add({
   },  
 } );
 
-LearningObject.relationship({ ref: 'Chapter', refPath: 'outline' });
+
+/*
+// Removed Chapter model for a while, seems unnecessary
+LearningObject.relationship({ ref: 'Chapter', refPath: 'outline' });*/
+LearningObject.relationship({ ref: 'Course', refPath: 'outline' });
 LearningObject.relationship({ ref: 'User', refPath: 'learningObjectsTaken' });
 
 LearningObject.schema.virtual('content.full').get(function () {

@@ -1,0 +1,56 @@
+extends ../../layouts/elearning-analytics
+
+block css
+  link(rel="stylesheet" type="text/css" href="/styles/analytics.css")
+
+block content
+  .analytics-body
+    .row
+      .col-md-3.col-sm-4.dashboard
+        .sidebar-nav
+          .navbar.navbar-default(role='navigation')
+            .navbar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='.sidebar-navbar-collapse')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              span.visible-xs.navbar-brand Menu
+            .navbar-collapse.collapse.sidebar-navbar-collapse
+              ul.nav.navbar-nav
+                li
+                  a(href='/elearning/analytics') Dashboard
+                li
+                  a(href='/elearning/analytics/learning-objects/allindustries') Analytics of Learning Objects
+                li.active
+                  a(href='/elearning/analytics/users') Analytics of Users
+                li
+                  a(href='/elearning/analytics/recommendedViews') Analytics of Recommended Learning Objects
+      .col-md-9.col-sm-4.dashboard.white-bg
+        .table-responsive
+          table.table.table-hover
+            tr
+              th Name
+              th Email
+              th Analytics
+            each user in data.users.results
+              tr
+                td #{user.name.first} #{user.name.last}
+                td= user.email
+                td
+                  a.btn.btn-info(href="/elearning/analytics/users/" + user._id + "?id=" + user._id, role="button") SEE ANALYTICS
+        ul.pagination.pull-right
+          li
+            a(href="/elearning/analytics/users" + "?page="+data.users.previous aria-label="Previous")
+              span(aria-hidden="true")&laquo
+          each page in data.users.pages
+            if page==data.users.currentPage
+              li.active
+                a(href="/elearning/analytics/users" + "?page="+page)= page
+            else
+              li
+                a(href="/elearning/analytics/users" + "?page="+page)= page
+
+          li
+            a(href="/elearning/analytics/users" + "?page="+data.users.next aria-label="Next")
+              span(aria-hidden="true")&raquo

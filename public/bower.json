@@ -1,0 +1,14 @@
+{
+  "name": "pcaarrd-dpitc",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "highcharts": "^5.0.10"
+  }
+}
