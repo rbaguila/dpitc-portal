@@ -50,11 +50,11 @@ exports = module.exports = function (app) {
 	// User
 	app.get('/signup?', routes.views.signup);
 	app.post('/signup?', routes.views.signup);
-	app.get('/profile?', routes.views.profile);
-	app.post('/profile?', routes.views.profile);
+	app.get('/profile?', middleware.requireUser, routes.views.profile);
+	app.post('/profile?', middleware.requireUser, routes.views.profile);
 
 	// User-Elearning Routes
-	app.get('/profile/elearning/user-activity?', routes.elearningViews.userActivity);
+	app.get('/profile/elearning/user-activity?', middleware.requireUser, routes.elearningViews.userActivity);
 
 	// Elearning Routes
 	app.get('/elearning', routes.elearningViews.elearning);

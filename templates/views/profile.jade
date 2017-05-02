@@ -1,5 +1,9 @@
 extends ../layouts/elearning
 
+//- block css
+  link(rel="stylesheet" type="text/css" href="/styles/analytics.css")
+
+
 block js
   | $('.collapse').collapse()
 
@@ -78,15 +82,40 @@ block editProfile
           input(id='photo_image_cache', name='image_cache', type='hidden')
         button(type='submit', value='Submit Photo').btn.btn-link
 
+block sidenavigation
+  .panel-group(id='accordion', role='tablist', aria-multiselectable='true')
+    .panel.panel-default
+      .panel-heading(role='tab', id='headingProfile')
+        h4.panel-title
+          a(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseProfile', aria-expanded='true', aria-controls='collapseProfile') Profile
+      .panel-collapse.collapse.in(id='collapseProfile', role='tabpanel', aria-labelledby='headingProfile')
+        .list-group
+          li.list-group-item
+            a(href='/profile') View Profile
+
+    .panel.panel-default
+      .panel-heading(role='tab', id='headingUserActivity')
+        h4.panel-title
+          a(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseUserActivity', aria-expanded='true', aria-controls='collapseUserActivity') Elearning User Activity
+      .panel-collapse.collapse(id='collapseUserActivity', role='tabpanel', aria-labelledby='headingUserActivity')
+        .list-group
+          li.list-group-item
+            a(href='/profile/elearning/user-activity?nav=views') Viewed Lessons
+          li.list-group-item
+            a(href='/profile/elearning/user-activity?nav=likes') Liked Lessons
+          li.list-group-item
+            a(href='/profile/elearning/user-activity?nav=happy') Lessons with Happy Reacts
+          li.list-group-item
+            a(href='/profile/elearning/user-activity?nav=sad') Lessons with Sad Reacts 
+
 block content
-  .user-form
-    .container
-      .row
-        .col-xs-12.col-md-6.col-md-offset-3
-          .panel.panel-default
-            .panel-body
-              if user
-                block editProfile
-              else
-                a(href='/keystone/signin') Please log-in to view profile
-              
+  .row
+    .col-md-3.col-sm-4.dashboard
+      block sidenavigation        
+    .col-md-7.col-sm-4.dashboard
+      .panel.panel-default.col-md-offset-3
+        .panel-heading
+          | Profile
+        .panel-body
+          block editProfile
+
