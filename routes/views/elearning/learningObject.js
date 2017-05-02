@@ -382,7 +382,7 @@ exports = module.exports = function (req, res) {
         res.setEncoding('utf8');    
         res.on('data', function (chunk) {   
             var obj = JSON.parse(chunk);
-            console.log(obj.ip);
+            //console.log(obj.ip);
             if(currentUser){
               if(req.query.type==undefined){
                 LOView.model.count({

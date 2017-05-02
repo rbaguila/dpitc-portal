@@ -47,7 +47,7 @@ exports = module.exports = function(req, res) {
 							}
 							region_city.push(obj);
 							if(counter==results.length){
-								console.log(region_city);
+								//console.log(region_city);
 								res.send(region_city);
 							}
 						}
