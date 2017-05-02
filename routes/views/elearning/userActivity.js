@@ -11,9 +11,10 @@ exports = module.exports = function (req, res) {
   var locals = res.locals;
   
   locals.section = 'userActivity';
+  locals.nav = locals.nav ? 'views' : locals.nav;
 
   var pageData = {
-    loginRedirect: '/elearning/'+locals.user._id+'/user-activity', 
+    loginRedirect: '/elearning/user-activity?', 
     breadcrumbs: [
       { text: 'elearning', link: '/elearning' },
       { text: 'user activity', link: '/elearning/user-activity?'}

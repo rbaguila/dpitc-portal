@@ -67,6 +67,7 @@ body {
   /*margin-top: 85px;*/
   /*130 to accomodate main header (logo + links) and blue community header*/
   margin-top: 100px;
+  margin-bottom: 80px;
 }
 .analytics-body {
   /*margin-top: 85px;*/
@@ -74,6 +75,15 @@ body {
   padding-top: 70px;
   background-color:#e7e7e7;
 }
+
+.admin-body {
+  /*margin-top: 85px;*/
+  /*130 to accomodate main header (logo + links) and blue community header*/
+  padding-top: 70px;
+  background-color:#e7e7e7;
+}
+
+
 
 #elearning-nav {
   margin-top: 85px;
@@ -125,4 +135,37 @@ body {
   /*margin-top: 85px;*/
   /*130 to accomodate main header (logo + links) and blue community header*/
   margin-top: 60px;
+}
+
+.elearning-page-header {
+  margin: 10px 0 20px 0px;
+  border-bottom: 1px solid #eee;
+}
+
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus{
+  background-color:  #3062B7;
+  color: white;
+}
+
+.dashboard{
+  border-left: 1px solid gray;
 }

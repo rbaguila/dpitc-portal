@@ -81,20 +81,53 @@ mixin liked(likedLO)
       a(href="/profile/elearning/user-activity?likePage="+likedLO.next aria-label="Next")
         span(aria-hidden="true") &raquo
 
+block sidenavigation
+  .panel-group(id='accordion', role='tablist', aria-multiselectable='true')
+    .panel.panel-default
+      .panel-heading(role='tab', id='headingProfile')
+        h4.panel-title
+          a(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseProfile', aria-expanded='true', aria-controls='collapseProfile') Profile
+      .panel-collapse.collapse(id='collapseProfile', role='tabpanel', aria-labelledby='headingProfile')
+        .list-group
+          li.list-group-item
+            a(href='/profile') View Profile
+
+    .panel.panel-default
+      .panel-heading(role='tab', id='headingUserActivity')
+        h4.panel-title
+          a(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseUserActivity', aria-expanded='true', aria-controls='collapseUserActivity') Elearning User Activity
+      .panel-collapse.collapse.in(id='collapseUserActivity', role='tabpanel', aria-labelledby='headingUserActivity')
+        .list-group
+          li.list-group-item
+            a(href='/profile/elearning/user-activity?nav=views') Viewed Lessons
+          li.list-group-item
+            a(href='/profile/elearning/user-activity?nav=likes') Liked Lessons
+          li.list-group-item
+            a(href='/profile/elearning/user-activity?nav=happy') Lessons with Happy Reacts
+          li.list-group-item
+            a(href='/profile/elearning/user-activity?nav=sad') Lessons with Sad Reacts 
+
 block content
-  .container
-    .row
+  .row
+    .col-md-3.col-sm-4.dashboard
+      block sidenavigation        
+    .col-md-9.col-sm-4.dashboard
       if user
-        h2 #{user.name.full}'s Elearning Activity
-        .col-xs-12.col-md-6
-          .panel.panel-info
-            .panel-heading Views
-            .panel-body
-              +loTaken(user.loviews)
-        .col-xs-12.col-md-6
+        .elearning-page-header
+          h3 #{user.name.full}'s Elearning Activity
+        .col-xs-12.col-md-10.col-md-offset-1
+          if nav == 'views'
+            .panel.panel-info
+              .panel-heading Views
+              .panel-body
+                +loTaken(user.loviews)
+                
+        //- .col-xs-12.col-md-6
           .panel.panel-info
             .panel-heading Likes
             .panel-body
               +liked(user.likedLO)
       else
         a(href='/keystone/signin') Please log-in to view User Activity
+
+
