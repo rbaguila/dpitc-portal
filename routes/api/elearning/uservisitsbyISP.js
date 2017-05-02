@@ -33,9 +33,6 @@ exports = module.exports = function(req, res) {
 							if(count>0){
 								var obj2 = {};
 								obj2['Views'] = count.toString();
-								var obj = {};
-								//obj[isp.name] = obj2;
-								//console.log(obj);
 								if(data[isp.sector.name]==undefined){
 									data[isp.sector.name] = {};
 								}

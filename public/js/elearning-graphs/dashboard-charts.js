@@ -929,10 +929,10 @@ function generateTreeMapChart(data){
             data: points
         }],
         subtitle: {
-            text: 'Click the sector to see the number of views per ISP'
+            text: 'Click the sector to see the number of views per topic'
         },
         title: {
-            text: 'Popular Sector and ISP'
+            text: 'Popular Topic by Sector'
         }
     });
 }
@@ -1174,170 +1174,177 @@ function generateComboReactionChart(data){
 });*/
 
 $(function () {
-
-    //TO DO, change this to region para mas madali :(
-    // Instanciate the map
-    var corn = ['Abra', 'Agusan del Norte', 'Agusan del Sur', 'Aklan', 'Albay', 'Antique', 'Apayao', 'Aurora', 'Basilan', 'Bataan', 'Batanes', 'Batangas', 'Benguet', 'Biliran', 'Bohol', 'Bukidnon', 'Bulacan', 'Cagayan', 'Camarines Norte', 'Camarines Sur', 'Camiguin'];
-    var banana = ['Capiz', 'Catanduanes', 'Cavite', 'Cebu', 'Compostela Valley', 'Cotabato', 'Davao del Norte', 'Davao del Sur', 'Davao Oriental',  'Dinagat Islands', 'Eastern Samar', 'Guimaras', 'Ifugao', 'Ilocos Norte', 'Ilocos Sur', 'Iloilo', 'Isabela', 'Kalinga', 'La Union', 'Laguna', 'Lanao del Norte'];
-    var rice = ['Pasay', 'Lanao del Sur', 'Leyte', 'Maguindanao', 'Marinduque', 'Masbate', 'Metro Manila', 'Misamis Occidental'];
-    var coconut = ['Rizal', 'Romblon', 'Samar'];
-
-    var provinces = [
-      'Manila',
-      'Abra',
-      'Apayao',
-      'Benguet',
-      'Ifugao',
-      'Kalinga',
-      'Mountain Province',
-      'Ilocos Norte',
-      'Ilocos Sur',
-      'La Union',
-      'Pangasinan',
-      'Batanes',
-      'Cagayan',
-      'Isabela',
-      'Nueva Vizcaya',
-      'Quirino',
-      'Aurora',
-      'Bataan',
-      'Bulacan',
-      'Nueva Ecija',
-      'Pampanga',
-      'Tarlac',
-      'Zambales',
-      'Batangas',
-      'Cavite',
-      'Laguna',
-      'Quezon',
-      'Rizal',
-      'Marinduque' ,
-      'Mindoro Occidental',
-      'Mindoro Oriental',
-      'Palawan',
-      'Romblon',
-      'Albay',
-      'Camarines Norte',
-      'Camarines Sur',
-      'Catanduanes',
-      'Masbate',
-      'Sorsogon',
-      'Aklan',
-      'Antique',
-      'Capiz',
-      'Guimaras',
-      'Iloilo',
-      'Negros Occidental',
-      'Bohol',
-      'Cebu',
-      'Negros Oriental',
-      'Siquijor',
-      'Biliran' ,
-      'Eastern Samar' ,
-      'Leyte',
-      'Northern Samar' ,
-      'Samar',
-      'Southern Leyte' ,
-      'Zamboanga del Norte',
-      'Zamboanga del Sur',
-      'Zamboanga Sibugay',
-      'Bukidnon',
-      'Camiguin',
-      'Lanao del Norte',
-      'Misamis Occidental',
-      'Misamis Oriental',
-      'Compostela Valley',
-      'Davao del Norte',
-      'Davao del Sur',
-      'Davao Occidental',
-      'Davao Oriental',
-      'Cotabato',
-      'Sarangani',
-      'South Cotabato',
-      'Sultan Kudarat',
-      'Agusan del Norte',
-      'Agusan del Sur',
-      'Dinagat Islands',
-      'Surigao del Norte',
-      'Surigao del Sur',
-      'Basilan',
-      'Lanao del Sur' ,
-      'Maguindanao',
-      'Sulu',
-      'Tawi-tawi'
-    ];
-
-    var left = [];
-
-    for(var i=0;i<provinces.length;i++){
-        if(corn.indexOf(provinces[i])==-1&&banana.indexOf(provinces[i])==-1&&rice.indexOf(provinces[i])==-1&&coconut.indexOf(provinces[i])==-1){
-            left.push(provinces[i]);
+    $.ajax({
+        method: 'GET',
+        url: '/elearning/api/uservisitsbyRegion',
+        success: function (data) {
+            //console.log(data);
+            //generateTreeMap2Chart(data);
         }
-    }
-
-    Highcharts.mapChart('popularperregion', {
-        chart: {
-            spacingBottom: 20
-        },
-        title: {
-            text: 'Popular ISP per Province and Region'
-        },
-
-        legend: {
-            enabled: true
-        },
-
-        plotOptions: {
-            map: {
-                allAreas: false,
-                joinBy: ['name', 'code'],
-                dataLabels: {
-                    enabled: true,
-                    color: '#FFFFFF',
-                    formatter: function () {
-                        if (this.point.properties && this.point.properties.labelrank.toString() < 5) {
-                            return this.point.properties['name'];
-                        }
-                    },
-                    format: null,
-                    style: {
-                        fontWeight: 'bold'
-                    }
-                },
-                mapData: Highcharts.maps['countries/ph/ph-all'],
-                tooltip: {
-                    headerFormat: '',
-                    pointFormat: '{point.name}: <b>{series.name}</b>'
-                }
-
+    });
+    var data = {
+        'National Capital Region': {
+            'Metro Manila': {
+                'Corn': '22'
+            },
+            'Caloocan': {
+                'Banana': '32'
+            },
+            'Makati': {
+                'Coconut': '44'
+            },
+            'Marikina': {
+                'Peanut': '55'
+            },
+            'Pasig': {
+                'Rice': '11'
             }
         },
+        'Cordillera Administrative Region (CAR)': {
+            'Ifugao': {
+                'Rice': '87'
+            },
+            'Kalinga': {
+                'Coconut': '76'
+            },
+            'Mountain Province': {
+                'Corn': '23'
+            },
+            'Baguio': {
+                'Corn': '23'
+            }
+        },
+        'CALABARZON': {
+            'Cavite': {
+                'Rice': '122'
+            },
+            'Laguna': {
+                'Coconut': '24'
+            },
+            'Batangas': {
+                'Corn': '68'
+            },
+            'Rizal': {
+                'Rice': '356'
+            },
+            'Quezon': {
+                'Coconut': '98'
+            }
+        },
+        'SOCCSKSARGEN': {
+            'Cotabato': {
+                'Rice': '122'
+            },
+            'Sarangani': {
+                'Coconut': '24'
+            },
+            'South Cotabato': {
+                'Corn': '68'
+            },
+            'Sultan Kudarat': {
+                'Rice': '356'
+            },
+            'General Santos': {
+                'Coconut': '98'
+            }
+        },
+        'Central Luzon': {
+            'Aurora': {
+                'Rice': '123'
+            },
+            'Bataan': {
+                'Coconut': '12'
+            }
+        }
 
-        series: [{
-            name: 'Corn',
-            data: $.map(corn, function (code) {
-                return { code: code };
-            })
-        }, {
-            name: 'Banana',
-            data: $.map(banana, function (code) {
-                return { code: code };
-            })
-        }, {
-            name: 'Rice',
-            data: $.map(rice, function (code) {
-                return { code: code };
-            })
-        }, {
-            name: 'Coconut',
-            data: $.map(coconut, function (code) {
-                return { code: code };
-            })
-        }, {
-            name: 'None',
-            data: $.map(left, function (code) {
-                return { code: code };
-            })
-        }]
-    });
+    };
+    generateTreeMap2Chart(data);
+
 });
+
+function generateTreeMap2Chart(data){
+    var points = [],
+    ispP,
+    ispVal,
+    ispI = 0,
+    sectorP,
+    sectorI,
+    infoP,
+    infoI,
+    isp,
+    sector,
+    info,
+    infoName = {
+        'Corn': 'Corn',
+        'Rice': 'Rice',
+        'Coconut': 'Coconut',
+        'Peanut': 'Peanut',
+        'Banana': 'Banana',
+    };
+
+    for (isp in data) {
+        if (data.hasOwnProperty(isp)) {
+            ispVal = 0;
+            ispP = {
+                id: 'id_' + ispI,
+                name: isp,
+                color: Highcharts.getOptions().colors[ispI]
+            };
+            sectorI = 0;
+            for (sector in data[isp]) {
+                if (data[isp].hasOwnProperty(sector)) {
+                    sectorP = {
+                        id: ispP.id + '_' + sectorI,
+                        name: sector,
+                        parent: ispP.id
+                    };
+                    points.push(sectorP);
+                    infoI = 0;
+                    for (info in data[isp][sector]) {
+                        if (data[isp][sector].hasOwnProperty(info)) {
+                            infoP = {
+                                id: sectorP.id + '_' + infoI,
+                                name: infoName[info],
+                                parent: sectorP.id,
+                                value: Math.round(+data[isp][sector][info])
+                            };
+                            ispVal += infoP.value;
+                            points.push(infoP);
+                            infoI = infoI + 1;
+                        }
+                    }
+                    sectorI = sectorI + 1;
+                }
+            }
+            ispP.value = Math.round(ispVal / sectorI);
+            points.push(ispP);
+            ispI = ispI + 1;
+        }
+    }
+    Highcharts.chart('popularperregion', {
+        series: [{
+            type: 'treemap',
+            layoutAlgorithm: 'strip',
+            allowDrillToNode: true,
+            animationLimit: 1000,
+            dataLabels: {
+                enabled: false
+            },
+            levelIsConstant: false,
+            levels: [{
+                level: 1,
+                dataLabels: {
+                    enabled: true
+                },
+                borderWidth: 3
+            }],
+            data: points
+        }],
+        subtitle: {
+            text: 'Click the region to see the number of views per topic'
+        },
+        title: {
+            text: 'Popular Topic by Region'
+        }
+    });
+}

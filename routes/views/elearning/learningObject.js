@@ -39,7 +39,8 @@ exports = module.exports = function (req, res) {
     learningObjectsTaken: [],
     likedLO: [],
     happyLO: [],
-    sadLO: []
+    sadLO: [],
+    usersip: []
   };
 
   locals.formData = req.body || {};
@@ -344,11 +345,27 @@ exports = module.exports = function (req, res) {
   });
 
   // Insert LOView
-  //TO DO, check if nirefresh lang
   view.on('init', function(next){
+
+    //check if the user viewed the Learning Object for 1 session (2 hrs threshold)
+    Date.prototype.addHours = function(h) {    
+      this.setTime(this.getTime() + (h*60*60*1000)); 
+      return this;   
+    }
+    Date.prototype.subtractHours = function(h) {    
+      this.setTime(this.getTime() - (h*60*60*1000)); 
+      return this;   
+    }
+    var start = new Date().subtractHours(1);
+    var end = new Date().addHours(1);
+    var currentUser = locals.user;
     //var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
     //console.log(ip);
-    var ip = '121.54.32.169';
+    //var ip = '121.54.32.169';
+    //ip = '180.191.131.83';
+    var ip = req.ips;
+    ip
+    //console.log(req.ips);
     /*freegeoip.getLocation(ip, function(err, location) {
         console.log(location);
     });*/
@@ -364,78 +381,62 @@ exports = module.exports = function (req, res) {
         //console.log('HEADERS: ' + JSON.stringify(res.headers));    
         res.setEncoding('utf8');    
         res.on('data', function (chunk) {   
-            console.log(chunk);
+            var obj = JSON.parse(chunk);
+            console.log(obj.ip);
+            if(currentUser){
+              if(req.query.type==undefined){
+                LOView.model.count({
+                  learningObject: locals.currentLO._id,
+                  user: currentUser._id,
+                  dateViewed: { $gte: start, $lt: end },
+                })
+                .exec(function(err, count){
+                  if(err){
+                    next(err)
+                  }
+                    if(count==0){
+                      var newView = new LOView.model({
+                        user: currentUser._id,
+                        learningObject: locals.data.currLO._id
+                      });
+                      newView.save(function(err) {
+                        
+                      });
+                    }
+                });
+              }
+              else{
+                LOView.model.count({
+                  learningObject: locals.currentLO._id,
+                  user: currentUser._id,
+                  dateViewed: { $gte: start, $lt: end },
+                })
+                .exec(function(err, count){
+                  if(err){
+                    next(err)
+                  }
+                    if(count==0){
+                      var newView = new LOView.model({
+                        user: currentUser._id,
+                        learningObject: locals.data.currLO._id,
+                        typeOfView: 'recommended'
+                      });
+                      newView.save(function(err) {
+                      });
+                    }
+                });
+              }
+            }
+            else{
+
+            }
         });    
     });
-
-    // write data to request body
 
     reqData.write('data\n');
     reqData.write('data\n');
     reqData.end();
-
-
-    var currentUser = locals.user;
-    if(currentUser){
-      //check if the user viewed the Learning Object for 1 session (2 hrs threshold)
-      Date.prototype.addHours = function(h) {    
-        this.setTime(this.getTime() + (h*60*60*1000)); 
-        return this;   
-      }
-      Date.prototype.subtractHours = function(h) {    
-        this.setTime(this.getTime() - (h*60*60*1000)); 
-        return this;   
-      }
-      var start = new Date().subtractHours(1);
-      var end = new Date().addHours(1);
-      if(req.query.type==undefined){
-        LOView.model.count({
-          learningObject: locals.currentLO._id,
-          user: currentUser._id,
-          dateViewed: { $gte: start, $lt: end },
-        })
-        .exec(function(err, count){
-          if(err){
-            next(err)
-          }
-            if(count==0){
-              var newView = new LOView.model({
-                user: currentUser._id,
-                learningObject: locals.data.currLO._id
-              });
-              newView.save(function(err) {
-              });
-            }
-            next();
-        });
-      }
-      else{
-        LOView.model.count({
-          learningObject: locals.currentLO._id,
-          user: currentUser._id,
-          dateViewed: { $gte: start, $lt: end },
-        })
-        .exec(function(err, count){
-          if(err){
-            next(err)
-          }
-            if(count==0){
-              var newView = new LOView.model({
-                user: currentUser._id,
-                learningObject: locals.data.currLO._id,
-                typeOfView: 'recommended'
-              });
-              newView.save(function(err) {
-                
-              });
-            }
-            next();
-        });
-      }
-    }
-    else{
-      next();
-    }
+    next();
   });
 
   // TODO

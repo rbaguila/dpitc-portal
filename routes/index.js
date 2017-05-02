@@ -126,6 +126,7 @@ exports = module.exports = function (app) {
 	app.get('/elearning/api/uservisits', routes.api.elearning.uservisits);
 	app.get('/elearning/api/uservisitsbyISP', routes.api.elearning.uservisitsbyISP);
 	app.get('/elearning/api/reactionsbysector', routes.api.elearning.reactionsbysector);
+	app.get('/elearning/api/uservisitsbyRegion', routes.api.elearning.uservisitsbyRegion);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

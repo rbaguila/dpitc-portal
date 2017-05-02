@@ -2227,412 +2227,576 @@ exports.create = {
     { 
       'user': 'Angelica', 
       'learningObject': 'aquafeeds-lo',
-      'dateViewed': '2017-01-12'
+      'dateViewed': '2017-01-12',
+      'region': 'CALABARZON',
+      'city': 'Rizal'
     },
     { 
       'user': 'Amber', 
       'learningObject': 'pineapple-lo',
-      'dateViewed': '2017-01-28'
+      'dateViewed': '2017-01-28',
+      'region': 'CALABARZON',
+      'city': 'Cavite'
     },
     { 
       'user': 'Sally', 
       'learningObject': 'pineapple-lo',
-      'dateViewed': '2017-01-28'
+      'dateViewed': '2017-01-28',
+      'region': 'Northern Mindanao',
+      'city': 'Bukidnon'
     },
     { 
       'user': 'Tim', 
       'learningObject': 'pineapple-lo',
-      'dateViewed': '2017-01-28'
+      'dateViewed': '2017-01-28',
+      'region': 'Western Visayas',
+      'city': 'Aklan'
     },
     { 
       'user': 'Uvin', 
       'learningObject': 'pineapple-lo',
-      'dateViewed': '2017-01-28'
+      'dateViewed': '2017-01-28',
+      'region': 'Western Visayas',
+      'city': 'Antique'
     },
     { 
       'user': 'Albert', 
       'learningObject': 'papaya-lo',
-      'dateViewed': '2017-01-18'
+      'dateViewed': '2017-01-18',
+      'region': 'Western Visayas',
+      'city': 'Capiz'
     },
     { 
       'user': 'Bryan', 
       'learningObject': 'citrus-lo',
-      'dateViewed': '2017-01-10'
+      'dateViewed': '2017-01-10',
+      'region': 'Western Visayas',
+      'city': 'Guimaras'
     },
     { 
       'user': 'Cena', 
       'learningObject': 'jackfruit-lo',
-      'dateViewed': '2017-02-09'
+      'dateViewed': '2017-02-09',
+      'region': 'CALABARZON',
+      'city': 'Laguna'
     },
     { 
       'user': 'Daniel', 
       'learningObject': 'durian-lo',
-      'dateViewed': '2017-02-26'
+      'dateViewed': '2017-02-26',
+      'region': 'CALABARZON',
+      'city': 'Batangas'
     },
     { 
       'user': 'Ellen', 
       'learningObject': 'whitepotato-lo',
-      'dateViewed': '2017-02-07'
+      'dateViewed': '2017-02-07',
+      'region': 'CALABARZON',
+      'city': 'Quezon'
     },
     { 
       'user': 'Ferdinand', 
       'learningObject': 'sweetpotato-lo',
-      'dateViewed': '2017-03-01'
+      'dateViewed': '2017-03-01',
+      'region': 'CALABARZON',
+      'city': 'Lucena'
     },
     { 
       'user': 'Victoria', 
       'learningObject': 'sweetpotato-lo',
-      'dateViewed': '2017-03-01'
+      'dateViewed': '2017-03-01',
+      'region': 'Central Luzon',
+      'city': 'Aurora'
     },
     { 
       'user': 'Vince', 
       'learningObject': 'sweetpotato-lo',
-      'dateViewed': '2017-03-01'
+      'dateViewed': '2017-03-01',
+      'region': 'Central Luzon',
+      'city': 'Bataan'
     },
     { 
       'user': 'Gerald', 
       'learningObject': 'peanut-lo',
-      'dateViewed': '2017-03-11'
+      'dateViewed': '2017-03-11',
+      'region': 'MIMAROPA',
+      'city': 'Marinduque'
     },
     { 
       'user': 'Gary', 
       'learningObject': 'mungbean-lo',
-      'dateViewed': '2017-02-09'
+      'dateViewed': '2017-02-09',
+      'region': 'MIMAROPA',
+      'city': 'Occidental Mindoro'
     },
     { 
       'user': 'Henry', 
       'learningObject': 'stagescorn-lo',
-      'dateViewed': '2017-02-16'
+      'dateViewed': '2017-02-16',
+      'region': 'MIMAROPA',
+      'city': 'Oriental Mindoro'
     },
     { 
       'user': 'Harold', 
       'learningObject': 'soilfertilization-lo',
-      'dateViewed': '2017-02-19'
+      'dateViewed': '2017-02-19',
+      'region': 'MIMAROPA',
+      'city': 'Palawan'
     },
     { 
       'user': 'Irish', 
       'learningObject': 'landpreparation-lo',
-      'dateViewed': '2017-02-20'
+      'dateViewed': '2017-02-20',
+      'region': 'Bicol',
+      'city': 'Albay'
     },
     { 
       'user': 'Juan', 
       'learningObject': 'biotechbtcorn-lo',
-      'dateViewed': '2017-02-21'
+      'dateViewed': '2017-02-21',
+      'region': 'Bicol',
+      'city': 'Camarines Norte'
     },
     { 
       'user': 'John', 
       'learningObject': 'feedingprogram-lo',
-      'dateViewed': '2017-02-22'
+      'dateViewed': '2017-02-22',
+      'region': 'Bicol',
+      'city': 'Camarines Sur'
     },
     { 
       'user': 'Jane', 
       'learningObject': 'grainquality-lo',
-      'dateViewed': '2017-03-25'
+      'dateViewed': '2017-03-25',
+      'region': 'National Capital Region',
+      'city': 'Caloocan'
     },
     { 
       'user': 'Wilson', 
       'learningObject': 'grainquality-lo',
-      'dateViewed': '2017-03-25'
+      'dateViewed': '2017-03-25',
+      'region': 'National Capital Region',
+      'city': 'Makati'
     },
     { 
       'user': 'Yvette', 
       'learningObject': 'grainquality-lo',
-      'dateViewed': '2017-03-25'
+      'dateViewed': '2017-03-25',
+      'region': 'National Capital Region',
+      'city': 'Malabon'
     },
     { 
       'user': 'Xyrus', 
       'learningObject': 'grainquality-lo',
-      'dateViewed': '2017-03-25'
+      'dateViewed': '2017-03-25',
+      'region': 'National Capital Region',
+      'city': 'Mandaluyong'
     },
     { 
       'user': 'Justin', 
       'learningObject': 'sugarcane-lo',
-      'dateViewed': '2017-03-26'
+      'dateViewed': '2017-03-26',
+      'region': 'National Capital Region',
+      'city': 'Manila'
     },
     { 
       'user': 'Joon', 
       'learningObject': 'plantingrice-lo',
-      'dateViewed': '2017-03-20'
+      'dateViewed': '2017-03-20',
+      'region': 'National Capital Region',
+      'city': 'Marikina'
     },
     { 
       'user': 'Jeff', 
       'learningObject': 'plantingmango-lo',
-      'dateViewed': '2017-03-23'
+      'dateViewed': '2017-03-23',
+      'region': 'National Capital Region',
+      'city': 'Muntinlupa'
     },
     { 
       'user': 'Kris', 
       'learningObject': 'plantingcoffee-lo',
-      'dateViewed': '2017-03-23'
+      'dateViewed': '2017-03-23',
+      'region': 'National Capital Region',
+      'city': 'Navotas'
     },
     { 
       'user': 'Karl', 
       'learningObject': 'plantingcoconut-lo',
-      'dateViewed': '2017-03-24'
+      'dateViewed': '2017-03-24',
+      'region': 'Cordillera Administrative Region',
+      'city': 'Ifugao'
     },
     { 
       'user': 'Krystal', 
       'learningObject': 'plantingbanana-lo',
-      'dateViewed': '2017-03-28'
+      'dateViewed': '2017-03-28',
+      'region': 'Cordillera Administrative Region',
+      'city': 'Kalinga'
     },
     { 
       'user': 'Zend', 
       'learningObject': 'plantingbanana-lo',
-      'dateViewed': '2017-03-28'
+      'dateViewed': '2017-03-28',
+      'region': 'Cordillera Administrative Region',
+      'city': 'Mountain Province'
     },
     { 
       'user': 'Luhan', 
       'learningObject': 'plantingabaca-lo',
-      'dateViewed': '2017-03-22'
+      'dateViewed': '2017-03-22',
+      'region': 'Cordillera Administrative Region',
+      'city': 'Baguio'
     },
     { 
       'user': 'Logan', 
       'learningObject': 'pineapple-lo',
-      'dateViewed': '2017-04-17'
+      'dateViewed': '2017-04-17',
+      'region': 'National Capital Region',
+      'city': 'Pasay'
     },
     { 
       'user': 'Manuel', 
       'learningObject': 'aquafeeds-lo',
-      'dateViewed': '2017-04-16'
+      'dateViewed': '2017-04-16',
+      'region': 'National Capital Region',
+      'city': 'Pasig'
     },
     { 
       'user': 'Natalie', 
       'learningObject': 'papaya-lo',
-      'dateViewed': '2017-04-17'
+      'dateViewed': '2017-04-17',
+      'region': 'SOCCSKSARGEN',
+      'city': 'Cotabato'
     },
     { 
       'user': 'Oliver', 
       'learningObject': 'citrus-lo',
-      'dateViewed': '2017-04-04'
+      'dateViewed': '2017-04-04',
+      'region': 'SOCCSKSARGEN',
+      'city': 'Sarangani'
     },
     { 
       'user': 'Patricia', 
       'learningObject': 'jackfruit-lo',
-      'dateViewed': '2017-04-05'
+      'dateViewed': '2017-04-05',
+      'region': 'SOCCSKSARGEN',
+      'city': 'South Cotabato'
     },
     { 
       'user': 'Queen', 
       'learningObject': 'whitepotato-lo',
-      'dateViewed': '2017-04-04'
+      'dateViewed': '2017-04-04',
+      'region': 'SOCCSKSARGEN',
+      'city': 'Sultan Kudarat'
     },
     { 
       'user': 'Rona', 
       'learningObject': 'durian-lo',
-      'dateViewed': '2017-04-03'
+      'dateViewed': '2017-04-03',
+      'region': 'SOCCSKSARGEN',
+      'city': 'General Santos'
     },
     { 
       'user': 'Cena', 
       'learningObject': 'durian-lo',
-      'dateViewed': '2017-04-03'
+      'dateViewed': '2017-04-03',
+      'region': 'CALABARZON',
+      'city': 'Dasmarinas'
     },
     { 
       'user': 'Albert', 
       'learningObject': 'durian-lo',
-      'dateViewed': '2017-04-03'
+      'dateViewed': '2017-04-03',
+      'region': 'CALABARZON',
+      'city': 'Batangas'
     },
     { 
       'user': 'Angelica', 
       'learningObject': 'aquafeeds-lo',
-      'dateViewed': '2017-01-12'
+      'dateViewed': '2017-01-12',
+      'region': 'CALABARZON',
+      'city': 'Rizal'
     },
     { 
       'user': 'Amber', 
       'learningObject': 'pineapple-lo',
-      'dateViewed': '2017-01-28'
+      'dateViewed': '2017-01-28',
+      'region': 'CALABARZON',
+      'city': 'Cavite'
     },
     { 
       'user': 'Sally', 
       'learningObject': 'pineapple-lo',
-      'dateViewed': '2017-01-28'
+      'dateViewed': '2017-01-28',
+      'region': 'Northern Mindanao',
+      'city': 'Bukidnon'
     },
     { 
       'user': 'Tim', 
       'learningObject': 'pineapple-lo',
-      'dateViewed': '2017-01-28'
+      'dateViewed': '2017-01-28',
+      'region': 'Western Visayas',
+      'city': 'Aklan'
     },
     { 
       'user': 'Uvin', 
       'learningObject': 'pineapple-lo',
-      'dateViewed': '2017-01-28'
+      'dateViewed': '2017-01-28',
+      'region': 'Western Visayas',
+      'city': 'Antique'
     },
     { 
       'user': 'Albert', 
       'learningObject': 'papaya-lo',
-      'dateViewed': '2017-01-18'
+      'dateViewed': '2017-01-18',
+      'region': 'Western Visayas',
+      'city': 'Capiz'
     },
     { 
       'user': 'Bryan', 
       'learningObject': 'citrus-lo',
-      'dateViewed': '2017-01-10'
+      'dateViewed': '2017-01-10',
+      'region': 'Western Visayas',
+      'city': 'Guimaras'
     },
     { 
       'user': 'Cena', 
       'learningObject': 'jackfruit-lo',
-      'dateViewed': '2017-02-09'
+      'dateViewed': '2017-02-09',
+      'region': 'CALABARZON',
+      'city': 'Laguna'
     },
     { 
       'user': 'Daniel', 
       'learningObject': 'durian-lo',
-      'dateViewed': '2017-02-26'
+      'dateViewed': '2017-02-26',
+      'region': 'CALABARZON',
+      'city': 'Batangas'
     },
     { 
       'user': 'Ellen', 
       'learningObject': 'whitepotato-lo',
-      'dateViewed': '2017-02-07'
+      'dateViewed': '2017-02-07',
+      'region': 'CALABARZON',
+      'city': 'Quezon'
     },
     { 
       'user': 'Ferdinand', 
       'learningObject': 'sweetpotato-lo',
-      'dateViewed': '2017-03-01'
+      'dateViewed': '2017-03-01',
+      'region': 'CALABARZON',
+      'city': 'Lucena'
     },
     { 
       'user': 'Victoria', 
       'learningObject': 'sweetpotato-lo',
-      'dateViewed': '2017-03-01'
+      'dateViewed': '2017-03-01',
+      'region': 'Central Luzon',
+      'city': 'Aurora'
     },
     { 
       'user': 'Vince', 
       'learningObject': 'sweetpotato-lo',
-      'dateViewed': '2017-03-01'
+      'dateViewed': '2017-03-01',
+      'region': 'Central Luzon',
+      'city': 'Bataan'
     },
     { 
       'user': 'Gerald', 
       'learningObject': 'peanut-lo',
-      'dateViewed': '2017-03-11'
+      'dateViewed': '2017-03-11',
+      'region': 'MIMAROPA',
+      'city': 'Marinduque'
     },
     { 
       'user': 'Gary', 
       'learningObject': 'mungbean-lo',
-      'dateViewed': '2017-02-09'
+      'dateViewed': '2017-02-09',
+      'region': 'MIMAROPA',
+      'city': 'Occidental Mindoro'
     },
     { 
       'user': 'Henry', 
       'learningObject': 'stagescorn-lo',
-      'dateViewed': '2017-02-16'
+      'dateViewed': '2017-02-16',
+      'region': 'MIMAROPA',
+      'city': 'Oriental Mindoro'
     },
     { 
       'user': 'Harold', 
       'learningObject': 'soilfertilization-lo',
-      'dateViewed': '2017-02-19'
+      'dateViewed': '2017-02-19',
+      'region': 'MIMAROPA',
+      'city': 'Palawan'
     },
     { 
       'user': 'Irish', 
       'learningObject': 'landpreparation-lo',
-      'dateViewed': '2017-02-20'
+      'dateViewed': '2017-02-20',
+      'region': 'Bicol',
+      'city': 'Albay'
     },
     { 
       'user': 'Juan', 
       'learningObject': 'biotechbtcorn-lo',
-      'dateViewed': '2017-02-21'
+      'dateViewed': '2017-02-21',
+      'region': 'Bicol',
+      'city': 'Camarines Norte'
     },
     { 
       'user': 'John', 
       'learningObject': 'feedingprogram-lo',
-      'dateViewed': '2017-02-22'
+      'dateViewed': '2017-02-22',
+      'region': 'Bicol',
+      'city': 'Camarines Sur'
     },
     { 
       'user': 'Jane', 
       'learningObject': 'grainquality-lo',
-      'dateViewed': '2017-03-25'
+      'dateViewed': '2017-03-25',
+      'region': 'National Capital Region',
+      'city': 'Caloocan'
     },
     { 
       'user': 'Wilson', 
       'learningObject': 'grainquality-lo',
-      'dateViewed': '2017-03-25'
+      'dateViewed': '2017-03-25',
+      'region': 'National Capital Region',
+      'city': 'Makati'
     },
     { 
       'user': 'Yvette', 
       'learningObject': 'grainquality-lo',
-      'dateViewed': '2017-03-25'
+      'dateViewed': '2017-03-25',
+      'region': 'National Capital Region',
+      'city': 'Malabon'
     },
     { 
       'user': 'Xyrus', 
       'learningObject': 'grainquality-lo',
-      'dateViewed': '2017-03-25'
+      'dateViewed': '2017-03-25',
+      'region': 'National Capital Region',
+      'city': 'Mandaluyong'
     },
     { 
       'user': 'Justin', 
       'learningObject': 'sugarcane-lo',
-      'dateViewed': '2017-03-26'
+      'dateViewed': '2017-03-26',
+      'region': 'National Capital Region',
+      'city': 'Manila'
     },
     { 
       'user': 'Joon', 
       'learningObject': 'plantingrice-lo',
-      'dateViewed': '2017-03-20'
+      'dateViewed': '2017-03-20',
+      'region': 'National Capital Region',
+      'city': 'Marikina'
     },
     { 
       'user': 'Jeff', 
       'learningObject': 'plantingmango-lo',
-      'dateViewed': '2017-03-23'
+      'dateViewed': '2017-03-23',
+      'region': 'National Capital Region',
+      'city': 'Muntinlupa'
     },
     { 
       'user': 'Kris', 
       'learningObject': 'plantingcoffee-lo',
-      'dateViewed': '2017-03-23'
+      'dateViewed': '2017-03-23',
+      'region': 'National Capital Region',
+      'city': 'Navotas'
     },
     { 
       'user': 'Karl', 
       'learningObject': 'plantingcoconut-lo',
-      'dateViewed': '2017-03-24'
+      'dateViewed': '2017-03-24',
+      'region': 'Cordillera Administrative Region',
+      'city': 'Ifugao'
     },
     { 
       'user': 'Krystal', 
       'learningObject': 'plantingbanana-lo',
-      'dateViewed': '2017-03-28'
+      'dateViewed': '2017-03-28',
+      'region': 'Cordillera Administrative Region',
+      'city': 'Kalinga'
     },
     { 
       'user': 'Zend', 
       'learningObject': 'plantingbanana-lo',
-      'dateViewed': '2017-03-28'
+      'dateViewed': '2017-03-28',
+      'region': 'Cordillera Administrative Region',
+      'city': 'Mountain Province'
     },
     { 
       'user': 'Luhan', 
       'learningObject': 'plantingabaca-lo',
-      'dateViewed': '2017-03-22'
+      'dateViewed': '2017-03-22',
+      'region': 'Cordillera Administrative Region',
+      'city': 'Baguio'
     },
     { 
       'user': 'Logan', 
       'learningObject': 'pineapple-lo',
-      'dateViewed': '2017-04-17'
+      'dateViewed': '2017-04-17',
+      'region': 'National Capital Region',
+      'city': 'Pasay'
     },
     { 
       'user': 'Manuel', 
       'learningObject': 'aquafeeds-lo',
-      'dateViewed': '2017-04-16'
+      'dateViewed': '2017-04-16',
+      'region': 'National Capital Region',
+      'city': 'Pasig'
     },
     { 
       'user': 'Natalie', 
       'learningObject': 'papaya-lo',
-      'dateViewed': '2017-04-17'
+      'dateViewed': '2017-04-17',
+      'region': 'SOCCSKSARGEN',
+      'city': 'Cotabato'
     },
     { 
       'user': 'Oliver', 
       'learningObject': 'citrus-lo',
-      'dateViewed': '2017-04-04'
+      'dateViewed': '2017-04-04',
+      'region': 'SOCCSKSARGEN',
+      'city': 'Sarangani'
     },
     { 
       'user': 'Patricia', 
       'learningObject': 'jackfruit-lo',
-      'dateViewed': '2017-04-05'
+      'dateViewed': '2017-04-05',
+      'region': 'SOCCSKSARGEN',
+      'city': 'South Cotabato'
     },
     { 
       'user': 'Queen', 
       'learningObject': 'whitepotato-lo',
-      'dateViewed': '2017-04-04'
+      'dateViewed': '2017-04-04',
+      'region': 'SOCCSKSARGEN',
+      'city': 'Sultan Kudarat'
     },
     { 
       'user': 'Rona', 
       'learningObject': 'durian-lo',
-      'dateViewed': '2017-04-03'
+      'dateViewed': '2017-04-03',
+      'region': 'SOCCSKSARGEN',
+      'city': 'General Santos'
     },
     { 
       'user': 'Cena', 
       'learningObject': 'durian-lo',
-      'dateViewed': '2017-04-03'
+      'dateViewed': '2017-04-03',
+      'region': 'CALABARZON',
+      'city': 'Dasmarinas'
     },
     { 
       'user': 'Albert', 
       'learningObject': 'durian-lo',
-      'dateViewed': '2017-04-03'
+      'dateViewed': '2017-04-03',
+      'region': 'CALABARZON',
+      'city': 'Batangas'
     }
   ]
   
