@@ -1,0 +1,185 @@
+extends ../../layouts/elearning
+
+block js
+  script.
+    jQuery(function($) {
+      
+      var comments = $('#comments');
+      var input = $('.comment-field-input');
+      var submit = comments.find('button[type=submit]');
+
+      
+      // Scroll to comments and focus input field
+      function scrollToComments(e) {
+        
+        e.preventDefault();
+        
+        $('html, body').animate({ scrollTop: comments.offset().top }, 250);
+        
+        input.eq(0).focus();
+      }
+      $('[href="#comments"]').click( scrollToComments );
+      
+      // Check if field has content: enable/disable submit. Disable by default
+      submit.attr('disabled','disabled');
+      input.keyup(function() {
+        if ($.trim($(this).val())) {
+          submit.removeAttr('disabled');
+        } else {
+          submit.attr('disabled','disabled');
+        }
+      });
+    });
+
+
+mixin learningObject(currLO)
+  .container-fluid
+    .row
+      if currLO.video
+        .col-md-8.embed-responsive-item
+          iframe(width="640", height="360", src="https://www.youtube.com/embed/"+currLO.video.videoId, frameborder="0", allowfullscreen)
+    //- .row
+      if currLO.gallery
+        h3 Gallery
+        each image in currLO.gallery.images
+          img(src=image.)
+    .row
+      if currLO.links.exists
+        h3 Related Articles:
+        each link in currLO.links
+          a(href=link.url) #{link.name}   
+    .row
+      p.text-info Uploaded: #{currLO.publishedAt.toDateString()}
+    .row
+      p= currLO.content.extended
+      br
+    //- .row
+      p Related: &nbsp;
+      each tag in currLO.tags
+        span.label.label-info  #{tag} &nbsp;
+
+
+mixin recommendedTopics(recLO)
+  each lo in recLO
+    .media
+      .media-left
+        if lo.thumbnail.exists
+          a(href=lo.url)
+            img(src=lo._.thumbnail.limit(100, 100) alt=lo.video.title).img-rounded
+        else
+          a(href=lo.url)
+            img(src="/images/image-not-available.png", alt=lo.title, height="100px", weight="100px").img-rounded
+      .media-body
+        a(href=lo.url)
+          h5=lo.title
+          span= lo.content.brief.substring(0, 50)
+
+mixin otherTopics(otherLO)
+  each lo in otherLO
+    .media
+      .media-left
+        if lo.thumbnail.exists
+          a(href=lo.url)
+            img(src=lo._.thumbnail.limit(100, 100) alt=lo.video.title).img-rounded
+        else
+          a(href=lo.url)
+            img(src="/images/image-not-available.png", alt=lo.title, height="100px", weight="100px").img-rounded
+      .media-body
+        a(href=lo.url)
+          h5=lo.title
+          span= lo.content.brief.substring(0, 50)
+
+mixin comment-form(action)
+  form(method='post', style="margin-bottom: 40px; margin-top: 40px;")
+    input(type='hidden', name='action', value='comment.create')
+    .media
+      .pull-left
+        if user
+          //- img(src=user.photo.exists ? user._.photo.thumbnail(80,80) : 'http://placehold.it/80x80', alt=user.name.full, width=80, height=80).img-rounded
+        else
+          img(src='http://placehold.it/80x80', alt='Comment author placeholder', width=80, height=80).img-rounded
+      .media-body
+        textarea(name='content', placeholder=user ? 'Leave a comment...' : 'Please sign in to comment', disabled=!user, style="margin-bottom: 10px; min-height: 80px; resize: vertical;").form-control
+        if user
+          button(type='submit').btn.btn-primary.pull-right Add Comment
+        else
+          ul.list-inline
+            li: a(href='/keystone/signin').btn.btn-sm.btn-primary Sign in to Comment
+    input(type='hidden', name='action', value='reactions.addLike')
+    button(type='submit').btn.btn-primary.pull-right Add Comment
+
+mixin comment-post(comment)
+  if comment.author
+    div(id='comment-id-' + comment.id, style="margin-top: 20px;")
+      .media
+        .pull-left
+          //- img(src=comment.author.photo.exists ? comment.author._.photo.thumbnail(80,80) : 'http://placehold.it/80x80', alt=comment.author.name.full, width=80, height=80).img-rounded
+        .media-body
+          p.list-group-item-heading
+            strong= comment.author.name.full
+            if user && user.id === comment.author.id
+              |  &middot; 
+              a(href='?remove=comment&comment=' + comment.id, title='Delete this comment', rel='tooltip', data-placement='left').comment-delete.js-delete-confirm Delete
+          p.list-group-item-text=comment.content.replace(/\n/g, '<br>')
+
+mixin comment-thread(comments)
+  label Comments
+  if comments.length
+    ul.list-group
+    for comment in comments
+      li.list-group-item
+        +comment-post(comment)
+
+mixin reactions(action)
+  .row
+    .col-md-2
+      form(method='post', style="margin-bottom: 0px; margin-top: 0px;")
+        input(type='hidden', name='action', value='reactions.addLike')
+        button(type='submit').btn.btn-link.btn-lg #{currentLO.likes.length} &nbsp;
+          i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")
+    
+    .col-md-2
+      form(method='post', style="margin-bottom: 0px; margin-top: 0px;")
+        input(type='hidden', name='action', value='reactions.addHappy')
+        button(type='submit').btn.btn-link.btn-lg #{currentLO.happy.length} &nbsp;
+          i.fa.fa-smile-o.fa-lg(aria-hidden="true")
+  
+    .col-md-2
+      form(method='post', style="margin-bottom: 0px; margin-top: 0px;")
+        input(type='hidden', name='action', value='reactions.addSad')
+        button(type='submit').btn.btn-link.btn-lg #{currentLO.sad.length}
+          i.fa.fa-frown-o.fa-lg(aria-hidden="true")
+  //- else
+    .row
+      button(type='submit' disabled='disabled').btn.btn-link.btn-lg #{currentLO.likes.length} &nbsp;
+        i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")
+      button(type='submit' disabled='disabled').btn.btn-link.btn-lg #{currentLO.happy.length} &ensp;
+        i.fa.fa-smile-o.fa-lg(aria-hidden="true")
+      button(type='submit' disabled='disabled').btn.btn-link.btn-lg #{currentLO.sad.length} &ensp;
+        i.fa.fa-frown-o.fa-lg(aria-hidden="true")
+
+block content
+  .container
+    .row
+      .col-md-8
+        .row
+          .panel.panel-info
+            .panel-body
+              hr
+              +reactions()
+              +learningObject(currentLO)
+              +comment-form()
+              +comment-thread(comments)
+
+      .col-md-4
+        .row
+          .panel.panel-info
+            .panel-heading Recommended Topics
+            .panel-body
+              +recommendedTopics(data.recommendedLO)
+        .row
+          .panel.panel-info
+            .panel-heading 
+              a(href="/elearning/courses") Other Topics
+            .panel-body
+              +otherTopics(data.otherLO)

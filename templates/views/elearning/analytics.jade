@@ -1,0 +1,96 @@
+extends ../../layouts/default
+
+block css
+  link(rel="stylesheet" type="text/css" href="/styles/analytics.css")
+
+mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers)
+    .row
+      .col-md-6.col-xs-6
+        div(id="logsGraph")
+        .well.well-sm.centered-panel
+          span.glyphicon.glyphicon-book(aria-hidden='true')
+          |  TOTAL NUMBER OF COURSES: 
+          span= numCourses
+        .well.well-sm.centered-panel
+          span.glyphicon.glyphicon-file(aria-hidden='true')
+          |  TOTAL NUMBER OF LEARNING OBJECTS: 
+          span= numLO
+        .well.well-sm.centered-panel
+          span.glyphicon.glyphicon-user(aria-hidden='true')
+          |  TOTAL NUMBER OF USERS: 
+          span= numUsers
+      .col-md-6.col-xs-6
+        .panel.panel-default
+          .panel-heading
+            h4.panel-title MOST POPULAR
+          .panel-body.bg-success
+            .media
+              .media-left
+                if mostpopular.thumbnail.exists
+                  img(src=mostpopular._.thumbnail.limit(100, 100) alt=mostpopular.video.title).img-circle
+                else
+                  img(src="/images/image-not-available.png", alt=mostpopular.title, height="100px", weight="100px").img-circle
+              .media-body
+                h5=mostpopular.title
+                span= mostpopular.content.brief.substring(0, 50)
+        .panel.panel-default
+          .panel-heading
+            h4.panel-title MOST COMMENTED
+          .panel-body.bg-success
+            .media
+              .media-left
+                if mostcommented.thumbnail.exists
+                  img(src=mostcommented._.thumbnail.limit(100, 100) alt=mostcommented.video.title).img-circle
+                else
+                  img(src="/images/image-not-available.png", alt=mostcommented.title, height="100px", weight="100px").img-circle
+              .media-body
+                h5=mostcommented.title
+                span= mostcommented.content.brief.substring(0, 50)
+        .panel.panel-default
+          .panel-heading
+            h4.panel-title MOST REACTED
+          .panel-body.bg-success
+            .media
+              .media-left
+                if mostreacted.thumbnail.exists
+                  img(src=mostreacted._.thumbnail.limit(100, 100) alt=mostreacted.video.title).img-circle
+                else
+                  img(src="/images/image-not-available.png", alt=mostreacted.title, height="100px", weight="100px").img-circle
+              .media-body
+                h5=mostreacted.title
+                span= mostreacted.content.brief.substring(0, 50)
+        
+mixin Graphs()
+  .row
+    .col-md-4.col-sm-4
+      div(id="reactionsPieChart")
+    .col-md-4.col-sm-4
+      div(id="commentsGraph")
+    .col-md-4.col-sm-4
+      div(id="viewsGraph")
+
+block content
+  .analytics-body
+    .row
+      .col-md-3.col-sm-4.dashboard
+        .sidebar-nav
+          .navbar.navbar-default(role='navigation')
+            .navbar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='.sidebar-navbar-collapse')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              span.visible-xs.navbar-brand Menu
+            .navbar-collapse.collapse.sidebar-navbar-collapse
+              ul.nav.navbar-nav
+                li.active
+                  a(href='/elearning/analytics') Dashboard
+                li
+                  a(href='#') Analytics by Learning Objects
+      .col-md-9.col-sm-4.dashboard
+        +Most(data.mostPopularLO, data.mostCommentedLO, data.mostReactedLO, data.numCourses, data.numLO, data.numUsers)
+        +Graphs()
+  script(src='/js/elearning-graphs/userLogs.js')
+  script(src='/js/elearning-graphs/learningObjectReactions.js')
+  script(src='/js/elearning-graphs/learningObjectCommentsViews.js')

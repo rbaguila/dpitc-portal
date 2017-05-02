@@ -1,4 +1,4 @@
-Steps for installation and running dpitc-portal
+# Steps for installation and running dpitc-portal
 
 1. Fork the repository from https://github.com/rbaguila/dpitc-portal
 2. git clone https://github.com/<github-username>/dpitc-portal.git
@@ -17,8 +17,8 @@ Steps for installation and running dpitc-portal
 http://keystonejs.com/docs/ 
 
 
-Basic parts of currrent keystone dpitc-portal boilerplate.
-NOTE: We are using keystone version ^4.0.0-beta.4 updated from the stable release.
+# Basic parts of currrent keystone dpitc-portal boilerplate.
+**NOTE: We are using keystone version ^4.0.0-beta.4 updated from the stable release.**
 
 1. The boilerplate have the main page of the portal. It can be accessed at localhost:3000/
 2. Keystone's architecture follows the Model-View-Controller design or MVC. 

@@ -42,7 +42,23 @@ exports = module.exports = function (app) {
 	app.get('/fiesta', routes.views.fiesta);
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
+	app.get('/exhibit', routes.views.fiesta);
+	app.get('/exhibit/:exhibit', routes.views.exhibit);
 	app.get('/gallery', routes.views.gallery);
+	
+	// Elearning Routes
+	app.get('/elearning', routes.views.elearning.elearning);
+	app.get('/elearning/courses?', routes.views.elearning.courseList);
+	app.get('/elearning/course/:courseslug?', routes.views.elearning.courseOutline);
+	app.get('/elearning/chapter/:chapterslug?', routes.views.elearning.chapterOutline);
+	app.get('/elearning/learning-object/:learningobjectslug', routes.views.elearning.learningObject);
+	app.post('/elearning/learning-object/:learningobjectslug', routes.views.elearning.learningObject);
+	app.get('/elearning/analytics', middleware.requireAdmin , routes.views.elearning.analytics);
+	app.get('/elearning/signup?', routes.views.elearning.signup);
+	app.post('/elearning/signup?', routes.views.elearning.signup);
+	app.get('/elearning/popular?', routes.views.elearning.popular);
+	app.get('/elearning/:userid/recommended?', routes.views.elearning.recommended);
+
 	app.get('/search/', function(req,res){
 		var searchKey = req.query.searchKey;
 		res.writeHead(301,
@@ -56,7 +72,8 @@ exports = module.exports = function (app) {
 	//Community
 	app.get('/community', routes.communityViews.community);
 	app.get('/eresources', routes.eresourcesViews.eresources);
-	app.get('/eresources/publications', routes.eresourcesViews.publications);
+	app.get('/eresources/publications', routes.eresourcesViews.publications); //Redundant
+	app.get('/eresources/publications/:page', routes.eresourcesViews.publications);
 	app.get('/eresources/publication/:publication', routes.eresourcesViews.publication);
 
 	//File Upload Route
@@ -69,6 +86,11 @@ exports = module.exports = function (app) {
 	app.get('/:slug', page_router);
 
 	app.get('/api/exhibits', routes.api.exhibit);
+
+	app.get('/api/LOReactions', routes.api.LOReactions);
+	app.get('/api/LOComments/:year', routes.api.LOComments);
+	app.get('/api/LOViews/:year', routes.api.LOViews);
+	app.get('/api/userlogs/:year', routes.api.userlogs);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
