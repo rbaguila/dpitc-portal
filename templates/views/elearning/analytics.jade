@@ -1,4 +1,4 @@
-extends ../../layouts/elearning-analytics
+extends ../../layouts/elearning-admin
 
 block css
   link(rel="stylesheet" type="text/css" href="/styles/analytics.css")
@@ -8,10 +8,10 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers,
       .col-md-12.col-xs-12
         //- h3.horizontalLabel Total Number of Vists
         div(id="allVisit")
-      .col-md-8.col-xs-8
+      .col-md-8.col-xs-12
         div(id="userVisitsWorld")
         //- div(id="reactionsPieChart")
-      .col-md-4.col-xs-4
+      .col-md-4.col-xs-12
         .panel.panel-info
           .panel-heading
             h4.panel-title MOST POPULAR
@@ -39,11 +39,11 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers,
                 img(src=mostreacted.thumbnail.exists ? mostreacted._.thumbnail.limit(50, 50) : 'http://placehold.it/50x50', width=50, height=50).img-circle
               .media-body
                 h5=mostreacted.title
-      .col-md-8.col-xs-8
+      .col-md-8.col-xs-12
         //- h3.horizontalLabel Total Number of Vists
         //- div(id="allReactionsRatio")
         div(id="popularperregion")
-      .col-md-4.col-xs-4  
+      .col-md-4.col-xs-12  
         .well.well-sm.centered-panel
           span.glyphicon.glyphicon-book(aria-hidden='true')
           |  NUMBER OF COURSES: 
@@ -68,10 +68,10 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers,
           span.glyphicon.glyphicon-comment(aria-hidden='true')
           |  NUMBER OF COMMENTS: 
           span= numComments
-      .col-md-8.col-xs-8
+      .col-md-8.col-xs-12
         //- h3.horizontalLabel Total Number of Vists
         div(id="userViewByISP")
-      .col-md-4.col-xs-4
+      .col-md-4.col-xs-12
         .panel.panel-info
           .panel-heading
             h4.panel-title Top 5 Learning Object by Rating
