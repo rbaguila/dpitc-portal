@@ -1,22 +1,35 @@
 var keystone = require('keystone');
 var async = require('async');
+var http = require('http');
 var LearningObject = keystone.list('LearningObject');
 var Course = keystone.list('Course');
 var User = keystone.list('User');
 var LOComment = keystone.list('LOComment');
 var LOView = keystone.list('LOView');
+var LORating = keystone.list('LORating');
+
+var helper = require('./helper');
+
 
 exports = module.exports = function (req, res) {
 
   var view = new keystone.View(req, res);
   var locals = res.locals;
 
+  locals.rating = LORating.fields.rating.ops;
+  locals.validationErrors = {};
+
+
+
   // Set locals
 
-  locals.section = 'learningObject';
   locals.filters = {
     currentLO: req.params.learningobjectslug
   }
+
+  locals.section = 'learning-object';
+  locals.url = '/elearning/learning-object/'+req.params.learningobjectslug+'?';
+
 
   locals.data = {
     currLO: [],
@@ -24,28 +37,35 @@ exports = module.exports = function (req, res) {
     otherLO: [],
     recommendedLO: [],
     learningObjectsTaken: [],
+    likedLO: [],
+    happyLO: [],
+    sadLO: [],
+    usersip: []
   };
 
   locals.formData = req.body || {};
 
+  
   var pageData = {
-    loginRedirect: '/elearning',
+    loginRedirect: '/elearning/learning-object/'+req.params.learningobjectslug,
     breadcrumbs: [
       { text: 'elearning', link: '/elearning' },
-      // still need breadcrumb for course
-
-      /*
-      // TODO refactor breadcrumbs
-      pageData.breadcrumbs.push(  { text: locals.data.currLO.title, link: '/elearning/'+locals.filter.currentLO } );
-
-      */
+      { text: req.params.learningobjectslug.replace(/-/g, ' ') , link: '/elearning/learning-object/'+req.params.learningobjectslug }
     ]
   }
 
+  if (req.params.courseslug != undefined) {
+    pageData.loginRedirect = '/elearning/'+req.params.courseslug+'/learning-object/'+req.params.learningobjectslug;
+    breadcrumbs = [
+      { text: 'elearning', link: '/elearning' },
+      { text: req.params.courseslug.replace(/-/g, ' '), link: '/elearning/course/'+req.params.courseslug },
+      { text: req.params.learningobjectslug.replace(/-/g, ' '), link: '/elearning/course/'+req.params.courseslug+'/learning-object/'+req.params.learningobjectslug }
+    ]
+  }
+
+
   var tempRecommended = [];
   var tempLearningObjects = [];
-  var classifications = ["specificCommodity", "isp", "sector", "industry"];
-  var counts = ["specCommCount", "ispCount", "sectorCount", "industryCount"];
 
   // Load the currentLO
   view.on('init', function(next){
@@ -54,7 +74,7 @@ exports = module.exports = function (req, res) {
       slug: locals.filters.currentLO,
       state: 'published',
     })
-    .populate('author images video isp sector industry')
+    .populate('gallery video links files isp sector industry')
     .exec(function(err, result) {
       if (err) return next(err);
       if (result.length == 0) {
@@ -64,10 +84,13 @@ exports = module.exports = function (req, res) {
       locals.currentLO = result;
       locals.data.currLO = result;
 
+      // Load tags
+      locals.currentLO.tags = [result.specificCommodity, result.industry, result.sector, result.isp];
+
       // Add currentLO to currentUser's learningObjectsTaken
-      if(locals.currentUser){
+      if(locals.user){
         User.model.findOneAndUpdate( 
-          { _id: currentUser._id }, 
+          { _id: locals.user._id }, 
           { $addToSet: { 
             learningObjectsTaken: locals.currentLO._id 
             } 
@@ -84,14 +107,41 @@ exports = module.exports = function (req, res) {
     });
   });
 
+  /* RATING */
+  // Create a feedback on the Learning Object
+  view.on('post', { action: 'reactions.rating' }, function (next) {
+  
+    var newRating = new LORating.model({
+      learningObject: locals.currentLO.id,
+    });
+      
+    var updater = newRating.getUpdateHandler(req);
+
+    updater.process(req.body, {
+      fields: 'rating',
+      flashErrors: true,
+      logErrors: true,
+    }, function (err) {
+      if (err) {
+        validationErrors = err.errors;
+      } else {
+        req.flash('success', 'Your rating was submitted.');
+        return res.redirect('/elearning/learning-object/'+locals.currentLO.slug);
+      }
+      next();
+    });
+
+  });
+
+
+  /* COMMENTS */
   // Load comments on the Learning Object
   view.on('init', function (next) {
     
     LOComment.model.find()
       .where('learningObject', locals.currentLO)
-      .where('author').ne(null)
-      .populate('author')
-      .sort('publishedAt')
+      .populate('createdBy')
+      .sort('createdAt')
       .exec(function (err, comments) {
         if (err) return res.err(err);
         if (!comments) return res.notfound('Learning Object Comments not found.');
@@ -107,7 +157,6 @@ exports = module.exports = function (req, res) {
 
     var newComment = new LOComment.model({
       learningObject: locals.currentLO.id,
-      author: locals.user.id,
     });
 
     var updater = newComment.getUpdateHandler(req);
@@ -128,61 +177,296 @@ exports = module.exports = function (req, res) {
 
   });
 
+
+  /* REACTIONS */
   view.on('post', { action: 'reactions.addLike' }, function (next) {
 
-    // TODO
     // Check if Learning Object has already been liked
+    LearningObject.model.findOne({
+        slug: locals.filters.currentLO,
+        state: 'published',
+        likes: { $in: [ locals.user._id ] }
+    })
+    .exec(function(err, isLiked){
+      if (err) return next(err);
 
-    LearningObject.model.findOneAndUpdate(
-      { _id: locals.currentLO._id }, 
-      { $addToSet: {
-        likes: locals.user._id
-        }
-      }, function (err, res) {
-        if (err) return next(err);
-        console.log('reactions.addLike');
-        next();
+      // if LO is already liked, remove from array
+      // else add to array
+      if (isLiked) {
+        LearningObject.model.findOneAndUpdate(
+          { _id: locals.currentLO._id }, 
+          { $pull: {
+            likes: locals.user._id
+            }
+          }, function (err, result) {
+            if (err) {
+              return next(err);
+            } else {
+              return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
+            }
+            next();
+          }
+        );
+
+      } else {
+        LearningObject.model.findOneAndUpdate(
+          { _id: locals.currentLO._id }, 
+          { $addToSet: {
+            likes: locals.user._id
+            }
+          }, function (err, result) {
+            if (err) {
+              return next(err);
+            } else {
+              return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
+            }
+            next();
+          }
+        );
+
       }
-    );
-
+    });
+        
   });
 
   view.on('post', { action: 'reactions.addHappy' }, function (next) {
 
-    LearningObject.model.findOneAndUpdate(
-      { _id: locals.currentLO._id }, 
-      { $addToSet: {
-        happy: locals.user._id
-        }
-      }, function (err, res) {
-        if (err) return next(err);
-        console.log('reactions.addHappy');
+    // Check if Learning Object is already in Happy
+    LearningObject.model.findOne({
+        slug: locals.filters.currentLO,
+        state: 'published',
+        happy: { $in: [ locals.user._id ] }
+    })
+    .exec(function(err, isHappy){
+      if (err) return next(err);
 
-        next();
+      // if LO is already in Happy, remove from array
+      // else add to array
+      if (isHappy) {
+        LearningObject.model.findOneAndUpdate(
+          { _id: locals.currentLO._id }, 
+          { $pull: {
+            happy: locals.user._id
+            }
+          }, function (err, result) {
+            if (err) {
+              return next(err);
+            } else {
+              return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
+            }
+            next();
+          }
+        );
+
+      } else {
+        LearningObject.model.findOneAndUpdate(
+          { _id: locals.currentLO._id }, 
+          { $addToSet: {
+            happy: locals.user._id
+            }
+          }, function (err, result) {
+            if (err) {
+              return next(err);
+            } else {
+              return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
+            }
+            next();
+          }
+        );
+
       }
-    );
+    });
 
   });
 
   view.on('post', { action: 'reactions.addSad' }, function (next) {
 
-    LearningObject.model.findOneAndUpdate(
-      { _id: locals.currentLO._id }, 
-      { $addToSet: {
-        sad: locals.user._id
-        }
-      }, function (err, res) {
-        if (err) return next(err);
-        console.log('reactions.addSad');
+    // Check if Learning Object is already in Sad
+    LearningObject.model.findOne({
+        slug: locals.filters.currentLO,
+        state: 'published',
+        sad: { $in: [ locals.user._id ] }
+    })
+    .exec(function(err, isSad){
+      if (err) return next(err);
 
-        next();
+      // if LO is already in Sad, remove from array
+      // else add to array
+      if (isSad) {
+        LearningObject.model.findOneAndUpdate(
+          { _id: locals.currentLO._id }, 
+          { $pull: {
+            sad: locals.user._id
+            }
+          }, function (err, result) {
+            if (err) {
+              return next(err);
+            } else {
+              return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
+            }
+            next();
+          }
+        );
+
+      } else {
+        LearningObject.model.findOneAndUpdate(
+          { _id: locals.currentLO._id }, 
+          { $addToSet: {
+            sad: locals.user._id
+            }
+          }, function (err, result) {
+            if (err) {
+              return next(err);
+            } else {
+              return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
+            }
+            next();
+          }
+        );
+
       }
-    );
+    });
 
   });
 
+  /* VIEWS */
+  // Get the loview of current learning object
+  view.on('init', function(next) {
 
+    LOView.model.find({
+      learningObject: locals.currentLO._id
+    })
+    .exec(function(err, results){
+      if(err) next(err);
+      locals.currentLO.loviews = results;
+      next();
+    });
 
+  });
+
+  // Insert LOView
+  view.on('init', function(next){
+
+    //check if the user viewed the Learning Object for 1 session (2 hrs threshold)
+    Date.prototype.addHours = function(h) {    
+      this.setTime(this.getTime() + (h*60*60*1000)); 
+      return this;   
+    }
+    Date.prototype.subtractHours = function(h) {    
+      this.setTime(this.getTime() - (h*60*60*1000)); 
+      return this;   
+    }
+    var start = new Date().subtractHours(1);
+    var end = new Date().addHours(1);
+    var currentUser = locals.user;
+    //var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
+    //console.log(ip);
+    //var ip = '121.54.32.169';
+    //ip = '180.191.131.83';
+    var ip = req.ips;
+    ip
+    //console.log(req.ips);
+    /*freegeoip.getLocation(ip, function(err, location) {
+        console.log(location);
+    });*/
+
+    var options = {    
+        host: 'freegeoip.net',    
+        path: '/json/' + ip,
+        method: 'GET'
+    };
+
+    var reqData = http.request(options, function(res) {
+        //console.log('STATUS: ' + res.statusCode);    
+        //console.log('HEADERS: ' + JSON.stringify(res.headers));    
+        res.setEncoding('utf8');    
+        res.on('data', function (chunk) {   
+            var obj = JSON.parse(chunk);
+            //console.log(obj);
+            if(currentUser){
+              if(req.query.type==undefined){
+                LOView.model.count({
+                  learningObject: locals.currentLO._id,
+                  user: currentUser._id,
+                  dateViewed: { $gte: start, $lt: end },
+                })
+                .exec(function(err, count){
+                  if(err){
+                    next(err)
+                  }
+                    if(count==0){
+                      var newView = new LOView.model({
+                        user: currentUser._id,
+                        learningObject: locals.data.currLO._id,
+                        ip: obj.ip,
+                        country_code: obj.country_code,
+                        region: obj.region_name,
+                        city: obj.city
+                      });
+                      newView.save(function(err) {
+                        
+                      });
+                    }
+                });
+              }
+              else{
+                LOView.model.count({
+                  learningObject: locals.currentLO._id,
+                  user: currentUser._id,
+                  dateViewed: { $gte: start, $lt: end },
+                })
+                .exec(function(err, count){
+                  if(err){
+                    next(err)
+                  }
+                    if(count==0){
+                      var newView = new LOView.model({
+                        user: currentUser._id,
+                        learningObject: locals.data.currLO._id,
+                        typeOfView: 'recommended',
+                        ip: obj.ip,
+                        country_code: obj.country_code,
+                        region: obj.region_name,
+                        city: obj.city
+                      });
+                      newView.save(function(err) {
+                      });
+                    }
+                });
+              }
+            }
+            else{
+              LOView.model.count({
+                  learningObject: locals.currentLO._id,
+                  ip: obj.ip,
+                  dateViewed: { $gte: start, $lt: end },
+                })
+                .exec(function(err, count){
+                  if(err){
+                    next(err)
+                  }
+                    if(count==0){
+                      var newView = new LOView.model({
+                        learningObject: locals.data.currLO._id,
+                        ip: obj.ip,
+                        country_code: obj.country_code,
+                        region: obj.region_name,
+                        city: obj.city
+                      });
+                      newView.save(function(err) {
+                        
+                      });
+                    }
+                });
+            }
+        });    
+    });
+
+    reqData.write('data\n');
+    reqData.write('data\n');
+    reqData.end();
+    next();
+  });
 
   // TODO
   // Load other learning objects besides current
@@ -217,12 +501,75 @@ exports = module.exports = function (req, res) {
   view.on('init', function(next){
     var currentUser = locals.user;
     if(currentUser){
-      var q = LearningObject.model.find().where('_id').in(currentUser.learningObjectsTaken);
+      var q = LearningObject.model.find().where('_id').in(currentUser.learningObjectsTaken).populate('isp sector industry');
 
       q.exec(function(err, results){
-          locals.data.learningObjectsTaken = results;
-          console.log(locals.data.learningObjectsTaken.length);
+          if(results!=null||results.length>0){
+            locals.data.learningObjectsTaken = results;
+          }
+          locals.data.learningObjectsTaken.push(locals.data.currLO);
+          //console.log(locals.data.learningObjectsTaken.length);
           next(err);
+      });
+    }
+    else{
+      next();
+    }
+  });
+
+  //get the liked Learning objects of the current user
+  view.on('init', function (next) {
+    if(locals.user){
+      LearningObject.model.find({
+        likes: { $elemMatch: { $eq: locals.user._id } }
+      })
+      .populate('isp sector industry')
+      .exec(function (err, results) {
+
+        if (err) return next(err);
+        locals.data.likedLO = results;
+        next();
+
+      });
+    }
+    else{
+      next();
+    }
+  });
+
+  //get the reacted (happy) Learning objects of the current user
+  view.on('init', function (next) {
+    if(locals.user){
+      LearningObject.model.find({
+        happy: { $elemMatch: { $eq: locals.user._id } }
+      })
+      .populate('isp sector industry')
+      .exec(function (err, results) {
+
+        if (err) return next(err);
+        locals.data.happyLO = results;
+        next();
+
+      });
+    }
+    else{
+      next();
+    }
+  });
+
+  //get the reacted (sad) Learning objects of the current user
+  view.on('init', function (next) {
+    if(locals.user){
+      LearningObject.model.find({
+        sad: { $elemMatch: { $eq: locals.user._id } }
+      })
+      .populate('isp sector industry')
+      .exec(function (err, results) {
+
+        if (err) return next(err);
+        locals.data.sadLO = results;
+        next();
+
       });
     }
     else{
@@ -234,23 +581,14 @@ exports = module.exports = function (req, res) {
   view.on('init', function(next){
     if(locals.data.learningObjectsTaken.length>0){
       async.each(tempLearningObjects, function (learningObject, next) {
-          if(notYetTaken(learningObject, locals.data.learningObjectsTaken)==0){
+          if(helper.notYetTaken(learningObject, locals.data.learningObjectsTaken)==0){
               next();
           }
           else{
-              for(var j=0;j<classifications.length;j++){
-                  var count = 0; 
-                  if(learningObject[classifications[j]]!=null){
-                    var learningObjectClassId = learningObject[classifications[j]] + "";
-                      for(var i=0;i<locals.data.learningObjectsTaken.length;i++){
-                          var eachTakenClassId = locals.data.learningObjectsTaken[i][classifications[j]] + "";
-                          if(eachTakenClassId!=null&&learningObjectClassId==eachTakenClassId){
-                              count++;
-                          }
-                      }
-                  }
-                  learningObject[counts[j]] = count;
-              }
+              var learningObject = helper.getCountLOTaken(learningObject, locals.data.learningObjectsTaken);
+              learningObject = helper.getCountLiked(learningObject, locals.data.likedLO);
+              learningObject = helper.getCountHappy(learningObject, locals.data.happyLO);
+              learningObject = helper.getCountSad(learningObject, locals.data.sadLO);
               var score = (4 * (learningObject.specCommCount)) + (3 * (learningObject.ispCount)) + (2 * (learningObject.sectorCount)) + (1 * (learningObject.industryCount));
               if(score>0){//change this to change the threshold of score or compute for a just right threshold
                   learningObject.score = score;
@@ -263,35 +601,9 @@ exports = module.exports = function (req, res) {
       });
     }
     else{
-      //TO DO
-      /*
-      if(locals.data.learningObjectsTaken.length==0){
-        var q = keystone.list('LearningObject').model.find().where('ISP').in(locals.data.currentLearner.preference);
-
-        q.exec(function(err, results){
-            locals.data.preferredISPs = results;
-            next(err);
-        });
-      }
-      */
-      //get the preferred ISPS here for the initial recommended learning materials
       next();
     }
   });
-
-  //function for checking if the specific course was already taken by the logged in user
-  function notYetTaken(learningObject, learningObjectsTaken){
-    var flag = 0;
-    var learningObjectId = learningObject._id + "";
-    for(var i=0;i<learningObjectsTaken.length;i++){
-        var learningObjectsTakenId = learningObjectsTaken[i]._id + "";
-        if(learningObjectId==learningObjectsTakenId){
-            flag = 1;
-            return 0;
-        }
-    }
-    if(flag==0) return 1;
-  }
 
   //sort the learning objects based on their score then get the top N or top 3 learning objects
   view.on('init', function(next){
@@ -307,7 +619,7 @@ exports = module.exports = function (req, res) {
           //console.log("ISP " + tempRecommended[i].ispCount);
           //console.log("Sector " + tempRecommended[i].sectorCount);
           //console.log("Industry " + tempRecommended[i].industryCount);
-          console.log("FINAL SCORE: " + tempRecommended[i].score);
+          console.log(tempRecommended[i].title + " - FINAL SCORE: " + tempRecommended[i].score);
       }*/
     }
     else{

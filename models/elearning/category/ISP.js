@@ -25,6 +25,9 @@ ISP.add({
 	}
 });
 
+ISP.schema.virtual('category').get(function () {
+  return 'isp';
+});
 ISP.defaultColumns = 'name, sector'
 
 ISP.register();

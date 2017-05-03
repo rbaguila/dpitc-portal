@@ -16,7 +16,7 @@ exports = module.exports = function(req, res) {
   keystone.list('LearningObject').model.find().exec(function (err, results) {
 
 				if (err || !results.length) {
-					return next(err);
+					//return (err);
 				}
 				//console.log(results);
 				for(var i=0;i<results.length;i++){

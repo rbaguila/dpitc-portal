@@ -2,52 +2,67 @@ extends ../../layouts/elearning
 
 block css
 
-block search
+mixin navigation(action)
   .container
     .row
       nav.navbar.navbar-default
         .container-fluid
           //- Mobile menu
           .navbar-header
-            button(type="button", data-toggle="collapse", aria-expanded="false", data-target="#publications-filter").navbar-toggle.collapsed
+            button(type="button", data-toggle="collapse", aria-expanded="false", data-target="#search-view-nav").navbar-toggle.collapsed
               span.sr-only Toggle navigation
               span.icon-bar
               span.icon-bar
               span.icon-bar
 
-          #publications-filter.collapse.navbar-collapse
-            ul.nav.navbar-nav
-            form.navbar-form.navbar-right
-              .form-group
-                input.form-control(type='text', placeholder='Search')
-              button.btn.btn-default(type='submit')
-                span.glyphicon.glyphicon-search(aria-hidden="true")
+            
+            .collapse.navbar-collapse(id='search-view-nav')
+              form.navbar-form.navbar-left
+                .form-group
+                  .row
+                    .col-xs-6.col-md-8
+                      input.form-control(type='text', placeholder='Search')
+                    .col-xs-6.col-md-4
+                      button.btn.btn-default(type='submit') Submit
+
                 
+//- mixin reactions(currentLO)
+  .row
+    p.text-right 
+    | #{currentLO.loviews.length} Views
+    | #{currentLO.likes.length} &nbsp;
+    i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")
+    p.text-right
+    | #{currentLO.happy.length} &nbsp;
+    i.fa.fa-smile-o.fa-lg(aria-hidden="true")
+  
+    p.text-right
+    | #{currentLO.sad.length} &nbsp;
+    i.fa.fa-frown-o.fa-lg(aria-hidden="true")
+    
+
 
 mixin popular(learningObjects)
-  a(href='/elearning/popular')
-    h2.text-center Popular
-  if learningObjects.length
-    .row.equal-height
+  .row
+    a(href=url+'learning-objects/popular')
+      h2.text-center Popular Lessons
+  .row.equal-height
+    if learningObjects.length
       each learningObject in learningObjects
         .col-xs-6.col-md-3
           .thumbnail
             if learningObject.thumbnail.exists
-              img.card-img-top(src=learningObject.thumbnail alt="learningObject.title")
-            else if learningObject.videoId
-              img.card-img-top(src='https://img.youtube.com/vi/'+ learningObject.videoId +'/mqdefault.jpg', height="150px")
-            else
-              img.card-img-top(src="/images/image-not-available-th.png" alt=learningObject.title, height="150px")
+              img.card-img-top(src=learningObject._.thumbnail.fit(200, 150), alt=learningObject.title, height='150px', width='200px').img-responsive
+            else 
+              img.card-img-top(src="http://placehold.it/200x150", alt='No Available Image' height='150px', width='200px').img-responsive
             .caption
-              .row
-                h3= learningObject.title.substring(0, 50)
-              .row
-                p= learningObject.content.brief.substring(0, 100)
-              hr
-              .row
+              h3= learningObject.title.substring(0, 50)
+              p= learningObject.content.brief.substring(0, 100)
+              br
+              p
                 a.btn.btn-info.btn-block(href=learningObject.url) Learn more
-  else
-    h3.text-muted There are no courses yet.
+    else
+      h3.text-muted There are no popular lessons this #{duration} yet.
 
 mixin allCourses(courses)
   a(href='/elearning/courses')
@@ -60,7 +75,7 @@ mixin allCourses(courses)
             if course.thumbnail.exists
               img.card-img-top(src=course.thumbnail alt="course.title")
             else
-              img.card-img-top(src="/images/image-not-available-th.png" alt=course.title, height="150px")
+              img.card-img-top(src="http://placehold.it/200x150" alt=course.title, height="150px")
             .caption
               .row
                 h3= course.title.substring(0, 50)
@@ -84,7 +99,7 @@ mixin recommended(learningObjects)
             if learningObject.thumbnail.exists
               img.card-img-top(src=learningObject.learningObject alt="course.title")
              else
-              img.card-img-top(src="/images/image-not-available-th.png" alt=learningObject.title, height="150px")
+              img.card-img-top(src="http://placehold.it/200x150" alt=learningObject.title, height="150px")
             .caption
               .row
                 h3= learningObject.title.substring(0, 50)
@@ -92,23 +107,29 @@ mixin recommended(learningObjects)
                 p= learningObject.content.brief.substring(0, 100)
               hr
               .row
-                a.btn.btn-info.btn-block(href=learningObject.url) Learn more
+                a.btn.btn-info.btn-block(href=learningObject.url + "?type=recommended") Learn more
   else
     h3.text-muted There are no courses yet.
 
 
 block content
-  block search
-  .container
-    .panel.panel-default
-      .panel-body
-        +popular(learningObjects)
-  .container
-    .panel.panel-default
-      .panel-body
-        +allCourses(courses)
+  +navigation()
   if user
     .container
       .panel.panel-default
         .panel-body
           +recommended(data.recommendedLearningObjects)
+        .panel-footer
+          a(href='/elearning/:userid/recommended?').btn.btn-link View All Recommended Lessons
+
+  .container
+    .panel.panel-default
+      .panel-body
+        +popular(paginatePopularLO.results)
+      .panel-footer
+        a(href='/elearning/learning-objects?').btn.btn-link View All Lessons
+  .container
+    .panel.panel-default
+      .panel-body
+        +allCourses(courses)
+  

@@ -16,6 +16,10 @@ LIndustry.add({
 	}
 });
 
+
 LIndustry.relationship({ ref: 'LSector', path: 'industry' });
 
+LIndustry.schema.virtual('category').get(function () {
+  return 'industry';
+});
 LIndustry.register();

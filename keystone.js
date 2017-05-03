@@ -80,19 +80,11 @@ keystone.set('nav', {
 	Analytics: ['community-views', 'discussion-views'],
 	Community: ['blog-posts', 'trainings', 'events', 'discussions', 'discussion-comments', 'publications', 'links', 'galleries', 'videos', 'memos'],
 	Categories: ['industries', 'sectors', 'commodities'],
-	ELearning: ['LearningObject', 'Chapter', 'Course', 'LearningContent', 'ISP', 'LIndustry', 'LSector', 'LOGallery', 'LOLink', 'LOVideo']
+	ELearning: ['LearningObject', 'Chapter', 'Course', 'LearningContent', 'ISP', 'LIndustry', 'LSector', 'LOGallery', 'LOLink', 'LOVideo', 'LOFileUpload',  'Author', 'LOComment', 'Banner'],
 });
 
 // optional, will force cloudinary to serve images over https
 keystone.set('cloudinary secure', true);
 
-
-// signin redirection to User
-keystone.set('signin redirect', function(user, loginRedirect, req, res){
-  var url = (user.isAdmin) ? '/keystone' : loginRedirect;
-  res.redirect(url);
-});
-
 // Start Keystone to connect to your database and initialise the web server
-
 keystone.start();

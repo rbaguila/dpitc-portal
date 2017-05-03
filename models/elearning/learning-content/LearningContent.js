@@ -4,6 +4,7 @@ var Types = keystone.Field.Types;
 var LearningContent = new keystone.List('LearningContent', {
   map: { name: 'title' },
   autokey: { path: 'slug', from: 'title', unique: true },
+  defaultSort: '-publishedAt',
   track: true,
   nocreate: false,
   sortable: true,
@@ -19,12 +20,8 @@ LearningContent.add({
     options: 'draft, published, archived', 
     default: 'draft' 
   },
-  author: { // Not the admin but the actual author of the content
-    type: Types.TextArray, 
-    collapse: true,  
-  },
   publishedAt: { 
-    type: Types.Date, 
+    type: Types.Datetime, 
     index: true, 
     dependsOn: { state: 'published' }, 
     default: Date.now 
@@ -44,14 +41,10 @@ LearningContent.add({
       height: 400 
     },
   },
- /* tags: { 
-    type: Types.TextArray, 
-    collapse: true 
-  },*/
 });
 
 LearningContent.defaultColumns = 'title|20%, author|20%, content.brief|30%, state|10%, publishedAt|10%';
 
-LearningContent.register()
+LearningContent.register();
 
 exports = module.exports = LearningContent

@@ -16,7 +16,6 @@
     display: none;
 }
 
-/* make sidebar nav vertical */ 
 @media (min-width: 768px) {
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
@@ -36,10 +35,81 @@
   }
 }
 
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus{
+  background-color:  #3062B7;
+  color: white;
+}
+
 .dashboard{
 	border-left: 1px solid gray;
 }
 
 .centered-panel{
-	background-color: #dff0e7;
+	background-color: #c1d7e2;
+}
+
+.bg-grey{
+  background-color: #eeeeee;
+}
+
+.user-prof{
+  margin-bottom: 2%;
+}
+
+#userVisitsWorld{
+  height: 350px;
+  min-width: 310px;
+  max-width: 700px;
+  margin-bottom: 3%;
+}
+
+.highcharts-background{
+  stroke-width: 0;
+}
+
+
+#allVisit{
+  height: 350px;
+  min-width: 310px;
+  margin-bottom: 3%;
+}
+
+
+#userViewByISP{
+  min-width: 310px;
+  max-width: 900px;
+  height: 350px;
+  margin-bottom: 3%;
+}
+
+#allReactions{
+  height: 400px;
+  min-width: 310px;
+  margin-bottom: 3%;
+}
+
+.white-bg{
+  background-color: white;
+}
+
+#allComments{
+  min-width: 310px;
+  height: 350px;
+  margin-bottom: 3%;
+}
+#allReactionsRatio{
+  max-width: 300px;
+  height: 300px;
+  margin: 0 auto
+}
+
+#popularperregion{
+  height: 350px;
+  min-width: 310px;
+  max-width: 600px;
+  margin-bottom: 3%;
+}
+.glyphicon-star{
+  font-size: 20px;
+  color: #F9E051;
 }
