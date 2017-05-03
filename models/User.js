@@ -15,10 +15,13 @@ User.add({
 }, 'Elearning', {
   learningObjectsTaken: { 
     // max of 100 to be considered for threshold purposes and mean newly taken courses / recent
-    type: Types.Relationship, 
-    ref: 'LearningObject', 
-    many: true 
+    type: Types.Relationship,
+    ref: 'LearningObject',
+    many: true
   },
+	location: { type: Types.Location, defaults: { country: 'Philippines' }},
+	birthday: { type: Types.Date, initial: true, required: true, index: true },
+	sex: { type: Types.Select, initial: true, options: 'Male, Female', required: true },
 }, 'Permissions', {
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: false },
 });
@@ -33,6 +36,8 @@ User.schema.virtual('canAccessKeystone').get(function () {
  * Relationships
  */
 User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
+User.relationship({ ref: 'BlogPost', path: 'blogPosts', refPath: 'author' });
+User.relationship({ ref: 'Comment', path: 'comments', refPath: 'author' });
 
 
 /**

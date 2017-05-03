@@ -77,7 +77,8 @@ keystone.set('nav', {
 		'Page'
 	],
 	users: 'users',
-	Community: ['trainings', 'events', 'discussions', 'publications', 'links', 'galleries', 'videos', 'memos'],
+	Analytics: ['community-views', 'discussion-views'],
+	Community: ['blog-posts', 'trainings', 'events', 'discussions', 'discussion-comments', 'publications', 'links', 'galleries', 'videos', 'memos'],
 	Categories: ['industries', 'sectors', 'commodities'],
 	ELearning: ['LearningObject', 'Chapter', 'Course', 'LearningContent', 'ISP', 'LIndustry', 'LSector', 'LOGallery', 'LOLink', 'LOVideo', 'LOFileUpload',  'Author', 'LOComment', 'Banner'],
 });
@@ -85,7 +86,5 @@ keystone.set('nav', {
 // optional, will force cloudinary to serve images over https
 keystone.set('cloudinary secure', true);
 
-
 // Start Keystone to connect to your database and initialise the web server
-
 keystone.start();

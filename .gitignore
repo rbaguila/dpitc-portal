@@ -34,4 +34,5 @@ node_modules
 public/uploads/
 public/uploads/files/
 
+# Bower dependency directory (https://bower.io/)
 public/bower_components/
