@@ -763,85 +763,6 @@ function generateAreaChart(allviewsdata){
         }]
     });
 }
-/*$(function () {
-    Highcharts.chart('userViewByISP', {
-    series: [{
-        type: "treemap",
-        layoutAlgorithm: 'stripes',
-        alternateStartingDirection: true,
-        levels: [{
-            level: 1,
-            layoutAlgorithm: 'sliceAndDice',
-            dataLabels: {
-                enabled: true,
-                align: 'left',
-                verticalAlign: 'top',
-                style: {
-                    fontSize: '15px',
-                    fontWeight: 'bold'
-                }
-            }
-        }],
-        data: [{
-            id: 'A',
-            name: 'Apples',
-            color: Highcharts.getOptions().colors[0]
-        }, {
-            id: 'B',
-            name: 'Bananas',
-            color: Highcharts.getOptions().colors[1]
-        }, {
-            id: 'O',
-            name: 'Oranges',
-            color: Highcharts.getOptions().colors[2]
-        }, {
-            name: 'Anne',
-            parent: 'A',
-            value: 5
-        }, {
-            name: 'Rick',
-            parent: 'A',
-            value: 3
-        }, {
-            name: 'Peter',
-            parent: 'A',
-            value: 4
-        }, {
-            name: 'Anne',
-            parent: 'B',
-            value: 4
-        }, {
-            name: 'Rick',
-            parent: 'B',
-            value: 10
-        }, {
-            name: 'Peter',
-            parent: 'B',
-            value: 1
-        }, {
-            name: 'Anne',
-            parent: 'O',
-            value: 1
-        }, {
-            name: 'Rick',
-            parent: 'O',
-            value: 3
-        }, {
-            name: 'Peter',
-            parent: 'O',
-            value: 3
-        }, {
-            name: 'Susanne',
-            parent: 'Kiwi',
-            value: 2,
-            color: Highcharts.getOptions().colors[3]
-        }]
-    }],
-    title: {
-        text: 'Trending Topics'
-    }
-});
-});*/
 
 $(function () {
     $.ajax({
@@ -929,10 +850,10 @@ function generateTreeMapChart(data){
             data: points
         }],
         subtitle: {
-            text: 'Click the sector to see the number of views per ISP'
+            text: 'Click the sector to see the number of views per topic'
         },
         title: {
-            text: 'Popular Sector and ISP'
+            text: 'Popular Topic by Sector'
         }
     });
 }
@@ -1030,314 +951,115 @@ function generateComboReactionChart(data){
     });
 }
 
-/*$(function () {
-    Highcharts.chart('allReactionsRatio', {
-
-        chart: {
-            type: 'solidgauge',
-            marginTop: 50
-        },
-
-        title: {
-            text: 'Activity',
-            style: {
-                fontSize: '24px'
-            }
-        },
-
-        tooltip: {
-            borderWidth: 0,
-            backgroundColor: 'none',
-            shadow: false,
-            style: {
-                fontSize: '16px'
-            },
-            pointFormat: '{series.name}<br><span style="font-size:1em; color: {point.color}; font-weight: bold">{point.y}%</span>',
-            positioner: function (labelWidth) {
-                return {
-                    x: 200 - labelWidth / 2,
-                    y: 180
-                };
-            }
-        },
-
-        pane: {
-            startAngle: 0,
-            endAngle: 360,
-            background: [{ // Track for Move
-                outerRadius: '112%',
-                innerRadius: '88%',
-                backgroundColor: Highcharts.Color(Highcharts.getOptions().colors[0])
-                    .setOpacity(0.3)
-                    .get(),
-                borderWidth: 0
-            }, { // Track for Exercise
-                outerRadius: '87%',
-                innerRadius: '63%',
-                backgroundColor: Highcharts.Color(Highcharts.getOptions().colors[1])
-                    .setOpacity(0.3)
-                    .get(),
-                borderWidth: 0
-            }, { // Track for Stand
-                outerRadius: '62%',
-                innerRadius: '38%',
-                backgroundColor: Highcharts.Color(Highcharts.getOptions().colors[2])
-                    .setOpacity(0.3)
-                    .get(),
-                borderWidth: 0
-            }]
-        },
-
-        yAxis: {
-            min: 0,
-            max: 100,
-            lineWidth: 0,
-            tickPositions: []
-        },
-
-        plotOptions: {
-            solidgauge: {
-                dataLabels: {
-                    enabled: false
-                },
-                linecap: 'round',
-                stickyTracking: false,
-                rounded: true
-            }
-        },
-
-        series: [{
-            name: 'Move',
-            data: [{
-                color: Highcharts.getOptions().colors[0],
-                radius: '112%',
-                innerRadius: '88%',
-                y: 80
-            }]
-        }, {
-            name: 'Exercise',
-            data: [{
-                color: Highcharts.getOptions().colors[1],
-                radius: '87%',
-                innerRadius: '63%',
-                y: 65
-            }]
-        }, {
-            name: 'Stand',
-            data: [{
-                color: Highcharts.getOptions().colors[2],
-                radius: '62%',
-                innerRadius: '38%',
-                y: 50
-            }]
-        }]
-    },
-    function callback() {
-
-        // Move icon
-        this.renderer.path(['M', -8, 0, 'L', 8, 0, 'M', 0, -8, 'L', 8, 0, 0, 8])
-            .attr({
-                'stroke': '#303030',
-                'stroke-linecap': 'round',
-                'stroke-linejoin': 'round',
-                'stroke-width': 2,
-                'zIndex': 10
-            })
-            .translate(190, 26)
-            .add(this.series[2].group);
-
-        // Exercise icon
-        this.renderer.path(['M', -8, 0, 'L', 8, 0, 'M', 0, -8, 'L', 8, 0, 0, 8,
-                'M', 8, -8, 'L', 16, 0, 8, 8])
-            .attr({
-                'stroke': '#ffffff',
-                'stroke-linecap': 'round',
-                'stroke-linejoin': 'round',
-                'stroke-width': 2,
-                'zIndex': 10
-            })
-            .translate(190, 61)
-            .add(this.series[2].group);
-
-        // Stand icon
-        this.renderer.path(['M', 0, 8, 'L', 0, -8, 'M', -8, 0, 'L', 0, -8, 8, 0])
-            .attr({
-                'stroke': '#303030',
-                'stroke-linecap': 'round',
-                'stroke-linejoin': 'round',
-                'stroke-width': 2,
-                'zIndex': 10
-            })
-            .translate(190, 96)
-            .add(this.series[2].group);
-    });
-});*/
-
 $(function () {
-
-    //TO DO, change this to region para mas madali :(
-    // Instanciate the map
-    var corn = ['Abra', 'Agusan del Norte', 'Agusan del Sur', 'Aklan', 'Albay', 'Antique', 'Apayao', 'Aurora', 'Basilan', 'Bataan', 'Batanes', 'Batangas', 'Benguet', 'Biliran', 'Bohol', 'Bukidnon', 'Bulacan', 'Cagayan', 'Camarines Norte', 'Camarines Sur', 'Camiguin'];
-    var banana = ['Capiz', 'Catanduanes', 'Cavite', 'Cebu', 'Compostela Valley', 'Cotabato', 'Davao del Norte', 'Davao del Sur', 'Davao Oriental',  'Dinagat Islands', 'Eastern Samar', 'Guimaras', 'Ifugao', 'Ilocos Norte', 'Ilocos Sur', 'Iloilo', 'Isabela', 'Kalinga', 'La Union', 'Laguna', 'Lanao del Norte'];
-    var rice = ['Pasay', 'Lanao del Sur', 'Leyte', 'Maguindanao', 'Marinduque', 'Masbate', 'Metro Manila', 'Misamis Occidental'];
-    var coconut = ['Rizal', 'Romblon', 'Samar'];
-
-    var provinces = [
-      'Manila',
-      'Abra',
-      'Apayao',
-      'Benguet',
-      'Ifugao',
-      'Kalinga',
-      'Mountain Province',
-      'Ilocos Norte',
-      'Ilocos Sur',
-      'La Union',
-      'Pangasinan',
-      'Batanes',
-      'Cagayan',
-      'Isabela',
-      'Nueva Vizcaya',
-      'Quirino',
-      'Aurora',
-      'Bataan',
-      'Bulacan',
-      'Nueva Ecija',
-      'Pampanga',
-      'Tarlac',
-      'Zambales',
-      'Batangas',
-      'Cavite',
-      'Laguna',
-      'Quezon',
-      'Rizal',
-      'Marinduque' ,
-      'Mindoro Occidental',
-      'Mindoro Oriental',
-      'Palawan',
-      'Romblon',
-      'Albay',
-      'Camarines Norte',
-      'Camarines Sur',
-      'Catanduanes',
-      'Masbate',
-      'Sorsogon',
-      'Aklan',
-      'Antique',
-      'Capiz',
-      'Guimaras',
-      'Iloilo',
-      'Negros Occidental',
-      'Bohol',
-      'Cebu',
-      'Negros Oriental',
-      'Siquijor',
-      'Biliran' ,
-      'Eastern Samar' ,
-      'Leyte',
-      'Northern Samar' ,
-      'Samar',
-      'Southern Leyte' ,
-      'Zamboanga del Norte',
-      'Zamboanga del Sur',
-      'Zamboanga Sibugay',
-      'Bukidnon',
-      'Camiguin',
-      'Lanao del Norte',
-      'Misamis Occidental',
-      'Misamis Oriental',
-      'Compostela Valley',
-      'Davao del Norte',
-      'Davao del Sur',
-      'Davao Occidental',
-      'Davao Oriental',
-      'Cotabato',
-      'Sarangani',
-      'South Cotabato',
-      'Sultan Kudarat',
-      'Agusan del Norte',
-      'Agusan del Sur',
-      'Dinagat Islands',
-      'Surigao del Norte',
-      'Surigao del Sur',
-      'Basilan',
-      'Lanao del Sur' ,
-      'Maguindanao',
-      'Sulu',
-      'Tawi-tawi'
-    ];
-
-    var left = [];
-
-    for(var i=0;i<provinces.length;i++){
-        if(corn.indexOf(provinces[i])==-1&&banana.indexOf(provinces[i])==-1&&rice.indexOf(provinces[i])==-1&&coconut.indexOf(provinces[i])==-1){
-            left.push(provinces[i]);
-        }
-    }
-
-    Highcharts.mapChart('popularperregion', {
-        chart: {
-            spacingBottom: 20
-        },
-        title: {
-            text: 'Popular ISP per Province and Region'
-        },
-
-        legend: {
-            enabled: true
-        },
-
-        plotOptions: {
-            map: {
-                allAreas: false,
-                joinBy: ['name', 'code'],
-                dataLabels: {
-                    enabled: true,
-                    color: '#FFFFFF',
-                    formatter: function () {
-                        if (this.point.properties && this.point.properties.labelrank.toString() < 5) {
-                            return this.point.properties['name'];
-                        }
-                    },
-                    format: null,
-                    style: {
-                        fontWeight: 'bold'
+    $.ajax({
+        method: 'GET',
+        url: '/elearning/api/uservisitsbyRegion',
+        success: function (data) {
+            var finaldata = {};
+            var nameISP = {};
+            for(var i=0;i<data.length;i++){
+                var obj = {};
+                var max = -1;
+                var maxISP = "";
+                for(var j=0;j<data[i].isp.length;j++){
+                    if(data[i].isp[j][1]>max){
+                        maxISP = data[i].isp[j][0];
+                        max = data[i].isp[j][1];
                     }
-                },
-                mapData: Highcharts.maps['countries/ph/ph-all'],
-                tooltip: {
-                    headerFormat: '',
-                    pointFormat: '{point.name}: <b>{series.name}</b>'
+                    //console.log(data[i].city + ":" + data[i].isp[j][0] + data[i].isp[j][1]);
                 }
 
+                obj[maxISP] = max.toString();
+                nameISP[maxISP] = maxISP;
+                if(finaldata[data[i].region]==undefined){
+                    finaldata[data[i].region] = {};
+                }
+                finaldata[data[i].region][data[i].city] = obj;
             }
-        },
-
-        series: [{
-            name: 'Corn',
-            data: $.map(corn, function (code) {
-                return { code: code };
-            })
-        }, {
-            name: 'Banana',
-            data: $.map(banana, function (code) {
-                return { code: code };
-            })
-        }, {
-            name: 'Rice',
-            data: $.map(rice, function (code) {
-                return { code: code };
-            })
-        }, {
-            name: 'Coconut',
-            data: $.map(coconut, function (code) {
-                return { code: code };
-            })
-        }, {
-            name: 'None',
-            data: $.map(left, function (code) {
-                return { code: code };
-            })
-        }]
+            //console.log(finaldata);
+            generateTreeMap2Chart(finaldata, nameISP);
+        }
     });
 });
+
+function generateTreeMap2Chart(finaldata, nameISP){
+    var points = [],
+    ispP,
+    ispVal,
+    ispI = 0,
+    sectorP,
+    sectorI,
+    infoP,
+    infoI,
+    isp,
+    sector,
+    info,
+    infoName = nameISP;
+
+    for (isp in finaldata) {
+        if (finaldata.hasOwnProperty(isp)) {
+            ispVal = 0;
+            ispP = {
+                id: 'id_' + ispI,
+                name: isp,
+                color: Highcharts.getOptions().colors[ispI]
+            };
+            sectorI = 0;
+            for (sector in finaldata[isp]) {
+                if (finaldata[isp].hasOwnProperty(sector)) {
+                    sectorP = {
+                        id: ispP.id + '_' + sectorI,
+                        name: sector,
+                        parent: ispP.id
+                    };
+                    points.push(sectorP);
+                    infoI = 0;
+                    for (info in finaldata[isp][sector]) {
+                        if (finaldata[isp][sector].hasOwnProperty(info)) {
+                            infoP = {
+                                id: sectorP.id + '_' + infoI,
+                                name: infoName[info],
+                                parent: sectorP.id,
+                                value: Math.round(+finaldata[isp][sector][info])
+                            };
+                            ispVal += infoP.value;
+                            points.push(infoP);
+                            infoI = infoI + 1;
+                        }
+                    }
+                    sectorI = sectorI + 1;
+                }
+            }
+            ispP.value = Math.round(ispVal / sectorI);
+            points.push(ispP);
+            ispI = ispI + 1;
+        }
+    }
+    Highcharts.chart('popularperregion', {
+        series: [{
+            type: 'treemap',
+            layoutAlgorithm: 'strip',
+            allowDrillToNode: true,
+            animationLimit: 1000,
+            dataLabels: {
+                enabled: false
+            },
+            levelIsConstant: false,
+            levels: [{
+                level: 1,
+                dataLabels: {
+                    enabled: true
+                },
+                borderWidth: 3
+            }],
+            data: points
+        }],
+        subtitle: {
+            text: 'Click the region to see the number of views per topic'
+        },
+        title: {
+            text: 'Popular Topic by Region'
+        }
+    });
+}

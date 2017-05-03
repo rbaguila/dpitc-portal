@@ -6,6 +6,8 @@ var LOView = new keystone.List('LOView', {
 	nocreate: true,
 	//hidden: true
 })
+//Visit or view per Learning Object
+//will be added to elearningvisit for total visit
 
 LOView.add({
 	user: {
@@ -26,6 +28,22 @@ LOView.add({
 	typeOfView: {
 		type: String,
     	default: null,
+	},
+	ip: { 
+		type: String, 
+		required: false
+	},
+	country_code:{
+		type: String, 
+		required: false
+	},
+	region: {
+		type: String, 
+		required: false
+	},
+	city: {
+		type: String, 
+		required: false
 	}
 });
 
