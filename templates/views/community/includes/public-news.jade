@@ -1,13 +1,14 @@
 .container-fluid
   .row.full-row
     .col-md-7.image
-      a(href='blog/post/'+news.slug)
-        img(src=news.image.secure_url).img-responsive.img-main
-        .img-description
-          span.badge.tag #{news.categories.name}
-          p.title #{news.title}
-          br
-          p.description !{news.caption}
+      a(href=news ? 'blog/post/'+news.slug: '/community')
+        img(src=news ? news.image.secure_url: '').img-responsive.img-main
+        if(news)
+          .img-description
+            span.badge.tag #{news.categories.name}
+            p.title #{news.title}
+            br
+            p.description !{news.caption}
       
     .col-md-5.summary
       each article in commNews
