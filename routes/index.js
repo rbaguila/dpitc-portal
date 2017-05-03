@@ -45,7 +45,7 @@ exports = module.exports = function (app) {
 	app.get('/exhibit', routes.views.fiesta);
 	app.get('/exhibit/:exhibit', routes.views.exhibit);
 	app.get('/gallery', routes.views.gallery);
-	
+
 	// Elearning Routes
 	app.get('/elearning', routes.views.elearning.elearning);
 	app.get('/elearning/courses?', routes.views.elearning.courseList);
@@ -72,8 +72,6 @@ exports = module.exports = function (app) {
 	//Community
 	app.get('/community', routes.communityViews.community);
 	app.get('/community/analytics', routes.communityViews.analytics);
-	app.get('/community/news', routes.communityViews.news);
-	app.get('/community/news/:news', routes.communityViews.news);
 	app.get('/eresources', routes.eresourcesViews.eresources);
 	app.get('/eresources/publications', routes.eresourcesViews.publications); //Redundant
 	app.get('/eresources/publications/:page', routes.eresourcesViews.publications);

@@ -11,6 +11,7 @@ exports = module.exports = function (req, res) {
   var locals = res.locals;
   locals.section = 'community';
   locals.validationErrors = {};
+  locals.category = {};
 
   view.on('init', function(next) {
     /* Has a daily limit */
@@ -22,6 +23,41 @@ exports = module.exports = function (req, res) {
     //
     //   console.log('stdout: ' + stdout);
     // });
+
+    next();
+  });
+
+  view.on('init', function(next) {
+    keystone.list('PostCategory').model.findOne({ key: 'community' })
+      .exec(function(err, res) {
+        locals.category.community = res;
+        next(err);
+      });
+  });
+
+  view.on('init', function(next) {
+    var q = keystone.list('Post').model.findOne()
+      .populate('author categories')
+      .where('state', 'published')
+      .where('categories').nin([locals.category.community])
+      .sort('-publishedDate');
+
+    q.exec(function (err, results) {
+      if(err) return next(err);
+			locals.news = results;
+		});
+
+    var q2 = keystone.list('Post').model.find()
+      .populate('author categories')
+      .where('state', 'published')
+      .where('categories').in([locals.category.community])
+      .sort('-publishedDate')
+      .limit(2);
+
+    q2.exec(function (err, results) {
+      if(err) return next(err);
+			locals.commNews = results;
+		});
 
     next();
   });
@@ -59,9 +95,9 @@ exports = module.exports = function (req, res) {
   view.query('blogPosts', keystone.list('BlogPost').model.find().populate('author').sort('-publishedDate'));
   view.query('events', keystone.list('Event').model.find().sort('startDate'));
   view.query('trainings', keystone.list('Training').model.find());
-  view.query('news', keystone.list('News').model.find().populate('industry').sort('-publishedDate'));
   view.query('comments', keystone.list('DiscussionComment').model.find().populate('discussion', 'author'));
   view.query('discussionViews', keystone.list('DiscussionView').model.find().populate('discussion'));
+
   view.query('discussions', keystone.list('Discussion').model.find())
     .then(function(err, res, next) {
       if(err) return next(err);
