@@ -15,7 +15,9 @@ exports.create = {
       'email': 'aroinand@gmail.com', 
       'password': 'admin', 
       'isAdmin': true,
-      '__ref': 'admin'
+      '__ref': 'admin',
+      'birthday': '1997-03-01',
+      'sex': 'Male'
     },
   //],
 
@@ -27,6 +29,8 @@ exports.create = {
       'email': 'jdelacruz@gmail.com', 
       'password': 'password', 
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Juan'
     },
     {
@@ -35,6 +39,8 @@ exports.create = {
       'email': 'jsmith@gmail.com', 
       'password': 'password', 
       'isAdmin': false, 
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'John'
     },
     {
@@ -43,6 +49,8 @@ exports.create = {
       'email': 'jdoe@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Jane'
     },
     {
@@ -51,6 +59,8 @@ exports.create = {
       'email': 'akim@gmail.com', 
       'password': 'password', 
       'isAdmin': false, 
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Albert'
     },
     {
@@ -59,6 +69,8 @@ exports.create = {
       'email': 'bkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Bryan'
     },
     {
@@ -67,6 +79,8 @@ exports.create = {
       'email': 'ckim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Lee'
     },
     {
@@ -75,6 +89,8 @@ exports.create = {
       'email': 'dkim@gmail.com', 
       'password': 'password', 
       'isAdmin': false, 
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Daniel'
     },
     {
@@ -83,6 +99,8 @@ exports.create = {
       'email': 'ekim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Ellen'
     },
     {
@@ -91,6 +109,8 @@ exports.create = {
       'email': 'fkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Ferdinand'
     },
     {
@@ -99,6 +119,8 @@ exports.create = {
       'email': 'gkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Gerald'
     },
     {
@@ -107,6 +129,8 @@ exports.create = {
       'email': 'hkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Harold'
     },
     {
@@ -115,6 +139,8 @@ exports.create = {
       'email': 'ikim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Irish'
     },
     {
@@ -123,6 +149,8 @@ exports.create = {
       'email': 'jkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Jeff'
     },
     {
@@ -131,6 +159,8 @@ exports.create = {
       'email': 'kkim@gmail.com', 
       'password': 'password', 
       'isAdmin': false, 
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Karl'
     },
     {
@@ -139,6 +169,8 @@ exports.create = {
       'email': 'lkim@gmail.com', 
       'password': 'password', 
       'isAdmin': false, 
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Logan'
     },
     {
@@ -147,6 +179,8 @@ exports.create = {
       'email': 'mkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Manuel'
     },
     {
@@ -155,6 +189,8 @@ exports.create = {
       'email': 'nkim@gmail.com', 
       'password': 'password', 
       'isAdmin': false, 
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Natalie'
     },
     {
@@ -163,6 +199,8 @@ exports.create = {
       'email': 'okim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Oliver'
     },
     {
@@ -171,6 +209,8 @@ exports.create = {
       'email': 'pkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Patricia'
     },
     {
@@ -179,6 +219,8 @@ exports.create = {
       'email': 'qkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Queen'
     },
     {
@@ -187,6 +229,8 @@ exports.create = {
       'email': 'rkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Rona'
     },
     {
@@ -195,6 +239,8 @@ exports.create = {
       'email': 'skim@gmail.com', 
       'password': 'password', 
       'isAdmin': false, 
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Sally'
     },
     {
@@ -203,6 +249,8 @@ exports.create = {
       'email': 'tkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Tim'
     },
     {
@@ -211,6 +259,8 @@ exports.create = {
       'email': 'ukim@gmail.com', 
       'password': 'password', 
       'isAdmin': false, 
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Uvin'
     },
     {
@@ -219,6 +269,8 @@ exports.create = {
       'email': 'vkim@gmail.com', 
       'password': 'password', 
       'isAdmin': false, 
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Vince'
     },
     {
@@ -227,6 +279,8 @@ exports.create = {
       'email': 'wkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Wilson'
     },
     {
@@ -235,6 +289,8 @@ exports.create = {
       'email': 'xkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Xyrus'
     },
     {
@@ -243,6 +299,8 @@ exports.create = {
       'email': 'ykim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Yvette'
     },
     {
@@ -251,6 +309,8 @@ exports.create = {
       'email': 'zkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Zend'
     },
     {
@@ -259,6 +319,8 @@ exports.create = {
       'email': 'hlee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Henry'
     },
     {
@@ -267,6 +329,8 @@ exports.create = {
       'email': 'alee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Angelica'
     },
     {
@@ -275,6 +339,8 @@ exports.create = {
       'email': 'klee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Kris'
     },
     {
@@ -283,6 +349,8 @@ exports.create = {
       'email': 'llee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Luhan'
     },
     {
@@ -291,6 +359,8 @@ exports.create = {
       'email': 'alee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Amber'
     },
     {
@@ -299,6 +369,8 @@ exports.create = {
       'email': 'vlee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Victoria'
     },
     {
@@ -307,6 +379,8 @@ exports.create = {
       'email': 'klee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Krystal'
     },
     {
@@ -315,6 +389,8 @@ exports.create = {
       'email': 'glee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Gary'
     },
     {
@@ -323,6 +399,8 @@ exports.create = {
       'email': 'jlee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Joon'
     },
     {
@@ -331,6 +409,8 @@ exports.create = {
       'email': 'clee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Cena'
     },
     {
@@ -339,6 +419,8 @@ exports.create = {
       'email': 'jlee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Justin'
     }
   ],
@@ -2903,6 +2985,581 @@ exports.create = {
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Batangas'
+    }
+  ],
+
+  ELearningVisit: [
+    { 
+      'dateViewed': '2017-01-12',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Rizal'
+    },
+    { 
+      'dateViewed': '2017-01-28',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Cavite'
+    },
+    { 
+      'dateViewed': '2017-01-28',
+      'country_code': 'PH',
+      'region': 'Northern Mindanao',
+      'city': 'Bukidnon'
+    },
+    { 
+      'dateViewed': '2017-01-28',
+      'country_code': 'PH',
+      'region': 'Western Visayas',
+      'city': 'Aklan'
+    },
+    { 
+      'dateViewed': '2017-01-28',
+      'country_code': 'PH',
+      'region': 'Western Visayas',
+      'city': 'Antique'
+    },
+    { 
+      'dateViewed': '2017-01-18',
+      'country_code': 'PH',
+      'region': 'Western Visayas',
+      'city': 'Capiz'
+    },
+    { 
+      'dateViewed': '2017-01-10',
+      'country_code': 'PH',
+      'region': 'Western Visayas',
+      'city': 'Guimaras'
+    },
+    { 
+      'dateViewed': '2017-02-09',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Laguna'
+    },
+    { 
+      'dateViewed': '2017-02-09',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Laguna'
+    },
+    { 
+      'dateViewed': '2017-02-09',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Laguna'
+    },
+    { 
+      'dateViewed': '2017-02-09',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Laguna'
+    },
+    { 
+      'dateViewed': '2017-02-26',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Batangas'
+    },
+    { 
+      'dateViewed': '2017-02-07',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Quezon'
+    },
+    { 
+      'dateViewed': '2017-03-01',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Lucena'
+    },
+    { 
+      'dateViewed': '2017-03-01',
+      'country_code': 'PH',
+      'region': 'Central Luzon',
+      'city': 'Aurora'
+    },
+    { 
+      'dateViewed': '2017-03-01',
+      'country_code': 'PH',
+      'region': 'Central Luzon',
+      'city': 'Bataan'
+    },
+    { 
+      'dateViewed': '2017-03-11',
+      'country_code': 'PH',
+      'region': 'Mimaropa',
+      'city': 'Marinduque'
+    },
+    { 
+      'dateViewed': '2017-02-09',
+      'country_code': 'PH',
+      'region': 'Mimaropa',
+      'city': 'Occidental Mindoro'
+    },
+    { 
+      'dateViewed': '2017-02-16',
+      'country_code': 'PH',
+      'region': 'Mimaropa',
+      'city': 'Oriental Mindoro'
+    },
+    { 
+      'dateViewed': '2017-02-19',
+      'country_code': 'PH',
+      'region': 'Mimaropa',
+      'city': 'Palawan'
+    },
+    { 
+      'dateViewed': '2017-02-20',
+      'country_code': 'PH',
+      'region': 'Bicol',
+      'city': 'Albay'
+    },
+    { 
+      'dateViewed': '2017-02-21',
+      'country_code': 'PH',
+      'region': 'Bicol',
+      'city': 'Camarines Norte'
+    },
+    { 
+      'dateViewed': '2017-02-22',
+      'country_code': 'PH',
+      'region': 'Bicol',
+      'city': 'Camarines Sur'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'PH',
+      'region': 'National Capital Region',
+      'city': 'Caloocan'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'PH',
+      'region': 'National Capital Region',
+      'city': 'Makati'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'PH',
+      'region': 'National Capital Region',
+      'city': 'Malabon'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'PH',
+      'region': 'National Capital Region',
+      'city': 'Mandaluyong'
+    },
+    { 
+      'dateViewed': '2017-03-26',
+      'country_code': 'PH',
+      'region': 'National Capital Region',
+      'city': 'Manila'
+    },
+    { 
+      'dateViewed': '2017-03-20',
+      'country_code': 'PH',
+      'region': 'National Capital Region',
+      'city': 'Marikina'
+    },
+    { 
+      'dateViewed': '2017-03-23',
+      'country_code': 'PH',
+      'region': 'National Capital Region',
+      'city': 'Muntinlupa'
+    },
+    { 
+      'dateViewed': '2017-03-23',
+      'country_code': 'PH',
+      'region': 'National Capital Region',
+      'city': 'Navotas'
+    },
+    { 
+      'dateViewed': '2017-03-24',
+      'country_code': 'PH',
+      'region': 'Cordillera Administrative Region',
+      'city': 'Ifugao'
+    },
+    { 
+      'dateViewed': '2017-03-28',
+      'country_code': 'PH',
+      'region': 'Cordillera Administrative Region',
+      'city': 'Kalinga'
+    },
+    { 
+      'dateViewed': '2017-03-28',
+      'country_code': 'PH',
+      'region': 'Cordillera Administrative Region',
+      'city': 'Mountain Province'
+    },
+    { 
+      'dateViewed': '2017-03-22',
+      'country_code': 'PH',
+      'region': 'Cordillera Administrative Region',
+      'city': 'Baguio'
+    },
+    { 
+      'dateViewed': '2017-04-17',
+      'country_code': 'PH',
+      'region': 'National Capital Region',
+      'city': 'Pasay'
+    },
+    { 
+      'dateViewed': '2017-04-16',
+      'country_code': 'PH',
+      'region': 'National Capital Region',
+      'city': 'Pasig'
+    },
+    { 
+      'dateViewed': '2017-04-17',
+      'country_code': 'PH',
+      'region': 'Soccsksargen',
+      'city': 'Cotabato'
+    },
+    { 
+      'dateViewed': '2017-04-04',
+      'country_code': 'PH',
+      'region': 'Soccsksargen',
+      'city': 'Sarangani'
+    },
+    { 
+      'dateViewed': '2017-04-05',
+      'country_code': 'PH',
+      'region': 'Soccsksargen',
+      'city': 'South Cotabato'
+    },
+    { 
+      'dateViewed': '2017-04-04',
+      'country_code': 'PH',
+      'region': 'Soccsksargen',
+      'city': 'Sultan Kudarat'
+    },
+    { 
+      'dateViewed': '2017-04-03',
+      'country_code': 'PH',
+      'region': 'Soccsksargen',
+      'city': 'General Santos'
+    },
+    { 
+      'dateViewed': '2017-04-03',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Dasmarinas'
+    },
+    { 
+      'dateViewed': '2017-04-03',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Batangas'
+    },
+    { 
+      'dateViewed': '2017-01-12',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Rizal'
+    },
+    { 
+      'dateViewed': '2017-01-28',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Cavite'
+    },
+    { 
+      'dateViewed': '2017-01-28',
+      'country_code': 'PH',
+      'region': 'Northern Mindanao',
+      'city': 'Bukidnon'
+    },
+    { 
+      'dateViewed': '2017-01-28',
+      'country_code': 'PH',
+      'region': 'Western Visayas',
+      'city': 'Aklan'
+    },
+    { 
+      'dateViewed': '2017-01-28',
+      'country_code': 'PH',
+      'region': 'Western Visayas',
+      'city': 'Antique'
+    },
+    { 
+      'dateViewed': '2017-01-18',
+      'country_code': 'PH',
+      'region': 'Western Visayas',
+      'city': 'Capiz'
+    },
+    { 
+      'dateViewed': '2017-01-10',
+      'country_code': 'PH',
+      'region': 'Western Visayas',
+      'city': 'Guimaras'
+    },
+    { 
+      'dateViewed': '2017-02-09',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Laguna'
+    },
+    { 
+      'dateViewed': '2017-02-26',
+      'country_code': 'AF'
+    },
+    { 
+      'dateViewed': '2017-02-07',
+      'country_code': 'AF'
+    },
+    { 
+      'dateViewed': '2017-03-01',
+      'country_code': 'AR'
+    },
+    { 
+      'dateViewed': '2017-03-01',
+      'country_code': 'AR'
+    },
+    { 
+      'dateViewed': '2017-03-01',
+      'country_code': 'AR'
+    },
+    { 
+      'dateViewed': '2017-03-11',
+      'country_code': 'AR'
+    },
+    { 
+      'dateViewed': '2017-02-09',
+      'country_code': 'AR'
+    },
+    { 
+      'dateViewed': '2017-02-16',
+      'country_code': 'AR'
+    },
+    { 
+      'dateViewed': '2017-02-19',
+      'country_code': 'AR'
+    },
+    { 
+      'dateViewed': '2017-02-20',
+      'country_code': 'AR'
+    },
+    { 
+      'dateViewed': '2017-02-21',
+      'country_code': 'BR'
+    },
+    { 
+      'dateViewed': '2017-02-22',
+      'country_code': 'BR'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'BR'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'BR'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'CA'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'CA'
+    },
+    { 
+      'dateViewed': '2017-03-26',
+      'country_code': 'CA'
+    },
+    { 
+      'dateViewed': '2017-03-20',
+      'country_code': 'CA'
+    },
+    { 
+      'dateViewed': '2017-03-23',
+      'country_code': 'CA'
+    },
+    { 
+      'dateViewed': '2017-03-23',
+      'country_code': 'CA'
+    },
+    { 
+      'dateViewed': '2017-03-24',
+      'country_code': 'CL'
+    },
+    { 
+      'dateViewed': '2017-03-28',
+      'country_code': 'CN'
+    },
+    { 
+      'dateViewed': '2017-03-28',
+      'country_code': 'CO'
+    },
+    { 
+      'dateViewed': '2017-03-22',
+      'country_code': 'CO'
+    },
+    { 
+      'dateViewed': '2017-04-17',
+      'country_code': 'FR'
+    },
+    { 
+      'dateViewed': '2017-04-16',
+      'country_code': 'FR'
+    },
+    { 
+      'dateViewed': '2017-04-17',
+      'country_code': 'FR'
+    },
+    { 
+      'dateViewed': '2017-04-04',
+      'country_code': 'FR'
+    },
+    { 
+      'dateViewed': '2017-04-05',
+      'country_code': 'FR'
+    },
+    { 
+      'dateViewed': '2017-04-04',
+      'country_code': 'FR'
+    },
+    { 
+      'dateViewed': '2017-04-03',
+      'country_code': 'FR'
+    },
+    { 
+      'dateViewed': '2017-04-03',
+      'country_code': 'DE'
+    },
+    { 
+      'dateViewed': '2017-04-03',
+      'country_code': 'DE'
+    },
+    { 
+      'dateViewed': '2017-02-07',
+      'country_code': 'DE'
+    },
+    { 
+      'dateViewed': '2017-03-01',
+      'country_code': 'ID'
+    },
+    { 
+      'dateViewed': '2017-03-01',
+      'country_code': 'ID'
+    },
+    { 
+      'dateViewed': '2017-03-01',
+      'country_code': 'JP'
+    },
+    { 
+      'dateViewed': '2017-03-11',
+      'country_code': 'JP'
+    },
+    { 
+      'dateViewed': '2017-02-09',
+      'country_code': 'KR'
+    },
+    { 
+      'dateViewed': '2017-02-16',
+      'country_code': 'KR'
+    },
+    { 
+      'dateViewed': '2017-02-19',
+      'country_code': 'KR'
+    },
+    { 
+      'dateViewed': '2017-02-20',
+      'country_code': 'KR'
+    },
+    { 
+      'dateViewed': '2017-02-21',
+      'country_code': 'MY'
+    },
+    { 
+      'dateViewed': '2017-02-22',
+      'country_code': 'MY'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'MY'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'MY'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'MY'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'MY'
+    },
+    { 
+      'dateViewed': '2017-03-26',
+      'country_code': 'MX'
+    },
+    { 
+      'dateViewed': '2017-03-20',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-03-23',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-03-23',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-03-24',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-03-28',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-03-28',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-03-22',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-04-17',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-04-16',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-04-17',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-04-04',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-04-05',
+      'country_code': 'US'
+    },
+    { 
+      'dateViewed': '2017-04-04',
+      'country_code': 'US'
+    },
+    { 
+      'dateViewed': '2017-04-03',
+      'country_code': 'US'
+    },
+    { 
+      'dateViewed': '2017-04-03',
+      'country_code': 'US'
+    },
+    { 
+      'dateViewed': '2017-04-03',
+      'country_code': 'US'
     }
   ]
   
