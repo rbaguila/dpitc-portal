@@ -364,7 +364,6 @@ exports = module.exports = function (req, res) {
     //var ip = '121.54.32.169';
     //ip = '180.191.131.83';
     var ip = req.ips;
-    ip
     //console.log(req.ips);
     /*freegeoip.getLocation(ip, function(err, location) {
         console.log(location);
@@ -380,7 +379,7 @@ exports = module.exports = function (req, res) {
         //console.log('STATUS: ' + res.statusCode);    
         //console.log('HEADERS: ' + JSON.stringify(res.headers));    
         res.setEncoding('utf8');    
-        res.on('data', function (chunk) {   
+        res.on('data', function (chunk) {  
             var obj = JSON.parse(chunk);
             //console.log(obj);
             if(currentUser){

@@ -2,6 +2,7 @@ var keystone = require('keystone');
 var async = require('async');
 var moment = require('moment');
 var _ = require('lodash');
+var http = require('http');
 
 var helper = require('./helper');
 
@@ -9,6 +10,7 @@ var Course = keystone.list('Course');
 var Chapter = keystone.list('Chapter');
 var LearningObject = keystone.list('LearningObject');
 var LOView = keystone.list('LOView');
+var ELearningVisit = keystone.list('ELearningVisit');
 
 exports = module.exports = function (req, res) {
   var view = new keystone.View(req, res);
@@ -105,7 +107,41 @@ exports = module.exports = function (req, res) {
     next();
   });
 
-  
+  //insert ELearning Visit
+  view.on('init', function(next){
+    var currentUser = locals.user;
+    var isLOUser = false;
+    if(currentUser){
+      isLOUser = true;
+    }
+    var ip = req.ips;
+    var options = {    
+        host: 'freegeoip.net',    
+        path: '/json/' + ip,
+        method: 'GET'
+    };
+    var reqData = http.request(options, function(res) {  
+        res.setEncoding('utf8');    
+        res.on('data', function (chunk) {  
+            var obj = JSON.parse(chunk);
+            var newVisit = new ELearningVisit.model({
+              ip: obj.ip,
+              country_code: obj.country_code,
+              region: obj.region_name,
+              city: obj.city,
+              isUser: isLOUser
+            });
+            newVisit.save(function(err) {
+              
+            });
+        });    
+    });
+
+    reqData.write('data\n');
+    reqData.write('data\n');
+    reqData.end();
+    next();
+  });
 
   view.render('elearning/popular', pageData);
 }
