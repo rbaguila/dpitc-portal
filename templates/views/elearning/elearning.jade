@@ -2,7 +2,7 @@ extends ../../layouts/elearning
 
 block css
 
-mixin navigation(action)
+//- mixin navigation(action)
   .container
     .row
       nav.navbar.navbar-default
@@ -113,7 +113,7 @@ mixin recommended(learningObjects)
 
 
 block content
-  +navigation()
+  +search()
   if user
     .container
       .panel.panel-default

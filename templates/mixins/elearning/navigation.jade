@@ -1,0 +1,27 @@
+mixin selectPage(pagination)
+  
+  ul.pagination.pull-right
+    li
+      if pagination.previous != false
+        a(href=url+'page='+pagination.previous+'&view='+viewStyle+'&duration='+duration, aria-label="Previous")
+          span(aria-hidden="true") &laquo
+    each page in pagination.pages
+      if page == pagination.currentPage
+        li.active
+          a(href=url+'page='+page+'&view='+viewStyle+'&duration='+duration) #{page}
+      else
+        li
+          a(href=url+'view=grid&page='+page)= page
+    li
+      if pagination.next != false
+        a(href=url+'page='+pagination.next+'&view='+viewStyle+'&duration='+duration aria-label="Next")
+          span(aria-hidden="true") &raquo
+
+mixin selectView(action)
+  ul.nav.navbar-nav.navbar-right
+    li
+      a(href=url+'page='+page+'&view=grid'+'&duration='+duration)
+        span(aria-hidden="true").glyphicon.glyphicon-th
+    li
+      a(href=url+'page='+page+'&view=list'+'&duration='+duration)
+        span(aria-hidden="true").glyphicon.glyphicon-th-list
