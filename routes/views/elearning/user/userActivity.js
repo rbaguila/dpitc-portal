@@ -101,5 +101,5 @@ exports = module.exports = function (req, res) {
     next();
   });
 
-  view.render('elearning/userActivity', pageData);
+  view.render('elearning/user/userActivity', pageData);
 }

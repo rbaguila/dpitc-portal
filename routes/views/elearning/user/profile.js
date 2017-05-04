@@ -9,9 +9,9 @@ exports = module.exports = function (req, res) {
   var locals = res.locals; 
 
   var pageData = {
-    loginRedirect: '/profile',
+    loginRedirect: '/elearning/profile',
     breadcrumbs: [
-      { text: 'Profile', link: '/profile' },
+      { text: 'Profile', link: '/elearning/profile' },
     ]
   }
 
@@ -142,5 +142,5 @@ exports = module.exports = function (req, res) {
     next();
   });
 
-  view.render('profile', pageData);
+  view.render('elearning/user/profile', pageData);
 };

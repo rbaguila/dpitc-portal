@@ -97,13 +97,13 @@ html
           if user
             //- if user.canAccessKeystone
               //- li: a(href='/keystone') Open Keystone
-            a(href='/profile').not-active.login-link
+            a(href='/elearning/profile').not-active.login-link
               span.user-name #{user.name.full} &ensp;
               i.fa.fa-bell-o(aria-hidden="true")
               | &emsp;
             a(href='/keystone/signout').not-active.login-link Sign Out
-            | &emsp;
-            a(href='/elearning/analytics').login-link Elearning Analytics
+            //- | &emsp;
+            //- a(href='/elearning/analytics').login-link Elearning Analytics
           else
             a(href='/keystone/signin?from=' + loginRedirect, class="not-active login-link") Sign In
             | &emsp;

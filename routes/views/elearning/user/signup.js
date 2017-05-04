@@ -47,5 +47,5 @@ exports = module.exports = function (req, res) {
 
     });
 
-  view.render('signup');
+  view.render('elearning/user/signup', pageData);
 };
