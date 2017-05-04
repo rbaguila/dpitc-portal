@@ -6,44 +6,11 @@ block css
 mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers, numViews, numComments, numReactions, topTopicsbyRatings)
     .row
       .col-md-12.col-xs-12
-        //- h3.horizontalLabel Total Number of Vists
         div(id="allVisit")
+      //-.col-md-4.col-xs-12
       .col-md-8.col-xs-12
         div(id="userVisitsWorld")
-        //- div(id="reactionsPieChart")
       .col-md-4.col-xs-12
-        .panel.panel-info
-          .panel-heading
-            h4.panel-title MOST POPULAR
-          .panel-body.bg-grey
-            .media
-              .media-left
-                  img(src=mostpopular.thumbnail.exists ? mostpopular._.thumbnail.limit(50, 50) : 'http://placehold.it/50x50', width=50, height=50).img-circle
-              .media-body
-                h5=mostpopular.title
-        .panel.panel-success
-          .panel-heading
-            h4.panel-title MOST COMMENTED
-          .panel-body.bg-grey
-            .media
-              .media-left
-                img(src=mostcommented.thumbnail.exists ? mostcommented._.thumbnail.limit(50, 50) : 'http://placehold.it/50x50', width=50, height=50).img-circle
-              .media-body
-                h5=mostcommented.title
-        .panel.panel-warning
-          .panel-heading
-            h4.panel-title MOST REACTED
-          .panel-body.bg-grey
-            .media
-              .media-left
-                img(src=mostreacted.thumbnail.exists ? mostreacted._.thumbnail.limit(50, 50) : 'http://placehold.it/50x50', width=50, height=50).img-circle
-              .media-body
-                h5=mostreacted.title
-      .col-md-8.col-xs-12
-        //- h3.horizontalLabel Total Number of Vists
-        //- div(id="allReactionsRatio")
-        div(id="popularperregion")
-      .col-md-4.col-xs-12  
         .well.well-sm.centered-panel
           span.glyphicon.glyphicon-book(aria-hidden='true')
           |  NUMBER OF COURSES: 
@@ -68,13 +35,49 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers,
           span.glyphicon.glyphicon-comment(aria-hidden='true')
           |  NUMBER OF COMMENTS: 
           span= numComments
-      .col-md-8.col-xs-12
-        //- h3.horizontalLabel Total Number of Vists
-        div(id="userViewByISP")
-      .col-md-4.col-xs-12
+      .col-md-3.col-xs-12
+        .panel.panel-success
+          .panel-heading
+            h4.panel-title Top 5 Popular Learning Object
+          .panel-body.bg-grey
+            each lo in mostpopular
+              .media
+                .media-left
+                    img(src=lo.thumbnail.exists ? lo._.thumbnail.limit(50, 50) : 'http://placehold.it/50x50', width=50, height=50).img-circle
+                .media-body
+                  h5=lo.title
+                  span= lo.viewCount
+                    |  views
+      .col-md-3.col-xs-12
         .panel.panel-info
           .panel-heading
-            h4.panel-title Top 5 Learning Object by Rating
+            h4.panel-title Top 5 Commented Learning Object
+          .panel-body.bg-grey
+            each lo in mostcommented
+              .media
+                .media-left
+                    img(src=lo.thumbnail.exists ? lo._.thumbnail.limit(50, 50) : 'http://placehold.it/50x50', width=50, height=50).img-circle
+                .media-body
+                  h5=lo.title
+                  span= lo.commentCount
+                  |  comments
+      .col-md-3.col-xs-12
+        .panel.panel-danger
+          .panel-heading
+            h4.panel-title Top 5 Reacted Learning Object
+          .panel-body.bg-grey
+            each lo in mostreacted
+              .media
+                .media-left
+                    img(src=lo.thumbnail.exists ? lo._.thumbnail.limit(50, 50) : 'http://placehold.it/50x50', width=50, height=50).img-circle
+                .media-body
+                  h5=lo.title
+                  span= lo.reactions
+                  |  reactions
+      .col-md-3.col-xs-12
+        .panel.panel-warning
+          .panel-heading
+            h4.panel-title Top 5 Rated Learning Object
           .panel-body.bg-grey
             each lo in topTopicsbyRatings
               .media
@@ -85,6 +88,13 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers,
                   - for (var i = 0; i < lo.rating; ++i) {
                     span.glyphicon.glyphicon-star(aria-hidden='true')
                   - }
+      .col-md-6.col-xs-12
+        //- h3.horizontalLabel Total Number of Vists
+        //- div(id="allReactionsRatio")
+        div(id="popularperregion")
+      .col-md-6.col-xs-12
+        //- h3.horizontalLabel Total Number of Vists
+        div(id="userViewByISP")
       .col-md-12.col-xs-12
         //- h3.horizontalLabel Total Number of Vists
         div(id="allReactions")
@@ -92,7 +102,7 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers,
 block content
   .analytics-body
     .row
-      .col-md-3.col-sm-4.dashboard
+      .col-md-3.dashboard
         .sidebar-nav
           .navbar.navbar-default(role='navigation')
             .navbar-header
@@ -112,7 +122,7 @@ block content
                   a(href='/elearning/analytics/users') Analytics of Users
                 li
                   a(href='/elearning/analytics/recommendedViews') Analytics of Recommended Learning Objects
-      .col-md-9.col-sm-4.dashboard
+      .col-md-9.col-xs-12.dashboard
         +Most(data.mostPopularLO, data.mostCommentedLO, data.mostReactedLO, data.numCourses, data.numLO, data.numUsers, data.numViews, data.numComments, data.numReactions, data.topTopicsbyRatings)
   //- script(src='/js/elearning-graphs/learningObjectReactions.js')
   //- script(src='/js/elearning-graphs/learningObjectCommentsViews.js')
