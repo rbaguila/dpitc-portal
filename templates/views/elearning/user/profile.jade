@@ -7,6 +7,31 @@ extends ../../../layouts/elearning
 block js
   | $('.collapse').collapse()
 
+block viewProfile
+  .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+    .row
+      if user._.photo.exists
+        img(src=user._.photo.limit(150,150), alt=user.name.full).img-rounded.center-block 
+      else 
+        img(src='http://placehold.it/150x150', alt='No Available Photo', width=150, height=150).img-rounded.center-block
+
+    .row
+      label Name: 
+      |  #{user.name.full}
+    .row
+      label Email: 
+      |  #{user.email}
+    .row
+      label Address: 
+      |  #{user.location.state}, #{user.location.country}
+    .row
+      label Birthday: 
+      |  #{user.birthday.toDateString()}
+    .row
+      label Sex:
+      |  #{user.sex}
+      
+
 block editProfile 
   label Edit Profile
   .row
@@ -100,40 +125,20 @@ block editProfile
           input(id='photo_image_cache', name='image_cache', type='hidden')
         button(type='submit', value='Submit Photo').btn.btn-link
 
-block sidenavigation
-  .panel-group(id='accordion', role='tablist', aria-multiselectable='true')
-    .panel.panel-default
-      .panel-heading(role='tab', id='headingProfile')
-        h4.panel-title
-          a(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseProfile', aria-expanded='true', aria-controls='collapseProfile') Profile
-      .panel-collapse.collapse.in(id='collapseProfile', role='tabpanel', aria-labelledby='headingProfile')
-        .list-group
-          li.list-group-item
-            a(href='/profile') View Profile
 
-    .panel.panel-default
-      .panel-heading(role='tab', id='headingUserActivity')
-        h4.panel-title
-          a(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseUserActivity', aria-expanded='true', aria-controls='collapseUserActivity') Elearning User Activity
-      .panel-collapse.collapse(id='collapseUserActivity', role='tabpanel', aria-labelledby='headingUserActivity')
-        .list-group
-          li.list-group-item
-            a(href='/profile/elearning/user-activity?nav=views') Viewed Lessons
-          li.list-group-item
-            a(href='/profile/elearning/user-activity?nav=likes') Liked Lessons
-          li.list-group-item
-            a(href='/profile/elearning/user-activity?nav=happy') Lessons with Happy Reacts
-          li.list-group-item
-            a(href='/profile/elearning/user-activity?nav=sad') Lessons with Sad Reacts 
 
 block content
   .row
     .col-md-3.col-sm-4.dashboard
-      block sidenavigation        
-    .col-md-7.col-sm-4.dashboard
+      +user-sidenav(section)       
+    .col-md-7.col-sm-4
       .panel.panel-default.col-md-offset-3
-        .panel-heading
-          | Profile
         .panel-body
-          block editProfile
+          .elearning-page-header
+            h3 #{user.name.full}'s Profile
+          
+          if nav == 'view'
+            block viewProfile
+          else  
+            block editProfile
 

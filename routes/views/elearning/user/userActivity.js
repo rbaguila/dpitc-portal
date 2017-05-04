@@ -1,8 +1,10 @@
 var keystone = require('keystone');
 var async = require('async');
 var http = require('http');
-var ELearningVisit = keystone.list('ELearningVisit');
 
+var helper = require('./../helper');
+
+var ELearningVisit = keystone.list('ELearningVisit');
 var User = keystone.list('User');
 var LearningObject = keystone.list('LearningObject');
 var LOView = keystone.list('LOView');
@@ -12,8 +14,37 @@ exports = module.exports = function (req, res) {
   var view = new keystone.View(req, res);
   var locals = res.locals;
   
-  locals.section = 'userActivity';
-  locals.nav = locals.nav ? 'views' : locals.nav;
+  locals.section = 'user-activity';
+  locals.nav = req.query.nav == undefined ? 'views' : req.query.nav;
+  locals.page = req.query.page == undefined ? 1 : req.query.page;
+  locals.perPage = req.query.perPage == undefined ?  12 : req.query.perPage;
+  locals.learningObjects = [];
+  locals.loviews = [];
+
+  if(locals.nav == 'views') {
+    locals.reactfilters = { 
+      'user': locals.user._id 
+    };
+  } else if(locals.nav == 'likes') {
+    locals.reactfilters = { 
+      'likes': { $elemMatch: 
+        { $eq: locals.user._id } 
+      } 
+    };
+  } else if(locals.nav == 'happy') {
+    locals.reactfilters = { 
+      'happy': { $elemMatch: 
+        { $eq: locals.user._id } 
+      } 
+    };
+  } else if(locals.nav == 'sad') {
+    locals.reactfilters = { 
+      'sad': { $elemMatch: 
+        { $eq: locals.user._id } 
+      } 
+    };
+  }
+    
 
   var pageData = {
     loginRedirect: '/elearning/user-activity?', 
@@ -23,24 +54,23 @@ exports = module.exports = function (req, res) {
     ]
   };
 
-  var viewPage = req.query.viewPage == undefined ? 1 : req.query.viewPage;
-  var likePage = req.query.likePage == undefined ? 1 : req.query.likePage;
   
 
   // Load all LOViews by user
   view.on('init', function (next) {
 
     LOView.paginate({
-        page: req.query.viewPage,
+        page: locals.page,
         perPage: 8,
-        filters: { 'user': locals.user._id }
+        filters: locals.reactfilters,
       })
       .sort('-dateViewed')
       .populate('learningObject')
       .exec(function (err, results) {
 
         if (err) return next(err);
-        locals.user.loviews = results;
+        locals.loviews = results;
+        
         next();
 
       });
@@ -51,19 +81,21 @@ exports = module.exports = function (req, res) {
   view.on('init', function (next) {
     
     LearningObject.paginate({
-        page: req.query.likePage,
+        page: locals.page,
         perPage: 8,
-        filters: { 'likes': { $elemMatch: { $eq: locals.user._id } } }
+        filters: locals.reactfilters,
       })
+      .sort('-title')
       .exec(function (err, results) {
 
         if (err) return next(err);
-        locals.user.likedLO = results;
+        locals.learningObjects = results;
         next();
 
       });
   
   });
+
 
    //insert ELearning Visit
   view.on('init', function(next){

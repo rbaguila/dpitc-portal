@@ -50,6 +50,8 @@ User.schema.virtual('canAccessElearningUI').get(function () {
   return this.isElearningUser;
 });
 
+
+
 /**
  * Relationships
  */

@@ -15,9 +15,9 @@ mixin userPanel(user)
         img(src='http://placehold.it/100x100', alt='No Available Photo', width='100', height='100').img-rounded.media-object
 
 mixin loTaken(loviews)
-  if loviews.results.length
+  if loviews.length
     .list-group
-      each loview in loviews.results
+      each loview in loviews
         a(href=loview.learningObject.url).list-group-item
           .media
             .media-left
@@ -32,102 +32,51 @@ mixin loTaken(loviews)
   else
     a(href='/elearning') You have not taken any lessons yet.
 
-  ul.pagination.pull-right
-    li
-      a(href='/profile/elearning/user-activity?viewPage='+loviews.previous)
-        span(aria-hidden="true") &laquo
-    each page in loviews.pages
-      if page==loviews.currentPage
-        li.active
-          a(href="/profile/elearning/user-activity?viewPage="+page)= page
-      else
-        li
-          a(href="/profile/elearning/user-activity?viewPage="+page)= page
-    li
-      a(href="/profile/elearning/user-activity?viewPage="+loviews.next aria-label="Next")
-        span(aria-hidden="true") &raquo
 
-mixin liked(likedLO)
-  if likedLO.results.length
+mixin loReacts(learningObjects)
+  if learningObjects.length
     .list-group
-      each liked in likedLO.results
-        a(href=liked.url)
+      each learningObject in learningObjects
+        a(href=learningObject.url)
           .list-group-item
             .media
               .media-left
-                if liked._.thumbnail
-                  img(src=liked._.thumbnail.limit(118,90), alt=liked.title, width='118', height='90').img-rounded.media-object
+                if learningObject._.thumbnail
+                  img(src=learningObject._.thumbnail.limit(118,90), alt=learningObject.title, width='118', height='90').img-rounded.media-object
                 else
                   img(src='http://placehold.it/118x90', alt='No Available Photo', width='118', height='90').img-rounded.media-object
               .media-body
-                h4.media-heading.text-primary #{liked.title}
-                p #{liked.content.brief}
+                h4.media-heading.text-primary #{learningObject.title}
+                p #{learningObject.content.brief}
                 
   else
-    a(href='/elearning') You have not liked any lessons yet.
+    a(href='/elearning') You have not reacted to any lessons yet.
 
-  ul.pagination.pull-right
-    li
-      a(href='/profile/elearning/user-activity?likePage='+likedLO.previous)
-        span(aria-hidden="true") &laquo
-    each page in likedLO.pages
-      if page==likedLO.currentPage
-        li.active
-          a(href="/profile/elearning/user-activity?likePage="+page)= page
-      else
-        li
-          a(href="/profile/elearning/user-activity?likePage="+page)= page
-    li
-      a(href="/profile/elearning/user-activity?likePage="+likedLO.next aria-label="Next")
-        span(aria-hidden="true") &raquo
-
-block sidenavigation
-  .panel-group(id='accordion', role='tablist', aria-multiselectable='true')
-    .panel.panel-default
-      .panel-heading(role='tab', id='headingProfile')
-        h4.panel-title
-          a(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseProfile', aria-expanded='true', aria-controls='collapseProfile') Profile
-      .panel-collapse.collapse(id='collapseProfile', role='tabpanel', aria-labelledby='headingProfile')
-        .list-group
-          li.list-group-item
-            a(href='/profile') View Profile
-
-    .panel.panel-default
-      .panel-heading(role='tab', id='headingUserActivity')
-        h4.panel-title
-          a(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseUserActivity', aria-expanded='true', aria-controls='collapseUserActivity') Elearning User Activity
-      .panel-collapse.collapse.in(id='collapseUserActivity', role='tabpanel', aria-labelledby='headingUserActivity')
-        .list-group
-          li.list-group-item
-            a(href='/profile/elearning/user-activity?nav=views') Viewed Lessons
-          li.list-group-item
-            a(href='/profile/elearning/user-activity?nav=likes') Liked Lessons
-          li.list-group-item
-            a(href='/profile/elearning/user-activity?nav=happy') Lessons with Happy Reacts
-          li.list-group-item
-            a(href='/profile/elearning/user-activity?nav=sad') Lessons with Sad Reacts 
 
 block content
   .row
     .col-md-3.col-sm-4.dashboard
-      block sidenavigation        
-    .col-md-9.col-sm-4.dashboard
-      if user
-        .elearning-page-header
-          h3 #{user.name.full}'s Elearning Activity
-        .col-xs-12.col-md-10.col-md-offset-1
+      +user-sidenav(section)       
+    .col-md-9.col-sm-4
+      .panel.panel-default.col-md-10.col-md-offset-1
+        .panel-body
+          .elearning-page-header
+            h3 #{user.name.full}'s Elearning Activity
           if nav == 'views'
             .panel.panel-info
               .panel-heading Views
               .panel-body
-                +loTaken(user.loviews)
-                
-        //- .col-xs-12.col-md-6
-          .panel.panel-info
-            .panel-heading Likes
-            .panel-body
-              +liked(user.likedLO)
-      else
-        a(href='/keystone/signin') Please log-in to view User Activity
-
-
+                +loTaken(loviews.results)
+                +activity-paginate(loviews)
+          else
+            .panel.panel-info
+              if nav == 'likes'
+                .panel-heading Lessons Liked
+              if nav == 'happy'
+                .panel-heading Lessons with Happy Reacts
+              if nav == 'sad'
+                .panel-heading Lessons with Sad Reacts
+              .panel-body
+                +loReacts(learningObjects.results)
+                +activity-paginate(learningObjects)
+  

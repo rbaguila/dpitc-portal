@@ -1,3 +1,94 @@
+mixin user-sidenav(section)
+  .panel-group(id='accordion', role='tablist', aria-multiselectable='true')
+    .panel.panel-default
+      .panel-heading(role='tab', id='headingProfile')
+        h4.panel-title
+          a(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseProfile', aria-expanded='true', aria-controls='collapseProfile') Profile
+      if section ==  "profile"
+        .panel-collapse.collapse.in(id='collapseProfile', role='tabpanel', aria-labelledby='headingProfile')
+          .list-group
+            li.list-group-item
+              a(href='/elearning/profile?nav=view') View Profile
+            li.list-group-item
+              a(href='/elearning/profile?nav=edit') Edit Profile
+      else 
+        .panel-collapse.collapse(id='collapseProfile', role='tabpanel', aria-labelledby='headingProfile')
+          .list-group
+            li.list-group-item
+              a(href='/elearning/profile?nav=view') View Profile
+            li.list-group-item
+              a(href='/elearning/profile?nav=edit') Edit Profile
+
+    .panel.panel-default
+      .panel-heading(role='tab', id='headingUserActivity')
+        h4.panel-title
+          a(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseUserActivity', aria-expanded='true', aria-controls='collapseUserActivity') Elearning User Activity
+      if section == "user-activity"   
+        .panel-collapse.collapse.in(id='collapseUserActivity', role='tabpanel', aria-labelledby='headingUserActivity')
+          .list-group
+            li.list-group-item
+              a(href='/elearning/profile/user-activity?nav=views') Viewed Lessons
+            li.list-group-item
+              a(href='/elearning/profile/user-activity?nav=likes') Liked Lessons
+            li.list-group-item
+              a(href='/elearning/profile/user-activity?nav=happy') Lessons with Happy Reacts
+            li.list-group-item
+              a(href='/elearning/profile/user-activity?nav=sad') Lessons with Sad Reacts 
+      else
+        .panel-collapse.collapse(id='collapseUserActivity', role='tabpanel', aria-labelledby='headingUserActivity')
+          .list-group
+            li.list-group-item
+              a(href='/elearning/profile/user-activity?nav=views') Viewed Lessons
+            li.list-group-item
+              a(href='/elearning/profile/user-activity?nav=likes') Liked Lessons
+            li.list-group-item
+              a(href='/elearning/profile/user-activity?nav=happy') Lessons with Happy Reacts
+            li.list-group-item
+              a(href='/elearning/profile/user-activity?nav=sad') Lessons with Sad Reacts 
+
+
+    if user
+      if user.isAdmin || user.isElearningAdmin
+        .panel.panel-default
+          .panel-heading(role='tab', id='headingAdmin')
+            h4.panel-title
+              a(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseAdmin', aria-expanded='true', aria-controls='collapseAdmin') Admin
+
+          if section == "admin"
+            .panel-collapse.collapse.in(id='collapseAdmin', role='tabpanel', aria-labelledby='headingAdmin')
+              .list-group
+                li.list-group-item
+                  a(href='/keystone') Keystone Admin
+                li.list-group-item
+                  a(href='/elearning/analytics') Analytics
+                //- ADD Admin Links
+          else
+            .panel-collapse.collapse(id='collapseAdmin', role='tabpanel', aria-labelledby='headingAdmin')
+              .list-group
+                li.list-group-item
+                  a(href='/keystone') Keystone Admin
+                li.list-group-item
+                  a(href='/elearning/analytics') Analytics
+                //- ADD Admin Links
+
+mixin activity-paginate(pagination)
+  ul.pagination.pull-right
+    li
+      if pagination.previous != false
+        a(href=url+'page='+pagination.previous, aria-label="Previous")
+          span(aria-hidden="true") &laquo
+    each page in pagination.pages
+      if page == pagination.currentPage
+        li.active
+          a(href=url+'page='+page) #{page}
+      else
+        li
+          a(href=url+'page='+page) #{page}
+    li
+      if pagination.next != false
+        a(href=url+'page='+pagination.next, aria-label="Next")
+          span(aria-hidden="true") &raquo
+
 mixin selectPage(pagination)
   
   ul.pagination.pull-right

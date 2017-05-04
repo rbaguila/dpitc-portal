@@ -8,6 +8,12 @@ exports = module.exports = function (req, res) {
   var view = new keystone.View(req, res);
   var locals = res.locals; 
 
+  locals.section = 'profile';
+  locals.nav = req.query.nav == undefined ? 'view' : req.query.nav;
+  locals.sexTypes = User.fields.sex.ops;
+  locals.formData = req.body || {};
+  locals.validationErrors = {};
+  
   var pageData = {
     loginRedirect: '/elearning/profile',
     breadcrumbs: [
@@ -15,11 +21,6 @@ exports = module.exports = function (req, res) {
     ]
   }
 
-  locals.nav = locals.nav ? 'view' : locals.nav;
-  locals.sexTypes = User.fields.sex.ops;
-  locals.formData = req.body || {};
-  locals.validationErrors = {};
-  
   view.on('post', { action: 'user.editProfile' }, function (next) {
 
     User.model.findOneAndUpdate( 
