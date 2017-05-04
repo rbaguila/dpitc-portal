@@ -113,3 +113,21 @@
   font-size: 20px;
   color: #F9E051;
 }
+
+.top-lo{
+  width: 25%;
+}
+
+.dashboard .col-md-3{
+  padding: 0.5% 0.5% 0.5% 0.5%;
+}
+
+.dashboard .col-md-3 .panel-body{
+  min-height: 400px;
+}
+.dashboard .col-md-3 .media{
+  margin-top: 1%;
+}
+.dashboard .col-md-6{
+
+}

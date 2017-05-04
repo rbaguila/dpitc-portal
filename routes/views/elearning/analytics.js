@@ -47,12 +47,12 @@ exports = module.exports = function(req, res){
                     totalReactions = 0;
                     totalReactions += results[i].likes.length + results[i].happy.length + results[i].sad.length;
                     total+=totalReactions;
-                    results.reactions = totalReactions;
+                    results[i].reactions = totalReactions;
                 }
                 results.sort(function(a,b){
                     return parseFloat(b.reactions) - parseFloat(a.reactions);
                 });
-                locals.data.mostReactedLO = results[0];
+                locals.data.mostReactedLO = results.slice(0, 5);
                 locals.data.numReactions = total;
             }
             next(err);
@@ -209,12 +209,12 @@ exports = module.exports = function(req, res){
         tempLearningObjects.sort(function(a,b){
           return parseFloat(b.viewCount) - parseFloat(a.viewCount);
         });
-        locals.data.mostPopularLO = tempLearningObjects[0];
+        locals.data.mostPopularLO = tempLearningObjects.slice(0, 5);
 
         tempLearningObjects2.sort(function(a,b){
           return parseFloat(b.commentCount) - parseFloat(a.commentCount);
         });
-        locals.data.mostCommentedLO = tempLearningObjects2[0];
+        locals.data.mostCommentedLO = tempLearningObjects2.slice(0, 5);
 
         tempLearningObjects3.sort(function(a,b){
           return parseFloat(b.rating) - parseFloat(a.rating);
