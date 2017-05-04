@@ -21,7 +21,15 @@ User.add({
   },
 	location: { type: Types.Location, defaults: { country: 'Philippines' }},
 	birthday: { type: Types.Date, initial: true, required: true, index: true },
-	sex: { type: Types.Select, initial: true, options: 'Male, Female', required: true },
+	sex: { 
+    type: Types.Select, 
+    options: [
+      { value: 'Male', label: 'Male' },
+      { value: 'Female', label: 'Female' }
+    ], 
+    initial: false,
+    required: false 
+  },
 }, 'Permissions', {
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: false },
   isElearningAdmin: { type: Boolean, label: 'Can access Elearning Admin', index: false},

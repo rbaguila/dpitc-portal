@@ -15,12 +15,11 @@ exports = module.exports = function (req, res) {
     ]
   }
 
-  locals.data = {
-    validationErrors: [],
-  };
-
+  locals.nav = locals.nav ? 'view' : locals.nav;
+  locals.sexTypes = User.fields.sex.ops;
   locals.formData = req.body || {};
-
+  locals.validationErrors = {};
+  
   view.on('post', { action: 'user.editProfile' }, function (next) {
 
     User.model.findOneAndUpdate( 
@@ -32,7 +31,7 @@ exports = module.exports = function (req, res) {
       },
       function(err, results) {
         if (err) return next(err);
-        return res.redirect('/profile');
+        return res.redirect('/elearning/profile');
         next();  
       }
     );
@@ -45,10 +44,11 @@ exports = module.exports = function (req, res) {
       logErrors: true
     }, function (err, result) {
       if (err) {    
-          locals.data.validationErrors = err.errors; 
+          locals.validationErrors = err.errors; 
         } else {
+          console.log(locals.user);
           req.flash('success', 'Account updated.');         
-          return res.redirect('/profile');
+          return res.redirect('/elearning/profile');
         }
         next();
     });
@@ -70,10 +70,10 @@ exports = module.exports = function (req, res) {
       logErrors: true
     }, function (err, result) {
       if (err) {    
-        locals.data.validationErrors = err.errors; 
+        locals.validationErrors = err.errors; 
       } else {
         req.flash('success', 'Password changed.');         
-        return res.redirect('/profile');
+        return res.redirect('/elearning/profile');
       }
       next();
     });
@@ -96,10 +96,10 @@ exports = module.exports = function (req, res) {
       logErrors: true
     }, function (err, result) {
       if (err) {    
-        locals.data.validationErrors = err.errors; 
+        locals.validationErrors = err.errors; 
       } else {
         req.flash('success', 'Photo changed.');         
-        return res.redirect('/profile');
+        return res.redirect('/elearning/profile');
       }
       next();
     });

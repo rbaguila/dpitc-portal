@@ -47,7 +47,25 @@ block editProfile
             .col-xs-6.col-md-12
               input.form-control.input-box(type='email', name='email', value=formData.email, placeholder=user.email, disabled='disabled')
         .form-group
+          .row
+            label.col-sm-2.control-label Birthday
+            .col-xs-6.col-md-5
+              input.form-control.input-box(type='date', name='birthday', value=formData.birthday, placeholder=user.birthday)
           
+            label.col-sm-2.control-label Sex
+            .col-sm-3
+              select(name='sex').form-control
+                option(value='') !{user.sex}
+                each type in sexTypes
+                  option(value=type.value, selected=formData.sex === type.value)= type.label
+        .form-group
+          label.control-label Address
+          .row
+            .col-xs-6.col-md-6
+              input.form-control.input-box(type='text', name='state', value=formData.state, placeholder=user.location.state)
+              
+            .col-xs-6.col-md-6
+              input.form-control.input-box(type='text', name='country', value=formData.country, placeholder=user.location.country)
 
 
       hr
