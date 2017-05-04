@@ -35,6 +35,10 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers,
           span.glyphicon.glyphicon-comment(aria-hidden='true')
           |  NUMBER OF COMMENTS: 
           span= numComments
+      .col-md-6.col-xs-12
+        div(id="popularperregion")
+      .col-md-6.col-xs-12
+        div(id="userViewByISP")
       .col-md-3.col-xs-12
         .panel.panel-success
           .panel-heading
@@ -88,15 +92,7 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers,
                   - for (var i = 0; i < lo.rating; ++i) {
                     span.glyphicon.glyphicon-star(aria-hidden='true')
                   - }
-      .col-md-6.col-xs-12
-        //- h3.horizontalLabel Total Number of Vists
-        //- div(id="allReactionsRatio")
-        div(id="popularperregion")
-      .col-md-6.col-xs-12
-        //- h3.horizontalLabel Total Number of Vists
-        div(id="userViewByISP")
       .col-md-12.col-xs-12
-        //- h3.horizontalLabel Total Number of Vists
         div(id="allReactions")
       
 block content

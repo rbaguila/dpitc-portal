@@ -13,7 +13,7 @@ exports.getCountLOTaken = function (learningObject, learningObjectsTaken){
             var eachTakenClassId = learningObjectsTaken[i][classifications[j]]._id + "";
             if(learningObjectClassId==eachTakenClassId){
                 count++;
-                count = count + (i/2);
+                count = count;
             }
           }
         }
@@ -33,6 +33,7 @@ exports.getCountLiked = function (learningObject, likedLO){
             var eachTakenClassId = likedLO[i][classifications[j]]._id + "";
             if(learningObjectClassId==eachTakenClassId){
                 count++;
+                count = count;
             }
           }
         }
@@ -52,6 +53,7 @@ exports.getCountHappy = function (learningObject, happyLO){
             var eachTakenClassId = happyLO[i][classifications[j]]._id + "";
             if(learningObjectClassId==eachTakenClassId){
                 count++;
+                count = count;
             }
           }
         }
@@ -71,12 +73,12 @@ exports.getCountSad = function (learningObject, sadLO){
             var eachTakenClassId = sadLO[i][classifications[j]]._id + "";
             if(learningObjectClassId==eachTakenClassId){
                 count++;
-                count = count + (i/2);
+                count = count;
             }
           }
         }
     }
-    learningObject[counts[j]] = learningObject[counts[j]] - count;
+    learningObject[counts[j]] = learningObject[counts[j]] - (3*count);
   }
   return learningObject;
 }

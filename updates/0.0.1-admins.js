@@ -503,6 +503,17 @@ exports.create = {
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Justin'
+    },
+    {
+      'name.first': 'Christian', 
+      'name.last': 'Chim', 
+      'email': 'cchim@gmail.com', 
+      'password': 'password',  
+      'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1995-10-01',
+      'sex': 'Male',
     }
   ],
 

@@ -579,10 +579,11 @@ exports = module.exports = function (req, res) {
               learningObject = helper.getCountHappy(learningObject, locals.data.happyLO);
               learningObject = helper.getCountSad(learningObject, locals.data.sadLO);
               var score = (4 * (learningObject.specCommCount)) + (3 * (learningObject.ispCount)) + (2 * (learningObject.sectorCount)) + (1 * (learningObject.industryCount));
-              if(score>0){//change this to change the threshold of score or compute for a just right threshold
+              //console.log(score);
+              //if(score>0){//change this to change the threshold of score or compute for a just right threshold
                   learningObject.score = score;
                   tempRecommended.push(learningObject);
-              }
+              //}
               next();
           }
       }, function (err) {
@@ -603,13 +604,13 @@ exports = module.exports = function (req, res) {
       });
       locals.data.recommendedLO = tempRecommended.slice(0, 3);//temporary
       //locals.data.recommendedLO = tempRecommended.slice(0, 36);//final, 36 recommended videos in youtube too
-      /*for(var i=0;i<tempRecommended.length;i++){
+      for(var i=0;i<tempRecommended.length;i++){
           //console.log("SPECIFIC COMMODITY " + tempRecommended[i].specCommCount);
           //console.log("ISP " + tempRecommended[i].ispCount);
           //console.log("Sector " + tempRecommended[i].sectorCount);
           //console.log("Industry " + tempRecommended[i].industryCount);
           console.log(tempRecommended[i].title + " - FINAL SCORE: " + tempRecommended[i].score);
-      }*/
+      }
     }
     else{
       if(tempLearningObjects.length>0){

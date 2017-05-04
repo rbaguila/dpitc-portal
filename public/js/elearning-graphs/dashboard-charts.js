@@ -68,7 +68,7 @@ function generateWorldMapChart(allviewsmapdata) {
         },
 
         title: {
-            text: 'Webpage Visits'
+            text: 'Demographics'
         },
 
         subtitle: {
@@ -111,7 +111,7 @@ function generateAreaChart(allviewsdata){
         },
 
         title: {
-            text: 'Page Visits'
+            text: 'E-Learning Visits'
         },
 
         series: [{
