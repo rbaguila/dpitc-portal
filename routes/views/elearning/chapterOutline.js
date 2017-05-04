@@ -62,7 +62,8 @@ exports = module.exports = function (req, res) {
         path: '/json/' + ip,
         method: 'GET'
     };
-    var reqData = http.request(options, function(res) {  
+    var reqData = http.request(options, function(res) {
+      if (('' + res.statusCode).match(/^2\d\d$/)) {
         res.setEncoding('utf8');    
         res.on('data', function (chunk) {  
             var obj = JSON.parse(chunk);
@@ -74,11 +75,23 @@ exports = module.exports = function (req, res) {
               isUser: isLOUser
             });
             newVisit.save(function(err) {
-              
+              console.log("success in inserting geolocation");
             });
-        });    
-    });
+        });
+      }
+      else if (('' + res.statusCode).match(/^5\d\d$/)){
 
+      }
+    });
+    reqData.on('error', function (e) {
+      // General error, i.e.
+      //  - ECONNRESET - server closed the socket unexpectedly
+      //  - ECONNREFUSED - server did not listen
+      //  - HPE_INVALID_VERSION
+      //  - HPE_INVALID_STATUS
+      //  - ... (other HPE_* codes) - server returned garbage
+      console.log('error getting geolocation');
+    });
     reqData.write('data\n');
     reqData.write('data\n');
     reqData.end();
