@@ -107,6 +107,25 @@ mixin paginate-popular(pagination)
         a(href=url+'page='+pagination.next+'&view='+viewStyle+'&duration='+duration aria-label="Next")
           span(aria-hidden="true") &raquo
 
+mixin paginate-learning-object(pagination)
+  ul.pagination.pull-right
+    li
+      if pagination.previous != false
+        a(href=url+'specific='+filters.specificCommodity+'&isp='+filters.isp+'&sector='+filters.sector+'&industry='+filters.industry+'&page='+pagination.previous+'&view='+viewStyle+'&duration='+duration, aria-label="Previous")
+          span(aria-hidden="true") &laquo
+    each page in pagination.pages
+      if page == pagination.currentPage
+        li.active
+          a(href=url+'specific='+filters.specificCommodity+'&isp='+filters.isp+'&sector='+filters.sector+'&industry='+filters.industry+'page='+page+'&view='+viewStyle+'&duration='+duration) #{page}
+      else
+        li
+          a(href=url+'specific='+filters.specificCommodity+'&isp='+filters.isp+'&sector='+filters.sector+'&industry='+filters.industry+'view=grid&page='+page)= page
+    li
+      if pagination.next != false
+        a(href=url+'specific='+filters.specificCommodity+'&isp='+filters.isp+'&sector='+filters.sector+'&industry='+filters.industry+'page='+pagination.next+'&view='+viewStyle+'&duration='+duration aria-label="Next")
+          span(aria-hidden="true") &raquo
+
+
 mixin paginate-generic(pagination)
   ul.pagination.pull-right
     li
@@ -124,6 +143,7 @@ mixin paginate-generic(pagination)
       if pagination.next != false
         a(href=url+'page='+pagination.next+'&view='+viewStyle aria-label="Next")
           span(aria-hidden="true") &raquo
+
 
 
 mixin view-popular(action)
