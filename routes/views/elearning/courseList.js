@@ -19,13 +19,12 @@ exports = module.exports = function (req, res) {
     ]
   }
 
-
-  locals.data = {
-        courses: [],
-    };
-
+  locals.url = '/elearning/courses?';
   locals.viewStyle = req.query.view == undefined ? 'grid' : req.query.view;
-  var page = req.query.page == undefined ? 1 : req.query.view;
+  locals.page = req.query.page == undefined ? 1 : req.query.page;
+  locals.perPage = req.query.perPage == undefined ?  12 : req.query.perPage;
+
+  locals.courses = [];
 
   var searchTerm = req.query.term
   var searchCategory = req.query.category
@@ -33,14 +32,14 @@ exports = module.exports = function (req, res) {
 
   view.on('init', function(next){
         Course.paginate({
-            page: req.query.page,
-            perPage: 8,
+            page: locals.page,
+            perPage: locals.perPage,
             maxPages: 10,
         })
         .where('state', 'published')
         .sort('-PublishedAt')
         .exec(function(err, results){
-            locals.data.courses = results;
+            locals.courses = results;
             
             next(err);
         });

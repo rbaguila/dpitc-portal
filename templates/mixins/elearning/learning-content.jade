@@ -1,7 +1,7 @@
 mixin learning-object-card(learningObject, redirect)
   .card
     if learningObject.thumbnail.exists
-      img.card-img-top(src=learningObject.thumbnail, alt=learningObject.title, height="150px", width="200px")
+      img.card-img-top(src=learningObject.thumbnail.limit(200,150), alt=learningObject.title, height="150px", width="200px")
     else
       img.card-img-top(src="http://placehold.it/200x150", alt="No Available Image" , height="150px", width="200px")
     .card-block
@@ -29,7 +29,41 @@ mixin course-card(course, redirect)
 
 mixin learning-object-reactions(currentLO)
   .row
-    p(style='float: right') #{currentLO.sad.length} #[i.fa.fa-frown-o.fa-lg(aria-hidden="true")]
-    p(style='float: right') #{currentLO.happy.length} #[i.fa.fa-smile-o.fa-lg(aria-hidden="true")]
-    p(style='float: right') #{currentLO.likes.length} #[i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")]
+    p(style='float: right') #{currentLO.sad.length} #[i.fa.fa-frown-o.fa-md(aria-hidden="true")] &emsp;
+    p(style='float: right') #{currentLO.happy.length} #[i.fa.fa-smile-o.fa-md(aria-hidden="true")] &emsp;
+    p(style='float: right') #{currentLO.likes.length} #[i.fa.fa-thumbs-o-up.fa-md(aria-hidden="true")] &emsp;
     
+
+mixin learning-object-tr-media(learningObject, redirect)
+  tr.media
+    td
+      .media-left
+        if learningObject.thumbnail.exists
+          a(href=redirect)
+            img(src=learningObject._.thumbnail.limit(200,150), alt=learningObject.title, height='150px', width='200px').img-rounded.media-object
+        else
+          a(href=redirect)
+            img(src="http://placehold.it/200x150", height='150px', width='200px').img-rounded.media-object
+      .media-body
+        a(href=learningObject.url)
+          h3.media-heading= learningObject.title
+          p.block-with-text #{learningObject.content.brief}
+          hr
+          +learning-object-reactions(learningObject)
+
+mixin course-tr-media(course, redirect)
+  tr.media
+    td
+      .media-left
+        if course.thumbnail.exists
+          a(href=redirect)
+            img(src=course._.thumbnail.limit(200,150), alt=course.title, height='150px', width='200px').img-rounded.media-object
+        else
+          a(href=redirect)
+            img(src="http://placehold.it/200x150", height='150px', width='200px').img-rounded.media-object
+      .media-body
+        a(href=course.url)
+          h3.media-heading= course.title
+          p.block-with-text #{course.content.brief}
+          
+         
