@@ -15,13 +15,14 @@ exports.create = {
       'email': 'aroinand@gmail.com', 
       'password': 'admin', 
       'isAdmin': true,
+      'isElearningAdmin': true,
+      'isElearningUser': true,
       '__ref': 'admin',
       'birthday': '1997-03-01',
       'sex': 'Male'
     },
   //],
-
-
+  
   /*ELearning Fixtures*/
     {
       'name.first': 'Juan', 
@@ -29,6 +30,8 @@ exports.create = {
       'email': 'jdelacruz@gmail.com', 
       'password': 'password', 
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Juan'
@@ -39,6 +42,8 @@ exports.create = {
       'email': 'jsmith@gmail.com', 
       'password': 'password', 
       'isAdmin': false, 
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'John'
@@ -49,6 +54,8 @@ exports.create = {
       'email': 'jdoe@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Jane'
@@ -58,7 +65,9 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'akim@gmail.com', 
       'password': 'password', 
-      'isAdmin': false, 
+      'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Albert'
@@ -69,6 +78,8 @@ exports.create = {
       'email': 'bkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Bryan'
@@ -79,6 +90,8 @@ exports.create = {
       'email': 'ckim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Lee'
@@ -88,7 +101,9 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'dkim@gmail.com', 
       'password': 'password', 
-      'isAdmin': false, 
+      'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Daniel'
@@ -99,6 +114,8 @@ exports.create = {
       'email': 'ekim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Ellen'
@@ -109,6 +126,8 @@ exports.create = {
       'email': 'fkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Ferdinand'
@@ -119,6 +138,8 @@ exports.create = {
       'email': 'gkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Gerald'
@@ -129,6 +150,8 @@ exports.create = {
       'email': 'hkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Harold'
@@ -139,6 +162,8 @@ exports.create = {
       'email': 'ikim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Irish'
@@ -149,6 +174,8 @@ exports.create = {
       'email': 'jkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Jeff'
@@ -158,7 +185,9 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'kkim@gmail.com', 
       'password': 'password', 
-      'isAdmin': false, 
+      'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Karl'
@@ -168,7 +197,9 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'lkim@gmail.com', 
       'password': 'password', 
-      'isAdmin': false, 
+      'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Logan'
@@ -179,6 +210,8 @@ exports.create = {
       'email': 'mkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Manuel'
@@ -188,7 +221,9 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'nkim@gmail.com', 
       'password': 'password', 
-      'isAdmin': false, 
+      'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Natalie'
@@ -199,6 +234,8 @@ exports.create = {
       'email': 'okim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Oliver'
@@ -209,6 +246,8 @@ exports.create = {
       'email': 'pkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Patricia'
@@ -219,6 +258,8 @@ exports.create = {
       'email': 'qkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Queen'
@@ -229,6 +270,8 @@ exports.create = {
       'email': 'rkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Rona'
@@ -237,8 +280,10 @@ exports.create = {
       'name.first': 'Sally', 
       'name.last': 'Kim', 
       'email': 'skim@gmail.com', 
-      'password': 'password', 
-      'isAdmin': false, 
+      'password': 'password',
+      'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Sally'
@@ -249,6 +294,8 @@ exports.create = {
       'email': 'tkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Tim'
@@ -258,7 +305,9 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'ukim@gmail.com', 
       'password': 'password', 
-      'isAdmin': false, 
+      'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Uvin'
@@ -268,7 +317,9 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'vkim@gmail.com', 
       'password': 'password', 
-      'isAdmin': false, 
+      'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Vince'
@@ -279,6 +330,8 @@ exports.create = {
       'email': 'wkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Wilson'
@@ -289,6 +342,8 @@ exports.create = {
       'email': 'xkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Xyrus'
@@ -299,6 +354,8 @@ exports.create = {
       'email': 'ykim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Yvette'
@@ -309,6 +366,8 @@ exports.create = {
       'email': 'zkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Zend'
@@ -319,6 +378,8 @@ exports.create = {
       'email': 'hlee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Henry'
@@ -329,6 +390,8 @@ exports.create = {
       'email': 'alee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Angelica'
@@ -339,6 +402,8 @@ exports.create = {
       'email': 'klee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Kris'
@@ -349,6 +414,8 @@ exports.create = {
       'email': 'llee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Luhan'
@@ -359,6 +426,8 @@ exports.create = {
       'email': 'alee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Amber'
@@ -369,6 +438,8 @@ exports.create = {
       'email': 'vlee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Victoria'
@@ -379,6 +450,8 @@ exports.create = {
       'email': 'klee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Krystal'
@@ -389,6 +462,8 @@ exports.create = {
       'email': 'glee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Gary'
@@ -399,6 +474,8 @@ exports.create = {
       'email': 'jlee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Joon'
@@ -409,6 +486,8 @@ exports.create = {
       'email': 'clee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Cena'
@@ -419,6 +498,8 @@ exports.create = {
       'email': 'jlee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
       'birthday': '1997-03-01',
       'sex': 'Male',
       '__ref': 'Justin'

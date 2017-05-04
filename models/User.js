@@ -24,6 +24,8 @@ User.add({
 	sex: { type: Types.Select, initial: true, options: 'Male, Female', required: true },
 }, 'Permissions', {
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: false },
+  isElearningAdmin: { type: Boolean, label: 'Can access Elearning Admin', index: false},
+  isElearningUser: { type: Boolean, label: 'Can access Elearning UI', index: false },
 });
 
 // Provide access to Keystone
@@ -31,6 +33,14 @@ User.schema.virtual('canAccessKeystone').get(function () {
 	return this.isAdmin;
 });
 
+// Provide access to Elearning Component
+User.schema.virtual('canAccessElearningAdmin').get(function () {
+  return this.isElearningAdmin;
+});
+
+User.schema.virtual('canAccessElearningUI').get(function () {
+  return this.isElearningUser;
+});
 
 /**
  * Relationships

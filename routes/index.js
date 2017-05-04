@@ -50,11 +50,11 @@ exports = module.exports = function (app) {
 	// User
 	app.get('/signup?', routes.views.signup);
 	app.post('/signup?', routes.views.signup);
-	app.get('/profile?', middleware.requireUser, routes.views.profile);
-	app.post('/profile?', middleware.requireUser, routes.views.profile);
+	app.get('/profile?', middleware.requireElearningUser, routes.views.profile);
+	app.post('/profile?', middleware.requireElearningUser, routes.views.profile);
 
 	// User-Elearning Routes
-	app.get('/profile/elearning/user-activity?', middleware.requireUser, routes.elearningViews.userActivity);
+	app.get('/profile/elearning/user-activity?', middleware.requireElearningUser, routes.elearningViews.userActivity);
 
 	// Elearning Routes
 	app.get('/elearning', routes.elearningViews.elearning);
@@ -70,15 +70,15 @@ exports = module.exports = function (app) {
 	app.get('/elearning/learning-object/:learningobjectslug?', routes.elearningViews.learningObject);
 	app.post('/elearning/learning-object/:learningobjectslug', routes.elearningViews.learningObject);
 	app.get('/elearning/learning-objects/popular?', routes.elearningViews.popular);
-	app.get('/elearning/:userid/recommended?', middleware.requireUser, routes.elearningViews.recommended);
+	app.get('/elearning/:userid/recommended?', middleware.requireElearningUser, routes.elearningViews.recommended);
 
 	// Elearning Analytics
-	app.get('/elearning/analytics', middleware.requireAdmin , routes.elearningViews.analytics);
-	app.get('/elearning/analytics/users?', middleware.requireAdmin , routes.elearningViews.analyticsUsersList);
-	app.get('/elearning/analytics/recommendedViews', middleware.requireAdmin , routes.elearningViews.analyticsRecommended);
-	app.get('/elearning/analytics/users/:userid?', middleware.requireAdmin , routes.elearningViews.analyticsUsers);
-	app.get('/elearning/analytics/:learningobjectslug?', middleware.requireAdmin , routes.elearningViews.analyticsLO);
-	app.get('/elearning/analytics/learning-objects/:industry?', middleware.requireAdmin , routes.elearningViews.analyticsLOList);
+	app.get('/elearning/analytics', middleware.requireElearningAdmin , routes.elearningViews.analytics);
+	app.get('/elearning/analytics/users?', middleware.requireElearningAdmin , routes.elearningViews.analyticsUsersList);
+	app.get('/elearning/analytics/recommendedViews', middleware.requireElearningAdmin , routes.elearningViews.analyticsRecommended);
+	app.get('/elearning/analytics/users/:userid?', middleware.requireElearningAdmin , routes.elearningViews.analyticsUsers);
+	app.get('/elearning/analytics/:learningobjectslug?', middleware.requireElearningAdmin , routes.elearningViews.analyticsLO);
+	app.get('/elearning/analytics/learning-objects/:industry?', middleware.requireElearningAdmin , routes.elearningViews.analyticsLOList);
 
 	// Elearning File Uploads
 	app.get('/api/elearning/fileupload/list', keystone.middleware.api, routes.api.elearning.fileupload.list);
