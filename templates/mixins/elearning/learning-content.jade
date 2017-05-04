@@ -33,6 +33,20 @@ mixin learning-object-reactions(currentLO)
     p(style='float: right') #{currentLO.happy.length} #[i.fa.fa-smile-o.fa-md(aria-hidden="true")] &emsp;
     p(style='float: right') #{currentLO.likes.length} #[i.fa.fa-thumbs-o-up.fa-md(aria-hidden="true")] &emsp;
     
+mixin learning-object-tags(tags)
+  .row
+    label Tags: &nbsp;
+    if tags.length
+      each tag in tags
+        if tag != null
+          if tag.category == 'isp'
+            a(href='/elearning/learning-objects?isp='+tag.key) #[span.label.label-primary #{tag.name}] &nbsp;
+          else if tag.category == 'sector'
+            a(href='/elearning/learning-objects?sector='+tag.key) #[span.label.label-success #{tag.name}] &nbsp;
+          else if tag.category == 'industry'
+            a(href='/elearning/learning-objects?industry='+tag.key) #[span.label.label-info #{tag.name}] &nbsp;
+          else if tag.category == 'null'
+            a(href='/elearning/learning-objects?specific='+tag.key) #[span.label.label-info #{tag.name}] &nbsp;
 
 mixin learning-object-tr-media(learningObject, redirect)
   tr.media
@@ -51,6 +65,9 @@ mixin learning-object-tr-media(learningObject, redirect)
           hr
           +learning-object-reactions(learningObject)
 
+          if learningObject.tags != null
+            +learning-object-tags(learningObject.tags)
+
 mixin course-tr-media(course, redirect)
   tr.media
     td
@@ -66,4 +83,3 @@ mixin course-tr-media(course, redirect)
           h3.media-heading= course.title
           p.block-with-text #{course.content.brief}
           
-         
