@@ -26,7 +26,7 @@ User.add({
     options: [
       { value: 'Male', label: 'Male' },
       { value: 'Female', label: 'Female' }
-    ], 
+    ],
     initial: false,
     required: false 
   },

@@ -365,14 +365,47 @@ exports = module.exports = function (req, res) {
         path: '/json/' + ip,
         method: 'GET'
     };
+    var getGeoLocation = false;
 
-    var reqData = http.request(options, function(res) {
-      if (('' + res.statusCode).match(/^2\d\d$/)) {
-        res.setEncoding('utf8');    
-        res.on('data', function (chunk) {
-            var obj = JSON.parse(chunk);
-            //console.log(obj);
-            if(currentUser){
+    if(currentUser){
+      if(currentUser.location.suburb!=null&&currentUser.location.state!=null){
+        LOView.model.count({
+          learningObject: locals.currentLO._id,
+          user: currentUser._id,
+          dateViewed: { $gte: start, $lt: end },
+        })
+        .exec(function(err, count){
+          if(err){
+            next(err)
+          }
+            if(count==0){
+              var newView = new LOView.model({
+                user: currentUser._id,
+                learningObject: locals.data.currLO._id,
+                typeOfView: req.query.type,
+                country_code: 'PH',
+                region: currentUser.location.state,
+                city: currentUser.location.suburb
+              });
+              newView.save(function(err) {
+              });
+            }
+        });
+      }
+      else{
+        getGeoLocation = true;
+      }
+    }
+    else{
+      getGeoLocation = true;
+    }
+    if(getGeoLocation==true){
+      var reqData = http.request(options, function(res) {
+        if (('' + res.statusCode).match(/^2\d\d$/)) {
+          res.setEncoding('utf8');    
+          res.on('data', function (chunk) {
+              var obj = JSON.parse(chunk);
+              if(currentUser){
                 LOView.model.count({
                   learningObject: locals.currentLO._id,
                   user: currentUser._id,
@@ -383,37 +416,22 @@ exports = module.exports = function (req, res) {
                     next(err)
                   }
                     if(count==0){
-                      if(req.query.type==undefined){
-                        var newView = new LOView.model({
-                          user: currentUser._id,
-                          learningObject: locals.data.currLO._id,
-                          ip: obj.ip,
-                          country_code: obj.country_code,
-                          region: obj.region_name,
-                          city: obj.city
-                        });
-                        newView.save(function(err) {
-                          
-                        });
-                      }
-                      else{
-                        var newView = new LOView.model({
-                          user: currentUser._id,
-                          learningObject: locals.data.currLO._id,
-                          typeOfView: 'recommended',
-                          ip: obj.ip,
-                          country_code: obj.country_code,
-                          region: obj.region_name,
-                          city: obj.city
-                        });
-                        newView.save(function(err) {
-                        });
-                      }
+                      var newView = new LOView.model({
+                        user: currentUser._id,
+                        learningObject: locals.data.currLO._id,
+                        typeOfView: req.query.type,
+                        ip: obj.ip,
+                        country_code: obj.country_code,
+                        region: obj.region_name,
+                        city: obj.city
+                      });
+                      newView.save(function(err) {
+                      });
                     }
                 });
-            }
-            else{
-              LOView.model.count({
+              }
+              else{
+                LOView.model.count({
                   learningObject: locals.currentLO._id,
                   ip: obj.ip,
                   dateViewed: { $gte: start, $lt: end },
@@ -435,25 +453,20 @@ exports = module.exports = function (req, res) {
                       });
                     }
                 });
-            }
-        });
-      }
-      else if (('' + res.statusCode).match(/^5\d\d$/)){
-        
-      }   
-    });
-    reqData.on('error', function (e) {
-      // General error, i.e.
-      //  - ECONNRESET - server closed the socket unexpectedly
-      //  - ECONNREFUSED - server did not listen
-      //  - HPE_INVALID_VERSION
-      //  - HPE_INVALID_STATUS
-      //  - ... (other HPE_* codes) - server returned garbage
-      console.log('error getting geolocation');
-    });
-    reqData.write('data\n');
-    reqData.write('data\n');
-    reqData.end();
+              }
+          });
+        }
+        else if (('' + res.statusCode).match(/^5\d\d$/)){
+          
+        }   
+      });
+      reqData.on('error', function (e) {
+        console.log('error getting geolocation');
+      });
+      reqData.write('data\n');
+      reqData.write('data\n');
+      reqData.end();
+    }
     next();
   });
 

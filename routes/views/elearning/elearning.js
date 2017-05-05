@@ -264,49 +264,63 @@ exports = module.exports = function (req, res) {
   //insert ELearning Visit
   view.on('init', function(next){
     var currentUser = locals.user;
-    var isLOUser = false;
-    if(currentUser){
-      isLOUser = true;
-    }
+    var isLOUser = false;//suburb = city/municipality, state = region
+
     var ip = req.ips;
     var options = {    
         host: 'freegeoip.net',    
         path: '/json/' + ip,
         method: 'GET'
     };
-    var reqData = http.request(options, function(res) {
-      if (('' + res.statusCode).match(/^2\d\d$/)) {
-        res.setEncoding('utf8');    
-        res.on('data', function (chunk) {  
-            var obj = JSON.parse(chunk);
-            var newVisit = new ELearningVisit.model({
-              ip: obj.ip,
-              country_code: obj.country_code,
-              region: obj.region_name,
-              city: obj.city,
-              isUser: isLOUser
-            });
-            newVisit.save(function(err) {
-              console.log("success in inserting geolocation");
-            });
-        });
+    var getGeoLocation = false;
+    if(currentUser){
+      isLOUser = true;
+      if(currentUser.location.suburb!=null&&currentUser.location.state!=null){
+         var newVisit = new ELearningVisit.model({
+            country_code: 'PH',
+            region: currentUser.location.state,
+            city: currentUser.location.suburb,
+            isUser: isLOUser
+          });
+          newVisit.save(function(err) {
+          });
       }
-      else if (('' + res.statusCode).match(/^5\d\d$/)){
+      else{
+        getGeoLocation = true;
+      }
+    }
+    else{
+      getGeoLocation = true;
+    }
+    if(getGeoLocation==true){
+      var reqData = http.request(options, function(res) {
+        if (('' + res.statusCode).match(/^2\d\d$/)) {
+          res.setEncoding('utf8');    
+          res.on('data', function (chunk) {  
+              var obj = JSON.parse(chunk);
+              var newVisit = new ELearningVisit.model({
+                ip: obj.ip,
+                country_code: obj.country_code,
+                region: obj.region_name,
+                city: obj.city,
+                isUser: isLOUser
+              });
+              newVisit.save(function(err) {
+                console.log("success in inserting geolocation");
+              });
+          });
+        }
+        else if (('' + res.statusCode).match(/^5\d\d$/)){
 
-      }
-    });
-    reqData.on('error', function (e) {
-      // General error, i.e.
-      //  - ECONNRESET - server closed the socket unexpectedly
-      //  - ECONNREFUSED - server did not listen
-      //  - HPE_INVALID_VERSION
-      //  - HPE_INVALID_STATUS
-      //  - ... (other HPE_* codes) - server returned garbage
-      console.log('error getting geolocation');
-    });
-    reqData.write('data\n');
-    reqData.write('data\n');
-    reqData.end();
+        }
+      });
+      reqData.on('error', function (e) {
+        console.log('error getting geolocation');
+      });
+      reqData.write('data\n');
+      reqData.write('data\n');
+      reqData.end();
+    }
     next();
   });
 
