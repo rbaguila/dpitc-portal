@@ -42,7 +42,7 @@
                 .blog-content
                   .content-header
                     h4
-                      a(href="#").title #{blog.title}
+                      a(href="community/blogs/post/"+blog.slug).title #{blog.title}
                       
                     a(href="#").name.text-muted By #{blog.author.name.full} &nbsp
                     a(href="#").time-since.text-muted #{blog._.publishedDate.moment().fromNow()}

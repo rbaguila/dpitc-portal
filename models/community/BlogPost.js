@@ -11,11 +11,12 @@ BlogPost.add({
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
 	author: { type: Types.Relationship, ref: 'User', initial: true, index: true },
 	publishedDate: { type: Types.Datetime, index: true, dependsOn: { state: 'published' } },
+	image: { type: Types.CloudinaryImage },
 	content: {
 		brief: { type: Types.Html, wysiwyg: true, height: 150 },
 		extended: { type: Types.Html, wysiwyg: true, height: 400 },
 	},
-	// categories: { type: Types.Relationship, ref: 'PostCategory', many: true },
+  categories: { type: Types.Relationship, ref: 'Industry', many: true, required: true, initial: true, index: true },
 });
 
 BlogPost.schema.virtual('content.full').get(function () {
