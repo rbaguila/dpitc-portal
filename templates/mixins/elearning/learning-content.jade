@@ -1,9 +1,12 @@
+//- Card Template
 mixin learning-object-card(learningObject, redirect)
   .card
     if learningObject.thumbnail.exists
-      img.card-img-top(src=learningObject.thumbnail.limit(250,200), alt=learningObject.title, height="200px", width="250px")
+      //- img.card-img-top(src=learningObject._.thumbnail.limit(250,200), alt=learningObject.title, height="200px", width="250px")
+      +img-available-card-top(learningObject._.thumbnail.limit(250,200), learningObject.title, 250, 200)
     else
-      img.card-img-top(src="http://placehold.it/250x200?text=No+Available+Image", alt="No Available Image" , height="150px", width="200px")
+      //- img.card-img-top(src="http://placehold.it/250x200?text=No+Available+Image", alt="No Available Image" , height="150px", width="200px")
+      +img-na-card-top(250, 200)
     .card-block
       .card-title.truncate-text.text-primary #{learningObject.title}
       //- .meta
@@ -16,9 +19,10 @@ mixin learning-object-card(learningObject, redirect)
 mixin course-card(course, redirect)
   .card
     if course.thumbnail.exists
-      img.card-img-top(src=course.thumbnail, alt=course.title, height="200px", width="250px")
+      //- img.card-img-top(src=course.thumbnail, alt=course.title, height="200px", width="250px")
+      +img-available-card-top(course._.thumbnail.limit(250,200), course.title, 250, 200)
     else
-      img.card-img-top(src="http://placehold.it/250x200?text=No+Available+Image", alt="No Available Image" , height="200px", width="250px")
+      +img-na-card-top(250, 200)
     .card-block
       .card-title.truncate-text.text-primary #{course.title}
       //- .meta
@@ -27,17 +31,19 @@ mixin course-card(course, redirect)
     .card-footer
       a.pull-right(href=redirect) Learn More
 
-
+//- Table Template
 mixin learning-object-tr-media(learningObject, redirect)
   tr.media
     td
       .media-left
         if learningObject.thumbnail.exists
           a(href=redirect)
-            img(src=learningObject._.thumbnail.limit(200,150), alt=learningObject.title, height='150px', width='200px').img-rounded.media-object
+            //- img(src=learningObject._.thumbnail.limit(200,150), alt=learningObject.title, height='150px', width='200px').img-rounded.media-object
+            +img-available-rounded-media-object(learningObject._.thumbnail.limit(180,150), learningObject.title, 180, 150)
         else
           a(href=redirect)
-            img(src="http://placehold.it/200x150?text=No+Available+Image", height='150px', width='200px').img-rounded.media-object
+            +img-na-rounded-media-object(180, 150)
+            //- img(src="http://placehold.it/200x150?text=No+Available+Image", height='150px', width='200px').img-rounded.media-object
       .media-body
         a(href=learningObject.url)
           h3.media-heading= learningObject.title
@@ -55,22 +61,25 @@ mixin course-tr-media(course, redirect)
         if course.thumbnail.exists
           a(href=redirect)
             img(src=course._.thumbnail.limit(200,150), alt=course.title, height='150px', width='200px').img-rounded.media-object
+            +img-available-rounded-media-object(course._.thumbnail.limit(180,150), course.title, 180, 150)
         else
           a(href=redirect)
-            img(src="http://placehold.it/200x150?text=No+Available+Image", height='150px', width='200px').img-rounded.media-object
+            +img-na-rounded-media-object(180, 150)
+            
       .media-body
         a(href=course.url)
           h3.media-heading= course.title
           p.block-with-text #{course.content.brief}
           
 
-
+//- Learning Object Reactions
 mixin learning-object-reactions(currentLO)
   .row
     p(style='float: right') #{currentLO.sad.length} #[i.fa.fa-frown-o.fa-md(aria-hidden="true")] &emsp;
     p(style='float: right') #{currentLO.happy.length} #[i.fa.fa-smile-o.fa-md(aria-hidden="true")] &emsp;
     p(style='float: right') #{currentLO.likes.length} #[i.fa.fa-thumbs-o-up.fa-md(aria-hidden="true")] &emsp;
     
+//- Learning Object Tags
 mixin learning-object-tags(tags)
   .row
     label Tags: &nbsp;
