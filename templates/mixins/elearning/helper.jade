@@ -1,0 +1,13 @@
+mixin img-not-available(width, height)
+  img(src='http://placehold.it/'+width+'x'+height+'?text+No=Available+Image', alt='No Available Photo', width=width+'px', height=height+'px').img-rounded
+
+mixin img-available(src, alt, width, height)
+  img(src=src, alt=alt, width=width+'px', height=height+'px').img-rounded
+  
+mixin img-not-available-center(width, height)
+  img(src='http://placehold.it/'+width+'x'+height+'?text+No=Available+Image', alt='No Available Photo', width=width+'px', height=height+'px').img-rounded.center-block
+
+mixin img-available-center(src, alt, width, height)
+  img(src=src, alt=alt, width=width+'px', height=height+'px').img-rounded.center-block
+
+  
