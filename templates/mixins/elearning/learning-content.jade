@@ -1,0 +1,85 @@
+mixin learning-object-card(learningObject, redirect)
+  .card
+    if learningObject.thumbnail.exists
+      img.card-img-top(src=learningObject.thumbnail.limit(200,150), alt=learningObject.title, height="150px", width="200px")
+    else
+      img.card-img-top(src="http://placehold.it/200x150", alt="No Available Image" , height="150px", width="200px")
+    .card-block
+      .card-title.truncate-text.text-primary #{learningObject.title}
+      //- .meta
+        +learning-object-reactions(learningObject)
+      .card-text
+        p.block-with-text #{learningObject.content.brief}
+    .card-footer
+      a.pull-right(href=redirect) Learn More
+
+mixin course-card(course, redirect)
+  .card
+    if course.thumbnail.exists
+      img.card-img-top(src=course.thumbnail, alt=course.title, height="150px", width="200px")
+    else
+      img.card-img-top(src="http://placehold.it/200x150", alt="No Available Image" , height="150px", width="200px")
+    .card-block
+      .card-title.truncate-text.text-primary #{course.title}
+      //- .meta
+      .card-text
+        p.block-with-text #{course.content.brief}
+    .card-footer
+      a.pull-right(href=redirect) Learn More
+
+mixin learning-object-reactions(currentLO)
+  .row
+    p(style='float: right') #{currentLO.sad.length} #[i.fa.fa-frown-o.fa-md(aria-hidden="true")] &emsp;
+    p(style='float: right') #{currentLO.happy.length} #[i.fa.fa-smile-o.fa-md(aria-hidden="true")] &emsp;
+    p(style='float: right') #{currentLO.likes.length} #[i.fa.fa-thumbs-o-up.fa-md(aria-hidden="true")] &emsp;
+    
+mixin learning-object-tags(tags)
+  .row
+    label Tags: &nbsp;
+    if tags.length
+      each tag in tags
+        if tag != null
+          if tag.category == 'isp'
+            a(href='/elearning/learning-objects?isp='+tag.key) #[span.label.label-primary #{tag.name}] &nbsp;
+          else if tag.category == 'sector'
+            a(href='/elearning/learning-objects?sector='+tag.key) #[span.label.label-success #{tag.name}] &nbsp;
+          else if tag.category == 'industry'
+            a(href='/elearning/learning-objects?industry='+tag.key) #[span.label.label-info #{tag.name}] &nbsp;
+          else if tag.category == 'null'
+            a(href='/elearning/learning-objects?specific='+tag.key) #[span.label.label-info #{tag.name}] &nbsp;
+
+mixin learning-object-tr-media(learningObject, redirect)
+  tr.media
+    td
+      .media-left
+        if learningObject.thumbnail.exists
+          a(href=redirect)
+            img(src=learningObject._.thumbnail.limit(200,150), alt=learningObject.title, height='150px', width='200px').img-rounded.media-object
+        else
+          a(href=redirect)
+            img(src="http://placehold.it/200x150", height='150px', width='200px').img-rounded.media-object
+      .media-body
+        a(href=learningObject.url)
+          h3.media-heading= learningObject.title
+          p.block-with-text #{learningObject.content.brief}
+          hr
+          +learning-object-reactions(learningObject)
+
+          if learningObject.tags != null
+            +learning-object-tags(learningObject.tags)
+
+mixin course-tr-media(course, redirect)
+  tr.media
+    td
+      .media-left
+        if course.thumbnail.exists
+          a(href=redirect)
+            img(src=course._.thumbnail.limit(200,150), alt=course.title, height='150px', width='200px').img-rounded.media-object
+        else
+          a(href=redirect)
+            img(src="http://placehold.it/200x150", height='150px', width='200px').img-rounded.media-object
+      .media-body
+        a(href=course.url)
+          h3.media-heading= course.title
+          p.block-with-text #{course.content.brief}
+          

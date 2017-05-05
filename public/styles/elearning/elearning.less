@@ -1,5 +1,5 @@
 body {
-    padding-top: 85px;
+    padding-top: 65px;
     background-color: rgba(250,250,250,1);
     //padding-bottom: 120px;
 }
@@ -41,16 +41,16 @@ body {
         display: flex;
     }
 
-    .row.equal-height > [class*='col-'] > .thumbnail,
-    .row.equal-height > [class*='col-'] > .thumbnail > .caption {
+    .row.equal-height > [class*='col-'] > .card,
+    .row.equal-height > [class*='col-'] > .card > .card-block {
         display: flex;
         flex: 1 0 auto;
         flex-direction: column;
     }
-    .row.equal-height > [class*='col-'] > .thumbnail > .caption > .flex-text {
+    .row.equal-height > [class*='col-'] > .card > .card-block > .flex-text {
         flex-grow: 1;
     }
-    .row.equal-height > [class*='col-'] > .thumbnail > img {
+    .row.equal-height > [class*='col-'] > .card > img {
         width: 100%;
         height: 200px; /* force image's height */
 
@@ -144,4 +144,134 @@ body {
 
 .dashboard{
   border-right: 1px solid #ddd;
+}
+
+
+/* Cards */
+.card {
+    font-size: 1em;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+}
+
+.card-block {
+    font-size: 1em;
+    position: relative;
+    margin: 0;
+    padding: 1em;
+    border: none;
+    border-top: 1px solid rgba(34, 36, 38, .1);
+    box-shadow: none;
+}
+
+.card-img-top {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.card-title {
+    font-size: 1.28571429em;
+    font-weight: 700;
+    line-height: 1.2857em;
+}
+
+.card-text {
+    clear: both;
+    margin-top: .5em;
+    color: rgba(0, 0, 0, .68);
+    max-height: 3.6em; 
+}
+
+.card-footer {
+    font-size: 1em;
+    position: static;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    padding: .75em 1em;
+    color: rgba(0, 0, 0, .4);
+    border-top: 1px solid rgba(0, 0, 0, .05) !important;
+    background: #fff;
+}
+
+.card-inverse .btn {
+    border: 1px solid rgba(0, 0, 0, .05);
+}
+
+.meta {
+    font-size: 1em;
+    color: rgba(0, 0, 0, .4);
+}
+
+.meta a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, .4);
+}
+
+.meta a:hover {
+    color: rgba(0, 0, 0, .87);
+}
+
+
+
+/* Truncating Text */
+// Mixin
+.text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Usage
+.truncate-text {
+  display: inline-block;
+  max-width: 100%;
+  .text-overflow();
+}
+
+/* Line Clamping */
+/* styles for '...' */ 
+.block-with-text {
+  /* hide text if it more than N lines  */
+  overflow: hidden;
+  /* for set '...' in absolute position */
+  position: relative; 
+  /* use this value to count block height */
+  line-height: 1.2em;
+  /* max-height = line-height (1.2) * lines max number (3) */
+  max-height: 3.6em; 
+  /* fix problem when last visible word doesn't adjoin right side  */
+  text-align: justify;  
+  /* place for '...' */
+  margin-right: -1em;
+  padding-right: 1em;
+}
+/* create the ... */
+.block-with-text:before {
+  /* points in the end */
+  content: '...';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of block */
+  right: 0;
+  bottom: 0;
+}
+/* hide ... if we have text, which is less than or equal to max lines */
+.block-with-text:after {
+  /* points in the end */
+  content: '';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of text */
+  right: 0;
+  /* set width and height */
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  /* bg color = bg color under block */
+  background: white;
 }

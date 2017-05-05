@@ -89,8 +89,7 @@ mixin activity-paginate(pagination)
         a(href=url+'page='+pagination.next, aria-label="Next")
           span(aria-hidden="true") &raquo
 
-mixin selectPage(pagination)
-  
+mixin paginate-popular(pagination)
   ul.pagination.pull-right
     li
       if pagination.previous != false
@@ -108,7 +107,46 @@ mixin selectPage(pagination)
         a(href=url+'page='+pagination.next+'&view='+viewStyle+'&duration='+duration aria-label="Next")
           span(aria-hidden="true") &raquo
 
-mixin selectView(action)
+mixin paginate-learning-object(pagination)
+  ul.pagination.pull-right
+    li
+      if pagination.previous != false
+        a(href=url+'specific='+filters.specificCommodity+'&isp='+filters.isp+'&sector='+filters.sector+'&industry='+filters.industry+'&page='+pagination.previous+'&view='+viewStyle+'&duration='+duration, aria-label="Previous")
+          span(aria-hidden="true") &laquo
+    each page in pagination.pages
+      if page == pagination.currentPage
+        li.active
+          a(href=url+'specific='+filters.specificCommodity+'&isp='+filters.isp+'&sector='+filters.sector+'&industry='+filters.industry+'page='+page+'&view='+viewStyle+'&duration='+duration) #{page}
+      else
+        li
+          a(href=url+'specific='+filters.specificCommodity+'&isp='+filters.isp+'&sector='+filters.sector+'&industry='+filters.industry+'view=grid&page='+page)= page
+    li
+      if pagination.next != false
+        a(href=url+'specific='+filters.specificCommodity+'&isp='+filters.isp+'&sector='+filters.sector+'&industry='+filters.industry+'page='+pagination.next+'&view='+viewStyle+'&duration='+duration aria-label="Next")
+          span(aria-hidden="true") &raquo
+
+
+mixin paginate-generic(pagination)
+  ul.pagination.pull-right
+    li
+      if pagination.previous != false
+        a(href=url+'page='+pagination.previous+'&view='+viewStyle, aria-label="Previous")
+          span(aria-hidden="true") &laquo
+    each page in pagination.pages
+      if page == pagination.currentPage
+        li.active
+          a(href=url+'page='+page+'&view='+viewStyle) #{page}
+      else
+        li
+          a(href=url+'view=grid&page='+page)= page
+    li
+      if pagination.next != false
+        a(href=url+'page='+pagination.next+'&view='+viewStyle aria-label="Next")
+          span(aria-hidden="true") &raquo
+
+
+
+mixin view-popular(action)
   ul.nav.navbar-nav.navbar-right
     li
       a(href=url+'page='+page+'&view=grid'+'&duration='+duration)
@@ -116,3 +154,24 @@ mixin selectView(action)
     li
       a(href=url+'page='+page+'&view=list'+'&duration='+duration)
         span(aria-hidden="true").glyphicon.glyphicon-th-list
+
+mixin view-generic(action)
+  ul.nav.navbar-nav.navbar-right
+    li
+      a(href=url+'page='+page+'&view=grid')
+        span(aria-hidden="true").glyphicon.glyphicon-th
+    li
+      a(href=url+'page='+page+'&view=list')
+        span(aria-hidden="true").glyphicon.glyphicon-th-list
+
+mixin duration-popular(action)
+  .dropdown
+    button.btn.btn-default.dropdown-toggle(type='button', id='duration', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true') Popular this &emsp;
+      span.caret
+    ul.dropdown-menu(aria-labelledby='duration')
+      li
+        a(href=url+'page='+page+'&view='+viewStyle+'&duration=day') day
+      li
+        a(href=url+'page='+page+'&view='+viewStyle+'&duration=week') week
+      li 
+        a(href=url+'page='+page+'&view='+viewStyle+'&duration=month') month

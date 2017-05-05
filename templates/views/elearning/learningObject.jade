@@ -122,24 +122,7 @@ mixin learningObject(currentLO)
       label Source/s:
       each au in currentLO.author
         a(href='#')= au.name
-  +tags(currentLO.tags)
-
-
-mixin tags(tags)
-  .row
-    label Tags:
-  .row
-    if tags.length
-      each tag in tags
-        if tag != null
-          if tag.category == 'isp'
-            a(href='/elearning/learning-objects?isp='+tag.key) #[span.label.label-primary #{tag.name}] &nbsp;
-          else if tag.category == 'sector'
-            a(href='/elearning/learning-objects?sector='+tag.key) #[span.label.label-success #{tag.name}] &nbsp;
-          else if tag.category == 'industry'
-            a(href='/elearning/learning-objects?industry='+tag.key) #[span.label.label-info #{tag.name}] &nbsp;
-          else if tag.category == 'null'
-            a(href='/elearning/learning-objects?specific='+tag.key) #[span.label.label-info #{tag.name}] &nbsp;
+  +learning-object-tags(currentLO.tags)
 
 
 mixin reactions(action)
