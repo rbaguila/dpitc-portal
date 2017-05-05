@@ -5,7 +5,6 @@ var moment = require('moment');
 var _ = require('lodash');
 
 var Course = keystone.list('Course');
-var Chapter = keystone.list('Chapter');
 var LearningObject = keystone.list('LearningObject');
 var LOView = keystone.list('LOView');
 var ELearningVisit = keystone.list('ELearningVisit');

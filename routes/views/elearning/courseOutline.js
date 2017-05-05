@@ -2,7 +2,6 @@ var keystone = require('keystone');
 var http = require('http');
 var ELearningVisit = keystone.list('ELearningVisit');
 var Course = keystone.list('Course');
-var Chapter = keystone.list('Chapter');
 
 exports = module.exports = function (req, res) {
 

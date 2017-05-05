@@ -6,7 +6,6 @@ var helper = require('./helper');
 
 var ELearningVisit = keystone.list('ELearningVisit');
 var Course = keystone.list('Course');
-var Chapter = keystone.list('Chapter');
 var LearningObject = keystone.list('LearningObject');
 
 exports = module.exports = function (req, res) {

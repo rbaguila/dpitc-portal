@@ -171,7 +171,7 @@ exports = module.exports = function (req, res) {
         validationErrors = err.errors;
       } else {
         req.flash('success', 'Your comment was added.');
-        return res.redirect('/elearning/learning-object/' + locals.currentLO.slug + '#comment-id-' + newComment.id);
+        return res.redirect('/elearning/learning-object/' + locals.currentLO.slug + '#comments');
       }
       next();
     });
@@ -581,14 +581,18 @@ exports = module.exports = function (req, res) {
   });
 
   view.on('init', function (next) {
-    LORating.model.find().where('updatedBy', locals.user._id).populate('learningObject').lean().exec(function (err, results){
-      if(err) return next(err);
-      for(var i=0;i<results.length;i++){
-        results[i].learningObject.ratings = results[i].rating;
-        locals.data.ratedLO.push(results[i].learningObject);
-      }
+    if (locals.user) {
+      LORating.model.find().where('updatedBy', locals.user._id).populate('learningObject').lean().exec(function (err, results){
+        if(err) return next(err);
+        for(var i=0;i<results.length;i++){
+          results[i].learningObject.ratings = results[i].rating;
+          locals.data.ratedLO.push(results[i].learningObject);
+        }
+        next();
+      });  
+    } else {
       next();
-    });
+    }
   });
 
   //TODO - add rating in the algorithm
