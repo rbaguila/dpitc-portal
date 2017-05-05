@@ -75,7 +75,7 @@ exports = module.exports = function (req, res) {
       slug: locals.filters.currentLO,
       state: 'published',
     })
-    .populate('gallery video links files isp sector industry')
+    .populate('gallery video links files isp sector industry author')
     .exec(function(err, result) {
       if (err) return next(err);
       if (result.length == 0) {
@@ -171,7 +171,7 @@ exports = module.exports = function (req, res) {
         validationErrors = err.errors;
       } else {
         req.flash('success', 'Your comment was added.');
-        return res.redirect('/elearning/learning-object/' + locals.currentLO.slug + '#comments');
+        return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
       }
       next();
     });

@@ -94,3 +94,17 @@ mixin learning-object-tags(tags)
             a(href='/elearning/learning-objects?industry='+tag.key) #[span.label.label-info #{tag.name}] &nbsp;
           else if tag.category == 'null'
             a(href='/elearning/learning-objects?specific='+tag.key) #[span.label.label-info #{tag.name}] &nbsp;
+
+mixin learning-object-side(learningObject, redirect)
+  .media
+    a(href=redirect)
+      
+      .media-left
+        if learningObject.thumbnail.exists
+          +img-available-rounded-media-object(learningObject._.thumbnail.limit(100, 80), learningObject.title, 100, 80) 
+        else
+            +img-na-rounded-media-object(100, 80)
+      .media-body
+        strong.truncate-text #{learningObject.title}
+        br
+        small.block-with-text.text-info #{learningObject.content.brief}    
