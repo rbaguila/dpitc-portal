@@ -51,7 +51,7 @@ exports = module.exports = function (req, res) {
         } else {
           console.log(newUser);
           req.flash('success', 'Account created. Please sign in.');         
-          return res.redirect('/keystone/signin');
+          return res.redirect('/keystone/signin?from=/elearning/profile?');
         }
         next();
       });

@@ -24,7 +24,9 @@ exports = module.exports = function (req, res) {
   var pageData = {
     loginRedirect: '/elearning/profile',
     breadcrumbs: [
+      { text: 'Elearning', link: '/elearning' },
       { text: 'Profile', link: '/elearning/profile' },
+      
     ]
   }
 
