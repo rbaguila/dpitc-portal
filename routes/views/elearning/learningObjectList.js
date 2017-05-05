@@ -26,7 +26,7 @@ exports = module.exports = function (req, res) {
 
   locals.viewStyle = req.query.view == undefined ? 'grid' : req.query.view;
   locals.page = req.query.page == undefined ? 1 : req.query.page;
-  locals.perPage = req.query.perPage == undefined ?  9 : req.query.perPage;
+  locals.perPage = req.query.perPage == undefined ?  12 : req.query.perPage;
 
   // Category locals
  /* locals.isp = req.query.isp == undefined ? null : req.query.isp;

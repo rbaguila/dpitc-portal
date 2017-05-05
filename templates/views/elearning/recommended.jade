@@ -1,132 +1,46 @@
 extends ../../layouts/elearning
 
 mixin recommendedLO-grid(learningObjects)
-  h2.text-center Recommended Lessons
-  if learningObjects.length
-    .row.equal-height
+  .row
+    .col-md-8.col-xs-10
+      h3.text-left Recommended Lessons
+    .col-md-2.col-xs-2.pull-right
+      +view-generic()
+
+  .row.equal-height
+    if learningObjects.length
       each learningObject in learningObjects
         .col-xs-6.col-md-3
-          .thumbnail
-            if learningObject._.thumbnail.exists
-              img.card-img-top(src=learningObject._.thumbnail.limit(200, 150), alt=learningObject.title, height='150px', width='200px')
-            else
-              img.card-img-top(src="http://placehold.it/200x150", height='150px', width='200px')
-            .caption
-              h3= learningObject.title.substring(0, 50)
-              p= learningObject.content.brief.substring(0, 100)
-              br
-              p
-                a.btn.btn-info.btn-block(href=learningObject.url + "?type=recommended") Learn more
-  else
-    h3.text-muted There are no recommended lessons for you yet.
-  //- ul.pagination.pull-right
-    li
-      a(href="/elearning/learningObjects?view=grid&page="+learningObjects.previous aria-label="Previous")
-        span(aria-hidden="true") &laquo
-    each page in learningObjects.pages
-      if page==learningObjects.currentPage
-        li.active
-          a(href="/elearning/learningObjects?view=grid&page="+page)= page
-      else
-        li
-          a(href="/elearning/learningObjects?view=grid&page="+page)= page
-
-    li
-      a(href="/elearning/learningObjects?view=grid&page="+learningObjects.next aria-label="Next")
-        span(aria-hidden="true") &raquo
-
+          +learning-object-card(learningObject, learningObject.url)
+    else
+      h3.text-muted There are no recommended lessons for you yet.
 
 mixin recommendedLO-list(learningObjects)
-  h2.text-center Recommended Lessons
-  if learningObjects.length
-    .row
-      .col-md-12
+  .row
+    .col-md-8.col-xs-10
+      h3.text-left Recommended Lessons
+    .col-md-2.col-xs-2.pull-right
+      +view-generic()
+
+  .row
+    if learningObjects.length
+      .col-md-9
         .panel
           table.table.table-hover
             thead
             tbody
               each learningObject in learningObjects
-                tr.media
-                  td
-                    .media-left
-                      if learningObject._.thumbnail.exists
-                        a(href=learningObject.url + "?type=recommended")
-                          img(src=learningObject._.thumbnail.limit(200,150), alt=learningObject.title, height='150px', width='200px').img-rounded.media-object
-                      else
-                        a(href=learningObject.url + "?type=recommended")
-                          img(src="http://placehold.it/200x150", height="150px", width="200px").img-rounded.media-object
-                    .media-body
-                      a(href=learningObject.url + "?type=recommended")
-                        h4.media-heading= learningObject.title
-                        .row
-                          span= learningObject.content.brief
-                        hr
-                        .row
-                          //- p.text-right #{learningObject.loviews.length} Views
-                          .col-md-2
-                            p #{learningObject.likes.length} &nbsp;
-                              i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")
-                          .col-md-2
-                            p #{learningObject.happy.length} &nbsp;
-                              i.fa.fa-smile-o.fa-lg(aria-hidden="true")
-                          .col-md-2
-                            p #{learningObject.happy.length} &nbsp;
-                              i.fa.fa-frown-o.fa-lg(aria-hidden="true")
-
-  else
-    h3.text-muted There are no recommended lessons for you yet.
-  //- ul.pagination.pull-right
-    li
-      a(href="/elearning/learningObjects?view=list&page="+learningObjects.previous aria-label="Previous")
-        span(aria-hidden="true") &laquo
-    each page in learningObjects.pages
-      if page==learningObjects.currentPage
-        li.active
-          a(href="/elearning/learningObjects?view=list&page="+page)= page
-      else
-        li
-          a(href="/elearning/learningObjects?view=list&page="+page)= page
-
-    li
-      a(href="/elearning/learningObjects?view=list&page="+learningObjects.next aria-label="Next")
-        span(aria-hidden="true") &raquo
-
-
-
-mixin navigation(learningObjects)
-  .container
-    .row
-      nav.navbar.navbar-default
-        .container-fluid
-          //- Mobile menu
-          .navbar-header
-            button(type="button", data-toggle="collapse", aria-expanded="false", data-target="#publications-filter").navbar-toggle.collapsed
-              span.sr-only Toggle navigation
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar
-
-          #publications-filter.collapse.navbar-collapse
-            ul.nav.navbar-nav
-            form.navbar-form.navbar-left
-              .form-group
-                input.form-control(type='text', placeholder='Search')
-              button.btn.btn-default(type='submit') Submit
-            //- ul.nav.navbar-nav.navbar-right
-              li
-                a(href="/elearning/learningObjects?view=grid&page="+learningObjects.currentPage)
-                  span(aria-hidden="true").glyphicon.glyphicon-th
-              li
-                a(href="/elearning/learningObjects?view=list&page="+learningObjects.currentPage)
-                  span(aria-hidden="true").glyphicon.glyphicon-th-list
+                +learning-object-tr-media(learningObject, learningObject.url)
+    else
+      h3.text-muted There are no recommended lessons for you yet.
 
 block content
-  +navigation(popularLO)
+  +search()
   .container
     .panel.panel-default
       .panel-body
         if viewStyle == 'grid'
-          +recommendedLO-grid(data.recommendedLearningObjects)
-        else
-          +recommendedLO-list(data.recommendedLearningObjects)
-
+          +recommendedLO-grid(paginateRecommendedLO.results)
+        if viewStyle == 'list'
+          +recommendedLO-list(paginateRecommendedLO.results)
+        +paginate-generic(paginateRecommendedLO)

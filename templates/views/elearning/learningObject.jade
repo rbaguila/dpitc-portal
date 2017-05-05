@@ -101,13 +101,14 @@ block content
         if user
           .row
             .panel.panel-info
-              .panel-heading Recommended Topics
+              .panel-heading 
+                a(href='/elearning/recommended?') Recommended Lessons
               .panel-body
                 +recommendedTopics(data.recommendedLO)
         .row
           .panel.panel-info
             .panel-heading 
-              a(href="/elearning/courses") Other Topics
+              a(href="/elearning/courses?") Other Topics
             .panel-body
               +otherTopics(data.otherLO)
         .row
