@@ -6,8 +6,8 @@ exports = module.exports = function (req, res) {
   var view = new keystone.View(req, res);
   var locals = res.locals;
 
-  locals.url = '/elearning/feedback';
-  locals.section = 'contact';
+  locals.url = '/elearning/user-activity/feedback';
+  locals.section = 'user-activity';
   locals.feedbackTypes = LOFeedback.fields.feedbackType.ops;
   locals.formData = req.body || {};
   locals.validationErrors = {};
@@ -40,6 +40,6 @@ exports = module.exports = function (req, res) {
 
   });
 
-  view.render('elearning/feedback', pageData);
+  view.render('elearning/user/feedback', pageData);
 
 }

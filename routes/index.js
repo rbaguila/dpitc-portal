@@ -55,12 +55,12 @@ exports = module.exports = function (app) {
 	app.post('/elearning/signup?', routes.elearningViews.user.signup);
 	app.get('/elearning/profile?', middleware.requireElearningUser, routes.elearningViews.user.profile);
 	app.post('/elearning/profile?', middleware.requireElearningUser, routes.elearningViews.user.profile);
-	app.get('/elearning/profile/user-activity?', middleware.requireElearningUser, routes.elearningViews.user.userActivity);
+	app.get('/elearning/user-activity?', middleware.requireElearningUser, routes.elearningViews.user.userActivity);
+	app.get('/elearning/user-activity/feedback', middleware.requireElearningUser, routes.elearningViews.user.feedback);
+	
 
 	// Elearning Routes
 	app.get('/elearning', routes.elearningViews.elearning);
-	app.get('/elearning/feedback', routes.elearningViews.feedback);
-	app.post('/elearning/feedback', routes.elearningViews.feedback);
 	app.get('/elearning/courses?', routes.elearningViews.courseList);
 	app.get('/elearning/course/:courseslug?', routes.elearningViews.courseOutline);
 	app.get('/elearning/:courseslug/learning-object/:learningobjectslug?', routes.elearningViews.learningObject);

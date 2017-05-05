@@ -1,4 +1,4 @@
-extends ../../layouts/elearning
+extends ../../../layouts/elearning
 
 mixin feedbackForm(action)
   if user
@@ -21,13 +21,15 @@ mixin feedbackForm(action)
   else
     a.btn.btn-link(href='/keystone/signin?from=' + loginRedirect) Sign In to Give a Feedback.
 
-block content  
-  .container
-    .elearning-page-header
-      h1 Feedback 
-        #[small Give us a feedback with your ELearning Experience!]
-    .row
-      .col-sm-8
-        .panel.panel-default
-          .panel-body
-            +feedbackForm()
+block content
+  .row
+    .col-md-3.col-sm-4.dashboard
+      +user-sidenav(section)
+    .col-md-7.col-sm-4  
+      .panel.panel-default.col-md-offset-2
+        .panel-body
+          .elearning-page-header
+            h3 Feedback
+              #[small Give us a feedback with your ELearning Experience!]
+          +feedbackForm()    
+  
