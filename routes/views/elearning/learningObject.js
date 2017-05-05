@@ -40,7 +40,7 @@ exports = module.exports = function (req, res) {
     likedLO: [],
     happyLO: [],
     sadLO: [],
-    usersip: []
+    ratedLO: []
   };
 
   locals.formData = req.body || {};
@@ -66,6 +66,7 @@ exports = module.exports = function (req, res) {
 
   var tempRecommended = [];
   var tempLearningObjects = [];
+  var tempRatedIds = [];
 
   // Load the currentLO
   view.on('init', function(next){
@@ -579,6 +580,18 @@ exports = module.exports = function (req, res) {
     }
   });
 
+  view.on('init', function (next) {
+    LORating.model.find().where('updatedBy', locals.user._id).populate('learningObject').lean().exec(function (err, results){
+      if(err) return next(err);
+      for(var i=0;i<results.length;i++){
+        results[i].learningObject.ratings = results[i].rating;
+        locals.data.ratedLO.push(results[i].learningObject);
+      }
+      next();
+    });
+  });
+
+  //TODO - add rating in the algorithm
   //compute for the score of each learning objects based on the ISP, sector and industry tags of the learning objects taken by the logged-in user
   view.on('init', function(next){
     if(locals.data.learningObjectsTaken.length>0){

@@ -96,7 +96,10 @@ exports.notYetTaken = function (learningObject, learningObjectsTaken){
   }
   if(flag==0) return 1;
 }
+//TO DO, ADD HERE THE ALGO FOR RATING
+exports.getAverageRating = function (learningObject, ratedLO){
 
+}
 
 // Pagination function for an Array of Objects
 // Similar to Keystone JS pagination query
