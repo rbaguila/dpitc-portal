@@ -1,4 +1,4 @@
-extends ../../layouts/elearning
+extends ../../../layouts/elearning
 
 block css
   link(rel="stylesheet", href="/js/fancybox/jquery.fancybox.css", type="text/css", media="screen")
@@ -53,67 +53,75 @@ block js
   
 
 block content
-  .container
-    .row
-      .col-md-8
-        .row
-          //- Main Content and Reactions Panel
-          .panel.panel-info
-            .panel-body
-              +learningObject(currentLO)
-              hr
-              +reactions()
-        .row
-          //- Video Panel
-          if currentLO.video
+  +search()
+  if searchSubmitted
+    .container
+      .panel.panel-default
+        .panel-body
+          +searchResults(paginatedSearchResults.results)
+          +paginate-page(paginatedSearchResults, searchUrl)
+  else 
+    .container
+      .row
+        .col-md-8
+          .row
+            //- Main Content and Reactions Panel
             .panel.panel-info
               .panel-body
-                +video(currentLO.video)
-        .row
-          //- Gallery Panel
-          if currentLO.gallery
-            .panel.panel-info
-              .panel-body
-                +gallery(currentLO.gallery)
+                +learningObject(currentLO)
+                hr
+                +reactions()
+          .row
+            //- Video Panel
+            if currentLO.video
+              .panel.panel-info
+                .panel-body
+                  +video(currentLO.video)
+          .row
+            //- Gallery Panel
+            if currentLO.gallery
+              .panel.panel-info
+                .panel-body
+                  +gallery(currentLO.gallery)
 
-        .row
-          //- Files Panel
-          if currentLO.files.length
+          .row
+            //- Files Panel
+            if currentLO.files.length
+              .panel.panel-info
+                .panel-body
+                  +files(currentLO.files)
+
+          .row
+            //- Related Links
+            if currentLO.links.length
+              .panel.panel-info
+                .panel-body
+                  +links(currentLO.links)
+
+          .row
+            //- Comments Panel
             .panel.panel-info
               .panel-body
-                +files(currentLO.files)
-
-        .row
-          //- Related Links
-          if currentLO.links.length
-            .panel.panel-info
-              .panel-body
-                +links(currentLO.links)
-
-        .row
-          //- Comments Panel
-          .panel.panel-info
-            .panel-body
-              label Comments (#{comments.length})
-              +comment-thread(comments)
-              
-      .col-md-4
-        if user
+                label Comments (#{comments.length})
+                +comment-thread(comments)
+                
+        .col-md-4
+          if user
+            .row
+              .panel.panel-info
+                .panel-heading 
+                  a(href='/elearning/recommended?') Recommended Lessons
+                .panel-body
+                  +recommendedTopics(data.recommendedLO)
           .row
             .panel.panel-info
               .panel-heading 
-                a(href='/elearning/recommended?') Recommended Lessons
+                a(href="/elearning/courses?") Other Topics
               .panel-body
-                +recommendedTopics(data.recommendedLO)
-        .row
-          .panel.panel-info
-            .panel-heading 
-              a(href="/elearning/courses?") Other Topics
-            .panel-body
-              +otherTopics(data.otherLO)
-        .row
-          +feedback()
-    
+                +otherTopics(data.otherLO)
+          .row
+            +feedback()
+      
 mixin learningObject(currentLO)
   .row
     h3 #{currentLO.title}
