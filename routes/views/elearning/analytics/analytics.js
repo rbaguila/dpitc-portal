@@ -6,9 +6,7 @@ exports = module.exports = function(req, res){
     var view = new keystone.View(req, res);
     var locals = res.locals;
 
-    //locals.section is used to set the currently selected
-    //item in the header navigation.
-    locals.section = 'analytics';
+    locals.section = 'admin';
 
     locals.data = {
         mostPopularLO: [],
@@ -27,7 +25,7 @@ exports = module.exports = function(req, res){
         loginRedirect: '/elearning', 
         breadcrumbs: [
           { text: 'elearning', link: '/elearning' },
-          { text: 'elearning analytics', link: '/elearning/analytics'}
+          { text: 'analytics', link: '/elearning/analytics'}
         ]
     }
 
@@ -223,6 +221,6 @@ exports = module.exports = function(req, res){
         next();
     });
     //Render the view
-    view.render('elearning/analytics', pageData);
+    view.render('elearning/analytics/analytics', pageData);
 
 };

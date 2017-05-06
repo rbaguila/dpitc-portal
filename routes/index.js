@@ -65,16 +65,14 @@ exports = module.exports = function (app) {
 	app.get('/elearning/course/:courseslug?', routes.elearningViews.courseOutline);
 	app.get('/elearning/:courseslug/learning-object/:learningobjectslug?', routes.elearningViews.learningObject);
 	app.post('/elearning/:courseslug/learning-object/:learningobjectslug', routes.elearningViews.learningObject);
-
-//	app.get('/elearning/:courseslug/chapter/:chapterslug?', routes.elearningViews.chapterOutline);
 	app.get('/elearning/learning-objects?', routes.elearningViews.learningObjectList);
 	app.get('/elearning/learning-object/:learningobjectslug?', routes.elearningViews.learningObject);
 	app.post('/elearning/learning-object/:learningobjectslug', routes.elearningViews.learningObject);
 	app.get('/elearning/learning-objects/popular?', routes.elearningViews.popular);
 	app.get('/elearning/recommended?', middleware.requireElearningUser, routes.elearningViews.recommended);
 
-	// User-Elearning Admin
-	app.get('/elearning/analytics', middleware.requireElearningAdmin , routes.elearningViews.analytics);
+	// Elearning Admin
+	app.get('/elearning/analytics', middleware.requireElearningAdmin , routes.elearningViews.analytics.analytics);
 	app.get('/elearning/analytics/users?', middleware.requireElearningAdmin , routes.elearningViews.analyticsUsersList);
 	app.get('/elearning/analytics/recommendedViews', middleware.requireElearningAdmin , routes.elearningViews.analyticsRecommended);
 	app.get('/elearning/analytics/users/:userid?', middleware.requireElearningAdmin , routes.elearningViews.analyticsUsers);
