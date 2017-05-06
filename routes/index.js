@@ -87,9 +87,10 @@ exports = module.exports = function (app) {
   app.get('/api/elearning/fileupload/:id/remove', keystone.middleware.api, routes.api.elearning.fileupload.remove);
 
   // Elearning Search
-  app.get('/elearning/search?', keystone.middleware.api, routes.api.elearning.search);
+  //app.get('/elearning/search?', keystone.middleware.api, routes.api.elearning.search);
 	
-
+	/*app.get('/elearning?action=elearning.search&search=', routes.elearningViews.search);
+*/
 	app.get('/search/', function(req,res){
 		var searchKey = req.query.searchKey;
 		res.writeHead(301,

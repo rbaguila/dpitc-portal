@@ -18,7 +18,7 @@ exports = module.exports = function (req, res) {
   var locals = res.locals;
 
   locals.section = 'elearning';
-  locals.url = '/elearning/';
+  locals.url = '/elearning?';
   
   locals.page = req.query.page == undefined ? 1 : req.query.page;
   locals.perPage = req.query.perPage == undefined ?  6 : req.query.perPage;
@@ -26,6 +26,7 @@ exports = module.exports = function (req, res) {
   locals.formData = req.body || {};
 
   locals.searchSubmitted = false;
+  locals.searchUrl = locals.url + 'action=elearning.search&search=';
   locals.searchResults = [];
 
   locals.data = {
@@ -53,6 +54,8 @@ exports = module.exports = function (req, res) {
   view.on('get', { action: 'elearning.search' }, function (next) {
     
     locals.searchSubmitted = true;
+    locals.searchUrl = locals.searchUrl+req.query.search+'&';
+
     LearningContent.model.find(
         { $text: { $search: req.query.search } },
         { score: { $meta: "textScore" } }
