@@ -1,5 +1,9 @@
 var keystone = require('keystone');
 var http = require('http');
+
+var helper = require('./../helper');
+
+var LearningContent = keystone.list('LearningContent');
 var ELearningVisit = keystone.list('ELearningVisit');
 var Course = keystone.list('Course');
 
@@ -10,6 +14,24 @@ exports = module.exports = function (req, res) {
 
   // Set locals
   locals.section = 'courses';
+  locals.url = '/elearning/course/'+req.params.courseslug+'?';
+
+  locals.viewStyle = req.query.view == undefined ? 'grid' : req.query.view;
+  locals.page = req.query.page == undefined ? 1 : req.query.page;
+  locals.perPage = req.query.perPage == undefined ?  12 : req.query.perPage;
+
+  locals.formData = req.body || {};
+
+  locals.searchSubmitted = false;
+  locals.searchUrl = locals.url + 'action=elearning.search&search=';
+  locals.searchResults = [];
+
+  locals.currslug = req.params.courseslug;
+  
+  locals.data = {
+    courses: [],
+    chapters: [],
+  };
 
   var pageData = {
     loginRedirect: '/elearning/course/'+req.params.courseslug,
@@ -19,20 +41,29 @@ exports = module.exports = function (req, res) {
     ]
   }
 
-  locals.data = {
-    currCourse: [],
-    courses: [],
-    chapters: [],
-  };
+  /* Search */
+  view.on('get', { action: 'elearning.search' }, function (next) {
+    
+    locals.searchSubmitted = true;
+    locals.searchUrl = locals.searchUrl+req.query.search+'&';
 
-  locals.currslug = req.params.courseslug;
-  locals.viewStyle = req.query.view == undefined ? 'list' : req.query.view;
-  var page = req.query.page == undefined ? 1 : req.query.view;
+    LearningContent.model.find(
+        { $text: { $search: req.query.search } },
+        { score: { $meta: "textScore" } }
+      )
+      .sort( { score: { $meta: "textScore" } } )
+      .exec( function(err, results) {
+        if (err || !results.length){
+          return next(err);
+        }
+        locals.searchResults = results;
 
-  var searchTerm = req.query.term
-  var searchCategory = req.query.category
+        locals.paginatedSearchResults = helper.paginate(locals.searchResults, locals.page, locals.perPage);
+        next(err);
+      });
 
-
+  });
+  
   // Load the current course
   view.on('init', function(next){
     Course.model.findOne({
@@ -42,7 +73,7 @@ exports = module.exports = function (req, res) {
     .populate('author outline')
     .exec(function(err, result){
       if(result != null){
-        locals.data.currCourse = result;
+        locals.currentCourse = result;
       } else {
         return res.status(404).send(keystone.wrapHTMLError('Sorry, Course: '+ req.params.courseslug +' not found! (404)'));
       }
@@ -115,6 +146,6 @@ exports = module.exports = function (req, res) {
 
 
   // Render the view
-  view.render('elearning/courseOutline', pageData);
+  view.render('elearning/content/courseOutline', pageData);
 
 };
