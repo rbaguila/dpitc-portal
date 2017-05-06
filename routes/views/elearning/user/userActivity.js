@@ -22,22 +22,26 @@ exports = module.exports = function (req, res) {
   locals.loviews = [];
 
   if(locals.nav == 'views') {
+    locals.url = '/elearning/user-activity?nav=views&';
     locals.reactfilters = { 
       'user': locals.user._id 
     };
   } else if(locals.nav == 'likes') {
+    locals.url = '/elearning/user-activity?nav=likes&';
     locals.reactfilters = { 
       'likes': { $elemMatch: 
         { $eq: locals.user._id } 
       } 
     };
   } else if(locals.nav == 'happy') {
+    locals.url = '/elearning/user-activity?nav=happy&';
     locals.reactfilters = { 
       'happy': { $elemMatch: 
         { $eq: locals.user._id } 
       } 
     };
   } else if(locals.nav == 'sad') {
+    locals.url = '/elearning/user-activity?nav=sad&';
     locals.reactfilters = { 
       'sad': { $elemMatch: 
         { $eq: locals.user._id } 

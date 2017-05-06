@@ -68,7 +68,7 @@ block content
                 .panel-heading Views
                 .panel-body
                   +loTaken(loviews.results)
-                  +activity-paginate(loviews)
+                  +paginate-page(loviews, url)
             else
               .panel.panel-info
                 if nav == 'likes'
@@ -79,5 +79,5 @@ block content
                   .panel-heading Lessons with Sad Reacts
                 .panel-body
                   +loReacts(learningObjects.results)
-                  +activity-paginate(learningObjects)
+                  +paginate-page(learningObjects, url)
     
