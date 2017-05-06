@@ -128,7 +128,7 @@ exports = module.exports = function(req, res){
     });
 
     view.on('init', function(next){
-        var q = keystone.list('User').model.count();
+        var q = keystone.list('User').model.count().where('isElearningUser', true);
 
         q.exec(function(err, count){
             if (err || count==null) {
