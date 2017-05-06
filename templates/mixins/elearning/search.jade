@@ -27,7 +27,7 @@ mixin searchResults(searchResults)
                   thead
                   tbody
                     each searchResult in searchResults
-                      +learning-content-tr-media(searchResult, searchResults.url)
+                      +learning-content-tr-media(searchResult, searchResult.url)
                 
           else
             h4.text-muted There are no lessons regarding this.
