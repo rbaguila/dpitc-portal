@@ -4,7 +4,7 @@ var async = require('async');
 var moment = require('moment');
 var _ = require('lodash');
 
-var helper = require('./helper');
+var helper = require('./../helper');
 
 var LearningContent = keystone.list('LearningContent');
 var Course = keystone.list('Course');
@@ -423,6 +423,6 @@ exports = module.exports = function (req, res) {
   });
 */
 
-  view.render('elearning/elearning', pageData);
+  view.render('elearning/content/elearning', pageData);
 
 }
