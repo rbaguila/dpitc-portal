@@ -10,7 +10,24 @@ mixin search(action)
             span.icon-bar
 
         .collapse.navbar-collapse(id="search-nav")
-          form.navbar-form.navbar-right(role="search")
+          form.navbar-form.navbar-right(method="get")
+            input(type='hidden', name='action',  value='elearning.search')
             .form-group
-              input.form-control(type="text", placeholder="Search Elearning...")
+              input.form-control(type="text", placeholder="Search Elearning...", name="search", value=formData.searchKey)
             button.btn.btn-default(type="submit") Go!
+
+mixin searchResults(searchResults)
+     .elearning-page-header
+          h3.text-left Search Results (#{searchResults.length}) #[a(href=loginRedirect) #[small Go back..]]
+        .row
+          if searchResults.length
+            .col-md-9
+              .panel
+                table.table.table-hover
+                  thead
+                  tbody
+                    each searchResult in searchResults
+                      +learning-content-tr-media(searchResult, searchResults.url)
+                
+          else
+            h4.text-muted There are no lessons regarding this.

@@ -60,7 +60,7 @@ mixin course-tr-media(course, redirect)
       .media-left
         if course.thumbnail.exists
           a(href=redirect)
-            img(src=course._.thumbnail.limit(200,150), alt=course.title, height='150px', width='200px').img-rounded.media-object
+            //- img(src=course._.thumbnail.limit(200,150), alt=course.title, height='150px', width='200px').img-rounded.media-object
             +img-available-rounded-media-object(course._.thumbnail.limit(180,150), course.title, 180, 150)
         else
           a(href=redirect)
@@ -71,6 +71,22 @@ mixin course-tr-media(course, redirect)
           h3.media-heading= course.title
           p.block-with-text #{course.content.brief}
           
+mixin learning-content-tr-media(learningContent, redirect)
+  tr.media
+    td
+      .media-left
+        if learningContent.thumbnail.exists
+          a(href=redirect)
+            //- img(src=learningContent._.thumbnail.limit(200,150), alt=learningContent.title, height='150px', width='200px').img-rounded.media-object
+            +img-available-rounded-media-object(learningContent._.thumbnail.limit(180,150), learningContent.title, 180, 150)
+        else
+          a(href=redirect)
+            +img-na-rounded-media-object(120, 100)
+            
+      .media-body
+        a(href=redirect)
+          h4.media-heading= learningContent.title
+          p.block-with-text #{learningContent.content.brief}
 
 //- Learning Object Reactions
 mixin learning-object-reactions(currentLO)

@@ -43,6 +43,12 @@ LearningContent.add({
   },
 });
 
+LearningContent.schema.index({
+  title: "text",
+  brief: "text",
+  extended: "text"
+});
+
 LearningContent.defaultColumns = 'title|20%, author|20%, content.brief|30%, state|10%, publishedAt|10%';
 
 LearningContent.register();
