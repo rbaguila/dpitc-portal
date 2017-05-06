@@ -2,6 +2,9 @@ var keystone = require('keystone');
 var http = require('http');
 var ELearningVisit = keystone.list('ELearningVisit');
 
+var helper = require('./../helper');
+
+var LearningContent = keystone.list('LearningContent');
 var LearningObject = keystone.list('LearningObject');
 var ISP = keystone.list('ISP');
 var LIndustry = keystone.list('LIndustry');
@@ -12,21 +15,20 @@ exports = module.exports = function (req, res) {
   var view = new keystone.View(req, res);
   var locals = res.locals;
 
-  // Set locals
   locals.section = 'learning objects';
   locals.url = '/elearning/learning-objects?';
 
-  var pageData = {
-    loginRedirect: '/elearning/learning-objects?',
-    breadcrumbs: [
-      { text: 'ELearning', link: '/elearning' },
-      { text: 'Lessons', link: '/elearning/learning-objects?' },
-    ]
-  }
+  
 
   locals.viewStyle = req.query.view == undefined ? 'grid' : req.query.view;
   locals.page = req.query.page == undefined ? 1 : req.query.page;
   locals.perPage = req.query.perPage == undefined ?  12 : req.query.perPage;
+
+  locals.formData = req.body || {};
+
+  locals.searchSubmitted = false;
+  locals.searchUrl = locals.url + 'action=elearning.search&search=';
+  locals.searchResults = [];
 
   // Category locals
  /* locals.isp = req.query.isp == undefined ? null : req.query.isp;
@@ -40,6 +42,38 @@ exports = module.exports = function (req, res) {
     industry: req.query.industry,
     specificCommodity: req.query.specific
   }
+
+
+  var pageData = {
+    loginRedirect: '/elearning/learning-objects?',
+    breadcrumbs: [
+      { text: 'ELearning', link: '/elearning' },
+      { text: 'Lessons', link: '/elearning/learning-objects?' },
+    ]
+  }
+
+   /* Search */
+  view.on('get', { action: 'elearning.search' }, function (next) {
+    
+    locals.searchSubmitted = true;
+    locals.searchUrl = locals.searchUrl+req.query.search+'&';
+
+    LearningContent.model.find(
+        { $text: { $search: req.query.search } },
+        { score: { $meta: "textScore" } }
+      )
+      .sort( { score: { $meta: "textScore" } } )
+      .exec( function(err, results) {
+        if (err || !results.length){
+          return next(err);
+        }
+        locals.searchResults = results;
+
+        locals.paginatedSearchResults = helper.paginate(locals.searchResults, locals.page, locals.perPage);
+        next(err);
+      });
+
+  });
 
   // Load categories
   view.on('init', function (next) {
@@ -201,6 +235,6 @@ exports = module.exports = function (req, res) {
 
 
   // Render the view
-  view.render('elearning/learningObjectList', pageData);
+  view.render('elearning/content/learningObjectList', pageData);
 
 };

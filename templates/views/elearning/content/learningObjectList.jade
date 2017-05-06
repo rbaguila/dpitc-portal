@@ -1,4 +1,4 @@
-extends ../../layouts/elearning
+extends ../../../layouts/elearning
 
 mixin learningObjects-grid(learningObjects)
   .row
@@ -36,13 +36,20 @@ mixin learningObjects-list(learningObjects)
 
 block content
   +search()
-  .container
-    .panel.panel-default
-      .panel-body
-        if viewStyle == 'grid'
-          +learningObjects-grid(learningObjects.results)
-        if viewStyle == 'list'
-          +learningObjects-list(learningObjects.results)
-        +paginate-generic(learningObjects)
-    
+  if searchSubmitted
+    .container
+      .panel.panel-default
+        .panel-body
+          +searchResults(paginatedSearchResults.results)
+          +paginate-page(paginatedSearchResults, searchUrl)
+  else
+    .container
+      .panel.panel-default
+        .panel-body
+          if viewStyle == 'grid'
+            +learningObjects-grid(learningObjects.results)
+          if viewStyle == 'list'
+            +learningObjects-list(learningObjects.results)
+          +paginate-generic(learningObjects)
+      
 
