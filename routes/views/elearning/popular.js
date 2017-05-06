@@ -7,7 +7,6 @@ var http = require('http');
 var helper = require('./helper');
 
 var Course = keystone.list('Course');
-var Chapter = keystone.list('Chapter');
 var LearningObject = keystone.list('LearningObject');
 var LOView = keystone.list('LOView');
 var ELearningVisit = keystone.list('ELearningVisit');

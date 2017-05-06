@@ -1,5 +1,8 @@
 var keystone = require('keystone');
 var http = require('http');
+
+var helper = require('./../helper');
+
 var ELearningVisit = keystone.list('ELearningVisit');
 var User = keystone.list('User');
 
@@ -10,14 +13,20 @@ exports = module.exports = function (req, res) {
 
   locals.section = 'profile';
   locals.nav = req.query.nav == undefined ? 'view' : req.query.nav;
+  
   locals.sexTypes = User.fields.sex.ops;
+  locals.suburbs = helper.cities;
+  locals.states = helper.regions;
+
   locals.formData = req.body || {};
   locals.validationErrors = {};
   
   var pageData = {
     loginRedirect: '/elearning/profile',
     breadcrumbs: [
+      { text: 'Elearning', link: '/elearning' },
       { text: 'Profile', link: '/elearning/profile' },
+      
     ]
   }
 
@@ -25,10 +34,16 @@ exports = module.exports = function (req, res) {
 
     User.model.findOneAndUpdate( 
       { _id: locals.user._id }, 
-      { name: { 
-        first: (locals.formData.first ? locals.formData.first : locals.user.name.first),
-        last: (locals.formData.last ? locals.formData.last : locals.user.name.last),  
-        } 
+      { 
+        name: { 
+          first: (locals.formData.first ? locals.formData.first : locals.user.name.first),
+          last: (locals.formData.last ? locals.formData.last : locals.user.name.last),  
+        },
+        location: {
+          suburb: locals.formData.suburb,
+          state: locals.formData.state,
+          country: (locals.formData.country ? locals.formData.country : locals.user.location.country),
+        }, 
       },
       function(err, results) {
         if (err) return next(err);
@@ -40,7 +55,7 @@ exports = module.exports = function (req, res) {
     var updater = locals.user.getUpdateHandler(req);
 
     updater.process(req.body, {
-      fields: 'name, photo',
+      //fields: 'name',
       flashErrors: true,
       logErrors: true
     }, function (err, result) {

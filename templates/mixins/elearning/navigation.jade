@@ -27,24 +27,28 @@ mixin user-sidenav(section)
         .panel-collapse.collapse.in(id='collapseUserActivity', role='tabpanel', aria-labelledby='headingUserActivity')
           .list-group
             li.list-group-item
-              a(href='/elearning/profile/user-activity?nav=views') Viewed Lessons
+              a(href='/elearning/user-activity?nav=views') Viewed Lessons
             li.list-group-item
-              a(href='/elearning/profile/user-activity?nav=likes') Liked Lessons
+              a(href='/elearning/user-activity?nav=likes') Liked Lessons
             li.list-group-item
-              a(href='/elearning/profile/user-activity?nav=happy') Lessons with Happy Reacts
+              a(href='/elearning/user-activity?nav=happy') Lessons with Happy Reacts
             li.list-group-item
-              a(href='/elearning/profile/user-activity?nav=sad') Lessons with Sad Reacts 
+              a(href='/elearning/user-activity?nav=sad') Lessons with Sad Reacts 
+            li.list-group-item
+              a(href='/elearning/user-activity/feedback') Feedback
       else
         .panel-collapse.collapse(id='collapseUserActivity', role='tabpanel', aria-labelledby='headingUserActivity')
           .list-group
             li.list-group-item
-              a(href='/elearning/profile/user-activity?nav=views') Viewed Lessons
+              a(href='/elearning/user-activity?nav=views') Viewed Lessons
             li.list-group-item
-              a(href='/elearning/profile/user-activity?nav=likes') Liked Lessons
+              a(href='/elearning/user-activity?nav=likes') Liked Lessons
             li.list-group-item
-              a(href='/elearning/profile/user-activity?nav=happy') Lessons with Happy Reacts
+              a(href='/elearning/user-activity?nav=happy') Lessons with Happy Reacts
             li.list-group-item
-              a(href='/elearning/profile/user-activity?nav=sad') Lessons with Sad Reacts 
+              a(href='/elearning/user-activity?nav=sad') Lessons with Sad Reacts 
+            li.list-group-item
+              a(href='/elearning/user-activity/feedback') Feedback 
 
 
     if user
@@ -66,7 +70,7 @@ mixin user-sidenav(section)
             .panel-collapse.collapse(id='collapseAdmin', role='tabpanel', aria-labelledby='headingAdmin')
               .list-group
                 li.list-group-item
-                  a(href='/keystone') Keystone Admin
+                  a(href='/keystone/learning-objects') Keystone Admin
                 li.list-group-item
                   a(href='/elearning/analytics') Analytics
                 //- ADD Admin Links

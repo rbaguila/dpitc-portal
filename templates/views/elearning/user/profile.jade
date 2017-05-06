@@ -1,20 +1,17 @@
 extends ../../../layouts/elearning
 
-//- block css
-  link(rel="stylesheet" type="text/css" href="/styles/analytics.css")
-
-
 block js
   | $('.collapse').collapse()
 
 block viewProfile
   .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
     .row
-      if user._.photo.exists
-        img(src=user._.photo.limit(150,150), alt=user.name.full).img-rounded.center-block 
+      if user.photo.exists
+        +img-available-rounded-center(user._.photo, user.name.full, 150, 150)
+        //- img(src=user._.photo.limit(150,150), alt=user.name.full).img-rounded 
       else 
-        img(src='http://placehold.it/150x150', alt='No Available Photo', width=150, height=150).img-rounded.center-block
-
+        +img-na-rounded-center(150, 150)
+    hr
     .row
       label Name: 
       |  #{user.name.full}
@@ -22,14 +19,14 @@ block viewProfile
       label Email: 
       |  #{user.email}
     .row
-      label Address: 
-      |  #{user.location.state}, #{user.location.country}
-    .row
       label Birthday: 
-      |  #{user.birthday.toDateString()}
+      |  #{user.birthday.toLocaleDateString()}
     .row
       label Sex:
       |  #{user.sex}
+    .row
+      label Address: 
+      p  #{user.location.suburb}, #{user.location.state}, #{user.location.country}
       
 
 block editProfile 
@@ -38,11 +35,13 @@ block editProfile
     form.contact-form(method='post')
       .row
         input(type='hidden', name='action', value='profile.uploadPhoto')
-        if user._.photo.exists
-          img(src=user._.photo.limit(150,150), alt=user.name.full).img-rounded.center-block 
+        if user.photo.exists
+          +img-available-rounded-center(user._.photo, user.name.full, 150, 150)
+          //- img(src=user._.photo.limit(150,150), alt=user.name.full).img-rounded.center-block 
         else 
-          img(src='http://placehold.it/150x150', alt='No Available Photo', width=150, height=150).img-rounded.center-block
-        a.btn.btn-link(role='button', data-toggle='collapse', href='#changePhoto', aria-hidden='false', aria-controls='changePhoto') Change Photo
+          +img-na-rounded-center(150, 150)
+        
+        a.btn.btn-link.center-block(role='button', data-toggle='collapse', href='#changePhoto', aria-hidden='false', aria-controls='changePhoto') Change Photo
 
         .collapse(id='changePhoto')
           .form-group
@@ -75,24 +74,31 @@ block editProfile
           .row
             label.col-sm-2.control-label Birthday
             .col-xs-6.col-md-5
-              input.form-control.input-box(type='date', name='birthday', value=formData.birthday, placeholder=user.birthday)
+              input.form-control.input-box(type='date', name='birthday', value=user.birthday)
           
             label.col-sm-2.control-label Sex
             .col-sm-3
               select(name='sex').form-control
-                option(value='') !{user.sex}
+                option(value=user.sex) #{user.sex}
                 each type in sexTypes
                   option(value=type.value, selected=formData.sex === type.value)= type.label
         .form-group
           label.control-label Address
           .row
-            .col-xs-6.col-md-6
-              input.form-control.input-box(type='text', name='state', value=formData.state, placeholder=user.location.state)
+            .col-xs-6.col-md-4
+              select(name='suburb').form-control
+                option(value=user.location.suburb) #{user.location.suburb}
+                each type in suburbs
+                  option(value=type.value, selected=formData.suburb === type.value) #{type.label}
               
-            .col-xs-6.col-md-6
+            .col-xs-6.col-md-4
+              select(name='state').form-control
+                option(value=user.location.state) #{user.location.state}
+                each type in states
+                  option(value=type.value, selected=formData.state === type.value) #{type.label}
+
+            .col-xs-6.col-md-4
               input.form-control.input-box(type='text', name='country', value=formData.country, placeholder=user.location.country)
-
-
       hr
       .row.pull-right
         button(type='submit').btn.btn-primary Edit Profile
@@ -114,19 +120,7 @@ block editProfile
           hr
           .row.pull-right
             button(type='submit').btn.btn-primary Change
-  .row
-    a.btn.btn-link(href='/profile/elearning/user-activity') View Elearning Activity
-    //- .col-md-4
-      img(src=user.photo.exists ? user._.photo.thumbnail(200,200) : 'http://placehold.it/200x200', alt=user.name.full, width=200, height=200).img-rounded.center-block
-      hr
-      form.contact-form(method='post')
-        .form-group
-          input(id='photo_image', name='image', type='file')
-          input(id='photo_image_cache', name='image_cache', type='hidden')
-        button(type='submit', value='Submit Photo').btn.btn-link
-
-
-
+  
 block content
   .row
     .col-md-3.col-sm-4.dashboard

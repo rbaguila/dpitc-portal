@@ -1,16 +1,22 @@
 var keystone = require('keystone');
 var async = require('async');
 var http = require('http');
+
+var helper = require('./helper');
+
 var ELearningVisit = keystone.list('ELearningVisit');
 var Course = keystone.list('Course');
-var Chapter = keystone.list('Chapter');
 var LearningObject = keystone.list('LearningObject');
-var helper = require('./helper');
 
 exports = module.exports = function (req, res) {
   var view = new keystone.View(req, res);
   var locals = res.locals;
+
   locals.section = 'elearning';
+  locals.url = '/elearning/recommended?';
+  locals.viewStyle = req.query.view == undefined ? 'grid' : req.query.view;
+  locals.page = req.query.page == undefined ? 1 : req.query.page;
+  locals.perPage = req.query.perPage == undefined ?  12 : req.query.perPage;
 
   locals.data = {
     recommendedLearningObjects: [],
@@ -24,7 +30,7 @@ exports = module.exports = function (req, res) {
     loginRedirect: '/elearning/'+locals.user._id+'/recommended?', 
     breadcrumbs: [
       { text: 'elearning', link: '/elearning' },
-      { text: 'recommended', link: '/elearning/'+locals.user._id+'/recommended?' },
+      { text: 'recommended', link: '/elearning/recommended?' },
     ]
   }
 
@@ -158,6 +164,10 @@ exports = module.exports = function (req, res) {
           return parseFloat(b.score) - parseFloat(a.score);
       });
       locals.data.recommendedLearningObjects = tempRecommended.slice(0, 12);//temporary
+      
+      // paginate locals.recommendedLO
+      locals.paginateRecommendedLO = helper.paginate(tempRecommended, locals.page, locals.perPage);
+
       //locals.data.recommendedLearningObjects = tempRecommended.slice(0, 36);//final, 36 recommended videos in youtube too
       /*for(var i=0;i<tempRecommended.length;i++){
           //console.log("SPECIFIC COMMODITY " + tempRecommended[i].specCommCount);
@@ -170,6 +180,10 @@ exports = module.exports = function (req, res) {
     else{
       if(tempLearningObjects.length>0){
         locals.data.recommendedLearningObjects = tempLearningObjects.slice(0, 12);
+
+        // paginate locals.recommendedLO
+        locals.paginateRecommendedLO = helper.paginate(tempLearningObjects, locals.page, locals.perPage);
+
       }
     }
     next();

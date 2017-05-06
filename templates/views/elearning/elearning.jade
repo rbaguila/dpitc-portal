@@ -4,7 +4,7 @@ block css
 
 mixin popular(learningObjects)
   .row
-    a(href=url+'learning-objects/popular')
+    a(href=url+'learning-objects/popular?')
       h2.text-center Popular Lessons
   .row.equal-height
     if learningObjects.length
@@ -15,7 +15,7 @@ mixin popular(learningObjects)
       h3.text-muted There are no popular lessons this #{duration} yet.
 
 mixin allCourses(courses)
-  a(href='/elearning/courses')
+  a(href='/elearning/courses?')
     h2.text-center All Courses
   if courses.length
     .row.equal-height
@@ -27,7 +27,7 @@ mixin allCourses(courses)
 
 
 mixin recommended(learningObjects)
-  a(href='/elearning/'+user.id+'/recommended')
+  a(href='/elearning/recommended?')
     h2.text-center Recommended
   if learningObjects.length
     .row.equal-height
@@ -45,7 +45,7 @@ block content
         .panel-body
           +recommended(data.recommendedLearningObjects)
         .panel-footer
-          a(href='/elearning/:userid/recommended?').btn.btn-link View All Recommended Lessons
+          a(href='/elearning/recommended?').btn.btn-link View All Recommended Lessons
 
   .container
     .panel.panel-default

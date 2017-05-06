@@ -5,7 +5,6 @@ var moment = require('moment');
 var _ = require('lodash');
 
 var Course = keystone.list('Course');
-var Chapter = keystone.list('Chapter');
 var LearningObject = keystone.list('LearningObject');
 var LOView = keystone.list('LOView');
 var ELearningVisit = keystone.list('ELearningVisit');
@@ -106,8 +105,12 @@ exports = module.exports = function (req, res) {
       return parseFloat(b.viewCount) - parseFloat(a.viewCount); 
     });
 
+    for(var i=0; i<locals.popularLO; i++) {
+      console.log(locals.popularLO[i].title);
+    }
+
     // paginate locals.popularLO
-    locals.paginatePopularLO = paginate(locals.popularLO, locals.page, locals.perPage);
+    locals.paginatePopularLO = helper.paginate(locals.popularLO, locals.page, locals.perPage);
    
     next();
   });
@@ -388,46 +391,6 @@ exports = module.exports = function (req, res) {
       });
   });
 */
-  
-  // Pagination function for an Array of Objects
-  // Similar to Keystone JS pagination query
-  var paginate = function (array, page, perPage) {
-
-    /*
-      keystone's paginate()
-      total: all matching results (not just on this page)
-      results: array of results for this page
-      currentPage: the index of the current page
-      totalPages: the total number of pages
-      pages: array of pages to display
-      previous: index of the previous page, false if at the first page
-      next: index of the next page, false if at the last page
-      first: the index of the first result included
-      last: index of the last result included
-
-    */
-
-    var pagination = {
-      total: array.length,
-      results: paginateArray(array, perPage, page),
-      currentPage: page,
-      pages: _.range(1, Math.ceil(array.length / perPage)+1),
-      
-    };
-
-    pagination.first = pagination.pages[0];
-    pagination.last = Math.ceil(array.length / perPage);
-
-    pagination.previous = page == pagination.first ? false : page - 1;
-    pagination.next = page == pagination.last ? false : page + 1;
-
-    return pagination;
-  }
-
-  var paginateArray = function (array, page_size, page_number) {
-    --page_number; // because pages logically start with 1, but technically with 0
-    return array.slice(page_number * page_size, (page_number + 1) * page_size);
-  }
 
   view.render('elearning/elearning', pageData);
 
