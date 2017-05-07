@@ -676,10 +676,10 @@ exports = module.exports = function (req, res) {
               if(total>0){
                 activityScore = (3 * (learningObject.ispCount/total)) + (2 * (learningObject.sectorCount)/total) + (1 * (learningObject.industryCount)/total);
               }
-              ratingScore = (3 * ispArr[learningObject.isp.name]/5) + (2 * sectorArr[learningObject.sector.name]/5) +  (1 * industryArr[learningObject.industry.name]/5);
-              //console.log("LOL" + ispArr[learningObject.isp.name]/5 + "," + sectorArr[learningObject.sector.name]/5 + "," + industryArr[learningObject.industry.name]/5);
-              console.log(activityScore);
-              console.log("LOL" + ratingScore);
+              ratingScore = (3 * ispArr[learningObject.isp.name]/2) + (2 * sectorArr[learningObject.sector.name]/2) +  (1 * industryArr[learningObject.industry.name]/2);
+              //console.log("LOL" + ispArr[learningObject.isp.name]/3 + "," + sectorArr[learningObject.sector.name]/3 + "," + industryArr[learningObject.industry.name]/3);
+              //console.log(activityScore);
+              //console.log("LOL" + ratingScore);
               learningObject.score = activityScore + ratingScore;
               tempRecommended.push(learningObject);
           }
@@ -702,13 +702,13 @@ exports = module.exports = function (req, res) {
       });
       locals.data.recommendedLO = tempRecommended.slice(0, 3);//temporary
       //locals.data.recommendedLO = tempRecommended.slice(0, 36);//final, 36 recommended videos in youtube too
-      for(var i=0;i<tempRecommended.length;i++){
+      /*for(var i=0;i<tempRecommended.length;i++){
           //console.log("SPECIFIC COMMODITY " + tempRecommended[i].specCommCount);
           //console.log("ISP " + tempRecommended[i].ispCount);
           //console.log("Sector " + tempRecommended[i].sectorCount);
           //console.log("Industry " + tempRecommended[i].industryCount);
           console.log(tempRecommended[i].title + " - FINAL SCORE: " + tempRecommended[i].score);
-      }
+      }*/
     }
     else{
       if(tempLearningObjects.length>0){

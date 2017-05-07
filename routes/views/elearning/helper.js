@@ -112,10 +112,7 @@ exports.getISPTagAveRating = function(ispTag, ratedLO){
     }
   }
   if(count>0){
-    ave = sum/count;
-  }
-  else{
-    ave = 3;//middle val
+    ave = (sum/count) - 3;//middle value 3, so that low rating can affect the score
   }
   return ave;
 }
@@ -134,10 +131,7 @@ exports.getSectorTagAveRating = function(sectorTag, ratedLO){
     }
   }
   if(count>0){
-    ave = sum/count;
-  }
-  else{
-    ave = 3;//middle val
+    ave = (sum/count) - 3;//middle value 3, so that low rating can affect the score
   }
   return ave;
 }
@@ -156,10 +150,7 @@ exports.getIndTagAveRating = function(indTag, ratedLO){
     }
   }
   if(count>0){
-    ave = sum/count;
-  }
-  else{
-    ave = 3;//middle val
+    ave = (sum/count) - 3;//middle value 3, so that low rating can affect the score
   }
   return ave;
 }
