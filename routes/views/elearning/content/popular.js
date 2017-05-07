@@ -4,35 +4,67 @@ var moment = require('moment');
 var _ = require('lodash');
 var http = require('http');
 
-var helper = require('./helper');
+var helper = require('./../helper');
 
+var LearningContent = keystone.list('LearningContent');
 var Course = keystone.list('Course');
 var LearningObject = keystone.list('LearningObject');
 var LOView = keystone.list('LOView');
 var ELearningVisit = keystone.list('ELearningVisit');
 
 exports = module.exports = function (req, res) {
+
   var view = new keystone.View(req, res);
   var locals = res.locals;
+  
   locals.section = 'elearning';
-  locals.url = '/elearning/learning-objects/popular?';
+  locals.url = '/elearning/learning-objects/popular?';    
+  
+  locals.viewStyle = req.query.view == undefined ? 'grid' : req.query.view;
+  locals.page = req.query.page == undefined ? 1 : req.query.page;
+  locals.duration = req.query.duration == undefined ? 'month': req.query.duration; 
+  locals.perPage = req.query.perPage == undefined ?  12 : req.query.perPage;
+
+  locals.formData = req.body || {};
+
+  locals.searchSubmitted = false;
+  locals.searchUrl = locals.url + 'action=elearning.search&search=';
+  locals.searchResults = [];
+
+  locals.popularLO = [];
+  var pastLOviews = [];
 
   var pageData = {
-    loginRedirect: '/elearning/popular?', 
+    loginRedirect: '/elearning/learning-objects/popular?', 
     breadcrumbs: [
       { text: 'elearning', link: '/elearning' },
       { text: 'popular', link: '/elearning/learning-objects/popular?' },
     ]
   }
 
-  locals.popularLO = [];
+  /* Search */
+  view.on('get', { action: 'elearning.search' }, function (next) {
+    
+    locals.searchSubmitted = true;
+    locals.searchUrl = locals.searchUrl+req.query.search+'&';
 
-  locals.viewStyle = req.query.view == undefined ? 'grid' : req.query.view;
-  locals.page = req.query.page == undefined ? 1 : req.query.page;
-  locals.duration = req.query.duration == undefined ? 'month': req.query.duration; 
-  locals.perPage = req.query.perPage == undefined ?  12 : req.query.perPage;
+    LearningContent.model.find(
+        { $text: { $search: req.query.search } },
+        { score: { $meta: "textScore" } }
+      )
+      .sort( { score: { $meta: "textScore" } } )
+      .exec( function(err, results) {
+        if (err || !results.length){
+          return next(err);
+        }
+        locals.searchResults = results;
 
-  var pastLOviews = [];
+        locals.paginatedSearchResults = helper.paginate(locals.searchResults, locals.page, locals.perPage);
+        next(err);
+      });
+
+  });
+
 
   // Get all LOViews withing the past 30 days.
   view.on('init', function (next) {
@@ -170,5 +202,5 @@ exports = module.exports = function (req, res) {
   });
 
   
-  view.render('elearning/popular', pageData);
+  view.render('elearning/content/popular', pageData);
 }

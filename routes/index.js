@@ -60,13 +60,13 @@ exports = module.exports = function (app) {
 	
 
 	// Elearning Routes
-	app.get('/elearning', routes.elearningViews.content.elearning);
+	app.get('/elearning?', routes.elearningViews.content.elearning);
 	app.get('/elearning/courses?', routes.elearningViews.content.courseList);
 	app.get('/elearning/course/:courseslug?', routes.elearningViews.content.courseOutline);
 	app.get('/elearning/learning-objects?', routes.elearningViews.content.learningObjectList);
 	app.get('/elearning/learning-object/:learningobjectslug?', routes.elearningViews.content.learningObject);
 	app.post('/elearning/learning-object/:learningobjectslug?', routes.elearningViews.content.learningObject);
-	app.get('/elearning/learning-objects/popular?', routes.elearningViews.popular);
+	app.get('/elearning/learning-objects/popular?', routes.elearningViews.content.popular);
 	app.get('/elearning/recommended?', middleware.requireElearningUser, routes.elearningViews.recommended);
 
 	// Elearning Admin
@@ -84,11 +84,8 @@ exports = module.exports = function (app) {
   app.all('/api/elearning/fileupload/create', keystone.middleware.api, routes.api.elearning.fileupload.create);
   app.get('/api/elearning/fileupload/:id/remove', keystone.middleware.api, routes.api.elearning.fileupload.remove);
 
-  // Elearning Search
-  //app.get('/elearning/search?', keystone.middleware.api, routes.api.elearning.search);
-	
-	/*app.get('/elearning?action=elearning.search&search=', routes.elearningViews.search);
-*/
+
+
 	app.get('/search/', function(req,res){
 		var searchKey = req.query.searchKey;
 		res.writeHead(301,
