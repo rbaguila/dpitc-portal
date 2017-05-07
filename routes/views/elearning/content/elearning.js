@@ -11,6 +11,10 @@ var Course = keystone.list('Course');
 var LearningObject = keystone.list('LearningObject');
 var LOView = keystone.list('LOView');
 var ELearningVisit = keystone.list('ELearningVisit');
+var LORating = keystone.list('LORating');
+var ISP = keystone.list('ISP');
+var LIndustry = keystone.list('LIndustry');
+var LSector = keystone.list('LSector');
 
 
 exports = module.exports = function (req, res) {
@@ -35,13 +39,17 @@ exports = module.exports = function (req, res) {
     learningObjectsTaken: [],
     likedLO: [],
     happyLO: [],
-    sadLO: []
+    sadLO: [],
+    ratedLO: []
   }
   
   locals.popularLO = [];
 
   var tempRecommended = [];
   var tempLearningObjects = [];
+  var ispArr = {};
+  var sectorArr = {};
+  var industryArr = {};
 
   var pageData = {
     loginRedirect: '/elearning', 
@@ -155,7 +163,7 @@ exports = module.exports = function (req, res) {
 
   //get all the learning objects
   view.on('init', function(next){
-    var q = keystone.list('LearningObject').model.find();
+    var q = LearningObject.model.find().populate('isp sector industry');
 
     q.exec(function(err, results){
         tempLearningObjects = results;
@@ -242,25 +250,88 @@ exports = module.exports = function (req, res) {
     }
   });
 
+  //get the ratedLO of the current user
+  view.on('init', function (next) {
+    if (locals.user) {
+      LORating.model.find().where('updatedBy', locals.user._id).populate('learningObject').lean().exec(function (err, results){
+        if(err) return next(err);
+        for(var i=0;i<results.length;i++){
+          results[i].learningObject.rating = results[i].rating;
+          locals.data.ratedLO.push(results[i].learningObject);
+        }
+        next();
+      });  
+    } else {
+      next();
+    }
+  });
+
+  //get each user ISP tag preferences, or score of each ISP tags by getting the average rating of user u for the specific tag
+  view.on('init', function (next) {
+    ISP.model.find().lean().exec(function (err, results){
+      if(err) return next(err);
+      async.each(results, function(eachisp, next){
+        ispArr[eachisp.name] = helper.getISPTagAveRating(eachisp, locals.data.ratedLO);
+        next();
+      }, function (err){
+        next(err);
+      });
+    });
+  });
+
+  view.on('init', function (next) {
+    LSector.model.find().lean().exec(function (err, results){
+      if(err) return next(err);
+      async.each(results, function(eachsector, next){
+        sectorArr[eachsector.name] = helper.getSectorTagAveRating(eachsector, locals.data.ratedLO);
+        next();
+      }, function (err){
+        next(err);
+      });
+    });
+  });
+
+  view.on('init', function (next) {
+    LIndustry.model.find().lean().exec(function (err, results){
+      if(err) return next(err);
+      async.each(results, function(eachindustry, next){
+        industryArr[eachindustry.name] = helper.getIndTagAveRating(eachindustry, locals.data.ratedLO);
+        next();
+      }, function (err){
+        next(err);
+      });
+    });
+  });
+
   //compute for the score of each learning objects based on the ISP, sector and industry tags of the learning objects taken by the logged-in user
   view.on('init', function(next){
     if(locals.data.learningObjectsTaken.length>0){
+      var total = locals.data.learningObjectsTaken.length+ locals.data.likedLO.length + locals.data.happyLO.length + locals.data.sadLO.length;
+      var activityScore;
+      var ratingScore;
       async.each(tempLearningObjects, function (learningObject, next) {
+        activityScore = 0;
+        ratingScore = 0;
           if(helper.notYetTaken(learningObject, locals.data.learningObjectsTaken)==0){
-              next();
+            learningObject.score = (-1 * locals.data.learningObjectsTaken.length);
+            tempRecommended.push(learningObject);
           }
           else{
               var learningObject = helper.getCountLOTaken(learningObject, locals.data.learningObjectsTaken);
               learningObject = helper.getCountLiked(learningObject, locals.data.likedLO);
               learningObject = helper.getCountHappy(learningObject, locals.data.happyLO);
               learningObject = helper.getCountSad(learningObject, locals.data.sadLO);
-              var score = (4 * (learningObject.specCommCount)) + (3 * (learningObject.ispCount)) + (2 * (learningObject.sectorCount)) + (1 * (learningObject.industryCount));
-              if(score>0){//change this to change the threshold of score or compute for a just right threshold
-                  learningObject.score = score;
-                  tempRecommended.push(learningObject);
+              if(total>0){
+                activityScore = (3 * (learningObject.ispCount/total)) + (2 * (learningObject.sectorCount)/total) + (1 * (learningObject.industryCount)/total);
               }
-              next();
+              ratingScore = (3 * ispArr[learningObject.isp.name]/2) + (2 * sectorArr[learningObject.sector.name]/2) +  (1 * industryArr[learningObject.industry.name]/2);
+              //console.log("LOL" + ispArr[learningObject.isp.name]/3 + "," + sectorArr[learningObject.sector.name]/3 + "," + industryArr[learningObject.industry.name]/3);
+              //console.log(activityScore);
+              //console.log("LOL" + ratingScore);
+              learningObject.score = activityScore + ratingScore;
+              tempRecommended.push(learningObject);
           }
+          next();
       }, function (err) {
           next(err);
       });

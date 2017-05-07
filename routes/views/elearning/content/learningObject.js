@@ -654,7 +654,6 @@ exports = module.exports = function (req, res) {
     });
   });
 
-    //TODO - add rating in the algorithm
   //compute for the score of each learning objects based on the ISP, sector and industry tags of the learning objects taken by the logged-in user
   view.on('init', function(next){
     if(locals.data.learningObjectsTaken.length>0){
