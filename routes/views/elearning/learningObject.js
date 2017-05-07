@@ -594,28 +594,27 @@ exports = module.exports = function (req, res) {
       next();
     }
   });
-
+  
   //TODO - add rating in the algorithm
   //compute for the score of each learning objects based on the ISP, sector and industry tags of the learning objects taken by the logged-in user
   view.on('init', function(next){
     if(locals.data.learningObjectsTaken.length>0){
+      var total = locals.data.learningObjectsTaken.length+ locals.data.likedLO.length + locals.data.happyLO.length + locals.data.sadLO.length;
       async.each(tempLearningObjects, function (learningObject, next) {
           if(helper.notYetTaken(learningObject, locals.data.learningObjectsTaken)==0){
-              next();
+            learningObject.score = (-1 * locals.data.learningObjectsTaken.length);
+            tempRecommended.push(learningObject);
           }
           else{
               var learningObject = helper.getCountLOTaken(learningObject, locals.data.learningObjectsTaken);
               learningObject = helper.getCountLiked(learningObject, locals.data.likedLO);
               learningObject = helper.getCountHappy(learningObject, locals.data.happyLO);
               learningObject = helper.getCountSad(learningObject, locals.data.sadLO);
-              var score = (4 * (learningObject.specCommCount)) + (3 * (learningObject.ispCount)) + (2 * (learningObject.sectorCount)) + (1 * (learningObject.industryCount));
-              //console.log(score);
-              //if(score>0){//change this to change the threshold of score or compute for a just right threshold
-                  learningObject.score = score;
-                  tempRecommended.push(learningObject);
-              //}
-              next();
+              var score = (4 * (learningObject.specCommCount/total)) + (3 * (learningObject.ispCount/total)) + (2 * (learningObject.sectorCount)/total) + (1 * (learningObject.industryCount)/total);
+              learningObject.score = score;
+              tempRecommended.push(learningObject);
           }
+          next();
       }, function (err) {
           next(err);
       });

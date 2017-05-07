@@ -78,7 +78,7 @@ exports.getCountSad = function (learningObject, sadLO){
           }
         }
     }
-    learningObject[counts[j]] = learningObject[counts[j]] - (3*count);
+    learningObject[counts[j]] = learningObject[counts[j]] - (2*count);
   }
   return learningObject;
 }
@@ -96,9 +96,78 @@ exports.notYetTaken = function (learningObject, learningObjectsTaken){
   }
   if(flag==0) return 1;
 }
-//TO DO, ADD HERE THE ALGO FOR RATING
-exports.getAverageRating = function (learningObject, ratedLO){
 
+exports.getSpecComTagAveRating = function(specComTag, ratedLO){
+  var sum = 0;
+  var ave = 0;
+  var count = 0;
+  for(var i=0;i<ratedLO.length;i++){
+    if(specComTag==ratedLO[i].specificCommodity){
+      sum+=ratedLO[i].rating;
+      count++;
+    }
+  }
+  ave = sum/count;
+  return ave;
+}
+
+exports.getISPTagAveRating = function(ispTag, ratedLO){
+  var sum = 0;
+  var ave = 0;
+  var count = 0;
+  var id1, id2;
+  for(var i=0;i<ratedLO.length;i++){
+    id1 = ispTag._id + "";
+    id2 = ratedLO[i].isp + "";
+    if(id1==id2){
+      sum+=ratedLO[i].rating;
+      count++;
+    }
+  }
+  ave = sum/count;
+  return ave;
+}
+
+exports.getSectorTagAveRating = function(sectorTag, ratedLO){
+  var sum = 0;
+  var ave = 0;
+  var count = 0;
+  var id1, id2;
+  for(var i=0;i<ratedLO.length;i++){
+    id1 = sectorTag._id + "";
+    id2 = ratedLO[i].isp + "";
+    if(id1==id2){
+      sum+=ratedLO[i].rating;
+      count++;
+    }
+  }
+  ave = sum/count;
+  return ave;
+}
+
+exports.getIndTagAveRating = function(indTag, ratedLO){
+  var sum = 0;
+  var ave = 0;
+  var count = 0;
+  var id1, id2;
+  for(var i=0;i<ratedLO.length;i++){
+    id1 = indTag._id + "";
+    id2 = ratedLO[i].isp + "";
+    if(id1==id2){
+      sum+=ratedLO[i].rating;
+      count++;
+    }
+  }
+  ave = sum/count;
+  return ave;
+}
+
+//TO DO, ADD HERE THE ALGO FOR RATING
+exports.getLOAveRating = function (learningObject, ispTagAveRating){
+  if(notYetTaken(learningObject, locals.data.learningObjectsTaken)==1){
+    //learningObject.weightedAveRating = (4 * 
+  }
+  return 0;
 }
 
 // Pagination function for an Array of Objects
