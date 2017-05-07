@@ -1,4 +1,4 @@
-extends ../../layouts/elearning
+extends ../../../layouts/elearning
 
 mixin recommendedLO-grid(learningObjects)
   .row
@@ -36,11 +36,18 @@ mixin recommendedLO-list(learningObjects)
 
 block content
   +search()
-  .container
-    .panel.panel-default
-      .panel-body
-        if viewStyle == 'grid'
-          +recommendedLO-grid(paginateRecommendedLO.results)
-        if viewStyle == 'list'
-          +recommendedLO-list(paginateRecommendedLO.results)
-        +paginate-generic(paginateRecommendedLO)
+  if searchSubmitted
+    .container
+      .panel.panel-default
+        .panel-body
+          +searchResults(paginatedSearchResults.results)
+          +paginate-page(paginatedSearchResults, searchUrl)
+  else 
+    .container
+      .panel.panel-default
+        .panel-body
+          if viewStyle == 'grid'
+            +recommendedLO-grid(paginateRecommendedLO.results)
+          if viewStyle == 'list'
+            +recommendedLO-list(paginateRecommendedLO.results)
+          +paginate-generic(paginateRecommendedLO, url)

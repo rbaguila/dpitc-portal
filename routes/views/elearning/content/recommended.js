@@ -2,8 +2,9 @@ var keystone = require('keystone');
 var async = require('async');
 var http = require('http');
 
-var helper = require('./helper');
+var helper = require('./../helper');
 
+var LearningContent = keystone.list('LearningContent');
 var ELearningVisit = keystone.list('ELearningVisit');
 var Course = keystone.list('Course');
 var LearningObject = keystone.list('LearningObject');
@@ -14,9 +15,16 @@ exports = module.exports = function (req, res) {
 
   locals.section = 'elearning';
   locals.url = '/elearning/recommended?';
+
   locals.viewStyle = req.query.view == undefined ? 'grid' : req.query.view;
   locals.page = req.query.page == undefined ? 1 : req.query.page;
   locals.perPage = req.query.perPage == undefined ?  12 : req.query.perPage;
+
+  locals.formData = req.body || {};
+
+  locals.searchSubmitted = false;
+  locals.searchUrl = locals.url + 'action=elearning.search&search=';
+  locals.searchResults = [];
 
   locals.data = {
     recommendedLearningObjects: [],
@@ -26,16 +34,39 @@ exports = module.exports = function (req, res) {
     sadLO: []
   }
 
+  var tempRecommended = [];
+  var tempLearningObjects = [];
+
   var pageData = {
-    loginRedirect: '/elearning/'+locals.user._id+'/recommended?', 
+    loginRedirect: '/elearning/recommended?', 
     breadcrumbs: [
       { text: 'elearning', link: '/elearning' },
       { text: 'recommended', link: '/elearning/recommended?' },
     ]
   }
 
-  var tempRecommended = [];
-  var tempLearningObjects = [];
+  /* Search */
+  view.on('get', { action: 'elearning.search' }, function (next) {
+    
+    locals.searchSubmitted = true;
+    locals.searchUrl = locals.searchUrl+req.query.search+'&';
+
+    LearningContent.model.find(
+        { $text: { $search: req.query.search } },
+        { score: { $meta: "textScore" } }
+      )
+      .sort( { score: { $meta: "textScore" } } )
+      .exec( function(err, results) {
+        if (err || !results.length){
+          return next(err);
+        }
+        locals.searchResults = results;
+
+        locals.paginatedSearchResults = helper.paginate(locals.searchResults, locals.page, locals.perPage);
+        next(err);
+      });
+
+  });
 
   /* LOAD RECOMMENDED LEARNING OBJECTS */
 
@@ -253,5 +284,5 @@ exports = module.exports = function (req, res) {
   });
 
  
-  view.render('elearning/recommended', pageData);
+  view.render('elearning/content/recommended', pageData);
 }
