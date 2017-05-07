@@ -53,10 +53,9 @@ exports = module.exports = function (req, res) {
 
   var tempRecommended = [];
   var tempLearningObjects = [];
-  var specificCommArr = [];
-  var ispArr = [];
-  var sectorArr = [];
-  var industryArr = [];
+  var ispArr = {};
+  var sectorArr = {};
+  var industryArr = {};
 
   var pageData = {
     loginRedirect: '/elearning/learning-object/'+req.params.learningobjectslug,
@@ -513,15 +512,10 @@ exports = module.exports = function (req, res) {
 
   //get all the learning objects
   view.on('init', function(next){
-    var q = LearningObject.model.find();
+    var q = LearningObject.model.find().populate('isp sector industry');
 
     q.exec(function(err, results){
         tempLearningObjects = results;
-        for(var i=0;i<tempLearningObjects.length;i++){
-          if(tempLearningObjects[i].specificCommodity!=undefined){
-            specificCommArr.push(tempLearningObjects[i].specificCommodity);
-          }
-        }
         next(err);
     });
   });
@@ -613,7 +607,7 @@ exports = module.exports = function (req, res) {
       LORating.model.find().where('updatedBy', locals.user._id).populate('learningObject').lean().exec(function (err, results){
         if(err) return next(err);
         for(var i=0;i<results.length;i++){
-          results[i].learningObject.ratings = results[i].rating;
+          results[i].learningObject.rating = results[i].rating;
           locals.data.ratedLO.push(results[i].learningObject);
         }
         next();
@@ -625,16 +619,51 @@ exports = module.exports = function (req, res) {
 
   //get each user ISP tag preferences, or score of each ISP tags by getting the average rating of user u for the specific tag
   view.on('init', function (next) {
-    //console.log(specificCommArr);
-    next();
+    ISP.model.find().lean().exec(function (err, results){
+      if(err) return next(err);
+      async.each(results, function(eachisp, next){
+        ispArr[eachisp.name] = helper.getISPTagAveRating(eachisp, locals.data.ratedLO);
+        next();
+      }, function (err){
+        next(err);
+      });
+    });
   });
-  
+
+  view.on('init', function (next) {
+    LSector.model.find().lean().exec(function (err, results){
+      if(err) return next(err);
+      async.each(results, function(eachsector, next){
+        sectorArr[eachsector.name] = helper.getSectorTagAveRating(eachsector, locals.data.ratedLO);
+        next();
+      }, function (err){
+        next(err);
+      });
+    });
+  });
+
+  view.on('init', function (next) {
+    LIndustry.model.find().lean().exec(function (err, results){
+      if(err) return next(err);
+      async.each(results, function(eachindustry, next){
+        industryArr[eachindustry.name] = helper.getIndTagAveRating(eachindustry, locals.data.ratedLO);
+        next();
+      }, function (err){
+        next(err);
+      });
+    });
+  });
+
     //TODO - add rating in the algorithm
   //compute for the score of each learning objects based on the ISP, sector and industry tags of the learning objects taken by the logged-in user
   view.on('init', function(next){
     if(locals.data.learningObjectsTaken.length>0){
       var total = locals.data.learningObjectsTaken.length+ locals.data.likedLO.length + locals.data.happyLO.length + locals.data.sadLO.length;
+      var activityScore;
+      var ratingScore;
       async.each(tempLearningObjects, function (learningObject, next) {
+        activityScore = 0;
+        ratingScore = 0;
           if(helper.notYetTaken(learningObject, locals.data.learningObjectsTaken)==0){
             learningObject.score = (-1 * locals.data.learningObjectsTaken.length);
             tempRecommended.push(learningObject);
@@ -644,8 +673,14 @@ exports = module.exports = function (req, res) {
               learningObject = helper.getCountLiked(learningObject, locals.data.likedLO);
               learningObject = helper.getCountHappy(learningObject, locals.data.happyLO);
               learningObject = helper.getCountSad(learningObject, locals.data.sadLO);
-              var score = (4 * (learningObject.specCommCount/total)) + (3 * (learningObject.ispCount/total)) + (2 * (learningObject.sectorCount)/total) + (1 * (learningObject.industryCount)/total);
-              learningObject.score = score;
+              if(total>0){
+                activityScore = (3 * (learningObject.ispCount/total)) + (2 * (learningObject.sectorCount)/total) + (1 * (learningObject.industryCount)/total);
+              }
+              ratingScore = (3 * ispArr[learningObject.isp.name]/5) + (2 * sectorArr[learningObject.sector.name]/5) +  (1 * industryArr[learningObject.industry.name]/5);
+              //console.log("LOL" + ispArr[learningObject.isp.name]/5 + "," + sectorArr[learningObject.sector.name]/5 + "," + industryArr[learningObject.industry.name]/5);
+              console.log(activityScore);
+              console.log("LOL" + ratingScore);
+              learningObject.score = activityScore + ratingScore;
               tempRecommended.push(learningObject);
           }
           next();
@@ -667,13 +702,13 @@ exports = module.exports = function (req, res) {
       });
       locals.data.recommendedLO = tempRecommended.slice(0, 3);//temporary
       //locals.data.recommendedLO = tempRecommended.slice(0, 36);//final, 36 recommended videos in youtube too
-      /*for(var i=0;i<tempRecommended.length;i++){
+      for(var i=0;i<tempRecommended.length;i++){
           //console.log("SPECIFIC COMMODITY " + tempRecommended[i].specCommCount);
           //console.log("ISP " + tempRecommended[i].ispCount);
           //console.log("Sector " + tempRecommended[i].sectorCount);
           //console.log("Industry " + tempRecommended[i].industryCount);
           console.log(tempRecommended[i].title + " - FINAL SCORE: " + tempRecommended[i].score);
-      }*/
+      }
     }
     else{
       if(tempLearningObjects.length>0){

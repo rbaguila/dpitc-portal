@@ -1,24 +1,28 @@
 var _ = require('lodash');
 
-var classifications = ["specificCommodity", "isp", "sector", "industry"];
-var counts = ["specCommCount", "ispCount", "sectorCount", "industryCount"];
+var classifications = ["isp", "sector", "industry"];
+var counts = ["ispCount", "sectorCount", "industryCount"];
 
 exports.getCountLOTaken = function (learningObject, learningObjectsTaken){
   for(var j=0;j<classifications.length;j++){
     var count = 0; 
     if(learningObject[classifications[j]]!=null){
-      var learningObjectClassId = learningObject[classifications[j]] + "";
+      var learningObjectClassId = learningObject[classifications[j]]._id + "";
         for(var i=0;i<learningObjectsTaken.length;i++){
           if(learningObjectsTaken[i][classifications[j]]!=null){
             var eachTakenClassId = learningObjectsTaken[i][classifications[j]]._id + "";
             if(learningObjectClassId==eachTakenClassId){
                 count++;
-                count = count;
             }
           }
         }
     }
-    learningObject[counts[j]] = count;
+    if(learningObject[counts[j]]!=undefined){
+      learningObject[counts[j]] = learningObject[counts[j]] + count;
+    }
+    else{
+      learningObject[counts[j]] = count;
+    }
   }
   return learningObject;
 }
@@ -27,13 +31,12 @@ exports.getCountLiked = function (learningObject, likedLO){
   for(var j=0;j<classifications.length;j++){
     var count = 0; 
     if(learningObject[classifications[j]]!=null){
-      var learningObjectClassId = learningObject[classifications[j]] + "";
+      var learningObjectClassId = learningObject[classifications[j]]._id + "";
         for(var i=0;i<likedLO.length;i++){
           if(likedLO[i][classifications[j]]!=null){
             var eachTakenClassId = likedLO[i][classifications[j]]._id + "";
             if(learningObjectClassId==eachTakenClassId){
                 count++;
-                count = count;
             }
           }
         }
@@ -47,13 +50,12 @@ exports.getCountHappy = function (learningObject, happyLO){
   for(var j=0;j<classifications.length;j++){
     var count = 0; 
     if(learningObject[classifications[j]]!=null){
-      var learningObjectClassId = learningObject[classifications[j]] + "";
+      var learningObjectClassId = learningObject[classifications[j]]._id + "";
         for(var i=0;i<happyLO.length;i++){
           if(happyLO[i][classifications[j]]!=null){
             var eachTakenClassId = happyLO[i][classifications[j]]._id + "";
             if(learningObjectClassId==eachTakenClassId){
                 count++;
-                count = count;
             }
           }
         }
@@ -67,13 +69,12 @@ exports.getCountSad = function (learningObject, sadLO){
   for(var j=0;j<classifications.length;j++){
     var count = 0; 
     if(learningObject[classifications[j]]!=null){
-      var learningObjectClassId = learningObject[classifications[j]] + "";
+      var learningObjectClassId = learningObject[classifications[j]]._id + "";
         for(var i=0;i<sadLO.length;i++){
           if(sadLO[i][classifications[j]]!=null){
             var eachTakenClassId = sadLO[i][classifications[j]]._id + "";
             if(learningObjectClassId==eachTakenClassId){
                 count++;
-                count = count;
             }
           }
         }
@@ -97,20 +98,6 @@ exports.notYetTaken = function (learningObject, learningObjectsTaken){
   if(flag==0) return 1;
 }
 
-exports.getSpecComTagAveRating = function(specComTag, ratedLO){
-  var sum = 0;
-  var ave = 0;
-  var count = 0;
-  for(var i=0;i<ratedLO.length;i++){
-    if(specComTag==ratedLO[i].specificCommodity){
-      sum+=ratedLO[i].rating;
-      count++;
-    }
-  }
-  ave = sum/count;
-  return ave;
-}
-
 exports.getISPTagAveRating = function(ispTag, ratedLO){
   var sum = 0;
   var ave = 0;
@@ -120,11 +107,16 @@ exports.getISPTagAveRating = function(ispTag, ratedLO){
     id1 = ispTag._id + "";
     id2 = ratedLO[i].isp + "";
     if(id1==id2){
-      sum+=ratedLO[i].rating;
+      sum+=parseInt(ratedLO[i].rating);
       count++;
     }
   }
-  ave = sum/count;
+  if(count>0){
+    ave = sum/count;
+  }
+  else{
+    ave = 3;//middle val
+  }
   return ave;
 }
 
@@ -135,13 +127,18 @@ exports.getSectorTagAveRating = function(sectorTag, ratedLO){
   var id1, id2;
   for(var i=0;i<ratedLO.length;i++){
     id1 = sectorTag._id + "";
-    id2 = ratedLO[i].isp + "";
+    id2 = ratedLO[i].sector + "";
     if(id1==id2){
-      sum+=ratedLO[i].rating;
+      sum+=parseInt(ratedLO[i].rating);
       count++;
     }
   }
-  ave = sum/count;
+  if(count>0){
+    ave = sum/count;
+  }
+  else{
+    ave = 3;//middle val
+  }
   return ave;
 }
 
@@ -152,22 +149,19 @@ exports.getIndTagAveRating = function(indTag, ratedLO){
   var id1, id2;
   for(var i=0;i<ratedLO.length;i++){
     id1 = indTag._id + "";
-    id2 = ratedLO[i].isp + "";
+    id2 = ratedLO[i].industry + "";
     if(id1==id2){
-      sum+=ratedLO[i].rating;
+      sum+=parseInt(ratedLO[i].rating);
       count++;
     }
   }
-  ave = sum/count;
-  return ave;
-}
-
-//TO DO, ADD HERE THE ALGO FOR RATING
-exports.getLOAveRating = function (learningObject, ispTagAveRating){
-  if(notYetTaken(learningObject, locals.data.learningObjectsTaken)==1){
-    //learningObject.weightedAveRating = (4 * 
+  if(count>0){
+    ave = sum/count;
   }
-  return 0;
+  else{
+    ave = 3;//middle val
+  }
+  return ave;
 }
 
 // Pagination function for an Array of Objects
