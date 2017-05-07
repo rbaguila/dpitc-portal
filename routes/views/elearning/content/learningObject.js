@@ -11,6 +11,10 @@ var User = keystone.list('User');
 var LOComment = keystone.list('LOComment');
 var LOView = keystone.list('LOView');
 var LORating = keystone.list('LORating');
+var ISP = keystone.list('ISP');
+var LIndustry = keystone.list('LIndustry');
+var LSector = keystone.list('LSector');
+
 
 
 exports = module.exports = function (req, res) {
@@ -49,7 +53,10 @@ exports = module.exports = function (req, res) {
 
   var tempRecommended = [];
   var tempLearningObjects = [];
-  var tempRatedIds = [];
+  var specificCommArr = [];
+  var ispArr = [];
+  var sectorArr = [];
+  var industryArr = [];
 
   var pageData = {
     loginRedirect: '/elearning/learning-object/'+req.params.learningobjectslug,
@@ -510,6 +517,11 @@ exports = module.exports = function (req, res) {
 
     q.exec(function(err, results){
         tempLearningObjects = results;
+        for(var i=0;i<tempLearningObjects.length;i++){
+          if(tempLearningObjects[i].specificCommodity!=undefined){
+            specificCommArr.push(tempLearningObjects[i].specificCommodity);
+          }
+        }
         next(err);
     });
   });
@@ -594,6 +606,8 @@ exports = module.exports = function (req, res) {
     }
   });
 
+
+  //get the ratedLO of the current user
   view.on('init', function (next) {
     if (locals.user) {
       LORating.model.find().where('updatedBy', locals.user._id).populate('learningObject').lean().exec(function (err, results){
@@ -608,8 +622,14 @@ exports = module.exports = function (req, res) {
       next();
     }
   });
+
+  //get each user ISP tag preferences, or score of each ISP tags by getting the average rating of user u for the specific tag
+  view.on('init', function (next) {
+    //console.log(specificCommArr);
+    next();
+  });
   
-  //TODO - add rating in the algorithm
+    //TODO - add rating in the algorithm
   //compute for the score of each learning objects based on the ISP, sector and industry tags of the learning objects taken by the logged-in user
   view.on('init', function(next){
     if(locals.data.learningObjectsTaken.length>0){
