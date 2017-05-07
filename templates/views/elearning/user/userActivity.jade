@@ -1,4 +1,4 @@
-extends ../../../layouts/elearning
+extends ../../../layouts/elearning-user
 
 block js
 
@@ -54,29 +54,30 @@ mixin loReacts(learningObjects)
 
 
 block content
-  .row
-    .col-md-3.col-sm-4.dashboard
-      +user-sidenav(section)       
-    .col-md-9.col-sm-4
-      .panel.panel-default.col-md-10.col-md-offset-1
-        .panel-body
-          .elearning-page-header
-            h3 #{user.name.full}'s Elearning Activity
-          if nav == 'views'
-            .panel.panel-info
-              .panel-heading Views
-              .panel-body
-                +loTaken(loviews.results)
-                +activity-paginate(loviews)
-          else
-            .panel.panel-info
-              if nav == 'likes'
-                .panel-heading Lessons Liked
-              if nav == 'happy'
-                .panel-heading Lessons with Happy Reacts
-              if nav == 'sad'
-                .panel-heading Lessons with Sad Reacts
-              .panel-body
-                +loReacts(learningObjects.results)
-                +activity-paginate(learningObjects)
-  
+  .elearning-user-body
+    .row
+      .col-md-3.col-sm-4.user-sidenav
+        +user-sidenav(section)       
+      .col-md-9.col-sm-4
+        .panel.panel-default.col-md-10.col-md-offset-1
+          .panel-body
+            .elearning-page-header
+              h3 #{user.name.full}'s Elearning Activity
+            if nav == 'views'
+              .panel.panel-info
+                .panel-heading Views
+                .panel-body
+                  +loTaken(loviews.results)
+                  +paginate-page(loviews, url)
+            else
+              .panel.panel-info
+                if nav == 'likes'
+                  .panel-heading Lessons Liked
+                if nav == 'happy'
+                  .panel-heading Lessons with Happy Reacts
+                if nav == 'sad'
+                  .panel-heading Lessons with Sad Reacts
+                .panel-body
+                  +loReacts(learningObjects.results)
+                  +paginate-page(learningObjects, url)
+    

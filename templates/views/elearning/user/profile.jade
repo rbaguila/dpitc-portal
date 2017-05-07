@@ -1,4 +1,4 @@
-extends ../../../layouts/elearning
+extends ../../../layouts/elearning-user
 
 block js
   | $('.collapse').collapse()
@@ -122,17 +122,18 @@ block editProfile
             button(type='submit').btn.btn-primary Change
   
 block content
-  .row
-    .col-md-3.col-sm-4.dashboard
-      +user-sidenav(section)
-    .col-md-7.col-sm-4
-      .panel.panel-default.col-md-offset-3
-        .panel-body
-          .elearning-page-header
-            h3 #{user.name.full}'s Profile
-          
-          if nav == 'view'
-            block viewProfile
-          else  
-            block editProfile
+  .elearning-user-body
+    .row
+      .col-md-3.col-sm-4.user-sidenav
+        +user-sidenav(section)
+      .col-md-7.col-sm-4
+        .panel.panel-default.col-md-offset-3
+          .panel-body
+            .elearning-page-header
+              h3 #{user.name.full}'s Profile
+            
+            if nav == 'view'
+              block viewProfile
+            else  
+              block editProfile
 

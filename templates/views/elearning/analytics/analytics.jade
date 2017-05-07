@@ -1,4 +1,4 @@
-extends ../../layouts/elearning-admin
+extends ../../../layouts/elearning-user
 
 block css
   link(rel="stylesheet" type="text/css" href="/styles/analytics.css")
@@ -96,31 +96,15 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers,
         div(id="allReactions")
       
 block content
-  .analytics-body
+  .elearning-user-body
     .row
-      .col-md-3.dashboard
-        .sidebar-nav
-          .navbar.navbar-default(role='navigation')
-            .navbar-header
-              button.navbar-toggle(type='button', data-toggle='collapse', data-target='.sidebar-navbar-collapse')
-                span.sr-only Toggle navigation
-                span.icon-bar
-                span.icon-bar
-                span.icon-bar
-              span.visible-xs.navbar-brand Menu
-            .navbar-collapse.collapse.sidebar-navbar-collapse
-              ul.nav.navbar-nav
-                li.active
-                  a(href='/elearning/analytics') Dashboard
-                li
-                  a(href='/elearning/analytics/learning-objects/allindustries') Analytics of Learning Objects
-                li
-                  a(href='/elearning/analytics/users') Analytics of Users
-                li
-                  a(href='/elearning/analytics/recommendedViews') Analytics of Recommended Learning Objects
-      .col-md-9.col-xs-12.dashboard
+      .col-md-3.col-xs-12.user-sidenav
+        +user-sidenav(section)
+      .col-md-9.col-xs-12
         +Most(data.mostPopularLO, data.mostCommentedLO, data.mostReactedLO, data.numCourses, data.numLO, data.numUsers, data.numViews, data.numComments, data.numReactions, data.topTopicsbyRatings)
+        
+        
   //- script(src='/js/elearning-graphs/learningObjectReactions.js')
   //- script(src='/js/elearning-graphs/learningObjectCommentsViews.js')
- block js
+block js
   script(src='/js/elearning-graphs/dashboard-charts.js')

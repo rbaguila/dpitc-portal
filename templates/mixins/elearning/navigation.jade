@@ -75,7 +75,7 @@ mixin user-sidenav(section)
                   a(href='/elearning/analytics') Analytics
                 //- ADD Admin Links
 
-mixin activity-paginate(pagination)
+mixin paginate-page(pagination, url)
   ul.pagination.pull-right
     li
       if pagination.previous != false
@@ -93,7 +93,7 @@ mixin activity-paginate(pagination)
         a(href=url+'page='+pagination.next, aria-label="Next")
           span(aria-hidden="true") &raquo
 
-mixin paginate-popular(pagination)
+mixin paginate-page-view-duration(pagination)
   ul.pagination.pull-right
     li
       if pagination.previous != false
@@ -130,7 +130,7 @@ mixin paginate-learning-object(pagination)
           span(aria-hidden="true") &raquo
 
 
-mixin paginate-generic(pagination)
+mixin paginate-generic(pagination, url)
   ul.pagination.pull-right
     li
       if pagination.previous != false

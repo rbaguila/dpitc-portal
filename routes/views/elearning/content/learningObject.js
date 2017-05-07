@@ -1,6 +1,10 @@
 var keystone = require('keystone');
 var async = require('async');
 var http = require('http');
+
+var helper = require('./../helper');
+
+var LearningContent = keystone.list('LearningContent');
 var LearningObject = keystone.list('LearningObject');
 var Course = keystone.list('Course');
 var User = keystone.list('User');
@@ -8,28 +12,22 @@ var LOComment = keystone.list('LOComment');
 var LOView = keystone.list('LOView');
 var LORating = keystone.list('LORating');
 
-var helper = require('./helper');
-
 
 exports = module.exports = function (req, res) {
 
   var view = new keystone.View(req, res);
   var locals = res.locals;
 
-  locals.rating = LORating.fields.rating.ops;
-  locals.validationErrors = {};
-
-
-
-  // Set locals
-
-  locals.filters = {
-    currentLO: req.params.learningobjectslug
-  }
 
   locals.section = 'learning-object';
   locals.url = '/elearning/learning-object/'+req.params.learningobjectslug+'?';
 
+  locals.rating = LORating.fields.rating.ops;
+  locals.validationErrors = {};
+
+  locals.filters = {
+    currentLO: req.params.learningobjectslug
+  }  
 
   locals.data = {
     currLO: [],
@@ -45,7 +43,14 @@ exports = module.exports = function (req, res) {
 
   locals.formData = req.body || {};
 
-  
+  locals.searchSubmitted = false;
+  locals.searchUrl = locals.url + 'action=elearning.search&search=';
+  locals.searchResults = [];
+
+  var tempRecommended = [];
+  var tempLearningObjects = [];
+  var tempRatedIds = [];
+
   var pageData = {
     loginRedirect: '/elearning/learning-object/'+req.params.learningobjectslug,
     breadcrumbs: [
@@ -54,20 +59,29 @@ exports = module.exports = function (req, res) {
     ]
   }
 
-  if (req.params.courseslug != undefined) {
-    pageData.loginRedirect = '/elearning/'+req.params.courseslug+'/learning-object/'+req.params.learningobjectslug;
-    breadcrumbs = [
-      { text: 'elearning', link: '/elearning' },
-      { text: req.params.courseslug.replace(/-/g, ' '), link: '/elearning/course/'+req.params.courseslug },
-      { text: req.params.learningobjectslug.replace(/-/g, ' '), link: '/elearning/course/'+req.params.courseslug+'/learning-object/'+req.params.learningobjectslug }
-    ]
-  }
+  /* Search */
+  view.on('get', { action: 'elearning.search' }, function (next) {
+    
+    locals.searchSubmitted = true;
+    locals.searchUrl = locals.searchUrl+req.query.search+'&';
 
+    LearningContent.model.find(
+        { $text: { $search: req.query.search } },
+        { score: { $meta: "textScore" } }
+      )
+      .sort( { score: { $meta: "textScore" } } )
+      .exec( function(err, results) {
+        if (err || !results.length){
+          return next(err);
+        }
+        locals.searchResults = results;
 
-  var tempRecommended = [];
-  var tempLearningObjects = [];
-  var tempRatedIds = [];
+        locals.paginatedSearchResults = helper.paginate(locals.searchResults, locals.page, locals.perPage);
+        next(err);
+      });
 
+  });
+  
   // Load the currentLO
   view.on('init', function(next){
 
@@ -650,6 +664,6 @@ exports = module.exports = function (req, res) {
   });
 
   // Render the view
-  view.render('elearning/learningObject', pageData);
+  view.render('elearning/content/learningObject', pageData);
 
 };

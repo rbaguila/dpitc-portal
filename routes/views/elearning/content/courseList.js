@@ -1,15 +1,32 @@
 var keystone = require('keystone');
 var http = require('http');
+
+var helper = require('./../helper');
+
 var ELearningVisit = keystone.list('ELearningVisit');
 var Course = keystone.list('Course');
+var LearningContent = keystone.list('LearningContent');
+
 
 exports = module.exports = function (req, res) {
 
   var view = new keystone.View(req, res);
   var locals = res.locals;
 
-  // Set locals
   locals.section = 'courses';
+  locals.url = '/elearning/courses?';
+
+  locals.viewStyle = req.query.view == undefined ? 'grid' : req.query.view;
+  locals.page = req.query.page == undefined ? 1 : req.query.page;
+  locals.perPage = req.query.perPage == undefined ?  12 : req.query.perPage;
+
+  locals.formData = req.body || {};
+
+  locals.searchSubmitted = false;
+  locals.searchUrl = locals.url + 'action=elearning.search&search=';
+  locals.searchResults = [];
+
+  locals.courses = [];
 
   var pageData = {
     loginRedirect: '/elearning/courses?',
@@ -19,16 +36,28 @@ exports = module.exports = function (req, res) {
     ]
   }
 
-  locals.url = '/elearning/courses?';
-  locals.viewStyle = req.query.view == undefined ? 'grid' : req.query.view;
-  locals.page = req.query.page == undefined ? 1 : req.query.page;
-  locals.perPage = req.query.perPage == undefined ?  12 : req.query.perPage;
+  /* Search */
+  view.on('get', { action: 'elearning.search' }, function (next) {
+    
+    locals.searchSubmitted = true;
+    locals.searchUrl = locals.searchUrl+req.query.search+'&';
 
-  locals.courses = [];
+    LearningContent.model.find(
+        { $text: { $search: req.query.search } },
+        { score: { $meta: "textScore" } }
+      )
+      .sort( { score: { $meta: "textScore" } } )
+      .exec( function(err, results) {
+        if (err || !results.length){
+          return next(err);
+        }
+        locals.searchResults = results;
 
-  var searchTerm = req.query.term
-  var searchCategory = req.query.category
+        locals.paginatedSearchResults = helper.paginate(locals.searchResults, locals.page, locals.perPage);
+        next(err);
+      });
 
+  });
 
   view.on('init', function(next){
         Course.paginate({
@@ -110,6 +139,6 @@ exports = module.exports = function (req, res) {
 
 
   // Render the view
-  view.render('elearning/courseList', pageData);
+  view.render('elearning/content/courseList', pageData);
 
 };

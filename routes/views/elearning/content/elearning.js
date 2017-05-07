@@ -4,11 +4,13 @@ var async = require('async');
 var moment = require('moment');
 var _ = require('lodash');
 
+var helper = require('./../helper');
+
+var LearningContent = keystone.list('LearningContent');
 var Course = keystone.list('Course');
 var LearningObject = keystone.list('LearningObject');
 var LOView = keystone.list('LOView');
 var ELearningVisit = keystone.list('ELearningVisit');
-var helper = require('./helper');
 
 
 exports = module.exports = function (req, res) {
@@ -16,7 +18,16 @@ exports = module.exports = function (req, res) {
   var locals = res.locals;
 
   locals.section = 'elearning';
-  locals.url = '/elearning/';
+  locals.url = '/elearning?';
+  
+  locals.page = req.query.page == undefined ? 1 : req.query.page;
+  locals.perPage = req.query.perPage == undefined ?  6 : req.query.perPage;
+  
+  locals.formData = req.body || {};
+
+  locals.searchSubmitted = false;
+  locals.searchUrl = locals.url + 'action=elearning.search&search=';
+  locals.searchResults = [];
 
   locals.data = {
     courses: [],
@@ -26,6 +37,11 @@ exports = module.exports = function (req, res) {
     happyLO: [],
     sadLO: []
   }
+  
+  locals.popularLO = [];
+
+  var tempRecommended = [];
+  var tempLearningObjects = [];
 
   var pageData = {
     loginRedirect: '/elearning', 
@@ -33,14 +49,29 @@ exports = module.exports = function (req, res) {
       { text: 'elearning', link: '/elearning' },
     ]
   }
-  
-  locals.popularLO = [];
 
-  locals.page = req.query.page == undefined ? 1 : req.query.page;
-  locals.perPage = req.query.perPage == undefined ?  6 : req.query.perPage;
+  /* Search */
+  view.on('get', { action: 'elearning.search' }, function (next) {
+    
+    locals.searchSubmitted = true;
+    locals.searchUrl = locals.searchUrl+req.query.search+'&';
 
-  var tempRecommended = [];
-  var tempLearningObjects = [];
+    LearningContent.model.find(
+        { $text: { $search: req.query.search } },
+        { score: { $meta: "textScore" } }
+      )
+      .sort( { score: { $meta: "textScore" } } )
+      .exec( function(err, results) {
+        if (err || !results.length){
+          return next(err);
+        }
+        locals.searchResults = results;
+
+        locals.paginatedSearchResults = helper.paginate(locals.searchResults, locals.page, locals.perPage);
+        next(err);
+      });
+
+  });
 
   // Load LearningObjects
   view.query('learningObjects', keystone.list('LearningObject').model.find().sort('-PublishedAt').limit(4));
@@ -392,6 +423,6 @@ exports = module.exports = function (req, res) {
   });
 */
 
-  view.render('elearning/elearning', pageData);
+  view.render('elearning/content/elearning', pageData);
 
 }

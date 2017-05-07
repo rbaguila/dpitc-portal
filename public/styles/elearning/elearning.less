@@ -1,74 +1,198 @@
+/* From /styles/cards.css */
+
 body {
-    padding-top: 65px;
-    background-color: rgba(250,250,250,1);
-    //padding-bottom: 120px;
+  padding-top: 65px;
+  background-color: rgba(250,250,250,1);
+  //padding-bottom: 120px;
+
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  color: gray;
+  font-weight: 400;
 }
 
-/*
-  Vertical Thumbnails
-*/
-
-.label {
-    display: inline-block;
-    padding: .2em .6em .3em;
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 30px 0;
+  padding: 0;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-weight: 700;
+  color: #262626;
 }
 
-.thumbnail.right-caption > img {
-    float: left;
-    margin-right: 9px;
+p {
+  margin-bottom: 30px;
 }
 
-.thumbnail.right-caption {
-    float: left;
+h1 {
+  font-size: 40px;
 }
 
-.thumbnail.right-caption > .caption {
-    padding: 4px;
+h2 {
+  font-size: 35px;
+  font-weight: 700;
 }
 
-
-@media only screen and (min-width : 481px) {
-    .row.equal-height {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .row.equal-height > [class*='col-'] {
-        display: flex;
-        flex-direction: column;
-    }
-    .row.equal-height.row:after,
-    .row.equal-height.row:before {
-        display: flex;
-    }
-
-    .row.equal-height > [class*='col-'] > .card,
-    .row.equal-height > [class*='col-'] > .card > .card-block {
-        display: flex;
-        flex: 1 0 auto;
-        flex-direction: column;
-    }
-    .row.equal-height > [class*='col-'] > .card > .card-block > .flex-text {
-        flex-grow: 1;
-    }
-    .row.equal-height > [class*='col-'] > .card > img {
-        width: 100%;
-        height: 200px; /* force image's height */
-
-        /* force image fit inside it's "box" */
-        -webkit-object-fit: cover;
-           -moz-object-fit: cover;
-            -ms-object-fit: cover;
-             -o-object-fit: cover;
-                object-fit: cover;
-    }
+a {
+  color: #1784fb;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
+a:hover, a:focus, a:active {
+  outline: none;
+  text-decoration: none;
+}
+
+.btn {
+  margin-right: 4px;
+  margin-bottom: 4px;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+.btn.btn-md {
+  padding: 10px 20px !important;
+}
+.btn.btn-lg {
+  padding: 18px 36px !important;
+}
+.btn:hover, .btn:active, .btn:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.btn-primary {
+  background: #1784fb;
+  color: #fff;
+  border: 2px solid #1784fb;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  background: #0477f4 !important;
+  border-color: #0477f4 !important;
+}
+.btn-primary.btn-outline {
+  background: transparent;
+  color: #1784fb;
+  border: 2px solid #1784fb;
+}
+.btn-primary.btn-outline:hover, .btn-primary.btn-outline:focus, .btn-primary.btn-outline:active {
+  background: #1784fb;
+  color: #fff;
+}
+
+.btn-success {
+  background: #58ca7e;
+  color: #fff;
+  border: 2px solid #58ca7e;
+}
+.btn-success:hover, .btn-success:focus, .btn-success:active {
+  background: #45c46f !important;
+  border-color: #45c46f !important;
+}
+.btn-success.btn-outline {
+  background: transparent;
+  color: #58ca7e;
+  border: 2px solid #58ca7e;
+}
+.btn-success.btn-outline:hover, .btn-success.btn-outline:focus, .btn-success.btn-outline:active {
+  background: #58ca7e;
+  color: #fff;
+}
+
+.btn-info {
+  background: #1784fb;
+  color: #fff;
+  border: 2px solid #1784fb;
+}
+.btn-info:hover, .btn-info:focus, .btn-info:active {
+  background: #0477f4 !important;
+  border-color: #0477f4 !important;
+}
+.btn-info.btn-outline {
+  background: transparent;
+  color: #1784fb;
+  border: 2px solid #1784fb;
+}
+.btn-info.btn-outline:hover, .btn-info.btn-outline:focus, .btn-info.btn-outline:active {
+  background: #1784fb;
+  color: #fff;
+}
+
+.btn-warning {
+  background: #fed330;
+  color: #fff;
+  border: 2px solid #fed330;
+}
+.btn-warning:hover, .btn-warning:focus, .btn-warning:active {
+  background: #fece17 !important;
+  border-color: #fece17 !important;
+}
+.btn-warning.btn-outline {
+  background: transparent;
+  color: #fed330;
+  border: 2px solid #fed330;
+}
+.btn-warning.btn-outline:hover, .btn-warning.btn-outline:focus, .btn-warning.btn-outline:active {
+  background: #fed330;
+  color: #fff;
+}
+
+.btn-danger {
+  background: #fb4f59;
+  color: #fff;
+  border: 2px solid #fb4f59;
+}
+.btn-danger:hover, .btn-danger:focus, .btn-danger:active {
+  background: #fa3641 !important;
+  border-color: #fa3641 !important;
+}
+.btn-danger.btn-outline {
+  background: transparent;
+  color: #fb4f59;
+  border: 2px solid #fb4f59;
+}
+.btn-danger.btn-outline:hover, .btn-danger.btn-outline:focus, .btn-danger.btn-outline:active {
+  background: #fb4f59;
+  color: #fff;
+}
+
+.btn-outline {
+  background: none;
+  border: 2px solid gray;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.btn-outline:hover, .btn-outline:focus, .btn-outline:active {
+  box-shadow: none;
+}
+
+/* Elearning */
 .elearning-body {
   /*margin-top: 85px;*/
   /*130 to accomodate main header (logo + links) and blue community header*/
   margin-top: 100px;
   margin-bottom: 80px;
 }
+
 .analytics-body {
   /*margin-top: 85px;*/
   /*130 to accomodate main header (logo + links) and blue community header*/
@@ -76,14 +200,12 @@ body {
   background-color:#e7e7e7;
 }
 
-.admin-body {
+.elearning-user-body {
   /*margin-top: 85px;*/
   /*130 to accomodate main header (logo + links) and blue community header*/
   padding-top: 70px;
   background-color:#e7e7e7;
 }
-
-
 
 #elearning-nav {
   margin-top: 85px;
@@ -142,7 +264,7 @@ body {
   border-bottom: 1px solid #eee;
 }
 
-.dashboard{
+.user-sidenav{
   border-right: 1px solid #ddd;
 }
 
@@ -216,13 +338,50 @@ body {
     color: rgba(0, 0, 0, .87);
 }
 
+@media only screen and (min-width : 481px) {
+    .row.equal-height {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .row.equal-height > [class*='col-'] {
+        display: flex;
+        flex-direction: column;
+    }
+    .row.equal-height.row:after,
+    .row.equal-height.row:before {
+        display: flex;
+    }
+
+    .row.equal-height > [class*='col-'] > .card,
+    .row.equal-height > [class*='col-'] > .card > .card-block {
+        display: flex;
+        flex: 1 0 auto;
+        flex-direction: column;
+    }
+    .row.equal-height > [class*='col-'] > .card > .card-block > .flex-text {
+        flex-grow: 1;
+    }
+    .row.equal-height > [class*='col-'] > .card > img {
+        width: 100%;
+        height: 200px; /* force image's height */
+
+        /* force image fit inside it's "box" */
+        -webkit-object-fit: cover;
+           -moz-object-fit: cover;
+            -ms-object-fit: cover;
+             -o-object-fit: cover;
+                object-fit: cover;
+    }
+}
+
+/* Grid Columns */
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 > .grid{ 
     position: relative;
     min-height: 1px;
     padding-left: 15px;
     padding-right: 15px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 /* Truncating Text */
@@ -257,6 +416,7 @@ body {
   margin-right: -1em;
   padding-right: 1em;
 }
+
 /* create the ... */
 .block-with-text:before {
   /* points in the end */
@@ -267,6 +427,7 @@ body {
   right: 0;
   bottom: 0;
 }
+
 /* hide ... if we have text, which is less than or equal to max lines */
 .block-with-text:after {
   /* points in the end */
@@ -282,3 +443,4 @@ body {
   /* bg color = bg color under block */
   background: white;
 }
+
