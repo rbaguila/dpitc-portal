@@ -9,6 +9,7 @@ var LearningObject = keystone.list('LearningObject');
 var ISP = keystone.list('ISP');
 var LIndustry = keystone.list('LIndustry');
 var LSector = keystone.list('LSector');
+var Author = keystone.list('Author');
 
 exports = module.exports = function (req, res) {
 
@@ -17,9 +18,7 @@ exports = module.exports = function (req, res) {
 
   locals.section = 'learning objects';
   locals.url = '/elearning/learning-objects?';
-
   
-
   locals.viewStyle = req.query.view == undefined ? 'grid' : req.query.view;
   locals.page = req.query.page == undefined ? 1 : req.query.page;
   locals.perPage = req.query.perPage == undefined ?  12 : req.query.perPage;
@@ -30,19 +29,10 @@ exports = module.exports = function (req, res) {
   locals.searchUrl = locals.url + 'action=elearning.search&search=';
   locals.searchResults = [];
 
-  // Category locals
- /* locals.isp = req.query.isp == undefined ? null : req.query.isp;
-  locals.sector = req.query.sector == undefined ? null : req.query.sector;
-  locals.industry = req.query.industry == undefined ? null : req.query.industry;
-  */
   locals.filters = {
-    state: 'published',
-    isp: req.query.isp,
-    sector: req.query.sector,
-    industry: req.query.industry,
-    specificCommodity: req.query.specific
-  }
-
+    name: null,
+    value: null
+  };
 
   var pageData = {
     loginRedirect: '/elearning/learning-objects?',
@@ -52,6 +42,7 @@ exports = module.exports = function (req, res) {
     ]
   }
 
+  
    /* Search */
   view.on('get', { action: 'elearning.search' }, function (next) {
     
@@ -75,15 +66,16 @@ exports = module.exports = function (req, res) {
 
   });
 
-  // Load categories
+  // Load filters
   view.on('init', function (next) {
     
-    if (req.query.isp) {
+    if (req.query.isp != undefined) {
       ISP.model.findOne({
-          key: locals.filters.isp
+          key: req.query.isp
         })    
-        .exec(function (err, result) {
-          locals.isp = result;
+        .exec(function (err, result) { 
+          locals.filters.name = 'isp';
+          locals.filters.value = result;
           next(err);
         });
     } else {
@@ -94,12 +86,13 @@ exports = module.exports = function (req, res) {
 
   view.on('init', function (next) {
     
-    if (req.query.sector) {
+    if (req.query.sector != undefined) {
       LSector.model.findOne({
-          key: locals.filters.sector
+          key: req.query.sector
         })    
         .exec(function (err, result) {
-          locals.sector = result;
+          locals.filters.name = 'sector';
+          locals.filters.value = result;
           next(err);
         });
     } else {
@@ -112,12 +105,13 @@ exports = module.exports = function (req, res) {
 
   view.on('init', function (next) {
     
-    if (req.query.industry) {
+    if (req.query.industry != undefined) {
       LIndustry.model.findOne({
-          key: locals.filters.industry
+          key: req.query.industry
         })    
         .exec(function (err, result) {
-          locals.industry = result;
+          locals.filters.name = 'industry';
+          locals.filters.value = result;
           next(err);
         });
     } else {
@@ -125,48 +119,68 @@ exports = module.exports = function (req, res) {
     }
     
   });
-  
-  var searchTerm = req.query.term
-  var searchCategory = req.query.category
 
+  view.on('init', function (next) {
+
+    if (req.query.author != undefined) {
+      Author.model.findOne({
+          key: req.query.author
+        })    
+        .exec(function (err, result) {
+          locals.filters.name = 'author';
+          locals.filters.value = result;
+          next(err);
+        });
+    } else {
+      next();
+    }
+  });
+  
   // Load learningObjects
   view.on('init', function (next) {
     
-    var q = LearningObject.paginate({
+    var q;
+    if (locals.filters.name == null) {
+      q = LearningObject.paginate({
         page: locals.page,
         perPage: locals.perPage,
         filters: { 
-          'state': 'published',
+          'state': 'published'
         },
       })
       .populate('isp, sector, industry')
-      .sort('-publishedAt')
+      .sort('-publishedAt');
 
-      if (locals.specificCommodity) {
-        q.where('specificCommodity').in([locals.specificCommodity])
-      }
-      if (locals.isp) {
-        q.where('isp').in([locals.isp])
-      }
-      if (locals.sector) {
-        q.where('sector').in([locals.sector])
-      }
-      if (locals.industry) {
-        q.where('industry').in([locals.industry])
-      }
-
-      q.exec(function(err, results){
-        
-        //if (err) return next(err);
-
-        locals.learningObjects = results;
-        
-        //console.log(results);
-        
-        //console.log(locals.learningObjects);
-        next(err);
+    } else {
+      locals.url += locals.filters.name + '=' + locals.filters.value.key;
       
-      });
+      q = LearningObject.paginate({
+          page: locals.page,
+          perPage: locals.perPage,
+          filters: { 
+            $and: [
+              { 'state': 'published' },
+              { [locals.filters.name]: locals.filters.value }
+            ]            
+          },
+        })
+        .populate('isp, sector, industry')
+        .sort('-publishedAt');
+
+    }
+
+    q.exec(function(err, results){
+      
+      if (err) {
+        return next(err);
+      }
+
+
+      locals.learningObjects = results;
+      
+      next(err);
+    
+    });
   
   });
 
