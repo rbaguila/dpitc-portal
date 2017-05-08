@@ -46,19 +46,13 @@ mixin popularLO-list(learningObjects)
 
 block content
   +search()
-  if searchSubmitted
-    .container
-      .panel.panel-default
-        .panel-body
-          +searchResults(paginatedSearchResults.results)
-          +paginate-page(paginatedSearchResults, searchUrl)
-  else 
-    .container
-      .panel.panel-default
-        .panel-body
-          if viewStyle == 'grid'
-            +popularLO-grid(paginatePopularLO.results)
-          else
-            +popularLO-list(paginatePopularLO.results)
-          +paginate-page-view-duration(paginatePopularLO)
-      
+  
+  .container
+    .panel.panel-default
+      .panel-body
+        if viewStyle == 'grid'
+          +popularLO-grid(paginatePopularLO.results)
+        else
+          +popularLO-list(paginatePopularLO.results)
+        +paginate-page-view-duration(paginatePopularLO)
+    

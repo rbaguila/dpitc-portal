@@ -31,10 +31,6 @@ exports = module.exports = function (req, res) {
   
   locals.formData = req.body || {};
 
-  locals.searchSubmitted = false;
-  locals.searchUrl = locals.url + 'action=elearning.search&search=';
-  locals.searchResults = [];
-
   locals.data = {
     courses: [],
     recommendedLearningObjects: [],
@@ -60,38 +56,10 @@ exports = module.exports = function (req, res) {
     ]
   }
 
-  
-
-  
   /* Search */
   view.on('get', { action: 'elearning.search' }, function (next) {
-    
-    locals.searchSubmitted = true;
-    locals.searchUrl = locals.searchUrl+req.query.search;
-
-    LearningContent.model.find(
-        { $text: { $search: req.query.search } },
-        { score: { $meta: "textScore" } }
-      )
-      .sort( { score: { $meta: "textScore" } } )
-      .exec( function(err, results) {
-        if (err || !results.length){
-          return next(err);
-        }
-        locals.searchResults = results;
-
-        locals.paginatedSearchResults = helper.paginate(locals.searchResults, locals.page, locals.perPage);
-
-        var newLog = new ELearningLog.model({
-          ip: req.ips,
-          event: 'Search '+ locals.searchUrl,
-        });
-        newLog.save(function(err) {
-          console.log(req.ips + 'Search '+ locals.searchUrl);
-        });
-
-        next(err);
-      });
+    return res.redirect('/elearning/search?key='+req.query.search+'&from='+locals.url);
+    next();
 
   });
 
@@ -380,6 +348,7 @@ exports = module.exports = function (req, res) {
     next();
   });
 
+ 
   //insert ELearning Visit
   view.on('init', function(next){
     var currentUser = locals.user;
@@ -419,8 +388,8 @@ exports = module.exports = function (req, res) {
           res.on('data', function (chunk) {  
               var obj = JSON.parse(chunk);
 
-              locals.ip = obj.ip;
-              
+              ip = obj.ip;
+              currentIP = obj.ip;
               var newVisit = new ELearningVisit.model({
                 ip: obj.ip,
                 country_code: obj.country_code,
@@ -434,10 +403,10 @@ exports = module.exports = function (req, res) {
               
               var newLog = new ELearningLog.model({
                 ip: obj.ip,
-                event: 'Visited '+ locals.url,
+                event: 'VISITED '+ locals.url,
               });
               newLog.save(function(err) {
-                console.log(req.ips + 'Visited '+ locals.url);
+                console.log(obj.ip + ' VISITED '+ locals.url);
               });
             });
         }
@@ -455,6 +424,7 @@ exports = module.exports = function (req, res) {
     next();
   });
 
+  
 
   // TODO
   // Load Reaction Counts of all Learning Objects in a Course
@@ -524,3 +494,4 @@ exports = module.exports = function (req, res) {
   view.render('elearning/content/elearning', pageData);
 
 }
+

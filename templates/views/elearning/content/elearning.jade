@@ -39,31 +39,25 @@ mixin recommended(learningObjects)
 
 block content
   +search()
-  if searchSubmitted
+  
+  if user
     .container
       .panel.panel-default
         .panel-body
-          +searchResults(paginatedSearchResults.results)
-          +paginate-page(paginatedSearchResults, searchUrl+'&')
-  else 
-    if user
-      .container
-        .panel.panel-default
-          .panel-body
-            +recommended(data.recommendedLearningObjects)
-          .panel-footer
-            a(href='/elearning/recommended?').btn.btn-link View All Recommended Lessons
+          +recommended(data.recommendedLearningObjects)
+        .panel-footer
+          a(href='/elearning/recommended?').btn.btn-link View All Recommended Lessons
 
-    .container
-      .panel.panel-default
-        .panel-body
-          +popular(paginatePopularLO.results)
-        .panel-footer
-          a(href='/elearning/learning-objects?').btn.btn-link View All Lessons
-    .container
-      .panel.panel-default
-        .panel-body
-          +allCourses(courses)
-        .panel-footer
-          a(href='/elearning/courses?').btn.btn-link View All Courses
-    
+  .container
+    .panel.panel-default
+      .panel-body
+        +popular(paginatePopularLO.results)
+      .panel-footer
+        a(href='/elearning/learning-objects?').btn.btn-link View All Lessons
+  .container
+    .panel.panel-default
+      .panel-body
+        +allCourses(courses)
+      .panel-footer
+        a(href='/elearning/courses?').btn.btn-link View All Courses
+  

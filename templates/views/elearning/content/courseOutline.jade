@@ -25,33 +25,27 @@ mixin currentCourse-list(course)
 
 block content
   +search()
-  if searchSubmitted
-    .container
-      .panel.panel-default
-        .panel-body
-          +searchResults(paginatedSearchResults.results)
-          +paginate-page(paginatedSearchResults, searchUrl)
-  else 
-    .container
-      .panel.panel-default
-        .panel-body
-          .row
-            .col-md-8.col-xs-10
-              h3.text-left All Lessons in #{currentCourse.title}
-            .col-md-2.col-xs-2.pull-right
-              +view-generic()
-          .row
-            if currentCourse.thumbnail.exists
-              .col-md-8
-                span !{currentCourse.content.extended}
-              .col-md-4
-                +img-available.rounded(currentCourse._.thumbnail.limit(400, 350), currentCourse.title, 400, 350)
-            else
+  
+  .container
+    .panel.panel-default
+      .panel-body
+        .row
+          .col-md-8.col-xs-10
+            h3.text-left All Lessons in #{currentCourse.title}
+          .col-md-2.col-xs-2.pull-right
+            +view-generic()
+        .row
+          if currentCourse.thumbnail.exists
+            .col-md-8
               span !{currentCourse.content.extended}
-          hr
-          .row
-            if viewStyle == 'grid'
-              +currentCourse-grid(currentCourse)
-            else
-              +currentCourse-list(currentCourse)
-        
+            .col-md-4
+              +img-available.rounded(currentCourse._.thumbnail.limit(400, 350), currentCourse.title, 400, 350)
+          else
+            span !{currentCourse.content.extended}
+        hr
+        .row
+          if viewStyle == 'grid'
+            +currentCourse-grid(currentCourse)
+          else
+            +currentCourse-list(currentCourse)
+      

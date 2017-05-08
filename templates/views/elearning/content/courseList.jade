@@ -35,19 +35,13 @@ mixin allcourses-list(courses)
 
 block content
   +search()
-  if searchSubmitted
-    .container
-      .panel.panel-default
-        .panel-body
-          +searchResults(paginatedSearchResults.results)
-          +paginate-page(paginatedSearchResults, searchUrl)
-  else 
-    .container
-      .panel.panel-default
-        .panel-body
-          if viewStyle == 'grid'
-            +allcourses-grid(courses.results)
-          else
-            +allcourses-list(courses.results)
-          +paginate-generic(courses)
+
+  .container
+    .panel.panel-default
+      .panel-body
+        if viewStyle == 'grid'
+          +allcourses-grid(courses.results)
+        else
+          +allcourses-list(courses.results)
+        +paginate-generic(courses)
 

@@ -22,10 +22,6 @@ exports = module.exports = function (req, res) {
 
   locals.formData = req.body || {};
 
-  locals.searchSubmitted = false;
-  locals.searchUrl = locals.url + 'action=elearning.search&search=';
-  locals.searchResults = [];
-
   locals.currslug = req.params.courseslug;
   
   locals.data = {
@@ -43,26 +39,11 @@ exports = module.exports = function (req, res) {
 
   /* Search */
   view.on('get', { action: 'elearning.search' }, function (next) {
-    
-    locals.searchSubmitted = true;
-    locals.searchUrl = locals.searchUrl+req.query.search+'&';
-
-    LearningContent.model.find(
-        { $text: { $search: req.query.search } },
-        { score: { $meta: "textScore" } }
-      )
-      .sort( { score: { $meta: "textScore" } } )
-      .exec( function(err, results) {
-        if (err || !results.length){
-          return next(err);
-        }
-        locals.searchResults = results;
-
-        locals.paginatedSearchResults = helper.paginate(locals.searchResults, locals.page, locals.perPage);
-        next(err);
-      });
+    return res.redirect('/elearning/search?key='+req.query.search+'&from='+locals.url);
+    next();
 
   });
+
   
   // Load the current course
   view.on('init', function(next){
