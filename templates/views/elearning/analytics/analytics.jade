@@ -3,11 +3,12 @@ extends ../../../layouts/elearning-user
 block css
   link(rel="stylesheet" type="text/css" href="/styles/analytics.css")
 
-mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers, numViews, numComments, numReactions, topTopicsbyRatings)
+mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers, numViews, numComments, numReactions, topTopicsbyRatings, numPageVisits)
     .row
-      .col-md-12.col-xs-12
+      .col-md-8.col-xs-12
         div(id="allVisit")
-      //-.col-md-4.col-xs-12
+      .col-md-4.col-xs-12
+        .div(id="ratioVisit")
       .col-md-8.col-xs-12
         div(id="userVisitsWorld")
       .col-md-4.col-xs-12
@@ -23,6 +24,10 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers,
           span.glyphicon.glyphicon-user(aria-hidden='true')
           |  E-LEARNING USERS: 
           span= numUsers
+        .well.well-sm.centered-panel
+          span.glyphicon.glyphicon-signal(aria-hidden='true')
+          |  PAGE VISITS: 
+          span= numPageVisits
         .well.well-sm.centered-panel
           span.glyphicon.glyphicon-signal(aria-hidden='true')
           |  VIEWS: 
@@ -101,7 +106,7 @@ block content
       .col-md-3.col-xs-12.user-sidenav
         +user-sidenav(section)
       .col-md-9.col-xs-12
-        +Most(data.mostPopularLO, data.mostCommentedLO, data.mostReactedLO, data.numCourses, data.numLO, data.numUsers, data.numViews, data.numComments, data.numReactions, data.topTopicsbyRatings)
+        +Most(data.mostPopularLO, data.mostCommentedLO, data.mostReactedLO, data.numCourses, data.numLO, data.numUsers, data.numViews, data.numComments, data.numReactions, data.topTopicsbyRatings, data.numPageVisits)
         
         
   //- script(src='/js/elearning-graphs/learningObjectReactions.js')

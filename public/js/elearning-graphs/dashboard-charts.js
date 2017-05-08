@@ -72,7 +72,7 @@ function generateWorldMapChart(allviewsmapdata) {
         },
 
         subtitle: {
-            text: 'User Visits in E-Learning DPITC'
+            text: 'Page Visits in E-Learning DPITC'
         },
 
         legend: {
@@ -92,7 +92,7 @@ function generateWorldMapChart(allviewsmapdata) {
             enableMouseTracking: false
         }, {
             type: 'mapbubble',
-            name: 'User Visits',
+            name: 'Page Visits',
             joinBy: ['iso-a2', 'code'],
             data: allviewsmapdata,
             minSize: 4,
@@ -115,7 +115,7 @@ function generateAreaChart(allviewsdata){
         },
 
         series: [{
-            name: 'User Page Visits in All Years',
+            name: 'User and Non-User Page Visits in All Years',
             data: allviewsdata,
             type: 'area',
             threshold: null,
@@ -435,5 +435,55 @@ function generateTreeMap2Chart(finaldata, nameISP){
         title: {
             text: 'Popular Topic by Region'
         }
+    });
+}
+
+$(function () {
+    $.ajax({
+        method: 'GET',
+        url: '/elearning/api/userVisitsRatio',
+        success: function (data) {
+            generateSemiPieChart(data);
+        }
+    });    
+});
+
+function generateSemiPieChart(data){
+    Highcharts.chart('ratioVisit', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: 0,
+            plotShadow: false
+        },
+        title: {
+            text: 'Ratio<br>of<br>Page Visits',
+            align: 'center',
+            verticalAlign: 'middle',
+            y: 70
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                dataLabels: {
+                    enabled: true,
+                    distance: -60,
+                    style: {
+                        fontWeight: 'bold',
+                        color: 'white'
+                    }
+                },
+                startAngle: -90,
+                endAngle: 90,
+                center: ['50%', '75%']
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Visit share',
+            innerSize: '50%',
+            data: data
+        }]
     });
 }

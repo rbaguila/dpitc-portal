@@ -35,7 +35,7 @@
 #userVisitsWorld{
   height: 400px;
   min-width: 310px;
-  margin-bottom: 3%;
+  margin-bottom: 2%;
 }
 
 .highcharts-background{
@@ -44,22 +44,22 @@
 
 
 #allVisit{
-  height: 350px;
+  height: 320px;
   min-width: 310px;
-  margin-bottom: 3%;
+  margin-bottom: 2%;
 }
 
 
 #userViewByISP{
   min-width: 310px;
   height: 350px;
-  margin-bottom: 3%;
+  margin-bottom: 2%;
 }
 
 #allReactions{
   height: 400px;
   min-width: 310px;
-  margin-bottom: 3%;
+  margin-bottom: 2%;
 }
 
 .white-bg{
@@ -69,13 +69,13 @@
 #allComments{
   min-width: 310px;
   height: 350px;
-  margin-bottom: 3%;
+  margin-bottom: 2%;
 }
 
 #popularperregion{
   height: 350px;
   min-width: 310px;
-  margin-bottom: 3%;
+  margin-bottom: 2%;
 }
 .glyphicon-star{
   font-size: 20px;
@@ -91,14 +91,23 @@
 }
 
 .col-md-3 .panel-body{
-  min-height: 380px;
+  min-height: 400px;
 }
-.col-md-3 .media{
-  margin-top: 1%;
+.panel{
+  margin-bottom: 2%;
 }
 .col-md-6, .col-md-8, .col-md-12{
   padding: 0.5% 0.5% 0.5% 0.5%;
 }
 h5{
   margin-bottom: 5%;
+}
+
+#ratioVisit{
+  height: 320px;
+  max-width: 600px;
+}
+
+.well{
+  margin-bottom: 4%;
 }
