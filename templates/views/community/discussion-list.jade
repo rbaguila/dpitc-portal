@@ -1,0 +1,22 @@
+extends ../../layouts/community
+
+block content
+  .discussion-list.container
+    .page-header
+      h1=filters.category ? data.category.name : 'Community Discussions'
+    .row
+      .col-sm-8
+        if filters.category && !filters.category
+          h3 Invalid Category.
+        else
+          .lead.text-muted Showing #{data.posts.length} discussions
+        .discussion.row
+          each post in data.posts
+            include includes/public-discussion.jade
+            hr
+
+block js
+  script.
+    $('.media-heading a').click(function(e) {
+      console.log('wow')
+    });

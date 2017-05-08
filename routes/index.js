@@ -102,6 +102,8 @@ exports = module.exports = function (app) {
 	app.get('/community/blogs', routes.communityViews.blog);
 	app.get('/community/blogs/:category?', routes.communityViews.blog);
 	app.get('/community/blogs/post/:post', routes.communityViews.post);
+	app.get('/community/discussions', routes.communityViews.discussionList);
+	app.get('/community/discussions/:category?', routes.communityViews.discussionList);
 	app.get('/community/analytics', routes.communityViews.analytics);
 
 	app.get('/eresources', routes.eresourcesViews.eresources);
@@ -111,6 +113,7 @@ exports = module.exports = function (app) {
 
 	//Analytics Api Route
   app.get('/api/community/analytics/list', keystone.middleware.api, routes.api.communityAnalytics.list);
+  app.post('/api/community/analytics/discussion', keystone.middleware.api, routes.api.communityAnalytics.addDiscView);
 
 	//File Upload Route
   app.get('/api/fileupload/list', keystone.middleware.api, routes.api.fileupload.list);
