@@ -18,7 +18,7 @@ mixin search(action)
 
 mixin searchResults(searchResults)
      .elearning-page-header
-          h3.text-left Search Results (#{searchResults.length}) #[a(href=loginRedirect) #[small Go back..]]
+          h3.text-left Search Results (#{searchResults.length}) #[a(href=loginRedirect) #[small(data-toggle="tooltip" data-placement="bottom" title=loginRedirect) Go back..]]
         .row
           if searchResults.length
             .col-md-9

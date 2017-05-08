@@ -85,8 +85,8 @@ mixin learning-content-tr-media(learningContent, redirect)
             
       .media-body
         a(href=redirect)
-          h4.media-heading.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=learningContent.title) #{learningContent.title}
-          p.block-with-text.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=learningContent.content.brief) #{learningContent.content.brief}
+          h3.media-heading.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=learningContent.title) #{learningContent.title}
+          p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=learningContent.content.brief) #{learningContent.content.brief}
 
 mixin learning-object-side(learningObject, redirect)
   .media
