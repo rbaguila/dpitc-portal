@@ -11,6 +11,7 @@ var Course = keystone.list('Course');
 var LearningObject = keystone.list('LearningObject');
 var LOView = keystone.list('LOView');
 var ELearningVisit = keystone.list('ELearningVisit');
+var ELearningLog = keystone.list('ELearningLog');
 var LORating = keystone.list('LORating');
 var ISP = keystone.list('ISP');
 var LIndustry = keystone.list('LIndustry');
@@ -381,14 +382,15 @@ exports = module.exports = function (req, res) {
     if(currentUser){
       isLOUser = true;
       if(currentUser.location.suburb!=null&&currentUser.location.state!=null){
-         var newVisit = new ELearningVisit.model({
+        var newVisit = new ELearningVisit.model({
             country_code: 'PH',
             region: currentUser.location.state,
             city: currentUser.location.suburb,
             isUser: isLOUser
           });
-          newVisit.save(function(err) {
+        newVisit.save(function(err) {
           });
+
       }
       else{
         getGeoLocation = true;
@@ -413,7 +415,19 @@ exports = module.exports = function (req, res) {
               newVisit.save(function(err) {
                 console.log("success in inserting geolocation");
               });
-          });
+              
+              var newLog = new ELearningLog.model({
+                ip: obj.ip,
+                event: 'Visited '+ locals.url,
+              });
+              newLog.save(function(err) {
+                if(currentUser){
+                  console.log('new log isUser');
+                } else {
+                  console.log('new log !isUser');
+                }
+                });
+            });
         }
         else if (('' + res.statusCode).match(/^5\d\d$/)){
 
