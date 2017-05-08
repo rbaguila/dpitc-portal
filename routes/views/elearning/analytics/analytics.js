@@ -18,6 +18,7 @@ exports = module.exports = function(req, res){
         numViews: [],
         numComments: [],
         numReactions: [],
+        numPageVisits: [],
         topTopicsbyRatings: []
     };
 
@@ -219,6 +220,18 @@ exports = module.exports = function(req, res){
         });
         locals.data.topTopicsbyRatings = tempLearningObjects3.slice(0, 5);
         next();
+    });
+
+    view.on('init', function(next){
+        var q = keystone.list('ELearningVisit').model.count();
+
+        q.exec(function(err, count){
+            if (err || count==null) {
+                return next(err);
+            }
+            locals.data.numPageVisits = count + locals.data.numViews;
+            next(err);
+        });
     });
     //Render the view
     view.render('elearning/analytics/analytics', pageData);
