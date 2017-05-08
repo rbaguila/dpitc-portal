@@ -33,8 +33,9 @@
 }
 
 #userVisitsWorld{
-  height: 400px;
+  min-height: 400px;
   min-width: 310px;
+  max-width: 900px;
   margin-bottom: 2%;
 }
 
@@ -44,7 +45,7 @@
 
 
 #allVisit{
-  height: 320px;
+  min-height: 320px;
   min-width: 310px;
   margin-bottom: 2%;
 }
@@ -52,12 +53,12 @@
 
 #userViewByISP{
   min-width: 310px;
-  height: 350px;
+  min-height: 350px;
   margin-bottom: 2%;
 }
 
 #allReactions{
-  height: 400px;
+  min-height: 400px;
   min-width: 310px;
   margin-bottom: 2%;
 }
@@ -68,12 +69,12 @@
 
 #allComments{
   min-width: 310px;
-  height: 350px;
+  min-height: 350px;
   margin-bottom: 2%;
 }
 
 #popularperregion{
-  height: 350px;
+  min-height: 350px;
   min-width: 310px;
   margin-bottom: 2%;
 }
@@ -104,7 +105,7 @@ h5{
 }
 
 #ratioVisit{
-  height: 320px;
+  min-height: 320px;
   max-width: 600px;
 }
 
