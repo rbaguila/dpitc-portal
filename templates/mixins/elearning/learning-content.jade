@@ -8,11 +8,11 @@ mixin learning-object-card(learningObject, redirect)
       //- img.card-img-top(src="http://placehold.it/250x200?text=No+Available+Image", alt="No Available Image" , height="150px", width="200px")
       +img-na-card-top(250, 200)
     .card-block
-      .card-title.truncate-text.text-primary #{learningObject.title}
+      .card-title.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=learningObject.title) #{learningObject.title}
       //- .meta
         +learning-object-reactions(learningObject)
       .card-text
-        p.block-with-text #{learningObject.content.brief}
+        p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=learningObject.content.brief) #{learningObject.content.brief}
     .card-footer
       a.pull-right(href=redirect) Learn More
 
@@ -24,10 +24,10 @@ mixin course-card(course, redirect)
     else
       +img-na-card-top(250, 200)
     .card-block
-      .card-title.truncate-text.text-primary #{course.title}
+      .card-title.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=course.title) #{course.title}
       //- .meta
       .card-text
-        p.block-with-text #{course.content.brief}
+        p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=course.content.brief) #{course.content.brief}
     .card-footer
       a.pull-right(href=redirect) Learn More
 
@@ -46,8 +46,8 @@ mixin learning-object-tr-media(learningObject, redirect)
             //- img(src="http://placehold.it/200x150?text=No+Available+Image", height='150px', width='200px').img-rounded.media-object
       .media-body
         a(href=learningObject.url)
-          h3.media-heading= learningObject.title
-          p.block-with-text #{learningObject.content.brief}
+          h3.media-heading.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=learningObject.title) #{learningObject.title}
+          p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=learningObject.content.brief) #{learningObject.content.brief}
           hr
           +learning-object-reactions(learningObject)
 
@@ -68,8 +68,8 @@ mixin course-tr-media(course, redirect)
             
       .media-body
         a(href=course.url)
-          h3.media-heading= course.title
-          p.block-with-text #{course.content.brief}
+          h3.media-heading.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=course.title) #{course.title}
+          p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=course.title) #{course.content.brief}
           
 mixin learning-content-tr-media(learningContent, redirect)
   tr.media
@@ -85,8 +85,22 @@ mixin learning-content-tr-media(learningContent, redirect)
             
       .media-body
         a(href=redirect)
-          h4.media-heading= learningContent.title
-          p.block-with-text #{learningContent.content.brief}
+          h4.media-heading.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=learningContent.title) #{learningContent.title}
+          p.block-with-text.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=learningContent.content.brief) #{learningContent.content.brief}
+
+mixin learning-object-side(learningObject, redirect)
+  .media
+    a(href=redirect)
+      
+      .media-left
+        if learningObject.thumbnail.exists
+          +img-available-rounded-media-object(learningObject._.thumbnail.limit(100, 80), learningObject.title, 100, 80) 
+        else
+            +img-na-rounded-media-object(100, 80)
+      .media-body
+        strong.truncate-text(data-toggle="tooltip" data-placement="bottom" title=learningObject.title) #{learningObject.title}
+        br
+        small.block-with-text.text-info(data-toggle="tooltip" data-placement="bottom" title=learningObject.content.brief) #{learningObject.content.brief}    
 
 //- Learning Object Reactions
 mixin learning-object-reactions(currentLO)
@@ -111,16 +125,3 @@ mixin learning-object-tags(tags)
           else if tag.category == 'null'
             a(href='/elearning/learning-objects?specific='+tag.key) #[span.label.label-info #{tag.name}] &nbsp;
 
-mixin learning-object-side(learningObject, redirect)
-  .media
-    a(href=redirect)
-      
-      .media-left
-        if learningObject.thumbnail.exists
-          +img-available-rounded-media-object(learningObject._.thumbnail.limit(100, 80), learningObject.title, 100, 80) 
-        else
-            +img-na-rounded-media-object(100, 80)
-      .media-body
-        strong.truncate-text #{learningObject.title}
-        br
-        small.block-with-text.text-info #{learningObject.content.brief}    
