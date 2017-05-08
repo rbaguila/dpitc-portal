@@ -15,30 +15,6 @@
 .x.axis path {
     display: none;
 }
-/*
-@media (min-width: 768px) {
-  .sidebar-nav .navbar .navbar-collapse {
-    padding: 0;
-    max-height: none;
-  }
-  .sidebar-nav .navbar ul {
-    float: none;
-    display: block;
-  }
-  .sidebar-nav .navbar li {
-    float: none;
-    display: block;
-  }
-  .sidebar-nav .navbar li a {
-    padding-top: 12px;
-    padding-bottom: 12px;
-  }
-}
-
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus{
-  background-color:  #3062B7;
-  color: white;
-}*/
 
 .dashboard{
 	border-left: 1px solid gray;
@@ -57,7 +33,7 @@
 }
 
 #userVisitsWorld{
-  height: 350px;
+  height: 400px;
   min-width: 310px;
   margin-bottom: 3%;
 }
@@ -110,16 +86,16 @@
   width: 25%;
 }
 
-.dashboard .col-md-3{
+.col-md-3{
   padding: 0.5% 0.5% 0.5% 0.5%;
 }
 
-.dashboard .col-md-3 .panel-body{
-  min-height: 400px;
+.col-md-3 .panel-body{
+  min-height: 475px;
 }
-.dashboard .col-md-3 .media{
+.col-md-3 .media{
   margin-top: 1%;
 }
-.dashboard .col-md-6, .col-md-8, .col-md-12{
+.col-md-6, .col-md-8, .col-md-12{
   padding: 0.5% 0.5% 0.5% 0.5%;
 }
