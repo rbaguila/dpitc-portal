@@ -12,6 +12,7 @@ var LORating = keystone.list('LORating');
 var ISP = keystone.list('ISP');
 var LIndustry = keystone.list('LIndustry');
 var LSector = keystone.list('LSector');
+var ELearningLog = keystone.list('ELearningLog');
 
 exports = module.exports = function (req, res) {
   var view = new keystone.View(req, res);
@@ -318,6 +319,14 @@ exports = module.exports = function (req, res) {
               });
               newVisit.save(function(err) {
                 console.log("success in inserting geolocation");
+              });
+
+              var newLog = new ELearningLog.model({
+                ip: obj.ip,
+                event: 'VISITED '+ locals.url,
+              });
+              newLog.save(function(err) {
+                console.log(obj.ip + ' VISITED '+ locals.url);
               });
           });
         }

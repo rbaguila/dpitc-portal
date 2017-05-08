@@ -1,8 +1,10 @@
 var keystone = require('keystone');
 var http = require('http');
-var ELearningVisit = keystone.list('ELearningVisit');
 
 var helper = require('./../helper');
+
+var ELearningVisit = keystone.list('ELearningVisit');
+var ELearningLog = keystone.list('ELearningLog');
 
 var LearningContent = keystone.list('LearningContent');
 var LearningObject = keystone.list('LearningObject');
@@ -211,6 +213,14 @@ exports = module.exports = function (req, res) {
               });
               newVisit.save(function(err) {
                 console.log("success in inserting geolocation");
+              });
+
+              var newLog = new ELearningLog.model({
+                ip: obj.ip,
+                event: 'VISITED '+ locals.url,
+              });
+              newLog.save(function(err) {
+                console.log(obj.ip + ' VISITED '+ locals.url);
               });
           });
         }
