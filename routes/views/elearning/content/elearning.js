@@ -24,6 +24,7 @@ exports = module.exports = function (req, res) {
 
   locals.section = 'elearning';
   locals.url = '/elearning?';
+  locals.ip = null;
   
   locals.page = req.query.page == undefined ? 1 : req.query.page;
   locals.perPage = req.query.perPage == undefined ?  6 : req.query.perPage;
@@ -59,11 +60,14 @@ exports = module.exports = function (req, res) {
     ]
   }
 
+  
+
+  
   /* Search */
   view.on('get', { action: 'elearning.search' }, function (next) {
     
     locals.searchSubmitted = true;
-    locals.searchUrl = locals.searchUrl+req.query.search+'&';
+    locals.searchUrl = locals.searchUrl+req.query.search;
 
     LearningContent.model.find(
         { $text: { $search: req.query.search } },
@@ -77,6 +81,15 @@ exports = module.exports = function (req, res) {
         locals.searchResults = results;
 
         locals.paginatedSearchResults = helper.paginate(locals.searchResults, locals.page, locals.perPage);
+
+        var newLog = new ELearningLog.model({
+          ip: req.ips,
+          event: 'Search '+ locals.searchUrl,
+        });
+        newLog.save(function(err) {
+          console.log(req.ips + 'Search '+ locals.searchUrl);
+        });
+
         next(err);
       });
 
@@ -405,6 +418,9 @@ exports = module.exports = function (req, res) {
           res.setEncoding('utf8');    
           res.on('data', function (chunk) {  
               var obj = JSON.parse(chunk);
+
+              locals.ip = obj.ip;
+              
               var newVisit = new ELearningVisit.model({
                 ip: obj.ip,
                 country_code: obj.country_code,
@@ -421,12 +437,8 @@ exports = module.exports = function (req, res) {
                 event: 'Visited '+ locals.url,
               });
               newLog.save(function(err) {
-                if(currentUser){
-                  console.log('new log isUser');
-                } else {
-                  console.log('new log !isUser');
-                }
-                });
+                console.log(req.ips + 'Visited '+ locals.url);
+              });
             });
         }
         else if (('' + res.statusCode).match(/^5\d\d$/)){
@@ -442,6 +454,7 @@ exports = module.exports = function (req, res) {
     }
     next();
   });
+
 
   // TODO
   // Load Reaction Counts of all Learning Objects in a Course

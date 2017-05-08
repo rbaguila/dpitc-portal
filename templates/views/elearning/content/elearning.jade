@@ -44,7 +44,7 @@ block content
       .panel.panel-default
         .panel-body
           +searchResults(paginatedSearchResults.results)
-          +paginate-page(paginatedSearchResults, searchUrl)
+          +paginate-page(paginatedSearchResults, searchUrl+'&')
   else 
     if user
       .container
