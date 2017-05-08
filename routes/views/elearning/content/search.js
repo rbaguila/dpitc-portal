@@ -63,37 +63,7 @@ exports = module.exports = function (req, res) {
 
   /* Add search log */
   view.on('init', function (next) {
-    var ip = req.ips;
-    var options = {    
-        host: 'freegeoip.net',    
-        path: '/json/' + ip,
-        method: 'GET'
-    };
-
-    var reqData = http.request(options, function(res) {
-  
-      res.setEncoding('utf8');    
-      res.on('data', function (chunk) {  
-          var obj = JSON.parse(chunk);
-
-          var newLog = new ELearningLog.model({
-            ip: obj.ip,
-            event: 'SEARCH: ' + locals.url
-          });
-          newLog.save( function(err) {
-            console.log(obj.ip + ' SEARCH '+ locals.url);
-          })
-
-        });
-
-      });
-
-    reqData.on('error', function (e) {
-        console.log('Error Adding Search Log');
-      });
-
-    reqData.end();
-    
+    helper.addElearningLog(req.ips, 'SEARCH '+locals.url);
     next();
   });
   

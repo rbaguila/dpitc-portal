@@ -60,6 +60,8 @@ exports = module.exports = function (app) {
 	
 
 	// Elearning Routes
+	app.get('/elearning/search?', routes.elearningViews.content.search);
+
 	app.get('/elearning?', routes.elearningViews.content.elearning);
 	app.get('/elearning/courses?', routes.elearningViews.content.courseList);
 	app.get('/elearning/course/:courseslug?', routes.elearningViews.content.courseOutline);
@@ -84,7 +86,7 @@ exports = module.exports = function (app) {
   app.all('/api/elearning/fileupload/create', keystone.middleware.api, routes.api.elearning.fileupload.create);
   app.get('/api/elearning/fileupload/:id/remove', keystone.middleware.api, routes.api.elearning.fileupload.remove);
 
-
+  
 
 	app.get('/search/', function(req,res){
 		var searchKey = req.query.searchKey;

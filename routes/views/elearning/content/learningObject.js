@@ -14,6 +14,7 @@ var LORating = keystone.list('LORating');
 var ISP = keystone.list('ISP');
 var LIndustry = keystone.list('LIndustry');
 var LSector = keystone.list('LSector');
+var ELearningLog = keystone.list('ELearningLog');
 
 
 
@@ -65,28 +66,13 @@ exports = module.exports = function (req, res) {
     ]
   }
 
+
   /* Search */
-  view.on('get', { action: 'elearning.search' }, function (next) {
-    
-    locals.searchSubmitted = true;
-    locals.searchUrl = locals.searchUrl+req.query.search+'&';
+ /* view.on('get', { action: 'elearning.search' }, function (next) {
+    return res.redirect('/elearning/search?key='+req.query.search+'&from='+locals.url);
+    next();
 
-    LearningContent.model.find(
-        { $text: { $search: req.query.search } },
-        { score: { $meta: "textScore" } }
-      )
-      .sort( { score: { $meta: "textScore" } } )
-      .exec( function(err, results) {
-        if (err || !results.length){
-          return next(err);
-        }
-        locals.searchResults = results;
-
-        locals.paginatedSearchResults = helper.paginate(locals.searchResults, locals.page, locals.perPage);
-        next(err);
-      });
-
-  });
+  });*/
   
   // Load the currentLO
   view.on('init', function(next){
@@ -146,6 +132,7 @@ exports = module.exports = function (req, res) {
       if (err) {
         validationErrors = err.errors;
       } else {
+        helper.addElearningLog(req.ips, 'ADDED RATING '+locals.url);
         req.flash('success', 'Your rating was submitted.');
         return res.redirect('/elearning/learning-object/'+locals.currentLO.slug);
       }
@@ -190,6 +177,7 @@ exports = module.exports = function (req, res) {
       if (err) {
         validationErrors = err.errors;
       } else {
+        helper.addElearningLog(req.ips, 'ADDED COMMENT '+locals.url);
         req.flash('success', 'Your comment was added.');
         return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
       }
@@ -223,6 +211,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
+              helper.addElearningLog(req.ips, 'REMOVED LIKE '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -239,6 +228,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
+              helper.addElearningLog(req.ips, 'LIKED '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -273,6 +263,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
+              helper.addElearningLog(req.ips, 'REMOVED HAPPY '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -289,6 +280,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
+              helper.addElearningLog(req.ips, 'ADDED HAPPY '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -323,6 +315,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
+              helper.addElearningLog(req.ips, 'REMOVED SAD '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -339,6 +332,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
+              helper.addElearningLog(req.ips, 'ADDED SAD '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -410,6 +404,14 @@ exports = module.exports = function (req, res) {
               });
               newView.save(function(err) {
               });
+
+              var newLog = new ELearningLog.model({
+                ip: obj.ip,
+                event: 'VISITED '+ locals.url,
+              });
+              newLog.save(function(err) {
+                console.log(obj.ip + ' VISITED '+ locals.url);
+              });
             }
         });
       }
@@ -447,6 +449,14 @@ exports = module.exports = function (req, res) {
                         city: obj.city
                       });
                       newView.save(function(err) {
+                      });
+
+                      var newLog = new ELearningLog.model({
+                        ip: obj.ip,
+                        event: 'VISITED '+ locals.url,
+                      });
+                      newLog.save(function(err) {
+                        console.log(obj.ip + ' VISITED '+ locals.url);
                       });
                     }
                 });

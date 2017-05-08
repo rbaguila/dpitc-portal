@@ -1,7 +1,47 @@
+var keystone = require('keystone');
 var _ = require('lodash');
+var http = require('http');
+var ELearningLog = keystone.list('ELearningLog');
 
 var classifications = ["isp", "sector", "industry"];
 var counts = ["ispCount", "sectorCount", "industryCount"];
+
+// Adds Elearning Log, gets the ip and creates new event
+exports.addElearningLog = function(ip, event) {
+    var options = {    
+        host: 'freegeoip.net',    
+        path: '/json/' + ip,
+        method: 'GET'
+    };
+
+    var obj;
+    var reqData = http.request(options, function(res) {
+  
+      res.setEncoding('utf8');    
+      res.on('data', function (chunk) {  
+          var obj = JSON.parse(chunk);
+
+          var newLog = new ELearningLog.model({
+            ip: obj.ip,
+            event: event
+          });
+          newLog.save( function(err) {
+            console.log(obj.ip + ' ' + event);
+          })
+
+        });
+
+      });
+
+    reqData.on('error', function (e) {
+        console.log('Error Adding Log');
+      });
+
+    reqData.end();
+    
+
+}
+
 
 exports.getCountLOTaken = function (learningObject, learningObjectsTaken){
   for(var j=0;j<classifications.length;j++){
