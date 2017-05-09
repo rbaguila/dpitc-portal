@@ -149,8 +149,8 @@ Publication.schema.virtual('description.truncGrid').get(function() {
 
   var truncated = this.description
 
-  if (truncated.length > 63) {
-    truncated = truncated.substring(0, 62) + '...'
+  if (truncated.length > 60) {
+    truncated = truncated.substring(0, 59) + '...'
   }
   return truncated
 })
