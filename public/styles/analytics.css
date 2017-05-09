@@ -16,16 +16,13 @@
     display: none;
 }
 
-.dashboard{
-	border-left: 1px solid gray;
-}
-
 .centered-panel{
 	background-color: #c1d7e2;
+  color: #414040;
 }
 
 .bg-grey{
-  background-color: #eeeeee;
+  background-color: #EAEAEA;
 }
 
 .user-prof{
@@ -97,8 +94,11 @@
 .panel{
   margin-bottom: 2%;
 }
-.col-md-6, .col-md-8, .col-md-12{
+.col-md-6, .col-md-8, .col-md-12, .col-md-8, .col-md-4{
   padding: 0.5% 0.5% 0.5% 0.5%;
+}
+.col-md-9{
+  padding: 5px 5px 5px 5px;
 }
 h5{
   margin-bottom: 5%;
@@ -111,4 +111,16 @@ h5{
 
 .well{
   margin-bottom: 4%;
+}
+
+.panel-primary{
+  border-color: #EAEAEA;
+}
+
+.well span{
+  color: #414040;
+}
+.panel-primary>.panel-heading{
+  background-color: #3062B7;
+  border-color: #3062B7;
 }

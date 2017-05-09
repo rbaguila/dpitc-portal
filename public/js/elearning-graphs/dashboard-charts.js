@@ -72,7 +72,7 @@ function generateWorldMapChart(allviewsmapdata) {
         },
 
         subtitle: {
-            text: 'Page Visits in E-Learning DPITC'
+            text: 'Total Page Visits in E-Learning DPITC'
         },
 
         legend: {
@@ -111,11 +111,11 @@ function generateAreaChart(allviewsdata){
         },
 
         title: {
-            text: 'E-Learning Visits'
+            text: 'Total E-Learning Visits'
         },
 
         series: [{
-            name: 'User and Non-User Page Visits in All Years',
+            name: 'Total User and Non-User Page Visits in All Years',
             data: allviewsdata,
             type: 'area',
             threshold: null,

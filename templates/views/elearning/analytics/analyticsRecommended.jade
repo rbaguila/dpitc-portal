@@ -1,0 +1,15 @@
+extends ../../../layouts/elearning-user
+
+block css
+  link(rel="stylesheet" type="text/css" href="/styles/analytics.css")
+      
+block content
+  .analytics-body
+    .row
+      .col-md-9.col-sm-4.dashboard
+        h4 Analytics of Recommended Learning Objects
+        .col-md-6.col-sm-4
+          div(id="recommendedViewsGraph")
+        .col-md-6.col-sm-4
+          div(id="ratioViewsGraph")
+  script(src='/js/elearning-graphs/recommendedViews.js')

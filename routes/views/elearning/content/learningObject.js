@@ -404,7 +404,7 @@ exports = module.exports = function (req, res) {
               });
               newView.save(function(err) {
               });
-
+              //MAY ISSUE PA TO ANGEC
               var newLog = new ELearningLog.model({
                 ip: obj.ip,
                 event: 'VISITED '+ locals.url,
