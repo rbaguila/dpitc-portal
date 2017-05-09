@@ -1,0 +1,69 @@
+extends ../../layouts/elearning-admin
+
+block css
+  link(rel="stylesheet" type="text/css" href="/styles/analytics.css")
+
+block content
+  .analytics-body
+    .row
+      .col-md-3.col-sm-4.dashboard
+        .sidebar-nav
+          .navbar.navbar-default(role='navigation')
+            .navbar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='.sidebar-navbar-collapse')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              span.visible-xs.navbar-brand Menu
+            .navbar-collapse.collapse.sidebar-navbar-collapse
+              ul.nav.navbar-nav
+                li
+                  a(href='/elearning/analytics') Dashboard
+                li.active
+                  a(href='/elearning/analytics/learning-objects/allindustries') Analytics of Learning Objects
+                li
+                  a(href='/elearning/analytics/users') Analytics of Users
+                li
+                  a(href='/elearning/analytics/recommendedViews') Analytics of Recommended Learning Objects
+      .col-md-9.col-sm-4.dashboard.white-bg
+        .dropdown
+          | Filter by 
+          button#dropdownMenu1.btn.btn-primary.dropdown-toggle(type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="true")
+            | Industries
+            span.caret 
+          ul.dropdown-menu(aria-labelledby="dropdownMenu1")
+            each ind in data.industries
+              li
+                a(href="/elearning/analytics/learning-objects/" + ind.key)= ind.name
+        .table-responsive
+          table.table.table-hover
+            tr
+              th Title
+              th Author
+              th State
+              th Published At
+              th Analytics
+            each lo in data.learningObjects.results
+              tr
+                td= lo.title
+                td= lo.author
+                td= lo.state
+                td= lo.publishedAt.toDateString()
+                td
+                  a.btn.btn-info(href="/elearning/analytics/" + lo.slug + "?key=" + lo.slug, role="button") SEE ANALYTICS
+        ul.pagination.pull-right
+          li
+            a(href="/elearning/analytics/learning-objects/" + data.industryKey + "?page="+data.learningObjects.previous aria-label="Previous")
+              span(aria-hidden="true")&laquo
+          each page in data.learningObjects.pages
+            if page==data.learningObjects.currentPage
+              li.active
+                a(href="/elearning/analytics/learning-objects/" + data.industryKey + "?page="+page)= page
+            else
+              li
+                a(href="/elearning/analytics/learning-objects/" + data.industryKey + "?page="+page)= page
+
+          li
+            a(href="/elearning/analytics/learning-objects/" + data.industryKey + "?page="+data.learningObjects.next aria-label="Next")
+              span(aria-hidden="true")&raquo

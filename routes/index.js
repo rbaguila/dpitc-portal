@@ -32,6 +32,7 @@ var routes = {
 	views: importRoutes('./views'),
 	communityViews: importRoutes('./views/community'),
 	eresourcesViews: importRoutes('./views/eresources'),
+	elearningViews: importRoutes('./views/elearning'),
 	api: importRoutes('./api'),
 };
 
@@ -42,7 +43,50 @@ exports = module.exports = function (app) {
 	app.get('/fiesta', routes.views.fiesta);
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
+	app.get('/exhibit', routes.views.fiesta);
+	app.get('/exhibit/:exhibit', routes.views.exhibit);
 	app.get('/gallery', routes.views.gallery);
+
+	// User
+	app.get('/signup?', routes.views.signup);
+	app.post('/signup?', routes.views.signup);
+	app.get('/profile?', middleware.requireUser, routes.views.profile);
+	app.post('/profile?', middleware.requireUser, routes.views.profile);
+
+	// User-Elearning Routes
+	app.get('/profile/elearning/user-activity?', middleware.requireUser, routes.elearningViews.userActivity);
+
+	// Elearning Routes
+	app.get('/elearning', routes.elearningViews.elearning);
+	app.get('/elearning/feedback', routes.elearningViews.feedback);
+	app.post('/elearning/feedback', routes.elearningViews.feedback);
+	app.get('/elearning/courses?', routes.elearningViews.courseList);
+	app.get('/elearning/course/:courseslug?', routes.elearningViews.courseOutline);
+	app.get('/elearning/:courseslug/learning-object/:learningobjectslug?', routes.elearningViews.learningObject);
+	app.post('/elearning/:courseslug/learning-object/:learningobjectslug', routes.elearningViews.learningObject);
+
+//	app.get('/elearning/:courseslug/chapter/:chapterslug?', routes.elearningViews.chapterOutline);
+	app.get('/elearning/learning-objects?', routes.elearningViews.learningObjectList);
+	app.get('/elearning/learning-object/:learningobjectslug?', routes.elearningViews.learningObject);
+	app.post('/elearning/learning-object/:learningobjectslug', routes.elearningViews.learningObject);
+	app.get('/elearning/learning-objects/popular?', routes.elearningViews.popular);
+	app.get('/elearning/:userid/recommended?', middleware.requireUser, routes.elearningViews.recommended);
+
+	// Elearning Analytics
+	app.get('/elearning/analytics', middleware.requireAdmin , routes.elearningViews.analytics);
+	app.get('/elearning/analytics/users?', middleware.requireAdmin , routes.elearningViews.analyticsUsersList);
+	app.get('/elearning/analytics/recommendedViews', middleware.requireAdmin , routes.elearningViews.analyticsRecommended);
+	app.get('/elearning/analytics/users/:userid?', middleware.requireAdmin , routes.elearningViews.analyticsUsers);
+	app.get('/elearning/analytics/:learningobjectslug?', middleware.requireAdmin , routes.elearningViews.analyticsLO);
+	app.get('/elearning/analytics/learning-objects/:industry?', middleware.requireAdmin , routes.elearningViews.analyticsLOList);
+
+	// Elearning File Uploads
+	app.get('/api/elearning/fileupload/list', keystone.middleware.api, routes.api.elearning.fileupload.list);
+  app.get('/api/elearning/fileupload/:id', keystone.middleware.api, routes.api.elearning.fileupload.get);
+  app.all('/api/elearning/fileupload/:id/update', keystone.middleware.api, routes.api.elearning.fileupload.update);
+  app.all('/api/elearning/fileupload/create', keystone.middleware.api, routes.api.elearning.fileupload.create);
+  app.get('/api/elearning/fileupload/:id/remove', keystone.middleware.api, routes.api.elearning.fileupload.remove);
+
 	app.get('/search/', function(req,res){
 		var searchKey = req.query.searchKey;
 		res.writeHead(301,
@@ -54,10 +98,13 @@ exports = module.exports = function (app) {
 	// app.all('/contact', routes.views.contact);
 
 	//Community
-	app.get('/community', routes.communityViews.community);
+		app.get('/community', routes.communityViews.community);
 	app.get('/eresources', routes.eresourcesViews.eresources);
 	app.get('/eresources/publications/:industry?', routes.eresourcesViews.publications);
 	app.get('/eresources/publication/:publication', routes.eresourcesViews.publication);
+
+	//Analytics Api Route
+  app.get('/api/community/analytics/list', keystone.middleware.api, routes.api.communityAnalytics.list);
 
 	//File Upload Route
   app.get('/api/fileupload/list', keystone.middleware.api, routes.api.fileupload.list);
@@ -69,6 +116,21 @@ exports = module.exports = function (app) {
 	app.get('/:slug', page_router);
 
 	app.get('/api/exhibits', routes.api.exhibit);
+
+	app.get('/api/LOReactions', routes.api.LOReactions);
+	app.get('/api/LOComments/:year', routes.api.LOComments);
+	app.get('/api/LOViews/:year', routes.api.LOViews);
+	app.get('/api/recommendedViews/:year', routes.api.recommendedViews);
+	app.get('/api/views/:key/:year', routes.api.eachLOViews);
+	app.get('/api/comments/:key/:year', routes.api.eachLOComments);
+	app.get('/api/reactions/:key', routes.api.eachLOReactions);
+	app.get('/api/userviews/:id/:year', routes.api.eachUserViews);
+	app.get('/api/usercomments/:id/:year', routes.api.eachUserComments);
+
+	app.get('/elearning/api/uservisits', routes.api.elearning.uservisits);
+	app.get('/elearning/api/uservisitsbyISP', routes.api.elearning.uservisitsbyISP);
+	app.get('/elearning/api/reactionsbysector', routes.api.elearning.reactionsbysector);
+	app.get('/elearning/api/uservisitsbyRegion', routes.api.elearning.uservisitsbyRegion);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

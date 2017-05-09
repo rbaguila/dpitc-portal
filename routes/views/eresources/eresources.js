@@ -17,7 +17,7 @@ exports = module.exports = function(req, res) {
     ]
   }
 
-  view.query('publications', keystone.list('Publication').model.find().limit(10));
+  view.query('publications', keystone.list('Publication').model.find().limit(12));
   view.query('links', keystone.list('Link').model.find().limit(3))
 
   view.on('init', function(next) {

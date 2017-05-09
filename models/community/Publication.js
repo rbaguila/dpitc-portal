@@ -81,8 +81,8 @@ Publication.add(
   {sector: {
     type: Types.Relationship,
     ref: 'Sector',
-    filters: { industry: ':industry' },
-    index: true
+    // filters: { industry: ':industry' },
+    // index: true
   }},
   {commodity: {
     type: Types.Relationship, ref: 'Commodity'
