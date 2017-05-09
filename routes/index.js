@@ -98,11 +98,9 @@ exports = module.exports = function (app) {
 	// app.all('/contact', routes.views.contact);
 
 	//Community
-	app.get('/community', routes.communityViews.community);
-	app.get('/community/analytics', routes.communityViews.analytics);
+		app.get('/community', routes.communityViews.community);
 	app.get('/eresources', routes.eresourcesViews.eresources);
-	app.get('/eresources/publications', routes.eresourcesViews.publications); //Redundant
-	app.get('/eresources/publications/:page', routes.eresourcesViews.publications);
+	app.get('/eresources/publications/:industry?', routes.eresourcesViews.publications);
 	app.get('/eresources/publication/:publication', routes.eresourcesViews.publication);
 
 	//Analytics Api Route
