@@ -4,12 +4,91 @@ block content
 
   .community-body
     #eresources-content
-<<<<<<< HEAD
-      .container
+      .container(style="margin-bottom: 20px;")
         .row
-          .xs
+          .col-md-3
+            img(src=publication._.cover.fit(200, 360, {}))
+            br
+            br
+            a.btn.btn-success(href=publication.file.url,role="button",download) Download
+          .col-md-9
+            h2
+              | #{publication.title}
+              .small #{publication.publicationType}
 
-=======
->>>>>>> dfaffa32d955f3d169b204ba911b027fd6c9bc18
-      | Pub content goes here
-      | #{publication.title}
+            p #{publication.description}
+
+
+            br
+            if publication.publisher
+              p
+                span.pub-field Publisher:&nbsp;
+                span.pub-value #{publication.publisher}
+
+            if publication.publicationYear
+              p
+                span.pub-field Publication Year:&nbsp;
+                span.pub-value #{publication.publicationYear}
+
+            if publication.publicationLine
+              p
+                span.pub-field Publication Line:&nbsp;
+                span.pub-value #{publication.publicationLine}
+
+            if publication.technicalEditor
+              p
+                span.pub-field Technical Editor:&nbsp;
+                span.pub-value #{publication.technicalEditor}
+
+            if publication.volumeEditor
+              p
+                span.pub-field Volume Editor:&nbsp;
+                span.pub-value #{publication.volumeEditor}
+
+            if publication.layoutArtist
+              p
+                span.pub-field Layout Artist:&nbsp;
+                span.pub-value #{publication.layoutArtist}
+
+            if publication.ISSN
+              p
+                span.pub-field ISSN:&nbsp;
+                span.pub-value #{publication.ISSN}
+
+            if publication.ISBN
+              p
+                span.pub-field ISBN:&nbsp;
+                span.pub-value #{publication.ISBN}
+
+            if publication.printer
+              p
+                span.pub-field Printer:&nbsp;
+                span.pub-value #{publication.printer}
+
+            if publication.format
+              p
+                span.pub-field Format:&nbsp;
+                span.pub-value #{publication.format}
+
+            if publication.numberOfPages
+              p
+                span.pub-field Number of Pages:&nbsp;
+                span.pub-value #{publication.numberOfPages}
+
+            if publication.price
+              p
+                span.pub-field Price:&nbsp;
+                span.pub-value #{publication.price}
+
+
+            br
+            if publication.industry
+              span.label.label-default #{publication.industry.name}
+              | &nbsp;
+
+            if publication.sector
+              span.label.label-default #{publication.sector.name}
+              | &nbsp;
+
+            if publication.commodity
+              span.label.label-default #{publication.commodity.name}
