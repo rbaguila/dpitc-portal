@@ -73,15 +73,16 @@ block content
 				i.fa.fa-envelope
 
 
-	#tech_block.fh5co-project-style-3
-		.container.no-padding
-			.row
-				.col-md-12
-					center
-						h2.fh5co-heading Latest Videos
-				//- .col-md-12
-					center
-						p(style="color:white") Watch the latest videos from the DPITC Youtube Channel.
+	//- .container.no-padding
+		.row.blue-black-seperator
+			.section-title.focus.row 
+				.title.col-md-5.col-xs-4
+					.skew.col-xs-12
+					.skewed-text Discussions
+			//- .col-md-12
+				center
+					p(style="color:white") Watch the latest videos from the DPITC Youtube Channel.
+			.div
 				.col-md-3.no-padding
 					//- img.img-responsive(src='https://i.ytimg.com/vi/egHmYYaOM58/hqdefault.jpg') 
 					iframe(src='https://www.youtube.com/embed/egHmYYaOM58', frameborder='0', allowfullscreen='')
@@ -101,20 +102,15 @@ block content
 					iframe(src='https://www.youtube.com/embed/UNl-JyJQPKM', frameborder='0', allowfullscreen='')
 
 	#fiesta_block.fh5co-project-style-3.container
-		.row
-			.col-md-12
-				center
-					img.img-responsive(src='/images/fiesta.jpg', alt='Image' width="1300px;" height="200px;")
-		.container
-			.row(style="margin-bottom:30px")
-				//- .col-md-12
-					center
-						//- h2.fh5co-heading-fiesta FIESTA
-				.col-md-12
-					center
-						strong
-							p.fiesta(style="color:black") Celebrate our Filipino culture while promoting Science and Technology through different events hosted by PCAARRD consortia.
-
+		.row(style="margin-bottom:1em").blue-black-seperator
+			.section-title.focus.row 
+				.title.col-md-5.col-xs-4
+					.skew.col-xs-12
+					.skewed-text FIESTA
+			.col-md-12.no-padding
+				strong
+					p.fiesta(style="color:black") Celebrate our Filipino culture while promoting Science and Technology through different events hosted by PCAARRD consortia.
+				
 		.row
 			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
 				a.fh5co-project-item(href='#', style='background-image: url(/images/fiesta/potato.jpg);', target='_blank')
@@ -177,15 +173,16 @@ block content
 						p Venue: Western Mindanao  State University, Zamboanga City
 
 
-	#tech_block.fh5co-project-style-3
+	#fiesta_block.fh5co-project-style-3
 		.container.no-padding
-			.row
-				.col-md-12
-					center
-						h2.fh5co-heading Technologies
-				.col-md-12
-					center
-						p(style="color:white") Improve your production by exploring the different technologies you can use to manage your crops and livestock.
+			.row(style="margin-bottom:1em").blue-black-seperator
+				.section-title.focus.row 
+					.title.col-md-5.col-xs-4
+						.skew.col-xs-12
+						.skewed-text Technologies
+				.col-md-12.no-padding
+					strong
+						p.fiesta(style="color:black") Improve your production by exploring the different technologies you can use to manage your crops and livestock.
 		.container.no-padding
 			.row
 				.col-md-2.col-sm-6.col-xs-12.tech-item
@@ -304,7 +301,7 @@ block content
 		//- 				i.icon.icon-chevron-right(style='font-size:20px;vertical-align:middle;')
 
 	#block
-		.row
+		//- .row
 			.col-md-12.col-xs-12
 				div(class="container" style="margin-top:30px; margin-bottom:30px")
 					div(class="community-caption")
@@ -313,6 +310,21 @@ block content
 							h4 Join the conversation. Know more about the country’s agriculture and aquaculture natural resources.
 							a(href="https://docs.google.com/forms/d/15q4z6gcBt51RZpKc_9MWFsKHlXq8PAMoCMKDXKI5tdw/edit" target="_blank")
 								button(class="btn btn-lg btn-warning") Join us by filling up this form!
+		.container.no-padding
+			.row(style="margin-bottom:2em").blue-black-seperator
+				.section-title.focus.row 
+					.title.col-md-5.col-xs-4
+						.skew.col-xs-12
+						.skewed-text Community
+				.col-md-12.no-padding
+					strong
+						p.fiesta(style="color:black") Join the conversation. Know more about the country’s agriculture and aquaculture natural resources.
+				.col-md-12.no-padding
+					img.img-responsive(src='http://www.pcaarrd.dost.gov.ph/home/portal/images/banners/commodities-1.jpg')
+
+					center(style="margin-top:1em")
+						a(href="https://docs.google.com/forms/d/15q4z6gcBt51RZpKc_9MWFsKHlXq8PAMoCMKDXKI5tdw/edit" target="_blank")
+							button(class="btn btn-lg btn-warning") Join us by filling up this form!
 
 	#community_block
 		.container
