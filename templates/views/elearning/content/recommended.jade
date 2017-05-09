@@ -1,0 +1,47 @@
+extends ../../../layouts/elearning
+
+mixin recommendedLO-grid(learningObjects)
+  .row
+    .col-md-8.col-xs-10
+      h3.text-left Recommended Lessons
+    .col-md-2.col-xs-2.pull-right
+      +view-generic()
+
+  .row.equal-height
+    if learningObjects.length
+      each learningObject in learningObjects
+        .col-xs-6.col-md-3
+          +learning-object-card(learningObject, learningObject.url)
+    else
+      h3.text-muted There are no recommended lessons for you yet.
+
+mixin recommendedLO-list(learningObjects)
+  .row
+    .col-md-8.col-xs-10
+      h3.text-left Recommended Lessons
+    .col-md-2.col-xs-2.pull-right
+      +view-generic()
+
+  .row
+    if learningObjects.length
+      .col-md-9
+        .panel
+          table.table.table-hover
+            thead
+            tbody
+              each learningObject in learningObjects
+                +learning-object-tr-media(learningObject, learningObject.url)
+    else
+      h3.text-muted There are no recommended lessons for you yet.
+
+block content
+  +search()
+  
+  .container
+    .panel.panel-default
+      .panel-body
+        if viewStyle == 'grid'
+          +recommendedLO-grid(paginateRecommendedLO.results)
+        if viewStyle == 'list'
+          +recommendedLO-list(paginateRecommendedLO.results)
+        +paginate-generic(paginateRecommendedLO, url)

@@ -1,0 +1,127 @@
+//- Card Template
+mixin learning-object-card(learningObject, redirect)
+  .card
+    if learningObject.thumbnail.exists
+      //- img.card-img-top(src=learningObject._.thumbnail.limit(250,200), alt=learningObject.title, height="200px", width="250px")
+      +img-available-card-top(learningObject._.thumbnail.limit(250,200), learningObject.title, 250, 200)
+    else
+      //- img.card-img-top(src="http://placehold.it/250x200?text=No+Available+Image", alt="No Available Image" , height="150px", width="200px")
+      +img-na-card-top(250, 200)
+    .card-block
+      .card-title.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=learningObject.title) #{learningObject.title}
+      //- .meta
+        +learning-object-reactions(learningObject)
+      .card-text
+        p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=learningObject.content.brief) #{learningObject.content.brief}
+    .card-footer
+      a.pull-right(href=redirect) Learn More
+
+mixin course-card(course, redirect)
+  .card
+    if course.thumbnail.exists
+      //- img.card-img-top(src=course.thumbnail, alt=course.title, height="200px", width="250px")
+      +img-available-card-top(course._.thumbnail.limit(250,200), course.title, 250, 200)
+    else
+      +img-na-card-top(250, 200)
+    .card-block
+      .card-title.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=course.title) #{course.title}
+      //- .meta
+      .card-text
+        p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=course.content.brief) #{course.content.brief}
+    .card-footer
+      a.pull-right(href=redirect) Learn More
+
+//- Table Template
+mixin learning-object-tr-media(learningObject, redirect)
+  tr.media
+    td
+      .media-left
+        if learningObject.thumbnail.exists
+          a(href=redirect)
+            //- img(src=learningObject._.thumbnail.limit(200,150), alt=learningObject.title, height='150px', width='200px').img-rounded.media-object
+            +img-available-rounded-media-object(learningObject._.thumbnail.limit(180,150), learningObject.title, 180, 150)
+        else
+          a(href=redirect)
+            +img-na-rounded-media-object(180, 150)
+            //- img(src="http://placehold.it/200x150?text=No+Available+Image", height='150px', width='200px').img-rounded.media-object
+      .media-body
+        a(href=learningObject.url)
+          h3.media-heading.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=learningObject.title) #{learningObject.title}
+          p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=learningObject.content.brief) #{learningObject.content.brief}
+          hr
+          +learning-object-reactions(learningObject)
+
+          if learningObject.tags != null
+            +learning-object-tags(learningObject.tags)
+
+mixin course-tr-media(course, redirect)
+  tr.media
+    td
+      .media-left
+        if course.thumbnail.exists
+          a(href=redirect)
+            //- img(src=course._.thumbnail.limit(200,150), alt=course.title, height='150px', width='200px').img-rounded.media-object
+            +img-available-rounded-media-object(course._.thumbnail.limit(180,150), course.title, 180, 150)
+        else
+          a(href=redirect)
+            +img-na-rounded-media-object(180, 150)
+            
+      .media-body
+        a(href=course.url)
+          h3.media-heading.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=course.title) #{course.title}
+          p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=course.title) #{course.content.brief}
+          
+mixin learning-content-tr-media(learningContent, redirect)
+  tr.media
+    td
+      .media-left
+        if learningContent.thumbnail.exists
+          a(href=redirect)
+            //- img(src=learningContent._.thumbnail.limit(200,150), alt=learningContent.title, height='150px', width='200px').img-rounded.media-object
+            +img-available-rounded-media-object(learningContent._.thumbnail.limit(180,150), learningContent.title, 180, 150)
+        else
+          a(href=redirect)
+            +img-na-rounded-media-object(120, 100)
+            
+      .media-body
+        a(href=redirect)
+          h3.media-heading.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=learningContent.title) #{learningContent.title}
+          p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=learningContent.content.brief) #{learningContent.content.brief}
+
+mixin learning-object-side(learningObject, redirect)
+  .media
+    a(href=redirect)
+      
+      .media-left
+        if learningObject.thumbnail.exists
+          +img-available-rounded-media-object(learningObject._.thumbnail.limit(100, 80), learningObject.title, 100, 80) 
+        else
+            +img-na-rounded-media-object(100, 80)
+      .media-body
+        strong.truncate-text(data-toggle="tooltip" data-placement="bottom" title=learningObject.title) #{learningObject.title}
+        br
+        small.block-with-text.text-info(data-toggle="tooltip" data-placement="bottom" title=learningObject.content.brief) #{learningObject.content.brief}    
+
+//- Learning Object Reactions
+mixin learning-object-reactions(currentLO)
+  .row
+    p(style='float: right') #{currentLO.sad.length} #[i.fa.fa-frown-o.fa-md(aria-hidden="true")] &emsp;
+    p(style='float: right') #{currentLO.happy.length} #[i.fa.fa-smile-o.fa-md(aria-hidden="true")] &emsp;
+    p(style='float: right') #{currentLO.likes.length} #[i.fa.fa-thumbs-o-up.fa-md(aria-hidden="true")] &emsp;
+    
+//- Learning Object Tags
+mixin learning-object-tags(tags)
+  .row
+    label Tags: &nbsp;
+    if tags.length
+      each tag in tags
+        if tag != null
+          if tag.category == 'isp'
+            a(href='/elearning/learning-objects?isp='+tag.key) #[span.label.label-primary #{tag.name}] &nbsp;
+          else if tag.category == 'sector'
+            a(href='/elearning/learning-objects?sector='+tag.key) #[span.label.label-success #{tag.name}] &nbsp;
+          else if tag.category == 'industry'
+            a(href='/elearning/learning-objects?industry='+tag.key) #[span.label.label-info #{tag.name}] &nbsp;
+          else if tag.category == 'null'
+            a(href='/elearning/learning-objects?specific='+tag.key) #[span.label.label-info #{tag.name}] &nbsp;
+

@@ -1,0 +1,51 @@
+extends ../../../layouts/elearning
+
+mixin currentCourse-grid(course)
+  .row.equal-height    
+    if course.outline.length
+      each item in course.outline
+        .col-xs-6.col-md-3
+          +learning-object-card(item, item.url)
+    else
+      h3.text-muted There are no lessons in this course yet.
+
+mixin currentCourse-list(course)
+  .row
+    if course.outline.length
+      .col-md-9
+        .panel
+          table.table.table-hover
+            thead
+            tbody
+              each item in course.outline
+                +course-tr-media(item, item.url)
+    else
+      h3.text-muted There are no lessons in this course yet.
+
+
+block content
+  +search()
+  
+  .container
+    .panel.panel-default
+      .panel-body
+        .row
+          .col-md-8.col-xs-10
+            h3.text-left All Lessons in #{currentCourse.title}
+          .col-md-2.col-xs-2.pull-right
+            +view-generic()
+        .row
+          if currentCourse.thumbnail.exists
+            .col-md-8
+              span !{currentCourse.content.extended}
+            .col-md-4
+              +img-available.rounded(currentCourse._.thumbnail.limit(400, 350), currentCourse.title, 400, 350)
+          else
+            span !{currentCourse.content.extended}
+        hr
+        .row
+          if viewStyle == 'grid'
+            +currentCourse-grid(currentCourse)
+          else
+            +currentCourse-list(currentCourse)
+      
