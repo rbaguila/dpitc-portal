@@ -1,0 +1,39 @@
+extends ../../layouts/community
+
+block content
+  #community-analytics
+    .container
+      .row
+        .dashboard.col-md-2.hidden-xs.hidden-sm
+          a(href="#page-visits").text-muted.col-xs-11 Page Visits
+          br
+          a(href="#demographics").text-muted.col-xs-11 Demographics
+          br
+          a(href="#industry").text-muted.col-xs-11 Industries
+          br
+        .col-md-10.col-md-offset-2.col-xs-12
+          #page-visits.section.anchor
+            .section-title Page Visits
+            #active-users.section-content
+            br
+          
+          #demographics.section.anchor
+            .section-title Demographics
+            .section-content
+            br
+          
+          #industry.section.anchor
+            .section-title Additional Information
+            .section-content
+              #agriculture.graph.col-md-4
+              #aquaculture.graph.col-md-4
+              #nresources.graph.col-md-4
+        
+          
+block js
+  script(src='/bower_components/highcharts/highcharts.js')
+  script(src='/bower_components/highcharts/modules/exporting.js')
+  script(src='/bower_components/highcharts/modules/map.js')
+  script(src='/bower_components/highcharts/modules/drilldown.js')
+  script(src='https://code.highcharts.com/mapdata/countries/ph/ph-all.js')
+  script(src='/js/community-analytics.js')

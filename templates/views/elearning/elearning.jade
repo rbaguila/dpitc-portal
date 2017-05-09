@@ -1,0 +1,135 @@
+extends ../../layouts/elearning
+
+block css
+
+mixin navigation(action)
+  .container
+    .row
+      nav.navbar.navbar-default
+        .container-fluid
+          //- Mobile menu
+          .navbar-header
+            button(type="button", data-toggle="collapse", aria-expanded="false", data-target="#search-view-nav").navbar-toggle.collapsed
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+
+            
+            .collapse.navbar-collapse(id='search-view-nav')
+              form.navbar-form.navbar-left
+                .form-group
+                  .row
+                    .col-xs-6.col-md-8
+                      input.form-control(type='text', placeholder='Search')
+                    .col-xs-6.col-md-4
+                      button.btn.btn-default(type='submit') Submit
+
+                
+//- mixin reactions(currentLO)
+  .row
+    p.text-right 
+    | #{currentLO.loviews.length} Views
+    | #{currentLO.likes.length} &nbsp;
+    i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")
+    p.text-right
+    | #{currentLO.happy.length} &nbsp;
+    i.fa.fa-smile-o.fa-lg(aria-hidden="true")
+  
+    p.text-right
+    | #{currentLO.sad.length} &nbsp;
+    i.fa.fa-frown-o.fa-lg(aria-hidden="true")
+    
+
+
+mixin popular(learningObjects)
+  .row
+    a(href=url+'learning-objects/popular')
+      h2.text-center Popular Lessons
+  .row.equal-height
+    if learningObjects.length
+      each learningObject in learningObjects
+        .col-xs-6.col-md-3
+          .thumbnail
+            if learningObject.thumbnail.exists
+              img.card-img-top(src=learningObject._.thumbnail.fit(200, 150), alt=learningObject.title, height='150px', width='200px').img-responsive
+            else 
+              img.card-img-top(src="http://placehold.it/200x150", alt='No Available Image' height='150px', width='200px').img-responsive
+            .caption
+              h3= learningObject.title.substring(0, 50)
+              p= learningObject.content.brief.substring(0, 100)
+              br
+              p
+                a.btn.btn-info.btn-block(href=learningObject.url) Learn more
+    else
+      h3.text-muted There are no popular lessons this #{duration} yet.
+
+mixin allCourses(courses)
+  a(href='/elearning/courses')
+    h2.text-center All Courses
+  if courses.length
+    .row.equal-height
+      each course in courses
+        .col-xs-6.col-md-3
+          .thumbnail
+            if course.thumbnail.exists
+              img.card-img-top(src=course.thumbnail alt="course.title")
+            else
+              img.card-img-top(src="http://placehold.it/200x150" alt=course.title, height="150px")
+            .caption
+              .row
+                h3= course.title.substring(0, 50)
+              .row
+                p= course.content.brief.substring(0, 100)
+              hr
+              .row
+                a.btn.btn-info.btn-block(href=course.url) Learn more
+  else
+    h3.text-muted There are no courses yet.
+
+
+mixin recommended(learningObjects)
+  a(href='/elearning/'+user.id+'/recommended')
+    h2.text-center Recommended
+  if learningObjects.length
+    .row.equal-height
+      each learningObject in learningObjects
+        .col-xs-6.col-md-3
+          .thumbnail
+            if learningObject.thumbnail.exists
+              img.card-img-top(src=learningObject.learningObject alt="course.title")
+             else
+              img.card-img-top(src="http://placehold.it/200x150" alt=learningObject.title, height="150px")
+            .caption
+              .row
+                h3= learningObject.title.substring(0, 50)
+              .row
+                p= learningObject.content.brief.substring(0, 100)
+              hr
+              .row
+                a.btn.btn-info.btn-block(href=learningObject.url + "?type=recommended") Learn more
+  else
+    h3.text-muted There are no courses yet.
+
+
+block content
+  +navigation()
+  if user
+    .container
+      .panel.panel-default
+        .panel-body
+          +recommended(data.recommendedLearningObjects)
+        .panel-footer
+          a(href='/elearning/:userid/recommended?').btn.btn-link View All Recommended Lessons
+
+  .container
+    .panel.panel-default
+      .panel-body
+        +popular(paginatePopularLO.results)
+      .panel-footer
+        a(href='/elearning/learning-objects?').btn.btn-link View All Lessons
+  .container
+    .panel.panel-default
+      .panel-body
+        +allCourses(courses)
+  

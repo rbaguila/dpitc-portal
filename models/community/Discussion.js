@@ -7,25 +7,25 @@ var Types = keystone.Field.Types;
  */
 
 var Discussion = new keystone.List('Discussion', {
-  map: { name: 'title' }
+  map: { name: 'title' },
+  autokey: { path: 'slug', from: 'title', unique: true }
 });
 
 Discussion.add({
-  title: {
-    type: String,
-    required: true,
-    default: ''
-  },
+  title: { type: String, initial: true, required: true, index: true },
+  createdAt: { type: Types.Datetime, noedit: true, default: Date.now, index: true },
+  industry: { type: Types.Relationship, ref: 'Industry', required: true, initial: true, index: true },
+  sector: { type: Types.Relationship, ref: 'Sector', filters: { industry: ':industry' } },
+  commodity: { type: Types.Relationship, ref: 'Commodity', filters: { sector: ':sector' } },
   content: {
-    brief: {
-      type: String
-    },
-    full: {
-      type: String
-    }
-  }
+    brief: { type: Types.Markdown, height: 150 },
+    full: { type: Types.Markdown, height: 400 }
+  },
+  // comments: [DiscussionComment]
   //categories, comments
 })
 
-Discussion.defaultColumns = 'title';
+Discussion.relationship({ ref: 'DiscussionComment', path: 'discussionComments', refPath: 'discussion' });
+
+Discussion.defaultColumns = 'title, createdAt';
 Discussion.register();

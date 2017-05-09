@@ -8,13 +8,8 @@ var Comment = new keystone.List('Comment', {
 })
 
 Comment.add({
-  content: {
-    type: Types.Markdown
-  },
-  // author: {
-  //   type: Types.Relationship,
-  //   ref: 'User'
-  // }
+  content: { type: Types.Markdown },
+  author: { type: Types.Relationship, ref: 'User' }
 });
 
 Comment.defaultColumns = 'content'

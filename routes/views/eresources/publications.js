@@ -91,13 +91,28 @@ exports = module.exports = function (req, res) {
 
   // view.query('publications', keystone.list('Publication').model.find())
 
+  var viewStyle = req.query.view == undefined ? 'grid' : req.query.view;
+  var searchTerm = req.query.term;
+  var searchCategory = req.query.category;
 
   var pageData = {
     loginRedirect: '/eresources/publications',
     breadcrumbs: [
       { text: 'E Resources', link: '/eresources'},
-      { text: 'Publications', link: '/publications'},
+      { text: 'Publications', link: '/eresources/publications'},
     ]
+  }
+
+  var page = req.params.page
+
+  if (!page) { page = 1; }
+
+  var PER_PAGE = 20;
+
+  view.query('publications', keystone.list('Publication').model.find().limit(PER_PAGE).skip((page - 1) * PER_PAGE));
+
+  locals.data = {
+
   }
 
   if (viewStyle == 'list') {

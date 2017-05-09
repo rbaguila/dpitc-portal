@@ -1,0 +1,15 @@
+#datepicker-dropdown.btn-group
+  .btn-group.month
+    select(name="bmonth" required).form-control
+      - var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      each month in months
+        option: a #{month}
+  .btn-group.day
+    select(name="bday" required).form-control
+      - for(var i=1; i<=31; i++)
+        option: a #{i}
+  .btn-group.year
+    select(name="byear" required).form-control
+      - var d = new Date()
+      - for(var i=d.getFullYear(); i>d.getFullYear()-100; i--)
+        option: a #{i}

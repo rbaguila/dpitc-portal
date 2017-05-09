@@ -1,0 +1,59 @@
+extends ../../layouts/elearning-admin
+
+block css
+  link(rel="stylesheet" type="text/css" href="/styles/analytics.css")
+
+mixin Views(currentLO, numViews, numComments, numReactions)
+  .row
+    .col-md-6.col-xs-6
+      div(id="loViewsGraph")
+    .col-md-6.col-xs-6
+      .well.well-sm.centered-panel
+        |  TOTAL NUMBER OF VIEWS: 
+        span= numViews
+      .well.well-sm.centered-panel
+        |  TOTAL NUMBER OF COMMENTS: 
+        span= numComments
+      .well.well-sm.centered-panel
+        |  TOTAL NUMBER OF REACTIONS: 
+        span= numReactions
+  .row
+    .col-md-6.col-xs-6
+      div(id="loCommentsGraph")
+    .col-md-6.col-xs-6
+      div(id="loReactionsGraph")
+
+block content
+  .analytics-body
+    .row
+      .col-md-3.col-sm-4.dashboard
+        .sidebar-nav
+          .navbar.navbar-default(role='navigation')
+            .navbar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='.sidebar-navbar-collapse')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              span.visible-xs.navbar-brand Menu
+            .navbar-collapse.collapse.sidebar-navbar-collapse
+              ul.nav.navbar-nav
+                li
+                  a(href='/elearning/analytics') Dashboard
+                li.active
+                  a(href='/elearning/analytics/learning-objects/allindustries') Analytics of Learning Objects
+                li
+                  a(href='/elearning/analytics/users') Analytics of Users
+                li
+                  a(href='/elearning/analytics/recommendedViews') Analytics of Recommended Learning Objects
+      .col-md-9.col-sm-4.dashboard
+        .row
+          .media
+            .media-left
+              img(src=data.currentLO.thumbnail.exists ? data.currentLO._.thumbnail.limit(100, 100) : 'http://placehold.it/100x100', width=100, height=100).img-circle
+            .media-body
+              h5=data.currentLO.title
+              span= data.currentLO.author
+              span= data.currentLO.content.brief.substring(0, 50)
+        +Views(data.currentLO, data.numViews, data.numComments, data.numReactions)
+  script(src='/js/elearning-graphs/eachLOAnalytics.js')

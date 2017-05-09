@@ -1,60 +1,15 @@
 extends ../layouts/default
 
 block content
-	//- Dynamic Slider from the database
-	#myCarousel.carousel.slide(data-ride='carousel')
-		//- Carousel indicators were declared here
-		ol.carousel-indicators
-			each image in slider
-				//- if image.order is equal to 0 the first indicator will have a class 'active'
-				//- else it will not have a class 'active'
-				if image.order == "0"
-					li(data-target="#myCarousel" data-slide-to='#{image.order}' class="active")
-				else 
-					li(data-target="#myCarousel" data-slide-to='#{image.order}')
+	#searchDiv.container(style='display:none;')
+		.row
+			.col-md-12
+				center
+					form(method="GET" action='/search' target='_blank')
+						input#global-search-input-box(type='text', placeholder='Search news, fiesta, technologies', name='searchKey', autofocus='')
+						input.searchButton(type='submit', border='0', value='Search')
 
-		//- Carousel proper - the images will be loop in the slider queried from the controller
-		div(class="carousel-inner" role="listbox")
-			each image in slider
-				//- if image.order is equal to 0 the first indicator will have a class 'active'
-				//- else it will not have a class 'active'
-				if image.order == "0"
-					div(class="item active")
-						img(src=image._.heroImage.limit(1020,500))
-						div(class="container")
-							div(class="carousel-caption")
-								!= image.caption
-								if image.buttonText != ""
-									a(class="btn btn-lg btn-primary" href="#" role="button")= image.buttonText
-				else 
-					div(class="item")
-						//- img(class="first-slide" src="/images/slider/1.jpg" alt="First slide")
-						img(src=image._.heroImage.limit(1020,500))
-						div(class="container")
-							div(class="carousel-caption" style="text-align: right")
-								h2= image.caption
-								if image.buttonText != ""
-									a(class="btn btn-lg btn-primary" href="#" role="button")= image.buttonText
-			
-			//- left amd right arrows
-			//- a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
-			//-   span.glyphicon.glyphicon-chevron-left
-			//- a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
-			//-   span.glyphicon.glyphicon-chevron-right
-
-	div(style='float:right; z-index:100; right:0px; top:100px; background-color:#EEE; width:40;height:40; padding:6px; position: fixed; border-radius:20px;')
-		a(href='#', title="Community")
-			img( src="/images/community.png" height="30px")
-
-	div(style='float:right; z-index:100; right:0px; top:150px;  position: fixed; ')
-		form.search-form(action='')
-			.form-group.has-feedback
-				label.sr-only(for='search') Search
-				input#search.form-control(type='text', name='search', placeholder='Search')
-				span.glyphicon.glyphicon-search.form-control-feedback
-
-
-	div#exhibit-slider
+	div#top-page.container
 		.exhibit-container
 			p.subparts-title(style='background-color: rgba(0, 0, 0, 0.5); z-index: 5; color: white; font-size: 2em; margin-bottom: 10px;')
 				b F
