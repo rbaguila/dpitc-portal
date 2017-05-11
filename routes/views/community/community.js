@@ -16,15 +16,19 @@ exports = module.exports = function (req, res) {
   locals.config = {};
   locals.data = {
     discussionViews: [],
-    industries: []
+    industries: [],
+    posts: []
   };
 
   if(keystone.get('env') === 'development') {
     locals.config = {
       host: 'http://localhost:8080',
       listPost: 'http://localhost:8080/api/posts',
-      listGroup: 'http://localhost:8080/api/groups'
+      listGroup: 'http://localhost:8080/api/groups',
+      userApi: 'http://localhost:8080/api/users'
     }
+
+    console.log(locals.config.userApi);
   }
   /*** Deployed route for JC's community ***/
   else {
@@ -37,25 +41,25 @@ exports = module.exports = function (req, res) {
 
   view.on('init', function(next) {
     /* Has a daily limit */
-    var command = 'curl ipinfo.io/' + req.ips + '/geo';
-    var child = exec(command, function(err, data, stderr) {
-      if(err) {
-        console.log(err);
-      }
-
-      var CommunityView = keystone.list('CommunityView');
-      var item = new CommunityView.model({
-        ip: data.ip,
-        city: data.city,
-        region: data.region,
-        country: data.country,
-        loc: data.loc
-      });
-
-      item.save(function(err, view) {
-        if (err) return res.apiError('database error', err);
-      })
-    });
+    // var command = 'curl ipinfo.io/' + req.ips + '/geo';
+    // var child = exec(command, function(err, data, stderr) {
+    //   if(err) {
+    //     console.log(err);
+    //   }
+    //
+    //   var CommunityView = keystone.list('CommunityView');
+    //   var item = new CommunityView.model({
+    //     ip: data.ip,
+    //     city: data.city,
+    //     region: data.region,
+    //     country: data.country,
+    //     loc: data.loc
+    //   });
+    //
+    //   item.save(function(err, view) {
+    //     if (err) return res.apiError('database error', err);
+    //   })
+    // });
 
     next();
   });
@@ -115,6 +119,7 @@ exports = module.exports = function (req, res) {
       });
   });
 
+  // Load all posts
   view.on('init', function(next) {
     http.get(locals.config.listPost, function(response) {
 
@@ -124,31 +129,116 @@ exports = module.exports = function (req, res) {
       }).on('end', function() {
         var body = JSON.parse(bodyChunks);
 
-        body.posts = body.posts.filter(function(post) {
-          return post.showPublic == true &&
-                  post.category == 'question';
-        })
-
-        body.posts.sort(function(a, b) {
-          a = moment(a.datePosted, 'MMMM Do YYYY, h:mm:SS a');
-          b = moment(b.datePosted, 'MMMM Do YYYY, h:mm:SS a');
-          return a>b ? -1 : a<b ? 1 : 0;
-        });
-
-        locals.discussions = body.posts.slice(0, 10);
-
-        for(var i=0; i<locals.discussions.length; i++) {
-          var views = locals.data.discussionViews.filter(function(view) {
-            return locals.discussions[i]._id == view.discussionID;
-          });
-
-          locals.discussions[i]['views'] = views;
-        }
+        locals.data.posts = body.posts;
 
         next();
       });
     });
 
+  });
+
+  // Filter Posts by Questions
+  view.on('init', function(next) {
+    var body = {
+      posts: []
+    }
+
+    body.posts = locals.data.posts.filter(function(post) {
+      return post.showPublic == true &&
+              post.category == 'question';
+    })
+
+    body.posts.sort(function(a, b) {
+      a = moment(a.datePosted, 'MMMM Do YYYY, h:mm:SS a');
+      b = moment(b.datePosted, 'MMMM Do YYYY, h:mm:SS a');
+      return a>b ? -1 : a<b ? 1 : 0;
+    });
+
+    locals.discussions = body.posts.slice(0, 10);
+
+    for(var i=0; i<locals.discussions.length; i++) {
+      var views = locals.data.discussionViews.filter(function(view) {
+        return locals.discussions[i]._id == view.discussionID;
+      });
+
+      locals.discussions[i]['views'] = views;
+    }
+
+    next();
+  });
+
+  // Filter Posts by Event
+  view.on('init', function(next) {
+    var body = {
+      posts: []
+    }
+
+    body.posts = locals.data.posts.filter(function(post) {
+      return post.showPublic == true &&
+              post.category == 'event';
+    })
+
+    body.posts.sort(function(a, b) {
+      a = moment(a.startDateTime, 'MMMM Do YYYY, h:mm:SS A');
+      b = moment(b.startDateTime, 'MMMM Do YYYY, h:mm:SS A');
+      return a>b ? -1 : a<b ? 1 : 0;
+    });
+
+    locals.events = body.posts.slice(0, 10);
+
+    for(var i=0; i<locals.events.length; i++) {
+      var d = new Date(locals.events[i]['startDateTime']);
+      var dateObj = {
+        month: d.toLocaleString("en-us", { month: "short" }),
+        date: d.getDate()
+      };
+
+      locals.events[i]['startDateTime'] = dateObj;
+    }
+
+    next();
+  });
+
+  // Load all Incident Reports
+  view.on('init', function(next) {
+    var body = {
+      posts: []
+    }
+
+    body.posts = locals.data.posts.filter(function(post) {
+      return post.showPublic == true &&
+              post.category == 'report';
+    })
+
+    body.posts.sort(function(a, b) {
+      a = moment(a.datePosted, 'MMMM Do YYYY, h:mm:SS a');
+      b = moment(b.datePosted, 'MMMM Do YYYY, h:mm:SS a');
+      return a>b ? -1 : a<b ? 1 : 0;
+    });
+
+    locals.blogPosts = body.posts.slice(0, 10);
+
+    for(var i=0; i<locals.blogPosts.length; i++) {
+      var datePosted = locals.blogPosts[i].datePosted;
+
+      locals.blogPosts[i].datePosted = moment(datePosted, 'MMMM Do YYYY, h:mm:SS a').fromNow();
+    //   http.get(locals.config.userApi+'/'+locals.blogPosts.postedBy._id, function(response) {
+    //
+    //     var bodyChunks = [];
+    //     response.on('data', function(chunk) {
+    //       bodyChunks += chunk;
+    //     }).on('end', function() {
+    //       var body = JSON.parse(bodyChunks);
+    //
+    //       console.log()
+    //
+    //       next();
+    //     });
+    //   });
+    //   console.log(locals.blogPosts[i].postedBy.name);
+    }
+
+    next();
   });
 
   view.on('init', function(next) {
@@ -211,8 +301,8 @@ exports = module.exports = function (req, res) {
     })
   });
 
-  view.query('blogPosts', keystone.list('BlogPost').model.find().populate('author').sort('-publishedDate'));
-  view.query('events', keystone.list('Event').model.find().sort('startDate'));
+  // view.query('blogPosts', keystone.list('BlogPost').model.find().populate('author').sort('-publishedDate'));
+  // view.query('events', keystone.list('Event').model.find().sort('startDate'));
   view.query('trainings', keystone.list('Training').model.find());
   view.query('comments', keystone.list('DiscussionComment').model.find().populate('discussion', 'author'));
   view.query('discussionViews', keystone.list('DiscussionView').model.find());
