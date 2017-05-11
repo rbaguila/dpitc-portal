@@ -25,4 +25,22 @@ $(document).ready(function() {
 
       window.location = this.href;
     });
+
+    $('.groups a').click(function(e) {
+      e.preventDefault();
+
+      var temp = this.href.split('/');
+      geoloc['handle'] = temp[temp.length-1];
+
+      console.log(geoloc)
+
+      $.ajax({
+        type: 'POST',
+        url: '/api/community/analytics/groups',
+        data: geoloc
+      });
+
+      window.location = this.href;
+    });
+
 })

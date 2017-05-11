@@ -114,6 +114,7 @@ exports = module.exports = function (app) {
 	//Analytics Api Route
   app.get('/api/community/analytics/list', keystone.middleware.api, routes.api.communityAnalytics.list);
   app.post('/api/community/analytics/discussion', keystone.middleware.api, routes.api.communityAnalytics.addDiscView);
+  app.post('/api/community/analytics/groups', keystone.middleware.api, routes.api.communityAnalytics.addGroupView);
 
 	//File Upload Route
   app.get('/api/fileupload/list', keystone.middleware.api, routes.api.fileupload.list);

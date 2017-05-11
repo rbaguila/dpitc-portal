@@ -1,12 +1,13 @@
 var keystone = require('keystone');
 var CommunityView = keystone.list('CommunityView');
 var DiscussionView = keystone.list('DiscussionView');
+var GroupView = keystone.list('GroupView');
 
 /**
  * Lists Community Views
  **/
 
- exports.list = function(req, res) {
+exports.list = function(req, res) {
   CommunityView.model.find()
     .sort('time')
     .exec(function(err, items) {
@@ -16,10 +17,10 @@ var DiscussionView = keystone.list('DiscussionView');
         views: items
       });
 
-    });
- }
+  });
+}
 
- exports.addDiscView = function(req, res) {
+exports.addDiscView = function(req, res) {
   var data = (req.method == 'POST') ? req.body : req.query;
   var item = new DiscussionView.model(data);
 
@@ -28,6 +29,19 @@ var DiscussionView = keystone.list('DiscussionView');
 
     res.apiResponse({
       discussion_view: view
+    });
+  })
+ }
+
+exports.addGroupView = function(req, res) {
+  var data = (req.method == 'POST') ? req.body : req.query;
+  var item = new GroupView.model(data);
+
+  item.save(function(err, view) {
+    if (err) return res.apiError('database error', err);
+
+    res.apiResponse({
+      group_view: view
     });
   })
  }

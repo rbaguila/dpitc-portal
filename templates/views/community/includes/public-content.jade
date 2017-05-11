@@ -23,7 +23,7 @@
                 br
                 h4.empty.text-muted No upcoming events
 
-      .section.col-md-6
+      .section.col-md-6(style="padding: 10px 16px;")
         .section-title.focus.row 
           .title.col-md-5.col-xs-4
             .skew.col-xs-12
@@ -130,6 +130,7 @@
       .section-content
         if groups.length
           each industry in groups
+            hr
             .row.groups
               .col-xs-12
                 p.text-muted #{industry[0].classification.industry}
@@ -146,48 +147,16 @@
                       h4 #{group.name}
                     p.text-muted.text-small
                       | #{group.membersCount} members #{group.postsCount.total} posts
-            hr
+          .row.text-center
+            a(href=config.host + "/groups/" style="color: white;")
+              button.btn.btn-lg(style="background-color: #3062B7;" onMouseOver="this.style.color='#FFF'") More Groups
+            br
+            br
         else
           .row 
             .col-md-12
               br
               h4.empty.text-muted No Groups Available
-        //- a(href="images/exhibit/abaca.jpg").col-md-2.col-sm-4.col-xs-6
-        //-   .img-wrapper
-        //-     img(src='images/exhibit/abaca.jpg').photo.img-responsive
-        //- a(href="images/exhibit/aquaculture.jpg").col-md-2.col-sm-4.col-xs-6
-        //-   .img-wrapper
-        //-     img(src='images/exhibit/aquaculture.jpg').photo.img-responsive
-        //- a(href="images/exhibit/bamboo.jpg").col-md-2.col-sm-4.col-xs-6
-        //-   .img-wrapper
-        //-     img(src='images/exhibit/bamboo.jpg').photo.img-responsive
-        //- a(href="images/exhibit/bigeyelet.jpg").col-md-2.col-sm-4.col-xs-6
-        //-   .img-wrapper
-        //-     img(src='images/exhibit/bigeyelet.jpg').photo.img-responsive
-        //- a(href="images/exhibit/biofloc.jpg").col-md-2.col-sm-4.col-xs-6
-        //-   .img-wrapper
-        //-     img(src='images/exhibit/biofloc.jpg').photo.img-responsive
-        //- a(href="images/exhibit/cacao.jpg").col-md-2.col-sm-4.col-xs-6
-        //-   .img-wrapper
-        //-     img(src='images/exhibit/cacao.jpg').photo.img-responsive
-        //- a(href="images/exhibit/cavendish.jpg").col-md-2.col-sm-4.col-xs-6
-        //-   .img-wrapper
-        //-     img(src='images/exhibit/cavendish.jpg').photo.img-responsive
-        //- a(href="images/exhibit/coco.jpg").col-md-2.col-sm-4.col-xs-6
-        //-   .img-wrapper
-        //-     img(src='images/exhibit/coco.jpg').photo.img-responsive
-        //- a(href="images/exhibit/coffee.jpg").col-md-2.col-sm-4.col-xs-6
-        //-   .img-wrapper
-        //-     img(src='images/exhibit/coffee.jpg').photo.img-responsive
-        //- a(href="images/exhibit/coral.jpg").col-md-2.col-sm-4.col-xs-6
-        //-   .img-wrapper
-        //-     img(src='images/exhibit/coral.jpg').photo.img-responsive
-        //- a(href="images/exhibit/cpgr.jpg").col-md-2.col-sm-4.col-xs-6
-        //-   .img-wrapper
-        //-     img(src='images/exhibit/cpgr.jpg').photo.img-responsive
-        //- a(href="images/exhibit/knifefish.jpg").col-md-2.col-sm-4.col-xs-6
-        //-   .img-wrapper
-        //-     img(src='images/exhibit/knifefish.jpg').photo.img-responsive
             
   #public-analytics.row
     .section.col-md-12
