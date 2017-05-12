@@ -63,7 +63,7 @@ exports = module.exports = function (req, res) {
 
   /* Add search log */
   view.on('init', function (next) {
-    helper.addElearningLog(user, req.ips, 'SEARCH '+locals.url);
+    helper.addElearningLog(locals.user, req.ips, 'SEARCH '+locals.url);
     next();
   });
   
