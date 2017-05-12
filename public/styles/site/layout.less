@@ -628,5 +628,53 @@
     -webkit-border-radius: 0px;
 }
 
+.blue-black-seperator{
+	.title-hr {
+    background-color: #F1F1F1;
+    bottom: 2px;
+    height: 2px;
+    left: 0px;
+    position: absolute;
+  }
 
-//blogs
+  .section {
+    padding: 8px 16px 8px 16px;
+  }
+
+  .section-title {
+	    background-color: #3062B7;
+	    color: white;
+	    font-weight: bold;
+	    position: relative;
+	    padding: 8px 16px 8px 16px;
+	    margin-bottom:0.5em;
+
+	    &.focus {
+	      padding: 0;
+	      overflow: hidden;
+	    }
+
+	    .title {
+	      padding: 8px 16px 8px 16px;
+	      display: inline-block;
+	      position: relative;
+	    }
+
+	    .skew {
+	      background-color: #252525;
+	      height: 100%;
+	      left: -15px;
+	      position: absolute;
+	      top: 0;
+
+	      -webkit-transform: skew(-30deg);
+	      -ms-transform: skew(-30deg);
+	      transform: skew(-30deg);
+	    }
+
+	    .skewed-text {
+	      position: relative;
+	      font-size: 30px;
+	    }
+	}
+}
