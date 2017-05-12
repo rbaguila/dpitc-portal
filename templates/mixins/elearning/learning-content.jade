@@ -8,11 +8,11 @@ mixin learning-object-card(learningObject, redirect)
       //- img.card-img-top(src="http://placehold.it/250x200?text=No+Available+Image", alt="No Available Image" , height="150px", width="200px")
       +img-na-card-top(250, 200)
     .card-block
-      .card-title.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=learningObject.title) #{learningObject.title}
+      .card-title.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=learningObject.title) !{learningObject.title}
       //- .meta
         +learning-object-reactions(learningObject)
       .card-text
-        p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=learningObject.content.brief) #{learningObject.content.brief}
+        p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=learningObject.content.brief) !{learningObject.content.brief}
     .card-footer
       a.pull-right(href=redirect) Learn More
 
@@ -24,10 +24,10 @@ mixin course-card(course, redirect)
     else
       +img-na-card-top(250, 200)
     .card-block
-      .card-title.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=course.title) #{course.title}
+      .card-title.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=course.title) !{course.title}
       //- .meta
       .card-text
-        p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=course.content.brief) #{course.content.brief}
+        p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=course.content.brief) !{course.content.brief}
     .card-footer
       a.pull-right(href=redirect) Learn More
 
@@ -46,8 +46,8 @@ mixin learning-object-tr-media(learningObject, redirect)
             //- img(src="http://placehold.it/200x150?text=No+Available+Image", height='150px', width='200px').img-rounded.media-object
       .media-body
         a(href=learningObject.url)
-          h3.media-heading.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=learningObject.title) #{learningObject.title}
-          p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=learningObject.content.brief) #{learningObject.content.brief}
+          h3.media-heading.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=learningObject.title) !{learningObject.title}
+          p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=learningObject.content.brief) !{learningObject.content.brief}
           hr
           +learning-object-reactions(learningObject)
 
@@ -68,8 +68,8 @@ mixin course-tr-media(course, redirect)
             
       .media-body
         a(href=course.url)
-          h3.media-heading.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=course.title) #{course.title}
-          p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=course.title) #{course.content.brief}
+          h3.media-heading.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=course.title) !{course.title}
+          p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=course.title) !{course.content.brief}
           
 mixin learning-content-tr-media(learningContent, redirect)
   tr.media
@@ -85,8 +85,8 @@ mixin learning-content-tr-media(learningContent, redirect)
             
       .media-body
         a(href=redirect)
-          h3.media-heading.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=learningContent.title) #{learningContent.title}
-          p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=learningContent.content.brief) #{learningContent.content.brief}
+          h3.media-heading.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=learningContent.title) !{learningContent.title}
+          p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=learningContent.content.brief) !{learningContent.content.brief}
 
 mixin learning-object-side(learningObject, redirect)
   .media
@@ -98,16 +98,16 @@ mixin learning-object-side(learningObject, redirect)
         else
             +img-na-rounded-media-object(100, 80)
       .media-body
-        strong.truncate-text(data-toggle="tooltip" data-placement="bottom" title=learningObject.title) #{learningObject.title}
+        strong.truncate-text(data-toggle="tooltip" data-placement="bottom" title=learningObject.title) !{learningObject.title}
         br
-        small.block-with-text.text-info(data-toggle="tooltip" data-placement="bottom" title=learningObject.content.brief) #{learningObject.content.brief}    
+        small.block-with-text.text-info(data-toggle="tooltip" data-placement="bottom" title=learningObject.content.brief) !{learningObject.content.brief}    
 
 //- Learning Object Reactions
 mixin learning-object-reactions(currentLO)
   .row
-    p(style='float: right') #{currentLO.sad.length} #[i.fa.fa-frown-o.fa-md(aria-hidden="true")] &emsp;
-    p(style='float: right') #{currentLO.happy.length} #[i.fa.fa-smile-o.fa-md(aria-hidden="true")] &emsp;
-    p(style='float: right') #{currentLO.likes.length} #[i.fa.fa-thumbs-o-up.fa-md(aria-hidden="true")] &emsp;
+    p(style='float: right') !{currentLO.sad.length} #[i.fa.fa-frown-o.fa-md(aria-hidden="true")] &emsp;
+    p(style='float: right') !{currentLO.happy.length} #[i.fa.fa-smile-o.fa-md(aria-hidden="true")] &emsp;
+    p(style='float: right') !{currentLO.likes.length} #[i.fa.fa-thumbs-o-up.fa-md(aria-hidden="true")] &emsp;
     
 //- Learning Object Tags
 mixin learning-object-tags(tags)
@@ -117,11 +117,11 @@ mixin learning-object-tags(tags)
       each tag in tags
         if tag != null
           if tag.category == 'isp'
-            a(href='/elearning/learning-objects?isp='+tag.key) #[span.label.label-primary #{tag.name}] &nbsp;
+            a(href='/elearning/learning-objects?isp='+tag.key) #[span.label.label-primary !{tag.name}] &nbsp;
           else if tag.category == 'sector'
-            a(href='/elearning/learning-objects?sector='+tag.key) #[span.label.label-success #{tag.name}] &nbsp;
+            a(href='/elearning/learning-objects?sector='+tag.key) #[span.label.label-success !{tag.name}] &nbsp;
           else if tag.category == 'industry'
-            a(href='/elearning/learning-objects?industry='+tag.key) #[span.label.label-info #{tag.name}] &nbsp;
+            a(href='/elearning/learning-objects?industry='+tag.key) #[span.label.label-info !{tag.name}] &nbsp;
           else if tag.category == 'null'
-            a(href='/elearning/learning-objects?specific='+tag.key) #[span.label.label-info #{tag.name}] &nbsp;
+            a(href='/elearning/learning-objects?specific='+tag.key) #[span.label.label-info !{tag.name}] &nbsp;
 
