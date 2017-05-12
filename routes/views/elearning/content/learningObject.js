@@ -404,13 +404,14 @@ exports = module.exports = function (req, res) {
               });
               newView.save(function(err) {
               });
-              //MAY ISSUE PA TO ANGEC
+              //MAY ISSUE PA TO ANGEC//di existing si obj since di pa dito nag http request
               var newLog = new ELearningLog.model({
-                ip: obj.ip,
+                //ip: obj.ip,
+                ip: currentUser.email,
                 event: 'VISITED '+ locals.url,
               });
               newLog.save(function(err) {
-                console.log(obj.ip + ' VISITED '+ locals.url);
+                console.log(currentUser._id + ' VISITED '+ locals.url);
               });
             }
         });
