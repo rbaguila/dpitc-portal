@@ -7,7 +7,7 @@ var classifications = ["isp", "sector", "industry"];
 var counts = ["ispCount", "sectorCount", "industryCount"];
 
 // Adds Elearning Log, gets the ip and creates new event
-exports.addElearningLog = function(ip, event) {
+exports.addElearningLog = function(user, ip, event) {
     var options = {    
         host: 'freegeoip.net',    
         path: '/json/' + ip,
@@ -15,30 +15,41 @@ exports.addElearningLog = function(ip, event) {
     };
 
     var obj;
-    var reqData = http.request(options, function(res) {
-  
-      res.setEncoding('utf8');    
-      res.on('data', function (chunk) {  
-          var obj = JSON.parse(chunk);
+    if (user) { // If user is logged in, assign user.email instead of ip
+      var newLog = new ELearningLog.model({
+          //ip: obj.ip,
+          user: user.email,
+          event: event,
+        });
+      newLog.save(function(err) {
+        console.log(newLog.user + ' ' + newLog.event);
+      });
+    } else {
+      var reqData = http.request(options, function(res) {
+    
+        res.setEncoding('utf8');    
+        res.on('data', function (chunk) {  
+            var obj = JSON.parse(chunk);
 
-          var newLog = new ELearningLog.model({
-            ip: obj.ip,
-            event: event
+            var newLog = new ELearningLog.model({
+              user: obj.ip,
+              event: event
+            });
+            newLog.save( function(err) {
+              console.log(newLog.user + ' ' + newLog.event);
+            })
+
           });
-          newLog.save( function(err) {
-            console.log(obj.ip + ' ' + event);
-          })
 
         });
 
-      });
+      reqData.on('error', function (e) {
+          console.log('Error Adding Log');
+        });
 
-    reqData.on('error', function (e) {
-        console.log('Error Adding Log');
-      });
-
-    reqData.end();
-    
+      reqData.end();
+      
+    }
 
 }
 
