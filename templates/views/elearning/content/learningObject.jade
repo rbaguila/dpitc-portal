@@ -267,7 +267,7 @@ mixin comment-post(comment)
         .media-body
           p.list-group-item-heading
             strong= comment.createdBy.name.full
-            if user && user.id === comment.createdBy.id
+            //- if user && user.id === comment.createdBy.id
               |  &middot; 
               a(href='?remove=comment&comment=' + comment.id, title='Delete this comment', rel='tooltip', data-placement='left').comment-delete.js-delete-confirm Delete
           p.list-group-item-text=comment.content.replace(/\n/g, '<br>')

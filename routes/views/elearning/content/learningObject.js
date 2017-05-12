@@ -177,7 +177,7 @@ exports = module.exports = function (req, res) {
       if (err) {
         validationErrors = err.errors;
       } else {
-        helper.addElearningLog(user, req.ips, 'ADDED COMMENT '+locals.url);
+        helper.addElearningLog(locals.user, req.ips, 'ADDED COMMENT '+locals.url);
         req.flash('success', 'Your comment was added.');
         return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
       }
@@ -185,7 +185,6 @@ exports = module.exports = function (req, res) {
     });
 
   });
-
 
   /* REACTIONS */
   view.on('post', { action: 'reactions.addLike' }, function (next) {
@@ -211,7 +210,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(user, req.ips, 'REMOVED LIKE '+locals.url);
+              helper.addElearningLog(locals.user, req.ips, 'REMOVED LIKE '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -228,7 +227,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(user, req.ips, 'LIKED '+locals.url);
+              helper.addElearningLog(locals.user, req.ips, 'LIKED '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -263,7 +262,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(user, req.ips, 'REMOVED HAPPY '+locals.url);
+              helper.addElearningLog(locals.user, req.ips, 'REMOVED HAPPY '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -280,7 +279,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(user, req.ips, 'ADDED HAPPY '+locals.url);
+              helper.addElearningLog(locals.user, req.ips, 'ADDED HAPPY '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -315,7 +314,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(user, req.ips, 'REMOVED SAD '+locals.url);
+              helper.addElearningLog(locals.user, req.ips, 'REMOVED SAD '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -332,7 +331,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(user, req.ips, 'ADDED SAD '+locals.url);
+              helper.addElearningLog(locals.user, req.ips, 'ADDED SAD '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();

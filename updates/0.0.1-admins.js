@@ -2213,7 +2213,7 @@ exports.create = {
   ],
 */
 
-  LOComment: [
+/*  LOComment: [
     { 
       'content': 'Hello po!', 
       'author': 'Angelica', 
@@ -2396,7 +2396,7 @@ exports.create = {
     },
 
   ],
-
+*/
   LOView: [
     { 
       'user': 'Angelica', 
