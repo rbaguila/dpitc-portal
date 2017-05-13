@@ -138,11 +138,23 @@ Publication.schema.virtual('description.trunc').get(function() {
 
   var truncated = this.description
 
-  if (truncated.length > 121) {
-    truncated = truncated.substring(0, 120) + '...'
+  if (truncated.length > 200) {
+    truncated = truncated.substring(0, 199) + '...'
   }
   return truncated
 })
+
+Publication.schema.virtual('description.truncGrid').get(function() {
+  if (!this.description) return
+
+  var truncated = this.description
+
+  if (truncated.length > 60) {
+    truncated = truncated.substring(0, 59) + '...'
+  }
+  return truncated
+})
+
 
 Publication.defaultColumns = 'title, publicationType, publicationYear, file, cover'
 

@@ -1,0 +1,83 @@
+extends ../../../layouts/elearning-user
+
+block js
+
+mixin userPanel(user)
+  .media
+    .media-body
+      .media-heading
+        h2 #{user.name.full}'s Elearning Activity
+        
+    .media-right
+      if user._.photo.exists
+        img(src=user._.photo.limit(100,100), alt=user.name.full, width='100', height='100').img-rounded.media-object
+      else
+        img(src='http://placehold.it/100x100', alt='No Available Photo', width='100', height='100').img-rounded.media-object
+
+mixin loTaken(loviews)
+  if loviews.length
+    .list-group
+      each loview in loviews
+        a(href=loview.learningObject.url).list-group-item
+          .media
+            .media-left
+              if loview.learningObject._.thumbnail
+                img(src=loview.learningObject._.thumbnail.limit(118,90), alt=loview.learningObject.title, width='118', height='90').img-rounded.media-object
+              else
+                img(src='http://placehold.it/118x90', alt='No Available Photo', width='118', height='90').img-rounded.media-object
+            .media-body
+              h4.media-heading.text-primary #{loview.learningObject.title}
+              p #{loview.learningObject.content.brief}
+              span.pull-right.text-info Viewed on #{loview.dateViewed.toDateString()} at #{loview.dateViewed.toLocaleTimeString()}.
+  else
+    a(href='/elearning') You have not taken any lessons yet.
+
+
+mixin loReacts(learningObjects)
+  if learningObjects.length
+    .list-group
+      each learningObject in learningObjects
+        a(href=learningObject.url)
+          .list-group-item
+            .media
+              .media-left
+                if learningObject._.thumbnail
+                  img(src=learningObject._.thumbnail.limit(118,90), alt=learningObject.title, width='118', height='90').img-rounded.media-object
+                else
+                  img(src='http://placehold.it/118x90', alt='No Available Photo', width='118', height='90').img-rounded.media-object
+              .media-body
+                h4.media-heading.text-primary #{learningObject.title}
+                p #{learningObject.content.brief}
+                
+  else
+    a(href='/elearning') You have not reacted to any lessons yet.
+
+
+block content
+  .elearning-user-body
+    .row
+      .col-md-3.col-sm-4.user-sidenav
+        +user-sidenav(section)       
+      .col-md-9.col-sm-4
+        .panel.panel-default.col-md-10.col-md-offset-1
+          .panel-body
+            .elearning-page-header
+              h3 #{user.name.full}'s Elearning Activity
+            if nav == 'views'
+              .panel.panel-info
+                .panel-heading Views
+                .panel-body
+                  +loTaken(loviews.results)
+                  +paginate-page(loviews, url)
+            else
+              .panel.panel-info
+                if nav == 'likes'
+                  .panel-heading Lessons Liked
+                if nav == 'happy'
+                  .panel-heading Lessons with Happy Reacts
+                if nav == 'sad'
+                  .panel-heading Lessons with Sad Reacts
+                .panel-body
+                  +loReacts(learningObjects.results)
+                  +paginate-page(learningObjects, url)
+    

@@ -1,0 +1,139 @@
+extends ../../../layouts/elearning-user
+
+block js
+  | $('.collapse').collapse()
+
+block viewProfile
+  .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+    .row
+      if user.photo.exists
+        +img-available-rounded-center(user._.photo, user.name.full, 150, 150)
+        //- img(src=user._.photo.limit(150,150), alt=user.name.full).img-rounded 
+      else 
+        +img-na-rounded-center(150, 150)
+    hr
+    .row
+      label Name: 
+      |  #{user.name.full}
+    .row
+      label Email: 
+      |  #{user.email}
+    .row
+      label Birthday: 
+      |  #{user.birthday.toLocaleDateString()}
+    .row
+      label Sex:
+      |  #{user.sex}
+    .row
+      label Address: 
+      p  #{user.location.suburb}, #{user.location.state}, #{user.location.country}
+      
+
+block editProfile 
+  label Edit Profile
+  .row
+    form.contact-form(method='post')
+      .row
+        input(type='hidden', name='action', value='profile.uploadPhoto')
+        if user.photo.exists
+          +img-available-rounded-center(user._.photo, user.name.full, 150, 150)
+          //- img(src=user._.photo.limit(150,150), alt=user.name.full).img-rounded.center-block 
+        else 
+          +img-na-rounded-center(150, 150)
+        
+        a.btn.btn-link.center-block(role='button', data-toggle='collapse', href='#changePhoto', aria-hidden='false', aria-controls='changePhoto') Change Photo
+
+        .collapse(id='changePhoto')
+          .form-group
+            label.control-label Profile Picture
+            .row
+              input(type='file', name='photo')
+            hr
+            .row.pull-right
+              button(type='submit').btn.btn-primary Change Photo
+
+  .row
+    form.contact-form(method="post")
+      .row      
+        input(type='hidden', name='action',  value='user.editProfile')
+        .form-group
+          label.control-label Name
+          .row
+            .col-xs-6.col-md-6
+              input.form-control.input-box(type='text', name='first', value=formData.first, placeholder=user.name.first)
+              
+            .col-xs-6.col-md-6
+              input.form-control.input-box(type='text', name='last', value=formData.last, placeholder=user.name.last)
+          
+        .form-group
+          label.control-label Email
+          .row
+            .col-xs-6.col-md-12
+              input.form-control.input-box(type='email', name='email', value=formData.email, placeholder=user.email, disabled='disabled')
+        .form-group
+          .row
+            label.col-sm-2.control-label Birthday
+            .col-xs-6.col-md-5
+              input.form-control.input-box(type='date', name='birthday', value=user.birthday)
+          
+            label.col-sm-2.control-label Sex
+            .col-sm-3
+              select(name='sex').form-control
+                option(value=user.sex) #{user.sex}
+                each type in sexTypes
+                  option(value=type.value, selected=formData.sex === type.value)= type.label
+        .form-group
+          label.control-label Address
+          .row
+            .col-xs-6.col-md-4
+              select(name='suburb').form-control
+                option(value=user.location.suburb) #{user.location.suburb}
+                each type in suburbs
+                  option(value=type.value, selected=formData.suburb === type.value) #{type.label}
+              
+            .col-xs-6.col-md-4
+              select(name='state').form-control
+                option(value=user.location.state) #{user.location.state}
+                each type in states
+                  option(value=type.value, selected=formData.state === type.value) #{type.label}
+
+            .col-xs-6.col-md-4
+              input.form-control.input-box(type='text', name='country', value=formData.country, placeholder=user.location.country)
+      hr
+      .row.pull-right
+        button(type='submit').btn.btn-primary Edit Profile
+  
+  .row  
+    form.contact-form(method="post")
+      .row
+        input(type='hidden', name='action',  value='profile.editPassword')
+        a.btn.btn-link(role='button', data-toggle='collapse', href='#changePassword', aria-hidden='false', aria-controls='changePassword') Change Password
+
+        .collapse(id='changePassword')
+         .form-group
+          label.control-label Password
+          .row
+            .col-xs-6.col-md-6
+              input.form-control.input-box(type='password', name='password', value=formData.password, placeholder='Password')
+            .col-xs-6.col-md-6
+              input.form-control.input-box(type='password', name='password_confirm', value=formData.password_confirm, placeholder='Retype password')
+          hr
+          .row.pull-right
+            button(type='submit').btn.btn-primary Change
+  
+block content
+  .elearning-user-body
+    .row
+      .col-md-3.col-sm-4.user-sidenav
+        +user-sidenav(section)
+      .col-md-7.col-sm-4
+        .panel.panel-default.col-md-offset-3
+          .panel-body
+            .elearning-page-header
+              h3 #{user.name.full}'s Profile
+            
+            if nav == 'view'
+              block viewProfile
+            else  
+              block editProfile
+

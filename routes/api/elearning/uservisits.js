@@ -10,19 +10,28 @@ exports = module.exports = function(req, res) {
   //  the content of the response.
   //res.contentType('application/jsonp');
   
-  //var visits = [];
+  	var visits = [];
 	
 	//change this before deploying, use createdAt instead
 	keystone.list('LOView').model.find().sort('dateViewed').exec(function (err, results) {
 		if (err || !results.length) {
+			res.send(visits);
 		}
-		//visits = results;
-		//var visitsJSON = JSON.stringify(visits);
-		//console.log(visitsJSON);
-		//res.status(200).send(visitsJSON);
-		//res.send(visitsJSON);
-		//next();
-		res.send(results);
+		else{
+			visits = results;
+			keystone.list('ELearningVisit').model.find().sort('dateViewed').exec(function (err, r) {
+				if (err || !r.length) {
+					res.send(visits);
+				}
+				else{
+					visits = visits.concat(r);
+					visits.sort(function(a,b){
+					  return new Date(a.dateViewed) - new Date(b.dateViewed);
+					});
+					res.send(visits);
+				}
+			});
+		}
 	});
 };
 

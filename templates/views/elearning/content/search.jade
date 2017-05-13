@@ -1,0 +1,10 @@
+extends ../../../layouts/elearning
+
+block content
+  if searchSubmitted
+    .container
+      .panel.panel-default
+        .panel-body
+          +searchResults(paginatedSearchResults.results)
+          +paginate-page(paginatedSearchResults, searchUrl)
+

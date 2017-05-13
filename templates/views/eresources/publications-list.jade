@@ -2,17 +2,15 @@ extends ./publications
 
 block publications
   .row
-    each publication in publications
+    each publication in data.publications
       .col-xs-12
-        //- .thumbnail
-        .publication-col-list
-          .cover
+        .thumbnail
+          .publication-col-list
             a(href="/eresources/publication/"+publication._id)
-              img(src=publication._.cover.fit(100, 180, {}))
+              .cover
+                img(src=publication._.cover.fit(100, 180, {}))
 
-          .details
-            a(href="/eresources/publication/"+publication._id)
-              h4 #{publication.get('title.trunc')}
-            p #{publication.get('description.trunc')}
-            .publication-meta
-              | Type: #{publication.publicationType}
+              .details
+                h4(style='margin:0') #{publication.get('title')}
+                h5(style='margin:0') #{publication.publicationType}
+                small #{publication.get('description.trunc')}

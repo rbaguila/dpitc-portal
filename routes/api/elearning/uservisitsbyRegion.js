@@ -9,14 +9,13 @@ exports = module.exports = function(req, res) {
 	// We want to set the content-type header so that the browser understands
   //  the content of the response.
   //res.contentType('application/jsonp');
-	
+	var region_city = [];
 	//change this before deploying, use createdAt instead
 	keystone.list('LOView').model.find().populate('learningObject').exec(function (err, results) {
 		if (err || !results.length) {
-
+			res.send(region_city);
 		}
 		else{
-			var region_city = [];
 			var counter = 0;
 			async.each(results, function (loview, next) {
 				var obj = {};

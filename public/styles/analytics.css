@@ -16,40 +16,13 @@
     display: none;
 }
 
-@media (min-width: 768px) {
-  .sidebar-nav .navbar .navbar-collapse {
-    padding: 0;
-    max-height: none;
-  }
-  .sidebar-nav .navbar ul {
-    float: none;
-    display: block;
-  }
-  .sidebar-nav .navbar li {
-    float: none;
-    display: block;
-  }
-  .sidebar-nav .navbar li a {
-    padding-top: 12px;
-    padding-bottom: 12px;
-  }
-}
-
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus{
-  background-color:  #3062B7;
-  color: white;
-}
-
-.dashboard{
-	border-left: 1px solid gray;
-}
-
 .centered-panel{
 	background-color: #c1d7e2;
+  color: #414040;
 }
 
 .bg-grey{
-  background-color: #eeeeee;
+  background-color: #EAEAEA;
 }
 
 .user-prof{
@@ -57,10 +30,10 @@
 }
 
 #userVisitsWorld{
-  height: 350px;
+  height: 60vh;
   min-width: 310px;
-  max-width: 700px;
-  margin-bottom: 3%;
+  max-width: 900px;
+  margin-bottom: 2%;
 }
 
 .highcharts-background{
@@ -69,47 +42,83 @@
 
 
 #allVisit{
-  height: 350px;
+  height: 50vh;
   min-width: 310px;
-  margin-bottom: 3%;
+  margin-bottom: 2%;
 }
 
 
 #userViewByISP{
   min-width: 310px;
-  max-width: 900px;
-  height: 350px;
-  margin-bottom: 3%;
+  height: 60vh;
+  margin-bottom: 2%;
 }
 
 #allReactions{
-  height: 400px;
+  height: 55vh;
   min-width: 310px;
-  margin-bottom: 3%;
 }
 
 .white-bg{
   background-color: white;
 }
 
-#allComments{
-  min-width: 310px;
-  height: 350px;
-  margin-bottom: 3%;
-}
-#allReactionsRatio{
-  max-width: 300px;
-  height: 300px;
-  margin: 0 auto
-}
-
 #popularperregion{
-  height: 350px;
+  height: 60vh;
   min-width: 310px;
-  max-width: 600px;
-  margin-bottom: 3%;
+  margin-bottom: 2%;
 }
 .glyphicon-star{
   font-size: 20px;
   color: #F9E051;
+}
+
+.top-lo{
+  width: 25%;
+}
+
+.col-md-3{
+  padding: 0.5% 0.5% 0.5% 0.5%;
+}
+
+.col-md-3 .panel-body{
+  min-height: 400px;
+}
+.panel{
+  margin-bottom: 2%;
+}
+.col-md-6, .col-md-8, .col-md-12, .col-md-8, .col-md-4{
+  padding: 0.5% 0.5% 0.5% 0.5%;
+}
+.col-md-9{
+  padding: 5px 5px 5px 5px;
+}
+h5{
+  margin-bottom: 5%;
+}
+
+#ratioVisit{
+  height: 50vh;
+  max-width: 600px;
+}
+
+.well{
+  margin-bottom: 4%;
+  height: 7vh;
+}
+
+.panel-primary{
+  border-color: #EAEAEA;
+}
+
+.well span{
+  color: #414040;
+}
+.panel-primary>.panel-heading{
+  background-color: #3062B7;
+  border-color: #3062B7;
+}
+
+.panel-body{
+  padding: 1% 1% 1% 1%;
 }

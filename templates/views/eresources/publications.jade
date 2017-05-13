@@ -6,7 +6,12 @@ block content
     #eresources-content
       .container
         .row
-          .col-md-9
+          h2#publications-head
+            | S&T to People
+          #publications-desc
+            p Through this Online Publication Database, PCAARRD offers you its wide array of publications, a testament to its effort and contribution to national development particularly in the agriculture, forestry, and natural resources sectors.
+            br
+          .col-md-12
             nav.navbar.navbar-default
               .container-fluid
                 //- Mobile menu
@@ -56,27 +61,70 @@ block content
 
                   ul.nav.navbar-nav.navbar-right
                     li
-                      a(href="/eresources/publications?view=grid")
+                      // -var category
+                      // if data.category == 'Industry'
+                      //   -category = 'industry'
+                      // else if data.category == 'Sector'
+                      //   -category = 'sector'
+                      // else if data.category == 'Commodity'
+                      //   -category = 'commodity'
+                      //- a(href='/eresources/publications?view=grid&'+category+'=#{'+category+'.key}')
+                      //- a(href='/eresources/publications?view=grid&'+category+'=#{data.categoryResult}')
+                      a(href='/eresources/publications?view=grid')
                         span(aria-hidden="true").glyphicon.glyphicon-th
                     li
                       a(href="/eresources/publications?view=list")
                         span(aria-hidden="true").glyphicon.glyphicon-th-list
 
 
+          .col-md-9
+            h4#publications-title
+              | OFF THE PRESS
             block publications
 
           .col-md-3
-            .list-group
-              li.list-group-item.list-group-item-header Industries
-              each industry in industries
-                a.list-group-item #{industry.name}
-              li.list-group-item.list-group-item-header Sectors
-              each sector in sectors
-                a.list-group-item #{sector.name}
-              li.list-group-item.list-group-item-header Commodities
-              each commodity in commodities
-                a.list-group-item #{commodity.name}
+            //- .list-group
+            //-   li.list-group-item.list-group-item-header Industries
+            //-   each industry in industries
+            //-     a.list-group-item #{industry.name}
+            //-   li.list-group-item.list-group-item-header Sectors
+            //-   each sector in sectors
+            //-     a.list-group-item #{sector.name}
+            //-   li.list-group-item.list-group-item-header Commodities
+            //-   each commodity in commodities
+            //-     a.list-group-item #{commodity.name}
+            form.navbar-form
+              #accordion.panel-group
+              .panel.panel-default
+                .panel-heading
+                  h4.panel-title
+                    a(data-toggle='collapse', data-parent='#accordion', href='#collapse1')
+                      i.fa.fa-industry(aria-hidden='true')&nbsp; Industries
+                #collapse1.panel-collapse.collapse
+                  .panel-body.left-side-bar
+                    each industry in industries
+                      li(style='list-style-type:none;')
+                      a(href='/eresources/publications?industry=#{industry.key}') #{industry.name}
 
+                .panel-heading
+                  h4.panel-title
+                    a(data-toggle='collapse', data-parent='#accordion', href='#collapse2')
+                      i.fa.fa-balance-scale(aria-hidden='true')&nbsp; Sectors
+                #collapse2.panel-collapse.collapse
+                  .panel-body.left-side-bar
+                    each sector in sectors
+                      li(style='list-style-type:none;')
+                      a(href='/eresources/publications?sector=#{sector.key}') #{sector.name}
+
+                .panel-heading
+                  h4.panel-title
+                    a(data-toggle='collapse', data-parent='#accordion', href='#collapse3')
+                      i.i.fa.fa-leaf(aria-hidden='true', style='margin-right:10px;')&nbsp; Commodities
+                #collapse3.panel-collapse.collapse
+                  .panel-body.left-side-bar
+                    each commodity in commodities
+                      li(style='list-style-type:none;')
+                      a(href='/eresources/publications?commodity=#{commodity.key}') #{commodity.name}
         //- .col-xs-12.col-md-9.pub-pager
         //-   nav(aria-label='...')
         //-     ul.pagination
@@ -94,5 +142,3 @@ block content
         //-       li
         //-         a(href='#', aria-label='Next')
         //-           span(aria-hidden='true') »
-
-
