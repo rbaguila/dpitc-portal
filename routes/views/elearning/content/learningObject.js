@@ -132,7 +132,7 @@ exports = module.exports = function (req, res) {
       if (err) {
         validationErrors = err.errors;
       } else {
-        helper.addElearningLog(user, req.ips, 'ADDED RATING '+locals.url);
+        helper.addElearningLog(locals.user, req.ips, 'ADDED RATING '+locals.url);
         req.flash('success', 'Your rating was submitted.');
         return res.redirect('/elearning/learning-object/'+locals.currentLO.slug);
       }

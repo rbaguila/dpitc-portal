@@ -49,54 +49,58 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers,
           .panel-heading
             h4.panel-title Top 5 Popular Learning Object
           .panel-body
-            each lo in mostpopular
-              .media
-                .media-left
-                    img(src=lo.thumbnail.exists ? lo._.thumbnail.limit(50, 50) : 'http://placehold.it/50x50', width=50, height=50).img-circle
-                .media-body
-                  h5=lo.title
-                  span= lo.viewCount
-                    |  views
+            if mostpopular.length
+              each lo in mostpopular
+                .media
+                  .media-left
+                      img(src=lo.thumbnail.exists ? lo._.thumbnail.limit(50, 50) : 'http://placehold.it/50x50', width=50, height=50).img-circle
+                  .media-body
+                    h5=lo.title
+                    span= lo.viewCount
+                      |  views
       .col-md-3.col-xs-12
         .panel.panel-info
           .panel-heading
             h4.panel-title Top 5 Commented Learning Object
           .panel-body
-            each lo in mostcommented
-              .media
-                .media-left
-                    img(src=lo.thumbnail.exists ? lo._.thumbnail.limit(50, 50) : 'http://placehold.it/50x50', width=50, height=50).img-circle
-                .media-body
-                  h5=lo.title
-                  span= lo.commentCount
-                  |  comments
+            if mostcommented.length
+              each lo in mostcommented
+                .media
+                  .media-left
+                      img(src=lo.thumbnail.exists ? lo._.thumbnail.limit(50, 50) : 'http://placehold.it/50x50', width=50, height=50).img-circle
+                  .media-body
+                    h5=lo.title
+                    span= lo.commentCount
+                    |  comments
       .col-md-3.col-xs-12
         .panel.panel-danger
           .panel-heading
             h4.panel-title Top 5 Reacted Learning Object
           .panel-body
-            each lo in mostreacted
-              .media
-                .media-left
-                    img(src=lo.thumbnail.exists ? lo._.thumbnail.limit(50, 50) : 'http://placehold.it/50x50', width=50, height=50).img-circle
-                .media-body
-                  h5=lo.title
-                  span= lo.reactions
-                  |  reactions
+            if mostreacted.length
+              each lo in mostreacted
+                .media
+                  .media-left
+                      img(src=lo.thumbnail.exists ? lo._.thumbnail.limit(50, 50) : 'http://placehold.it/50x50', width=50, height=50).img-circle
+                  .media-body
+                    h5=lo.title
+                    span= lo.reactions
+                    |  reactions
       .col-md-3.col-xs-12
         .panel.panel-warning
           .panel-heading
             h4.panel-title Top 5 Rated Learning Object
           .panel-body
-            each lo in topTopicsbyRatings
-              .media
-                .media-left
-                    img(src=lo.thumbnail.exists ? lo._.thumbnail.limit(50, 50) : 'http://placehold.it/50x50', width=50, height=50).img-circle
-                .media-body
-                  h5=lo.title
-                  - for (var i = 0; i < lo.rating; ++i) {
-                    span.glyphicon.glyphicon-star(aria-hidden='true')
-                  - }
+            if topTopicsbyRatings.length
+              each lo in topTopicsbyRatings
+                .media
+                  .media-left
+                      img(src=lo.thumbnail.exists ? lo._.thumbnail.limit(50, 50) : 'http://placehold.it/50x50', width=50, height=50).img-circle
+                  .media-body
+                    h5=lo.title
+                    - for (var i = 0; i < lo.rating; ++i) {
+                      span.glyphicon.glyphicon-star(aria-hidden='true')
+                    - }
       .col-md-12.col-xs-12
         div(id="allReactions")
       
