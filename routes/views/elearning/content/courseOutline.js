@@ -86,6 +86,15 @@ exports = module.exports = function (req, res) {
           });
           newVisit.save(function(err) {
           });
+
+          var newLog = new ELearningLog.model({
+                //ip: obj.ip,
+                user: currentUser.email,
+                event: 'VISITED '+ locals.url,
+              });
+              newLog.save(function(err) {
+                console.log(newLog.user + ' ' + newLog.event);
+              });
       }
       else{
         getGeoLocation = true;
@@ -112,11 +121,11 @@ exports = module.exports = function (req, res) {
               });
               
               var newLog = new ELearningLog.model({
-                ip: obj.ip,
+                user: obj.ip,
                 event: 'VISITED '+ locals.url,
               });
               newLog.save(function(err) {
-                console.log(obj.ip + ' VISITED '+ locals.url);
+                console.log(newLog.user + ' ' + newLog.event);
               });
           });
         }

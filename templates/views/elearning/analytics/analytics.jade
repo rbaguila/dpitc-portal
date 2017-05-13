@@ -48,7 +48,7 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers,
         .panel.panel-success
           .panel-heading
             h4.panel-title Top 5 Popular Learning Object
-          .panel-body.bg-grey
+          .panel-body
             each lo in mostpopular
               .media
                 .media-left
@@ -61,7 +61,7 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers,
         .panel.panel-info
           .panel-heading
             h4.panel-title Top 5 Commented Learning Object
-          .panel-body.bg-grey
+          .panel-body
             each lo in mostcommented
               .media
                 .media-left
@@ -74,7 +74,7 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers,
         .panel.panel-danger
           .panel-heading
             h4.panel-title Top 5 Reacted Learning Object
-          .panel-body.bg-grey
+          .panel-body
             each lo in mostreacted
               .media
                 .media-left
@@ -87,7 +87,7 @@ mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers,
         .panel.panel-warning
           .panel-heading
             h4.panel-title Top 5 Rated Learning Object
-          .panel-body.bg-grey
+          .panel-body
             each lo in topTopicsbyRatings
               .media
                 .media-left
@@ -106,7 +106,11 @@ block content
       .col-md-3.col-xs-12.user-sidenav
         +user-sidenav(section)
       .col-md-9.col-xs-12
-        +Most(data.mostPopularLO, data.mostCommentedLO, data.mostReactedLO, data.numCourses, data.numLO, data.numUsers, data.numViews, data.numComments, data.numReactions, data.topTopicsbyRatings, data.numPageVisits)
+        .panel.panel-primary
+          .panel-heading
+            h4.panel-title E-learning Website Analytics
+          .panel-body.bg-grey
+            +Most(data.mostPopularLO, data.mostCommentedLO, data.mostReactedLO, data.numCourses, data.numLO, data.numUsers, data.numViews, data.numComments, data.numReactions, data.topTopicsbyRatings, data.numPageVisits)
         
         
   //- script(src='/js/elearning-graphs/learningObjectReactions.js')

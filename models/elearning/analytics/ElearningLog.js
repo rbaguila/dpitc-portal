@@ -9,7 +9,7 @@ var ELearningLog = new keystone.List('ELearningLog', {
 });
 
 ELearningLog.add({
-  ip: {
+  user: {
     type: String,
     required: false
   },
@@ -20,6 +20,6 @@ ELearningLog.add({
 });
 
 ELearningLog.defaultSort = '-createdAt';
-ELearningLog.defaultColumns = 'ip|15%, event|40%, createdAt';
+ELearningLog.defaultColumns = 'user|15%, event|40%, createdAt';
 
 ELearningLog.register();

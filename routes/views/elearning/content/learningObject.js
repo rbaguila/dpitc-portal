@@ -132,7 +132,7 @@ exports = module.exports = function (req, res) {
       if (err) {
         validationErrors = err.errors;
       } else {
-        helper.addElearningLog(req.ips, 'ADDED RATING '+locals.url);
+        helper.addElearningLog(user, req.ips, 'ADDED RATING '+locals.url);
         req.flash('success', 'Your rating was submitted.');
         return res.redirect('/elearning/learning-object/'+locals.currentLO.slug);
       }
@@ -177,7 +177,7 @@ exports = module.exports = function (req, res) {
       if (err) {
         validationErrors = err.errors;
       } else {
-        helper.addElearningLog(req.ips, 'ADDED COMMENT '+locals.url);
+        helper.addElearningLog(locals.user, req.ips, 'ADDED COMMENT '+locals.url);
         req.flash('success', 'Your comment was added.');
         return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
       }
@@ -185,7 +185,6 @@ exports = module.exports = function (req, res) {
     });
 
   });
-
 
   /* REACTIONS */
   view.on('post', { action: 'reactions.addLike' }, function (next) {
@@ -211,7 +210,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(req.ips, 'REMOVED LIKE '+locals.url);
+              helper.addElearningLog(locals.user, req.ips, 'REMOVED LIKE '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -228,7 +227,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(req.ips, 'LIKED '+locals.url);
+              helper.addElearningLog(locals.user, req.ips, 'LIKED '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -263,7 +262,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(req.ips, 'REMOVED HAPPY '+locals.url);
+              helper.addElearningLog(locals.user, req.ips, 'REMOVED HAPPY '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -280,7 +279,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(req.ips, 'ADDED HAPPY '+locals.url);
+              helper.addElearningLog(locals.user, req.ips, 'ADDED HAPPY '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -315,7 +314,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(req.ips, 'REMOVED SAD '+locals.url);
+              helper.addElearningLog(locals.user, req.ips, 'REMOVED SAD '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -332,7 +331,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(req.ips, 'ADDED SAD '+locals.url);
+              helper.addElearningLog(locals.user, req.ips, 'ADDED SAD '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -404,13 +403,14 @@ exports = module.exports = function (req, res) {
               });
               newView.save(function(err) {
               });
-
+              //MAY ISSUE PA TO ANGEC//di existing si obj since di pa dito nag http request
               var newLog = new ELearningLog.model({
-                ip: obj.ip,
+                //ip: obj.ip,
+                user: currentUser.email,
                 event: 'VISITED '+ locals.url,
               });
               newLog.save(function(err) {
-                console.log(obj.ip + ' VISITED '+ locals.url);
+                console.log(newLog.user + ' ' + newLog.event);
               });
             }
         });
@@ -452,11 +452,11 @@ exports = module.exports = function (req, res) {
                       });
 
                       var newLog = new ELearningLog.model({
-                        ip: obj.ip,
+                        user: obj.ip,
                         event: 'VISITED '+ locals.url,
                       });
                       newLog.save(function(err) {
-                        console.log(obj.ip + ' VISITED '+ locals.url);
+                        console.log(newLog.user + ' ' + newLog.event);
                       });
                     }
                 });

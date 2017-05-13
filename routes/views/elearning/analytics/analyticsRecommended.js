@@ -22,6 +22,6 @@ exports = module.exports = function(req, res){
     }
 
     //Render the view
-    view.render('elearning/analyticsRecommended', pageData);
+    view.render('elearning/analytics/analyticsRecommended', pageData);
 
 };

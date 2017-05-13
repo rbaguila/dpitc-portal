@@ -73,11 +73,7 @@ exports = module.exports = function (app) {
 
 	// Elearning Admin
 	app.get('/elearning/analytics', middleware.requireElearningAdmin , routes.elearningViews.analytics.analytics);
-	app.get('/elearning/analytics/users?', middleware.requireElearningAdmin , routes.elearningViews.analyticsUsersList);
-	app.get('/elearning/analytics/recommendedViews', middleware.requireElearningAdmin , routes.elearningViews.analyticsRecommended);
-	app.get('/elearning/analytics/users/:userid?', middleware.requireElearningAdmin , routes.elearningViews.analyticsUsers);
-	app.get('/elearning/analytics/:learningobjectslug?', middleware.requireElearningAdmin , routes.elearningViews.analyticsLO);
-	app.get('/elearning/analytics/learning-objects/:industry?', middleware.requireElearningAdmin , routes.elearningViews.analyticsLOList);
+	app.get('/elearning/analytics/recommendedViews', middleware.requireElearningAdmin , routes.elearningViews.analytics.analyticsRecommended);
 
 	// Elearning File Uploads
 	app.get('/api/elearning/fileupload/list', keystone.middleware.api, routes.api.elearning.fileupload.list);
@@ -118,16 +114,7 @@ exports = module.exports = function (app) {
 
 	app.get('/api/exhibits', routes.api.exhibit);
 
-	app.get('/api/LOReactions', routes.api.LOReactions);
-	app.get('/api/LOComments/:year', routes.api.LOComments);
-	app.get('/api/LOViews/:year', routes.api.LOViews);
 	app.get('/api/recommendedViews/:year', routes.api.recommendedViews);
-	app.get('/api/views/:key/:year', routes.api.eachLOViews);
-	app.get('/api/comments/:key/:year', routes.api.eachLOComments);
-	app.get('/api/reactions/:key', routes.api.eachLOReactions);
-	app.get('/api/userviews/:id/:year', routes.api.eachUserViews);
-	app.get('/api/usercomments/:id/:year', routes.api.eachUserComments);
-
 	app.get('/elearning/api/uservisits', routes.api.elearning.uservisits);
 	app.get('/elearning/api/uservisitsbyISP', routes.api.elearning.uservisitsbyISP);
 	app.get('/elearning/api/reactionsbysector', routes.api.elearning.reactionsbysector);
