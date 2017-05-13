@@ -13,53 +13,42 @@ exports = module.exports = function (req, res) {
   locals.section = 'community';
   locals.validationErrors = {};
   locals.category = {};
-  locals.config = {};
   locals.data = {
     discussionViews: [],
     industries: [],
     posts: []
   };
+  locals.host = 'http://pcaarrd-km-community.herokuapp.com';
+  // locals.host = 'http://localhost:8080';
+  locals.config = {
+    listPost: locals.host+'/api/posts',
+    listGroup: locals.host+'/api/groups',
+    userApi: locals.host+'/api/users'
+  };
 
-  if(keystone.get('env') === 'development') {
-    locals.config = {
-      host: 'http://localhost:8080',
-      listPost: 'http://localhost:8080/api/posts',
-      listGroup: 'http://localhost:8080/api/groups',
-      userApi: 'http://localhost:8080/api/users'
-    }
-
-    console.log(locals.config.userApi);
-  }
-  /*** Deployed route for JC's community ***/
-  else {
-    locals.config = {
-      host: 'http://localhost:8080',
-      listPost: 'http://localhost:8080/api/posts',
-      listGroup: 'http://localhost:8080/api/groups'
-    }
-  }
-
+  // Record visits
   view.on('init', function(next) {
     /* Has a daily limit */
-    // var command = 'curl ipinfo.io/' + req.ips + '/geo';
-    // var child = exec(command, function(err, data, stderr) {
-    //   if(err) {
-    //     console.log(err);
-    //   }
-    //
-    //   var CommunityView = keystone.list('CommunityView');
-    //   var item = new CommunityView.model({
-    //     ip: data.ip,
-    //     city: data.city,
-    //     region: data.region,
-    //     country: data.country,
-    //     loc: data.loc
-    //   });
-    //
-    //   item.save(function(err, view) {
-    //     if (err) return res.apiError('database error', err);
-    //   })
-    // });
+    var command = 'curl freegeoip.net/json/';
+    var child = exec(command, function(err, data, stderr) {
+      if(err) {
+        console.log(err);
+      }
+
+      data = JSON.parse(data);
+
+      var CommunityView = keystone.list('CommunityView');
+      var item = new CommunityView.model({
+        ip: data.ip,
+        city: data.city,
+        region: data.region_name,
+        loc: data.latitude+','+data.longitude
+      });
+
+      item.save(function(err, view) {
+        if (err) return res.apiError('database error', err);
+      })
+    });
 
     next();
   });
@@ -85,6 +74,9 @@ exports = module.exports = function (req, res) {
   });
 
   view.on('init', function(next) {
+    locals.news = [];
+    locals.commNews = [];
+
     var q = keystone.list('Post').model.findOne()
       .populate('author categories')
       .where('state', 'published')
@@ -133,6 +125,8 @@ exports = module.exports = function (req, res) {
 
         next();
       });
+    }).on('error', function(err) {
+      next(err);
     });
 
   });
@@ -222,7 +216,7 @@ exports = module.exports = function (req, res) {
       var datePosted = locals.blogPosts[i].datePosted;
 
       locals.blogPosts[i].datePosted = moment(datePosted, 'MMMM Do YYYY, h:mm:SS a').fromNow();
-    //   http.get(locals.config.userApi+'/'+locals.blogPosts.postedBy._id, function(response) {
+    //   http.get(locals.userApi+'/'+locals.blogPosts.postedBy._id, function(response) {
     //
     //     var bodyChunks = [];
     //     response.on('data', function(chunk) {
@@ -234,13 +228,16 @@ exports = module.exports = function (req, res) {
     //
     //       next();
     //     });
-    //   });
+    //   }).on('error', function(err) {
+    //   next(err);
+    // });;
     //   console.log(locals.blogPosts[i].postedBy.name);
     }
 
     next();
   });
 
+  // Load top groups
   view.on('init', function(next) {
     http.get(locals.config.listGroup, function(response) {
 
@@ -267,6 +264,8 @@ exports = module.exports = function (req, res) {
 
         next();
       });
+    }).on('error', function(err) {
+      next(err);
     });
 
   });
@@ -301,29 +300,6 @@ exports = module.exports = function (req, res) {
     })
   });
 
-  // view.query('blogPosts', keystone.list('BlogPost').model.find().populate('author').sort('-publishedDate'));
-  // view.query('events', keystone.list('Event').model.find().sort('startDate'));
-  view.query('trainings', keystone.list('Training').model.find());
-  view.query('comments', keystone.list('DiscussionComment').model.find().populate('discussion', 'author'));
-  view.query('discussionViews', keystone.list('DiscussionView').model.find());
-
-  // view.query('discussions', keystone.list('Discussion').model.find())
-  //   .then(function(err, res, next) {
-  //     if(err) return next(err);
-  //
-  //     for(var i=0; i<res.length; i++) {
-  //       res[i].comments = locals.comments.filter(function(comment) {
-  //         return comment.discussion._id.equals(res[i]._id) &&
-  //                comment.commentState == 'published';
-  //       });
-  //
-  //       res[i].views = locals.discussionViews.filter(function(view) {
-  //         return view.discussion._id.equals(res[i]._id);
-  //       });
-  //     }
-  //
-  //     next(res);
-  //   });
 
   view.render('community/community', {loginRedirect: '/community', section: 'community', breadcrumbs: [
       { text: 'community', link: '/community'},

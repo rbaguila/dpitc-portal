@@ -9,7 +9,7 @@
 .summary
   h3.media-heading
     - console.log(config)
-    a(href= config.host + '/groups/' + post.groupBelonged + '/view-posts/question/' + post._id)= post.question
+    a(href= host + '/groups/' + post.groupBelonged + '/view-posts/question/' + post._id)= post.question
   if post.datePosted || post.postedBy.name
     p.text-muted.text-small
       if post.datePosted

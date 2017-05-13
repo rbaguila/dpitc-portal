@@ -7,29 +7,29 @@
 
   .carousel-inner(role="listbox")
     .item.active
-      img(src=config.host+"/groups/client/assets/images/community.jpg" alt="First slide").first-slide
+      img(src=host+"/groups/assets/images/community.jpg" alt="First slide").first-slide
       .container
         .carousel-caption(style="background-color: rgba(0, 39, 150, 0.4); margin: 0")
           h1(style="color: white") Strong Community
           p Build an interactive and solid community driven by powerful purpose, and united in achieving common goals.
 
     .item
-      img(src=config.host+"/groups/client/assets/images/fruits-vegetables-collage.jpg" alt="Second slide").second-slide
+      img(src=host+"/groups/assets/images/fruits-vegetables-collage.jpg" alt="Second slide").second-slide
       .container
         .carousel-caption(style="background-color: rgba(0, 39, 150, 0.6); margin: 0")
           h1(style="color: white") Plenty of Groups
           p There are groups under crops, livestocks, and a lot more already exist to fulfill your interests. Join in any of them. Or, you can join in all of them.
           p
-            a.btn.btn-lg.btn-success(href=config.host+"/groups" role="button") See Groups
+            a.btn.btn-lg.btn-success(href=host+"/groups" role="button") See Groups
 
     .item
-      img(src=config.host+"/groups/client/assets/images/engage-people-conversation.jpg" alt="Third slide").third-slide
+      img(src=host+"/groups/assets/images/engage-people-conversation.jpg" alt="Third slide").third-slide
       .container
         .carousel-caption(style="background-color: rgba(0, 39, 150, 0.6); margin: 0")
           h1(style="color: white").center-block Limitless Conversations
           p.center-block Engage in learning conversations with other people within your groups. Always try to post something nice and helpful.
           p
-            a.btn.btn-lg.btn-success(href=config.host+"/register" role="button") See Groups
+            a.btn.btn-lg.btn-success(href=host+"/register" role="button") See Groups
 
     .item
       #public-news.fourth-slide
@@ -54,10 +54,11 @@ div(style="margin-top: 50px;")
 div(style="margin-top: 10px;").marketing
   .features-list
     .main-feature
-      div(style="margin: 20px auto 20px 0; background-color: white; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); padding: 0.5%; height: 90%; width: 95%; color: black;")
+      div(style="margin: 20px auto 20px 0; padding: 0.5%; height: 90%; width: 90%;")
         h3(style="text-align: left; font-weight: normal; margin: 15px 10px;")
           i(aria-hidden="true" style="margin-right: 5px;").fa.fa-users
           | Virtual Spaces / Groups
+        br
         ul.list-group
           li.list-group-item
             i(aria-hidden="true" style="margin-right: 5px;").fa.fa-check-square-o
@@ -73,10 +74,11 @@ div(style="margin-top: 10px;").marketing
             | Group members can read private posts.
 
     .main-feature
-      div(style="margin: 20px auto; background-color: white; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); padding: 0.5%; height: 90%; width: 95%; color: black;")
+      div(style="margin: 20px auto; padding: 0.5%; height: 90%; width: 90%;")
         h3(style="text-align: left; font-weight: normal; margin: 15px 10px;")
           i(aria-hidden="true" style="margin-right: 5px;").fa.fa-file-text
           | Categorized Posts
+        br
         ul.list-group
           li.list-group-item
             i(aria-hidden="true" style="margin-right: 5px;").fa.fa-check-square-o
@@ -90,11 +92,13 @@ div(style="margin-top: 10px;").marketing
           li.list-group-item
             i(aria-hidden="true" style="margin-right: 5px;").fa.fa-check-square-o
             | Posts analysis in every group is displayed.
+            
     .main-feature
-      div(style="margin: 20px 0 20px auto; background-color: white; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); padding: 0.5%; height: 90%; width: 95%; color: black;")
+      div(style="margin: 20px 0 20px auto; padding: 0.5%; height: 90%; width: 90%;")
         h3(style="text-align: left; font-weight: normal; margin: 15px 10px;")
           i(aria-hidden="true" style="margin-right: 5px;").fa.fa-rss
           | Community Feed
+        br
         ul.list-group
           li.list-group-item
             i(aria-hidden="true" style="margin-right: 5px;").fa.fa-check-square-o

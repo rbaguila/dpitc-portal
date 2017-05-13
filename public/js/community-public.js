@@ -7,8 +7,13 @@ $(document).ready(function() {
 
     $('.wrapper .section').theiaStickySidebar();
 
-    $.getJSON('https://ipinfo.io', function(data){
-      geoloc = data;
+    $.getJSON('https://freegeoip.net/json/', function(data){
+      geoloc = {
+        ip: data.ip,
+        city: data.city,
+        region: data.region_name,
+        loc: data.latitude+','+data.longitude
+      };
     });
 
     $('.discussion .summary a').click(function(e) {
@@ -32,11 +37,43 @@ $(document).ready(function() {
       var temp = this.href.split('/');
       geoloc['handle'] = temp[temp.length-1];
 
+      $.ajax({
+        type: 'POST',
+        url: '/api/community/analytics/groups',
+        data: geoloc
+      });
+
+      window.location = this.href;
+    });
+
+    $('.event a').click(function(e) {
+      e.preventDefault();
+
+      var temp = this.href.split('/');
+      geoloc['eventID'] = temp[temp.length-1];
+
       console.log(geoloc)
 
       $.ajax({
         type: 'POST',
-        url: '/api/community/analytics/groups',
+        url: '/api/community/analytics/event',
+        data: geoloc
+      });
+
+      window.location = this.href;
+    });
+
+    $('.blog .title').click(function(e) {
+      e.preventDefault();
+
+      var temp = this.href.split('/');
+      geoloc['reportID'] = temp[temp.length-1];
+
+      console.log(geoloc)
+
+      $.ajax({
+        type: 'POST',
+        url: '/api/community/analytics/report',
         data: geoloc
       });
 

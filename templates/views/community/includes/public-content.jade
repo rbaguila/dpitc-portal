@@ -7,15 +7,15 @@
           | Events
           .title-hr.col-xs-12
         .section-content
-          if events.length
+          if events && events.length
             each event in events
               .event.row
-                a.event-date.col-xs-2.col-md-4(href=config.host + '/groups/' + event.groupBelonged + '/view-posts/event/' + event._id)
+                a.event-date.col-xs-2.col-md-4(href=host + '/groups/' + event.groupBelonged + '/view-posts/event/' + event._id)
                   p.day #{event.startDateTime.date}
                   p.mon #{event.startDateTime.month.toUpperCase()}
                 .event-details.col-xs-10.col-md-8
                   p.text-muted #{event.groupBelonged.toUpperCase()} 
-                  a(href=config.host + '/groups/' + event.groupBelonged + '/view-posts/event/' + event._id) #{event.eventName} 
+                  a(href=host + '/groups/' + event.groupBelonged + '/view-posts/event/' + event._id) #{event.eventName} 
               hr
           else
             .row 
@@ -29,7 +29,7 @@
             .skew.col-xs-12
             .skewed-text Recent Reports
         .section-content
-          if blogPosts.length
+          if blogPosts && blogPosts.length
             each blog in blogPosts
               .blog.row
                 .blog-avatar
@@ -42,8 +42,7 @@
                 .blog-content
                   .content-header
                     h4
-                      a(href=config.host + '/groups/' + blog.groupBelonged + '/view-posts/report/' + blog._id).title #{blog.reportTitle}
-                    - console.log(blog)
+                      a(href=host + '/groups/' + blog.groupBelonged + '/view-posts/report/' + blog._id).title #{blog.reportTitle}
                     a(href="#").name.text-muted By #{blog.postedBy.name} &nbsp
                     a(href="#").time-since.text-muted #{blog.datePosted}
                   .content-body
@@ -53,7 +52,7 @@
             .row 
               .col-md-12
                 br
-                h4.empty.text-muted No recent blogs
+                h4.empty.text-muted No recent reports
         br
         
         .section-title.focus.row 
@@ -61,7 +60,7 @@
             .skew.col-xs-12
             a(href="/community/discussions" style="color: white").skewed-text Discussions
         .section-content
-          if discussions.length
+          if discussions && discussions.length
             each discussion in discussions
               .discussion.row
                 .stat
@@ -73,7 +72,7 @@
                     div views
                 .summary
                   h4
-                    a(href=config.host + '/groups/' + discussion.groupBelonged + '/view-posts/question/' + discussion._id).title #{discussion.question}
+                    a(href=host + '/groups/' + discussion.groupBelonged + '/view-posts/question/' + discussion._id).title #{discussion.question}
                   span.badge.tag #{discussion.groupBelonged}
               hr
                 
@@ -127,27 +126,28 @@
           .skew.col-xs-12
           #temp.skewed-text Top Groups
       .section-content
-        if groups.length
+        if groups && groups.length
           each industry in groups
-            hr
-            .row.groups
-              .col-xs-12
-                p.text-muted #{industry[0].classification.industry}
-              each group in industry
-                .media.col-lg-3
-                  .media-left
-                    a(href=config.host + '/groups/' + group.handle)
-                      if group.photo
-                        img(src=config.host + '/' + group.photo.path height='110px' width='110px').media-object
-                      else
-                        img(src="http://placehold.it/110x110").media-object
-                  .media-body
-                    a(href=config.host + '/groups/' + group.handle).media-heading
-                      h4 #{group.name}
-                    p.text-muted.text-small
-                      | #{group.membersCount} members #{group.postsCount.total} posts
+            if industry.length
+              hr
+              .row.groups
+                .col-xs-12
+                  p.text-muted #{industry[0].classification.industry}
+                each group in industry
+                  .media.col-lg-3
+                    .media-left
+                      a(href=host + '/groups/' + group.handle)
+                        if group.photo
+                          img(src=host + '/' + group.photo.path height='110px' width='110px').media-object
+                        else
+                          img(src="http://placehold.it/110x110").media-object
+                    .media-body
+                      a(href=host + '/groups/' + group.handle).media-heading
+                        h4 #{group.name}
+                      p.text-muted.text-small
+                        | #{group.membersCount} members #{group.postsCount.total} posts
           .row.text-center
-            a(href=config.host + "/groups/" style="color: white;")
+            a(href=host + "/groups/" style="color: white;")
               button.btn.btn-lg(style="background-color: #3062B7;" onMouseOver="this.style.color='#FFF'") More Groups
             br
             br

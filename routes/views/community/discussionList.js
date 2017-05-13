@@ -5,7 +5,6 @@ var http = require('http');
 exports = module.exports = function (req, res) {
   var view = new keystone.View(req, res);
   var locals = res.locals;
-  locals.config = {};
   locals.section = 'community';
   locals.filters = {
 		category: req.params.category,
@@ -14,19 +13,9 @@ exports = module.exports = function (req, res) {
 		posts: [],
 		categories: [],
 	};
-
-  if(keystone.get('env') === 'development') {
-    locals.config = {
-      host: 'http://localhost:8080',
-      apiUrl: 'http://localhost:8080/api/posts'
-    }
-  }
-  /*** Deployed route for JC's community ***/
-  else {
-    locals.config = {
-      host: 'http://localhost:8080',
-      apiUrl: 'http://localhost:8080/api/posts'
-    }
+  locals.config = {
+    host: 'http://pcaarrd-km-community.herokuapp.com/',
+    apiUrl: 'http://pcaarrd-km-community.herokuapp.com/api/posts'
   }
 
   view.on('init', function(next) {
@@ -53,6 +42,8 @@ exports = module.exports = function (req, res) {
 
         next();
       });
+    }).on('error', function(err) {
+      next(err);
     });
 
   });

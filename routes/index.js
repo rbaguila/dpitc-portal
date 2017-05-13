@@ -113,8 +113,18 @@ exports = module.exports = function (app) {
 
 	//Analytics Api Route
   app.get('/api/community/analytics/list', keystone.middleware.api, routes.api.communityAnalytics.list);
+  app.get('/api/community/analytics/list/events', keystone.middleware.api, routes.api.communityAnalytics.listEvents);
+  app.get('/api/community/analytics/list/reports', keystone.middleware.api, routes.api.communityAnalytics.listReports);
+  app.get('/api/community/analytics/list/discussions', keystone.middleware.api, routes.api.communityAnalytics.listDiscussions);
+  app.get('/api/community/analytics/list/groups', keystone.middleware.api, routes.api.communityAnalytics.listGroups);
+  app.get('/api/community/analytics/list/view/events', keystone.middleware.api, routes.api.communityAnalytics.listEventViews);
+  app.get('/api/community/analytics/list/view/reports', keystone.middleware.api, routes.api.communityAnalytics.listReportViews);
+  app.get('/api/community/analytics/list/view/discussions', keystone.middleware.api, routes.api.communityAnalytics.listDiscussionViews);
+  app.get('/api/community/analytics/list/view/groups', keystone.middleware.api, routes.api.communityAnalytics.listGroupViews);
   app.post('/api/community/analytics/discussion', keystone.middleware.api, routes.api.communityAnalytics.addDiscView);
   app.post('/api/community/analytics/groups', keystone.middleware.api, routes.api.communityAnalytics.addGroupView);
+  app.post('/api/community/analytics/event', keystone.middleware.api, routes.api.communityAnalytics.addEventView);
+  app.post('/api/community/analytics/report', keystone.middleware.api, routes.api.communityAnalytics.addReportView);
 
 	//File Upload Route
   app.get('/api/fileupload/list', keystone.middleware.api, routes.api.fileupload.list);

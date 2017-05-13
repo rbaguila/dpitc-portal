@@ -1,39 +1,78 @@
 extends ../../layouts/community
 
+block css
+  link(rel="stylesheet" href="/bower_components/tablesorter/dist/css/theme.default.min.css")
+
 block content
   #community-analytics
-    .container
+    .container-fluid
       .row
         .dashboard.col-md-2.hidden-xs.hidden-sm
           a(href="#page-visits").text-muted.col-xs-11 Page Visits
           br
           a(href="#demographics").text-muted.col-xs-11 Demographics
           br
-          a(href="#industry").text-muted.col-xs-11 Industries
+          a(href="#interactions").text-muted.col-xs-11 User Interactions
           br
         .col-md-10.col-md-offset-2.col-xs-12
-          #page-visits.section.anchor
-            .section-title Page Visits
-            #active-users.section-content
-            br
+          #page-visits.section.anchor.row
+            .col-md-4
+              .visit-log.section-title Recent Visits &nbsp
+                span.refresh-btn.glyphicon.glyphicon-refresh.pull-right(style="cursor: pointer; display: none;")
+              .recent-visits.section-content(style="padding: 0; overflow-y: auto")
+                table.table.table-striped
+                  thead
+                    tr
+                      th Region
+                      th City/Province
+                      th(data-sorter="shortDate" data-date-format="mmddyyyy") Time
+                  tbody
+                    - var i = 0;
+                    while i < 5 && i < mainViews.length
+                      tr
+                        td #{mainViews[i].region}
+                        td #{mainViews[i].city}
+                        td #{mainViews[i]._.time.format("MM-DD-YYYY HH:mm")}
+                        - i++
+                
+            .col-md-8
+              .section-title Page Visits
+              #active-users.section-content
           
-          #demographics.section.anchor
-            .section-title Demographics
-            #provinces.section-content
-            br
+          #demographics.section.anchor.row
+            .col-md-7
+              .section-title Demographics (Pie Chart)
+              #regions.section-content
+            
+            .col-md-5
+              #demog-table.section-content(style="padding: 0; overflow-y: auto")
+                table.table.table-striped.tablesorter
+                  thead
+                    tr
+                      th.thead1 Region
+                      th.thead2 Visits
+                      th(data-sorter="shortDate" data-date-format="mmddyyyy").thead3 Time
+                  tbody
           
-          #industry.section.anchor
-            .section-title Additional Information
-            .section-content
-              #agriculture.graph.col-md-4
-              #aquaculture.graph.col-md-4
-              #nresources.graph.col-md-4
+          #interactions.section.anchor.row
+            .col-xs-12
+              .section-title User Interactions
+              .section-content
+                #groups.graph.col-md-3
+                #events.graph.col-md-3
+                #reports.graph.col-md-3
+                #discussions.graph.col-md-3
+                #addText(style="position:absolute; left:0px; top:0px;")
         
           
 block js
+  script(src="/bower_components/tablesorter/dist/js/jquery.tablesorter.js")
+  script(src="/bower_components/tablesorter/dist/js/jquery.tablesorter.widgets.js")
+  script(src="/bower_components/moment/moment.js")
   script(src='/bower_components/highcharts/highstock.js')
   script(src='/bower_components/highcharts/modules/exporting.js')
   script(src='/bower_components/highcharts/modules/map.js')
   script(src='/bower_components/highcharts/modules/drilldown.js')
+  script(src='/bower_components/highcharts/modules/treemap.js')
   script(src='https://code.highcharts.com/mapdata/countries/ph/ph-all.js')
   script(src='/js/community-analytics.js')

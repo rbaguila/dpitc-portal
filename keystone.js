@@ -77,7 +77,7 @@ keystone.set('nav', {
 		'Page'
 	],
 	users: 'users',
-	Analytics: ['community-views', 'discussion-views', 'group-views'],
+	Analytics: ['community-views', 'discussion-views', 'group-views', 'report-views'],
 	Community: ['blog-posts', 'trainings', 'events', 'discussions', 'discussion-comments', 'publications', 'links', 'galleries', 'videos', 'memos'],
 	Categories: ['industries', 'sectors', 'commodities'],
 	ELearning: ['LearningObject', 'Chapter', 'Course', 'LearningContent', 'ISP', 'LIndustry', 'LSector', 'LOGallery', 'LOLink', 'LOVideo', 'LOFileUpload',  'Author', 'LOComment', 'Banner'],

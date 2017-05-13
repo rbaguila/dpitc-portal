@@ -91,16 +91,20 @@ html
                 a(href=breadcrumb.link) #{breadcrumb.text}
               
 
-        #user-login-links
-          if user
-            //- if user.canAccessKeystone
-              //- li: a(href='/keystone') Open Keystone
-            span.user-name #{user.name.full}&nbsp;&nbsp;
-            i.fa.fa-bell-o(aria-hidden="true")
-            | &nbsp;&nbsp;&nbsp;&nbsp;
-            a(href='/keystone/signout', class="not-active login-link") Sign Out
-          else
-            a(href='/keystone/signin?from=' + loginRedirect, class="not-active login-link") Sign In
+        ul.nav.navbar-nav.navbar-right(style="padding-right: 15px")
+          li
+            a(href=host+'/groups', class="not-active login-link")
+              h4(style="display:inline-block; font-weight: bold; margin-bottom: 0px;").login-link
+                i.fa.fa-list-ul &nbsp
+              | Groups
+          li(style="margin-top: 15px")
+            h4(style="margin: 0; color: white") |
+          li
+            a(href=host+'/register', class="not-active login-link") Sign Up
+          li(style="margin-top: 15px")
+            h4(style="margin: 0; color: white") |
+          li
+            a(href=host+'/login', class="not-active login-link") Sign In
 
         //- ul.nav.navbar-nav.navbar-right
         //-   if user
