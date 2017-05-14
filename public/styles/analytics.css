@@ -23,6 +23,7 @@
 
 .bg-grey{
   background-color: #EAEAEA;
+  padding: 1% 1% 1% 1%;
 }
 
 .user-prof{
@@ -117,8 +118,4 @@ h5{
 .panel-primary>.panel-heading{
   background-color: #3062B7;
   border-color: #3062B7;
-}
-
-.panel-body{
-  padding: 1% 1% 1% 1%;
 }
