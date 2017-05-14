@@ -586,6 +586,11 @@ exports.create = {
       '__ref': 'corn-isp'
     },
     {
+      'name': 'Rice',
+      'sector': 'crops-sector',
+      '__ref': 'rice-isp'
+    },
+    {
       'name': 'Abaca',
       'sector': 'crops-sector',
       '__ref': 'abaca-isp'
@@ -859,6 +864,24 @@ exports.create = {
 
   LearningObject: [
     {
+      'title': 'Introduction to SARAI Training Toolkit for Rice',
+      'state': 'published',
+      
+      'publishedAt': Date.now,
+      'content': {
+        'brief': '',
+        'extended': '',
+      },
+      'isp': 'rice-isp',
+      'sector': 'crops-sector',
+      'industry': 'agri-industry',
+      'specificCommodity': null,
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'intro-rice-toolkit',
+    },
+    /*{
       'title': 'Stages Corn',
       'state': 'published',
       
@@ -2082,13 +2105,13 @@ exports.create = {
       'sad': ['Angelica', 'Bryan', 'Daniel', 'Ferdinand', 'Henry', 'Harold', 'Juan', 'John', 'Jane', 'Justin', 'Joon', 'Jeff'],
       
       'updatedAt': Date.now
-    },
+    },*/
   ],
   
 
   //Chapter: [
   Course: [
-    {
+    /*{
       'title': 'Corn',
       //'title': 'Corn Chapter',
       'state': 'published',
@@ -2173,7 +2196,7 @@ exports.create = {
         'aquafeeds-lo'
       ],
       '__ref': 'feedres-chapter',
-    },
+    },*/
 
   ],
 
@@ -2398,6 +2421,7 @@ exports.create = {
   ],
 */
   LOView: [
+/*
     { 
       'user': 'Angelica', 
       'learningObject': 'aquafeeds-lo',
@@ -3077,11 +3101,11 @@ exports.create = {
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Batangas'
-    }
-  ],
+    }*/
+  ], 
 
   ELearningVisit: [
-    { 
+    /*{ 
       'dateViewed': '2017-01-12',
       'country_code': 'PH',
       'region': 'Calabarzon',
@@ -3652,7 +3676,7 @@ exports.create = {
     { 
       'dateViewed': '2017-04-03',
       'country_code': 'US'
-    }
+    }*/
   ]
   
 };
