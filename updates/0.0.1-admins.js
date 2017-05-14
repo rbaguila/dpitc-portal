@@ -869,6 +869,44 @@ exports.create = {
       
       'publishedAt': Date.now,
       'content': {
+        'brief': 'The SARAI TRAINING TOOLKIT FOR CORN is a user-friendly guide to all the developed technologies and systems of the program. It provides the stakeholders a holistic view of the program, and its direct applications to daily agricultural practices.',
+        'extended': 'The SARAI TRAINING TOOLKIT FOR CORN is a user-friendly guide to all the developed technologies and systems of the program. It provides the stakeholders a holistic view of the program, and its direct applications to daily agricultural practices. In addition to the conduct of lectures and group discussions, one other important facet of the SARAI Training is the incorporation of fieldworks to the exercises. These field exposures provide participants the opportunities to test out what they learned, document their questions, and directly discuss with the trainers issues that can only be better appreciated in a field setting. The toolkit is a package of modules, PowerPoint presentations, and handouts. All these materials will be provided to the training participants, both in hardcopy and e-copy formats.',
+      },
+      'isp': 'rice-isp',
+      'sector': 'crops-sector',
+      'industry': 'agri-industry',
+      'specificCommodity': null,
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'intro-rice-toolkit',
+    },
+
+    {
+      'title': 'Volume 1: Introduction to SARAI',
+      'state': 'published',
+      
+      'publishedAt': Date.now,
+      'content': {
+        'brief': 'This volume discusses the detailed introduction to the program – its main objectives, various components, and expected outputs',
+        'extended': 'This volume discusses the detailed introduction to the program – its main objectives, various components, and expected outputs. This is an appreciation volume that presents ideas for how SARAI can contribute to the regular agricultural activities of our farmers. It is divided into two modules: \nModule 1 – Detailed discussion on Project SARAI and its various components \nModule 2 – Introduction and discussion on the smarter technologies promoted by Project SARAI',
+      },
+      'isp': 'rice-isp',
+      'sector': 'crops-sector',
+      'industry': 'agri-industry',
+      'specificCommodity': null,
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'intro-rice-toolkit',
+    },
+
+    /*{
+      'title': '',
+      'state': 'published',
+      
+      'publishedAt': Date.now,
+      'content': {
         'brief': '',
         'extended': '',
       },
@@ -880,7 +918,9 @@ exports.create = {
       'updatedAt': Date.now,
       'createdBy': 'admin',     
       '__ref': 'intro-rice-toolkit',
-    },
+    },*/
+
+
     /*{
       'title': 'Stages Corn',
       'state': 'published',
