@@ -48,7 +48,7 @@ exports = module.exports = function (app) {
 	app.get('/gallery', routes.views.gallery);
 
 	// User
-	
+
 
 	// User-Elearning Routes
 	app.get('/elearning/signup?', routes.elearningViews.user.signup);
@@ -57,7 +57,7 @@ exports = module.exports = function (app) {
 	app.post('/elearning/profile?', middleware.requireElearningUser, routes.elearningViews.user.profile);
 	app.get('/elearning/user-activity?', middleware.requireElearningUser, routes.elearningViews.user.userActivity);
 	app.get('/elearning/user-activity/feedback', middleware.requireElearningUser, routes.elearningViews.user.feedback);
-	
+
 
 	// Elearning Routes
 	app.get('/elearning/search?', routes.elearningViews.content.search);
@@ -82,7 +82,7 @@ exports = module.exports = function (app) {
   app.all('/api/elearning/fileupload/create', keystone.middleware.api, routes.api.elearning.fileupload.create);
   app.get('/api/elearning/fileupload/:id/remove', keystone.middleware.api, routes.api.elearning.fileupload.remove);
 
-  
+
 
 	app.get('/search/', function(req,res){
 		var searchKey = req.query.searchKey;
@@ -95,13 +95,32 @@ exports = module.exports = function (app) {
 	// app.all('/contact', routes.views.contact);
 
 	//Community
-		app.get('/community', routes.communityViews.community);
+	app.get('/community', routes.communityViews.community);
+	app.get('/community/blogs', routes.communityViews.blog);
+	app.get('/community/blogs/:category?', routes.communityViews.blog);
+	app.get('/community/blogs/post/:post', routes.communityViews.post);
+	app.get('/community/discussions', routes.communityViews.discussionList);
+	app.get('/community/discussions/:category?', routes.communityViews.discussionList);
+	app.get('/community/analytics', routes.communityViews.analytics);
+
 	app.get('/eresources', routes.eresourcesViews.eresources);
 	app.get('/eresources/publications/:industry?', routes.eresourcesViews.publications);
 	app.get('/eresources/publication/:publication', routes.eresourcesViews.publication);
 
 	//Analytics Api Route
   app.get('/api/community/analytics/list', keystone.middleware.api, routes.api.communityAnalytics.list);
+  app.get('/api/community/analytics/list/events', keystone.middleware.api, routes.api.communityAnalytics.listEvents);
+  app.get('/api/community/analytics/list/reports', keystone.middleware.api, routes.api.communityAnalytics.listReports);
+  app.get('/api/community/analytics/list/discussions', keystone.middleware.api, routes.api.communityAnalytics.listDiscussions);
+  app.get('/api/community/analytics/list/groups', keystone.middleware.api, routes.api.communityAnalytics.listGroups);
+  app.get('/api/community/analytics/list/view/events', keystone.middleware.api, routes.api.communityAnalytics.listEventViews);
+  app.get('/api/community/analytics/list/view/reports', keystone.middleware.api, routes.api.communityAnalytics.listReportViews);
+  app.get('/api/community/analytics/list/view/discussions', keystone.middleware.api, routes.api.communityAnalytics.listDiscussionViews);
+  app.get('/api/community/analytics/list/view/groups', keystone.middleware.api, routes.api.communityAnalytics.listGroupViews);
+  app.post('/api/community/analytics/discussion', keystone.middleware.api, routes.api.communityAnalytics.addDiscView);
+  app.post('/api/community/analytics/groups', keystone.middleware.api, routes.api.communityAnalytics.addGroupView);
+  app.post('/api/community/analytics/event', keystone.middleware.api, routes.api.communityAnalytics.addEventView);
+  app.post('/api/community/analytics/report', keystone.middleware.api, routes.api.communityAnalytics.addReportView);
 
 	//File Upload Route
   app.get('/api/fileupload/list', keystone.middleware.api, routes.api.fileupload.list);

@@ -16,16 +16,18 @@ $(document).ready(function() {
       series.push([parseInt(key), value]);
     });
 
-    Highcharts.chart('active-users', {
-        chart: {
-            zoomType: 'x'
+    Highcharts.stockChart('active-users', {
+        navigator: {
+            enabled: false
+        },
+        rangeSelector: {
+        	selected: 1
         },
         title: {
             text: 'Community access rate over time'
         },
         subtitle: {
-            text: document.ontouchstart === undefined ?
-                    'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+            text: ''
         },
         xAxis: {
             type: 'datetime'
@@ -33,7 +35,8 @@ $(document).ready(function() {
         yAxis: {
             title: {
                 text: 'Access rate'
-            }
+            },
+            opposite: false
         },
         legend: {
             enabled: false
@@ -68,292 +71,496 @@ $(document).ready(function() {
         series: [{
             type: 'area',
             data: series,
-            name: 'Visits'
+            name: 'Visits',
+            cursor: 'pointer',
+            events: {
+                click: function(e) {
+                  var dayViews = data.views.filter(function(item) {
+                    return moment(item.time).isSame(e.point.x, 'day');
+                  });
+                  updateLogs(dayViews);
+                }
+            }
         }]
+    });
+
+    var regionData = [];
+    var regionCount = {};
+    var cityData = [];
+    var cityCount = [];
+    $.each(data.views, function(i, item) {
+      var key = item.region;
+      var key2 = item.city;
+
+      if(regionCount[key]) {
+        regionCount[key].count += 1;
+
+        if(regionCount[key].cities[key2]) regionCount[key].cities[key2] += 1;
+        else regionCount[key].cities[key2] = 1;
+      }
+      else {
+        regionCount[key] = {
+          count: 1,
+          cities: {}
+        }
+        regionCount[key].cities[key2] = 1
+      }
+    });
+
+    $.each(regionCount, function(key, value) {
+      regionData.push({
+        id: key,
+        name: key,
+        value: value.count
+      });
+
+      $.each(value.cities, function(key2, value2) {
+        cityData.push({
+          name: key2,
+          parent: key,
+          value: value2
+        });
+      });
+    });
+
+    drillup(regionData);
+
+    Highcharts.chart('regions', {
+      title: {
+          text: 'Number of visits per Region'
+      },
+      exporting: {
+          enabled: false
+      },
+      chart: {
+        events: {
+          redraw: function() {
+            var rootNode = this.series[0].rootNode;
+            if(rootNode==='') {
+              drillup(regionData);
+            }
+          }
+        }
+      },
+      series: [{
+          type: 'treemap',
+          layoutAlgorithm: 'squarified',
+          alternateStartingDirection: true,
+          allowDrillToNode: true,
+          levelIsConstant: false,
+          cursor: 'pointer',
+          events: {
+              click: function(e) {
+                if(e.point.id) {
+                  drilldown(e.point.node.children);
+                }
+                else if(!e.point.id) {
+                  var cityViews = data.views.filter(function(view) {
+                    return view.city == e.point.name;
+                  });
+                  drilldown_2(cityViews);
+                }
+              }
+          },
+          dataLabels: {
+              enabled: false
+          },
+          levels: [{
+              level: 1,
+              dataLabels: {
+                  enabled: true
+              },
+              borderWidth: 3
+          }],
+          data: regionData.concat(cityData)
+      }]
     });
   });
 
-  var data = [
-    ['ph-mn', 0],
-    ['ph-4218', 1],
-    ['ph-tt', 2],
-    ['ph-bo', 3],
-    ['ph-cb', 4],
-    ['ph-bs', 5],
-    ['ph-2603', 6],
-    ['ph-su', 7],
-    ['ph-aq', 8],
-    ['ph-pl', 9],
-    ['ph-ro', 10],
-    ['ph-al', 11],
-    ['ph-cs', 12],
-    ['ph-6999', 13],
-    ['ph-bn', 14],
-    ['ph-cg', 15],
-    ['ph-pn', 16],
-    ['ph-bt', 17],
-    ['ph-mc', 18],
-    ['ph-qz', 19],
-    ['ph-es', 20],
-    ['ph-le', 21],
-    ['ph-sm', 22],
-    ['ph-ns', 23],
-    ['ph-cm', 24],
-    ['ph-di', 25],
-    ['ph-ds', 26],
-    ['ph-6457', 27],
-    ['ph-6985', 28],
-    ['ph-ii', 29],
-    ['ph-7017', 30],
-    ['ph-7021', 31],
-    ['ph-lg', 32],
-    ['ph-ri', 33],
-    ['ph-ln', 34],
-    ['ph-6991', 35],
-    ['ph-ls', 36],
-    ['ph-nc', 37],
-    ['ph-mg', 38],
-    ['ph-sk', 39],
-    ['ph-sc', 40],
-    ['ph-sg', 41],
-    ['ph-an', 42],
-    ['ph-ss', 43],
-    ['ph-as', 44],
-    ['ph-do', 45],
-    ['ph-dv', 46],
-    ['ph-bk', 47],
-    ['ph-cl', 48],
-    ['ph-6983', 49],
-    ['ph-6984', 50],
-    ['ph-6987', 51],
-    ['ph-6986', 52],
-    ['ph-6988', 53],
-    ['ph-6989', 54],
-    ['ph-6990', 55],
-    ['ph-6992', 56],
-    ['ph-6995', 57],
-    ['ph-6996', 58],
-    ['ph-6997', 59],
-    ['ph-6998', 60],
-    ['ph-nv', 61],
-    ['ph-7020', 62],
-    ['ph-7018', 63],
-    ['ph-7022', 64],
-    ['ph-1852', 65],
-    ['ph-7000', 66],
-    ['ph-7001', 67],
-    ['ph-7002', 68],
-    ['ph-7003', 69],
-    ['ph-7004', 70],
-    ['ph-7006', 71],
-    ['ph-7007', 72],
-    ['ph-7008', 73],
-    ['ph-7009', 74],
-    ['ph-7010', 75],
-    ['ph-7011', 76],
-    ['ph-7012', 77],
-    ['ph-7013', 78],
-    ['ph-7014', 79],
-    ['ph-7015', 80],
-    ['ph-7016', 81],
-    ['ph-7019', 82],
-    ['ph-6456', 83],
-    ['ph-zs', 84],
-    ['ph-nd', 85],
-    ['ph-zn', 86],
-    ['ph-md', 87],
-    ['ph-ab', 88],
-    ['ph-2658', 89],
-    ['ph-ap', 90],
-    ['ph-au', 91],
-    ['ph-ib', 92],
-    ['ph-if', 93],
-    ['ph-mt', 94],
-    ['ph-qr', 95],
-    ['ph-ne', 96],
-    ['ph-pm', 97],
-    ['ph-ba', 98],
-    ['ph-bg', 99],
-    ['ph-zm', 100],
-    ['ph-cv', 101],
-    ['ph-bu', 102],
-    ['ph-mr', 103],
-    ['ph-sq', 104],
-    ['ph-gu', 105],
-    ['ph-ct', 106],
-    ['ph-mb', 107],
-    ['ph-mq', 108],
-    ['ph-bi', 109],
-    ['ph-sl', 110],
-    ['ph-nr', 111],
-    ['ph-ak', 112],
-    ['ph-cp', 113],
-    ['ph-cn', 114],
-    ['ph-sr', 115],
-    ['ph-in', 116],
-    ['ph-is', 117],
-    ['ph-tr', 118],
-    ['ph-lu', 119]
-  ];
-  $('#demographics .section-content').highcharts('Map', {
+  $.get('/api/community/analytics/list/view/groups', function(data) {
+    var groupData = {};
+    var industryData = [{name: 'def', y: 0}];
 
-      chart: {
-          map: 'countries/ph/ph-all'
-      },
+    $.get('/api/community/analytics/list/groups', function(list) {
+      $.each(data.views, function(i, item) {
+        var groups = list.groups.filter(function(g) {
+          return g.handle == item.handle;
+        })
 
-      title: {
-          text: 'View distribution'
-      },
+        if(groups[0]){
+          var key = groups[0].classification.industry;
 
-      subtitle: {
-          text: 'Hover over areas to see more details'
-      },
+          if(groupData[key]) groupData[key] += 1;
+          else groupData[key] = 1;
+        }
+      });
 
-      mapNavigation: {
-          enabled: true,
-          enableMouseWheelZoom: false,
-          buttonOptions: {
-              verticalAlign: 'bottom'
+      $.each(groupData, function(key, value) {
+        industryData.push({
+          name: key,
+          y: value
+        });
+      });
+
+      Highcharts.chart('groups', {
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false,
+          type: 'pie',
+          events: {
+            load: function() {
+              this.innerText = this.renderer.text(this.series[0].total, this.chartWidth/2, this.chartHeight*.6).css({
+                margin: '0 auto',
+                color: 'gray',
+                fontSize: '2.5em',
+                textAlign: 'center'
+              }).attr('text-anchor', 'middle').add();
+            }
           }
-      },
+        },
+        title: {
+          text: 'Group Views'
+        },
+        exporting: {
+          enabled: false
+        },
+        plotOptions: {
+          pie: {
+            innerSize: '60%',
+            dataLabels: {
+              enabled: false
+            },
+            events: {
+              mouseOver: function(e){
+                var hovered = this.data.filter(function(item) {
+                  return item.state == 'hover';
+                });
 
-      colorAxis: {
-          min: 0
-      },
-
-      series: [{
-          data: data,
-          name: 'Page Visits',
-          states: {
-              hover: {
-                  color: '#BADA55'
+                this.chart.innerText.attr({text: hovered[0].y});
+              },
+              mouseOut: function(){
+                this.chart.innerText.attr({text: this.total});
               }
+            }
           }
-      }]
+        },
+        series: [{
+          name: 'Count',
+          colorByPoint: true,
+          data: industryData
+        }]
+      });
+    });
   });
 
-  Highcharts.chart('agriculture', {
-      chart: {
+
+  $.get('/api/community/analytics/list/view/events', function(data) {
+    var groupData = {};
+    var eventData = [];
+
+    $.get('/api/community/analytics/list/events', function(list) {
+      $.each(data.views, function(i, item) {
+        var events = list.posts.filter(function(g) {
+          return g._id == item.eventID;
+        })
+
+        if(events[0]) {
+        var key = events[0].groupBelonged.charAt(0).toUpperCase() + events[0].groupBelonged.slice(1);
+
+          if(groupData[key]) groupData[key] += 1;
+          else groupData[key] = 1;
+        }
+      });
+
+      $.each(groupData, function(key, value) {
+        eventData.push({
+          name: key,
+          y: value
+        });
+      });
+
+      Highcharts.chart('events', {
+        chart: {
           plotBackgroundColor: null,
           plotBorderWidth: null,
           plotShadow: false,
-          type: 'pie'
-      },
-      title: {
-          text: 'Agriculture'
-      },
-      exporting: {
+          type: 'pie',
+          events: {
+            load: function() {
+              this.innerText = this.renderer.text(this.series[0].total, this.chartWidth/2, this.chartHeight*.6).css({
+                margin: '0 auto',
+                color: 'gray',
+                fontSize: '2.5em',
+                textAlign: 'center'
+              }).attr('text-anchor', 'middle').add();
+            }
+          }
+        },
+        title: {
+          text: 'Event Views'
+        },
+        exporting: {
           enabled: false
-      },
-      plotOptions: {
-              pie: {
-                  innerSize: '60%',
-                  dataLabels: {
-                      enabled: false
-                  }
+        },
+        plotOptions: {
+          pie: {
+            innerSize: '60%',
+            dataLabels: {
+              enabled: false
+            },
+            events: {
+              mouseOver: function(e){
+                var hovered = this.data.filter(function(item) {
+                  return item.state == 'hover';
+                });
+
+                this.chart.innerText.attr({text: hovered[0].y});
+              },
+              mouseOut: function(){
+                this.chart.innerText.attr({text: this.total});
               }
-      },
-      series: [{
+            }
+          }
+        },
+        series: [{
           name: 'Count',
           colorByPoint: true,
-          data: [{
-              name: 'News',
-              y: 56
-          }, {
-              name: 'Blogs',
-              y: 24
-          }, {
-              name: 'Discussions',
-              y: 10
-          }, {
-              name: 'Events',
-              y: 6
-          }]
-      }]
+          data: eventData
+        }]
+      });
+    });
   });
 
-  Highcharts.chart('aquaculture', {
-      chart: {
+  $.get('/api/community/analytics/list/view/reports', function(data) {
+    var groupData = {};
+    var reportData = [];
+
+    $.get('/api/community/analytics/list/reports', function(list) {
+      $.each(data.views, function(i, item) {
+        var reports = list.posts.filter(function(g) {
+          return g._id == item.reportID;
+        })
+
+        if(reports[0]) {
+          var key = reports[0].groupBelonged.charAt(0).toUpperCase() + reports[0].groupBelonged.slice(1);
+
+          if(groupData[key]) groupData[key] += 1;
+          else groupData[key] = 1;
+        }
+      });
+
+      $.each(groupData, function(key, value) {
+        reportData.push({
+          name: key,
+          y: value
+        });
+      });
+
+      Highcharts.chart('reports', {
+        chart: {
           plotBackgroundColor: null,
           plotBorderWidth: null,
           plotShadow: false,
-          type: 'pie'
-      },
-      title: {
-          text: 'Aquaculture'
-      },
-      exporting: {
+          type: 'pie',
+          events: {
+            load: function() {
+              this.innerText = this.renderer.text(this.series[0].total, this.chartWidth/2, this.chartHeight*.6).css({
+                margin: '0 auto',
+                color: 'gray',
+                fontSize: '2.5em',
+                textAlign: 'center'
+              }).attr('text-anchor', 'middle').add();
+            }
+          }
+        },
+        title: {
+          text: 'Reports Views'
+        },
+        exporting: {
           enabled: false
-      },
-      plotOptions: {
-              pie: {
-                  innerSize: '60%',
-                  dataLabels: {
-                      enabled: false
-                  }
+        },
+        plotOptions: {
+          pie: {
+            innerSize: '60%',
+            dataLabels: {
+              enabled: false
+            },
+            events: {
+              mouseOver: function(e){
+                var hovered = this.data.filter(function(item) {
+                  return item.state == 'hover';
+                });
+
+                this.chart.innerText.attr({text: hovered[0].y});
+              },
+              mouseOut: function(){
+                this.chart.innerText.attr({text: this.total});
               }
-      },
-      series: [{
+            }
+          }
+        },
+        series: [{
           name: 'Count',
           colorByPoint: true,
-          data: [{
-              name: 'News',
-              y: 56
-          }, {
-              name: 'Blogs',
-              y: 24
-          }, {
-              name: 'Discussions',
-              y: 10
-          }, {
-              name: 'Events',
-              y: 6
-          }]
-      }]
+          data: reportData
+        }]
+      });
+    });
   });
 
-  Highcharts.chart('nresources', {
-      chart: {
+  $.get('/api/community/analytics/list/view/discussions', function(data) {
+    var groupData = {};
+    var discussionData = [];
+
+    $.get('/api/community/analytics/list/discussions', function(list) {
+      $.each(data.views, function(i, item) {
+        var discussions = list.posts.filter(function(g) {
+          return g._id == item.discussionID;
+        })
+
+        if(discussions[0]) {
+          var key = discussions[0].groupBelonged.charAt(0).toUpperCase() + discussions[0].groupBelonged.slice(1);
+
+          if(groupData[key]) groupData[key] += 1;
+          else groupData[key] = 1;
+        }
+      });
+
+      $.each(groupData, function(key, value) {
+        discussionData.push({
+          name: key,
+          y: value
+        });
+      });
+
+      Highcharts.chart('discussions', {
+        chart: {
           plotBackgroundColor: null,
           plotBorderWidth: null,
           plotShadow: false,
-          type: 'pie'
-      },
-      title: {
-          text: 'Natural Resources'
-      },
-      exporting: {
+          type: 'pie',
+          events: {
+            load: function() {
+              this.innerText = this.renderer.text(this.series[0].total, this.chartWidth/2, this.chartHeight*.6).css({
+                margin: '0 auto',
+                color: 'gray',
+                fontSize: '2.5em',
+                textAlign: 'center'
+              }).attr('text-anchor', 'middle').add();
+            }
+          }
+        },
+        title: {
+          text: 'Discussion Views'
+        },
+        exporting: {
           enabled: false
-      },
-      plotOptions: {
-              pie: {
-                  innerSize: '60%',
-                  dataLabels: {
-                      enabled: false
-                  }
+        },
+        plotOptions: {
+          pie: {
+            innerSize: '60%',
+            dataLabels: {
+              enabled: false
+            },
+            events: {
+              mouseOver: function(e){
+                var hovered = this.data.filter(function(item) {
+                  return item.state == 'hover';
+                });
+
+                this.chart.innerText.attr({text: hovered[0].y});
+              },
+              mouseOut: function(){
+                this.chart.innerText.attr({text: this.total});
               }
-      },
-      series: [{
+            }
+          }
+        },
+        series: [{
           name: 'Count',
           colorByPoint: true,
-          data: [{
-              name: 'News',
-              y: 56
-          }, {
-              name: 'Blogs',
-              y: 24
-          }, {
-              name: 'Discussions',
-              y: 10
-          }, {
-              name: 'Events',
-              y: 6
-          }]
-      }]
+          data: discussionData
+        }]
+      });
+    });
   });
 
+  var drilldown = function(data) {
+    $('#demographics .section-content table tbody').html("");
+    $('#demographics .thead1').html("City/Province");
+    for(var i=0; i<data.length; i++) {
+      $('#demographics .section-content table').append(
+        "<tr>" +
+          "<td>"+data[i].name+"</td>" +
+          "<td>"+data[i].val+"</td>" +
+        "</tr>"
+      ).trigger('update');
+    }
+  }
 
+  var drilldown_2 = function(data) {
+    $('#demographics .thead1').html("#");
+    $('#demographics .thead2').html("City/Province");
+    $('#demographics .thead3').show();
 
+    $('#demographics .section-content table tbody').html("");
+    for(var i=0; i<data.length; i++) {
+      $('#demographics .section-content table tbody').append(
+        "<tr>" +
+          "<td>"+(i+1)+"</td>" +
+          "<td>"+data[i].city+"</td>" +
+          "<td>"+moment(data[i].time).format('M-DD-YYYY HH:mm')+"</td>" +
+        "</tr>"
+      ).trigger('update');
+    }
+  }
+
+  var drillup = function(data) {
+    $('#demographics .thead1').html("Region");
+    $('#demographics .thead2').html("Visits");
+    $('#demographics .thead3').hide();
+    $('#demographics .section-content table tbody').html("");
+    for(var i=0; i<data.length; i++) {
+      $('#demographics .section-content table tbody').append(
+        "<tr>" +
+          "<td>"+data[i].name+"</td>" +
+          "<td>"+data[i].value+"</td>" +
+        "</tr>"
+      ).trigger('update');
+    }
+  }
+
+  var recLog = '';
+  var updateLogs = function(data) {
+    recLog = $('#page-visits table tbody').html();
+
+    $('#page-visits table tbody').html("");
+    $("#page-visits .refresh-btn").show();
+    for(var i=0; i<data.length; i++) {
+      $('#page-visits table tbody').append(
+        "<tr>" +
+          "<td>"+data[i].region+"</td>" +
+          "<td>"+data[i].city+"</td>" +
+          "<td>"+moment(data[i].time).format('M-DD-YYYY HH:mm')+"</td>" +
+        "</tr>"
+      ).trigger('update');
+    }
+  }
+
+  $("#page-visits .refresh-btn").click(function(e) {
+    $(this).hide();
+    $('#page-visits table tbody').html("");
+    $('#page-visits table tbody').append(recLog);
+  });
+
+  $('#demographics .section-content table').tablesorter({
+    headerTemplate: '{content}{icon}',
+    sortList: [[1,1]]
+  });
+  $('#page-visits .section-content table').tablesorter({
+    headerTemplate: '{content}{icon}'
+  });
   $('.highcharts-credits').css('display', 'none');
 
 });
