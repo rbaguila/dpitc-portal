@@ -23,6 +23,7 @@
 
 .bg-grey{
   background-color: #EAEAEA;
+  padding: 1% 1% 1% 1%;
 }
 
 .user-prof{
@@ -82,7 +83,7 @@
 }
 
 .col-md-3 .panel-body{
-  min-height: 400px;
+  min-height: 480px;
 }
 .panel{
   margin-bottom: 2%;
@@ -117,8 +118,4 @@ h5{
 .panel-primary>.panel-heading{
   background-color: #3062B7;
   border-color: #3062B7;
-}
-
-.panel-body{
-  padding: 1% 1% 1% 1%;
 }
