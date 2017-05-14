@@ -94,7 +94,8 @@ mixin learning-object-side(learningObject, redirect)
       .media-body
         strong.truncate-text(data-toggle="tooltip" data-placement="bottom" title=learningObject.title) !{learningObject.title}
         br
-        small.block-with-text.text-info(data-toggle="tooltip" data-placement="bottom" title=learningObject.content.brief) !{learningObject.content.brief}    
+        small
+          .block-with-text.text-info(data-toggle="tooltip" data-placement="bottom" title=learningObject.content.brief) !{learningObject.content.brief}    
 
 //- Learning Object Reactions
 mixin learning-object-reactions(currentLO)
