@@ -11,8 +11,12 @@ var Types = keystone.Field.Types;
  });
 
  CommunityView.add({
-   ip: { type: String, index: true },
-   time: { type: Types.Date, default: Date.now, noedit: true, index: true }
+   ip: { type: String, index: true, noedit: true },
+   time: { type: Types.Date, default: Date.now, noedit: true, index: true },
+   city: { type: String, noedit: true },
+   region: { type: String, noedit: true },
+   country: { type: String, default: 'PH', noedit: true },
+   loc: { type: String, noedit: true }
  });
 
  CommunityView.defaultColumns = 'ip, time';

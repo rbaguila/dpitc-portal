@@ -9,7 +9,7 @@ exports = module.exports = function(req, res) {
 
     }
 
-    view.query('mainViews', keystone.list('CommunityView').model.find());
+    view.query('mainViews', keystone.list('CommunityView').model.find().sort('-time'));
 
     var pageData = {
       loginRedirect: '/community/analytics',

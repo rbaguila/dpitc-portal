@@ -7,15 +7,15 @@
           | Events
           .title-hr.col-xs-12
         .section-content
-          if events.length
+          if events && events.length
             each event in events
               .event.row
-                a.event-date.col-xs-2.col-md-4(href="#")
-                  p.day #{event._.startDate.format('DD')}
-                  p.mon #{event._.startDate.format('MMM').toUpperCase()}
+                a.event-date.col-xs-2.col-md-4(href=host + '/groups/' + event.groupBelonged + '/view-posts/event/' + event._id)
+                  p.day #{event.startDateTime.date}
+                  p.mon #{event.startDateTime.month.toUpperCase()}
                 .event-details.col-xs-10.col-md-8
-                  p.text-muted AGRICULTURE
-                  a(href="#") #{event.title} 
+                  p.text-muted #{event.groupBelonged.toUpperCase()} 
+                  a(href=host + '/groups/' + event.groupBelonged + '/view-posts/event/' + event._id) #{event.eventName} 
               hr
           else
             .row 
@@ -23,17 +23,17 @@
                 br
                 h4.empty.text-muted No upcoming events
 
-      .section.col-md-6
+      .section.col-md-6(style="padding: 10px 16px;")
         .section-title.focus.row 
           .title.col-md-5.col-xs-4
             .skew.col-xs-12
-            .skewed-text Latest Blogs
+            .skewed-text Recent Reports
         .section-content
-          if blogPosts.length
+          if blogPosts && blogPosts.length
             each blog in blogPosts
               .blog.row
                 .blog-avatar
-                  if blog.author.picture
+                  if blog.postedBy.photo
                     a(href="#").author-image
                       //- Include image here
                       img(src='images/community/director-news.jpg').img-responsive
@@ -42,19 +42,17 @@
                 .blog-content
                   .content-header
                     h4
-                      a(href="#").title #{blog.title}
-                      
-                    a(href="#").name.text-muted By #{blog.author.name.full} &nbsp
-                    a(href="#").time-since.text-muted #{blog._.publishedDate.moment().fromNow()}
+                      a(href=host + '/groups/' + blog.groupBelonged + '/view-posts/report/' + blog._id).title #{blog.reportTitle}
+                    a(href="#").name.text-muted By #{blog.postedBy.name} &nbsp
+                    a(href="#").time-since.text-muted #{blog.datePosted}
                   .content-body
-                    - console.log(validationErrors)
-                    p !{blog.content.brief}
+                    p !{blog.details}
               hr
           else
             .row 
               .col-md-12
                 br
-                h4.empty.text-muted No recent blogs
+                h4.empty.text-muted No recent reports
         br
         
         .section-title.focus.row 
@@ -62,24 +60,21 @@
             .skew.col-xs-12
             .skewed-text Discussions
         .section-content
-          if discussions.length
-          each discussion in discussions
-            .discussion.row
-              .stat
-                .box
-                  .count
-                    = discussion.comments.length
-                  div comments
-                .box
-                  .count
-                    = discussion.views.length
-                  div views
-              .summary
-                h4
-                  a(href="#").title
-                    = discussion.title
-                span.badge.tag Agriculture
-            hr
+          if discussions && discussions.length
+            each discussion in discussions
+              .discussion.row
+                .stat
+                  .box
+                    .count #{discussion.reactions[0].count}
+                    div comments
+                  .box
+                    .count #{discussion.views.length}
+                    div views
+                .summary
+                  h4
+                    a(href=host + '/groups/' + discussion.groupBelonged + '/view-posts/question/' + discussion._id).title #{discussion.question}
+                  span.badge.tag #{discussion.groupBelonged}
+              hr
                 
           else
             .row 
@@ -129,44 +124,38 @@
       .section-title.focus.row 
         .title.col-md-2.col-xs-3
           .skew.col-xs-12
-          #temp.skewed-text Multimedia
-      .section-content#multimedia
-        a(href="images/exhibit/abaca.jpg").col-md-2.col-sm-4.col-xs-6
-          .img-wrapper
-            img(src='images/exhibit/abaca.jpg').photo.img-responsive
-        a(href="images/exhibit/aquaculture.jpg").col-md-2.col-sm-4.col-xs-6
-          .img-wrapper
-            img(src='images/exhibit/aquaculture.jpg').photo.img-responsive
-        a(href="images/exhibit/bamboo.jpg").col-md-2.col-sm-4.col-xs-6
-          .img-wrapper
-            img(src='images/exhibit/bamboo.jpg').photo.img-responsive
-        a(href="images/exhibit/bigeyelet.jpg").col-md-2.col-sm-4.col-xs-6
-          .img-wrapper
-            img(src='images/exhibit/bigeyelet.jpg').photo.img-responsive
-        a(href="images/exhibit/biofloc.jpg").col-md-2.col-sm-4.col-xs-6
-          .img-wrapper
-            img(src='images/exhibit/biofloc.jpg').photo.img-responsive
-        a(href="images/exhibit/cacao.jpg").col-md-2.col-sm-4.col-xs-6
-          .img-wrapper
-            img(src='images/exhibit/cacao.jpg').photo.img-responsive
-        a(href="images/exhibit/cavendish.jpg").col-md-2.col-sm-4.col-xs-6
-          .img-wrapper
-            img(src='images/exhibit/cavendish.jpg').photo.img-responsive
-        a(href="images/exhibit/coco.jpg").col-md-2.col-sm-4.col-xs-6
-          .img-wrapper
-            img(src='images/exhibit/coco.jpg').photo.img-responsive
-        a(href="images/exhibit/coffee.jpg").col-md-2.col-sm-4.col-xs-6
-          .img-wrapper
-            img(src='images/exhibit/coffee.jpg').photo.img-responsive
-        a(href="images/exhibit/coral.jpg").col-md-2.col-sm-4.col-xs-6
-          .img-wrapper
-            img(src='images/exhibit/coral.jpg').photo.img-responsive
-        a(href="images/exhibit/cpgr.jpg").col-md-2.col-sm-4.col-xs-6
-          .img-wrapper
-            img(src='images/exhibit/cpgr.jpg').photo.img-responsive
-        a(href="images/exhibit/knifefish.jpg").col-md-2.col-sm-4.col-xs-6
-          .img-wrapper
-            img(src='images/exhibit/knifefish.jpg').photo.img-responsive
+          #temp.skewed-text Top Groups
+      .section-content
+        if groups && groups.length
+          each industry in groups
+            if industry.length
+              hr
+              .row.groups
+                .col-xs-12
+                  p.text-muted #{industry[0].classification.industry}
+                each group in industry
+                  .media.col-lg-3
+                    .media-left
+                      a(href=host + '/groups/' + group.handle)
+                        if group.photo
+                          img(src=host + '/' + group.photo.path height='110px' width='110px').media-object
+                        else
+                          img(src="http://placehold.it/110x110").media-object
+                    .media-body
+                      a(href=host + '/groups/' + group.handle).media-heading
+                        h4 #{group.name}
+                      p.text-muted.text-small
+                        | #{group.membersCount} members #{group.postsCount.total} posts
+          .row.text-center
+            a(href=host + "/groups/" style="color: white;")
+              button.btn.btn-lg(style="background-color: #3062B7;" onMouseOver="this.style.color='#FFF'") More Groups
+            br
+            br
+        else
+          .row 
+            .col-md-12
+              br
+              h4.empty.text-muted No Groups Available
             
   #public-analytics.row
     .section.col-md-12

@@ -1,0 +1,36 @@
+extends ../../layouts/community
+
+block content
+  .container(style="margin-top:100px;")
+    if !data.post
+      .jumbotron.text-center
+        h2 Invalid post...
+        p.lead Please check the url and try again
+    else
+      .row
+        .col-md-8.col-md-offset-2
+          p: a(href='/community/blogs').text-muted &larr; more blog posts
+          hr
+          article
+            header
+              h1= data.post.title
+              if data.post.image.exists
+                div(style="margin-bottom: 20px; margin-top: 20px;")
+                  img(src=data.post._.image.fit(750,500)).img-responsive
+              div
+                p.text-muted.text-small Posted 
+                  if data.post.publishedDate
+                    | on 
+                    time(datetime=data.post.publishedDate)=data.post._.publishedDate.format('MMMM Do, YYYY')
+                  if data.post.categories && data.post.categories.length
+                    |  in 
+                    each cat, cat_i in data.post.categories
+                      a(href='/community/blogs/' + cat.key)= cat.name
+                      if cat_i < data.post.categories.length - 1
+                        | , 
+                      else
+                        |  
+                  if data.post.author
+                    | by #{data.post.author.name.full}
+              hr
+              != data.post.content.full

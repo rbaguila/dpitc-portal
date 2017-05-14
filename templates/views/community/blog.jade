@@ -1,0 +1,72 @@
+extends ../../layouts/community
+
+include ../../mixins/post
+
+block content
+  .community-blogs.container(style="margin-bottom:100px;")
+    .page-header
+      a(href='/keystone/blog-posts?new').btn.btn-default.pull-right= user ? 'Write Post' : 'Sign in to Write Post'
+      h1=filters.category ? data.category.name : 'Community Stream'
+    .row
+      .col-sm-8
+        if filters.category && !filters.category
+          h3 Invalid Category.
+        else
+          if data.posts.results.length
+            if data.posts.totalPages > 1
+              .lead.text-muted Showing 
+                strong #{posts.first}
+                |	to 
+                strong #{posts.last}
+                |	of 
+                strong #{posts.total}
+                |	posts
+            else
+              .lead.text-muted Showing #{utils.plural(data.posts.results.length, '* post')}
+            .blog
+              each post in data.posts.results
+                include includes/public-post.jade
+            if data.posts.totalPages > 1
+              ul.pagination
+                if data.posts.previous
+                  li: a(href='?page=' + data.posts.previous): span.glyphicon.glyphicon-chevron-left
+                else
+                  li.disabled: a(href='?page=' + 1): span.glyphicon.glyphicon-chevron-left
+                each p, i in data.posts.pages
+                  li(class=data.posts.currentPage === p ? 'active' : null)
+                    a(href='?page=' + (p === '...' ? (i ? data.posts.totalPages : 1) : p ))= p
+                if data.posts.next
+                  li: a(href='?page=' + data.posts.next): span.glyphicon.glyphicon-chevron-right
+                else
+                  li.disabled: a(href='?page=' + data.posts.totalPages): span.glyphicon.glyphicon-chevron-right
+          else
+            if filters.category
+              .jumbotron.text-center
+                h3(style="margin-bottom:0;margin-top:0;") No posts in the category #{filters.category.name}.
+            else
+              .jumbotron.text-center
+                h3(style="margin-bottom:0;margin-top:0;") There are no posts yet.
+      .col-sm-4
+        if data.categories.length
+          .lead.text-muted Categories
+          ul.nav.nav-pills.nav-stacked
+            li(class=!data.category ? 'active' : null)
+              a(href='/community/blogs') All
+            each cat in data.categories
+              li(role="presentation" class=data.category && data.category.id === cat.id ? 'active' : null)
+                a(href='/community/blogs/' + cat.key)
+                  =cat.name
+                  if cat.postCount
+                    span.badge.pull-right= cat.postCount
+
+block js
+  script.
+    $(document).ready(function() {
+      var b = $('.ks-editable-btn');
+      
+      for(var i=0; i<b.length; i++) {
+        var s = b[i].getAttribute('href');
+        b[i].setAttribute('href', '/' + s);
+      }
+      
+    });
