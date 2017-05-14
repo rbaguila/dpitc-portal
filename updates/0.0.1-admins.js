@@ -924,6 +924,94 @@ exports.create = {
     }
   ],
 
+  LOFileUpload: [
+    /* CORN TOOLKIT */
+    {
+      'name': 'Introduction to SARAI Training Toolkit for Corn',
+      'description': 'The SARAI TRAINING TOOLKIT FOR CORN is a user-friendly guide to all the developed technologies and systems of the program. It provides the stakeholders a holistic view of the program, and its direct applications to daily agricultural practices.',
+      '__ref': 'intro-corn-toolkit-file',
+    },
+
+    {
+      'name': 'Volume 1: Introduction to SARAI',
+      'description': 'This volume discusses the detailed introduction to the program – its main objectives, various components, and expected outputs',
+             
+      '__ref': 'corn-vol1-file',
+    },
+
+    {
+      'name': 'Volume 2: Climate, Weather & Climate Change',
+      'description': 'Before the discussion on the numerous technologies and systems to improve their agricultural practices, it is important for them to develop a basic understanding of climate, weather, and climate change',     
+      '__ref': 'corn-vol2-file',
+    },
+
+    {
+      'name': 'Volume 3: Pests and Diseases of Corn',
+      'description': 'This volume focuses on the major corn pests and diseases.',
+      '__ref': 'corn-vol3-file',
+    },
+
+    {
+      'name': 'Volume 4: Nutrient Management',
+      'description': 'This volume emphasizes the importance of providing our farmers with site-specific crop nutrient advisories for maximum crop growth.',
+  
+      '__ref': 'corn-vol4-file',
+    },
+
+    {
+      'name': 'Volume 5: Soil Moisture Monitoring System',
+      'description': 'This volume focuses on three topics: \nModule 1 – Discusses the physical and chemical characteristics of soil and the importance of active soil moisture monitoring. \nModule 2 – Presents the Project SARAI cost-efficient soil moisture monitoring system. Basic steps on how to set up, operate, and roubleshoot the sensors will be discussed \nModule 3 – Includes the use of Water-balanced Assisted Irrigation Decision Support System (WAISS) and how it works.',
+        
+      '__ref': 'corn-vol5-file',
+    },
+
+    {
+      'name': 'Volume 6: SARAI Knowledge Portal',
+      'description': 'This volume gives a walkthrough on the SARAI Knowledge Portal. This portal offers a wide-range of agricultural services in web and mobile platforms for its initial six priority crops.',
+      '__ref': 'corn-vol6-file',
+    },
+
+    /* RICE TOOLKIT */
+
+    {
+      'name': 'Introduction to SARAI Training Toolkit for Rice',
+      'description': 'The SARAI TRAINING TOOLKIT FOR RICE is a user-friendly guide to all the developed technologies and systems of the program. It provides the stakeholders a holistic view of the program, and its direct applications to daily agricultural practices.',
+      '__ref': 'intro-rice-toolkit-file',
+    },
+
+    {
+      'name': 'Volume 1: Introduction to SARAI',
+      'description': 'This volume discusses the detailed introduction to the program – its main objectives, various components, and expected outputs.',
+      '__ref': 'rice-vol1-file',
+    },
+
+    {
+      'name': 'Volume 2: Climate, Weather & Climate Change',
+      'description': 'Before the trainers introduce the participants to numerous technologies and systems to improve their agricultural practices, it is important for them to develop a basic understanding of climate, weather, and climate change.',
+      '__ref': 'rice-vol2-file',
+    },
+
+    {
+      'name': 'Volume 3: Pests and Diseases of Rice',
+      'description': 'This volume highlights the importance of understanding the plants’ specific growth stage and how their vulnerabilities to particular pests and diseases change over time. ',
+      '__ref': 'rice-vol3-file',
+    },
+
+    {
+      'name': 'Volume 4: Nutrient Management',
+      'description': 'This volume emphasizes the importance of providing our farmers with site-specific crop nutrient advisories for maximum crop growth.',
+      '__ref': 'rice-vol4-file',
+    },
+
+    {
+      'name': 'Volume 5: SARAI Knowledge Portal',
+      'description': 'This volume gives a walkthrough on the SARAI Knowledge Portal. This portal offers a wide-range of agricultural services in web and mobile platforms for its initial six priority crops.',
+      '__ref': 'rice-vol5-file',
+    },
+
+  ],
+
+
   LearningObject: [
     /* CORN TOOLKIT */
     {
@@ -939,6 +1027,7 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
+      'file': 'intro-corn-toolkit-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
       'createdBy': 'admin',     
@@ -958,6 +1047,7 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
+      'file': 'corn-vol1-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
       'createdBy': 'admin',     
@@ -977,6 +1067,7 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
+      'file': 'corn-vol2-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
       'createdBy': 'admin',     
@@ -996,6 +1087,7 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
+      'file': 'corn-vol3-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
       'createdBy': 'admin',     
@@ -1015,6 +1107,7 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
+      'file': 'corn-vol4-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
       'createdBy': 'admin',     
@@ -1034,6 +1127,7 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
+      'file': 'corn-vol5-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
       'createdBy': 'admin',     
@@ -1053,6 +1147,7 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
+      'file': 'corn-vol6-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
       'createdBy': 'admin',     
@@ -1074,6 +1169,7 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
+      'file': 'intro-rice-toolkit-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
       'createdBy': 'admin',     
@@ -1093,6 +1189,7 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
+      'file': 'rice-vol1-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
       'createdBy': 'admin',     
@@ -1112,6 +1209,7 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
+      'file': 'rice-vol2-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
       'createdBy': 'admin',     
@@ -1131,6 +1229,7 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
+      'file': 'rice-vol3-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
       'createdBy': 'admin',     
@@ -1150,6 +1249,7 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
+      'file': 'rice-vol4-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
       'createdBy': 'admin',     
@@ -1169,6 +1269,7 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
+      'file': 'rice-vol5-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
       'createdBy': 'admin',     
