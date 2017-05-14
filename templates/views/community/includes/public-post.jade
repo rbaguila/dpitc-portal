@@ -1,0 +1,18 @@
+article(data-ks-editable=editable(user, { list: 'BlogPost', id: post.id })).media
+  .media-left
+    a(href='/community/blogs/post/' + post.slug)
+      if post.image.exists
+        img(src=post._.image.fit(80,80)).media-object
+      else
+        img(src="http://placehold.it/80x80").media-object
+  .media-body
+    h3.media-heading
+      a(href='/community/blogs/post/' + post.slug)= post.title
+    if post.publishedDate || post.author
+      p.text-muted.text-small
+        if post.publishedDate
+          time= post._.publishedDate.format('MMMM Do, YYYY')
+          |  
+        if post.author
+          span by #{post.author.name.full}
+    != post.content.brief

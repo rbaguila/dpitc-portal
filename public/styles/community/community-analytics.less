@@ -3,12 +3,12 @@
   padding: 0px 20px;
   padding-top: 65px;
   padding-bottom: 20px;
+  font-family: Lato;
 
   .section {
     .section-title {
       background-color: #f6f6f6;
       padding: 10px 15px;
-      font-family: Lato;
       line-height: 1;
       border: 1px solid #e9e9e9;
       border-bottom: none;
@@ -17,7 +17,8 @@
     .section-content {
       position: relative;
       background-color: #FFFFFF;
-      padding: 10px 15px;
+      padding: 10px 0;
+      margin-bottom: 20px;
       border: 1px solid #e9e9e9;
       box-shadow: 0px 3px 2px #e9e9e9;
     }
@@ -27,6 +28,7 @@
     position: fixed;
     font-family: Lato;
     font-size: 14px;
+    display: block;
 
     a {
 
@@ -41,17 +43,41 @@
   .anchor {
     padding-top: 150px;
     margin-top: -150px;
+    z-index: -1;
   }
 
-  #active-users { height: 400px; }
+  #active-users { height: 370px; }
+
+  .recent-visits {
+    color: black;
+    height: 370px !important;
+    overflow-y: auto;
+
+    thead { font-size: 14px; }
+
+    tbody {
+      font-size: 12px;
+      font-family: Arial;
+    }
+  }
 
   #demographics .section-content {
-    height: 600px;
-    margin: 0 auto;
+    height: 400px;
     min-width: 310px;
+    overflow: hidden;
   }
 
-  #industry .section-content {
+  #demog-table {
+    height: 437px !important;
+
+    thead {
+      padding: 10px 15px !important;
+      line-height: 1 !important;
+      background-color: #f6f6f6 !important;
+    }
+  }
+
+  #interactions .section-content {
     height: 300px;
 
     .graph { height: 100%; }
