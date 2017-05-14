@@ -38,7 +38,6 @@ mixin learning-object-tr-media(learningObject, redirect)
     td
       a(href=redirect)
         .media-left
-          a(href=redirect)
           if learningObject.thumbnail.exists
             +img-available-rounded-media-object(learningObject._.thumbnail.limit(200,150), learningObject.title, 200, 150)
           else
@@ -58,41 +57,35 @@ mixin learning-object-tr-media(learningObject, redirect)
 mixin course-tr-media(course, redirect)
   tr.media
     td
-      .media-left
-        if course.thumbnail.exists
-          a(href=redirect)
+      a(href=redirect)
+        .media-left
+          if course.thumbnail.exists
             //- img(src=course._.thumbnail.limit(200,150), alt=course.title, height='150px', width='200px').img-rounded.media-object
             +img-available-rounded-media-object(course._.thumbnail.limit(200,150), course.title, 200, 150)
-        else
-          a(href=redirect)
-            +img-na-rounded-media-object(200, 150)
-            
-      .media-body
-        a(href=course.url)
+          else
+            +img-na-rounded-media-object(200, 150)    
+        .media-body
           h3.media-heading.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=course.title) !{course.title}
           p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=course.title) !{course.content.brief}
           
 mixin learning-content-tr-media(learningContent, redirect)
   tr.media
     td
-      .media-left
-        if learningContent.thumbnail.exists
-          a(href=redirect)
+      a(href=redirect)
+        .media-left
+          if learningContent.thumbnail.exists
             //- img(src=learningContent._.thumbnail.limit(200,150), alt=learningContent.title, height='150px', width='200px').img-rounded.media-object
             +img-available-rounded-media-object(learningContent._.thumbnail.limit(200,150), learningContent.title, 200, 150)
-        else
-          a(href=redirect)
+          else
             +img-na-rounded-media-object(200, 100)
             
-      .media-body
-        a(href=redirect)
+        .media-body
           h3.media-heading.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=learningContent.title) !{learningContent.title}
           p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=learningContent.content.brief) !{learningContent.content.brief}
 
 mixin learning-object-side(learningObject, redirect)
   .media
     a(href=redirect)
-      
       .media-left
         if learningObject.thumbnail.exists
           +img-available-rounded-media-object(learningObject._.thumbnail.limit(100, 80), learningObject.title, 100, 80) 
