@@ -27,7 +27,7 @@ exports = module.exports = function (req, res) {
   locals.ip = null;
   
   locals.page = req.query.page == undefined ? 1 : req.query.page;
-  locals.perPage = req.query.perPage == undefined ?  6 : req.query.perPage;
+  locals.perPage = req.query.perPage == undefined ?  4 : req.query.perPage;
   
   locals.formData = req.body || {};
 
@@ -155,6 +155,7 @@ exports = module.exports = function (req, res) {
 
     // paginate locals.popularLO
     locals.paginatePopularLO = helper.paginate(tempPopularLO, locals.page, locals.perPage);
+
     //locals.paginatePopularLO = helper.paginate(locals.popularLO, locals.page, locals.perPage);
    
     next();

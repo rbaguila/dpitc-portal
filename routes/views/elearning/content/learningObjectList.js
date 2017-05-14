@@ -131,7 +131,7 @@ exports = module.exports = function (req, res) {
           'state': 'published'
         },
       })
-      .populate('isp, sector, industry')
+      .populate('isp, sector, industry video')
       .sort('-publishedAt');
 
     } else {
@@ -147,7 +147,7 @@ exports = module.exports = function (req, res) {
             ]            
           },
         })
-        .populate('isp, sector, industry')
+        .populate('isp, sector, industry video')
         .sort('-publishedAt');
 
     }

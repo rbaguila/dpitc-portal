@@ -28,6 +28,7 @@ exports = module.exports = function (req, res) {
 
   locals.formData = req.body || {};
 
+  var tempPopularLO = [];
   locals.popularLO = [];
   var pastLOviews = [];
 
@@ -45,7 +46,6 @@ exports = module.exports = function (req, res) {
     next();
 
   });
-
 
 
   // Get all LOViews withing the past 30 days.
@@ -108,15 +108,42 @@ exports = module.exports = function (req, res) {
       
   });
 
+  // Populate LearningObject Videos
   view.on('init', function(next) {
-    // Sort locals.popularLO[]
+    async.each(locals.popularLO, function(learningObject, next) {
+      LearningObject.model.findOne({
+          _id: learningObject._id
+        })
+        .populate('video')
+        .exec(function(err, result) {
+          if (err) return next(err);
+        //  console.log(result);
+
+          tempPopularLO.push(result);
+          next();
+        });
+    }, function (err) {
+      next(err);
+    });
+
+  });
+
+  view.on('init', function(next) {
+    /*// Sort locals.popularLO[]
     locals.popularLO.sort( function (a, b) {
       return parseFloat(b.viewCount) - parseFloat(a.viewCount); 
     });
 
     // paginate locals.popularLO
     locals.paginatePopularLO = helper.paginate(locals.popularLO, locals.page, locals.perPage);
-   
+   */
+
+    tempPopularLO.sort( function (a, b) {
+      return parseFloat(b.viewCount) - parseFloat(a.viewCount); 
+    });
+
+    // paginate locals.popularLO
+    locals.paginatePopularLO = helper.paginate(tempPopularLO, locals.page, locals.perPage);
     next();
   });
 
