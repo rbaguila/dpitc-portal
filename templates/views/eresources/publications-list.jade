@@ -8,7 +8,8 @@ block publications
           .publication-col-list
             a(href="/eresources/publication/"+publication._id)
               .cover
-                img(src=publication._.cover.fit(100, 180, {}))
+                //- img(src=publication._.cover.fit(100, 180, {}))
+                img(src=publication._.cover.fit(110, 180, {}))
 
               .details
                 h4(style='margin:0') #{publication.get('title')}
