@@ -1,10 +1,6 @@
 $(document).ready(function() {
     var geoloc = {}
 
-    $('#multimedia').lightGallery({
-      thumbnail: true
-    });
-
     $('.wrapper .section').theiaStickySidebar();
 
     $.getJSON('https://freegeoip.net/json/', function(data){
