@@ -138,7 +138,7 @@
                     .media-left
                       a(href=host + '/groups/' + group.handle)
                         if group.photo
-                          img(src=host + '/' + group.photo.path height='110px' width='110px').media-object
+                          img(src=group.photo.secure_url height='110px' width='110px').media-object
                         else
                           img(src="http://placehold.it/110x110").media-object
                     .media-body

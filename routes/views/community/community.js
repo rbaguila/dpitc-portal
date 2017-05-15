@@ -29,26 +29,26 @@ exports = module.exports = function (req, res) {
   // Record visits
   view.on('init', function(next) {
     /* Has a daily limit */
-    var command = 'curl freegeoip.net/json/';
-    var child = exec(command, function(err, data, stderr) {
-      if(err) {
-        console.log(err);
-      }
-
-      data = JSON.parse(data);
-
-      var CommunityView = keystone.list('CommunityView');
-      var item = new CommunityView.model({
-        ip: data.ip,
-        city: data.city,
-        region: data.region_name,
-        loc: data.latitude+','+data.longitude
-      });
-
-      item.save(function(err, view) {
-        if (err) return res.apiError('database error', err);
-      })
-    });
+    // var command = 'curl freegeoip.net/json/';
+    // var child = exec(command, function(err, data, stderr) {
+    //   if(err) {
+    //     console.log(err);
+    //   }
+    //
+    //   data = JSON.parse(data);
+    //
+    //   var CommunityView = keystone.list('CommunityView');
+    //   var item = new CommunityView.model({
+    //     ip: data.ip,
+    //     city: data.city,
+    //     region: data.region_name,
+    //     loc: data.latitude+','+data.longitude
+    //   });
+    //
+    //   item.save(function(err, view) {
+    //     if (err) return res.apiError('database error', err);
+    //   })
+    // });
 
     next();
   });

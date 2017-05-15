@@ -156,6 +156,19 @@ exports.listGroupViews = function(req, res) {
   });
 }
 
+exports.addCommView = function(req, res) {
+  var data = (req.method == 'POST') ? req.body : req.query;
+  var item = new CommunityView.model(data);
+
+  item.save(function(err, view) {
+    if (err) return res.apiError('database error', err);
+
+    res.apiResponse({
+      community_view: view
+    });
+  })
+}
+
 exports.addDiscView = function(req, res) {
   var data = (req.method == 'POST') ? req.body : req.query;
   var item = new DiscussionView.model(data);
