@@ -1,0 +1,123 @@
+extends ../../../layouts/elearning-user
+
+block css
+  link(rel="stylesheet" type="text/css" href="/styles/analytics.css")
+
+mixin Most(mostpopular, mostcommented, mostreacted, numCourses, numLO, numUsers, numViews, numComments, numReactions, topTopicsbyRatings, numPageVisits)
+    .row
+      .col-md-8.col-xs-12
+        div(id="allVisit")
+      .col-md-4.col-xs-12
+        .div(id="ratioVisit")
+      .col-md-8.col-xs-12
+        div(id="userVisitsWorld")
+      .col-md-4.col-xs-12
+        .well.well-sm.centered-panel
+          span.glyphicon.glyphicon-book(aria-hidden='true')
+          |  COURSES: 
+          span= numCourses
+        .well.well-sm.centered-panel
+          span.glyphicon.glyphicon-file(aria-hidden='true')
+          |  LEARNING OBJECTS: 
+          span= numLO
+        .well.well-sm.centered-panel
+          span.glyphicon.glyphicon-user(aria-hidden='true')
+          |  E-LEARNING USERS: 
+          span= numUsers
+        .well.well-sm.centered-panel
+          span.glyphicon.glyphicon-signal(aria-hidden='true')
+          |  PAGE VISITS: 
+          span= numPageVisits
+        .well.well-sm.centered-panel
+          span.glyphicon.glyphicon-signal(aria-hidden='true')
+          |  VIEWS: 
+          span= numViews
+        .well.well-sm.centered-panel
+          span.glyphicon.glyphicon-thumbs-up(aria-hidden='true')
+          |  REACTIONS: 
+          span= numReactions
+        .well.well-sm.centered-panel
+          span.glyphicon.glyphicon-comment(aria-hidden='true')
+          |  COMMENTS: 
+          span= numComments
+      .col-md-6.col-xs-12
+        div(id="popularperregion")
+      .col-md-6.col-xs-12
+        div(id="userViewByISP")
+      .col-md-3.col-xs-12
+        .panel.panel-success
+          .panel-heading
+            h4.panel-title Top 5 Popular Learning Object
+          .panel-body
+            if mostpopular.length
+              each lo in mostpopular
+                .media
+                  .media-left
+                      img(src=lo.thumbnail.exists ? lo._.thumbnail.limit(50, 50) : 'http://placehold.it/50x50', width=50, height=50).img-circle
+                  .media-body
+                    h5=lo.title
+                    span= lo.viewCount
+                      |  views
+      .col-md-3.col-xs-12
+        .panel.panel-info
+          .panel-heading
+            h4.panel-title Top 5 Commented Learning Object
+          .panel-body
+            if mostcommented.length
+              each lo in mostcommented
+                .media
+                  .media-left
+                      img(src=lo.thumbnail.exists ? lo._.thumbnail.limit(50, 50) : 'http://placehold.it/50x50', width=50, height=50).img-circle
+                  .media-body
+                    h5=lo.title
+                    span= lo.commentCount
+                    |  comments
+      .col-md-3.col-xs-12
+        .panel.panel-danger
+          .panel-heading
+            h4.panel-title Top 5 Reacted Learning Object
+          .panel-body
+            if mostreacted.length
+              each lo in mostreacted
+                .media
+                  .media-left
+                      img(src=lo.thumbnail.exists ? lo._.thumbnail.limit(50, 50) : 'http://placehold.it/50x50', width=50, height=50).img-circle
+                  .media-body
+                    h5=lo.title
+                    span= lo.reactions
+                    |  reactions
+      .col-md-3.col-xs-12
+        .panel.panel-warning
+          .panel-heading
+            h4.panel-title Top 5 Rated Learning Object
+          .panel-body
+            if topTopicsbyRatings.length
+              each lo in topTopicsbyRatings
+                .media
+                  .media-left
+                      img(src=lo.thumbnail.exists ? lo._.thumbnail.limit(50, 50) : 'http://placehold.it/50x50', width=50, height=50).img-circle
+                  .media-body
+                    h5=lo.title
+                    - for (var i = 0; i < lo.rating; ++i) {
+                      span.glyphicon.glyphicon-star(aria-hidden='true')
+                    - }
+      .col-md-12.col-xs-12
+        div(id="allReactions")
+      
+block content
+  .elearning-user-body
+    .row
+      .col-md-3.col-xs-12.user-sidenav
+        +user-sidenav(section)
+      .col-md-9.col-xs-12
+        .panel.panel-primary
+          .panel-heading
+            h4.panel-title E-learning Website Analytics
+          .panel-body.bg-grey
+            +Most(data.mostPopularLO, data.mostCommentedLO, data.mostReactedLO, data.numCourses, data.numLO, data.numUsers, data.numViews, data.numComments, data.numReactions, data.topTopicsbyRatings, data.numPageVisits)
+        
+        
+  //- script(src='/js/elearning-graphs/learningObjectReactions.js')
+  //- script(src='/js/elearning-graphs/learningObjectCommentsViews.js')
+block js
+  script(src='/js/elearning-graphs/dashboard-charts.js')

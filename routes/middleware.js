@@ -80,3 +80,37 @@ exports.requireAdmin = function (req, res, next) {
 		}
 	}
 };
+
+
+/*
+	Elearning Permissions
+*/
+exports.requireElearningAdmin = function (req, res, next) {
+	if (!req.user) {
+		req.flash('error', 'Please sign in to access this page.');
+		res.redirect('/keystone/signin');
+	} else {
+		if(!req.user.isElearningAdmin){
+			req.flash('error', 'You are not authorized to view this page.');
+			res.redirect('/keystone/signin');
+		}
+		else{
+			next();
+		}
+	}
+}
+
+exports.requireElearningUser = function (req, res, next) {
+	if (!req.user) {
+		req.flash('error', 'Please sign in to access this page.');
+		res.redirect('/keystone/signin');
+	} else {
+		if(!req.user.isElearningUser){
+		///	req.flash('error', 'You are not authorized to view this page.');
+			res.redirect('/keystone/signin');
+		}
+		else{
+			next();
+		}
+	}
+}

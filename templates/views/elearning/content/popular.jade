@@ -1,0 +1,58 @@
+extends ../../../layouts/elearning
+
+block js
+  |  $('.dropdown-toggle').dropdown()S
+
+
+mixin popularLO-grid(learningObjects)
+  .row
+    .col-md-8.col-xs-7
+      h3.text-left Popular Lessons this #{duration} (#{paginatePopularLO.total})
+    .col-md-2.col-xs-3
+      +duration-popular()
+    .col-md-2.col-xs-2.pull-right
+      +view-popular()
+  .row.equal-height
+    if learningObjects.length
+      each learningObject in learningObjects
+        .col-xs-6.col-md-3
+          +learning-object-card(learningObject, learningObject.url)
+          
+    else
+      h3.text-muted There are no popular lessons this #{duration} yet.
+    
+
+  
+mixin popularLO-list(learningObjects)
+  .row
+    .col-md-8.col-xs-7
+      h3.text-left Popular Lessons this #{duration} (#{paginatePopularLO.total})
+    .col-md-2.col-xs-3
+      +duration-popular()
+    .col-md-2.col-xs-2.pull-right
+      +view-popular()
+  .row
+    if learningObjects.length
+      .col-md-9
+        .panel
+          table.table.table-hover
+            thead
+            tbody
+              each learningObject in learningObjects
+                +learning-object-tr-media(learningObject, learningObject.url)
+                    
+    else
+      h3.text-muted There are no popular lessons this #{duration} yet.
+
+block content
+  +search()
+  
+  .container
+    .panel.panel-default
+      .panel-body
+        if viewStyle == 'grid'
+          +popularLO-grid(paginatePopularLO.results)
+        else
+          +popularLO-list(paginatePopularLO.results)
+        +paginate-page-view-duration(paginatePopularLO, url)
+    

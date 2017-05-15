@@ -1,0 +1,185 @@
+mixin user-sidenav(section)
+  .panel-group(id='accordion', role='tablist', aria-multiselectable='true')
+    .panel.panel-default
+      .panel-heading(role='tab', id='headingProfile')
+        h4.panel-title
+          a(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseProfile', aria-expanded='true', aria-controls='collapseProfile') Profile
+      if section ==  "profile"
+        .panel-collapse.collapse.in(id='collapseProfile', role='tabpanel', aria-labelledby='headingProfile')
+          .list-group
+            li.list-group-item
+              a(href='/elearning/profile?nav=view') View Profile
+            li.list-group-item
+              a(href='/elearning/profile?nav=edit') Edit Profile
+      else 
+        .panel-collapse.collapse(id='collapseProfile', role='tabpanel', aria-labelledby='headingProfile')
+          .list-group
+            li.list-group-item
+              a(href='/elearning/profile?nav=view') View Profile
+            li.list-group-item
+              a(href='/elearning/profile?nav=edit') Edit Profile
+
+    .panel.panel-default
+      .panel-heading(role='tab', id='headingUserActivity')
+        h4.panel-title
+          a(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseUserActivity', aria-expanded='true', aria-controls='collapseUserActivity') Elearning User Activity
+      if section == "user-activity"   
+        .panel-collapse.collapse.in(id='collapseUserActivity', role='tabpanel', aria-labelledby='headingUserActivity')
+          .list-group
+            li.list-group-item
+              a(href='/elearning/user-activity?nav=views') Viewed Lessons
+            li.list-group-item
+              a(href='/elearning/user-activity?nav=likes') Liked Lessons
+            li.list-group-item
+              a(href='/elearning/user-activity?nav=happy') Lessons with Happy Reacts
+            li.list-group-item
+              a(href='/elearning/user-activity?nav=sad') Lessons with Sad Reacts 
+            li.list-group-item
+              a(href='/elearning/user-activity/feedback') Feedback
+      else
+        .panel-collapse.collapse(id='collapseUserActivity', role='tabpanel', aria-labelledby='headingUserActivity')
+          .list-group
+            li.list-group-item
+              a(href='/elearning/user-activity?nav=views') Viewed Lessons
+            li.list-group-item
+              a(href='/elearning/user-activity?nav=likes') Liked Lessons
+            li.list-group-item
+              a(href='/elearning/user-activity?nav=happy') Lessons with Happy Reacts
+            li.list-group-item
+              a(href='/elearning/user-activity?nav=sad') Lessons with Sad Reacts 
+            li.list-group-item
+              a(href='/elearning/user-activity/feedback') Feedback 
+
+
+    if user
+      if user.isAdmin || user.isElearningAdmin
+        .panel.panel-default
+          .panel-heading(role='tab', id='headingAdmin')
+            h4.panel-title
+              a(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseAdmin', aria-expanded='true', aria-controls='collapseAdmin') Admin
+
+          if section == "admin"
+            .panel-collapse.collapse.in(id='collapseAdmin', role='tabpanel', aria-labelledby='headingAdmin')
+              .list-group
+                li.list-group-item
+                  a(href='/keystone') Keystone Admin
+                li.list-group-item
+                  a(href='/keystone/elearning-logs') Elearning Logs
+                li.list-group-item
+                  a(href='/elearning/analytics') Analytics
+                //- ADD Admin Links
+          else
+            .panel-collapse.collapse(id='collapseAdmin', role='tabpanel', aria-labelledby='headingAdmin')
+              .list-group
+                li.list-group-item
+                  a(href='/keystone/learning-objects') Keystone Admin
+                li.list-group-item
+                  a(href='/keystone/elearning-logs') Elearning Logs
+                li.list-group-item
+                  a(href='/elearning/analytics') Analytics
+                //- ADD Admin Links
+
+mixin paginate-page(pagination, url)
+  ul.pagination.pull-right
+    li
+      if pagination.previous != false
+        a(href=url+'&page='+pagination.previous, aria-label="Previous")
+          span(aria-hidden="true") &laquo
+    each page in pagination.pages
+      if page == pagination.currentPage
+        li.active
+          a(href=url+'&page='+page) #{page}
+      else
+        li
+          a(href=url+'&page='+page) #{page}
+    li
+      if pagination.next != false
+        a(href=url+'&page='+pagination.next, aria-label="Next")
+          span(aria-hidden="true") &raquo
+
+mixin paginate-page-view-duration(pagination, url)
+  ul.pagination.pull-right
+    li
+      if pagination.previous != false
+        a(href=url+'&page='+pagination.previous+'&view='+viewStyle+'&duration='+duration, aria-label="Previous")
+          span(aria-hidden="true") &laquo
+    each page in pagination.pages
+      if page == pagination.currentPage
+        li.active
+          a(href=url+'&page='+page+'&view='+viewStyle+'&duration='+duration) #{page}
+      else
+        li
+          a(href=url+'&view=grid&page='+page)= page
+    li
+      if pagination.next != false
+        a(href=url+'page='+pagination.next+'&view='+viewStyle+'&duration='+duration aria-label="Next")
+          span(aria-hidden="true") &raquo
+
+mixin paginate-learning-object(pagination, url)
+  ul.pagination.pull-right
+    li
+      if pagination.previous != false
+        a(href=url+'specific='+filters.specificCommodity+'&isp='+filters.isp+'&sector='+filters.sector+'&industry='+filters.industry+'&page='+pagination.previous+'&view='+viewStyle+'&duration='+duration, aria-label="Previous")
+          span(aria-hidden="true") &laquo
+    each page in pagination.pages
+      if page == pagination.currentPage
+        li.active
+          a(href=url+'specific='+filters.specificCommodity+'&isp='+filters.isp+'&sector='+filters.sector+'&industry='+filters.industry+'page='+page+'&view='+viewStyle+'&duration='+duration) #{page}
+      else
+        li
+          a(href=url+'specific='+filters.specificCommodity+'&isp='+filters.isp+'&sector='+filters.sector+'&industry='+filters.industry+'view=grid&page='+page)= page
+    li
+      if pagination.next != false
+        a(href=url+'specific='+filters.specificCommodity+'&isp='+filters.isp+'&sector='+filters.sector+'&industry='+filters.industry+'page='+pagination.next+'&view='+viewStyle+'&duration='+duration aria-label="Next")
+          span(aria-hidden="true") &raquo
+
+
+mixin paginate-generic(pagination, url)
+  ul.pagination.pull-right
+    li
+      if pagination.previous != false
+        a(href=url+'&page='+pagination.previous+'&view='+viewStyle, aria-label="Previous")
+          span(aria-hidden="true") &laquo
+    each page in pagination.pages
+      if page == pagination.currentPage
+        li.active
+          a(href=url+'&page='+page+'&view='+viewStyle) #{page}
+      else
+        li
+          a(href=url+'&view=grid&page='+page)= page
+    li
+      if pagination.next != false
+        a(href=url+'&page='+pagination.next+'&view='+viewStyle aria-label="Next")
+          span(aria-hidden="true") &raquo
+
+
+
+mixin view-popular(action)
+  ul.nav.navbar-nav.navbar-right
+    li
+      a(href=url+'&page='+page+'&view=grid'+'&duration='+duration)
+        span(aria-hidden="true").glyphicon.glyphicon-th
+    li
+      a(href=url+'&page='+page+'&view=list'+'&duration='+duration)
+        span(aria-hidden="true").glyphicon.glyphicon-th-list
+
+mixin view-generic(action)
+  ul.nav.navbar-nav.navbar-right
+    li
+      a(href=url+'&page='+page+'&view=grid')
+        span(aria-hidden="true").glyphicon.glyphicon-th
+    li
+      a(href=url+'&page='+page+'&view=list')
+        span(aria-hidden="true").glyphicon.glyphicon-th-list
+
+mixin duration-popular(action)
+  .dropdown
+    button.btn.btn-default.dropdown-toggle(type='button', id='duration', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true') Popular this &emsp;
+      span.caret
+    ul.dropdown-menu(aria-labelledby='duration')
+      li
+        a(href=url+'&page='+page+'&view='+viewStyle+'&duration=day') day
+      li
+        a(href=url+'&page='+page+'&view='+viewStyle+'&duration=week') week
+      li 
+        a(href=url+'&page='+page+'&view='+viewStyle+'&duration=month') month

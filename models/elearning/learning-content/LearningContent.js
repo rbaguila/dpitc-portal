@@ -33,14 +33,22 @@ LearningContent.add({
     brief: { 
       type: Types.Html, 
       wysiwyg: true, 
-      height: 150 
+      height: 150,
+      label: 'One-paragraph Description' 
     },
     extended: { 
       type: Types.Html, 
       wysiwyg: true, 
-      height: 400 
+      height: 400,
+      label: 'Full Description' 
     },
   },
+});
+
+LearningContent.schema.index({
+  title: "text",
+  brief: "text",
+  extended: "text"
 });
 
 LearningContent.defaultColumns = 'title|20%, author|20%, content.brief|30%, state|10%, publishedAt|10%';

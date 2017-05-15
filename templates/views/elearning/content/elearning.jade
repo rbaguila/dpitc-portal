@@ -1,0 +1,63 @@
+extends ../../../layouts/elearning
+
+block css
+
+mixin popular(learningObjects)
+  .row
+    a(href='/elearning/learning-objects/popular?')
+      h2.text-center Popular Lessons
+  .row.equal-height
+    if learningObjects.length
+      each learningObject in learningObjects
+        .col-xs-6.col-md-3
+          +learning-object-card(learningObject, learningObject.url)
+    else
+      h3.text-muted There are no popular lessons this #{duration} yet.
+
+mixin allCourses(courses)
+  a(href='/elearning/courses?')
+    h2.text-center All Courses
+  if courses.length
+    .row.equal-height
+      each course in courses
+        .col-xs-6.col-md-3
+          +course-card(course, course.url)
+  else
+    h3.text-muted There are no courses yet.
+
+
+mixin recommended(learningObjects)
+  a(href='/elearning/recommended?')
+    h2.text-center Recommended
+  if learningObjects.length
+    .row.equal-height
+      each learningObject in learningObjects
+        .col-xs-6.col-md-3
+          +learning-object-card(learningObject, learningObject.url+ "?type=recommended")
+  else
+    h3.text-muted There are no courses yet.
+
+block content
+  +search()
+  
+  if user
+    .container
+      .panel.panel-default
+        .panel-body
+          +recommended(data.recommendedLearningObjects)
+        .panel-footer
+          a(href='/elearning/recommended?').btn.btn-link View All Recommended Lessons
+
+  .container
+    .panel.panel-default
+      .panel-body
+        +popular(paginatePopularLO.results)
+      .panel-footer
+        a(href='/elearning/learning-objects?').btn.btn-link View All Lessons
+  .container
+    .panel.panel-default
+      .panel-body
+        +allCourses(courses)
+      .panel-footer
+        a(href='/elearning/courses?').btn.btn-link View All Courses
+  

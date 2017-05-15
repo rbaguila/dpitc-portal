@@ -1,0 +1,293 @@
+extends ../../../layouts/elearning
+
+block css
+  link(rel="stylesheet", href="/js/fancybox/jquery.fancybox.css", type="text/css", media="screen")
+
+block js
+  | $('.collapse').collapse()
+  //- For Gallery
+  script(src="/js/fancybox/jquery.fancybox.pack.js")
+  script.
+    jQuery(function($) {
+      $('.gallery-image').fancybox({
+        prevEffect: 'none',
+        nextEffect: 'none',
+        closeBtn: false,
+        helpers: {
+          titl: {},
+          buttons: {}
+        }
+      });
+    });
+
+  //- For Comments
+  script.
+    jQuery(function($) {
+      
+      var comments = $('#comments');
+      var input = $('.comment-field-input');
+      var submit = comments.find('button[type=submit]');
+
+      
+      // Scroll to comments and focus input field
+      function scrollToComments(e) {
+        
+        e.preventDefault();
+        
+        $('html, body').animate({ scrollTop: comments.offset().top }, 0);
+        
+        input.eq(0).focus();
+      }
+      $('[href="#comments"]').click( scrollToComments );
+      
+      // Check if field has content: enable/disable submit. Disable by default
+      submit.attr('disabled','disabled');
+      input.keyup(function() {
+        if ($.trim($(this).val())) {
+          submit.removeAttr('disabled');
+        } else {
+          submit.attr('disabled','disabled');
+        }
+      });
+    });
+  
+
+block content
+  //- +search()
+  //- if searchSubmitted
+    .container
+      .panel.panel-default
+        .panel-body
+          +searchResults(paginatedSearchResults.results)
+          +paginate-page(paginatedSearchResults, searchUrl)
+  //- else 
+  .container
+    .row
+      .col-md-8
+        .row
+          //- Main Content and Reactions Panel
+          .panel.panel-info
+            .panel-body
+              +learningObject(currentLO)
+              hr
+              +reactions()
+        .row
+          //- Video Panel
+          if currentLO.video
+            .panel.panel-info
+              .panel-body
+                +video(currentLO.video)
+        .row
+          //- Gallery Panel
+          if currentLO.gallery
+            .panel.panel-info
+              .panel-body
+                +gallery(currentLO.gallery)
+
+        .row
+          //- Files Panel
+          if currentLO.files.length
+            .panel.panel-info
+              .panel-body
+                +files(currentLO.files)
+
+        .row
+          //- Related Links
+          if currentLO.links.length
+            .panel.panel-info
+              .panel-body
+                +links(currentLO.links)
+
+        .row
+          //- Comments Panel
+          .panel.panel-info
+            .panel-body
+              label Comments (#{comments.length})
+              +comment-thread(comments)
+              
+      .col-md-4
+        if user
+          .row
+            .panel.panel-info
+              .panel-heading 
+                a(href='/elearning/recommended?') Recommended Lessons
+              .panel-body
+                +recommendedTopics(data.recommendedLO)
+        .row
+          .panel.panel-info
+            .panel-heading 
+              a(href="/elearning/courses?") Other Topics
+            .panel-body
+              +otherTopics(data.otherLO)
+        .row
+          +feedback()
+    
+mixin learningObject(currentLO)
+  .row
+    h3 #{currentLO.title}
+    | !{currentLO.content.full}
+  .row
+    if currentLO.author.length
+      label Author/s:
+      each au in currentLO.author
+        a(href='/elearning/learning-objects?author='+au.key)  #{au.name}, &nbsp;
+  +learning-object-tags(currentLO.tags)
+
+
+mixin reactions(action)
+  .row
+    small(style='float: right;') Views #[span.badge #{currentLO.loviews.length}]
+
+    if user
+      form(method='post', style='float: right; margin: 0px;')
+        input(type='hidden', name='action', value='reactions.addSad')  
+        button(type='submit').btn.btn-link 
+          | #{currentLO.sad.length} #[i.fa.fa-frown-o.fa-lg(aria-hidden="true")]
+      form(method='post', style='float: right; margin: 0px;')
+        input(type='hidden', name='action', value='reactions.addHappy')  
+        button(type='submit').btn.btn-link 
+          | #{currentLO.happy.length} #[i.fa.fa-smile-o.fa-lg(aria-hidden="true")]
+      form(method='post', style='float: right; margin: 0px;')
+        input(type='hidden', name='action', value='reactions.addLike')  
+        button(type='submit').btn.btn-link 
+          | #{currentLO.likes.length} #[i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")]
+      a.btn.btn-link(role='button', data-toggle='collapse', href='#rateLO', aria-hidden='false', aria-controls='rateLO') Rate this Lesson
+
+      .collapse(id='rateLO')
+        hr
+        .row
+          form(method='post').form-horizontal
+            input(type='hidden', name='action', value='reactions.rating')
+            .col-md-10  
+              .form-group(class=validationErrors.rating ? 'has-error' : null required)
+                label.col-sm-2.control-label Rating
+                .radio
+                  each rate in rating  
+                    label 
+                      input(type='radio', name='rating', value=rate.value) 
+                      | #{rate.label}
+            .col-md-2
+              .form-group
+                button(type='submit').btn.btn-primary Submit
+    else
+      a.btn.btn-link(href='/keystone/signin?from='+loginRedirect, style='float: right') #{currentLO.sad.length} #[i.fa.fa-frown-o.fa-lg(aria-hidden="true")]
+      a.btn.btn-link(href='/keystone/signin?from='+loginRedirect, style='float: right') #{currentLO.happy.length} #[i.fa.fa-smile-o.fa-lg(aria-hidden="true")]
+      a.btn.btn-link(href='/keystone/signin?from='+loginRedirect, style='float: right') #{currentLO.likes.length} #[i.fa.fa-thumbs-o-up.fa-lg(aria-hidden="true")]
+      a.btn.btn-link(href='/keystone/signin?from='+loginRedirect) Sign in to rate this Lesson
+
+      
+mixin video(video)
+  .row
+    label #{video.title}
+  .row
+    .col-md-8.embed-responsive-item
+      if video.videoId
+        iframe(width="640", height="360", src="https://www.youtube.com/embed/"+video.videoId, frameborder="0", allowfullscreen)
+      
+      else
+        p Video link seems to be broken.
+  hr
+  .row
+    .col-md-8
+      if video.description
+        p #{video.description}
+
+
+mixin gallery(gallery)
+  .row
+    label Photo Gallery
+  .row
+    if gallery.images.length
+      each image, i in gallery.images
+        .col-xs-6.col-sm-4.col-md-4(style='margin-bottom: 30px;')
+          a(href=image.limit(900,600), title=gallery.name+' image '+(i+1), rel=gallery.key).gallery.image
+            img(src=image.fill(300,300), alt=gallery.name+' image '+(i+1)).img-thumbnail
+
+
+
+mixin files(files)
+  .row
+    label Files in #{currentLO.title}
+  .row.equal-height
+    if files.length
+      each file in files
+        .col-xs-12.col-md-4
+          .thumbnail
+            embed(src='/uploads/elearning/files/'+file.file.filename, width='100%' height='200px', type='application/pdf')
+            .caption
+              a(href='/uploads/elearning/files/'+file.file.filename,) #{file.name}
+
+
+mixin links(links)
+  .row
+    label Related Links
+  .row
+    .col-xs-12.col-sm-12.col-md-12
+      if links.length
+        .list-group
+          each link in links
+            a.list-group-item(href=link.url) 
+              h4.list-group-heading #{link.name}
+              if link.description
+                p.list-group-item-text !{link.description}
+
+
+mixin comment-thread(comments)
+  +comment-form() 
+  hr
+  if comments.length
+    for comment in comments
+      +comment-post(comment)
+
+
+mixin comment-form(action)
+  form(method='post', style="margin-bottom: 10px; margin-top: 10px;")
+    input(type='hidden', name='action', value='comment.create')
+    .media
+      .pull-left
+        if user
+          img(src=user.photo.exists ? user._.photo.thumbnail(80,80) : 'http://placehold.it/80x80', alt=user.name.full, width=80, height=80).img-rounded
+        else
+          img(src='http://placehold.it/80x80', alt='No Available Image', width=80, height=80).img-rounded
+      .media-body
+        textarea(name='content', placeholder=user ? 'Leave a comment...' : 'Please sign in to comment', disabled=!user, style="margin-bottom: 10px; min-height: 80px; resize: vertical;").form-control
+        if user
+          button(type='submit').btn.btn-primary.pull-right Add Comment
+        else
+          ul.list-inline
+            li: a(href='/keystone/signin').btn.btn-sm.btn-primary Sign in to Comment
+
+
+mixin comment-post(comment)
+  if comment.createdBy != null
+    div(id='comment-id-' + comment.id, style="margin-top: 20px;")
+      .media
+        .pull-left
+          img(src=comment.createdBy.photo.exists ? comment.createdBy._.photo.thumbnail(80,80) : 'http://placehold.it/80x80', alt=comment.createdBy.name.full, width=80, height=80).img-rounded
+        .media-body
+          p.list-group-item-heading
+            strong= comment.createdBy.name.full
+            //- if user && user.id === comment.createdBy.id
+              |  &middot; 
+              a(href='?remove=comment&comment=' + comment.id, title='Delete this comment', rel='tooltip', data-placement='left').comment-delete.js-delete-confirm Delete
+          p.list-group-item-text=comment.content.replace(/\n/g, '<br>')
+ 
+ 
+mixin recommendedTopics(learningObjects)
+  each learningObject in learningObjects
+    +learning-object-side(learningObject, learningObject.url + "?type=recommended")
+    
+
+mixin otherTopics(learningObjects)
+  each learningObject in learningObjects
+    +learning-object-side(learningObject, learningObject.url)
+    
+mixin feedback(action)
+  .panel.panel-info
+    .panel-heading
+      | Feedback
+    .panel-body
+      if user
+        a.btn.btn-link(href='/elearning/user-activity/feedback') Give a feedback!
+      else
+        a.btn.btn-link(href='/keystone/signin?from=/elearning/user-activity/feedback') Sign in to give a feedback!

@@ -1,0 +1,54 @@
+
+//- Unavailable Images
+mixin img-na(width, height)
+  img(src='http://placehold.it/'+width+'x'+height+'?text=No+Available+Image', alt='No Available Photo', width=width+'px', height=height+'px')
+
+mixin img-na-rounded(width, height)
+  img(src='http://placehold.it/'+width+'x'+height+'?text=No+Available+Image', alt='No Available Photo', width=width+'px', height=height+'px').img-rounded
+
+mixin img-na-center(width, height)
+  img(src='http://placehold.it/'+width+'x'+height+'?text=No+Available+Image', alt='No Available Photo', width=width+'px', height=height+'px').center-block
+
+mixin img-na-rounded-center(width, height)
+  img(src='http://placehold.it/'+width+'x'+height+'?text=No+Available+Image', alt='No Available Photo', width=width+'px', height=height+'px').img-rounded.center-block
+
+mixin img-na-card-top(width, height)
+  img(src='http://placehold.it/'+width+'x'+height+'?text=No+Available+Image', alt='No Available Photo', width=width+'px', height=height+'px').card-img-top
+
+mixin img-na-rounded-media-object(width, height)
+  img(src='http://placehold.it/'+width+'x'+height+'?text=No+Available+Image', alt='No Available Photo', width=width+'px', height=height+'px').img-rounded.media-object
+
+//- Available Images
+mixin img-available(src, alt, width, height)
+  img(src=src, alt=alt, width=width+'px', height=height+'px')
+
+mixin img-available-rounded(src, alt, width, height)
+  img(src=src, alt=alt, width=width+'px', height=height+'px').img-rounded
+
+mixin img-available-center(src, alt, width, height)
+  img(src=src, alt=alt, width=width+'px', height=height+'px').center-block
+
+mixin img-available-rounded-center(src, alt, width, height)
+  img(src=src, alt=alt, width=width+'px', height=height+'px').img-rounded.center-block
+
+mixin img-available-card-top(src, alt, width, height)
+  img(src=src, alt=alt, width=width+'px', height=height+'px').card-img-top
+
+mixin img-available-rounded-media-object(src, alt, width, height)
+  img(src=src, alt=alt, width=width+'px', height=height+'px').img-rounded.media-object
+
+//- Available Youtube Images
+mixin img-youtube(videoId, alt, width, height)
+  img(src="https://img.youtube.com/vi/"+videoId+"/hqdefault.jpg", alt=alt, width=width, height=height)
+
+mixin img-youtube-rounded(videoId, alt, width, height)
+  img(src="https://img.youtube.com/vi/"+videoId+"/hqdefault.jpg", alt=alt, width=width, height=height).rounded
+
+mixin img-youtube-center(videoId, alt, width, height)
+  img(src="https://img.youtube.com/vi/"+videoId+"/hqdefault.jpg", alt=alt, width=width, height=height).center-block
+
+mixin img-youtube-rounded-center(videoId, alt, width, height)
+  img(src="https://img.youtube.com/vi/"+videoId+"/hqdefault.jpg", alt=alt, width=width, height=height).rounded.center-block
+
+mixin img-youtube-rounded-media-object(videoId, alt, width, height)
+  img(src="https://img.youtube.com/vi/"+videoId+"/hqdefault.jpg", alt=alt, width=width, height=height).img-rounded.media-object

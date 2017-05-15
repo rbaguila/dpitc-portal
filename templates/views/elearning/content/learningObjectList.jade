@@ -1,0 +1,55 @@
+extends ../../../layouts/elearning
+
+mixin learningObjects-grid(learningObjects)
+  .row
+    .col-md-8.col-xs-10
+      if filters.name != null
+        h3.text-left Lessons #[em in #{filters.name.toUpperCase()}: #{filters.value.name}]
+      else
+        h3.text-left All Lessons 
+    .col-md-2.col-xs-2.pull-right
+      +view-generic()
+  .row.equal-height
+    if learningObjects.length
+      each learningObject in learningObjects
+        .col-xs-6.col-md-3
+          +learning-object-card(learningObject, learningObject.url)
+    else
+      h3.text-muted Error loading lessons.
+
+mixin learningObjects-list(learningObjects)
+  .row
+    .col-md-8.col-xs-10
+      if filters.name != null
+        h3.text-left Lessons #[em in #{filters.name.toUpperCase()}: #{filters.value.name}]
+      else
+        h3.text-left All Lessons
+    .col-md-2.col-xs-2.pull-right
+      +view-generic()
+  .row
+    if learningObjects.length
+      .col-md-9
+        .panel
+          table.table.table-hover
+            thead
+            tbody
+              each learningObject in learningObjects
+                +learning-object-tr-media(learningObject, learningObject.url)
+                
+    else
+      h3.text-muted Error loading lessons.
+
+
+block content
+  +search()
+  
+  .container
+    .panel.panel-default
+      .panel-body
+        if viewStyle == 'grid'
+          +learningObjects-grid(learningObjects.results)
+        if viewStyle == 'list'
+          +learningObjects-list(learningObjects.results)
+        +paginate-generic(learningObjects, url)
+    
+

@@ -11,14 +11,13 @@ exports = module.exports = function(req, res) {
   //res.contentType('application/jsonp');
   
   //var visits = [];
-	
+	var temp = [];
 	//change this before deploying, use createdAt instead
 	keystone.list('LSector').model.find().exec(function (err, results) {
 		if (err || !results.length) {
-			
+			res.send(temp);
 		}
 		else{
-			var temp = [];
 			async.each(results, function (sector, next) {
 				var obj = {};
 				obj.sector = sector.name;

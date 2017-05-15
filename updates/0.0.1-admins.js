@@ -15,11 +15,14 @@ exports.create = {
       'email': 'aroinand@gmail.com', 
       'password': 'admin', 
       'isAdmin': true,
-      '__ref': 'admin'
+      'isElearningAdmin': true,
+      'isElearningUser': true,
+      '__ref': 'admin',
+      'birthday': '1997-03-01',
+      'sex': 'Male'
     },
   //],
-
-
+  
   /*ELearning Fixtures*/
     {
       'name.first': 'Juan', 
@@ -27,6 +30,10 @@ exports.create = {
       'email': 'jdelacruz@gmail.com', 
       'password': 'password', 
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Juan'
     },
     {
@@ -35,6 +42,10 @@ exports.create = {
       'email': 'jsmith@gmail.com', 
       'password': 'password', 
       'isAdmin': false, 
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'John'
     },
     {
@@ -43,6 +54,10 @@ exports.create = {
       'email': 'jdoe@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Jane'
     },
     {
@@ -50,7 +65,11 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'akim@gmail.com', 
       'password': 'password', 
-      'isAdmin': false, 
+      'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Albert'
     },
     {
@@ -59,6 +78,10 @@ exports.create = {
       'email': 'bkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Bryan'
     },
     {
@@ -67,6 +90,10 @@ exports.create = {
       'email': 'ckim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Lee'
     },
     {
@@ -74,7 +101,11 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'dkim@gmail.com', 
       'password': 'password', 
-      'isAdmin': false, 
+      'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Daniel'
     },
     {
@@ -83,6 +114,10 @@ exports.create = {
       'email': 'ekim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Ellen'
     },
     {
@@ -91,6 +126,10 @@ exports.create = {
       'email': 'fkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Ferdinand'
     },
     {
@@ -99,6 +138,10 @@ exports.create = {
       'email': 'gkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Gerald'
     },
     {
@@ -107,6 +150,10 @@ exports.create = {
       'email': 'hkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Harold'
     },
     {
@@ -115,6 +162,10 @@ exports.create = {
       'email': 'ikim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Irish'
     },
     {
@@ -123,6 +174,10 @@ exports.create = {
       'email': 'jkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Jeff'
     },
     {
@@ -130,7 +185,11 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'kkim@gmail.com', 
       'password': 'password', 
-      'isAdmin': false, 
+      'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Karl'
     },
     {
@@ -138,7 +197,11 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'lkim@gmail.com', 
       'password': 'password', 
-      'isAdmin': false, 
+      'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Logan'
     },
     {
@@ -147,6 +210,10 @@ exports.create = {
       'email': 'mkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Manuel'
     },
     {
@@ -154,7 +221,11 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'nkim@gmail.com', 
       'password': 'password', 
-      'isAdmin': false, 
+      'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Natalie'
     },
     {
@@ -163,6 +234,10 @@ exports.create = {
       'email': 'okim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Oliver'
     },
     {
@@ -171,6 +246,10 @@ exports.create = {
       'email': 'pkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Patricia'
     },
     {
@@ -179,6 +258,10 @@ exports.create = {
       'email': 'qkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Queen'
     },
     {
@@ -187,14 +270,22 @@ exports.create = {
       'email': 'rkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Rona'
     },
     {
       'name.first': 'Sally', 
       'name.last': 'Kim', 
       'email': 'skim@gmail.com', 
-      'password': 'password', 
-      'isAdmin': false, 
+      'password': 'password',
+      'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Sally'
     },
     {
@@ -203,6 +294,10 @@ exports.create = {
       'email': 'tkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Tim'
     },
     {
@@ -210,7 +305,11 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'ukim@gmail.com', 
       'password': 'password', 
-      'isAdmin': false, 
+      'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Uvin'
     },
     {
@@ -218,7 +317,11 @@ exports.create = {
       'name.last': 'Kim', 
       'email': 'vkim@gmail.com', 
       'password': 'password', 
-      'isAdmin': false, 
+      'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Vince'
     },
     {
@@ -227,6 +330,10 @@ exports.create = {
       'email': 'wkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Wilson'
     },
     {
@@ -235,6 +342,10 @@ exports.create = {
       'email': 'xkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Xyrus'
     },
     {
@@ -243,6 +354,10 @@ exports.create = {
       'email': 'ykim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Yvette'
     },
     {
@@ -251,6 +366,10 @@ exports.create = {
       'email': 'zkim@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Zend'
     },
     {
@@ -259,6 +378,10 @@ exports.create = {
       'email': 'hlee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Henry'
     },
     {
@@ -267,6 +390,10 @@ exports.create = {
       'email': 'alee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Angelica'
     },
     {
@@ -275,6 +402,10 @@ exports.create = {
       'email': 'klee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Kris'
     },
     {
@@ -283,6 +414,10 @@ exports.create = {
       'email': 'llee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Luhan'
     },
     {
@@ -291,6 +426,10 @@ exports.create = {
       'email': 'alee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Amber'
     },
     {
@@ -299,6 +438,10 @@ exports.create = {
       'email': 'vlee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Victoria'
     },
     {
@@ -307,6 +450,10 @@ exports.create = {
       'email': 'klee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Krystal'
     },
     {
@@ -315,6 +462,10 @@ exports.create = {
       'email': 'glee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Gary'
     },
     {
@@ -323,6 +474,10 @@ exports.create = {
       'email': 'jlee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Joon'
     },
     {
@@ -331,6 +486,10 @@ exports.create = {
       'email': 'clee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Cena'
     },
     {
@@ -339,7 +498,22 @@ exports.create = {
       'email': 'jlee@gmail.com', 
       'password': 'password',  
       'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1997-03-01',
+      'sex': 'Male',
       '__ref': 'Justin'
+    },
+    {
+      'name.first': 'Christian', 
+      'name.last': 'Chim', 
+      'email': 'cchim@gmail.com', 
+      'password': 'password',  
+      'isAdmin': false,
+      'isElearningAdmin': false,
+      'isElearningUser': true,
+      'birthday': '1995-10-01',
+      'sex': 'Male',
     }
   ],
 
@@ -410,6 +584,11 @@ exports.create = {
       'name': 'Corn',
       'sector': 'crops-sector',
       '__ref': 'corn-isp'
+    },
+    {
+      'name': 'Rice',
+      'sector': 'crops-sector',
+      '__ref': 'rice-isp'
     },
     {
       'name': 'Abaca',
@@ -646,178 +825,618 @@ exports.create = {
   LOVideo: [
     {
       'title': 'Stages Corn',
-      'url': 'https://www.youtube.com/watch?v=VlSmx5Tck-s&t=3s&index=1&list=PLbdcQpXzx9ZVRXKNzyGJW9Nsr_wj8TMPJ',
-      'videoId': 'VlSmx5Tck-s',
+      'url': 'https://www.youtube.com/watch?v=VlSmx5Tck-s&index=1&t=3s&list=PLbdcQpXzx9ZVRXKNzyGJW9Nsr_wj8TMPJ',
+    //  'videoId': 'VlSmx5Tck-s',
       '__ref': 'stagescorn-yt'
     },
     {
       'title': 'Soil Fertilization',
-      'url': 'https://www.youtube.com/watch?v=BPiQTm2uqo0&index=2&list=PLbdcQpXzx9ZVRXKNzyGJW9Nsr_wj8TMPJ',
-      'videoId': 'BPiQTm2uqo0',
+      'url': 'https://www.youtube.com/watch?v=BPiQTm2uqo0&index=2&t=6s&list=PLbdcQpXzx9ZVRXKNzyGJW9Nsr_wj8TMPJ',
+    //  'videoId': 'BPiQTm2uqo0',
       '__ref': 'soilfertilization-yt'
     },
     {
       'title': 'Land Preparation',
       'url': 'https://www.youtube.com/watch?v=s8xBIWP83cg&index=3&list=PLbdcQpXzx9ZVRXKNzyGJW9Nsr_wj8TMPJ',
-      'videoId': 's8xBIWP83cg',
+    //  'videoId': 's8xBIWP83cg',
       '__ref': 'landpreparation-yt'
     },
     {
       'title': 'Grain Quality',
       'url': 'https://www.youtube.com/watch?v=wqQzFz0WdtE&index=4&list=PLbdcQpXzx9ZVRXKNzyGJW9Nsr_wj8TMPJ',
-      'videoId': 'wqQzFz0WdtE',
+    //  'videoId': 'wqQzFz0WdtE',
       '__ref': 'grainquality-yt'
     },
     {
       'title': 'Feeding Program',
       'url': 'https://www.youtube.com/watch?v=LlR9jsIg_Ik&index=5&list=PLbdcQpXzx9ZVRXKNzyGJW9Nsr_wj8TMPJ',
-      'videoId': 'LlR9jsIg_Ik',
+    //  'videoId': 'LlR9jsIg_Ik',
       '__ref': 'feedingprogram-yt'
     },
     {
+      'title': 'Farm Mechanization',
+      'url': 'https://www.youtube.com/watch?v=kgpWtPmT6Qc&index=6&list=PLbdcQpXzx9ZVRXKNzyGJW9Nsr_wj8TMPJ',
+    //  'videoId': '',
+      '__ref': 'farmmechanization-yt'
+    },
+    {
+      'title': 'Economic Aspect',
+      'url': 'https://www.youtube.com/watch?v=wt7P5Cz8_UY&index=7&list=PLbdcQpXzx9ZVRXKNzyGJW9Nsr_wj8TMPJ',
+    //  'videoId': '',
+      '__ref': 'economicaspect-yt'
+    },
+    {
+      'title': 'Corn Processing',
+      'url': 'https://www.youtube.com/watch?v=YWCebgn2KcU&index=8&list=PLbdcQpXzx9ZVRXKNzyGJW9Nsr_wj8TMPJ',
+    //  'videoId': '',
+      '__ref': 'cornprocessing-yt'
+    },
+    {
+      'title': 'Corn Pests',
+      'url': 'https://www.youtube.com/watch?v=ZocuzjY_6yQ&index=9&list=PLbdcQpXzx9ZVRXKNzyGJW9Nsr_wj8TMPJ',
+    //  'videoId': '',
+      '__ref': 'cornpests-yt'
+    },
+    {
+      'title': 'Corn Forage',
+      'url': 'https://www.youtube.com/watch?v=4NruDxZNF7Y&index=10&list=PLbdcQpXzx9ZVRXKNzyGJW9Nsr_wj8TMPJ',
+    //  'videoId': '',
+      '__ref': 'cornforage-yt'
+    },
+    {
+      'title': 'Corn Diseases',
+      'url': 'https://www.youtube.com/watch?v=ZxiBcJJHL_c&index=11&list=PLbdcQpXzx9ZVRXKNzyGJW9Nsr_wj8TMPJ',
+    //  'videoId': '',
+      '__ref': 'corndiseases-yt'
+    },
+    {
+      'title': 'Conservation Methods',
+      'url': 'https://www.youtube.com/watch?v=quLBub6Hpg0&index=12&list=PLbdcQpXzx9ZVRXKNzyGJW9Nsr_wj8TMPJ',
+    //  'videoId': '',
+      '__ref': 'conservationmethods-yt'
+    },
+    {
+      'title': 'Choosing Producing',
+      'url': 'https://www.youtube.com/watch?v=vCTqwpia1YY&index=13&list=PLbdcQpXzx9ZVRXKNzyGJW9Nsr_wj8TMPJ',
+    //  'videoId': '',
+      '__ref': 'choosingproducing-yt'
+    },
+    {
       'title': 'Biotech BtCorn ',
-      'url': 'https://www.youtube.com/watch?v=Yt2MkxFeono&t=120s&index=14&list=PLbdcQpXzx9ZVRXKNzyGJW9Nsr_wj8TMPJ',
-      'videoId': 'Yt2MkxFeono',
+      'url': 'https://www.youtube.com/watch?v=Yt2MkxFeono&index=14&t=120s&list=PLbdcQpXzx9ZVRXKNzyGJW9Nsr_wj8TMPJ',
+    //  'videoId': 'Yt2MkxFeono',
       '__ref': 'biotechbtcorn-yt'
+    },
+
+    /*{
+      'title': '',
+      'url': '',
+    //  'videoId': '',
+      '__ref': ''
+    },
+    */
+
+  ],
+  Author: [ 
+    {
+      'name': 'Project SARAI',
+      '__ref': 'sarai'
+    }
+  ],
+
+  LOFileUpload: [
+    /* CORN TOOLKIT */
+    {
+      'name': 'Introduction to SARAI Training Toolkit for Corn',
+      'description': 'The SARAI TRAINING TOOLKIT FOR CORN is a user-friendly guide to all the developed technologies and systems of the program. It provides the stakeholders a holistic view of the program, and its direct applications to daily agricultural practices.',
+      '__ref': 'intro-corn-toolkit-file',
+    },
+
+    {
+      'name': 'Volume 1: Introduction to SARAI',
+      'description': 'This volume discusses the detailed introduction to the program – its main objectives, various components, and expected outputs',
+             
+      '__ref': 'corn-vol1-file',
+    },
+
+    {
+      'name': 'Volume 2: Climate, Weather & Climate Change',
+      'description': 'Before the discussion on the numerous technologies and systems to improve their agricultural practices, it is important for them to develop a basic understanding of climate, weather, and climate change',     
+      '__ref': 'corn-vol2-file',
+    },
+
+    {
+      'name': 'Volume 3: Pests and Diseases of Corn',
+      'description': 'This volume focuses on the major corn pests and diseases.',
+      '__ref': 'corn-vol3-file',
+    },
+
+    {
+      'name': 'Volume 4: Nutrient Management',
+      'description': 'This volume emphasizes the importance of providing our farmers with site-specific crop nutrient advisories for maximum crop growth.',
+  
+      '__ref': 'corn-vol4-file',
+    },
+
+    {
+      'name': 'Volume 5: Soil Moisture Monitoring System',
+      'description': 'This volume focuses on three topics: \nModule 1 – Discusses the physical and chemical characteristics of soil and the importance of active soil moisture monitoring. \nModule 2 – Presents the Project SARAI cost-efficient soil moisture monitoring system. Basic steps on how to set up, operate, and roubleshoot the sensors will be discussed \nModule 3 – Includes the use of Water-balanced Assisted Irrigation Decision Support System (WAISS) and how it works.',
+        
+      '__ref': 'corn-vol5-file',
+    },
+
+    {
+      'name': 'Volume 6: SARAI Knowledge Portal',
+      'description': 'This volume gives a walkthrough on the SARAI Knowledge Portal. This portal offers a wide-range of agricultural services in web and mobile platforms for its initial six priority crops.',
+      '__ref': 'corn-vol6-file',
+    },
+
+    /* RICE TOOLKIT */
+
+    {
+      'name': 'Introduction to SARAI Training Toolkit for Rice',
+      'description': 'The SARAI TRAINING TOOLKIT FOR RICE is a user-friendly guide to all the developed technologies and systems of the program. It provides the stakeholders a holistic view of the program, and its direct applications to daily agricultural practices.',
+      '__ref': 'intro-rice-toolkit-file',
+    },
+
+    {
+      'name': 'Volume 1: Introduction to SARAI',
+      'description': 'This volume discusses the detailed introduction to the program – its main objectives, various components, and expected outputs.',
+      '__ref': 'rice-vol1-file',
+    },
+
+    {
+      'name': 'Volume 2: Climate, Weather & Climate Change',
+      'description': 'Before the trainers introduce the participants to numerous technologies and systems to improve their agricultural practices, it is important for them to develop a basic understanding of climate, weather, and climate change.',
+      '__ref': 'rice-vol2-file',
+    },
+
+    {
+      'name': 'Volume 3: Pests and Diseases of Rice',
+      'description': 'This volume highlights the importance of understanding the plants’ specific growth stage and how their vulnerabilities to particular pests and diseases change over time. ',
+      '__ref': 'rice-vol3-file',
+    },
+
+    {
+      'name': 'Volume 4: Nutrient Management',
+      'description': 'This volume emphasizes the importance of providing our farmers with site-specific crop nutrient advisories for maximum crop growth.',
+      '__ref': 'rice-vol4-file',
+    },
+
+    {
+      'name': 'Volume 5: SARAI Knowledge Portal',
+      'description': 'This volume gives a walkthrough on the SARAI Knowledge Portal. This portal offers a wide-range of agricultural services in web and mobile platforms for its initial six priority crops.',
+      '__ref': 'rice-vol5-file',
     },
 
   ],
 
+
   LearningObject: [
+    /* CORN TOOLKIT */
     {
-      'title': 'Stages Corn',
+      'title': 'Introduction to SARAI Training Toolkit for Corn',
       'state': 'published',
-      
+      'author': 'sarai',
       'publishedAt': Date.now,
       'content': {
-        'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque. ',
-        'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
+        'brief': 'The SARAI TRAINING TOOLKIT FOR CORN is a user-friendly guide to all the developed technologies and systems of the program. It provides the stakeholders a holistic view of the program, and its direct applications to daily agricultural practices.',
+        'extended': 'The SARAI TRAINING TOOLKIT FOR CORN is a user-friendly guide to all the developed technologies and systems of the program. It provides the stakeholders a holistic view of the program, and its direct applications to daily agricultural practices. In addition to the conduct of lectures and group discussions, one other important facet of the SARAI Training is the incorporation of fieldworks to the exercises. These field exposures provide participants the opportunities to test out what they learned, document their questions, and directly discuss with the trainers issues that can only be better appreciated in a field setting. The toolkit is a package of modules, PowerPoint presentations, and handouts. All these materials will be provided to the training participants, both in hardcopy and e-copy formats.',
       },
       'isp': 'corn-isp',
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
+      'file': 'intro-corn-toolkit-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      
-      'likes': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena'],
-      'happy': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
-      'sad': ['Ferdinand', 'Gerald', 'Harold', 'Henry', 'Irish', 'Joon', 'Jeff'],
-      
-      'video': 'stagescorn-yt',
-      '__ref': 'stagescorn-lo',
-
+      'createdBy': 'admin',     
+      '__ref': 'intro-corn-toolkit',
     },
-    { 
-      'title': 'Soil Fertilization',
+
+    {
+      'title': 'Volume 1: Introduction to SARAI',
       'state': 'published',
-      
+      'author': 'sarai',
       'publishedAt': Date.now,
       'content': {
-        'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
-        'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
+        'brief': 'This volume discusses the detailed introduction to the program – its main objectives, various components, and expected outputs',
+        'extended': 'This volume discusses the detailed introduction to the program – its main objectives, various components, and expected outputs. This is an appreciation volume that presents ideas for how SARAI can contribute to the regular agricultural activities of our farmers. It is divided into two modules: \nModule 1 – Detailed discussion on Project SARAI and its various components \nModule 2 – Introduction and discussion on the smarter technologies promoted by Project SARAI',
       },
       'isp': 'corn-isp',
       'sector': 'crops-sector',
       'industry': 'agri-industry',
+      'specificCommodity': null,
+      'file': 'corn-vol1-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      
-      'likes': ['Ferdinand', 'Gerald', 'Harold', 'Henry', 'Irish', 'Joon', 'Jeff'],
-      'happy': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena'],
-      'sad': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
-      
-      'video': 'soilfertilization-yt',
-      '__ref': 'soilfertilization-lo',
+      'createdBy': 'admin',     
+      '__ref': 'corn-vol1',
     },
-    { 
+
+    {
+      'title': 'Volume 2: Climate, Weather & Climate Change',
+      'state': 'published',
+      'author': 'sarai',
+      'publishedAt': Date.now,
+      'content': {
+        'brief': 'Before the discussion on the numerous technologies and systems to improve their agricultural practices, it is important for them to develop a basic understanding of climate, weather, and climate change',
+        'extended': 'Before the discussion on the numerous technologies and systems to improve their agricultural practices, it is important for them to develop a basic understanding of climate, weather, and climate change. This volume has two modules: \nModule 1 – Discussion on climate and weather \nModule 2 – Understanding climate change, global warming, and extreme weather events',
+      },
+      'isp': 'corn-isp',
+      'sector': 'crops-sector',
+      'industry': 'agri-industry',
+      'specificCommodity': null,
+      'file': 'corn-vol2-file',
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'corn-vol2',
+    },
+
+    {
+      'title': 'Volume 3: Pests and Diseases of Corn',
+      'state': 'published',
+      'author': 'sarai',
+      'publishedAt': Date.now,
+      'content': {
+        'brief': 'This volume focuses on the major corn pests and diseases.',
+        'extended': 'This volume focuses on the major corn pests and diseases. Similarly, three modules comprise this volume: \nModule 1 - Provides detailed discussions and illustrations for pest identification and their corresponding control measures. \nModule 2 - Focuses on corn diseases. \nModule 3 – Presents the mobile and web application called \nSARAI Pest Identification Technology (SPId Tech). \nThis volume is a significant improvement from older published materials on corn pests and diseases. It highlights the importance of understanding the plants’ specific growth stage and how their vulnerabilities to particular pests and diseases change over time. Immediate control measures are also presented on a per life-stage format for quicker reference.',
+      },
+      'isp': 'corn-isp',
+      'sector': 'crops-sector',
+      'industry': 'agri-industry',
+      'specificCommodity': null,
+      'file': 'corn-vol3-file',
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'corn-vol3',
+    },
+
+    {
+      'title': 'Volume 4: Nutrient Management',
+      'state': 'published',
+      'author': 'sarai',
+      'publishedAt': Date.now,
+      'content': {
+        'brief': 'This volume emphasizes the importance of providing our farmers with site-specific crop nutrient advisories for maximum crop growth.',
+        'extended': 'This volume contains comprehensive discussions on two major topics: \nModule 1 – Basic crop-nutrient interaction, corn nutrient deficiencies and its requirements. \nModule 2 –Integrated Crop Management (ICM) with focus on Site-Specific Nutrient Management (SSNM) software called Maize Nutrient Expert. \n This volume emphasizes the importance of providing our farmers with site-specific crop \n nutrient advisories for maximum crop growth.',
+      },
+      'isp': 'corn-isp',
+      'sector': 'crops-sector',
+      'industry': 'agri-industry',
+      'specificCommodity': null,
+      'file': 'corn-vol4-file',
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'corn-vol4',
+    },
+
+    {
+      'title': 'Volume 5: Soil Moisture Monitoring System',
+      'state': 'published',
+      'author': 'sarai',
+      'publishedAt': Date.now,
+      'content': {
+        'brief': 'This volume focuses on three topics: \nModule 1 – Discusses the physical and chemical characteristics of soil and the importance of active soil moisture monitoring. \nModule 2 – Presents the Project SARAI cost-efficient soil moisture monitoring system. Basic steps on how to set up, operate, and roubleshoot the sensors will be discussed \nModule 3 – Includes the use of Water-balanced Assisted Irrigation Decision Support System (WAISS) and how it works.',
+        'extended': 'This volume focuses on three topics: \nModule 1 – Discusses the physical and chemical characteristics of soil and the importance of active soil moisture monitoring. \nModule 2 – Presents the Project SARAI cost-efficient soil moisture monitoring system. Basic steps on how to set up, operate, and roubleshoot the sensors will be discussed \nModule 3 – Includes the use of Water-balanced Assisted Irrigation Decision Support System (WAISS) and how it works.',
+      },
+      'isp': 'corn-isp',
+      'sector': 'crops-sector',
+      'industry': 'agri-industry',
+      'specificCommodity': null,
+      'file': 'corn-vol5-file',
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'corn-vol5',
+    },
+
+    {
+      'title': 'Volume 6: SARAI Knowledge Portal',
+      'state': 'published',
+      'author': 'sarai',
+      'publishedAt': Date.now,
+      'content': {
+        'brief': 'This volume gives a walkthrough on the SARAI Knowledge Portal. This portal offers a wide-range of agricultural services in web and mobile platforms for its initial six priority crops.',
+        'extended': 'This volume gives a walkthrough on the SARAI Knowledge Portal. This portal offers a wide-range of agricultural services in web and mobile platforms for its initial six priority crops. It contains only one module: \nNavigating Through SARAI Knowledge Portal',
+      },
+      'isp': 'corn-isp',
+      'sector': 'crops-sector',
+      'industry': 'agri-industry',
+      'specificCommodity': null,
+      'file': 'corn-vol6-file',
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'corn-vol6',
+    },
+
+    /* RICE TOOLKIT */
+
+    {
+      'title': 'Introduction to SARAI Training Toolkit for Rice',
+      'state': 'published',
+      'author': 'sarai',      
+      'publishedAt': Date.now,
+      'content': {
+        'brief': 'The SARAI TRAINING TOOLKIT FOR RICE is a user-friendly guide to all the developed technologies and systems of the program. It provides the stakeholders a holistic view of the program, and its direct applications to daily agricultural practices.',
+        'extended': 'The SARAI TRAINING TOOLKIT FOR RICE is a user-friendly guide to all the developed technologies and systems of the program. It provides the stakeholders a holistic view of the program, and its direct applications to daily agricultural practices. In addition to the conduct of lectures and group discussions, one other important facet of the SARAI Training is the incorporation of fieldworks to the exercises. These field exposures provide participants the opportunities to test out what they learned, document their questions, and directly discuss with the trainers issues that can only be better appreciated in a field setting. \nThe toolkit is a package of modules, powerpoint presentations, and handouts. All these materials will be provided to the training participants, both in hardcopy and e-copy formats.',
+      },
+      'isp': 'rice-isp',
+      'sector': 'crops-sector',
+      'industry': 'agri-industry',
+      'specificCommodity': null,
+      'file': 'intro-rice-toolkit-file',
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'intro-rice-toolkit',
+    },
+
+    {
+      'title': 'Volume 1: Introduction to SARAI',
+      'state': 'published',
+      'author': 'sarai',      
+      'publishedAt': Date.now,
+      'content': {
+        'brief': 'This volume discusses the detailed introduction to the program – its main objectives, various components, and expected outputs.',
+        'extended': 'This volume discusses the detailed introduction to the program – its main objectives, various components, and expected outputs. This is an appreciation volume that presents ideas for how SARAI can contribute to the regular agricultural activities of our farmers. It is divided into two modules: \nModule 1 – Detailed discussion on Project SARAI and its various components \nModule 2 – Introduction and discussion on the smarter technologies promoted by Project SARAI',
+      },
+      'isp': 'rice-isp',
+      'sector': 'crops-sector',
+      'industry': 'agri-industry',
+      'specificCommodity': null,
+      'file': 'rice-vol1-file',
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'rice-vol1',
+    },
+
+    {
+      'title': 'Volume 2: Climate, Weather & Climate Change',
+      'state': 'published',
+      'author': 'sarai',      
+      'publishedAt': Date.now,
+      'content': {
+        'brief': 'Before the trainers introduce the participants to numerous technologies and systems to improve their agricultural practices, it is important for them to develop a basic understanding of climate, weather, and climate change.',
+        'extended': 'Before the trainers introduce the participants to numerous technologies and systems to improve their agricultural practices, it is important for them to develop a basic understanding of climate, weather, and climate change. This volume has two modules: \nModule 1 – Discussion on climate and weather \nModule 2 – Understanding climate change, climate variability, and extreme weather events',
+      },
+      'isp': 'rice-isp',
+      'sector': 'crops-sector',
+      'industry': 'agri-industry',
+      'specificCommodity': null,
+      'file': 'rice-vol2-file',
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'rice-vol2',
+    },
+
+    {
+      'title': 'Volume 3: Pests and Diseases of Rice',
+      'state': 'published',
+      'author': 'sarai',      
+      'publishedAt': Date.now,
+      'content': {
+        'brief': 'This volume highlights the importance of understanding the plants’ specific growth stage and how their vulnerabilities to particular pests and diseases change over time. ',
+        'extended': 'This volume focuses on the major rice pests and diseases. Similarly, two modules comprise this volume: \nModule 1 - Provides detailed discussions and illustrations for pest identification and their corresponding control measures. \nModule 2 - Focuses on rice diseases. \nModule 3 - Presents the mobile and web application called SARAI Smarter Pest Identification Technology (SPid Tech). \nThis volume is a significant improvement from older published materials on rice pests and diseases. It highlights the importance of understanding the plants’ specific growth stage and how their vulnerabilities to particular pests and diseases change over time. Immediate control measures are also presented on a per life-stage format for quicker reference.',
+      },
+      'isp': 'rice-isp',
+      'sector': 'crops-sector',
+      'industry': 'agri-industry',
+      'specificCommodity': null,
+      'file': 'rice-vol3-file',
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'rice-vol3',
+    },
+
+    {
+      'title': 'Volume 4: Nutrient Management',
+      'state': 'published',
+      'author': 'sarai',      
+      'publishedAt': Date.now,
+      'content': {
+        'brief': 'This volume emphasizes the importance of providing our farmers with site-specific crop nutrient advisories for maximum crop growth.',
+        'extended': 'This volume contains comprehensive discussions on two major topics: \nModule 1 – Basic crop-nutrient interaction, and the impacts of the various nutrient cycles to crop production. \nModule 2 –Integrated Crop Management (ICM) with focus on Site-Specific Nutrient Management (SSNM) \nThis volume emphasizes the importance of providing our farmers with site-specific crop nutrient advisories for maximum crop growth.',
+      },
+      'isp': 'rice-isp',
+      'sector': 'crops-sector',
+      'industry': 'agri-industry',
+      'specificCommodity': null,
+      'file': 'rice-vol4-file',
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'rice-vol4',
+    },
+
+    {
+      'title': 'Volume 5: SARAI Knowledge Portal',
+      'state': 'published',
+      'author': 'sarai',      
+      'publishedAt': Date.now,
+      'content': {
+        'brief': 'This volume gives a walkthrough on the SARAI Knowledge Portal. This portal offers a wide-range of agricultural services in web and mobile platforms for its initial six priority crops.',
+        'extended': 'This volume gives a walkthrough on the SARAI Knowledge Portal. This portal offers a wide-range of agricultural services in web and mobile platforms for its initial six priority crops. It contains only one module: \nNavigating through SARAI Knowledge Portal',
+      },
+      'isp': 'rice-isp',
+      'sector': 'crops-sector',
+      'industry': 'agri-industry',
+      'specificCommodity': null,
+      'file': 'rice-vol5-file',
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'rice-vol5',
+    },
+
+    /* CORN CULTURAL MANAGEMENT */
+    {
       'title': 'Land Preparation',
       'state': 'published',
-      
+      'author': 'sarai',      
       'publishedAt': Date.now,
       'content': {
-        'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
-        'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
+        'brief': 'Tinatalakay sa video na ito ang iba’t ibang uri ng lugar kung saan mainam magtanim ng mais, kung papaano dapat ihanda ang lupang pagtataniman at ang proseso ng pagtatanim ng mais.',
+        'extended': 'Ipinapakita rito kung paano dapat ihanda ang lupang pagtataniman ng mais. Ang mais ay mas mainam itanim sa lupa na may malaking water capacity at maraming organic nutrients. Kayang mabuhay ng mais sa iba’t ibang kundisyon sa Pilipinas. \nTinatalakay sa video na ito ang iba’t ibang uri ng lugar kung saan mainam magtanim ng mais, kung papaano dapat ihanda ang lupang pagtataniman at ang proseso ng pagtatanim ng mais.',
       },
       'isp': 'corn-isp',
       'sector': 'crops-sector',
       'industry': 'agri-industry',
+      'specificCommodity': null,
+      'video': 'landpreparation-yt',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-       
-      'likes': ['Juan', 'John', 'Jane', 'Amber', 'Angelica'],
-      'happy': ['Henry', 'Irish', 'Joon', 'Jeff', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
-      'sad': ['Ferdinand', 'Gerald', 'Harold'],
-      
-      'video': 'landpreparation-yt',
+      'createdBy': 'admin',     
       '__ref': 'landpreparation-lo',
     },
-    { 
-      'title': 'Grain Quality',
+    {
+      'title': 'Corn Pests',
       'state': 'published',
-      
+      'author': 'sarai',      
       'publishedAt': Date.now,
       'content': {
-        'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
-        'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
+        'brief': 'lamin natin kung ano ang mga pangunahing peste ng mais, at ang mga paraan para mapigilan o mabawasan ang peste ng mais.',
+        'extended': 'Ang paglaganap ng mga peste sa mais ay isa sa mga nakakapigil sa magandang produksyon ng mais. Ang paggamit ng insecticide ay isa sa mga karaniwang paraan para masugpo ang mga peste. Ngunit, ang madalas na paggamit nito ay pwedeng makaresulta sa mga peste na maka-adapt at hindi na tablan ng insecticide. Isa pa, ito ay mapanganib sa kalusugan ng tao at sa kapaligiran. \nAlamin natin kung ano ang mga pangunahing peste ng mais, at ang mga paraan para mapigilan o mabawasan ang peste ng mais.',
       },
       'isp': 'corn-isp',
       'sector': 'crops-sector',
       'industry': 'agri-industry',
+      'specificCommodity': null,
+      'video': 'cornpests-yt',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      
-      'likes': ['Juan', 'John', 'Jane', 'Amber', 'Angelica'],
-      'happy': ['Juan', 'John'],
-      'sad': ['Ferdinand', 'Gerald', 'Harold'],
-      
-      'video': 'grainquality-yt',
-      '__ref': 'grainquality-lo',
+      'createdBy': 'admin',     
+      '__ref': 'cornpests-lo',
     },
-    { 
-      'title': 'Feeding Program',
+    {
+      'title': 'Corn Diseases',
       'state': 'published',
-      
+      'author': 'sarai',      
       'publishedAt': Date.now,
       'content': {
-        'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
-        'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
+        'brief': 'Sa Pilipinas, mayroong higit sa 20 na mga itinalang sakit ng mais. Dito sa video na ito, malalaman natin kung ano ang mga pangunahing sakit ng mais at kung paano ito mapipigilan.',
+        'extended': 'Sa Pilipinas, mayroong higit sa 20 na mga itinalang sakit ng mais. Dito sa video na ito, malalaman natin kung ano ang mga pangunahing sakit ng mais at kung paano ito mapipigilan.',
       },
       'isp': 'corn-isp',
       'sector': 'crops-sector',
       'industry': 'agri-industry',
+      'specificCommodity': null,
+      'video': 'corndiseases-yt',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      
-      'likes': ['Ferdinand', 'Gerald', 'Harold', 'Henry', 'Irish', 'Joon', 'Jeff'],
-      'happy': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena'],
-      'sad': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
-      
-      'video': 'feedingprogram-yt',
-      '__ref': 'feedingprogram-lo',
+      'createdBy': 'admin',     
+      '__ref': 'corndiseases-lo',
     },
-    { 
-      'title': 'Biotech BtCorn',
+
+    {
+      'title': 'Growth Stages',
       'state': 'published',
-      
+      'author': 'sarai',      
       'publishedAt': Date.now,
       'content': {
-        'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
-        'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
+        'brief': 'Ang video na ito ay ipinapakita kung paano tumutubo ang mais simula pagtanim. ',
+        'extended': 'Ang video na ito ay ipinapakita kung paano tumutubo ang mais simula pagtanim. Ang pag-alam sa stages ng plant development ay makakatulong sa atin sa teknikal na pag-aalaga ng mais. Sa video presentation na ito, dapat mong ipaliwanag kung paano tumutubo ang mais, at ilista ang mga tamang pag-aalaga at pagsasagawa ng corn production.',
       },
       'isp': 'corn-isp',
       'sector': 'crops-sector',
       'industry': 'agri-industry',
-      'createdAt': Date.now,  
-      
-      'likes': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
-      'happy': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena'],
-      'sad': ['Ferdinand', 'Gerald', 'Harold', 'Henry', 'Irish', 'Joon', 'Jeff'],
-      
+      'specificCommodity': null,
+      'video': 'stagescorn-yt',
+      'createdAt': Date.now,
       'updatedAt': Date.now,
-      'video': 'biotechbtcorn-yt',
-      '__ref': 'biotechbtcorn-lo',
+      'createdBy': 'admin',     
+      '__ref': 'stagescorn-lo',
     },
+
+    {
+      'title': 'Corn Mechanization',
+      'state': 'published',
+      'author': 'sarai',      
+      'publishedAt': Date.now,
+      'content': {
+        'brief': 'Panoorin ang video na ito para malaman kung ano ba ng iba’t ibang uri ng farm mechanization technologies na ginagamit sa produksyon ng mais.',
+        'extended': 'Dahil sa mataas na demand ng mais, kailangan gawing mabisa at epektibo ang produksyon ng mais. Isa sa mga paraan nito ay ang paggamit ng mga makina. Panoorin ang video na ito para malaman kung ano ba ng iba’t ibang uri ng farm mechanization technologies na ginagamit sa produksyon ng mais. Malalaman rin natin kung ano ba ng iba’t ibang katangian ng mga makina na ito at kung ano ang importansya at benepisyo ng farm mechanization.',
+      },
+      'isp': 'corn-isp',
+      'sector': 'crops-sector',
+      'industry': 'agri-industry',
+      'specificCommodity': null,
+      'video': 'farmmechanization-yt',
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'farmmechanization-lo',
+    },
+
+    {
+      'title': 'Corn Processing',
+      'state': 'published',
+      'author': 'sarai',      
+      'publishedAt': Date.now,
+      'content': {
+        'brief': 'Sa video na ito, malalaman natin kung ano ba and iba’t ibang parte ng isang corn kernel, and iba’t ibang uri ng mais ayon sa structure, at kung ano ang corn processing at ang mga pinaggagamitan nito.',
+        'extended': 'Maraming pwedeng paggamitan ang mais kaya ang demand sa mais sa pandaigdigang merkado ay patuloy na tumataas. Ang pinaka-pinaggagamitan ng mais ay sa paggawa ng feeds at sa industrial processing. Ang mais ang pangunahing sangkap na ginagamit sa livestock feed. \nSa video na ito, malalaman natin kung ano ba and iba’t ibang parte ng isang corn kernel, and iba’t ibang uri ng mais ayon sa structure, at kung ano ang corn processing at ang mga pinaggagamitan nito.',
+      },
+      'isp': 'corn-isp',
+      'sector': 'crops-sector',
+      'industry': 'agri-industry',
+      'specificCommodity': null,
+      'video': 'cornprocessing-yt',
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'cornprocessing-lo',
+    },
+
+    {
+      'title': 'Corn Fertilization',
+      'state': 'published',
+      'author': 'sarai',      
+      'publishedAt': Date.now,
+      'content': {
+        'brief': 'Alamin kung ano ang mga katangian ng lupa na angkop sa pagtatanim ng mais at ang tamang proseso para mapabuti ang kalidad ng lupang pagtataniman.',
+        'extended': 'Ang lupa kung saan itatanim ang mais ay nakakaapekto sa paglaki ng halaman. Ang lupa ang nagbibigay ng nutrisyon at minerals na kailangan ng mais para mabuhay at magkabunga. Sa Pilipinas, maraming uri ng lupa ang makikita, depende kung nasaang parte ka. \nAlamin kung ano ang mga katangian ng lupa na angkop sa pagtatanim ng mais at ang tamang proseso para mapabuti ang kalidad ng lupang pagtataniman.',
+      },
+      'isp': 'corn-isp',
+      'sector': 'crops-sector',
+      'industry': 'agri-industry',
+      'specificCommodity': null,
+      'video': 'soilfertilization-yt',
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'cornfertilization-lo',
+    },
+
+    /*{
+      'title': '',
+      'state': 'published',
+      'author': 'sarai',      
+      'publishedAt': Date.now,
+      'content': {
+        'brief': '',
+        'extended': '',
+      },
+      'isp': 'corn-isp',
+      'sector': 'crops-sector',
+      'industry': 'agri-industry',
+      'specificCommodity': null,
+      'video': '',
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'intro-rice-toolkit',
+    },*/
+
+
+    /*
     { 
       'title': 'Planting Abaca',
       'state': 'published',
@@ -1154,7 +1773,7 @@ exports.create = {
 
       'createdAt': Date.now,  
       
-      'likes': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
+      'likes': ['Amber', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
       'happy': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
       'sad': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
       
@@ -1177,7 +1796,7 @@ exports.create = {
 
       'createdAt': Date.now,  
       
-      'likes': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
+      'likes': ['Amber', 'Angelica', 'Daniel', 'Ellen'],
       'happy': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
       'sad': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
       
@@ -1201,7 +1820,7 @@ exports.create = {
       
       'likes': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
       'happy': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
-      'sad': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
+      'sad': ['Amber', 'Cena', 'Daniel', 'Ellen'],
       
       'updatedAt': Date.now
     },
@@ -1243,7 +1862,7 @@ exports.create = {
       'createdAt': Date.now,  
       
       'likes': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
-      'happy': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      'happy': ['Ferdinand', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
       'sad': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
       
       'updatedAt': Date.now
@@ -1305,7 +1924,7 @@ exports.create = {
       'specificCommodity': null,
       'createdAt': Date.now,  
       
-      'likes': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      'likes': ['Ferdinand', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
       'happy': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
       'sad': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
       
@@ -1327,7 +1946,7 @@ exports.create = {
 
       'createdAt': Date.now,  
       
-      'likes': ['Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
+      'likes': ['John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
       'happy': ['Ferdinand','Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
       'sad': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
       
@@ -1370,7 +1989,7 @@ exports.create = {
       'createdAt': Date.now,  
       
       'likes': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
-      'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
+      'happy': ['Sally', 'Tim', 'Zend', 'Juan', 'John', 'Jane'],
       'sad': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       
       'updatedAt': Date.now,
@@ -1393,7 +2012,7 @@ exports.create = {
       
       'likes': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
-      'sad': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
+      'sad': ['Sally', 'Tim', 'Uvin', 'Wilson', 'Xyrus', 'Zend'],
       
       'updatedAt': Date.now
     },
@@ -1413,7 +2032,7 @@ exports.create = {
       'createdAt': Date.now,  
       
       'likes': ['Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver'],
-      'happy': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      'happy': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'sad': ['Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus'],
       
       'updatedAt': Date.now
@@ -1433,7 +2052,7 @@ exports.create = {
       'specificCommodity': null,
       'createdAt': Date.now,  
       
-      'likes': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      'likes': ['Justin', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
       'sad': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
       
@@ -1455,7 +2074,7 @@ exports.create = {
       'createdAt': Date.now,  
       
       'likes': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
-      'happy': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
+      'happy': ['Justin', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'sad': ['Juan'],
       
       'updatedAt': Date.now
@@ -1476,7 +2095,7 @@ exports.create = {
       'createdAt': Date.now,  
       
       'likes': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
-      'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
+      'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Zend', 'Juan', 'John', 'Jane'],
       'sad': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
       
       'updatedAt': Date.now
@@ -1498,7 +2117,7 @@ exports.create = {
       'createdAt': Date.now,  
       
       'likes': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
-      'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
+      'happy': ['Juan', 'John', 'Jane'],
       'sad': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       
       'updatedAt': Date.now
@@ -1561,7 +2180,7 @@ exports.create = {
       'createdAt': Date.now,  
       
       'likes': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
-      'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
+      'happy': ['John', 'Jane'],
       'sad': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       
       'updatedAt': Date.now
@@ -1604,7 +2223,7 @@ exports.create = {
       'createdAt': Date.now,  
       
       'likes': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
-      'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
+      'happy': ['Sally', 'Tim', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
       'sad': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
       
       'updatedAt': Date.now
@@ -1625,7 +2244,7 @@ exports.create = {
       'createdAt': Date.now,  
       
       'likes': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
-      'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
+      'happy': ['John', 'Jane'],
       'sad': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       
       'updatedAt': Date.now
@@ -1908,13 +2527,82 @@ exports.create = {
       'sad': ['Angelica', 'Bryan', 'Daniel', 'Ferdinand', 'Henry', 'Harold', 'Juan', 'John', 'Jane', 'Justin', 'Joon', 'Jeff'],
       
       'updatedAt': Date.now
-    },
+    },*/
   ],
   
 
   //Chapter: [
   Course: [
     {
+      'title': 'Corn Toolkit',
+      'state': 'published',      
+      'publishedAt': Date.now,
+      'content': {
+        'brief': 'The SARAI TRAINING TOOLKIT FOR CORN is a user-friendly guide to all the developed technologies and systems of the program. It provides the stakeholders a holistic view of the program, and its direct applications to daily agricultural practices.',
+        'extended': 'The SARAI TRAINING TOOLKIT FOR CORN is a user-friendly guide to all the developed technologies and systems of the program. It provides the stakeholders a holistic view of the program, and its direct applications to daily agricultural practices. In addition to the conduct of lectures and group discussions, one other important facet of the SARAI Training is the incorporation of fieldworks to the exercises. These field exposures provide participants the opportunities to test out what they learned, document their questions, and directly discuss with the trainers issues that can only be better appreciated in a field setting. \nThe toolkit is a package of modules, PowerPoint presentations, and handouts. All these materials will be provided to the training participants, both in hardcopy and e-copy formats.',
+      },
+      'outline': [
+        'intro-corn-toolkit',
+        'corn-vol1',
+        'corn-vol2',
+        'corn-vol3',
+        'corn-vol4',
+        'corn-vol5',
+        'corn-vol6'
+      ],
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'corn-toolkit',
+    },
+
+    {
+      'title': 'Rice Toolkit',
+      'state': 'published',      
+      'publishedAt': Date.now,
+      'content': {
+        'brief': 'The SARAI TRAINING TOOLKIT FOR RICE is a user-friendly guide to all the developed technologies and systems of the program. It provides the stakeholders a holistic view of the program, and its direct applications to daily agricultural practices.',
+        'extended': 'The SARAI TRAINING TOOLKIT FOR RICE is a user-friendly guide to all the developed technologies and systems of the program. It provides the stakeholders a holistic view of the program, and its direct applications to daily agricultural practices. In addition to the conduct of lectures and group discussions, one other important facet of the SARAI Training is the incorporation of fieldworks to the exercises. These field exposures provide participants the opportunities to test out what they learned, document their questions, and directly discuss with the trainers issues that can only be better appreciated in a field setting. \nThe toolkit is a package of modules, powerpoint presentations, and handouts. All these materials will be provided to the training participants, both in hardcopy and e-copy formats.',
+      },
+      'outline': [
+        'intro-rice-toolkit',
+        'rice-vol1',
+        'rice-vol2',
+        'rice-vol3',
+        'rice-vol4',
+        'rice-vol5'
+      ],
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'rice-toolkit',
+    },
+
+    {
+      'title': 'Corn Cultural Management',
+      'state': 'published',      
+      'publishedAt': Date.now,
+      'content': {
+        'brief': 'Mais ang pangalawa sa pangunahing pananim sa ating bansa. 60% ng mais na itinatanim sa Pilipinas ay ginagamit para maging pakain sa mga hayop at 40% naman ay ginagamit na pagkain o panghalili sa kanin. Ayon sa Kagawaran ng Pagsasaka, mahigit kumulang sa 600,000 ng mga magsasaka ang nakadepende sa mais bilang pangunahing hanapbuhay. Bukod sa mga magsasaka, kumikita rin ang iba’t ibang sektor ng lipunan tulad ng transportasyon sa pagpoproseso at pagbebenta ng mais. ',
+        'extended': 'Mais ang pangalawa sa pangunahing pananim sa ating bansa. 60% ng mais na itinatanim sa Pilipinas ay ginagamit para maging pakain sa mga hayop at 40% naman ay ginagamit na pagkain o panghalili sa kanin. Ayon sa Kagawaran ng Pagsasaka, mahigit kumulang sa 600,000 ng mga magsasaka ang nakadepende sa mais bilang pangunahing hanapbuhay. Bukod sa mga magsasaka, kumikita rin ang iba’t ibang sektor ng lipunan tulad ng transportasyon sa pagpoproseso at pagbebenta ng mais. \nSubalit noong 2011, ayon sa National Corn Program ng Kagawaran ng Pagsasaka, hindi sapat ang suplay ng mais sa ating bansa. Kung ikukumpara sa mga bansang Thailand, Argentina, Estados Unidos, at iba pang mga bansang nagtatanim ng mais, nahuhuli ang Pilipinas sa average corn productivity na 3.21 metric tons/hectare (mt/ha). Sa kasalukyan, ayon kay Dr. Art Salazar ay sapat na ang suplay ng mais sa ating bansa. \n Isa sa mga tinuturing na dahilan ng pagbaba ng produksyon ng mais sa ating bansa ay ang pababago-bagong klima na nagdudulot ng mga kalamidad tulad ng bagyo at tagtuyot. Ang pamumugad din ng mga insekto ay isa rin sa mga dahilan ng pagbaba ng produksyon ng mais at ng mas madalas na paggamit ng pestisidyo. Ang corn borer at corn plant hopper ang mga halimbawa ng insekto na namumugad sa mga taniman ng mais. Bukod dito, ang pagkakaroon ng sakit ng mga halaman tulad ng corn rust, corn downy mildew, at corn leaf spot at ang regular na paggamit ng kemikal ng mga magsasaka ay nakaka-apekto rin sa produksyon ng mais sa ating bansa.',
+      },
+      'outline': [
+        'landpreparation-lo',
+        'cornpests-lo',
+        'corndiseases-lo',
+        'stagescorn-lo',
+        'farmmechanization-lo',
+        'cornprocessing-lo',
+        'cornfertilization-lo',
+
+      ],
+      'createdAt': Date.now,
+      'updatedAt': Date.now,
+      'createdBy': 'admin',     
+      '__ref': 'rice-toolkit',
+    },
+
+    /*{
       'title': 'Corn',
       //'title': 'Corn Chapter',
       'state': 'published',
@@ -1999,7 +2687,7 @@ exports.create = {
         'aquafeeds-lo'
       ],
       '__ref': 'feedres-chapter',
-    },
+    },*/
 
   ],
 
@@ -2039,7 +2727,7 @@ exports.create = {
   ],
 */
 
-  LOComment: [
+/*  LOComment: [
     { 
       'content': 'Hello po!', 
       'author': 'Angelica', 
@@ -2222,8 +2910,9 @@ exports.create = {
     },
 
   ],
-
+*/
   LOView: [
+/*
     { 
       'user': 'Angelica', 
       'learningObject': 'aquafeeds-lo',
@@ -2903,7 +3592,582 @@ exports.create = {
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Batangas'
-    }
+    }*/
+  ], 
+
+  ELearningVisit: [
+    /*{ 
+      'dateViewed': '2017-01-12',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Rizal'
+    },
+    { 
+      'dateViewed': '2017-01-28',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Cavite'
+    },
+    { 
+      'dateViewed': '2017-01-28',
+      'country_code': 'PH',
+      'region': 'Northern Mindanao',
+      'city': 'Bukidnon'
+    },
+    { 
+      'dateViewed': '2017-01-28',
+      'country_code': 'PH',
+      'region': 'Western Visayas',
+      'city': 'Aklan'
+    },
+    { 
+      'dateViewed': '2017-01-28',
+      'country_code': 'PH',
+      'region': 'Western Visayas',
+      'city': 'Antique'
+    },
+    { 
+      'dateViewed': '2017-01-18',
+      'country_code': 'PH',
+      'region': 'Western Visayas',
+      'city': 'Capiz'
+    },
+    { 
+      'dateViewed': '2017-01-10',
+      'country_code': 'PH',
+      'region': 'Western Visayas',
+      'city': 'Guimaras'
+    },
+    { 
+      'dateViewed': '2017-02-09',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Laguna'
+    },
+    { 
+      'dateViewed': '2017-02-09',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Laguna'
+    },
+    { 
+      'dateViewed': '2017-02-09',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Laguna'
+    },
+    { 
+      'dateViewed': '2017-02-09',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Laguna'
+    },
+    { 
+      'dateViewed': '2017-02-26',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Batangas'
+    },
+    { 
+      'dateViewed': '2017-02-07',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Quezon'
+    },
+    { 
+      'dateViewed': '2017-03-01',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Lucena'
+    },
+    { 
+      'dateViewed': '2017-03-01',
+      'country_code': 'PH',
+      'region': 'Central Luzon',
+      'city': 'Aurora'
+    },
+    { 
+      'dateViewed': '2017-03-01',
+      'country_code': 'PH',
+      'region': 'Central Luzon',
+      'city': 'Bataan'
+    },
+    { 
+      'dateViewed': '2017-03-11',
+      'country_code': 'PH',
+      'region': 'Mimaropa',
+      'city': 'Marinduque'
+    },
+    { 
+      'dateViewed': '2017-02-09',
+      'country_code': 'PH',
+      'region': 'Mimaropa',
+      'city': 'Occidental Mindoro'
+    },
+    { 
+      'dateViewed': '2017-02-16',
+      'country_code': 'PH',
+      'region': 'Mimaropa',
+      'city': 'Oriental Mindoro'
+    },
+    { 
+      'dateViewed': '2017-02-19',
+      'country_code': 'PH',
+      'region': 'Mimaropa',
+      'city': 'Palawan'
+    },
+    { 
+      'dateViewed': '2017-02-20',
+      'country_code': 'PH',
+      'region': 'Bicol',
+      'city': 'Albay'
+    },
+    { 
+      'dateViewed': '2017-02-21',
+      'country_code': 'PH',
+      'region': 'Bicol',
+      'city': 'Camarines Norte'
+    },
+    { 
+      'dateViewed': '2017-02-22',
+      'country_code': 'PH',
+      'region': 'Bicol',
+      'city': 'Camarines Sur'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'PH',
+      'region': 'National Capital Region',
+      'city': 'Caloocan'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'PH',
+      'region': 'National Capital Region',
+      'city': 'Makati'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'PH',
+      'region': 'National Capital Region',
+      'city': 'Malabon'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'PH',
+      'region': 'National Capital Region',
+      'city': 'Mandaluyong'
+    },
+    { 
+      'dateViewed': '2017-03-26',
+      'country_code': 'PH',
+      'region': 'National Capital Region',
+      'city': 'Manila'
+    },
+    { 
+      'dateViewed': '2017-03-20',
+      'country_code': 'PH',
+      'region': 'National Capital Region',
+      'city': 'Marikina'
+    },
+    { 
+      'dateViewed': '2017-03-23',
+      'country_code': 'PH',
+      'region': 'National Capital Region',
+      'city': 'Muntinlupa'
+    },
+    { 
+      'dateViewed': '2017-03-23',
+      'country_code': 'PH',
+      'region': 'National Capital Region',
+      'city': 'Navotas'
+    },
+    { 
+      'dateViewed': '2017-03-24',
+      'country_code': 'PH',
+      'region': 'Cordillera Administrative Region',
+      'city': 'Ifugao'
+    },
+    { 
+      'dateViewed': '2017-03-28',
+      'country_code': 'PH',
+      'region': 'Cordillera Administrative Region',
+      'city': 'Kalinga'
+    },
+    { 
+      'dateViewed': '2017-03-28',
+      'country_code': 'PH',
+      'region': 'Cordillera Administrative Region',
+      'city': 'Mountain Province'
+    },
+    { 
+      'dateViewed': '2017-03-22',
+      'country_code': 'PH',
+      'region': 'Cordillera Administrative Region',
+      'city': 'Baguio'
+    },
+    { 
+      'dateViewed': '2017-04-17',
+      'country_code': 'PH',
+      'region': 'National Capital Region',
+      'city': 'Pasay'
+    },
+    { 
+      'dateViewed': '2017-04-16',
+      'country_code': 'PH',
+      'region': 'National Capital Region',
+      'city': 'Pasig'
+    },
+    { 
+      'dateViewed': '2017-04-17',
+      'country_code': 'PH',
+      'region': 'Soccsksargen',
+      'city': 'Cotabato'
+    },
+    { 
+      'dateViewed': '2017-04-04',
+      'country_code': 'PH',
+      'region': 'Soccsksargen',
+      'city': 'Sarangani'
+    },
+    { 
+      'dateViewed': '2017-04-05',
+      'country_code': 'PH',
+      'region': 'Soccsksargen',
+      'city': 'South Cotabato'
+    },
+    { 
+      'dateViewed': '2017-04-04',
+      'country_code': 'PH',
+      'region': 'Soccsksargen',
+      'city': 'Sultan Kudarat'
+    },
+    { 
+      'dateViewed': '2017-04-03',
+      'country_code': 'PH',
+      'region': 'Soccsksargen',
+      'city': 'General Santos'
+    },
+    { 
+      'dateViewed': '2017-04-03',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Dasmarinas'
+    },
+    { 
+      'dateViewed': '2017-04-03',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Batangas'
+    },
+    { 
+      'dateViewed': '2017-01-12',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Rizal'
+    },
+    { 
+      'dateViewed': '2017-01-28',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Cavite'
+    },
+    { 
+      'dateViewed': '2017-01-28',
+      'country_code': 'PH',
+      'region': 'Northern Mindanao',
+      'city': 'Bukidnon'
+    },
+    { 
+      'dateViewed': '2017-01-28',
+      'country_code': 'PH',
+      'region': 'Western Visayas',
+      'city': 'Aklan'
+    },
+    { 
+      'dateViewed': '2017-01-28',
+      'country_code': 'PH',
+      'region': 'Western Visayas',
+      'city': 'Antique'
+    },
+    { 
+      'dateViewed': '2017-01-18',
+      'country_code': 'PH',
+      'region': 'Western Visayas',
+      'city': 'Capiz'
+    },
+    { 
+      'dateViewed': '2017-01-10',
+      'country_code': 'PH',
+      'region': 'Western Visayas',
+      'city': 'Guimaras'
+    },
+    { 
+      'dateViewed': '2017-02-09',
+      'country_code': 'PH',
+      'region': 'Calabarzon',
+      'city': 'Laguna'
+    },
+    { 
+      'dateViewed': '2017-02-26',
+      'country_code': 'AF'
+    },
+    { 
+      'dateViewed': '2017-02-07',
+      'country_code': 'AF'
+    },
+    { 
+      'dateViewed': '2017-03-01',
+      'country_code': 'AR'
+    },
+    { 
+      'dateViewed': '2017-03-01',
+      'country_code': 'AR'
+    },
+    { 
+      'dateViewed': '2017-03-01',
+      'country_code': 'AR'
+    },
+    { 
+      'dateViewed': '2017-03-11',
+      'country_code': 'AR'
+    },
+    { 
+      'dateViewed': '2017-02-09',
+      'country_code': 'AR'
+    },
+    { 
+      'dateViewed': '2017-02-16',
+      'country_code': 'AR'
+    },
+    { 
+      'dateViewed': '2017-02-19',
+      'country_code': 'AR'
+    },
+    { 
+      'dateViewed': '2017-02-20',
+      'country_code': 'AR'
+    },
+    { 
+      'dateViewed': '2017-02-21',
+      'country_code': 'BR'
+    },
+    { 
+      'dateViewed': '2017-02-22',
+      'country_code': 'BR'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'BR'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'BR'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'CA'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'CA'
+    },
+    { 
+      'dateViewed': '2017-03-26',
+      'country_code': 'CA'
+    },
+    { 
+      'dateViewed': '2017-03-20',
+      'country_code': 'CA'
+    },
+    { 
+      'dateViewed': '2017-03-23',
+      'country_code': 'CA'
+    },
+    { 
+      'dateViewed': '2017-03-23',
+      'country_code': 'CA'
+    },
+    { 
+      'dateViewed': '2017-03-24',
+      'country_code': 'CL'
+    },
+    { 
+      'dateViewed': '2017-03-28',
+      'country_code': 'CN'
+    },
+    { 
+      'dateViewed': '2017-03-28',
+      'country_code': 'CO'
+    },
+    { 
+      'dateViewed': '2017-03-22',
+      'country_code': 'CO'
+    },
+    { 
+      'dateViewed': '2017-04-17',
+      'country_code': 'FR'
+    },
+    { 
+      'dateViewed': '2017-04-16',
+      'country_code': 'FR'
+    },
+    { 
+      'dateViewed': '2017-04-17',
+      'country_code': 'FR'
+    },
+    { 
+      'dateViewed': '2017-04-04',
+      'country_code': 'FR'
+    },
+    { 
+      'dateViewed': '2017-04-05',
+      'country_code': 'FR'
+    },
+    { 
+      'dateViewed': '2017-04-04',
+      'country_code': 'FR'
+    },
+    { 
+      'dateViewed': '2017-04-03',
+      'country_code': 'FR'
+    },
+    { 
+      'dateViewed': '2017-04-03',
+      'country_code': 'DE'
+    },
+    { 
+      'dateViewed': '2017-04-03',
+      'country_code': 'DE'
+    },
+    { 
+      'dateViewed': '2017-02-07',
+      'country_code': 'DE'
+    },
+    { 
+      'dateViewed': '2017-03-01',
+      'country_code': 'ID'
+    },
+    { 
+      'dateViewed': '2017-03-01',
+      'country_code': 'ID'
+    },
+    { 
+      'dateViewed': '2017-03-01',
+      'country_code': 'JP'
+    },
+    { 
+      'dateViewed': '2017-03-11',
+      'country_code': 'JP'
+    },
+    { 
+      'dateViewed': '2017-02-09',
+      'country_code': 'KR'
+    },
+    { 
+      'dateViewed': '2017-02-16',
+      'country_code': 'KR'
+    },
+    { 
+      'dateViewed': '2017-02-19',
+      'country_code': 'KR'
+    },
+    { 
+      'dateViewed': '2017-02-20',
+      'country_code': 'KR'
+    },
+    { 
+      'dateViewed': '2017-02-21',
+      'country_code': 'MY'
+    },
+    { 
+      'dateViewed': '2017-02-22',
+      'country_code': 'MY'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'MY'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'MY'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'MY'
+    },
+    { 
+      'dateViewed': '2017-03-25',
+      'country_code': 'MY'
+    },
+    { 
+      'dateViewed': '2017-03-26',
+      'country_code': 'MX'
+    },
+    { 
+      'dateViewed': '2017-03-20',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-03-23',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-03-23',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-03-24',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-03-28',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-03-28',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-03-22',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-04-17',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-04-16',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-04-17',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-04-04',
+      'country_code': 'SG'
+    },
+    { 
+      'dateViewed': '2017-04-05',
+      'country_code': 'US'
+    },
+    { 
+      'dateViewed': '2017-04-04',
+      'country_code': 'US'
+    },
+    { 
+      'dateViewed': '2017-04-03',
+      'country_code': 'US'
+    },
+    { 
+      'dateViewed': '2017-04-03',
+      'country_code': 'US'
+    },
+    { 
+      'dateViewed': '2017-04-03',
+      'country_code': 'US'
+    }*/
   ]
   
 };

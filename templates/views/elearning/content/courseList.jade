@@ -1,0 +1,47 @@
+extends ../../../layouts/elearning
+
+mixin allcourses-grid(courses)
+  .row
+    .col-md-8.col-xs-10
+      h3.text-left All Courses
+    .col-md-2.col-xs-2.pull-right
+      +view-generic()
+  .row.equal-height
+    if courses.length
+      each course in courses
+        .col-xs-6.col-md-3
+          +course-card(course, course.url)
+    else
+      h3.text-muted There are no courses yet.
+
+mixin allcourses-list(courses)
+  .row
+    .col-md-8.col-xs-10
+      h3.text-left All Courses
+    .col-md-2.col-xs-2.pull-right
+      +view-generic()
+  .row
+    if courses.length
+      .col-md-9
+        .panel
+          table.table.table-hover
+            thead
+            tbody
+              each course in courses
+                +course-tr-media(course, course.url)
+    else
+      h3.text-muted There are no courses yet.
+
+
+block content
+  +search()
+
+  .container
+    .panel.panel-default
+      .panel-body
+        if viewStyle == 'grid'
+          +allcourses-grid(courses.results)
+        else
+          +allcourses-list(courses.results)
+        +paginate-generic(courses, url)
+

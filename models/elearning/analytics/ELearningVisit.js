@@ -10,18 +10,22 @@ var ELearningVisit = new keystone.List('ELearningVisit', {
 //visit in each LO will be accessed through LOView
 ELearningVisit.add({
 	ip: { 
-		type: String, 
-		required: true 
+		type: String,
+		required: false 
+	},
+	country_code:{
+		type: String,
+		required: false
 	},
 	region: {
-		type: String, 
+		type: String,
 		required: false
 	},
 	city: {
-		type: String, 
+		type: String,
 		required: false
 	},
-	dateAccessed: {//change this before deplyoning, use createdAt instead
+	dateViewed: {//change this before deplyoning, use createdAt instead
 		type: Types.Datetime, 
 		index: true, 
 		default: Date.now 
@@ -29,7 +33,7 @@ ELearningVisit.add({
 	isUser: { type: Boolean, index: false }
 });
 
-ELearningVisit.defaultSort = '-dateAccessed';
-ELearningVisit.defaultColumns = 'ip, dateAccessed, createdAt';
+ELearningVisit.defaultSort = '-dateViewed';
+ELearningVisit.defaultColumns = 'ip, dateViewed, createdAt';
 
 ELearningVisit.register();

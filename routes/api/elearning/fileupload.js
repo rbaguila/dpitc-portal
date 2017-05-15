@@ -86,20 +86,20 @@ exports.remove = function(req, res) {
   FileData.model.findById(req.params.id).exec(function (err, item) {
 
     if (err) return res.apiError('database error', err);
-    
+
     if (!item) return res.apiError('not found');
 
       item.remove(function (err) {
 
         if (err) return res.apiError('database error', err);
-        
+
         //Delete the file
-        exec('rm public/uploads/files/'+fileId+'.*', function(err, stdout, stderr) { 
-          if (err) { 
-              console.log('child process exited with error code ' + err.code); 
-              return; 
-          } 
-          console.log(stdout); 
+        exec('rm public/uploads/files/'+fileId+'.*', function(err, stdout, stderr) {
+          if (err) {
+              console.log('child process exited with error code ' + err.code);
+              return;
+          }
+          console.log(stdout);
         });
 
         return res.apiResponse({
