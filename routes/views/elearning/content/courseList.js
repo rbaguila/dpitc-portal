@@ -47,7 +47,7 @@ exports = module.exports = function (req, res) {
             maxPages: 10,
         })
         .where('state', 'published')
-        .sort('-PublishedAt')
+        .sort('title')
         .exec(function(err, results){
             locals.courses = results;
             

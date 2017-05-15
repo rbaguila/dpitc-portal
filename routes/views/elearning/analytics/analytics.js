@@ -54,6 +54,9 @@ exports = module.exports = function(req, res){
                 locals.data.mostReactedLO = results.slice(0, 5);
                 locals.data.numReactions = total;
             }
+            else{
+                locals.data.numReactions = 0;
+            }
             next(err);
         });
     });
@@ -107,6 +110,7 @@ exports = module.exports = function(req, res){
 
         q.exec(function(err, count){
             if (err || count==null) {
+                locals.data.numCourses = 0;
                 return next(err);
             }
             locals.data.numCourses = count;
@@ -119,6 +123,7 @@ exports = module.exports = function(req, res){
 
         q.exec(function(err, count){
             if (err || count==null) {
+                locals.data.numLO = 0;
                 return next(err);
             }
             locals.data.numLO = count;
@@ -131,6 +136,7 @@ exports = module.exports = function(req, res){
 
         q.exec(function(err, count){
             if (err || count==null) {
+                locals.data.numUsers = 0;
                 return next(err);
             }
             locals.data.numUsers = count;
@@ -143,6 +149,7 @@ exports = module.exports = function(req, res){
 
         q.exec(function(err, count){
             if (err || count==null) {
+                locals.data.numViews = 0;
                 return next(err);
             }
             locals.data.numViews = count;
@@ -155,18 +162,7 @@ exports = module.exports = function(req, res){
 
         q.exec(function(err, count){
             if (err || count==null) {
-                return next(err);
-            }
-            locals.data.numComments = count;
-            next(err);
-        });
-    });
-
-    view.on('init', function(next){
-        var q = keystone.list('LOComment').model.count();
-
-        q.exec(function(err, count){
-            if (err || count==null) {
+                locals.data.numComments = 0;
                 return next(err);
             }
             locals.data.numComments = count;
@@ -227,6 +223,7 @@ exports = module.exports = function(req, res){
 
         q.exec(function(err, count){
             if (err || count==null) {
+                locals.data.numPageVisits = locals.data.numViews;
                 return next(err);
             }
             locals.data.numPageVisits = count + locals.data.numViews;

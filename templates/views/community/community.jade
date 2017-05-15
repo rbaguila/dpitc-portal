@@ -1,15 +1,12 @@
 extends ../../layouts/community
 
 block css
-  link(href="/bower_components/lightgallery/dist/css/lightgallery.min.css", rel="stylesheet")
 
 block content
   
   include community-public.jade
                   
 block js
-  script(src='/bower_components/lightgallery/demo/js/lightgallery.min.js')
-  script(src='/bower_components/lightgallery/demo/js/lg-thumbnail.min.js')
   script(src='/bower_components/theia-sticky-sidebar/dist/ResizeSensor.js')
   script(src='/bower_components/theia-sticky-sidebar/dist/theia-sticky-sidebar.js')
   script(src='/js/dropdown.js')

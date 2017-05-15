@@ -27,7 +27,7 @@ exports = module.exports = function (req, res) {
   locals.ip = null;
   
   locals.page = req.query.page == undefined ? 1 : req.query.page;
-  locals.perPage = req.query.perPage == undefined ?  6 : req.query.perPage;
+  locals.perPage = req.query.perPage == undefined ?  4 : req.query.perPage;
   
   locals.formData = req.body || {};
 
@@ -41,6 +41,7 @@ exports = module.exports = function (req, res) {
     ratedLO: []
   }
   
+  var tempPopularLO = [];
   locals.popularLO = [];
 
   var tempRecommended = [];
@@ -102,6 +103,8 @@ exports = module.exports = function (req, res) {
             
             if (err) return next(err);
             
+            
+            
             loview.learningObject.viewCount = count;
             
             // Uniquely push to locals.popularLO[]
@@ -120,18 +123,40 @@ exports = module.exports = function (req, res) {
 
   });
 
+  // Populate LearningObject Videos
+  view.on('init', function(next) {
+    async.each(locals.popularLO, function(learningObject, next) {
+      LearningObject.model.findOne({
+          _id: learningObject._id
+        })
+        .populate('video')
+        .exec(function(err, result) {
+          if (err) return next(err);
+        //  console.log(result);
+
+          tempPopularLO.push(result);
+          next();
+        });
+    }, function (err) {
+      next(err);
+    });
+
+  });
+
   view.on('init', function(next) {
     // Sort locals.popularLO[]
-    locals.popularLO.sort( function (a, b) {
+    /*locals.popularLO.sort( function (a, b) {
+      return parseFloat(b.viewCount) - parseFloat(a.viewCount); 
+    });
+*/
+    tempPopularLO.sort( function (a, b) {
       return parseFloat(b.viewCount) - parseFloat(a.viewCount); 
     });
 
-    for(var i=0; i<locals.popularLO; i++) {
-      console.log(locals.popularLO[i].title);
-    }
-
     // paginate locals.popularLO
-    locals.paginatePopularLO = helper.paginate(locals.popularLO, locals.page, locals.perPage);
+    locals.paginatePopularLO = helper.paginate(tempPopularLO, locals.page, locals.perPage);
+
+    //locals.paginatePopularLO = helper.paginate(locals.popularLO, locals.page, locals.perPage);
    
     next();
   });
@@ -145,7 +170,7 @@ exports = module.exports = function (req, res) {
 
   //get all the learning objects
   view.on('init', function(next){
-    var q = LearningObject.model.find().populate('isp sector industry');
+    var q = LearningObject.model.find().populate('isp sector industry video');
 
     q.exec(function(err, results){
         tempLearningObjects = results;
