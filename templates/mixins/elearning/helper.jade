@@ -36,3 +36,19 @@ mixin img-available-card-top(src, alt, width, height)
 
 mixin img-available-rounded-media-object(src, alt, width, height)
   img(src=src, alt=alt, width=width+'px', height=height+'px').img-rounded.media-object
+
+//- Available Youtube Images
+mixin img-youtube(videoId, alt, width, height)
+  img(src="https://img.youtube.com/vi/"+videoId+"/hqdefault.jpg", alt=alt, width=width, height=height)
+
+mixin img-youtube-rounded(videoId, alt, width, height)
+  img(src="https://img.youtube.com/vi/"+videoId+"/hqdefault.jpg", alt=alt, width=width, height=height).rounded
+
+mixin img-youtube-center(videoId, alt, width, height)
+  img(src="https://img.youtube.com/vi/"+videoId+"/hqdefault.jpg", alt=alt, width=width, height=height).center-block
+
+mixin img-youtube-rounded-center(videoId, alt, width, height)
+  img(src="https://img.youtube.com/vi/"+videoId+"/hqdefault.jpg", alt=alt, width=width, height=height).rounded.center-block
+
+mixin img-youtube-rounded-media-object(videoId, alt, width, height)
+  img(src="https://img.youtube.com/vi/"+videoId+"/hqdefault.jpg", alt=alt, width=width, height=height).img-rounded.media-object

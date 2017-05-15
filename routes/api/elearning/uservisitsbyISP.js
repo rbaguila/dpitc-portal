@@ -21,6 +21,7 @@ exports = module.exports = function(req, res) {
 			async.each(results, function (isp, next) {
 				keystone.list('LearningObject').model.find().where('isp', isp._id).exec(function (err, r) {
 					if (err || !r.length) {
+						counter++;
 					}
 					else{
 						var ids = [];
@@ -44,6 +45,7 @@ exports = module.exports = function(req, res) {
 					}
 				});
 			}, function (err) {
+				res.send(data);
 				next(err);
 			});
 		}

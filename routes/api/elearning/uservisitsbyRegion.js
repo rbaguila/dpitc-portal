@@ -65,6 +65,7 @@ exports = module.exports = function(req, res) {
 					}
 				});
 			}, function (err) {
+				res.send(region_city);
 				next(err);
 			});
 		}

@@ -132,7 +132,7 @@ exports = module.exports = function (req, res) {
       if (err) {
         validationErrors = err.errors;
       } else {
-        helper.addElearningLog(user, req.ips, 'ADDED RATING '+locals.url);
+        helper.addElearningLog(locals.user, req.ips, 'ADDED RATING '+locals.url);
         req.flash('success', 'Your rating was submitted.');
         return res.redirect('/elearning/learning-object/'+locals.currentLO.slug);
       }
@@ -534,7 +534,7 @@ exports = module.exports = function (req, res) {
   view.on('init', function(next){
     var currentUser = locals.user;
     if(currentUser){
-      var q = LearningObject.model.find().where('_id').in(currentUser.learningObjectsTaken).populate('isp sector industry');
+      var q = LearningObject.model.find().where('_id').in(currentUser.learningObjectsTaken).populate('isp sector industry video');
 
       q.exec(function(err, results){
           if(results!=null||results.length>0){

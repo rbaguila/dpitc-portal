@@ -1,8 +1,10 @@
 var keystone = require('keystone');
 var http = require('http');
+var async = require('async');
 
 var helper = require('./../helper');
 
+var LearningObject = keystone.list('LearningObject');
 var LearningContent = keystone.list('LearningContent');
 var ELearningLog = keystone.list('ELearningLog');
 var ELearningVisit = keystone.list('ELearningVisit');
@@ -25,6 +27,8 @@ exports = module.exports = function (req, res) {
 
   locals.currslug = req.params.courseslug;
   
+  locals.tempOutline = [];
+  locals.outline = [];
   locals.data = {
     courses: [],
     chapters: [],
@@ -61,6 +65,27 @@ exports = module.exports = function (req, res) {
       }
       next(err);
     });
+  });
+
+  // Populate LearningObject Videos
+  view.on('init', function(next) {
+    //console.log(locals.currentCourse.outline);
+    async.each(locals.currentCourse.outline, function(learningObject, next) {
+      LearningObject.model.findOne({
+          _id: learningObject._id
+        })
+        .populate('video')
+        .exec(function(err, result) {
+          if (err) return next(err);
+  //        console.log(result);
+ //         learningObject = result;
+          locals.outline.push(result);
+          next();
+        });
+    }, function (err) {
+      next(err);
+    });
+
   });
 
   //insert ELearning Visit

@@ -83,39 +83,39 @@ mixin paginate-page(pagination, url)
   ul.pagination.pull-right
     li
       if pagination.previous != false
-        a(href=url+'page='+pagination.previous, aria-label="Previous")
+        a(href=url+'&page='+pagination.previous, aria-label="Previous")
           span(aria-hidden="true") &laquo
     each page in pagination.pages
       if page == pagination.currentPage
         li.active
-          a(href=url+'page='+page) #{page}
+          a(href=url+'&page='+page) #{page}
       else
         li
-          a(href=url+'page='+page) #{page}
+          a(href=url+'&page='+page) #{page}
     li
       if pagination.next != false
-        a(href=url+'page='+pagination.next, aria-label="Next")
+        a(href=url+'&page='+pagination.next, aria-label="Next")
           span(aria-hidden="true") &raquo
 
-mixin paginate-page-view-duration(pagination)
+mixin paginate-page-view-duration(pagination, url)
   ul.pagination.pull-right
     li
       if pagination.previous != false
-        a(href=url+'page='+pagination.previous+'&view='+viewStyle+'&duration='+duration, aria-label="Previous")
+        a(href=url+'&page='+pagination.previous+'&view='+viewStyle+'&duration='+duration, aria-label="Previous")
           span(aria-hidden="true") &laquo
     each page in pagination.pages
       if page == pagination.currentPage
         li.active
-          a(href=url+'page='+page+'&view='+viewStyle+'&duration='+duration) #{page}
+          a(href=url+'&page='+page+'&view='+viewStyle+'&duration='+duration) #{page}
       else
         li
-          a(href=url+'view=grid&page='+page)= page
+          a(href=url+'&view=grid&page='+page)= page
     li
       if pagination.next != false
         a(href=url+'page='+pagination.next+'&view='+viewStyle+'&duration='+duration aria-label="Next")
           span(aria-hidden="true") &raquo
 
-mixin paginate-learning-object(pagination)
+mixin paginate-learning-object(pagination, url)
   ul.pagination.pull-right
     li
       if pagination.previous != false
@@ -138,18 +138,18 @@ mixin paginate-generic(pagination, url)
   ul.pagination.pull-right
     li
       if pagination.previous != false
-        a(href=url+'page='+pagination.previous+'&view='+viewStyle, aria-label="Previous")
+        a(href=url+'&page='+pagination.previous+'&view='+viewStyle, aria-label="Previous")
           span(aria-hidden="true") &laquo
     each page in pagination.pages
       if page == pagination.currentPage
         li.active
-          a(href=url+'page='+page+'&view='+viewStyle) #{page}
+          a(href=url+'&page='+page+'&view='+viewStyle) #{page}
       else
         li
-          a(href=url+'view=grid&page='+page)= page
+          a(href=url+'&view=grid&page='+page)= page
     li
       if pagination.next != false
-        a(href=url+'page='+pagination.next+'&view='+viewStyle aria-label="Next")
+        a(href=url+'&page='+pagination.next+'&view='+viewStyle aria-label="Next")
           span(aria-hidden="true") &raquo
 
 
@@ -157,19 +157,19 @@ mixin paginate-generic(pagination, url)
 mixin view-popular(action)
   ul.nav.navbar-nav.navbar-right
     li
-      a(href=url+'page='+page+'&view=grid'+'&duration='+duration)
+      a(href=url+'&page='+page+'&view=grid'+'&duration='+duration)
         span(aria-hidden="true").glyphicon.glyphicon-th
     li
-      a(href=url+'page='+page+'&view=list'+'&duration='+duration)
+      a(href=url+'&page='+page+'&view=list'+'&duration='+duration)
         span(aria-hidden="true").glyphicon.glyphicon-th-list
 
 mixin view-generic(action)
   ul.nav.navbar-nav.navbar-right
     li
-      a(href=url+'page='+page+'&view=grid')
+      a(href=url+'&page='+page+'&view=grid')
         span(aria-hidden="true").glyphicon.glyphicon-th
     li
-      a(href=url+'page='+page+'&view=list')
+      a(href=url+'&page='+page+'&view=list')
         span(aria-hidden="true").glyphicon.glyphicon-th-list
 
 mixin duration-popular(action)
@@ -178,8 +178,8 @@ mixin duration-popular(action)
       span.caret
     ul.dropdown-menu(aria-labelledby='duration')
       li
-        a(href=url+'page='+page+'&view='+viewStyle+'&duration=day') day
+        a(href=url+'&page='+page+'&view='+viewStyle+'&duration=day') day
       li
-        a(href=url+'page='+page+'&view='+viewStyle+'&duration=week') week
+        a(href=url+'&page='+page+'&view='+viewStyle+'&duration=week') week
       li 
-        a(href=url+'page='+page+'&view='+viewStyle+'&duration=month') month
+        a(href=url+'&page='+page+'&view='+viewStyle+'&duration=month') month

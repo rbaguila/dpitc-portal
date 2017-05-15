@@ -62,7 +62,7 @@ exports = module.exports = function (req, res) {
 
   //get all the learning objects
   view.on('init', function(next){
-    var q = LearningObject.model.find().populate('isp sector industry');
+    var q = LearningObject.model.find().populate('isp sector industry video');
 
     q.exec(function(err, results){
         tempLearningObjects = results;
