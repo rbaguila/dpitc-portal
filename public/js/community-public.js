@@ -14,6 +14,12 @@ $(document).ready(function() {
         region: data.region_name,
         loc: data.latitude+','+data.longitude
       };
+
+      $.ajax({
+        type: 'POST',
+        url: '/api/community/analytics/community',
+        data: geoloc
+      });
     });
 
     $('.discussion .summary a').click(function(e) {

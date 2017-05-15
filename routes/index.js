@@ -117,6 +117,7 @@ exports = module.exports = function (app) {
   app.get('/api/community/analytics/list/view/reports', keystone.middleware.api, routes.api.communityAnalytics.listReportViews);
   app.get('/api/community/analytics/list/view/discussions', keystone.middleware.api, routes.api.communityAnalytics.listDiscussionViews);
   app.get('/api/community/analytics/list/view/groups', keystone.middleware.api, routes.api.communityAnalytics.listGroupViews);
+  app.post('/api/community/analytics/community', keystone.middleware.api, routes.api.communityAnalytics.addCommView);
   app.post('/api/community/analytics/discussion', keystone.middleware.api, routes.api.communityAnalytics.addDiscView);
   app.post('/api/community/analytics/groups', keystone.middleware.api, routes.api.communityAnalytics.addGroupView);
   app.post('/api/community/analytics/event', keystone.middleware.api, routes.api.communityAnalytics.addEventView);
