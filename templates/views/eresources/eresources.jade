@@ -1,55 +1,68 @@
 extends ../../layouts/community
 
+block css
+
 block content
 
-  .community-body
-    #eresources-content
-      .container
+  #public-content
+    .container-fluid(style="padding: 80px 90.5px 0px 90.5px;")
+      .wrapper
         .row
-          .col-md-9
-            .section-header
-              .title Latest Publications
-              .triangle
+          //- .section.col-md-12
+            .section-title
+              <span class='glyphicon glyphicon-calendar'></span>
+              | Events
+              .title-hr.col-xs-12
 
-            hr.clear
-            .row
-              each publication in publications
-                .col-xs-4.col-md-2
-                  .publication-col-grid
-                    a(href="/eresources/publication/"+publication._id)
-                      .cover
-                        img(src=publication._.cover.fit(100, 180, {}))
+          .section.col-md-9(style="padding: 10px 16px;")
+            //- .row(style="margin-bottom:1em").blue-black-seperator
+            .section-title.focus.row
+              .title.col-md-5.col-xs-4
+                .skew.col-xs-12
+                .skewed-text Latest Publications
+
+            .section-content
+              .row
+                each publication in publications
+                  .col-xs-4.col-md-2
+                    .publication-col-grid
+                      a(href="/eresources/publication/"+publication._id)
+                        .cover
+                          img(src=publication._.cover.fit(100, 180, {}))
+                        .title
+                          h3
+                            small #{publication.get('title.trunc')}
+                .col-xs-12.more-link
+                  a(href="/eresources/publications", style="color: white;")
+                    button.btn.btn-lg(style="background-color: #3062B7;" onMouseOver="this.style.color='#FFF'") More Publications
+
+
+          .section.col-md-3
+            .section-title Top Categories
+              .title-hr.btm.col-xs-12
+            .section-content
+              .row
+                //- if data.industries && data.industries.length
+                each industry in data.industries
+                    .col-xs-12
+                      | #{industry.name} &nbsp;
+                      span.badge #{industry.publicationCount}
+
+          .section.col-md-9(style="padding: 10px 16px;")
+            //- .row(style="margin-bottom:1em").blue-black-seperator
+            .section-title.focus.row
+              .title.col-md-5.col-xs-4
+                .skew.col-xs-12
+                .skewed-text Links
+
+            .section-content
+              .row
+                each link in links
+                  .col-xs-12.eresources-link
+                    img(src=link._.image.fill(200, 150, {})).image
+                    .data
                       .title
-                        h3
-                          small #{publication.get('title.trunc')}
-              .col-xs-12.more-link
-                a(href="/eresources/publications") More Publications
-
-          .col-md-3
-            .minor-section-header
-              .title Top Categories
-              .colored-bar
-            .row
-              //- if data.industries && data.industries.length
-              each industry in data.industries
-                  .col-xs-12
-                    | #{industry.name} &nbsp;
-                    span.badge #{industry.publicationCount}
-
-
-        .row
-          .col-md-9
-            .section-header
-              .title Links
-              .triangle
-            hr.clear
-            .row
-              each link in links
-                .col-xs-12.eresources-link
-                  img(src=link._.image.fill(200, 150, {})).image
-                  .data
-                    .title
-                      a(href=link.url) #{link.name}
-                    .description #{link.description}
-              .col-xs-12.more-link
-                //- a(href="/eresources/links") More Links
+                        a(href=link.url) #{link.name}
+                      .description #{link.description}
+                .col-xs-12.more-link
+                  //- a(href="/eresources/links") More Links
