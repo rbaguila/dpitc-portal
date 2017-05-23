@@ -26,33 +26,6 @@ exports = module.exports = function (req, res) {
     userApi: locals.host+'/api/users'
   };
 
-  // Record visits
-  view.on('init', function(next) {
-    /* Has a daily limit */
-    // var command = 'curl freegeoip.net/json/';
-    // var child = exec(command, function(err, data, stderr) {
-    //   if(err) {
-    //     console.log(err);
-    //   }
-    //
-    //   data = JSON.parse(data);
-    //
-    //   var CommunityView = keystone.list('CommunityView');
-    //   var item = new CommunityView.model({
-    //     ip: data.ip,
-    //     city: data.city,
-    //     region: data.region_name,
-    //     loc: data.latitude+','+data.longitude
-    //   });
-    //
-    //   item.save(function(err, view) {
-    //     if (err) return res.apiError('database error', err);
-    //   })
-    // });
-
-    next();
-  });
-
   view.on('init', function(next) {
     keystone.list('Industry').model.find().sort('name').exec(function (err, results) {
 
@@ -111,6 +84,40 @@ exports = module.exports = function (req, res) {
       });
   });
 
+  // Load top groups
+  view.on('init', function(next) {
+    http.get(locals.config.listGroup, function(response) {
+
+      var bodyChunks = [];
+      response.on('data', function(chunk) {
+        bodyChunks += chunk;
+      }).on('end', function() {
+        var body = JSON.parse(bodyChunks);
+
+        locals.groups = [];
+        locals.allGroups = body.groups;
+        for(var i=0; i<locals.data.industries.length; i++) {
+          var groups = body.groups.filter(function(group) {
+            return locals.data.industries[i].name == group.classification.industry
+          });
+
+          groups.sort(function(a, b) {
+            a = (a.membersCount*0.8) + (a.postsCount.total*0.2);
+            b = (b.membersCount*0.8) + (b.postsCount.total*0.2);
+            return a < b ? 1 : -1;
+          });
+
+          locals.groups.push(groups.slice(0,4));
+        }
+
+        next();
+      });
+    }).on('error', function(err) {
+      next(err);
+    });
+
+  });
+
   // Load all posts
   view.on('init', function(next) {
     http.get(locals.config.listPost, function(response) {
@@ -148,7 +155,7 @@ exports = module.exports = function (req, res) {
       return a>b ? -1 : a<b ? 1 : 0;
     });
 
-    locals.discussions = body.posts.slice(0, 10);
+    locals.discussions = body.posts.slice(0, 5);
 
     for(var i=0; i<locals.discussions.length; i++) {
       var views = locals.data.discussionViews.filter(function(view) {
@@ -193,6 +200,61 @@ exports = module.exports = function (req, res) {
     next();
   });
 
+  // Filter Posts by News
+  view.on('init', function(next) {
+    var body = {
+      posts: []
+    }
+
+    body.posts = locals.data.posts.filter(function(post) {
+      return post.showPublic == true &&
+              post.category == 'news';
+    })
+
+    body.posts.sort(function(a, b) {
+      a = moment(a.startDateTime, 'MMMM Do YYYY, h:mm:SS A');
+      b = moment(b.startDateTime, 'MMMM Do YYYY, h:mm:SS A');
+      return a>b ? -1 : a<b ? 1 : 0;
+    });
+
+    locals.announcements = body.posts.slice(0, 10);
+    locals.tags = [];
+    var tags = {};
+
+    for(var i=0; i<locals.announcements.length; i++) {
+      for(var j=0; j<locals.announcements[i].hashtags.length; j++) {
+        if(tags[locals.announcements[i].hashtags[j]])
+          tags[locals.announcements[i].hashtags[j]] += 1;
+        else tags[locals.announcements[i].hashtags[j]] = 1;
+      }
+    }
+
+    for (var tag in tags) {
+      if (tags.hasOwnProperty(tag)) {
+        locals.tags.push({name: tag, count: tags[tag]});
+      }
+    }
+
+    locals.tags.sort(function(a, b) {
+      return a.count>b.count ? -1 : a.count<b.count ? 1 : 0;
+    });
+
+    for(var i=0; i<locals.announcements.length; i++) {
+      var datePosted = locals.announcements[i].datePosted;
+      locals.announcements[i].datePosted = moment(datePosted, 'MMMM Do YYYY, h:mm:SS a').fromNow();
+    }
+
+    for(var i=0; i<locals.allGroups.length; i++) {
+      for(var j=0; j<locals.announcements.length; j++) {
+        if(locals.announcements[j].groupBelonged == locals.allGroups[i].handle){
+          locals.announcements[j].industry = locals.allGroups[i].classification.industry;
+        }
+      }
+    }
+
+    next();
+  });
+
   // Load all Incident Reports
   view.on('init', function(next) {
     var body = {
@@ -210,7 +272,7 @@ exports = module.exports = function (req, res) {
       return a>b ? -1 : a<b ? 1 : 0;
     });
 
-    locals.blogPosts = body.posts.slice(0, 10);
+    locals.blogPosts = body.posts.slice(0, 3);
 
     for(var i=0; i<locals.blogPosts.length; i++) {
       var datePosted = locals.blogPosts[i].datePosted;
@@ -235,39 +297,6 @@ exports = module.exports = function (req, res) {
     }
 
     next();
-  });
-
-  // Load top groups
-  view.on('init', function(next) {
-    http.get(locals.config.listGroup, function(response) {
-
-      var bodyChunks = [];
-      response.on('data', function(chunk) {
-        bodyChunks += chunk;
-      }).on('end', function() {
-        var body = JSON.parse(bodyChunks);
-
-        locals.groups = [];
-        for(var i=0; i<locals.data.industries.length; i++) {
-          var groups = body.groups.filter(function(group) {
-            return locals.data.industries[i].name == group.classification.industry
-          });
-
-          groups.sort(function(a, b) {
-            a = (a.membersCount*0.8) + (a.postsCount.total*0.2);
-            b = (b.membersCount*0.8) + (b.postsCount.total*0.2);
-            return a < b ? 1 : -1;
-          });
-
-          locals.groups.push(groups.slice(0,4));
-        }
-
-        next();
-      });
-    }).on('error', function(err) {
-      next(err);
-    });
-
   });
 
   view.on('post', {action: 'sign-up'}, function(next) {
