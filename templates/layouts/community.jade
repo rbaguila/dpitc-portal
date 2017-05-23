@@ -67,6 +67,8 @@ html
               li: a(href='#', class="not-active")
                 button#versionbutton ALPHA
 
+
+
       //- NAVBAR
 
       nav#community-nav.navbar.navbar-default.navbar-fixed-top
@@ -112,7 +114,13 @@ html
 
 
       //- END NAVBAR
-
+      #searchCommunityDiv.container(style='display:none;')
+        .row
+          .col-md-12
+            center
+              form(method="GET" action='/search' target='_blank')
+                input#global-search-input-box(type='text', placeholder='Search news, fiesta, technologies', name='searchKey', autofocus='')
+                input.searchButton(type='submit', border='0', value='Search')
     //- BODY
     #body
 

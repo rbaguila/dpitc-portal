@@ -41,7 +41,13 @@ $(document).ready(function(){
 });
 
 function toggleButton() {
-		var x = document.getElementById('searchDiv');
+		if(document.getElementById('searchDiv')){
+			var x = document.getElementById('searchDiv');
+		}else if(document.getElementById('searchCommunityDiv')) {
+			var x = document.getElementById('searchCommunityDiv');
+		}else{
+			var x = null;
+		}
 		
 		if (x.style.display === 'none') {
 				x.style.display = 'block';

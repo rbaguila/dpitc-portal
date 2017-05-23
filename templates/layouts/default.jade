@@ -99,6 +99,13 @@ html
 			//- validation errors, success messages, etc.
 			+flash-messages(messages)
 
+			#searchDiv.container(style='display:none;')
+				.row
+					.col-md-12
+						center
+							form(method="GET" action='/search' target='_blank')
+								input#global-search-input-box(type='text', placeholder='Search news, fiesta, technologies', name='searchKey', autofocus='')
+								input.searchButton(type='submit', border='0', value='Search')
 			//- The content block should contain the body of your template's content
 			block content
 
