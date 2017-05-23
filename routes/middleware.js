@@ -22,8 +22,8 @@ exports.initLocals = function (req, res, next) {
 	res.locals.navLinks = 
 	[
 		{ label: 'Home', key: 'home', href: '/' },
-		{ label: 'FIESTA', key: 'fiesta', href: '/#' },
-		{ label: 'Technology', key: 'tech', href: '/tech' },
+		{ label: 'FIESTA', key: 'fiesta', href: 'http://128.199.180.28/fiesta' },
+		{ label: 'Technology', key: 'tech', href: 'https://pcaarrd-km.herokuapp.com/#/' },
 		{ label: 'Community', key: 'community', href: '/community' },
 		{ label: 'eResources', key: 'eresources', href: '/eresources' },
 		// { label: 'Home', key: 'home', href: '/' },
