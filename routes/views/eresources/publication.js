@@ -9,10 +9,10 @@ exports = module.exports = function(req, res) {
 
   }
 
-  locals.redirect = '/eresources/publications'
+  locals.redirect = '/eresources'
   locals.breadcrumbs = [
     { text: 'E Resources', link: '/eresources'},
-    { text: 'Publications', link: '/eresources/publications'},
+    // { text: 'Publications', link: '/eresources/publications'},
   ]
 
   var pubId = req.params.publication

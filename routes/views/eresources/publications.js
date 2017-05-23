@@ -17,10 +17,10 @@ exports = module.exports = function (req, res) {
     // categories: [],
   };
 
-  locals.redirect = '/eresources/publications'
+  locals.redirect = '/eresources'
   locals.breadcrumbs = [
     { text: 'E Resources', link: '/eresources'},
-    { text: 'Publications', link: '/eresources/publications'}
+    // { text: 'Publications', link: '/eresources/publications'}
   ]
   // console.log(req._parsedUrl.query);
 
@@ -69,7 +69,6 @@ exports = module.exports = function (req, res) {
     })
       // .sort('-publishedDate')
       // .populate('author categories');
-    console.log("Hello: "+locals.data.industry)
     var category, categoryResult
     if (locals.data.industry) {
       q.where('industry').in([locals.data.industry]);
