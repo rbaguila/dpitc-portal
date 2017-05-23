@@ -3,6 +3,16 @@ $(document).ready(function() {
 
     $('.wrapper .section').theiaStickySidebar();
 
+    $('.grid').masonry({
+      itemSelector: '.grid-item',
+      columnWidth: '.grid-sizer',
+      percentPosition: true
+    });
+
+    // $('button.close').click(function(e){
+    //   $('[id^=modal]').modal("hide");
+    // })
+
     $.getJSON('https://freegeoip.net/json/', function(data){
       geoloc = {
         ip: data.ip,

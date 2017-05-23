@@ -5,10 +5,10 @@
         img(src=news && news.image ? news.image.secure_url: '').img-responsive.img-main
         if(news)
           .img-description
-            span.badge.tag #{news.categories.name}
-            p.title #{news.title}
-            br
-            p.description !{news.caption}
+            .text
+              span.badge.tag #{news.categories.name}
+              p.title #{news.title}
+              p.description !{news.caption}
       
     .col-md-5.summary
       each article in commNews

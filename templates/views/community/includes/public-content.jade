@@ -27,7 +27,7 @@
         .section-title.focus.row 
           .title.col-md-5.col-xs-4
             .skew.col-xs-12
-            .skewed-text Recent Reports
+            .skewed-text Incident Reports
         .section-content
           if blogPosts && blogPosts.length
             each blog in blogPosts
@@ -83,79 +83,128 @@
                 h4.empty.text-muted No ongoing discussions
             
       .section.col-md-3
-        .section-title Join the Community
+        .section-title Most Active Groups
           .title-hr.btm.col-xs-12
         .section-content
-          form(method="post").sign-up.row
-            input(type="hidden" name="action" value="sign-up")
-            .col-xs-6.col-md-12.col-lg-6(class=validationErrors.name ? 'has-error' : null)
-              input(type="text" name="fname" placeholder="First Name" required).form-control
-            .col-xs-6.col-md-12.col-lg-6
-              input(type="text" name="lname" placeholder="Last Name" required).form-control
-            .col-xs-12
-              input(type="email" name="email" placeholder="Email Address" required).form-control
-            .col-xs-12
-              input(type="password" name="password" placeholder="Password" required).form-control
-            .col-xs-12
-              label Location
-              input(type="text" name="street1" placeholder="Street Address(Optional)").form-control
-            .col-xs-8.col-md-12.col-lg-8
-              input(type="text" name="suburb" placeholder="City/Suburb" required).form-control
-            .col-xs-4.col-md-12.col-lg-4
-              input(type="text" name="state" placeholder="Province" required).form-control
-            .col-xs-12
-              label(for="datepicker-dropdown") Birthday
-              include datepicker-dropdown.jade
-            .col-xs-12
-              label.radio-inline
-                input(type="radio" name="sex" value="Male" checked)
-                p Male
-              label.radio-inline
-                input(type="radio" name="sex" value="Female") 
-                p Female
-            .col-xs-12.submit
-              button(type="submit").btn.btn-success Sign up
-              p 
-                | Already have an account?
-                a(href="#") &nbspLog in
+          .groups
+            if groups && groups.length
+              .list-group.row
+                each industry in groups
+                  if industry.length
+                    each group in industry
+                      .photo.col-md-6.pull-left
+                        a(href=host + '/groups/' + group.handle)
+                          if group.photo
+                            img(src=group.photo.secure_url).img-responsive
+                          else
+                            img(src="http://placehold.it/120x120")
+                        case group.classification.industry
+                          when "Agriculture"
+                            a.info-overlay(href=host + '/groups/' + group.handle style="background-color: rgba(18,81,4,0.8)").text-center
+                              .category #{group.classification.industry}
+                              h4.title #{group.name}
+                              .summary.text-muted #{group.membersCount} members #{group.postsCount.total} posts
+                          when "Aquatic Resources"
+                            a.info-overlay(href=host + '/groups/' + group.handle style="background-color: rgba(48,98,183,0.8)").text-center
+                              .category(href=host + '/groups/' + group.handle style="font-size: 12px;") #{group.classification.industry}
+                              h4.title #{group.name}
+                              .summary.text-muted #{group.membersCount} members #{group.postsCount.total} posts
+                          when "Natural Resources"
+                            a.info-overlay(href=host + '/groups/' + group.handle style="background-color: rgba(24,16,9,0.8)").text-center
+                              .category(style="font-size: 12px;") #{group.classification.industry}
+                              h4.title #{group.name}
+                              .summary.text-muted #{group.membersCount} members #{group.postsCount.total} posts
+                          default
+                            a.info-overlay(href=host + '/groups/' + group.handle style="background-color: rgba(0,0,0,0.8)").text-center
+                              .category #{group.classification.industry}
+                              h4.title #{group.name}
+                              .summary.text-muted #{group.membersCount} members #{group.postsCount.total} posts
+              .row.text-center
+                a(href=host + "/groups/" style="color: white;")
+                  button.btn.btn-lg(style="background-color: #3062B7;" onMouseOver="this.style.color='#FFF'") More Groups
+                br
+                br
+            else
+              .row 
+                .col-md-12
+                  br
+                  h4.empty.text-muted No Groups Available
+          
   
   .row
     .section.col-md-12 
       .section-title.focus.row 
         .title.col-md-2.col-xs-3
           .skew.col-xs-12
-          #temp.skewed-text Top Groups
-      .section-content
-        if groups && groups.length
-          each industry in groups
-            if industry.length
-              hr
-              .row.groups
-                .col-xs-12
-                  p.text-muted #{industry[0].classification.industry}
-                each group in industry
-                  .media.col-lg-3
-                    .media-left
-                      a(href=host + '/groups/' + group.handle)
-                        if group.photo
-                          img(src=group.photo.secure_url height='110px' width='110px').media-object
-                        else
-                          img(src="http://placehold.it/110x110").media-object
-                    .media-body
-                      a(href=host + '/groups/' + group.handle).media-heading
-                        h4 #{group.name}
-                      p.text-muted.text-small
-                        | #{group.membersCount} members #{group.postsCount.total} posts
-          .row.text-center
-            a(href=host + "/groups/" style="color: white;")
-              button.btn.btn-lg(style="background-color: #3062B7;" onMouseOver="this.style.color='#FFF'") More Groups
-            br
-            br
-        else
-          .row 
-            .col-md-12
-              br
-              h4.empty.text-muted No Groups Available
+          #temp.skewed-text Community Posts
+      .announcements.section-content
+        .tags
+          span.badge.active(style="cursor: default;") #announcements
+          span.badge.active(style="cursor: default;") #news
+          if tags && tags.length
+            each tag in tags
+             span.badge #{'#'+tag.name}
+        .board
+          if discussions && discussions.length
+            .grid
+              .grid-sizer.col-sm-6.col-md-3
+              - var i = 0;
+              - var color = ''
+              each announcement in announcements
+                case announcement.industry
+                  when "Agriculture"
+                    - color = "#4CAF50"
+                  when "Aquatic Resources"
+                    - color = "#51abf1"
+                  when "Natural Resources"
+                    - color = "#614126"
+                  default
+                    - color = "#333"
+                .announcement.grid-item.col-sm-6.col-md-3(data-toggle="modal" data-target="#modal"+i)
+                  .grid-item-content(style="background-color:"+color)
+                    .header
+                      img(src="http://placehold.it/40x40").img-circle.pull-left
+                      .author
+                        span #{announcement.postedBy.name}
+                        .time.text-small #{announcement.datePosted}
+                    .title
+                      span #{announcement.newsTitle}
+                    .details #{announcement.newsBody}
+                    .modal.fade(id="modal"+i tabindex="-1" data-backdrop="static" data-keyboard="false")
+                      .modal-dialog.modal-lg
+                        .modal-content
+                          .row
+                            button(type="button").close.pull-right &times;
+                          .row
+                            .col-sm-9
+                              .modal-section
+                                .row(style="margin-right: 22.5px;")
+                                  i.social.fa.fa-thumbs-o-up.pull-left(style="margin-left: 30px;") &nbsp#{announcement.reactions[1].count}&nbsp
+                                  i.social.fa.fa-comment-o.pull-left &nbsp#{announcement.reactions[0].count}&nbsp
+                                  a(href=host + '/groups/' + announcement.groupBelonged).pull-right.btn.btn-default View Group
+                                  a(href=host + '/groups/' + announcement.groupBelonged + '/view-posts/news/' + announcement._id).pull-right.btn.btn-default View Post
+                                .content
+                                  .post(style="background-color:"+color)
+                                    .modal-title.text-center #{announcement.newsTitle}
+                                    .modal-body #{announcement.newsBody}
+                            .col-sm-3
+                              .modal-section
+                                .header
+                                  img(src="http://placehold.it/40x40").img-circle.pull-left
+                                  .author
+                                    span #{announcement.postedBy.name}
+                                    .time.text-small #{announcement.datePosted}
+                              .modal-section
+                                .hashtags
+                                  p(style="margin-bottom: 10px;") Hashtags
+                                  each tag in announcement.hashtags
+                                    a.btn.btn-default.disabled(style="margin: 2.5px 5px 2.5px 0;") #{'#'+tag}
+                    
+                    hr
+                    .social
+                      i.fa.fa-thumbs-up &nbsp#{announcement.reactions[1].count}&nbsp
+                      i.fa.fa-comment &nbsp#{announcement.reactions[0].count}&nbsp
+                    - i += 1
             
   #public-analytics.row
     .section.col-md-12
