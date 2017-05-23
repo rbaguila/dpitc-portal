@@ -108,9 +108,9 @@ html
               else
                 li
                   if redirect
-                    a(href='keystone/signin?from=' + redirect, class="not-active login-link") Sign In
+                    a(href='/keystone/signin?from=' + redirect, class="not-active login-link") Sign In
                   else
-                    a(href='keystone/signin', class="not-active login-link") Sign In
+                    a(href='/keystone/signin', class="not-active login-link") Sign In
 
 
       //- END NAVBAR
@@ -200,7 +200,7 @@ html
             p.white-text
             | A One-Stop-Shop 'Convergence Hub' for inventors and technology users in the agriculture, aquatic, and natural resources sectors in the Philippines within every Juan's reach.
 
-            br 
+            br
 
             a(href='http://www.dost.gov.ph/', title='DOST')
               img.logos-class(src='images/dost.png')

@@ -103,8 +103,10 @@ exports = module.exports = function (app) {
 	app.get('/community/discussions/:category?', routes.communityViews.discussionList);
 	app.get('/community/analytics', routes.communityViews.analytics);
 
-	app.get('/eresources', routes.eresourcesViews.eresources);
-	app.get('/eresources/publications/:industry?', routes.eresourcesViews.publications);
+  //E Resources
+  // app.get('/eresources', routes.eresourcesViews.eresources);
+	app.get('/eresources/:industry?', routes.eresourcesViews.publications);
+	// app.get('/eresources/publications/:industry?', routes.eresourcesViews.publications);
 	app.get('/eresources/publication/:publication', routes.eresourcesViews.publication);
 
 	//Analytics Api Route
