@@ -17,6 +17,11 @@ exports = module.exports = function (req, res) {
     // categories: [],
   };
 
+  locals.redirect = '/eresources/publications'
+  locals.breadcrumbs = [
+    { text: 'E Resources', link: '/eresources'},
+    { text: 'Publications', link: '/eresources/publications'}
+  ]
   // console.log(req._parsedUrl.query);
 
   view.query('industries', keystone.list('Industry').model.find())
@@ -79,10 +84,10 @@ exports = module.exports = function (req, res) {
       categoryResult = locals.data.commodity;
       category = 'Commodity';
     }
-    
+
     locals.data.categoryResult = categoryResult;
     locals.data.category = category;
-    
+
     q.exec(function (err, results) {
       locals.data.publications = results;
       next(err);
@@ -94,14 +99,6 @@ exports = module.exports = function (req, res) {
   var viewStyle = req.query.view == undefined ? 'grid' : req.query.view;
   var searchTerm = req.query.term;
   var searchCategory = req.query.category;
-
-  var pageData = {
-    loginRedirect: '/eresources/publications',
-    breadcrumbs: [
-      { text: 'E Resources', link: '/eresources'},
-      { text: 'Publications', link: '/eresources/publications'},
-    ]
-  }
 
   var page = req.params.page
 
@@ -117,9 +114,9 @@ exports = module.exports = function (req, res) {
 
   if (viewStyle == 'list') {
     //render list layout
-    view.render('eresources/publications-list', pageData);
+    view.render('eresources/publications-list');
   } else {
     //render grid layout by default
-    view.render('eresources/publications-grid', pageData);
+    view.render('eresources/publications-grid');
   }
 }

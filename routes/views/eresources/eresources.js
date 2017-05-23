@@ -10,12 +10,17 @@ exports = module.exports = function(req, res) {
     industries: []
   }
 
-  var pageData = {
-    loginRedirect: '/eresources',
-    breadcrumbs: [
-      { text: 'E Resources', link: '/eresources'},
-    ]
-  }
+  locals.redirect = '/eresources'
+  locals.breadcrumbs = [
+    { text: 'E Resources', link: '/eresources'}
+  ]
+
+  // var pageData = {
+  //   loginRedirect: '/eresources',
+  //   breadcrumbs: [
+  //     { text: 'E Resources', link: '/eresources'},
+  //   ]
+  // }
 
   view.query('publications', keystone.list('Publication').model.find().limit(12));
   view.query('links', keystone.list('Link').model.find().limit(3))
@@ -50,5 +55,5 @@ exports = module.exports = function(req, res) {
   //       next(err);
   //     });
 
-  view.render('eresources/eresources', pageData);
+  view.render('eresources/eresources');
 }
