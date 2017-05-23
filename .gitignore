@@ -34,5 +34,8 @@ node_modules
 public/uploads/
 public/uploads/files/
 
-# Bower dependency directory (https://bower.io/)
+# Minified CSS
+public/styles/site.min.css
+
+
 
