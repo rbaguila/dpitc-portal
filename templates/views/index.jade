@@ -75,10 +75,11 @@ block content
 			.section-title.focus.row 
 				.title.col-md-5.col-xs-4
 					.skew.col-xs-12
-					.skewed-text FIESTA
+					.skewed-text #{settings.fiestaTitle}
 			.col-md-12.no-padding
-				strong
-					p.fiesta(style="color:black") Celebrate our Filipino culture while promoting Science and Technology through different events hosted by PCAARRD consortia.
+				strong(style="color:black") 
+					//- p.fiesta(style="color:black") 
+					!= settings.fiestaDescription
 				
 		.row
 			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
@@ -148,10 +149,11 @@ block content
 				.section-title.focus.row 
 					.title.col-md-5.col-xs-4
 						.skew.col-xs-12
-						.skewed-text Technologies
+						.skewed-text #{settings.technologyTitle}
 				.col-md-12.no-padding
-					strong
-						p.fiesta(style="color:black") Improve your production by exploring the different technologies you can use to manage your crops and livestock.
+					strong(style="color:black") 
+						//- p.fiesta(style="color:black") 
+						!= settings.technologyDescription
 		.container.no-padding
 			.row
 				.col-md-2.col-sm-6.col-xs-12.tech-item
@@ -262,38 +264,24 @@ block content
 						.fh5co-text
 							.tech-category AGRICULTURE
 							h3 Enhancing peanut productivity
-		//- .row.p
-		//- 	.col-md-12.text-center
-		//- 		p.button-link
-		//- 			a.btn.btn-primary.btn-lg(href='#', style='line-height:30px')
-		//- 				span(style='vertical-align:middle;') See more of our technologies
-		//- 				i.icon.icon-chevron-right(style='font-size:20px;vertical-align:middle;')
 
 	#block
-		//- .row
-			.col-md-12.col-xs-12
-				div(class="container" style="margin-top:30px; margin-bottom:30px")
-					div(class="community-caption")
-						center
-							h2 Community
-							h4 Join the conversation. Know more about the country’s agriculture and aquaculture natural resources.
-							a(href="https://docs.google.com/forms/d/15q4z6gcBt51RZpKc_9MWFsKHlXq8PAMoCMKDXKI5tdw/edit" target="_blank")
-								button(class="btn btn-lg btn-warning") Join us by filling up this form!
 		.container.no-padding
 			.row(style="margin-bottom:2em").blue-black-seperator
 				.section-title.focus.row 
 					.title.col-md-5.col-xs-4
 						.skew.col-xs-12
-						.skewed-text Community
+						.skewed-text #{settings.communityTitle}
 				.col-md-12.no-padding
-					strong
-						p.fiesta(style="color:black") Join the conversation. Know more about the country’s agriculture and aquaculture natural resources.
+					strong(style="color:black") 
+						//- p.fiesta(style="color:black") 
+						!= settings.communityDescription
 				.col-md-12.no-padding
-					img.img-responsive(src='/images/commodities.jpg')
+					img.img-responsive(src=settings.communityBanner.secure_url)
 
 					center(style="margin-top:1em")
-						a(href="/community" target="_blank")
-							button(class="btn btn-lg btn-primary") Join us in the community!
+						a(href=settings.communityLink, target="_blank")
+							button(class="btn btn-lg btn-primary") #{settings.communityButtonText}
 
 	#community_block
 		.container
@@ -302,23 +290,13 @@ block content
 					.row.more-information
 						.col-xs-12
 							.col-xs-12
-								em About DOST PCAARRD Innovation and Technology Center
+								em #{settings.aboutTitle}
 							.details-box.col-sm-12.col-md-12
 								.col-md-6.col-sm-12.image
 									a(href='#')
-										img(src='/images/community.jpg' class="img-responsive" )
+										img(src=settings.aboutBanner.secure_url, class="img-responsive" )
 								.col-md-6.col-sm-12.description
-									p
-										| DPITC is where DOST-PCAARRD presents, promotes and, commercializes its Science and Technology products to the public. DPITC embodies DOST-PCAARRD’s vision for a world-class ‘one-stop service facility’ where the department and council’s network of allied agencies converge and offers major information-communication services, technology transfer, commercialization services and training-capacity building.
+									!= settings.aboutDescription
 									
-									a(target='_blank', href='#' class="pull-right btn btn-primary")
-										span.button Find out more
-							//- .col-xs-12.subscribe-container
-							//- 	.subscribe
-							//- 		h2
-							//- 			em Newsletter
-							//- 			|  sign up:
-							//- 		form#newsletter(target='_blank', method='get', action='#')
-							//- 			input#email(name='email', type='text', placeholder="What's your email?")
-							//- 			.button(onclick="document.forms['newsletter'].submit();")
-							//- 				i.fa.fa-chevron-right
+									a(target='_blank', href=settings.aboutLink, class="pull-right btn btn-primary")
+										span.button #{settings.aboutButtonText}
