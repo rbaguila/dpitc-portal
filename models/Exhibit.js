@@ -14,8 +14,7 @@ var Exhibit = new keystone.List('Exhibit', {
 Exhibit.add({
 	title: { type: String, required: true },
 	commodity: { type: String },
-	dateStarted: { type: Types.Date},
-	dateFinished: { type: Types.Date},
+	date: { type: String},
 	venue: { type: String },
 	consortium: { type: String },
 	author: { type: Types.Relationship, ref: 'User', index: true },
