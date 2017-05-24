@@ -8,7 +8,7 @@
  * modules in your project's /lib directory.
  */
 var _ = require('lodash');
-
+var keystone = require('keystone');
 
 /**
 	Initialises the standard view locals
@@ -32,6 +32,15 @@ exports.initLocals = function (req, res, next) {
 		// { label: 'Contact', key: 'contact', href: '/contact' },
 	];
 	res.locals.user = req.user;
+	// res.locals.logo = keystone.list('Settings').model.findOne({key: 'dpitc'});
+	
+	keystone.list('Settings').model.findOne({key: 'dpitc'}).exec(function (err, result) {
+		res.locals.logo = result;
+		console.log(result);
+		// next(err);
+	});
+
+	// console.log(keystone.list('Settings').model.findOne({key: 'dpitc'}));
 	next();
 };
 
