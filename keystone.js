@@ -72,6 +72,7 @@ keystone.set('nav', {
 	posts: ['posts', 'post-categories'],
 	'contents': [
 		'exhibits',
+		'technologies',
 		'sliders'
 	],
 	'pages': [
