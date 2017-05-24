@@ -278,7 +278,7 @@ exports = module.exports = function (req, res) {
     var currentUser = locals.user;
     var isLOUser = false;//suburb = city/municipality, state = region
 
-    var ip = req.ips;
+    var ip = req.ip;
     var options = {    
         host: 'freegeoip.net',    
         path: '/json/' + ip,

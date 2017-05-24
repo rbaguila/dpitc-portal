@@ -132,7 +132,7 @@ exports = module.exports = function (req, res) {
       if (err) {
         validationErrors = err.errors;
       } else {
-        helper.addElearningLog(locals.user, req.ips, 'ADDED RATING '+locals.url);
+        helper.addElearningLog(locals.user, req.ip, 'ADDED RATING '+locals.url);
         req.flash('success', 'Your rating was submitted.');
         return res.redirect('/elearning/learning-object/'+locals.currentLO.slug);
       }
@@ -177,7 +177,7 @@ exports = module.exports = function (req, res) {
       if (err) {
         validationErrors = err.errors;
       } else {
-        helper.addElearningLog(locals.user, req.ips, 'ADDED COMMENT '+locals.url);
+        helper.addElearningLog(locals.user, req.ip, 'ADDED COMMENT '+locals.url);
         req.flash('success', 'Your comment was added.');
         return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
       }
@@ -210,7 +210,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(locals.user, req.ips, 'REMOVED LIKE '+locals.url);
+              helper.addElearningLog(locals.user, req.ip, 'REMOVED LIKE '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -227,7 +227,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(locals.user, req.ips, 'LIKED '+locals.url);
+              helper.addElearningLog(locals.user, req.ip, 'LIKED '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -262,7 +262,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(locals.user, req.ips, 'REMOVED HAPPY '+locals.url);
+              helper.addElearningLog(locals.user, req.ip, 'REMOVED HAPPY '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -279,7 +279,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(locals.user, req.ips, 'ADDED HAPPY '+locals.url);
+              helper.addElearningLog(locals.user, req.ip, 'ADDED HAPPY '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -314,7 +314,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(locals.user, req.ips, 'REMOVED SAD '+locals.url);
+              helper.addElearningLog(locals.user, req.ip, 'REMOVED SAD '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -331,7 +331,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(locals.user, req.ips, 'ADDED SAD '+locals.url);
+              helper.addElearningLog(locals.user, req.ip, 'ADDED SAD '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -373,7 +373,7 @@ exports = module.exports = function (req, res) {
     var start = new Date().subtractHours(1);
     var end = new Date().addHours(1);
     var currentUser = locals.user;
-    var ip = req.ips;
+    var ip = req.ip;
     var options = {    
         host: 'freegeoip.net',    
         path: '/json/' + ip,
