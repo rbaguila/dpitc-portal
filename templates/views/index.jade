@@ -82,65 +82,75 @@ block content
 					!= settings.fiestaDescription
 				
 		.row
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='#', style='background-image: url(/images/fiesta/potato.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/fiesta/potato.jpg')
-					.fh5co-overlay(style="background-color: rgb(18, 81, 4)")
-					.fh5co-text
-						.tech-category CLARRDEC
-						h3 Sweet Potato
-						p Date: Mar 17-18, 2016
-						p Venue: Tarlac College of Agriculture
+			each exhibit in exhibits
+				.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+					a.fh5co-project-item(href=exhibit.link, style='background-image: url('+exhibit.coverImage.secure_url+');', target='_blank')
+						//- img.img-responsive.sr-only(src=exhibit.coverImage.secure_url)
+						.fh5co-overlay(style="background-color: rgb(18, 81, 4)")
+						.fh5co-text
+							.tech-category #{exhibit.consortium}
+							h3 #{exhibit.title}
+							p Date: #{exhibit.date}
+							p Venue: #{exhibit.venue}
+			//- .col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+			//- 	a.fh5co-project-item(href='#', style='background-image: url(/images/fiesta/potato.jpg);', target='_blank')
+			//- 		img.img-responsive.sr-only(src='/images/fiesta/potato.jpg')
+			//- 		.fh5co-overlay(style="background-color: rgb(18, 81, 4)")
+			//- 		.fh5co-text
+			//- 			.tech-category CLARRDEC
+			//- 			h3 Sweet Potato
+			//- 			p Date: Mar 17-18, 2016
+			//- 			p Venue: Tarlac College of Agriculture
 
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='/sipag-fiesta', style='background-image: url(/images/fiesta/sipagfiesta.png);')
-					img.img-responsive.sr-only(src='/images/fiesta/sipagfiesta.png')
-					.fh5co-overlay(style="background-color: rgb(18, 81, 4)")
-					.fh5co-text
-						.tech-category PCAARRD
-						h3 SIPAG FIESTA
-						p Date: Mar 2-4, 2016
-						p Venue: PCAARRD Complex
+			//- .col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+			//- 	a.fh5co-project-item(href='/sipag-fiesta', style='background-image: url(/images/fiesta/sipagfiesta.png);')
+			//- 		img.img-responsive.sr-only(src='/images/fiesta/sipagfiesta.png')
+			//- 		.fh5co-overlay(style="background-color: rgb(18, 81, 4)")
+			//- 		.fh5co-text
+			//- 			.tech-category PCAARRD
+			//- 			h3 SIPAG FIESTA
+			//- 			p Date: Mar 2-4, 2016
+			//- 			p Venue: PCAARRD Complex
 
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='#', style='background-image: url(/images/fiesta/rootcrop.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/fiesta/rootcrop.jpg')
-					.fh5co-overlay(style="background-color: rgb(18, 81, 4)")
-					.fh5co-text
-						.tech-category VICARP
-						h3 Rootcrop
-						p Date: Aug 10-11, 2015
-						p Venue: Visayas State University
+			//- .col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+			//- 	a.fh5co-project-item(href='#', style='background-image: url(/images/fiesta/rootcrop.jpg);', target='_blank')
+			//- 		img.img-responsive.sr-only(src='/images/fiesta/rootcrop.jpg')
+			//- 		.fh5co-overlay(style="background-color: rgb(18, 81, 4)")
+			//- 		.fh5co-text
+			//- 			.tech-category VICARP
+			//- 			h3 Rootcrop
+			//- 			p Date: Aug 10-11, 2015
+			//- 			p Venue: Visayas State University
 
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='', style='background-image: url(/images/fiesta/kalabaw.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/fiesta/kalabaw.jpg')
-					.fh5co-overlay(style="background-color: rgb(18, 81, 4)")
-					.fh5co-text
-						.tech-category CLARRDEC
-						h3 Pistang Kalabaw
-						p Date: Mar 25-27, 2015
-						p Venue: PCC, Munoz, Nueva Ecija
+			//- .col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+			//- 	a.fh5co-project-item(href='', style='background-image: url(/images/fiesta/kalabaw.jpg);', target='_blank')
+			//- 		img.img-responsive.sr-only(src='/images/fiesta/kalabaw.jpg')
+			//- 		.fh5co-overlay(style="background-color: rgb(18, 81, 4)")
+			//- 		.fh5co-text
+			//- 			.tech-category CLARRDEC
+			//- 			h3 Pistang Kalabaw
+			//- 			p Date: Mar 25-27, 2015
+			//- 			p Venue: PCC, Munoz, Nueva Ecija
 
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='#', style='background-image: url(/images/fiesta/seaweed.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/fiesta/seaweed.jpg')
-					.fh5co-overlay(style="background-color: rgb(18, 81, 4)")
-					.fh5co-text
-						.tech-category SMARRDEC
-						h3 Seaweed
-						p Date: Nov 27-28, 2014
-						p Venue: Passig Islet, Davao del Sur
+			//- .col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+			//- 	a.fh5co-project-item(href='#', style='background-image: url(/images/fiesta/seaweed.jpg);', target='_blank')
+			//- 		img.img-responsive.sr-only(src='/images/fiesta/seaweed.jpg')
+			//- 		.fh5co-overlay(style="background-color: rgb(18, 81, 4)")
+			//- 		.fh5co-text
+			//- 			.tech-category SMARRDEC
+			//- 			h3 Seaweed
+			//- 			p Date: Nov 27-28, 2014
+			//- 			p Venue: Passig Islet, Davao del Sur
 
-			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
-				a.fh5co-project-item(href='#', style='background-image: url(/images/fiesta/sardines.jpg);', target='_blank')
-					img.img-responsive.sr-only(src='/images/fiesta/sardines.jpg')
-					.fh5co-overlay(style="background-color: rgb(18, 81, 4)")
-					.fh5co-text
-						.tech-category WESMARRDEC
-						h3 Sardines
-						p Date: Oct 9-10, 2014
-						p Venue: Western Mindanao  State University, Zamboanga City
+			//- .col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
+			//- 	a.fh5co-project-item(href='#', style='background-image: url(/images/fiesta/sardines.jpg);', target='_blank')
+			//- 		img.img-responsive.sr-only(src='/images/fiesta/sardines.jpg')
+			//- 		.fh5co-overlay(style="background-color: rgb(18, 81, 4)")
+			//- 		.fh5co-text
+			//- 			.tech-category WESMARRDEC
+			//- 			h3 Sardines
+			//- 			p Date: Oct 9-10, 2014
+			//- 			p Venue: Western Mindanao  State University, Zamboanga City
 
 
 	#fiesta_block.fh5co-project-style-3

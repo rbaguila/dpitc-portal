@@ -17,15 +17,16 @@ Exhibit.add({
 	date: { type: String},
 	venue: { type: String },
 	consortium: { type: String },
+	link: { type: String },
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
 	coverImage: { type: Types.CloudinaryImage },
-	images: { type: Types.CloudinaryImages },
-	content: {
-		brief: { type: Types.Html, wysiwyg: true, height: 150 },
-		extended: { type: Types.Html, wysiwyg: true, height: 400 },
-	},
-	tags: { type: String }
+	// images: { type: Types.CloudinaryImages },
+	// content: {
+	// 	brief: { type: Types.Html, wysiwyg: true, height: 150 },
+	// 	extended: { type: Types.Html, wysiwyg: true, height: 400 },
+	// },
+	// tags: { type: String }
 });
 
 Exhibit.schema.virtual('content.full').get(function () {
