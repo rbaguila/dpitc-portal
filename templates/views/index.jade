@@ -153,7 +153,7 @@ block content
 				.col-md-12.no-padding
 					strong(style="color:black") 
 						//- p.fiesta(style="color:black") 
-						!= settings.fiestaDescription
+						!= settings.technologyDescription
 		.container.no-padding
 			.row
 				.col-md-2.col-sm-6.col-xs-12.tech-item
@@ -264,38 +264,24 @@ block content
 						.fh5co-text
 							.tech-category AGRICULTURE
 							h3 Enhancing peanut productivity
-		//- .row.p
-		//- 	.col-md-12.text-center
-		//- 		p.button-link
-		//- 			a.btn.btn-primary.btn-lg(href='#', style='line-height:30px')
-		//- 				span(style='vertical-align:middle;') See more of our technologies
-		//- 				i.icon.icon-chevron-right(style='font-size:20px;vertical-align:middle;')
 
 	#block
-		//- .row
-			.col-md-12.col-xs-12
-				div(class="container" style="margin-top:30px; margin-bottom:30px")
-					div(class="community-caption")
-						center
-							h2 Community
-							h4 Join the conversation. Know more about the country’s agriculture and aquaculture natural resources.
-							a(href="https://docs.google.com/forms/d/15q4z6gcBt51RZpKc_9MWFsKHlXq8PAMoCMKDXKI5tdw/edit" target="_blank")
-								button(class="btn btn-lg btn-warning") Join us by filling up this form!
 		.container.no-padding
 			.row(style="margin-bottom:2em").blue-black-seperator
 				.section-title.focus.row 
 					.title.col-md-5.col-xs-4
 						.skew.col-xs-12
-						.skewed-text Community
+						.skewed-text #{settings.communityTitle}
 				.col-md-12.no-padding
-					strong
-						p.fiesta(style="color:black") Join the conversation. Know more about the country’s agriculture and aquaculture natural resources.
+					strong(style="color:black") 
+						//- p.fiesta(style="color:black") 
+						!= settings.communityDescription
 				.col-md-12.no-padding
-					img.img-responsive(src='/images/commodities.jpg')
+					img.img-responsive(src=settings.communityBanner.secure_url)
 
 					center(style="margin-top:1em")
-						a(href="/community" target="_blank")
-							button(class="btn btn-lg btn-primary") Join us in the community!
+						a(href=settings.communityLink, target="_blank")
+							button(class="btn btn-lg btn-primary") #{settings.communityButtonText}
 
 	#community_block
 		.container

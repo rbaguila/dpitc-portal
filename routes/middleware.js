@@ -36,7 +36,7 @@ exports.initLocals = function (req, res, next) {
 	
 	keystone.list('Settings').model.findOne({key: 'dpitc'}).exec(function (err, result) {
 		res.locals.settings = result;
-		console.log(result);
+		// console.log(result);
 		// next(err);
 	});
 
