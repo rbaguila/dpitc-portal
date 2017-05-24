@@ -93,19 +93,35 @@ exports = module.exports = function (req, res) {
     });
   });
 
-  // view.query('publications', keystone.list('Publication').model.find())
-
   var viewStyle = req.query.view == undefined ? 'grid' : req.query.view;
   var searchTerm = req.query.term;
   var searchCategory = req.query.category;
 
   var page = req.params.page
-
   if (!page) { page = 1; }
 
-  var PER_PAGE = 20;
+  var PER_PAGE = 4;
 
-  view.query('publications', keystone.list('Publication').model.find().limit(PER_PAGE).skip((page - 1) * PER_PAGE));
+  // view.query('publications', keystone.list('Publication').model.find().skip((page - 1) * PER_PAGE).limit(PER_PAGE));
+
+  var Publications = keystone.list('Publication')
+  Publications.paginate({
+    page: req.query.page || 1,
+    perPage: 20,
+    maxPages: 15
+  })
+  .exec(function(err, results) {
+    var index = 0;
+
+    results.results.forEach(function(element, index) {
+      element['index'] = results.first + (index++)
+    })
+
+    locals.data.publications = results;
+    console.log(results);
+
+    // next(err)
+  })
 
   locals.data = {
 

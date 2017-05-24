@@ -82,6 +82,37 @@ block content
               | OFF THE PRESS
             block publications
 
+            //- PAGINATION
+            .row
+              .col-md-12(style="text-align: center;")
+                nav(aria-label='...')
+                  ul.pagination
+                    if data.publications.currentPage == 1
+                      li.disabled
+                        a(href='#' + data.publications.previous, aria-label='Previous', style="pointer-events: none;")
+                          span(aria-hidden='true') «
+                    else
+                      li
+                        a(href='/eresources?page=' + data.publications.previous, aria-label='Previous')
+                          span(aria-hidden='true') «
+
+                    each page in data.publications.pages
+                      if page == data.publications.currentPage
+                        li.active: a(href='/eresources?page=' + page, style="pointer-events: none;") #{page}
+                      else
+                        li: a(href='/eresources?page=' + page) #{page}
+
+                    if data.publications.currentPage == data.publications.totalPages
+                      li.disabled
+                        a(href='#', aria-label='Next',style="pointer-events: none;")
+                          span(aria-hidden='true') »
+                    else
+                      li
+                        a(href='/eresources?page=' + data.publications.next, aria-label='Next')
+                          span(aria-hidden='true') »
+            //- END PAGINATION
+
+
           .col-md-3
             //- .list-group
             //-   li.list-group-item.list-group-item-header Industries
@@ -125,20 +156,6 @@ block content
                     each commodity in commodities
                       li(style='list-style-type:none;')
                       a(href='/eresources/publications?commodity=#{commodity.key}') #{commodity.name}
-        //- .col-xs-12.col-md-9.pub-pager
-        //-   nav(aria-label='...')
-        //-     ul.pagination
-        //-       li.disabled
-        //-         a(href='#', aria-label='Previous')
-        //-           span(aria-hidden='true') «
-        //-       li.active
-        //-         a(href='#')
-        //-           | 1
-        //-           span.sr-only (current)
-        //-       li
-        //-         a(href="#") 2
-        //-       li
-        //-         a(href="#") 3
-        //-       li
-        //-         a(href='#', aria-label='Next')
-        //-           span(aria-hidden='true') »
+
+
+

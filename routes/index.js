@@ -107,6 +107,7 @@ exports = module.exports = function (app) {
   // app.get('/eresources', routes.eresourcesViews.eresources);
 	app.get('/eresources/:industry?', routes.eresourcesViews.publications);
 	// app.get('/eresources/publications/:industry?', routes.eresourcesViews.publications);
+  app.get('/eresources/page/:page', routes.eresourcesViews.publications);
 	app.get('/eresources/publication/:publication', routes.eresourcesViews.publication);
 
 	//Analytics Api Route

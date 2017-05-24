@@ -5,11 +5,12 @@ block publications
     if (data.category)
       .heading-center
         h4=data.category+': '+data.categoryResult.name
-    if publications.length
-      each publication in data.publications
+    if data.publications.results.length
+      each publication in data.publications.results
           .col-sm-6.col-md-3(style='padding-left:0')
             .thumbnail(style='padding:10px')
               .publication-col-grid
+                | #{publication.index}
                 a(href="/eresources/publication/"+publication._id)
                   .cover
                     //- img(src=publication._.cover.fit(100, 180, {}))
