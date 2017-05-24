@@ -12,7 +12,6 @@ exports = module.exports = function (req, res) {
 	// Load the galleries by sortOrder
 	// view.query('slider', keystone.list('Slider').model.find({ "route": "/" }).sort('sortOrder'));
 	view.query('posts', keystone.list('Post').model.find().sort('sortOrder'));
-	view.query('settings', keystone.list('Settings').model.findOne({key: 'dpitc'}));
 	// Render the view
 	view.render('index');
 };
