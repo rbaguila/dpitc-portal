@@ -19,7 +19,8 @@ exports = module.exports = function (req, res) {
     { text: 'E Resources', link: '/eresources'},
   ]
   // console.log(req._parsedUrl.query);
-  locals.query = ''
+  locals.endpoint = '/eresources'
+  locals.query = '?'
 
   var viewStyle = req.query.view == undefined ? 'grid' : req.query.view
 
@@ -29,8 +30,12 @@ exports = module.exports = function (req, res) {
   //PAGINATING PUBLICATIONS
   var filters = {};
   if (req.query.pubLine) {
-    locals.query = '?pubLine=' + req.query.pubLine
+    locals.query += '?pubLine=' + req.query.pubLine
     filters = { 'publicationLine' : req.query.pubLine }
+  }
+
+  if (req.query.view) {
+    locals.query += '&view=' + req.query.view
   }
 
   var Publications = keystone.list('Publication')
@@ -47,13 +52,15 @@ exports = module.exports = function (req, res) {
 
     console.log(results)
     locals.data.publications = results;
+
+    if (viewStyle == 'list') {
+      //render list layout
+      view.render('eresources/publications-list');
+    } else {
+      //render grid layout by default
+      view.render('eresources/publications-grid');
+    }
   })
 
-  if (viewStyle == 'list') {
-    //render list layout
-    view.render('eresources/publications-list');
-  } else {
-    //render grid layout by default
-    view.render('eresources/publications-grid');
-  }
+
 }
