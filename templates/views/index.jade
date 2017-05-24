@@ -290,23 +290,13 @@ block content
 					.row.more-information
 						.col-xs-12
 							.col-xs-12
-								em About DOST PCAARRD Innovation and Technology Center
+								em #{settings.aboutTitle}
 							.details-box.col-sm-12.col-md-12
 								.col-md-6.col-sm-12.image
 									a(href='#')
-										img(src='/images/community.jpg' class="img-responsive" )
+										img(src=settings.aboutBanner.secure_url, class="img-responsive" )
 								.col-md-6.col-sm-12.description
-									p
-										| DPITC is where DOST-PCAARRD presents, promotes and, commercializes its Science and Technology products to the public. DPITC embodies DOST-PCAARRD’s vision for a world-class ‘one-stop service facility’ where the department and council’s network of allied agencies converge and offers major information-communication services, technology transfer, commercialization services and training-capacity building.
+									!= settings.aboutDescription
 									
-									a(target='_blank', href='#' class="pull-right btn btn-primary")
-										span.button Find out more
-							//- .col-xs-12.subscribe-container
-							//- 	.subscribe
-							//- 		h2
-							//- 			em Newsletter
-							//- 			|  sign up:
-							//- 		form#newsletter(target='_blank', method='get', action='#')
-							//- 			input#email(name='email', type='text', placeholder="What's your email?")
-							//- 			.button(onclick="document.forms['newsletter'].submit();")
-							//- 				i.fa.fa-chevron-right
+									a(target='_blank', href=settings.aboutLink, class="pull-right btn btn-primary")
+										span.button #{settings.aboutButtonText}
