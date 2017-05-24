@@ -15,7 +15,7 @@ Technology.add({
 	title: { type: String, required: true },
 	image: { type: Types.CloudinaryImage },
 	link: { type: String },
-	reseource: { type: Types.Select, options: 'agriculture, aquatic resource, natural  reseource', default: 'agriculture', index: true },
+	category: { type: Types.Select, options: 'agriculture, aquatic resource, natural  reseource', default: 'agriculture', index: true },
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
 	

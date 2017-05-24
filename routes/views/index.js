@@ -12,8 +12,10 @@ exports = module.exports = function (req, res) {
 	// Load the galleries by sortOrder
 	// view.query('slider', keystone.list('Slider').model.find({ "route": "/" }).sort('sortOrder'));
 	view.query('posts', keystone.list('Post').model.find().sort('sortOrder'));
-	
+
 	view.query('exhibits', keystone.list('Exhibit').model.find().sort('sortOrder'));
+
+	view.query('technologies', keystone.list('Technology').model.find().sort('sortOrder'));
 	// Render the view
 	view.render('index');
 };
