@@ -8,7 +8,8 @@ var Types = keystone.Field.Types;
  */
 
 var Publication = new keystone.List('Publication', {
-  map: { name: 'title' }
+  map: { name: 'title' },
+  drilldown: 'publicationLine'
 });
 
 var localStorage = new keystone.Storage({
@@ -49,9 +50,14 @@ Publication.add(
     initial: true,
     required: true
   }},
+  // {publicationLine: {
+  //   type: String,
+  //   default: ''
+  // }},
   {publicationLine: {
-    type: String,
-    default: ''
+    type: Types.Relationship,
+    ref: 'PublicationLine',
+    many: false
   }},
   {publisher: {
     type: String
@@ -156,7 +162,7 @@ Publication.schema.virtual('description.truncGrid').get(function() {
 })
 
 
-Publication.defaultColumns = 'title, publicationType, publicationYear, file, cover'
+Publication.defaultColumns = 'title, publicationLine, publicationType, publicationYear, file, cover'
 
 Publication.register();
 
