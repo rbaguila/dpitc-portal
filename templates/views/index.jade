@@ -149,10 +149,11 @@ block content
 				.section-title.focus.row 
 					.title.col-md-5.col-xs-4
 						.skew.col-xs-12
-						.skewed-text Technologies
+						.skewed-text #{settings.technologyTitle}
 				.col-md-12.no-padding
-					strong
-						p.fiesta(style="color:black") Improve your production by exploring the different technologies you can use to manage your crops and livestock.
+					strong(style="color:black") 
+						//- p.fiesta(style="color:black") 
+						!= settings.fiestaDescription
 		.container.no-padding
 			.row
 				.col-md-2.col-sm-6.col-xs-12.tech-item
