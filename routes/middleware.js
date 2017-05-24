@@ -35,7 +35,7 @@ exports.initLocals = function (req, res, next) {
 	// res.locals.logo = keystone.list('Settings').model.findOne({key: 'dpitc'});
 	
 	keystone.list('Settings').model.findOne({key: 'dpitc'}).exec(function (err, result) {
-		res.locals.logo = result;
+		res.locals.settings = result;
 		console.log(result);
 		// next(err);
 	});

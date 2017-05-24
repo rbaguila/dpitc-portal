@@ -75,10 +75,11 @@ block content
 			.section-title.focus.row 
 				.title.col-md-5.col-xs-4
 					.skew.col-xs-12
-					.skewed-text FIESTA
+					.skewed-text #{settings.fiestaTitle}
 			.col-md-12.no-padding
-				strong
-					p.fiesta(style="color:black") Celebrate our Filipino culture while promoting Science and Technology through different events hosted by PCAARRD consortia.
+				strong(style="color:black") 
+					//- p.fiesta(style="color:black") 
+					!= settings.fiestaDescription
 				
 		.row
 			.col-md-2.col-sm-6.col-xs-6.col-xxs-12.tech-item
