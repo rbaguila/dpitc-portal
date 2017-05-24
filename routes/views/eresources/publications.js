@@ -11,111 +11,56 @@ exports = module.exports = function (req, res) {
     commodity: req.query.commodity
   };
   locals.data = {
-    publications: [],
-    category: [],
-    categoryResult: []
-    // categories: [],
+    publications: []
   };
 
   locals.redirect = '/eresources'
   locals.breadcrumbs = [
     { text: 'E Resources', link: '/eresources'},
-    // { text: 'Publications', link: '/eresources/publications'}
   ]
   // console.log(req._parsedUrl.query);
-
-  view.query('industries', keystone.list('Industry').model.find())
-  view.query('sectors', keystone.list('Sector').model.find())
-  view.query('commodities', keystone.list('Commodity').model.find())
-
+  locals.endpoint = '/eresources'
+  locals.query = '?'
 
   var viewStyle = req.query.view == undefined ? 'grid' : req.query.view
-  var searchTerm = req.query.term
-  var searchCategory = req.query.category
 
-  // Load the current filter
-  view.on('init', function (next) {
+  //GETTING LIST OF PUBLICATION LINES
+  view.query('publicationLines', keystone.list('PublicationLine').model.find());
 
-    if (req.query.industry) {
-      keystone.list('Industry').model.findOne({ key: locals.filters.industry }).exec(function (err, result) {
-        locals.data.industry = result;
-        next(err);
-      });
-    }else if (req.query.sector) {
-      keystone.list('Sector').model.findOne({ key: locals.filters.sector }).exec(function (err, result) {
-        locals.data.sector = result;
-        next(err);
-      });
-    }else if (req.query.commodity) {
-      keystone.list('Commodity').model.findOne({ key: locals.filters.commodity }).exec(function (err, result) {
-        locals.data.commodity = result;
-        next(err);
-      });
-    }else {
-      next();
-    }
-  });
+  //PAGINATING PUBLICATIONS
+  var filters = {};
+  if (req.query.pubLine) {
+    locals.query += '?pubLine=' + req.query.pubLine
+    filters = { 'publicationLine' : req.query.pubLine }
+  }
 
-  // Load the posts
-  view.on('init', function (next) {
+  if (req.query.view) {
+    locals.query += '&view=' + req.query.view
+  }
 
-    var q = keystone.list('Publication').model.find({
-      // page: req.query.page || 1,
-      // perPage: 10,
-      // maxPages: 10,
-      // filters: {
-      //   state: 'published',
-      // },
+  var Publications = keystone.list('Publication')
+  Publications.paginate({
+    page: req.query.page || 1,
+    perPage: 20,
+    maxPages: 15,
+    filters: filters
+  }).exec(function(err, results) {
+    var index = 0;
+    results.results.forEach(function(element, index) {
+      element['index'] = results.first + (index++)
     })
-      // .sort('-publishedDate')
-      // .populate('author categories');
-    var category, categoryResult
-    if (locals.data.industry) {
-      q.where('industry').in([locals.data.industry]);
-      categoryResult = locals.data.industry;
-      category = 'Industry';
-    }else if (locals.data.sector) {
-      q.where('sector').in([locals.data.sector]);
-      categoryResult = locals.data.sector;
-      category = 'Sector';
-    }else if (locals.data.commodity) {
-      q.where('commodity').in([locals.data.commodity]);
-      categoryResult = locals.data.commodity;
-      category = 'Commodity';
+
+    console.log(results)
+    locals.data.publications = results;
+
+    if (viewStyle == 'list') {
+      //render list layout
+      view.render('eresources/publications-list');
+    } else {
+      //render grid layout by default
+      view.render('eresources/publications-grid');
     }
+  })
 
-    locals.data.categoryResult = categoryResult;
-    locals.data.category = category;
 
-    q.exec(function (err, results) {
-      locals.data.publications = results;
-      next(err);
-    });
-  });
-
-  // view.query('publications', keystone.list('Publication').model.find())
-
-  var viewStyle = req.query.view == undefined ? 'grid' : req.query.view;
-  var searchTerm = req.query.term;
-  var searchCategory = req.query.category;
-
-  var page = req.params.page
-
-  if (!page) { page = 1; }
-
-  var PER_PAGE = 20;
-
-  view.query('publications', keystone.list('Publication').model.find().limit(PER_PAGE).skip((page - 1) * PER_PAGE));
-
-  locals.data = {
-
-  }
-
-  if (viewStyle == 'list') {
-    //render list layout
-    view.render('eresources/publications-list');
-  } else {
-    //render grid layout by default
-    view.render('eresources/publications-grid');
-  }
 }

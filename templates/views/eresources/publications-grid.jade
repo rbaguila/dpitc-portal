@@ -2,24 +2,22 @@ extends ./publications
 
 block publications
   .row
-    if (data.category)
-      .heading-center
-        h4=data.category+': '+data.categoryResult.name
-    if publications.length
-      each publication in data.publications
-          .col-sm-6.col-md-3(style='padding-left:0')
-            .thumbnail(style='padding:10px')
-              .publication-col-grid
-                a(href="/eresources/publication/"+publication._id)
-                  .cover
-                    //- img(src=publication._.cover.fit(100, 180, {}))
-                    img(src=publication._.cover.fit(170, 180, {}))
-                  .title(style='margin-top: 5px;')
-                    h4
-                      small #{publication.get('title.trunc')}
-                  .details
-                    small #{publication.get('description.truncGrid')}
-      else
-        .col-sm-12.col-md-12(style='padding-left:0')
-          .no-results
-            p='No results found'
+    if data.publications.results
+      each publication in data.publications.results
+        .col-sm-6.col-md-3(style='padding-left:0')
+          .thumbnail(style='padding:10px')
+            .publication-col-grid
+              | #{publication.index}
+              a(href="/eresources/publication/"+publication._id)
+                .cover
+                  //- img(src=publication._.cover.fit(100, 180, {}))
+                  img(src=publication._.cover.fit(170, 180, {}))
+                .title(style='margin-top: 5px;')
+                  h4
+                    small #{publication.get('title.trunc')}
+                .details
+                  small #{publication.get('description.truncGrid')}
+    else
+      .col-sm-12.col-md-12(style='padding-left:0')
+        .no-results
+          p='No results found'

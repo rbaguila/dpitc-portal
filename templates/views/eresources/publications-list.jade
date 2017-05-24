@@ -2,7 +2,8 @@ extends ./publications
 
 block publications
   .row
-    each publication in data.publications
+    if data.publications
+    each publication in data.publications.results
       .col-xs-12
         .thumbnail
           .publication-col-list

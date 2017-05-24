@@ -2,9 +2,13 @@ extends ../../layouts/community
 
 block content
 
-  .community-body
+  //- .community-body
     #eresources-content
       .container
+
+  #public-content
+    .container-fluid(style="padding: 80px 90.5px 0px 90.5px;")
+      .wrapper
         .row
           h2#publications-head
             | S&T to People
@@ -12,7 +16,7 @@ block content
             p Through this Online Publication Database, PCAARRD offers you its wide array of publications, a testament to its effort and contribution to national development particularly in the agriculture, forestry, and natural resources sectors.
             br
           .col-md-12
-            nav.navbar.navbar-default
+            //- nav.navbar.navbar-default
               .container-fluid
                 //- Mobile menu
                 .navbar-header
@@ -25,35 +29,7 @@ block content
 
                 #publications-filter.collapse.navbar-collapse
                   ul.nav.navbar-nav
-
-                    //- li
-                      a(href='#') Link
-                    //- li.dropdown
-                      a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                        | All
-                        span.caret
-                      ul.dropdown-menu
-                        li
-                          a(href='#') Title
-                        li
-                          a(href='#') Another action
-                        li
-                          a(href='#') Something else here
-                        li.divider(role='separator')
-                        li
-                          a(href='#') Separated link
-                        li.divider(role='separator')
-                        li
-                          a(href='#') One more separated link
-
                   form.navbar-form.navbar-left
-                    //- button(type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false").btn.btn-default.dropdown-toggle Industry&nbsp;
-                      span.caret
-                    ul.dropdown-menu
-                      li
-                        a(href="#") Agriculture
-                        a(href="#") Aquatic Resources
-                        a(href="#") Cakes
                     .input-group
                       input(type="text",placeholder="Search...").form-control
                       span.input-group-btn
@@ -61,19 +37,10 @@ block content
 
                   ul.nav.navbar-nav.navbar-right
                     li
-                      // -var category
-                      // if data.category == 'Industry'
-                      //   -category = 'industry'
-                      // else if data.category == 'Sector'
-                      //   -category = 'sector'
-                      // else if data.category == 'Commodity'
-                      //   -category = 'commodity'
-                      //- a(href='/eresources/publications?view=grid&'+category+'=#{'+category+'.key}')
-                      //- a(href='/eresources/publications?view=grid&'+category+'=#{data.categoryResult}')
-                      a(href='/eresources/publications?view=grid')
+                      a(href='/eresources?view=grid')
                         span(aria-hidden="true").glyphicon.glyphicon-th
                     li
-                      a(href="/eresources/publications?view=list")
+                      a(href=endpoint + query + '?view=list')
                         span(aria-hidden="true").glyphicon.glyphicon-th-list
 
 
@@ -82,7 +49,45 @@ block content
               | OFF THE PRESS
             block publications
 
+            //- PAGINATION
+            .row
+              .col-md-12(style="text-align: center;")
+                nav(aria-label='...')
+                  ul.pagination
+                    if data.publications.currentPage == 1
+                      li.disabled
+                        a(href='#' + data.publications.previous, aria-label='Previous', style="pointer-events: none;")
+                          span(aria-hidden='true') «
+                    else
+                      li
+                        a(href= endpoint + query + '?page=' + data.publications.previous, aria-label='Previous')
+                          span(aria-hidden='true') «
+
+                    if data.publications
+                      each page in data.publications.pages
+                        if page == data.publications.currentPage
+                          li.active: a(href= endpoint + '?page=' + page, style="pointer-events: none;") #{page}
+                        else
+                          li: a(href= endpoint + query + '?page=' + page) #{page}
+
+                    if data.publications.currentPage == data.publications.totalPages
+                      li.disabled
+                        a(href='#', aria-label='Next',style="pointer-events: none;")
+                          span(aria-hidden='true') »
+                    else
+                      li
+                        a(href= endpoint + query + '&page=' + data.publications.next, aria-label='Next')
+                          span(aria-hidden='true') »
+            //- END PAGINATION
+
           .col-md-3
+            ul.list-group
+              li.list-group-item.disabled(style="cursor: default;") Publication Lines
+              a(href=endpoint): li.list-group-item All Publications
+              each line in publicationLines
+                a(href= endpoint + '?pubLine=' + line._id): li.list-group-item #{line.name}
+
+          //- .col-md-3
             //- .list-group
             //-   li.list-group-item.list-group-item-header Industries
             //-   each industry in industries
@@ -125,20 +130,6 @@ block content
                     each commodity in commodities
                       li(style='list-style-type:none;')
                       a(href='/eresources/publications?commodity=#{commodity.key}') #{commodity.name}
-        //- .col-xs-12.col-md-9.pub-pager
-        //-   nav(aria-label='...')
-        //-     ul.pagination
-        //-       li.disabled
-        //-         a(href='#', aria-label='Previous')
-        //-           span(aria-hidden='true') «
-        //-       li.active
-        //-         a(href='#')
-        //-           | 1
-        //-           span.sr-only (current)
-        //-       li
-        //-         a(href="#") 2
-        //-       li
-        //-         a(href="#") 3
-        //-       li
-        //-         a(href='#', aria-label='Next')
-        //-           span(aria-hidden='true') »
+
+
+
