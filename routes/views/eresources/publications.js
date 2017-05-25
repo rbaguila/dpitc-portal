@@ -20,7 +20,7 @@ exports = module.exports = function (req, res) {
   ]
   // console.log(req._parsedUrl.query);
   locals.endpoint = '/eresources'
-  locals.query = '?'
+  locals.query = ''
 
   var viewStyle = req.query.view == undefined ? 'grid' : req.query.view
 
@@ -30,7 +30,7 @@ exports = module.exports = function (req, res) {
   //PAGINATING PUBLICATIONS
   var filters = {};
   if (req.query.pubLine) {
-    locals.query += '?pubLine=' + req.query.pubLine
+    locals.query += '&pubLine=' + req.query.pubLine
     filters = { 'publicationLine' : req.query.pubLine }
   }
 
@@ -42,7 +42,7 @@ exports = module.exports = function (req, res) {
   Publications.paginate({
     page: req.query.page || 1,
     perPage: 20,
-    maxPages: 15,
+    maxPages: 10,
     filters: filters
   }).exec(function(err, results) {
     var index = 0;
