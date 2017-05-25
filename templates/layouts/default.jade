@@ -111,20 +111,20 @@ html
 
 			ul.social-sharing.fixed
 				li.community
-					a(target='_blank', href='#' title="Join our community")
-						img( src="/images/community.png" height="40px")
+					a(target='_blank', href=settings.communitySocialLink, title="Join our community")
+						img( src=settings.communitySocialImage.secure_url, height="40px")
 
 				li.facebook
-					a(target='_blank', href='https://www.facebook.com/PCAARRD' title="Like us on Facebook")
+					a(target='_blank', href=settings.facebookLink, title="Like us on Facebook")
 						i.fa.fa-facebook
 				li.twitter
-					a(target='_blank', href='https://twitter.com/dostpcaarrd' title="Follow us on Twitter")
+					a(target='_blank', href=settings.twitterLink, title="Follow us on Twitter")
 						i.fa.fa-twitter
 				li.youtube
-					a(target='_blank', href='https://www.youtube.com/channel/UCcrb__kJo7NCYYlbjwAGVwA' title="Subscribe on our channel")
+					a(target='_blank', href=settings.youtubeLink, title="Subscribe on our channel")
 						i.fa.fa-youtube
 				li.newsletter
-					a(href='mailto:pcaarrd@pcaarrd.dost.gov.ph' title="Email Us")
+					a(href=settings.email, title="Email Us")
 						i.fa.fa-envelope
 
 
