@@ -61,9 +61,16 @@ Settings.add({
 		logo3: { type: Types.CloudinaryImage},
 		logoLink3: { type: String},
 	},
-	copyright: { type: Types.Html, wysiwyg: true, height: 100 },	
-
-
+	copyright: { type: Types.Html, wysiwyg: true, height: 100 }},
+	'Social Media Links',	
+	{
+	communitySocialLink: { type: String},
+	communitySocialImage: { type: Types.CloudinaryImage},
+	facebookLink: { type: String},
+	twitterLink: { type: String},
+	youtubeLink: { type: String},
+	email: { type: String},
+	
 });
 
 Settings.register();
