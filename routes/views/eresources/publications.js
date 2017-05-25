@@ -32,6 +32,8 @@ exports = module.exports = function (req, res) {
     keystone.list('PublicationLine').model.findOne({_id: req.query.pubLine}).exec(function (err, result) {
       res.locals.pubLine = result;
     });
+  }else{
+  	res.locals.pubLine = "ALL";
   }
 
   //PAGINATING PUBLICATIONS
