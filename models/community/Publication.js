@@ -40,11 +40,12 @@ Publication.add(
     type: Types.Select,
     options: [
       'Book',
-      'Leaflet',
       'Brochure',
-      'Flyer',
       'Comics',
-      'Primer'
+      'Flyer',
+      'Leaflet',
+      'Primer',
+      'Report'
       ],
     emptyOption: false,
     initial: true,
