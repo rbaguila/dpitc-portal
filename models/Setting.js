@@ -32,7 +32,31 @@ Settings.add({
 	aboutDescription: { type: Types.Html, wysiwyg: true, height: 150 },	
 	aboutBanner: { type: Types.CloudinaryImage },
 	aboutButtonText: { type: String },
-	aboutLink: { type: String },
+	aboutLink: { type: String }},
+	'Footer Section',
+	{
+	stayConnected: { 
+		title: { type: String},
+		row1Text: { type: String},
+		row2Text: { type: String},
+		row3Text: { type: String},
+		row4Text: { type: String},
+	},
+	getInvolved: { 
+		title: { type: String},
+		row1Text: { type: String},
+		row1Link: { type: String},
+		row2Text: { type: String},
+		row2Link: { type: String},
+		row3Text: { type: String},
+		row3Link: { type: String},
+	},
+	aboutFooter: { 
+		title: { type: String},
+		description: { type: Types.Html, wysiwyg: true, height: 150 },	
+		logos: { type: Types.CloudinaryImages},
+	},
+
 
 });
 
