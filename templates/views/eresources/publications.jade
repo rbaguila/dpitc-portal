@@ -54,29 +54,32 @@ block content
               .col-md-12(style="text-align: center;")
                 nav(aria-label='...')
                   ul.pagination
+                    //- PREVIOUS
                     if data.publications.currentPage == 1
                       li.disabled
                         a(href='#' + data.publications.previous, aria-label='Previous', style="pointer-events: none;")
                           span(aria-hidden='true') «
                     else
                       li
-                        a(href= endpoint + query + '?page=' + data.publications.previous, aria-label='Previous')
+                        a(href= endpoint + '?' + 'page=' + data.publications.previous + query, aria-label='Previous')
                           span(aria-hidden='true') «
 
+                    //- PAGES
                     if data.publications
                       each page in data.publications.pages
                         if page == data.publications.currentPage
-                          li.active: a(href= endpoint + '?page=' + page, style="pointer-events: none;") #{page}
+                          li.active: a(href='#', style="pointer-events: none;") #{page}
                         else
-                          li: a(href= endpoint + query + '?page=' + page) #{page}
+                          li: a(href= endpoint + '?' + 'page=' + page + query) #{page}
 
+                    //- NEXT
                     if data.publications.currentPage == data.publications.totalPages
                       li.disabled
                         a(href='#', aria-label='Next',style="pointer-events: none;")
                           span(aria-hidden='true') »
                     else
                       li
-                        a(href= endpoint + query + '&page=' + data.publications.next, aria-label='Next')
+                        a(href= endpoint + '?' + 'page=' + data.publications.next + query, aria-label='Next')
                           span(aria-hidden='true') »
             //- END PAGINATION
 
