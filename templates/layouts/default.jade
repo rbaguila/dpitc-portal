@@ -133,59 +133,60 @@ html
 				.row
 					.col-lg-4.col-md-12.col-s-12
 						h4.white-text
-							b  STAY CONNECTED
+							b  #{settings.stayConnected.title}
 						ul
 							li
 								a.grey-text.text-lighten-3
 									i.mdi.mdi-phone.small
-									|  (63)(049)536-0014
+									|  #{settings.stayConnected.row1Text}
 							li
 								a.grey-text.text-lighten-3
 									i.mdi.mdi-email.small
-									|  pcaarrd@pcaarrd.dost.gov.ph
+									|  #{settings.stayConnected.row2Text}
 							li
 								a.grey-text.text-lighten-3
 									i.mdi.mdi-earth.small
-									|  http://www.pcaarrd.dost.gov.ph
+									|  #{settings.stayConnected.row3Text}
 							li
 								a.grey-text.text-lighten-3
 									i.mdi.mdi-map-marker.small
-									|  DOST-PCAARRD, Los Baños, Laguna
+									|  #{settings.stayConnected.row4Text}
 					.col-lg-4.col-md-12.col-s-12
 						h4.white-text
-							b  GET INVOLVED
+							b  #{settings.getInvolved.title}
 						ul
 							li
-								a.grey-text.text-lighten-3(href='https://www.facebook.com/PCAARRD', target='_blank')
+								a.grey-text.text-lighten-3(href=settings.getInvolved.row1Link, target='_blank')
 									i.mdi.mdi-facebook.small
-									|  Like us on Facebook
+									|  #{settings.getInvolved.row1Text}
 							li
-								a.grey-text.text-lighten-3(href='https://twitter.com/dostpcaarrd', target='_blank')
+								a.grey-text.text-lighten-3(href=settings.getInvolved.row2Link, target='_blank')
 									i.mdi.mdi-twitter.small
-									|  Follow us on Twitter
+									|  #{settings.getInvolved.row2Text}
 							li
-								a.grey-text.text-lighten-3(href='https://www.youtube.com/channel/UCcrb__kJo7NCYYlbjwAGVwA', target='_blank')
+								a.grey-text.text-lighten-3(href=settings.getInvolved.row3Link, target='_blank')
 									i.mdi.mdi-youtube-play.small
-									|  Subscribe on our Channel
+									| #{settings.getInvolved.row3Text}
+
 					.col-lg-4.col-md-12.col-s-12
 						h4.white-text
-							b  ABOUT DPITC
-						p.white-text
-						| A One-Stop-Shop 'Convergence Hub' for inventors and technology users in the agriculture, aquatic, and natural resources sectors in the Philippines within every Juan's reach.
+							b  #{settings.aboutFooter.title}
+
+						!= settings.aboutFooter.description
 
 						br 
 						
-						a(href='http://www.dost.gov.ph/', title='DOST')
-							img.logos-class(src='images/dost.png')
-						a(href='http://www.pcaarrd.dost.gov.ph/home/portal/', title='PCAARRD')
-							img.logos-class(src='images/pcaarrd.png')
-						a(href='http://www.uplb.edu.ph/', title='UPLB')
-							img.logos-class(src='images/uplb.png')
+						a(href=settings.aboutFooter.logoLink1)
+							img.logos-class(src=settings.aboutFooter.logo1.secure_url)
+						a(href=settings.aboutFooter.logoLink2)
+							img.logos-class(src=settings.aboutFooter.logo2.secure_url)
+						a(href=settings.aboutFooter.logoLink2)
+							img.logos-class(src=settings.aboutFooter.logo3.secure_url)
 
 
 		.footer-copyright
 			.container
-				| © Copyright 2017. DOST-PCAARRD. All rights reserved.
+				!= settings.copyright
 
 
 

@@ -54,8 +54,14 @@ Settings.add({
 	aboutFooter: { 
 		title: { type: String},
 		description: { type: Types.Html, wysiwyg: true, height: 150 },	
-		logos: { type: Types.CloudinaryImages},
+		logo1: { type: Types.CloudinaryImage},
+		logoLink1: { type: String},
+		logo2: { type: Types.CloudinaryImage},
+		logoLink2: { type: String},
+		logo3: { type: Types.CloudinaryImage},
+		logoLink3: { type: String},
 	},
+	copyright: { type: Types.Html, wysiwyg: true, height: 100 },	
 
 
 });
