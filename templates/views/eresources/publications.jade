@@ -86,9 +86,9 @@ block content
           .col-md-3
             ul.list-group
               li.list-group-item.disabled(style="cursor: default;") Publication Lines
-              a(href=endpoint): li.list-group-item All Publications
+              a(href=endpoint): li.list-group-item(style="padding: 5px 10px; font-size: 14px;") All Publications
               each line in publicationLines
-                a(href= endpoint + '?pubLine=' + line._id): li.list-group-item #{line.name}
+                a(href= endpoint + '?pubLine=' + line._id): li.list-group-item(style="padding: 5px 10px; font-size: 14px;") #{line.name}
 
           //- .col-md-3
             //- .list-group

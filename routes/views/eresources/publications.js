@@ -27,6 +27,13 @@ exports = module.exports = function (req, res) {
   //GETTING LIST OF PUBLICATION LINES
   view.query('publicationLines', keystone.list('PublicationLine').model.find());
 
+  // Getting the publication line of selected publication
+  if (req.query.pubLine){
+    keystone.list('PublicationLine').model.findOne({_id: req.query.pubLine}).exec(function (err, result) {
+      res.locals.pubLine = result;
+    });
+  }
+
   //PAGINATING PUBLICATIONS
   var filters = {};
   if (req.query.pubLine) {

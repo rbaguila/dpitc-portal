@@ -3,6 +3,7 @@ extends ./publications
 block publications
   .row
     if data.publications.results
+      h4(style='text-align:center') #{pubLine.name}
       each publication in data.publications.results
         .col-sm-6.col-md-3(style='padding-left:0')
           .thumbnail(style='padding:10px')
@@ -17,7 +18,7 @@ block publications
                     small #{publication.get('title.trunc')}
                 .details
                   small #{publication.get('description.truncGrid')}
-    else
-      .col-sm-12.col-md-12(style='padding-left:0')
-        .no-results
-          p='No results found'
+      else
+        .col-sm-12.col-md-12(style='padding-left:0')
+          .no-results
+            p='No results found'
