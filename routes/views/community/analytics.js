@@ -16,8 +16,6 @@ exports = module.exports = function(req, res) {
         password: crypto.createHash('md5').update("useruser").digest("hex")
       }
 
-      console.log(locals.data.params);
-
       next();
     });
 
