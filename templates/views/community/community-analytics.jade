@@ -1,73 +1,12 @@
 extends ../../layouts/community
 
-block css
-  link(rel="stylesheet" href="/bower_components/tablesorter/dist/css/theme.default.min.css")
-
 block content
   #community-analytics
-    .container-fluid
-      .row
-        .dashboard.col-md-2.hidden-xs.hidden-sm
-          a(href="#page-visits").text-muted.col-xs-11 Page Visits
-          br
-          a(href="#demographics").text-muted.col-xs-11 Demographics
-          br
-          a(href="#interactions").text-muted.col-xs-11 User Interactions
-          br
-        .col-md-10.col-md-offset-2.col-xs-12
-          #page-visits.section.anchor.row
-            .col-md-4
-              .visit-log.section-title Recent Visits &nbsp
-                span.refresh-btn.glyphicon.glyphicon-refresh.pull-right(style="cursor: pointer; display: none;")
-              .recent-visits.section-content(style="padding: 0; overflow-y: auto")
-                table.table.table-striped
-                  thead
-                    tr
-                      th Region
-                      th City/Province
-                      th(data-sorter="shortDate" data-date-format="mmddyyyy") Time
-                  tbody
-                    - var i = 0;
-                    while i < 5 && i < mainViews.length
-                      tr
-                        td #{mainViews[i].region}
-                        td #{mainViews[i].city}
-                        td #{mainViews[i]._.time.format("MM-DD-YYYY HH:mm")}
-                        - i++
-                
-            .col-md-8
-              .section-title Page Visits
-              #active-users.section-content
-          
-          #demographics.section.anchor.row
-            .col-md-7
-              .section-title Demographics (Pie Chart)
-              #regions.section-content
-            
-            .col-md-5
-              #demog-table.section-content(style="padding: 0; overflow-y: auto")
-                table.table.table-striped.tablesorter
-                  thead
-                    tr
-                      th.thead1 Region
-                      th.thead2 Visits
-                      th(data-sorter="shortDate" data-date-format="mmddyyyy").thead3 Time
-                  tbody
-          
-          #interactions.section.anchor.row
-            .col-xs-12
-              .section-title User Interactions
-              .section-content
-                #groups.graph.col-md-3
-                #events.graph.col-md-3
-                #reports.graph.col-md-3
-                #discussions.graph.col-md-3
-                #addText(style="position:absolute; left:0px; top:0px;")
-        
-          
+    .container
+      <iframe id="piwik" src="http://128.199.221.54/piwik/index.php?module=Widgetize&action=iframe&moduleToWidgetize=Dashboard&actionToWidgetize=index&idSite=1&period=week&date=yesterday" frameborder="0" marginheight="0" marginwidth="0" width="100%" height="800px"></iframe>
+
+
 block js
-  script(src="/bower_components/tablesorter/dist/js/jquery.tablesorter.js")
-  script(src="/bower_components/tablesorter/dist/js/jquery.tablesorter.widgets.js")
   script(src="/bower_components/moment/moment.js")
   script(src='/bower_components/highcharts/highstock.js')
   script(src='/bower_components/highcharts/modules/exporting.js')
@@ -75,4 +14,5 @@ block js
   script(src='/bower_components/highcharts/modules/drilldown.js')
   script(src='/bower_components/highcharts/modules/treemap.js')
   script(src='https://code.highcharts.com/mapdata/countries/ph/ph-all.js')
+  script(src='/bower_components/iframe-resizer/js/iframeResizer.js')
   script(src='/js/community-analytics.js')

@@ -21,6 +21,22 @@ html
 
     link(rel="stylesheet" type="text/css" href="/styles/technology.css")
     script(src='https://use.fontawesome.com/b2a273c68b.js')
+    
+    //- Piwik
+    script(type='text/javascript').
+      var _paq = _paq || [];
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+      var u="//128.199.166.120/piwik/";
+      console.log("PIWIK!!")
+      _paq.push(['setTrackerUrl', u+'piwik.php']);
+      _paq.push(['setSiteId', '2']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+      })();
+    //- End Piwik Code
 
     //- This file provides the default styling for the KeystoneJS Content Editor
     if user && user.canAccessKeystone
