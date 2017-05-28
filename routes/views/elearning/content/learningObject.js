@@ -57,6 +57,7 @@ exports = module.exports = function (req, res) {
   var ispArr = {};
   var sectorArr = {};
   var industryArr = {};
+  var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
 
   var pageData = {
     loginRedirect: '/elearning/learning-object/'+req.params.learningobjectslug,
@@ -132,7 +133,7 @@ exports = module.exports = function (req, res) {
       if (err) {
         validationErrors = err.errors;
       } else {
-        helper.addElearningLog(locals.user, req.ip, 'ADDED RATING '+locals.url);
+        helper.addElearningLog(locals.user, ip, 'ADDED RATING '+locals.url);
         req.flash('success', 'Your rating was submitted.');
         return res.redirect('/elearning/learning-object/'+locals.currentLO.slug);
       }
@@ -177,7 +178,7 @@ exports = module.exports = function (req, res) {
       if (err) {
         validationErrors = err.errors;
       } else {
-        helper.addElearningLog(locals.user, req.ip, 'ADDED COMMENT '+locals.url);
+        helper.addElearningLog(locals.user, ip, 'ADDED COMMENT '+locals.url);
         req.flash('success', 'Your comment was added.');
         return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
       }
@@ -210,7 +211,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(locals.user, req.ip, 'REMOVED LIKE '+locals.url);
+              helper.addElearningLog(locals.user, ip, 'REMOVED LIKE '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -227,7 +228,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(locals.user, req.ip, 'LIKED '+locals.url);
+              helper.addElearningLog(locals.user, ip, 'LIKED '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -262,7 +263,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(locals.user, req.ip, 'REMOVED HAPPY '+locals.url);
+              helper.addElearningLog(locals.user, ip, 'REMOVED HAPPY '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -279,7 +280,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(locals.user, req.ip, 'ADDED HAPPY '+locals.url);
+              helper.addElearningLog(locals.user, ip, 'ADDED HAPPY '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -314,7 +315,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(locals.user, req.ip, 'REMOVED SAD '+locals.url);
+              helper.addElearningLog(locals.user, ip, 'REMOVED SAD '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -331,7 +332,7 @@ exports = module.exports = function (req, res) {
             if (err) {
               return next(err);
             } else {
-              helper.addElearningLog(locals.user, req.ip, 'ADDED SAD '+locals.url);
+              helper.addElearningLog(locals.user, ip, 'ADDED SAD '+locals.url);
               return res.redirect('/elearning/learning-object/' + locals.currentLO.slug);
             }
             next();
@@ -373,7 +374,6 @@ exports = module.exports = function (req, res) {
     var start = new Date().subtractHours(1);
     var end = new Date().addHours(1);
     var currentUser = locals.user;
-    var ip = req.ip;
     var options = {    
         host: 'freegeoip.net',    
         path: '/json/' + ip,
