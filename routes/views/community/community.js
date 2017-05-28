@@ -26,6 +26,11 @@ exports = module.exports = function (req, res) {
     userApi: locals.host+'/api/users'
   };
 
+  locals.redirect = '/community'
+  locals.breadcrumbs = [
+    { text: 'Community', link: '/community'},
+  ]
+
   view.on('init', function(next) {
     keystone.list('Industry').model.find().sort('name').exec(function (err, results) {
 
@@ -330,8 +335,5 @@ exports = module.exports = function (req, res) {
   });
 
 
-  view.render('community/community', {loginRedirect: '/community', section: 'community', breadcrumbs: [
-      { text: 'community', link: '/community'},
-    ]
-  });
+  view.render('community/community');
 }
