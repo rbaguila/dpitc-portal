@@ -29,6 +29,7 @@ exports = module.exports = function (req, res) {
   locals.searchSubmitted = false;
   //locals.searchUrl = locals.url + 'action=elearning.search&search=';
   locals.searchResults = [];
+  var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
 
   var pageData = {
     loginRedirect: locals.url,
@@ -63,7 +64,7 @@ exports = module.exports = function (req, res) {
 
   /* Add search log */
   view.on('init', function (next) {
-    helper.addElearningLog(locals.user, req.ip, 'SEARCH '+locals.url);
+    helper.addElearningLog(locals.user, ip, 'SEARCH '+locals.url);
     next();
   });
   
