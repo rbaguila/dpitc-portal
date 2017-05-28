@@ -1,4 +1,5 @@
 var keystone = require('keystone');
+var crypto = require('crypto');
 
 exports = module.exports = function(req, res) {
     var view = new keystone.View(req, res);
@@ -8,6 +9,17 @@ exports = module.exports = function(req, res) {
     locals.data = {
 
     }
+
+    view.on('init', function(next) {
+      locals.data.params = {
+        username: "community",
+        password: crypto.createHash('md5').update("useruser").digest("hex")
+      }
+
+      console.log(locals.data.params);
+
+      next();
+    });
 
     view.query('mainViews', keystone.list('CommunityView').model.find().sort('-time'));
 
