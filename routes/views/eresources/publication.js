@@ -17,7 +17,7 @@ exports = module.exports = function(req, res) {
 
   var pubId = req.params.publication
 
-  view.query('publication', keystone.list('Publication').model.findOne({_id: pubId}).populate('industry sector commodity'));
+  view.query('publication', keystone.list('Publication').model.findOne({_id: pubId}).populate('industry sector commodity publicationLine'));
 
   view.render('eresources/publication');
 
