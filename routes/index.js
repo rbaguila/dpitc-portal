@@ -144,6 +144,10 @@ exports = module.exports = function (app) {
 	app.get('/elearning/api/uservisitsbyRegion', routes.api.elearning.uservisitsbyRegion);
 	app.get('/elearning/api/userVisitsRatio', routes.api.elearning.userVisitsRatio);
 
+  // Publications API
+  app.get('/api/publications', keystone.middleware.api, routes.api.eresources.publications.getPublications);
+  app.get('/api/publications/search/:searchKey', keystone.middleware.api, routes.api.eresources.publications.findPublication)
+
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
 
