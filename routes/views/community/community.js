@@ -246,6 +246,7 @@ exports = module.exports = function (req, res) {
 
     for(var i=0; i<locals.announcements.length; i++) {
       var datePosted = locals.announcements[i].datePosted;
+      locals.announcements[i].datetime = datePosted;
       locals.announcements[i].datePosted = moment(datePosted, 'MMMM Do YYYY, h:mm:SS a').fromNow();
     }
 
@@ -283,22 +284,22 @@ exports = module.exports = function (req, res) {
       var datePosted = locals.blogPosts[i].datePosted;
 
       locals.blogPosts[i].datePosted = moment(datePosted, 'MMMM Do YYYY, h:mm:SS a').fromNow();
-    //   https.get(locals.userApi+'/'+locals.blogPosts.postedBy._id, function(response) {
-    //
-    //     var bodyChunks = [];
-    //     response.on('data', function(chunk) {
-    //       bodyChunks += chunk;
-    //     }).on('end', function() {
-    //       var body = JSON.parse(bodyChunks);
-    //
-    //       console.log()
-    //
-    //       next();
-    //     });
-    //   }).on('error', function(err) {
-    //   next(err);
-    // });;
-    //   console.log(locals.blogPosts[i].postedBy.name);
+      // https.get(locals.config.userApi+'/'+locals.blogPosts[i].postedBy._id, function(response) {
+      //
+      //   var bodyChunks = [];
+      //   response.on('data', function(chunk) {
+      //     bodyChunks += chunk;
+      //   }).on('end', function() {
+      //     var body = JSON.parse(bodyChunks);
+      //
+      //     locals.blogPosts[i].postedBy.photo = body.user.photo.filename;
+      //
+      //     next();
+      //   });
+      // }).on('error', function(err) {
+      //   next(err);
+      // });
+
     }
 
     next();

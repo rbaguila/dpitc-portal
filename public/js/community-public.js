@@ -49,7 +49,89 @@ $(document).ready(function() {
         tags.push($(actives[i]).html().slice(1))
       }
       updateBoardDisplay(tags);
-    })
+    });
+
+    var displaySorted = function(items) {
+      $('.grid-item').remove();
+
+      for(var i=0; i<items.length; i++) {
+        $('.grid').append(items[i]);
+        $('.grid').masonry('reloadItems');
+        $('.grid').masonry('layout');
+      }
+    }
+
+    var sortDate = function(mode) {
+      var gridItems = $('.grid-item');
+
+      if(mode) {
+        gridItems.sort(function(a, b) {
+          a = moment($(a).attr('data-time'), 'MMMM Do YYYY, h:mm:SS a');
+          b = moment($(b).attr('data-time'), 'MMMM Do YYYY, h:mm:SS a')
+          return a.isAfter(b) ? -1 : a.isBefore(b) ? 1 : 0;
+        });
+        displaySorted(gridItems);
+      } else {
+        gridItems.sort(function(a, b) {
+          a = moment($(a).attr('data-time'), 'MMMM Do YYYY, h:mm:SS a');
+          b = moment($(b).attr('data-time'), 'MMMM Do YYYY, h:mm:SS a')
+          return a.isBefore(b) ? -1 : a.isAfter(b) ? 1 : 0;
+        });
+        displaySorted(gridItems);
+      }
+    }
+
+    var sortTitle = function(mode) {
+      var gridItems = $('.grid-item');
+
+      if(mode) {
+        gridItems.sort(function(a, b) {
+          a = $(a).find('.title span').html();
+          b = $(b).find('.title span').html();
+          return a<b ? -1 : a>b ? 1 : 0;
+        });
+        displaySorted(gridItems);
+      } else {
+        gridItems.sort(function(a, b) {
+          a = $(a).find('.title span').html();
+          b = $(b).find('.title span').html();
+          return a>b ? -1 : a<b ? 1 : 0;
+        });
+        displaySorted(gridItems);
+      }
+    }
+
+    $('.sort-date').click(function() {
+      $('.sort-title').removeClass('active');
+
+      if($('.sort-date i').hasClass('fa-caret-up') || !$(this).hasClass('active')) {
+        $('.sort-date i').removeClass('fa-caret-up');
+        $('.sort-date i').addClass('fa-caret-down');
+        sortDate(1);
+      } else {
+        $('.sort-date i').addClass('fa-caret-up');
+        $('.sort-date i').removeClass('fa-caret-down');
+        sortDate(0);
+      }
+
+      $(this).addClass('active');
+    });
+
+    $('.sort-title').click(function() {
+      $('.sort-date').removeClass('active');
+
+      if($('.sort-title i').hasClass('fa-caret-up') || !$(this).hasClass('active')) {
+        $('.sort-title i').removeClass('fa-caret-up');
+        $('.sort-title i').addClass('fa-caret-down');
+        sortTitle(1);
+      } else {
+        $('.sort-title i').addClass('fa-caret-up');
+        $('.sort-title i').removeClass('fa-caret-down');
+        sortTitle(0);
+      }
+
+      $(this).addClass('active');
+    });
 
     $('.avatar-img').each(function(item) {
       var host = 'https://community.dpitc.net/'
@@ -57,7 +139,7 @@ $(document).ready(function() {
       var user = {};
 
       $(this).attr('src', 'http://placehold.it/100x100');
-      
+
       $.ajax({
         type: 'GET',
         url: host+'api/users/'+id,

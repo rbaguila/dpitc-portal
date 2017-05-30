@@ -34,7 +34,7 @@
               .blog.row
                 .blog-avatar
                   a(href="#").author-image
-                    img(src='#' height="78px" width="78px" data-auth=blog.postedBy._id).img-responsive.avatar-img
+                    img(src=host+'/'+blog.postedBy.photo height="78px" width="78px").img-responsive.avatar-img
                 .blog-content
                   .content-header
                     h4
@@ -134,12 +134,22 @@
           .skew.col-xs-12
           #temp.skewed-text Community Posts
       .announcements.section-content
-        .tags
-          span.badge.active(style="cursor: default;") #announcements
-          span.badge.active(style="cursor: default;") #news
-          if tags && tags.length
-            each tag in tags
-             span.badge.tag #{'#'+tag.name}
+        .row
+          .tags.col-xs-9
+            span.badge.active(style="cursor: default;") #hashtags
+            if tags && tags.length
+              each tag in tags
+               span.badge.tag #{'#'+tag.name}
+          .sort-functions.col-xs-3
+            i.fa.fa-filter &nbsp
+            span Sort By: &nbsp
+            a.text-muted.sort-title
+              | Title &nbsp
+              i.fa.fa-caret-down.mode
+            a.text-muted.sort-date
+              | Date &nbsp
+              i.fa.fa-caret-down.mode
+            
         .board
           if announcements && announcements.length
             .grid
@@ -156,7 +166,7 @@
                     - color = "#614126"
                   default
                     - color = "#333"
-                .announcement.grid-item.col-sm-6.col-md-3(data-toggle="modal" data-target="#modal"+i data-tags=announcement.hashtags)
+                .announcement.grid-item.col-sm-6.col-md-3(data-toggle="modal" data-target="#modal"+i data-tags=announcement.hashtags data-time=announcement.datetime)
                   .grid-item-content(style="background-color:"+color)
                     .header
                       img(src="#" height="40px" width="40px" data-auth=announcement.postedBy._id).img-circle.pull-left.avatar-img
