@@ -2,13 +2,13 @@ extends ../../../layouts/elearning
 
 mixin learningObjects-grid(learningObjects)
   .row
-    .col-md-8.col-xs-10
+    .col-md-6.col-xs-6
       if filters.name != null
         h3.text-left Lessons #[em in #{filters.name.toUpperCase()}: #{filters.value.name}]
       else
         h3.text-left All Lessons 
-    .col-md-2.col-xs-2.pull-right
-      +view-generic()
+    .col-md-6.col-xs-6
+      +sort-view()
   .row.equal-height
     if learningObjects.length
       each learningObject in learningObjects
@@ -19,13 +19,13 @@ mixin learningObjects-grid(learningObjects)
 
 mixin learningObjects-list(learningObjects)
   .row
-    .col-md-8.col-xs-10
+    .col-md-6.col-xs-6
       if filters.name != null
         h3.text-left Lessons #[em in #{filters.name.toUpperCase()}: #{filters.value.name}]
       else
         h3.text-left All Lessons
-    .col-md-2.col-xs-2.pull-right
-      +view-generic()
+    .col-md-6.col-xs-6
+      +sort-view()
   .row
     if learningObjects.length
       .col-md-9

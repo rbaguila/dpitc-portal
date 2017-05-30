@@ -1,6 +1,6 @@
 //- Card Template
 mixin learning-object-card(learningObject, redirect)
-  .card    
+  .card.searchable
     if learningObject.thumbnail.exists
       //- img.card-img-top(src=learningObject._.thumbnail.limit(250,200), alt=learningObject.title, height="200px", width="250px")
       +img-available-card-top(learningObject._.thumbnail.limit(250,200), learningObject.title, 250, 200)
