@@ -187,12 +187,16 @@ exports = module.exports = function (req, res) {
     body.posts.sort(function(a, b) {
       a = moment(a.startDateTime, 'MMMM Do YYYY, h:mm:SS A');
       b = moment(b.startDateTime, 'MMMM Do YYYY, h:mm:SS A');
-      return a>b ? -1 : a<b ? 1 : 0;
+      return a<b ? -1 : a>b ? 1 : 0;
     });
 
-    locals.events = body.posts.slice(0, 10);
+    locals.events = body.posts;
 
     for(var i=0; i<locals.events.length; i++) {
+      if(moment(locals.events[i].startDateTime, 'MMMM Do YYYY, h:mm:SS A').isBefore(moment())) {
+        locals.events.splice(i, 1);
+      }
+
       var d = new Date(locals.events[i]['startDateTime']);
       var dateObj = {
         month: d.toLocaleString("en-us", { month: "short" }),
