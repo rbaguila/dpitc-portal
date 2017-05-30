@@ -56,6 +56,8 @@ $(document).ready(function() {
       var id = $(this).attr('data-auth');
       var user = {};
 
+      $(this).attr('src', 'http://placehold.it/100x100');
+      
       $.ajax({
         type: 'GET',
         url: host+'api/users/'+id,
