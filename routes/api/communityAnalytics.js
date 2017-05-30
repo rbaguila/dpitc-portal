@@ -1,12 +1,12 @@
 var keystone = require('keystone');
-var http = require('http');
+var https = require('https');
 var CommunityView = keystone.list('CommunityView');
 var DiscussionView = keystone.list('DiscussionView');
 var GroupView = keystone.list('GroupView');
 var EventView = keystone.list('EventView');
 var ReportView = keystone.list('ReportView');
 
-var host = 'http://pcaarrd-km-community.herokuapp.com';
+var host = 'https://community.dpitc.net/';
 // var host = 'http://localhost:8080';
 config = {
   getEvents: host+'/api/posts/category/event',
@@ -33,7 +33,7 @@ exports.list = function(req, res) {
 }
 
 exports.listEvents = function(req, res) {
-  http.get(config.getEvents, function(response) {
+  https.get(config.getEvents, function(response) {
 
     var bodyChunks = [];
     response.on('data', function(chunk) {
@@ -52,7 +52,7 @@ exports.listEvents = function(req, res) {
 }
 
 exports.listReports = function(req, res) {
-  http.get(config.getReports, function(response) {
+  https.get(config.getReports, function(response) {
 
     var bodyChunks = [];
     response.on('data', function(chunk) {
@@ -71,7 +71,7 @@ exports.listReports = function(req, res) {
 }
 
 exports.listDiscussions = function(req, res) {
-  http.get(config.getDiscussions, function(response) {
+  https.get(config.getDiscussions, function(response) {
 
     var bodyChunks = [];
     response.on('data', function(chunk) {
@@ -90,7 +90,7 @@ exports.listDiscussions = function(req, res) {
 }
 
 exports.listGroups = function(req, res) {
-  http.get(config.getGroups, function(response) {
+  https.get(config.getGroups, function(response) {
 
     var bodyChunks = [];
     response.on('data', function(chunk) {

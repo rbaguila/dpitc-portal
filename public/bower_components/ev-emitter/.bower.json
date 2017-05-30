@@ -23,17 +23,16 @@
     "bower_components",
     "test",
     "tests",
-    "sandbox",
-    "package.json"
+    "sandbox"
   ],
-  "version": "1.1.0",
-  "_release": "1.1.0",
+  "version": "1.0.3",
+  "_release": "1.0.3",
   "_resolution": {
     "type": "version",
-    "tag": "v1.1.0",
-    "commit": "5cc77048f6a16c4a82bb37ea5dc5f0e51d706953"
+    "tag": "v1.0.3",
+    "commit": "049cc4a5f5a61642f7333f352b1ef1530636f697"
   },
   "_source": "https://github.com/metafizzy/ev-emitter.git",
-  "_target": "^1.0.0",
+  "_target": "~1.0.0",
   "_originalSource": "ev-emitter"
 }

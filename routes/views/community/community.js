@@ -3,7 +3,7 @@
 var exec = require('child_process').exec;
 var keystone = require('keystone');
 var moment = require('moment');
-var http = require('http');
+var https = require('https');
 var util = require('util');
 var User = keystone.list('User');
 
@@ -18,8 +18,8 @@ exports = module.exports = function (req, res) {
     industries: [],
     posts: []
   };
-  locals.host = 'http://pcaarrd-km-community.herokuapp.com';
-  // locals.host = 'http://localhost:8080';
+  locals.host = 'https://community.dpitc.net';
+  // locals.host = 'https://localhost:8080';
   locals.config = {
     listPost: locals.host+'/api/posts',
     listGroup: locals.host+'/api/groups',
@@ -91,7 +91,7 @@ exports = module.exports = function (req, res) {
 
   // Load top groups
   view.on('init', function(next) {
-    http.get(locals.config.listGroup, function(response) {
+    https.get(locals.config.listGroup, function(response) {
 
       var bodyChunks = [];
       response.on('data', function(chunk) {
@@ -125,7 +125,7 @@ exports = module.exports = function (req, res) {
 
   // Load all posts
   view.on('init', function(next) {
-    http.get(locals.config.listPost, function(response) {
+    https.get(locals.config.listPost, function(response) {
 
       var bodyChunks = [];
       response.on('data', function(chunk) {
@@ -217,8 +217,8 @@ exports = module.exports = function (req, res) {
     })
 
     body.posts.sort(function(a, b) {
-      a = moment(a.startDateTime, 'MMMM Do YYYY, h:mm:SS A');
-      b = moment(b.startDateTime, 'MMMM Do YYYY, h:mm:SS A');
+      a = moment(a.datePosted, 'MMMM Do YYYY, h:mm:SS A');
+      b = moment(b.datePosted, 'MMMM Do YYYY, h:mm:SS A');
       return a>b ? -1 : a<b ? 1 : 0;
     });
 
@@ -283,7 +283,7 @@ exports = module.exports = function (req, res) {
       var datePosted = locals.blogPosts[i].datePosted;
 
       locals.blogPosts[i].datePosted = moment(datePosted, 'MMMM Do YYYY, h:mm:SS a').fromNow();
-    //   http.get(locals.userApi+'/'+locals.blogPosts.postedBy._id, function(response) {
+    //   https.get(locals.userApi+'/'+locals.blogPosts.postedBy._id, function(response) {
     //
     //     var bodyChunks = [];
     //     response.on('data', function(chunk) {

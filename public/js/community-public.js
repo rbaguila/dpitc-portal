@@ -3,16 +3,75 @@ $(document).ready(function() {
 
     $('.wrapper .section').theiaStickySidebar();
 
-    $('.grid').masonry({
-      itemSelector: '.grid-item',
-      columnWidth: '.grid-sizer',
-      percentPosition: true
+    $('.grid').imagesLoaded(function() {
+      $('.grid').masonry({
+        itemSelector: '.grid-item',
+        columnWidth: '.grid-sizer',
+        percentPosition: true
+      });
+    })
+
+    var updateBoardDisplay = function(tags) {
+      var gridItems = $('.grid-item');
+      var dataTags = [];
+
+      for(var i=0; i<gridItems.length; i++) {
+        dataTags = JSON.parse($(gridItems[i]).attr('data-tags'));
+        $(gridItems[i]).show();
+        $('.grid').masonry({
+          itemSelector: '.grid-item',
+          columnWidth: '.grid-sizer',
+          percentPosition: true
+        });
+
+        for(var j=0; j<tags.length; j++) {
+          if($.inArray(tags[j], dataTags) == -1) {
+            $(gridItems[i]).hide();
+            $('.grid').masonry({
+              itemSelector: '.grid-item',
+              columnWidth: '.grid-sizer',
+              percentPosition: true
+            });
+            break;
+          }
+        }
+      }
+    }
+
+    $('.tags .tag').click(function() {
+      $(this).toggleClass("active");
+
+      var actives = $('.tags .tag.active');
+      var tags = [];
+      for(var i=0; i<actives.length; i++) {
+        tags.push($(actives[i]).html().slice(1))
+      }
+      updateBoardDisplay(tags);
+    })
+
+    $('.avatar-img').each(function(item) {
+      var host = 'https://community.dpitc.net/'
+      var id = $(this).attr('data-auth');
+      var user = {};
+
+      $.ajax({
+        type: 'GET',
+        url: host+'api/users/'+id,
+        success: function(data) {
+          if(data.user.photo) {
+            $(this).attr('src', host+data.user.photo.filename);
+          }
+          else {
+            $(this).attr('src', 'http://placehold.it/100x100');
+          }
+        },
+        error: function(req, status, err) {
+          $(this).attr('src', 'http://placehold.it/100x100');
+        }
+      });
     });
 
-    // $('button.close').click(function(e){
-    //   $('[id^=modal]').modal("hide");
-    // })
-
+    /***      View Queries      ***/
     $.getJSON('https://freegeoip.net/json/', function(data){
       geoloc = {
         ip: data.ip,
