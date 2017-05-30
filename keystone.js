@@ -71,7 +71,7 @@ keystone.set('nav', {
 	'site settings': ['settings'],
 	posts: ['posts', 'post-categories'],
 	'contents': [
-		'exhibits',
+		'fiesta',
 		'technologies',
 		'sliders'
 	],

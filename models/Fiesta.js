@@ -2,16 +2,20 @@ var keystone = require('keystone');
 var Types = keystone.Field.Types;
 
 /**
- * Exhibit Model
+ * Fiesta Model
  * ==========
  */
 
-var Exhibit = new keystone.List('Exhibit', {
+var Fiesta = new keystone.List('Fiesta', {
+	schema: { collection: 'fiesta' },
+	label: 'FIESTA',
+  singular: 'FIESTA',
+  plural: 'FIESTA',
 	map: { name: 'title' },
 	autokey: { path: 'slug', from: 'title', unique: true },
 });
 
-Exhibit.add({
+Fiesta.add({
 	title: { type: String, required: true },
 	commodity: { type: String },
 	date: { type: String},
@@ -29,9 +33,9 @@ Exhibit.add({
 	// tags: { type: String }
 });
 
-Exhibit.schema.virtual('content.full').get(function () {
+Fiesta.schema.virtual('content.full').get(function () {
 	return this.content.extended || this.content.brief;
 });
 
-Exhibit.defaultColumns = 'title, author|20%, publishedDate|20%';
-Exhibit.register();
+Fiesta.defaultColumns = 'title, author|20%, publishedDate|20%';
+Fiesta.register();

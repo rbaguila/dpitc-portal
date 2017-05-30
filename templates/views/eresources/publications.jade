@@ -2,142 +2,143 @@ extends ../../layouts/eresources
 
 block content
 
-  //- .community-body
-    #eresources-content
-      .container
+	//- .community-body
+		#eresources-content
+			.container
 
-  #public-content
-    .container-fluid(style="padding: 80px 90.5px 0px 90.5px;")
-      .wrapper
-        .row
-          form.navbar-form
-              #accordion.panel-group
-              .panel.panel-default
-                .panel-heading
-                  h4.panel-title
-                    a(data-toggle='collapse', data-parent='#accordion', href='#collapse1')
-                      h2(style='margin:0') #{publicationsSettings.publicationsTitle}
-                #collapse1.panel-collapse.collapse
-                  .panel-body.left-side-bar
-                    != publicationsSettings.publicationsDescription
-      
-          .col-md-12
-            //- nav.navbar.navbar-default
-              .container-fluid
-                //- Mobile menu
-                .navbar-header
-                  button(type="button", data-toggle="collapse", aria-expanded="false", data-target="#publications-filter").navbar-toggle.collapsed
-                    span.sr-only Toggle navigation
-                    span.icon-bar
-                    span.icon-bar
-                    span.icon-bar
-                  //- a(href="#").navbar-brand Brand?
+	#public-content
+		.container-fluid(style="padding: 80px 90.5px 0px 90.5px;")
+			.wrapper
+				.row
+					form.navbar-form
+						if publicationsSettings.publicationsTitle && publicationsSettings.publicationsDescription
+							#accordion.panel-group
+							.panel.panel-default
+								.panel-heading
+									h4.panel-title
+										a(data-toggle='collapse', data-parent='#accordion', href='#collapse1')
+											h2(style='margin:0') #{publicationsSettings.publicationsTitle}
+								#collapse1.panel-collapse.collapse
+									.panel-body.left-side-bar
+										!= publicationsSettings.publicationsDescription
+			
+					.col-md-12
+						//- nav.navbar.navbar-default
+							.container-fluid
+								//- Mobile menu
+								.navbar-header
+									button(type="button", data-toggle="collapse", aria-expanded="false", data-target="#publications-filter").navbar-toggle.collapsed
+										span.sr-only Toggle navigation
+										span.icon-bar
+										span.icon-bar
+										span.icon-bar
+									//- a(href="#").navbar-brand Brand?
 
-                #publications-filter.collapse.navbar-collapse
-                  ul.nav.navbar-nav
-                  form.navbar-form.navbar-left
-                    .input-group
-                      input(type="text",placeholder="Search...").form-control
-                      span.input-group-btn
-                        button(type="button").btn.btn-default.form-control Go
+								#publications-filter.collapse.navbar-collapse
+									ul.nav.navbar-nav
+									form.navbar-form.navbar-left
+										.input-group
+											input(type="text",placeholder="Search...").form-control
+											span.input-group-btn
+												button(type="button").btn.btn-default.form-control Go
 
-                  ul.nav.navbar-nav.navbar-right
-                    li
-                      a(href='/eresources?view=grid')
-                        span(aria-hidden="true").glyphicon.glyphicon-th
-                    li
-                      a(href=endpoint + query + '?view=list')
-                        span(aria-hidden="true").glyphicon.glyphicon-th-list
+									ul.nav.navbar-nav.navbar-right
+										li
+											a(href='/eresources?view=grid')
+												span(aria-hidden="true").glyphicon.glyphicon-th
+										li
+											a(href=endpoint + query + '?view=list')
+												span(aria-hidden="true").glyphicon.glyphicon-th-list
 
 
-          .col-md-9
-            h4#publications-title #{publicationsSettings.publicationsHeading}
-            block publications
+					.col-md-9
+						h4#publications-title #{publicationsSettings.publicationsHeading}
+						block publications
 
-            //- PAGINATION
-            .row
-              .col-md-12(style="text-align: center;")
-                nav(aria-label='...')
-                  ul.pagination
-                    //- PREVIOUS
-                    if data.publications.currentPage == 1
-                      li.disabled
-                        a(href='#' + data.publications.previous, aria-label='Previous', style="pointer-events: none;")
-                          span(aria-hidden='true') «
-                    else
-                      li
-                        a(href= endpoint + '?' + 'page=' + data.publications.previous + query, aria-label='Previous')
-                          span(aria-hidden='true') «
+						//- PAGINATION
+						.row
+							.col-md-12(style="text-align: center;")
+								nav(aria-label='...')
+									ul.pagination
+										//- PREVIOUS
+										if data.publications.currentPage == 1
+											li.disabled
+												a(href='#' + data.publications.previous, aria-label='Previous', style="pointer-events: none;")
+													span(aria-hidden='true') «
+										else
+											li
+												a(href= endpoint + '?' + 'page=' + data.publications.previous + query, aria-label='Previous')
+													span(aria-hidden='true') «
 
-                    //- PAGES
-                    if data.publications
-                      each page in data.publications.pages
-                        if page == data.publications.currentPage
-                          li.active: a(href='#', style="pointer-events: none;") #{page}
-                        else
-                          li: a(href= endpoint + '?' + 'page=' + page + query) #{page}
+										//- PAGES
+										if data.publications
+											each page in data.publications.pages
+												if page == data.publications.currentPage
+													li.active: a(href='#', style="pointer-events: none;") #{page}
+												else
+													li: a(href= endpoint + '?' + 'page=' + page + query) #{page}
 
-                    //- NEXT
-                    if data.publications.currentPage == data.publications.totalPages
-                      li.disabled
-                        a(href='#', aria-label='Next',style="pointer-events: none;")
-                          span(aria-hidden='true') »
-                    else
-                      li
-                        a(href= endpoint + '?' + 'page=' + data.publications.next + query, aria-label='Next')
-                          span(aria-hidden='true') »
-            //- END PAGINATION
+										//- NEXT
+										if data.publications.currentPage == data.publications.totalPages
+											li.disabled
+												a(href='#', aria-label='Next',style="pointer-events: none;")
+													span(aria-hidden='true') »
+										else
+											li
+												a(href= endpoint + '?' + 'page=' + data.publications.next + query, aria-label='Next')
+													span(aria-hidden='true') »
+						//- END PAGINATION
 
-          .col-md-3
-            ul.list-group
-              li.list-group-item.disabled(style="cursor: default;") Publication Lines
-              a(href=endpoint): li.list-group-item(style="padding: 5px 10px; font-size: 14px;") All Publications
-              each line in publicationLines
-                a(href= endpoint + '?pubLine=' + line._id): li.list-group-item(style="padding: 5px 10px; font-size: 14px;") #{line.name}
+					.col-md-3
+						ul.list-group
+							li.list-group-item.disabled(style="cursor: default;") Publication Lines
+							a(href=endpoint): li.list-group-item(style="padding: 5px 10px; font-size: 14px;") All Publications
+							each line in publicationLines
+								a(href= endpoint + '?pubLine=' + line._id): li.list-group-item(style="padding: 5px 10px; font-size: 14px;") #{line.name}
 
-          //- .col-md-3
-            //- .list-group
-            //-   li.list-group-item.list-group-item-header Industries
-            //-   each industry in industries
-            //-     a.list-group-item #{industry.name}
-            //-   li.list-group-item.list-group-item-header Sectors
-            //-   each sector in sectors
-            //-     a.list-group-item #{sector.name}
-            //-   li.list-group-item.list-group-item-header Commodities
-            //-   each commodity in commodities
-            //-     a.list-group-item #{commodity.name}
-            form.navbar-form
-              #accordion.panel-group
-              .panel.panel-default
-                .panel-heading
-                  h4.panel-title
-                    a(data-toggle='collapse', data-parent='#accordion', href='#collapse1')
-                      i.fa.fa-industry(aria-hidden='true') &nbsp; Industries
-                #collapse1.panel-collapse.collapse
-                  .panel-body.left-side-bar
-                    each industry in industries
-                      li(style='list-style-type:none;')
-                      a(href='/eresources/publications?industry=#{industry.key}') #{industry.name}
+					//- .col-md-3
+						//- .list-group
+						//-   li.list-group-item.list-group-item-header Industries
+						//-   each industry in industries
+						//-     a.list-group-item #{industry.name}
+						//-   li.list-group-item.list-group-item-header Sectors
+						//-   each sector in sectors
+						//-     a.list-group-item #{sector.name}
+						//-   li.list-group-item.list-group-item-header Commodities
+						//-   each commodity in commodities
+						//-     a.list-group-item #{commodity.name}
+						form.navbar-form
+							#accordion.panel-group
+							.panel.panel-default
+								.panel-heading
+									h4.panel-title
+										a(data-toggle='collapse', data-parent='#accordion', href='#collapse1')
+											i.fa.fa-industry(aria-hidden='true') &nbsp; Industries
+								#collapse1.panel-collapse.collapse
+									.panel-body.left-side-bar
+										each industry in industries
+											li(style='list-style-type:none;')
+											a(href='/eresources/publications?industry=#{industry.key}') #{industry.name}
 
-                .panel-heading
-                  h4.panel-title
-                    a(data-toggle='collapse', data-parent='#accordion', href='#collapse2')
-                      i.fa.fa-balance-scale(aria-hidden='true') &nbsp; Sectors
-                #collapse2.panel-collapse.collapse
-                  .panel-body.left-side-bar
-                    each sector in sectors
-                      li(style='list-style-type:none;')
-                      a(href='/eresources/publications?sector=#{sector.key}') #{sector.name}
+								.panel-heading
+									h4.panel-title
+										a(data-toggle='collapse', data-parent='#accordion', href='#collapse2')
+											i.fa.fa-balance-scale(aria-hidden='true') &nbsp; Sectors
+								#collapse2.panel-collapse.collapse
+									.panel-body.left-side-bar
+										each sector in sectors
+											li(style='list-style-type:none;')
+											a(href='/eresources/publications?sector=#{sector.key}') #{sector.name}
 
-                .panel-heading
-                  h4.panel-title
-                    a(data-toggle='collapse', data-parent='#accordion', href='#collapse3')
-                      i.i.fa.fa-leaf(aria-hidden='true', style='margin-right:10px;') &nbsp; Commodities
-                #collapse3.panel-collapse.collapse
-                  .panel-body.left-side-bar
-                    each commodity in commodities
-                      li(style='list-style-type:none;')
-                      a(href='/eresources/publications?commodity=#{commodity.key}') #{commodity.name}
+								.panel-heading
+									h4.panel-title
+										a(data-toggle='collapse', data-parent='#accordion', href='#collapse3')
+											i.i.fa.fa-leaf(aria-hidden='true', style='margin-right:10px;') &nbsp; Commodities
+								#collapse3.panel-collapse.collapse
+									.panel-body.left-side-bar
+										each commodity in commodities
+											li(style='list-style-type:none;')
+											a(href='/eresources/publications?commodity=#{commodity.key}') #{commodity.name}
 
 
 
