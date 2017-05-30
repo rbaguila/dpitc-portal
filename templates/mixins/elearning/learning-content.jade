@@ -13,7 +13,7 @@ mixin learning-object-card(learningObject, redirect)
     .card-block
       .card-title.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=learningObject.title) !{learningObject.title}
       .card-text
-        p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=learningObject.content.brief) !{learningObject.content.brief}
+        p.line-clamp(data-toggle="tooltip" data-placement="bottom" title=learningObject.content.brief) !{learningObject.content.brief}
     .card-footer
       a.pull-right(href=redirect) Learn More
 
@@ -28,7 +28,7 @@ mixin course-card(course, redirect)
       .card-title.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=course.title) !{course.title}
       //- .meta
       .card-text
-        p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=course.content.brief) !{course.content.brief}
+        p.line-clamp(data-toggle="tooltip" data-placement="bottom" title=course.content.brief) !{course.content.brief}
     .card-footer
       a.pull-right(href=redirect) Learn More
 
@@ -39,15 +39,15 @@ mixin learning-object-tr-media(learningObject, redirect)
       a(href=redirect)
         .media-left
           if learningObject.thumbnail.exists
-            +img-available-rounded-media-object(learningObject._.thumbnail.limit(200,150), learningObject.title, 200, 150)
+            +img-available-rounded-media-object(learningObject._.thumbnail.limit(180,180), learningObject.title, 180, 180)
           else
             if learningObject.video
-              +img-youtube(learningObject.video.videoId, "No Available Image", 200, 150)  
+              +img-youtube(learningObject.video.videoId, "No Available Image", 180, 180)  
             else
-              +img-na-rounded-media-object(200, 150)
+              +img-na-rounded-media-object(180, 180)
         .media-body
           h3.media-heading.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=learningObject.title) !{learningObject.title}
-          p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=learningObject.content.brief) !{learningObject.content.brief}
+          p.line-clamp(data-toggle="tooltip" data-placement="bottom" title=learningObject.content.brief) !{learningObject.content.brief}
           hr
           +learning-object-reactions(learningObject)
 
@@ -61,12 +61,12 @@ mixin course-tr-media(course, redirect)
         .media-left
           if course.thumbnail.exists
             //- img(src=course._.thumbnail.limit(200,150), alt=course.title, height='150px', width='200px').img-rounded.media-object
-            +img-available-rounded-media-object(course._.thumbnail.limit(200,150), course.title, 200, 150)
+            +img-available-rounded-media-object(course._.thumbnail.limit(180,180), course.title, 180, 180)
           else
-            +img-na-rounded-media-object(200, 150)    
+            +img-na-rounded-media-object(180, 180)    
         .media-body
           h3.media-heading.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=course.title) !{course.title}
-          p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=course.title) !{course.content.brief}
+          p.line-clamp(data-toggle="tooltip" data-placement="bottom" title=course.title) !{course.content.brief}
           
 mixin learning-content-tr-media(learningContent, redirect)
   tr.media
@@ -75,27 +75,27 @@ mixin learning-content-tr-media(learningContent, redirect)
         .media-left
           if learningContent.thumbnail.exists
             //- img(src=learningContent._.thumbnail.limit(200,150), alt=learningContent.title, height='150px', width='200px').img-rounded.media-object
-            +img-available-rounded-media-object(learningContent._.thumbnail.limit(200,150), learningContent.title, 200, 150)
+            +img-available-rounded-media-object(learningContent._.thumbnail.limit(100,100), learningContent.title, 100, 100)
           else
-            +img-na-rounded-media-object(200, 100)
+            +img-na-rounded-media-object(100, 100)
             
         .media-body
           h3.media-heading.truncate-text.text-primary(data-toggle="tooltip" data-placement="bottom" title=learningContent.title) !{learningContent.title}
-          p.block-with-text(data-toggle="tooltip" data-placement="bottom" title=learningContent.content.brief) !{learningContent.content.brief}
+          p.line-clamp(data-toggle="tooltip" data-placement="bottom" title=learningContent.content.brief) !{learningContent.content.brief}
 
 mixin learning-object-side(learningObject, redirect)
   .media
     a(href=redirect)
       .media-left
         if learningObject.thumbnail.exists
-          +img-available-rounded-media-object(learningObject._.thumbnail.limit(100, 80), learningObject.title, 100, 80) 
+          +img-available-rounded-media-object(learningObject._.thumbnail.limit(100, 100), learningObject.title, 100, 100) 
         else
-            +img-na-rounded-media-object(100, 80)
+            +img-na-rounded-media-object(100, 100)
       .media-body
         strong.truncate-text(data-toggle="tooltip" data-placement="bottom" title=learningObject.title) !{learningObject.title}
         br
         small
-          .block-with-text.text-info(data-toggle="tooltip" data-placement="bottom" title=learningObject.content.brief) !{learningObject.content.brief}    
+          .line-clamp.text-info(data-toggle="tooltip" data-placement="bottom" title=learningObject.content.brief) !{learningObject.content.brief}    
 
 //- Learning Object Reactions
 mixin learning-object-reactions(currentLO)
