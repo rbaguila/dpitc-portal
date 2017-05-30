@@ -2,15 +2,10 @@ extends ../../../layouts/elearning
 
 mixin recommendedLO-grid(learningObjects)
   .row
-    .col-md-6.col-xs-6
+    .col-md-8.col-xs-10
       h3.text-left Recommended Lessons
-    .col-md-6.col-xs-6
-      +sort-view()
-      //- +view-generic()
-    //- .col-md-2.col-xs-2.pull-right
-      +sort-options()
-    //- .col-md-2.col-xs-2.pull-right
-      +filter-options()
+    .col-md-2.col-xs-2.pull-right
+      +view-generic()
 
   .row.equal-height
     if learningObjects.length
@@ -22,10 +17,11 @@ mixin recommendedLO-grid(learningObjects)
 
 mixin recommendedLO-list(learningObjects)
   .row
-    .col-md-6.col-xs-6
+    .col-md-8.col-xs-10
       h3.text-left Recommended Lessons
-    .col-md-6.col-xs-6
-      +sort-view()
+    .col-md-2.col-xs-2.pull-right
+      +view-generic()
+
   .row
     if learningObjects.length
       .col-md-9

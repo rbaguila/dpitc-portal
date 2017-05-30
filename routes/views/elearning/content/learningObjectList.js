@@ -24,6 +24,32 @@ exports = module.exports = function (req, res) {
   locals.viewStyle = req.query.view == undefined ? 'grid' : req.query.view;
   locals.page = req.query.page == undefined ? 1 : req.query.page;
   locals.perPage = req.query.perPage == undefined ?  12 : req.query.perPage;
+  locals.sort = req.query.sort == undefined ? 'titleAZ' : req.query.sort;
+
+  var sortOrder;
+  switch(locals.sort) {
+    case 'titleAZ':
+      sortOrder =  'title';
+      break;
+    case 'titleZA':
+      sortOrder =  '-title';
+      break;
+    case 'authorAZ':
+      sortOrder =  'author';
+      break;
+    case 'authorZA':
+      sortOrder =  '-author';
+      break;
+    case 'dateNew':
+      sortOrder =  '-publishedAt';
+      break;
+    case 'dateOld':
+      sortOrder = 'publishedAt';
+      break;
+    default:
+      sortOrder =  'title';
+  }
+
 
   locals.formData = req.body || {};
 
@@ -132,7 +158,7 @@ exports = module.exports = function (req, res) {
         },
       })
       .populate('isp, sector, industry video')
-      .sort('-publishedAt');
+      .sort(sortOrder);
 
     } else {
       locals.url += locals.filters.name + '=' + locals.filters.value.key;
@@ -148,7 +174,7 @@ exports = module.exports = function (req, res) {
           },
         })
         .populate('isp, sector, industry video')
-        .sort('-publishedAt');
+        .sort(sortOrder);
 
     }
 

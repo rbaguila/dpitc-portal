@@ -25,12 +25,10 @@ mixin popularLO-grid(learningObjects)
   
 mixin popularLO-list(learningObjects)
   .row
-    .col-md-8.col-xs-7
+    .col-md-6.col-xs-6
       h3.text-left Popular Lessons this #{duration} (#{paginatePopularLO.total})
     .col-md-6.col-md-6
       +duration-sort-view()
-    .col-md-2.col-xs-3
-      +duration-popular()
   .row
     if learningObjects.length
       .col-md-9

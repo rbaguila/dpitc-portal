@@ -5,7 +5,7 @@ mixin allcourses-grid(courses)
     .col-md-6.col-xs-6
       h3.text-left All Courses
     .col-md-6.col-xs-6
-      +sort-view())
+      +sort-view()
   .row.equal-height
     if courses.length
       each course in courses
@@ -16,10 +16,10 @@ mixin allcourses-grid(courses)
 
 mixin allcourses-list(courses)
   .row
-    .col-md-8.col-xs-10
+    .col-md-6.col-xs-6
       h3.text-left All Courses
-    .col-md-2.col-xs-2.pull-right
-      +view-generic()
+    .col-md-6.col-xs-6
+      +sort-view()
   .row
     if courses.length
       .col-md-9

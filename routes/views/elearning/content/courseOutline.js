@@ -22,6 +22,7 @@ exports = module.exports = function (req, res) {
   locals.viewStyle = req.query.view == undefined ? 'grid' : req.query.view;
   locals.page = req.query.page == undefined ? 1 : req.query.page;
   locals.perPage = req.query.perPage == undefined ?  12 : req.query.perPage;
+  locals.sort = req.query.sort == undefined ? 'titleAZ' : req.query.sort;
 
   locals.formData = req.body || {};
 
@@ -56,7 +57,7 @@ exports = module.exports = function (req, res) {
       slug: req.params.courseslug,
       state: 'published',
     })  
-    .populate('author outline')
+    .populate('outline')
     .exec(function(err, result){
       if(result != null){
         locals.currentCourse = result;
@@ -74,7 +75,7 @@ exports = module.exports = function (req, res) {
       LearningObject.model.findOne({
           _id: learningObject._id
         })
-        .populate('video')
+        .populate('video author')
         .exec(function(err, result) {
           if (err) return next(err);
   //        console.log(result);
@@ -86,6 +87,37 @@ exports = module.exports = function (req, res) {
       next(err);
     });
 
+  });
+
+  view.on('init', function(next) {
+
+
+    locals.outline.sort( function (a, b) {
+      switch(locals.sort) {
+        case 'titleAZ':
+          return a.title.localeCompare(b.title);
+          break;
+        case 'titleZA':
+          return b.title.localeCompare(a.title);
+          break;
+        case 'authorAZ':
+          return a.author.name.localeCompare(b.author.name);
+          break;
+        case 'authorZA':
+          return b.author.name.localeCompare(a.author.name);
+          break;
+        case 'dateNew':
+          return new Date(b.publishedAt) - new Date(a.publishedAt);
+          break;
+        case 'dateOld':
+          return new Date(a.publishedAt) - new Date(b.publishedAt);
+          break;
+        default:
+          return a.title - b.title;
+      }
+    //  return parseFloat(b.viewCount) - parseFloat(a.viewCount); 
+    });
+    next();
   });
 
   //insert ELearning Visit

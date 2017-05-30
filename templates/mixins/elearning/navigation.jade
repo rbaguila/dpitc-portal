@@ -252,9 +252,7 @@ mixin duration-sort-view
           a(href=url+'&page='+page+'&view='+viewStyle+'&duration='+duration+'&sort=dateNew') Newest
         li
           a(href=url+'&page='+page+'&view='+viewStyle+'&duration='+duration+'&sort=dateOld') Oldest
-        li.divider(role='separator')
-        li
-          a(href=url+'&page='+page+'&view='+viewStyle+'&duration='+duration+'&sort=none') No Order
+       
     li(role='presentation')
       a(href=url+'&page='+page+'&duration='+duration+'&sort='+sort+'&view=grid')
         span(aria-hidden="true").glyphicon.glyphicon-th
@@ -282,9 +280,7 @@ mixin sort-view
           a(href=url+'&page='+page+'&view='+viewStyle+'&sort=dateNew') Newest
         li
           a(href=url+'&page='+page+'&view='+viewStyle+'&sort=dateOld') Oldest
-        li.divider(role='separator')
-        li
-          a(href=url+'&page='+page+'&view='+viewStyle+'&sort=none') No Order
+        
     li(role='presentation')
       a(href=url+'&page='+page+'&view=grid')
         span(aria-hidden="true").glyphicon.glyphicon-th
