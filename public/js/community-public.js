@@ -3,12 +3,14 @@ $(document).ready(function() {
 
     $('.wrapper .section').theiaStickySidebar();
 
+
+    $('.grid').masonry({
+      itemSelector: '.grid-item',
+      columnWidth: '.grid-sizer',
+      percentPosition: true
+    });
     $('.grid').imagesLoaded(function() {
-      $('.grid').masonry({
-        itemSelector: '.grid-item',
-        columnWidth: '.grid-sizer',
-        percentPosition: true
-      });
+      $('.grid').masonry('layout');
     })
 
     var updateBoardDisplay = function(tags) {
