@@ -11,7 +11,7 @@ var keystone = require('keystone');
 
 keystone.init({
 	'name': 'DPITC',
-	'brand': 'DPITC',
+	'brand': 'DPITC Content Management System',
 
 	'less': 'public',
 	'static': 'public',
