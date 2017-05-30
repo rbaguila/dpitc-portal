@@ -11,7 +11,7 @@ var keystone = require('keystone');
 
 keystone.init({
 	'name': 'DPITC',
-	'brand': 'DPITC',
+	'brand': 'DPITC Content Management System',
 
 	'less': 'public',
 	'static': 'public',
@@ -68,10 +68,10 @@ keystone.set('routes', require('./routes'));
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
 	// Site,
-	'site settings': 'settings',
+	'site settings': ['settings'],
 	posts: ['posts', 'post-categories'],
 	'contents': [
-		'exhibits',
+		'fiesta',
 		'technologies',
 		'sliders'
 	],
@@ -81,7 +81,8 @@ keystone.set('nav', {
 	],
 	users: 'users',
 	Analytics: ['community-views', 'discussion-views', 'group-views', 'report-views'],
-	Community: ['blog-posts', 'trainings', 'events', 'discussions', 'discussion-comments', 'publications', 'publication-lines', 'links', 'galleries', 'videos', 'memos'],
+	Community: ['blog-posts', 'trainings', 'events', 'discussions', 'discussion-comments', 'links', 'galleries', 'videos', 'memos'],
+	Publications:['publications-settings', 'publications', 'publication-lines'],
 	Categories: ['industries', 'sectors', 'commodities'],
 	ELearning: ['LearningObject', 'Course', 'LearningContent', 'ISP', 'LIndustry', 'LSector', 'LOFileUpload', 'LOGallery', 'LOLink', 'LOVideo',   'Author', 'LOComment', 'LOFeedback', 'LORating', 'LOView', 'ELearningLog', 'ELearningVisit'],
 });

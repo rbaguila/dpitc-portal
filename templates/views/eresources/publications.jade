@@ -10,11 +10,17 @@ block content
     .container-fluid(style="padding: 80px 90.5px 0px 90.5px;")
       .wrapper
         .row
-          h2#publications-head
-            | S&T to People
-          #publications-desc
-            p Through this Online Publication Database, PCAARRD offers you its wide array of publications, a testament to its effort and contribution to national development particularly in the agriculture, forestry, and natural resources sectors.
-            br
+          form.navbar-form
+              #accordion.panel-group
+              .panel.panel-default
+                .panel-heading
+                  h4.panel-title
+                    a(data-toggle='collapse', data-parent='#accordion', href='#collapse1')
+                      h2(style='margin:0') #{publicationsSettings.publicationsTitle}
+                #collapse1.panel-collapse.collapse
+                  .panel-body.left-side-bar
+                    != publicationsSettings.publicationsDescription
+      
           .col-md-12
             //- nav.navbar.navbar-default
               .container-fluid
@@ -45,8 +51,7 @@ block content
 
 
           .col-md-9
-            h4#publications-title
-              | OFF THE PRESS
+            h4#publications-title #{publicationsSettings.publicationsHeading}
             block publications
 
             //- PAGINATION

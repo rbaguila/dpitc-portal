@@ -33,8 +33,7 @@ html
 			_paq.push(['trackPageView']);
 			_paq.push(['enableLinkTracking']);
 			(function() {
-			var u="//128.199.166.120/piwik/";
-			console.log("PIWIK!!")
+			var u="//128.199.221.54/piwik/";
 			_paq.push(['setTrackerUrl', u+'piwik.php']);
 			_paq.push(['setSiteId', '2']);
 			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
@@ -82,10 +81,10 @@ html
 						ul.nav.navbar-nav.navbar-right.links
 							each link in navLinks
 								li: a(href=link.href, class=section == link.key ? 'active' :"not-active")= link.label
-							li: a(class="not-active" onclick="toggleButton()")
+							li: a(class="not-active" onclick="toggleButton()", style="margin-right: 2em;")
 								i.fa.fa-search#toggleIcon
-							li: a(href='#', class="not-active")
-								button#versionbutton ALPHA
+							//- li: a(href='#', class="not-active")
+							//- 	button#versionbutton ALPHA
 
 							//- if user
 							//- 	if user.canAccessKeystone

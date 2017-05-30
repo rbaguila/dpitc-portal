@@ -93,7 +93,7 @@ exports = module.exports = function (req, res) {
     var currentUser = locals.user;
     var isLOUser = false;//suburb = city/municipality, state = region
 
-    var ip = req.ip;
+    var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
     var options = {    
         host: 'freegeoip.net',    
         path: '/json/' + ip,

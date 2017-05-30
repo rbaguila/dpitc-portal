@@ -27,6 +27,8 @@ exports = module.exports = function (req, res) {
   //GETTING LIST OF PUBLICATION LINES
   view.query('publicationLines', keystone.list('PublicationLine').model.find());
 
+  view.query('publicationsSettings', keystone.list('publicationsSettings').model.findOne());
+
   // Getting the publication line of selected publication
   if (req.query.pubLine){
     keystone.list('PublicationLine').model.findOne({_id: req.query.pubLine}).exec(function (err, result) {
