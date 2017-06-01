@@ -12,6 +12,7 @@
     "theia-sticky-sidebar": "^1.6.0",
     "highcharts": "^5.0.10",
     "moment": "^2.18.1",
-    "masonry": "^4.2.0"
+    "masonry": "^4.2.0",
+    "imagesloaded": "^4.1.2"
   }
 }
