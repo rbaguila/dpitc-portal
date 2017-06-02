@@ -183,3 +183,109 @@ mixin duration-popular(action)
         a(href=url+'&page='+page+'&view='+viewStyle+'&duration=week') week
       li 
         a(href=url+'&page='+page+'&view='+viewStyle+'&duration=month') month
+
+mixin sort-options(action)
+  .dropdown
+    button.btn.btn-default.dropdown-toggle(type='button', id='sort', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true') Sort by
+      span.caret
+    ul.dropdown-menu(aria-labelledby='sortBy')
+      li
+        a(href=url+'&view='+viewStyle+'&sort=titleAZ') Title A-Z
+      li
+        a(href=url+'&view='+viewStyle+'&sort=titleZA') Title Z-A
+      li.divider(role='separator')
+      li
+        a(href=url+'&view='+viewStyle+'&sort=authorAZ') Author A-Z
+      li
+        a(href=url+'&view='+viewStyle+'&sort=authorZA') Author Z-A
+      li.divider(role='separator')
+      li
+        a(href=url+'&view='+viewStyle+'&sort=dateNew') Published Date Newest
+      li
+        a(href=url+'&view='+viewStyle+'&sort=dateOld') Published Date Oldest
+      
+mixin filter-options(action)
+  .input-group
+    span.input-group-addon Filter
+    input.form-control(id='filter', type='text', placeholder='Type here...')
+  //- .dropdown
+    button.btn.btn-default.dropdown-toggle(type='button', id='sort', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true') Filter by
+      span.caret
+    ul.dropdown-menu(aria-labelledby='filterBy')
+      li
+        a(href=url+'&view='+viewStyle+'&sort=author') Author
+      li
+        a(href=url+'&view='+viewStyle+'&sort=isp') ISP
+      li
+        a(href=url+'&view='+viewStyle+'&sort=sector') Sector
+      li
+        a(href=url+'&view='+viewStyle+'&sort=industry') Industry
+        
+      
+mixin duration-sort-view
+  ul.nav.nav-pills.pull-right
+    li(role='presentation').dropdown
+      a.dropdown-toggle(type='button', id='duration', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true') Popular this &emsp;
+        span.caret
+      ul.dropdown-menu(aria-labelledby='duration')
+        li
+          a(href=url+'&page='+page+'&view='+viewStyle+'&sort='+sort+'&duration=day') day
+        li
+          a(href=url+'&page='+page+'&view='+viewStyle+'&sort='+sort+'&duration=week') week
+        li 
+          a(href=url+'&page='+page+'&view='+viewStyle+'&sort='+sort+'&duration=month') month
+    li(role='presentation').dropdown
+      a.dropdown-toggle(type='button', id='sort', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true' role='button') Sort by
+        span.caret
+      ul.dropdown-menu(aria-labelledby='sortBy')
+        li
+          a(href=url+'&page='+page+'&view='+viewStyle+'&duration='+duration+'&sort=titleAZ') Title A-Z
+        li
+          a(href=url+'&page='+page+'&view='+viewStyle+'&duration='+duration+'&sort=titleZA') Title Z-A
+        li.divider(role='separator')
+        li
+          a(href=url+'&page='+page+'&view='+viewStyle+'&duration='+duration+'&sort=authorAZ') Author A-Z
+        li
+          a(href=url+'&page='+page+'&view='+viewStyle+'&duration='+duration+'&sort=authorZA') Author Z-A
+        li.divider(role='separator')
+        li
+          a(href=url+'&page='+page+'&view='+viewStyle+'&duration='+duration+'&sort=dateNew') Newest
+        li
+          a(href=url+'&page='+page+'&view='+viewStyle+'&duration='+duration+'&sort=dateOld') Oldest
+       
+    li(role='presentation')
+      a(href=url+'&page='+page+'&duration='+duration+'&sort='+sort+'&view=grid')
+        span(aria-hidden="true").glyphicon.glyphicon-th
+    li(role='presentation')
+      a(href=url+'&page='+page+'&duration='+duration+'&sort='+sort+'&view=list')
+        span(aria-hidden="true").glyphicon.glyphicon-th-list
+            
+mixin sort-view
+  ul.nav.nav-pills.pull-right
+    li(role='presentation').dropdown
+      a.dropdown-toggle(type='button', id='sort', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true' role='button') Sort by
+        span.caret
+      ul.dropdown-menu(aria-labelledby='sortBy')
+        li
+          a(href=url+'&page='+page+'&view='+viewStyle+'&sort=titleAZ') Title A-Z
+        li
+          a(href=url+'&page='+page+'&view='+viewStyle+'&sort=titleZA') Title Z-A
+        li.divider(role='separator')
+        li
+          a(href=url+'&page='+page+'&view='+viewStyle+'&sort=authorAZ') Author A-Z
+        li
+          a(href=url+'&page='+page+'&view='+viewStyle+'&sort=authorZA') Author Z-A
+        li.divider(role='separator')
+        li
+          a(href=url+'&page='+page+'&view='+viewStyle+'&sort=dateNew') Newest
+        li
+          a(href=url+'&page='+page+'&view='+viewStyle+'&sort=dateOld') Oldest
+        
+    li(role='presentation')
+      a(href=url+'&page='+page+'&view=grid')
+        span(aria-hidden="true").glyphicon.glyphicon-th
+    li(role='presentation')
+      a(href=url+'&page='+page+'&view=list')
+        span(aria-hidden="true").glyphicon.glyphicon-th-list
+            
+               

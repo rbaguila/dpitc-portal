@@ -25,6 +25,9 @@ exports = module.exports = function (req, res) {
   locals.page = req.query.page == undefined ? 1 : req.query.page;
   locals.duration = req.query.duration == undefined ? 'month': req.query.duration; 
   locals.perPage = req.query.perPage == undefined ?  12 : req.query.perPage;
+  locals.sort = req.query.sort == undefined ? 'titleAZ' : req.query.sort;
+
+  
 
   locals.formData = req.body || {};
 
@@ -114,7 +117,7 @@ exports = module.exports = function (req, res) {
       LearningObject.model.findOne({
           _id: learningObject._id
         })
-        .populate('video')
+        .populate('author video')
         .exec(function(err, result) {
           if (err) return next(err);
         //  console.log(result);
@@ -129,18 +132,33 @@ exports = module.exports = function (req, res) {
   });
 
   view.on('init', function(next) {
-    /*// Sort locals.popularLO[]
-    locals.popularLO.sort( function (a, b) {
-      return parseFloat(b.viewCount) - parseFloat(a.viewCount); 
-    });
-
-    // paginate locals.popularLO
-    locals.paginatePopularLO = helper.paginate(locals.popularLO, locals.page, locals.perPage);
-   */
 
     tempPopularLO.sort( function (a, b) {
-      return parseFloat(b.viewCount) - parseFloat(a.viewCount); 
+      switch(locals.sort) {
+        case 'titleAZ':
+          return a.title.localeCompare(b.title);
+          break;
+        case 'titleZA':
+          return b.title.localeCompare(a.title);
+          break;
+        case 'authorAZ':
+          return a.author.name.localeCompare(b.author.name);
+          break;
+        case 'authorZA':
+          return b.author.name.localeCompare(a.author.name);
+          break;
+        case 'dateNew':
+          return new Date(b.publishedAt) - new Date(a.publishedAt);
+          break;
+        case 'dateOld':
+          return new Date(a.publishedAt) - new Date(b.publishedAt);
+          break;
+        default:
+          return a.title - b.title;
+      }
+    //  return parseFloat(b.viewCount) - parseFloat(a.viewCount); 
     });
+
 
     // paginate locals.popularLO
     locals.paginatePopularLO = helper.paginate(tempPopularLO, locals.page, locals.perPage);
