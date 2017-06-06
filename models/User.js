@@ -32,8 +32,35 @@ User.add({
   },
 }, 'Permissions', {
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: false },
+
   isElearningAdmin: { type: Boolean, label: 'Can access Elearning Admin', index: false},
   isElearningUser: { type: Boolean, label: 'Can access Elearning UI', index: false },
+
+  isPostsAdmin: { type: Boolean, label: 'Can access Posts Admin', index: false},
+  isPostsUser: { type: Boolean, label: 'Can access Posts UI', index: false },
+
+  isContentsAdmin: { type: Boolean, label: 'Can access Contents Admin', index: false},
+  isContentsUser: { type: Boolean, label: 'Can access Contents UI', index: false },
+
+  isPagesAdmin: { type: Boolean, label: 'Can access Pages Admin', index: false},
+  isPagesUser: { type: Boolean, label: 'Can access Pages UI', index: false },
+
+  isUsersAdmin: { type: Boolean, label: 'Can access Users Admin', index: false},
+  isUsersUser: { type: Boolean, label: 'Can access Users UI', index: false },
+
+  isAnalyticsAdmin: { type: Boolean, label: 'Can access Analytics Admin', index: false},
+  isAnalyticsUser: { type: Boolean, label: 'Can access Analytics UI', index: false },
+
+  isCommunityAdmin: { type: Boolean, label: 'Can access Community Admin', index: false},
+  isCommunityUser: { type: Boolean, label: 'Can access Community UI', index: false },
+
+  isPublicationssAdmin: { type: Boolean, label: 'Can access Publications Admin', index: false},
+  isPublicationssUser: { type: Boolean, label: 'Can access Publications UI', index: false },
+
+  isCategoriesAdmin: { type: Boolean, label: 'Can access Categories Admin', index: false},
+  isCategoriesUser: { type: Boolean, label: 'Can access Categories UI', index: false },
+
+
 });
 
 // Provide access to Keystone
@@ -50,6 +77,32 @@ User.schema.virtual('canAccessElearningUI').get(function () {
   return this.isElearningUser;
 });
 
+// Provide access to Posts Component
+User.schema.virtual('canAccessPostsAdmin').get(function() {
+  return this.isPostsAdmin;
+});
+
+User.schema.virtual('canAccessPostsUI').get(function (){
+  return this.isPostsUI;
+});
+
+// Provide access to Contents Component
+User.schema.virtual('canAccessContentsAdmin').get(function() {
+  return this.isContentsAdmin;
+});
+
+User.schema.virtual('canAccessContentsUI').get(function (){
+  return this.isContentsUI;
+});
+
+// Provide access to Pages Component
+User.schema.virtual('canAccessPagesAdmin').get(function() {
+  return this.isPagesAdmin;
+});
+
+User.schema.virtual('canAccessPagesUI').get(function (){
+  return this.isPagesUI;
+});
 
 
 /**
