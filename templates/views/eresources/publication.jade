@@ -20,73 +20,70 @@ block content
           .col-md-9
             h2
               | #{publication.title}
-              .small #{publication.publicationType}
+              //- .small #{publication.publicationType}
 
             p #{publication.description}
 
+            //- br
+            //- if publication.publisher
+            //-   p
+            //-     span.pub-field Publisher:&nbsp;
+            //-     span.pub-value #{publication.publisher}
 
-            br
-            if publication.publisher
-              p
-                span.pub-field Publisher:&nbsp;
-                span.pub-value #{publication.publisher}
+            //- if publication.publicationYear
+            //-   p
+            //-     span.pub-field Publication Year:&nbsp;
+            //-     span.pub-value #{publication.publicationYear}
 
-            if publication.publicationYear
-              p
-                span.pub-field Publication Year:&nbsp;
-                span.pub-value #{publication.publicationYear}
+            //- if publication.publicationLine
+            //-   p
+            //-     span.pub-field Publication Line:&nbsp;
+            //-     span.pub-value #{publication.publicationLine}
 
-            if publication.publicationLine
-              p
-                span.pub-field Publication Line:&nbsp;
-                span.pub-value #{publication.publicationLine.name}
+            //- if publication.technicalEditor
+            //-   p
+            //-     span.pub-field Technical Editor:&nbsp;
+            //-     span.pub-value #{publication.technicalEditor}
 
-            if publication.technicalEditor
-              p
-                span.pub-field Technical Editor:&nbsp;
-                span.pub-value #{publication.technicalEditor}
+            //- if publication.volumeEditor
+            //-   p
+            //-     span.pub-field Volume Editor:&nbsp;
+            //-     span.pub-value #{publication.volumeEditor}
 
-            if publication.volumeEditor
-              p
-                span.pub-field Volume Editor:&nbsp;
-                span.pub-value #{publication.volumeEditor}
+            //- if publication.layoutArtist
+            //-   p
+            //-     span.pub-field Layout Artist:&nbsp;
+            //-     span.pub-value #{publication.layoutArtist}
 
-            if publication.layoutArtist
-              p
-                span.pub-field Layout Artist:&nbsp;
-                span.pub-value #{publication.layoutArtist}
+            //- if publication.ISSN
+            //-   p
+            //-     span.pub-field ISSN:&nbsp;
+            //-     span.pub-value #{publication.ISSN}
 
-            if publication.ISSN
-              p
-                span.pub-field ISSN:&nbsp;
-                span.pub-value #{publication.ISSN}
+            //- if publication.ISBN
+            //-   p
+            //-     span.pub-field ISBN:&nbsp;
+            //-     span.pub-value #{publication.ISBN}
 
-            if publication.ISBN
-              p
-                span.pub-field ISBN:&nbsp;
-                span.pub-value #{publication.ISBN}
+            //- if publication.printer
+            //-   p
+            //-     span.pub-field Printer:&nbsp;
+            //-     span.pub-value #{publication.printer}
 
-            if publication.printer
-              p
-                span.pub-field Printer:&nbsp;
-                span.pub-value #{publication.printer}
+            //- if publication.format
+            //-   p
+            //-     span.pub-field Format:&nbsp;
+            //-     span.pub-value #{publication.format}
 
-            if publication.format
-              p
-                span.pub-field Format:&nbsp;
-                span.pub-value #{publication.format}
+            //- if publication.numberOfPages
+            //-   p
+            //-     span.pub-field Number of Pages:&nbsp;
+            //-     span.pub-value #{publication.numberOfPages}
 
-            if publication.numberOfPages
-              p
-                span.pub-field Number of Pages:&nbsp;
-                span.pub-value #{publication.numberOfPages}
-
-            if publication.price
-              p
-                span.pub-field Price:&nbsp;
-                span.pub-value #{publication.price}
-
-
+            //- if publication.price
+            //-   p
+            //-     span.pub-field Price:&nbsp;
+            //-     span.pub-value #{publication.price}
             br
             if publication.industry
               span.label.label-default #{publication.industry.name}
