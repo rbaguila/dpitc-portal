@@ -7,7 +7,12 @@ var Types = keystone.Field.Types;
  */
 
 var PublicationFeedback = new keystone.List('PublicationFeedback', {
-  drilldown: 'publication user',
+  label: 'Feedback',
+  path: 'publication-feedback',
+  singular: 'Feedback',
+  plural: 'Feedback',
+  collection: 'publicationFeedback',
+  drilldown: 'publication',
 });
 
 PublicationFeedback.add({
@@ -59,4 +64,6 @@ PublicationFeedback.add({
   suggestions: {
     type: String
   }
-})
+});
+
+PublicationFeedback.register();

@@ -82,7 +82,7 @@ keystone.set('nav', {
 	users: 'users',
 	Analytics: ['community-views', 'discussion-views', 'group-views', 'report-views'],
 	Community: ['blog-posts', 'trainings', 'events', 'discussions', 'discussion-comments', 'links', 'galleries', 'videos', 'memos'],
-	Publications:['publications-settings', 'publications', 'publication-lines'],
+	Publications:['publications-settings', 'publications', 'publication-lines', 'publication-feedback'],
 	Categories: ['industries', 'sectors', 'commodities'],
 	ELearning: ['LearningObject', 'Course', 'LearningContent', 'ISP', 'LIndustry', 'LSector', 'LOFileUpload', 'LOGallery', 'LOLink', 'LOVideo',   'Author', 'LOComment', 'LOFeedback', 'LORating', 'LOView', 'ELearningLog', 'ELearningVisit'],
 });
