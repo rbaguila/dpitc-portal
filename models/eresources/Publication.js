@@ -131,9 +131,9 @@ Publication.add(
 
 // http://keystonejs.com/docs/database/#relationships
 
-// Publication.relationship(
-//   { ref: 'PublicationFeedback', path: 'publication' }
-// );
+Publication.relationship(
+  { ref: 'PublicationFeedback', path: 'publication' }
+);
 
 Publication.schema.virtual('title.trunc').get(function() {
   var truncated = this.title

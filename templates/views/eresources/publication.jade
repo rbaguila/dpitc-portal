@@ -11,7 +11,10 @@ block content
             br
             br
             if user
-              a.btn.btn-success(href=publication.file.url,role="button",download) Download
+              if needsReviewing
+                a.btn.btn-warning(href=publication.file.url,role="button") Rate Previous Download
+              else
+                a.btn.btn-success(href=publication.file.url,role="button",download) Download
             else
               if redirect
                 a.btn.btn-default(href='/keystone/signin?from=' + redirect) Log In to Access

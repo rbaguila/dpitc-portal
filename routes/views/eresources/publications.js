@@ -61,7 +61,6 @@ exports = module.exports = function (req, res) {
       element['index'] = results.first + (index++)
     })
 
-    console.log(results)
     locals.data.publications = results;
 
     if (viewStyle == 'list') {

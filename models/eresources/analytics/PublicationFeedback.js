@@ -12,13 +12,18 @@ var PublicationFeedback = new keystone.List('PublicationFeedback', {
   singular: 'Feedback',
   plural: 'Feedback',
   collection: 'publicationFeedback',
-  drilldown: 'publication',
+  drilldown: 'publication user',
 });
 
 PublicationFeedback.add({
   publication: {
     type: Types.Relationship,
     ref: 'Publication',
+    many: false
+  },
+  user: {
+    type: Types. Relationship,
+    ref: 'User',
     many: false
   },
   content: {
