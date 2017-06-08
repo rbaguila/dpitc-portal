@@ -16,9 +16,10 @@ exports = module.exports = function(req, res) {
 
   // Check if user needs to accomplish a form
   if (req.user) {
-    var user = req.user
+    var user = req.user;
     if (user.needsReviewing) {
-      locals.needsReviewing = user.needsReviewing
+      locals.needsReviewing = user.needsReviewing;
+      locals.userID = user._id;
     }
   }
 

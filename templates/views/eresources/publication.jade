@@ -12,7 +12,11 @@ block content
             br
             if user
               if needsReviewing
-                a.btn.btn-warning(href=publication.file.url,role="button") Rate Previous Download
+                //- a.btn.btn-warning(href='/eresources/feedback',role="button") Rate Previous Download
+                form(action='/eresources/feedback', method="POST")
+                    input(type='hidden', name='publicationID', value=needsReviewing)
+                    input(type='hidden', name='userID', value=userID)
+                    button.btn.btn-warning(type='submit') Rate Previous Download
               else
                 a.btn.btn-success(href=publication.file.url,role="button",download) Download
             else
