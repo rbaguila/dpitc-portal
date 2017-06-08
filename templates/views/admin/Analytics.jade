@@ -1,0 +1,82 @@
+extends ../../layouts/default
+ 
+body.cm-no-transition.cm-2-navbar
+  #cm-menu
+      nav.cm-navbar.cm-navbar-primary
+        .cm-flex
+        .btn.btn-primary.md-menu-white(data-toggle='cm-menu')
+      #cm-menu-content
+        #cm-menu-items-wrapper
+          #cm-menu-scroller
+            ul.cm-menu-items
+              li
+                a(href='Home.html') Home
+              li
+                a(href='Posts.html') Posts
+              li
+                a(href='Contents-Fiesta.html') Contents
+              li
+                a(href='Pages.html') Pages
+              li
+                a(href='Users.html') Users
+              li
+                a(href='Analytics.html') Analytics
+              li
+                a(href='Community.html') Community
+              li
+                a(href='Publications.html') Publications
+              li
+                a(href='Categories.html') Categories
+              li
+                a(href='Elearning.html') Elearning
+    header#cm-header
+      nav.cm-navbar.cm-navbar-primary
+        .btn.btn-primary.md-menu-white.hidden-md.hidden-lg(data-toggle='cm-menu')
+        .cm-flex
+          h1 Analytics
+          form#cm-search(action='index.html', method='get')
+            input(type='search', name='q', autocomplete='off', placeholder='Search...')
+        .dropdown.pull-right
+          button.btn.btn-primary.md-account-circle-white(data-toggle='dropdown')
+          ul.dropdown-menu
+            li.disabled.text-center
+              a(style='cursor:default;')
+                strong Name
+            li.divider
+            a(href='login.html')
+              i.fa.fa-fw.fa-sign-out
+              |  Sign out
+      nav.cm-navbar.cm-navbar-default.cm-navbar-slideup
+        .cm-flex
+          .cm-breadcrumb-container
+            ol.breadcrumb
+              li
+                a(href='#') Community Views
+              li
+                a(href='#') Discussion Views
+              li
+                a(href='#') Group Views
+              li
+                a(href='#') Report Views
+    #global
+      .container-fluid
+        .panel.panel-default
+          .panel-heading Tables with contextual classes
+          table.table
+            thead
+              tr
+                th #
+                th
+                  code tr
+                  |  classes
+                th Column heading
+                th Column heading
+            tbody
+              tr
+                th(scope='row') 1
+                td Column content
+                td Column content
+                td Column content
+    footer.cm-footer
+      span.pull-left Connected as USERNAME
+      span.pull-right © PAOMEDIA SARL
