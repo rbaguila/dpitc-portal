@@ -30,7 +30,7 @@ html(lang='en')
                     span.icon-bar
                     span.icon-bar
                     span.icon-bar
-                a.navbar-brand(href='#') DPITC
+                a.navbar-brand(href='/admin') DPITC
             #navbar.navbar-collapse.collapse
                 ul.nav.navbar-nav.navbar-right
                     li
@@ -46,7 +46,7 @@ html(lang='en')
             .col-sm-3.col-md-2.sidebar
                 ul.nav.nav-sidebar
                     li
-                        a(href='#') Home
+                        a(href='/admin') Home
                     li
                         a(href='#') Posts
                     li
@@ -54,13 +54,13 @@ html(lang='en')
                     li
                         a(href='#') Pages
                     li
-                        a(href='#') Users
+                        a(href='/admin/users') Users
                     li
-                        a(href='#') Analytics
+                        a(href='/admin/analytics') Analytics
                     li
-                        a(href='#') Community
+                        a(href='/admin/community') Community
                     li
-                        a(href='#') Publications
+                        a(href='/admin/publications') Publications
                     li
                         a(href='#') Categories
                     li
@@ -74,6 +74,6 @@ html(lang='en')
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
-    script(src='js/bootstrap/bootstrap.min.js')
+    script(src='/js/bootstrap/bootstrap.min.js')
 
     block js
