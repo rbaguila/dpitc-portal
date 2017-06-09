@@ -50,6 +50,7 @@ exports = module.exports = function (app) {
 
 	//Admin Routes
 	app.get('/admin/posts', routes.admin.posts);
+	app.get('/admin/posts-categories', routes.admin.posts-categories);
 	app.get('/admin/contents', routes.admin.contents);
 	app.get('/admin/pages', routes.admin.pages);
 	app.get('/admin/users', routes.admin.users);
