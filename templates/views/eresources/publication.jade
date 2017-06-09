@@ -1,11 +1,13 @@
 extends ../../layouts/eresources
+include ../../mixins/flash-messages
 
 block content
 
-  .community-body
-    #eresources-content
-      .container(style="margin-bottom: 20px;")
+  #public-content
+    .container-fluid(style="padding: 80px 90.5px 0px 90.5px;")
+      .wrapper
         .row
+          +flash-messages(messages)
           .col-md-3
             img(src=publication._.cover.fit(200, 360, {}))
             br
@@ -16,6 +18,7 @@ block content
                 form(action='/eresources/feedback', method="POST")
                     input(type='hidden', name='publicationID', value=needsReviewing)
                     input(type='hidden', name='userID', value=userID)
+                    input(type='hidden', name='redirect', value=redirect)
                     button.btn.btn-warning(type='submit') Rate Previous Download
               else
                 a.btn.btn-success(href=publication.file.url,role="button",download) Download

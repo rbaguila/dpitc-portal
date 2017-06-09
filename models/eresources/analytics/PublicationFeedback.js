@@ -71,4 +71,6 @@ PublicationFeedback.add({
   }
 });
 
+PublicationFeedback.defaultColumns = 'title user';
+
 PublicationFeedback.register();

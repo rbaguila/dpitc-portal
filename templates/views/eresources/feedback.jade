@@ -4,80 +4,92 @@ block content
 
   .community-body
     #eresources-content
-      .container(style="margin-bottom: 20px;")
+      .container
         .row
           .col-md-12
-            h2 Review #{title}
+            h2 Review Previous Download: #{locals.title}
+            hr
           .col-md-12
             form(method='POST')
+              input(type='hidden',name='action',value='feedback')
+              input(type='hidden',name='publicationID',value=formData.publicationID)
+              input(type='hidden',name='userID',value=formData.userID)
+              input(type='hidden',name='redirect',value=redirect)
+
               label(for='content-rating') Content
-              .radio#content-rating
+              .radio#content-rating(name='content',value='formData.content')
                 label(style="margin-right: 15px;")
-                  input(type='radio',name='content')
+                  input(type='radio',name='content',value='Outstanding')
                   | Outstanding
                 label(style="margin-right: 15px;")
-                  input(type='radio',name='content')
+                  input(type='radio',name='content',value='Very Satisfactory')
                   | Very Satisfactory
                 label(style="margin-right: 15px;")
-                  input(type='radio',name='content')
+                  input(type='radio',name='content',value='Satisfactory')
                   | Satisfactory
                 label(style="margin-right: 15px;")
-                  input(type='radio',name='content')
+                  input(type='radio',name='content',value='Fair')
                   | Fair
                 label(style="margin-right: 15px;")
-                  input(type='radio',name='content')
-                  | Unsatisfactory / Needs Improvement
+                  input(type='radio',name='content',value='Unsatisfactory/Needs Improvement')
+                  | Unsatisfactory/Needs Improvement
 
-              label(for='content-rating') Usefulness / Significance
-              .radio#content-rating
+              label(for='usefulness-rating') Usefulness / Significance
+              .radio#usefulness-rating(name='usefulness',value='formData.usefulness')
                 label(style="margin-right: 15px;")
-                  input(type='radio',name='content')
+                  input(type='radio',name='usefulness',value='Outstanding')
                   | Outstanding
                 label(style="margin-right: 15px;")
-                  input(type='radio',name='content')
+                  input(type='radio',name='usefulness',value='Very Satisfactory')
                   | Very Satisfactory
                 label(style="margin-right: 15px;")
-                  input(type='radio',name='content')
+                  input(type='radio',name='usefulness',value='Satisfactory')
                   | Satisfactory
-                label(style="margin-right: 15px;")
-                  input(type='radio',name='content')
+                label(style="margin-right: 15px;",value='Fair')
+                  input(type='radio',name='usefulness')
                   | Fair
                 label(style="margin-right: 15px;")
-                  input(type='radio',name='content')
-                  | Unsatisfactory / Needs Improvement
+                  input(type='radio',name='usefulness',value='Unsatisfactory/Needs Improvement')
+                  | Unsatisfactory/Needs Improvement
 
-              label(for='content-rating') Overall Layout / Design
-              .radio#content-rating
+              label(for='design-rating') Overall Layout / Design
+              .radio#design-rating(name='design',value='formData.design')
                 label(style="margin-right: 15px;")
-                  input(type='radio',name='content')
+                  input(type='radio',name='design',value='Outstanding')
                   | Outstanding
                 label(style="margin-right: 15px;")
-                  input(type='radio',name='content')
+                  input(type='radio',name='design',value='Very Satisfactory')
                   | Very Satisfactory
                 label(style="margin-right: 15px;")
-                  input(type='radio',name='content')
+                  input(type='radio',name='design',value='Satisfactory')
                   | Satisfactory
                 label(style="margin-right: 15px;")
-                  input(type='radio',name='content')
+                  input(type='radio',name='design',value='Fair')
                   | Fair
                 label(style="margin-right: 15px;")
-                  input(type='radio',name='content')
-                  | Unsatisfactory / Needs Improvement
+                  input(type='radio',name='design',value='Unsatisfactory/Needs Improvement')
+                  | Unsatisfactory/Needs Improvement
 
-              label(for='content-rating') Download Time
-              .radio#content-rating
+              label(for='response-time-rating') Download Time
+              .radio#response-time-rating(name='responseTime',value='formData.responseTime')
                 label(style="margin-right: 15px;")
-                  input(type='radio',name='content')
+                  input(type='radio',name='responseTime',value='Outstanding')
                   | Outstanding
                 label(style="margin-right: 15px;")
-                  input(type='radio',name='content')
+                  input(type='radio',name='responseTime',value='Very Satisfactory')
                   | Very Satisfactory
                 label(style="margin-right: 15px;")
-                  input(type='radio',name='content')
+                  input(type='radio',name='responseTime',value='Satisfactory')
                   | Satisfactory
-                label(style="margin-right: 15px;")
-                  input(type='radio',name='content')
+                label(style="margin-right: 15px;",value='Fair')
+                  input(type='radio',name='responseTime')
                   | Fair
                 label(style="margin-right: 15px;")
-                  input(type='radio',name='content')
-                  | Unsatisfactory / Needs Improvement
+                  input(type='radio',name='responseTime',value='Unsatisfactory/Needs Improvement')
+                  | Unsatisfactory/Needs Improvement
+
+              .input-group(style='width:100%;margin-top:10px;margin-bottom:25px;')
+                input(type='text',placeholder='Comments',name='comments',aria-label='Comments').form-control
+
+
+              button(type='submit').btn.btn-primary Submit
