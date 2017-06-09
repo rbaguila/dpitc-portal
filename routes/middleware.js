@@ -19,7 +19,7 @@ var keystone = require('keystone');
 */
 exports.initLocals = function (req, res, next) {
 	// NavLinks = keystone.list('NavLink');
-	res.locals.navLinks = 
+	res.locals.navLinks =
 	[
 		{ label: 'Home', key: 'home', href: '/' },
 		{ label: 'FIESTA', key: 'fiesta', href: 'http://128.199.166.120:3000' },
@@ -33,7 +33,7 @@ exports.initLocals = function (req, res, next) {
 	];
 	res.locals.user = req.user;
 	// res.locals.logo = keystone.list('Settings').model.findOne({key: 'dpitc'});
-	
+
 	keystone.list('Settings').model.findOne({key: 'dpitc'}).exec(function (err, result) {
 		res.locals.settings = result;
 		// console.log(result);
@@ -117,6 +117,22 @@ exports.requireElearningUser = function (req, res, next) {
 		if(!req.user.isElearningUser){
 		///	req.flash('error', 'You are not authorized to view this page.');
 			res.redirect('/keystone/signin');
+		}
+		else{
+			next();
+		}
+	}
+}
+
+//Publication User Permission
+exports.requirePublicationsUser = function (req, res, next) {
+	if (!req.user) {
+		req.flash('error', 'Please sign in to access this page.');
+		res.redirect('/keystone/signin');
+	} else {
+		if(req.user.isPublicationUser){
+			
+			res.direct('/keystone/publication-settings');
 		}
 		else{
 			next();
