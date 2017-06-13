@@ -49,9 +49,9 @@ exports = module.exports = function (app) {
 	app.get('/gallery', routes.views.gallery);
 
 	//Admin
-	app.get('/admin', routes.adminViews.admin)
+	app.get('/admin',middleware.requireAdmin, routes.adminViews.admin)
 	app.get('/admin/analytics', routes.adminViews.analytics)
-	app.get('/admin/users', routes.adminViews.users)
+	app.get('/admin/users',middleware.requireUsersAdmin, routes.adminViews.users)
 	app.get('/admin/community',routes.adminViews.community)
 	app.get('/admin/publications',routes.adminViews.publications)
 

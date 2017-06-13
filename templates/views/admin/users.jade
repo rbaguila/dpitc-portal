@@ -1,3 +1,22 @@
 extends ../../layouts/admin-default
 
 block content
+
+    .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+        .table-responsive   
+            table.table.table-striped
+                thead
+                tr
+                    th Name
+                    th Email
+                    th Can access keystone
+                tbody
+                each user in locals.data.users
+                    tr   
+                        td 
+                            a(href='?id=' + user._id) #{user.name.first +' '+ user.name.last}
+                        td #{user.email}
+                        td #{user.canAccessKeystone}
+                else
+                    .jumbotron
+                        h3 No data
