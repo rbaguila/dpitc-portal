@@ -14,13 +14,16 @@ block content
             br
             if user
               if needsReviewing
-                //- a.btn.btn-warning(href='/eresources/feedback',role="button") Rate Previous Download
                 form(action='/eresources/feedback', method="POST")
                     input(type='hidden', name='publicationID', value=needsReviewing)
                     input(type='hidden', name='userID', value=userID)
                     input(type='hidden', name='redirect', value=redirect)
                     button.btn.btn-warning(type='submit') Rate Previous Download
               else
+                //- form(action=redirect,method='POST')
+                  input(type='hidden',name='action',value='to-review')
+                  input(type='hidden',name='toReview',value=toReview)
+                  button.btn.btn-success(type='submit') Download
                 a.btn.btn-success(href=publication.file.url,role="button",download) Download
             else
               if redirect

@@ -2,6 +2,7 @@ var keystone = require('keystone');
 var Types = keystone.Field.Types;
 var Publication = keystone.list('Publication');
 var Feedback = keystone.list('PublicationFeedback');
+var User = keystone.list('User');
 
 
 exports = module.exports = function(req, res) {
@@ -17,9 +18,18 @@ exports = module.exports = function(req, res) {
     console.log('Nothing to Review!');
   }
 
-  locals.formData = req.body || { userID: req.body.userID, publicationID: req.body.publicationID }
-  // locals.userID = req.body.userID;
-  // locals.publicationID = req.body.publicationID;
+  locals.formData = {
+    publicationID: req.body.publicationID ? req.body.publicationID : '',
+    userID: req.body.userID ? req.body.userID : '',
+    content: req.body.content ? req.body.content : '',
+    usefulness: req.body.usefulness ? req.body.usefulness : '',
+    design: req.body.design ? req.body.design : '',
+    response: req.body.response ? req.body.response : '',
+    comments: req.body.comments ? req.body.comments : '',
+  }
+
+  locals.formData.userID = req.body.userID;
+  locals.formData.publicationID = req.body.publicationID;
   locals.redirect = req.body.redirect;
 
   Publication.model.findOne(
@@ -31,36 +41,42 @@ exports = module.exports = function(req, res) {
       view.render('eresources/feedback');
     });
 
-  view.on('post', { action: 'feedback' }, function(next) {
+  view.on('post', { action: 'submit-feedback' }, function(next) {
     // Create New Feedback
     var newFeedback = new Feedback.model({
+      // publication: locals.formData.publicationID,
       publication: locals.formData.publicationID,
       user: locals.formData.userID,
       content: locals.formData.content,
       usefulness: locals.formData.usefulness,
       design: locals.formData.design,
-      responseTime: locals.formData.responseTime
+      responseTime: locals.formData.response,
+      comments: locals.formData.comments
     });
 
-    console.log(newFeedback);
-
-    var updater = newFeedback.getUpdateHandler(req);
-
-    updater.process(req.body, {
-      flashErrors: true,
-      logErrors: true,
-    }, function(err, result) {
+    // Save new feedback
+    newFeedback.save(function(err) {
       if (err) {
-        locals.validationErrors = err.errors;
+        // Warning message
+        req.flash('warning', 'Unable to submit feedback at this time. Please try again later.');
+        return res.redirect(locals.redirect);
       } else {
         // Delete needsReviewing from User Data
+        User.model.findOneAndUpdate(
+          { _id: locals.formData.userID },
+          { $unset: { needsReviewing: 1 } },
+          function(err, res) {
+            if (err) { }
+            else {
+              console.log('Successfully deleted needsReviewing');
+            }
+          }
+        );
 
-        // Redirect back to publication
         req.flash('success', 'Thank you for rating ' + locals.title);
         return res.redirect(locals.redirect);
       }
-    }
-    )
+    });
 
   })
 }

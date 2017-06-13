@@ -13,18 +13,18 @@ var PublicationFeedback = new keystone.List('PublicationFeedback', {
   plural: 'Feedback',
   collection: 'publicationFeedback',
   drilldown: 'publication user',
+  nocreate: true,
+  noedit: true
 });
 
 PublicationFeedback.add({
   publication: {
     type: Types.Relationship,
-    ref: 'Publication',
-    many: false
+    ref: 'Publication'
   },
   user: {
-    type: Types. Relationship,
-    ref: 'User',
-    many: false
+    type: Types.Relationship,
+    ref: 'User'
   },
   content: {
     type: Types.Select,
@@ -66,11 +66,11 @@ PublicationFeedback.add({
       'Unsatisfactory/Needs Improvement'
     ]
   },
-  suggestions: {
+  comments: {
     type: String
   }
 });
 
-PublicationFeedback.defaultColumns = 'title user';
+PublicationFeedback.defaultColumns = 'publication user';
 
 PublicationFeedback.register();
