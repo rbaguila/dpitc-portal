@@ -6,9 +6,10 @@ block content
       .cm-flex
         .cm-breadcrumb-container
           ol.breadcrumb
+            li.active
+              a(href='#') Base Pages
             li
-              a(href='#') FIESTA
-            li
-              a(href='#') Technologies
-            li
-              a(href='#') Sliders
+              a(href='/admin/pages') Pages
+  .jumbotron
+    p No base page found...
+    a.btn.btn-lg.btn-success(href='#', role='button') + Create base page

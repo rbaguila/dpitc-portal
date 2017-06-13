@@ -6,7 +6,10 @@ block content
       .cm-flex
         .cm-breadcrumb-container
           ol.breadcrumb
-            li
-              a(href='#') Base Pages
+            li.active
+              a(href='/admin/base_pages') Base Pages
             li
               a(href='#') Pages
+  .jumbotron
+    p No pages found...
+    a.btn.btn-lg.btn-success(href='#', role='button') + Create page
