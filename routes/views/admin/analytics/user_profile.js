@@ -7,13 +7,13 @@ exports = module.exports = function(req, res) {
 	//init locals
 	locals.section = 'users';
 	locals.data = {
-		users: [],
+		user: [],
 	};
 
 	// Load users
 	view.on('init', function (next) {
 
-		var u = keystone.list('User').model.find().sort({ 'name.first': 1 })
+		var u = keystone.list('User').model.findOne()
 
 		u.exec(function (err, results) {
 			locals.data.users = results;
