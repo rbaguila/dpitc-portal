@@ -1,0 +1,34 @@
+extends ../../../layouts/admin-default
+
+block content
+
+    .container-fluid
+        .row    
+            .col-sm-5.col-md-2
+                p
+            .col-md-9
+                ol.breadcrumb
+                    li
+                        a(href='/admin/community-views') Community Views
+                    li.active Discussion Views
+                    li 
+                        a(href='/admin/group-views') Group Views
+                    li 
+                        a(href='/admin/report-views') Report Views
+    .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+        .table-responsive   
+            table.table.table-striped
+                thead
+                tr
+                    th ID
+                    th ip
+                    th Time
+                tbody
+                each view in locals.data.discussion_views
+                    tr   
+                        td 
+                        td #{view.ip}
+                        td #{view.time}
+                else
+                    .jumbotron
+                        h3 No data

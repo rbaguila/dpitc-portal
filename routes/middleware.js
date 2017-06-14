@@ -141,3 +141,20 @@ exports.requireUsersAdmin = function (req, res, next) {
 		}
 	}
 }
+
+//Analytics Permissions
+
+exports.requireAnalyticsAdmin = function (req, res, next) {
+	if (!req.user) {
+		req.flash('error', 'Please sign in to access this page.');
+		res.redirect('/keystone/signin');
+	} else {
+		if(!req.user.isAnalyticsAdmin){
+			req.flash('error', 'You are not authorized to view this page.');
+			res.redirect('/keystone/signin');
+		}
+		else{
+			next();
+		}
+	}
+}

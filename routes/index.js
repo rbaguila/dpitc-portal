@@ -31,6 +31,7 @@ keystone.pre('render', middleware.flashMessages);
 var routes = {
 	views: importRoutes('./views'),
 	adminViews: importRoutes('./views/admin'),
+	adminCommunityViews: importRoutes('./views/admin/analytics'),
 	communityViews: importRoutes('./views/community'),
 	eresourcesViews: importRoutes('./views/eresources'),
 	elearningViews: importRoutes('./views/elearning'),
@@ -49,11 +50,17 @@ exports = module.exports = function (app) {
 	app.get('/gallery', routes.views.gallery);
 
 	//Admin
-	app.get('/admin',middleware.requireAdmin, routes.adminViews.admin)
-	app.get('/admin/analytics', routes.adminViews.analytics)
-	app.get('/admin/users',middleware.requireUsersAdmin, routes.adminViews.users)
-	app.get('/admin/community',routes.adminViews.community)
-	app.get('/admin/publications',routes.adminViews.publications)
+	app.get('/admin', middleware.requireAdmin, routes.adminViews.admin);
+	
+	//Admin-analytics pages
+	app.get('/admin/community-views', middleware.requireAnalyticsAdmin, routes.adminCommunityViews.community_views);
+	app.get('/admin/discussion-views', middleware.requireAnalyticsAdmin, routes.adminCommunityViews.discussion_views);
+	app.get('/admin/group-views', middleware.requireAnalyticsAdmin, routes.adminCommunityViews.group_views);
+	app.get('/admin/report-views', middleware.requireAnalyticsAdmin, routes.adminCommunityViews.report_views);
+
+	app.get('/admin/users', middleware.requireUsersAdmin, routes.adminViews.users);
+	app.get('/admin/community', routes.adminViews.community);
+	app.get('/admin/publications', routes.adminViews.publications);
 
 	// User
 
