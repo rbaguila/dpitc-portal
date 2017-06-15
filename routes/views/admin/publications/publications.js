@@ -7,21 +7,20 @@ exports = module.exports = function(req, res) {
 	//init locals
 	locals.section = 'users';
 	locals.data = {
-		user: [],
+		publications: [],
 	};
 
-	// Load user
+	// Load publications settings
 	view.on('init', function (next) {
 
-		var u = keystone.list('User').model.findOne( { _id: req.params._id } )
+		var u = keystone.list('Publication').model.find().sort({ title: 1 })
 
 		u.exec(function (err, results) {
-			locals.data.user = results;
+			locals.data.publications = results;
 			next(err);
 		});
 
 	});
-	console.log("hi");
 
-	view.render('admin/user-profile');
+	view.render('admin/publications/publications');
 };

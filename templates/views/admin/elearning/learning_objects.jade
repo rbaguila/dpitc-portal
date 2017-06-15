@@ -1,0 +1,68 @@
+extends ../../../layouts/admin-default
+
+block content
+    .container-fluid
+        .row    
+            .col-sm-5.col-md-2
+                p
+            .col-md-10
+                ol.breadcrumb
+                    li.active Learning Objects
+                    li
+                        a(href='#') Courses
+                    li 
+                        a(href='#') Learning Contents
+                    li 
+                        a(href='#') ISPs
+                    li 
+                        a(href='#') LIndustries
+                    li 
+                        a(href='#') LSectors
+                    li 
+                        a(href='#') LOFile Uploads
+                    li 
+                        a(href='#') LGalleries
+                    li 
+                        a(href='#') LOLinks
+                    li 
+                        a(href='#') LOVideos
+                    li 
+                        a(href='#') Authors
+                    li 
+                        a(href='#') LOComments
+                    li 
+                        a(href='#') LOFeedbacks
+                    li 
+                        a(href='#') LORatings
+                    li 
+                        a(href='#') LOViews
+                    li 
+                        a(href='#') Elearning LORating
+                    li 
+                        a(href='#') Elearning Visits
+
+    .row
+        .col-sm-9.col-sm-offset-3.col-md-9.col-md-offset-2.main
+            input.form-control(type='text', placeholder='Search..')
+            button.btn.btn-success(type='button') Create Learning Object
+            .table-responsive   
+                table.table.table-striped
+                    thead
+                    tr
+                        th Title
+                        th Author
+                        th One-paragrapth Description
+                        th State
+                        th Published At
+                    tbody
+                    each lo in locals.data.learning_objects
+                        tr   
+                            td 
+                                a(href='#') #{lo.title}
+                            td #{lo.author}
+                            td #{lo.content.brief}
+                            td #{lo.state}
+                            td #{lo.publishedAt}
+                    else
+                        .jumbotron
+                            h3 No data

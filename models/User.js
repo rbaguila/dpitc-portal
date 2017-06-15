@@ -48,8 +48,8 @@ User.add({
 
   isCommunityAdmin: { type: Boolean, label: 'Can access Community Admin', index: false},
 
-  isPublicationssAdmin: { type: Boolean, label: 'Can access Publications Admin', index: false},
-  isPublicationssUser: { type: Boolean, label: 'Can access Publications UI', index: false },
+  isPublicationsAdmin: { type: Boolean, label: 'Can access Publications Admin', index: false},
+  isPublicationsUser: { type: Boolean, label: 'Can access Publications UI', index: false },
 
   isCategoriesAdmin: { type: Boolean, label: 'Can access Categories Admin', index: false},
 

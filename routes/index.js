@@ -32,6 +32,8 @@ var routes = {
 	views: importRoutes('./views'),
 	adminViews: importRoutes('./views/admin'),
 	adminCommunityViews: importRoutes('./views/admin/analytics'),
+	adminPublicationViews: importRoutes('./views/admin/publications'),
+	adminElearningViews: importRoutes('./views/admin/elearning'),
 	communityViews: importRoutes('./views/community'),
 	eresourcesViews: importRoutes('./views/eresources'),
 	elearningViews: importRoutes('./views/elearning'),
@@ -60,8 +62,9 @@ exports = module.exports = function (app) {
 
 	app.get('/admin/users', middleware.requireUsersAdmin, routes.adminViews.users);
 	app.get('/admin/community', routes.adminViews.community);
-	app.get('/admin/publications', routes.adminViews.publications);
+	app.get('/admin/publications',middleware.requirePublicationsAdmin, routes.adminPublicationViews.publications);
 
+	app.get('/admin/learning-objects', middleware.requireE,routes.adminElearningViews.learning_objects);
 	// User
 
 
