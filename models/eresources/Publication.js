@@ -126,6 +126,11 @@ Publication.add(
   {price: {
     type: Number,
     min: 0
+  }},
+  {downloads: {
+    type: Number,
+    default: 0,
+    noedit: true,
   }}
 );
 
@@ -167,7 +172,7 @@ Publication.schema.virtual('description.truncGrid').get(function() {
 })
 
 
-Publication.defaultColumns = 'title, publicationLine, publicationType, publicationYear, file, cover'
+Publication.defaultColumns = 'title, downloads, publicationLine, publicationYear, cover'
 
 Publication.register();
 

@@ -1,12 +1,15 @@
 var keystone = require('keystone');
+var User = keystone.list('User');
+var Publication = keystone.list('Publication');
 
 exports = module.exports = function(req, res) {
   var view = new keystone.View(req, res);
   var locals = res.locals;
+  var pubId = req.params.publication;
 
   locals.section = 'eresources';
+  locals.currentPublicationID = req.params.publication;
   locals.redirect = '/eresources/publication/' + req.params.publication;
-  locals.toReview = req.params.publication;
   locals.breadcrumbs = [
     { text: 'E Resources', link: '/eresources'}
   ];
@@ -20,23 +23,35 @@ exports = module.exports = function(req, res) {
     }
   }
 
-  var pubId = req.params.publication;
+  view.on('post', { action: 'generate-download-link' }, function(next) {
 
-  view.on('post', { action: 'to-review'}, function(next) {
-    console.log('POSTED to-review');
+    // Increment analytics
+    Publication.model.findOneAndUpdate(
+      { _id: req.body.toReview },
+      { $inc: { downloads: 1 } },
+      function(err, res) {
+        if (err, res) {
+          if (err) {
+            console.log('Error incrementing download count');
+          } else {
+            console.log('Incremented download count');
+          }
+        }
+      }
+    )
 
-    Publication.model.findOne(
-      { _id: pubId },
-      function(error, publication) {
-        // setTimeout('window.location = '', 5000);
-        return res.redirect(locals.redirect);
-      });
+    User.model.findOneAndUpdate(
+      { _id: req.body.userID },
+      { $set: { needsReviewing: req.body.toReview } },
+      function(err, res) {
+        if (err) { }
+        else {
+          locals.clearedToDownload = true;
 
+          return next();
+        }
+      })
   });
-
-  // view.on('render', function() {
-  //   console.log('Rendering finished...');
-  //   });
 
   view.query('publication', keystone.list('Publication').model.findOne({_id: pubId}).populate('industry sector commodity publicationLine'));
 

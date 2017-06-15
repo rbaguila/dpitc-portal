@@ -20,11 +20,15 @@ var PublicationFeedback = new keystone.List('PublicationFeedback', {
 PublicationFeedback.add({
   publication: {
     type: Types.Relationship,
-    ref: 'Publication'
+    ref: 'Publication',
+    required: true,
+    initial: true
   },
   user: {
     type: Types.Relationship,
-    ref: 'User'
+    ref: 'User',
+    required: true,
+    initial: true
   },
   content: {
     type: Types.Select,
@@ -34,7 +38,9 @@ PublicationFeedback.add({
       'Satisfactory',
       'Fair',
       'Unsatisfactory/Needs Improvement'
-    ]
+    ],
+    required: true,
+    initial: true
   },
   usefulness: {
     type: Types.Select,
@@ -44,7 +50,9 @@ PublicationFeedback.add({
       'Satisfactory',
       'Fair',
       'Unsatisfactory/Needs Improvement'
-    ]
+    ],
+    required: true,
+    initial: true
   },
   design: {
     type: Types.Select,
@@ -54,7 +62,9 @@ PublicationFeedback.add({
       'Satisfactory',
       'Fair',
       'Unsatisfactory/Needs Improvement'
-    ]
+    ],
+    required: true,
+    initial: true
   },
   responseTime: {
     type: Types.Select,
@@ -64,7 +74,9 @@ PublicationFeedback.add({
       'Satisfactory',
       'Fair',
       'Unsatisfactory/Needs Improvement'
-    ]
+    ],
+    required: true,
+    initial: true
   },
   comments: {
     type: String
