@@ -64,7 +64,7 @@ exports = module.exports = function (app) {
 	app.get('/admin/community', routes.adminViews.community);
 	app.get('/admin/publications',middleware.requirePublicationsAdmin, routes.adminPublicationViews.publications);
 
-	app.get('/admin/learning-objects', middleware.requireE,routes.adminElearningViews.learning_objects);
+	app.get('/admin/learning-objects', middleware.requireElearningAdmin,routes.adminElearningViews.learning_objects);
 	// User
 
 
