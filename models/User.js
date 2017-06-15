@@ -20,6 +20,17 @@ User.add({
     many: true
   },
 	location: { type: Types.Location, defaults: { country: 'Philippines' }},
+	agencyAffiliation: { 
+		type: Types.Select,
+		options: [ 
+		{ value: 'Researcher', label: 'Researcher' },
+		{ value: 'Business/Private Sector', label: 'Business/Private Sector' },
+		{ value: 'Policy Maker', label: 'Policy Maker' },
+		{ value: 'Other', label: 'Other' }
+		],
+		initial: false,
+		required: true
+	},
 	birthday: { type: Types.Date, initial: true, required: true, index: true },
 	sex: {
     type: Types.Select,
@@ -30,6 +41,7 @@ User.add({
     initial: false,
     required: false
   },
+	contactNumber: { type: Number, initial: true, required: true, index: true },
 }, 'Permissions', {
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: false },
   isElearningAdmin: { type: Boolean, label: 'Can access Elearning Admin', index: false},
@@ -98,12 +110,26 @@ User.schema.virtual('canAccessPublicationsUI').get(function () {
 	return this.isPublicationsUser;
 });
 
-
 // Provide access to Categories
 User.schema.virtual('canAccessCategories').get(function () {
 	return this.isCategoriesAdmin;
 });
 
+//Store user info from sign up page
+User.schema.post('/signup', function(req, res){
+		new user({
+						fname : req.body.first,
+						lname : req.body.lname,
+						password : req.body.password,
+						birthday : req.body.birthday,
+						consumerType : req.body.consumerType,
+						affiliation: req.body.agencyAffiliation,
+						sex : req.body.sex,
+		}) .save(function (err, doc) {
+						if(err) res.json(err);
+						else 		res.send('Succesfully inserted');
+		});
+});
 
 
 /**

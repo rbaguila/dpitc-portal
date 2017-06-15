@@ -123,19 +123,3 @@ exports.requireElearningUser = function (req, res, next) {
 		}
 	}
 }
-
-//Publication User Permission
-exports.requirePublicationsUser = function (req, res, next) {
-	if (!req.user) {
-		req.flash('error', 'Please sign in to access this page.');
-		res.redirect('/keystone/signin');
-	} else {
-		if(req.user.isPublicationUser){
-			
-			res.direct('/keystone/publication-settings');
-		}
-		else{
-			next();
-		}
-	}
-}

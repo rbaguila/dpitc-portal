@@ -59,8 +59,10 @@ exports = module.exports = function (app) {
 	app.get('/admin/users', routes.admin.users);
 	app.get('/admin', routes.admin.admin)
 
-	// User
+	//Signup Route
+	app.get('/signup', routes.views.signup);
 
+	// User
 
 	// User-Elearning Routes
 	app.get('/elearning/signup?', routes.elearningViews.user.signup);
