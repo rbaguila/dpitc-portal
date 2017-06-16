@@ -4,6 +4,27 @@ exports = module.exports = function(req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 
+		var pageData = {
+			title: 'Publications',
+			navLinks: [
+				{ text: 'Home', link: '/admin' },
+				{ text: 'Posts', link: '#'},
+				{ text: 'Contents', link: '#'},
+				{ text: 'Pages', link: '#'},
+				{ text: 'Users', link: '/admin/users'},
+				{ text: 'Analytics', link: '/admin/community-views'},
+				{ text: 'Community', link: '/admin/community'},
+				{ text: 'Publications', link: '/admin/publications'},
+				{ text: 'Categories', link: '#'},
+				{ text: 'ELearning', link: '/admin/learning-objects'}
+			],
+			breadcrumbs:[
+				{ text: 'Publications Settings', link: '#'},
+				{ text: 'Publications', link: '/admin/publications'},
+				{ text: 'Publication Lines', link: '#'},
+			]
+  	};
+
 	//init locals
 	locals.section = 'users';
 	locals.data = {
@@ -22,5 +43,5 @@ exports = module.exports = function(req, res) {
 
 	});
 
-	view.render('admin/publications/publications');
+	view.render('admin/publications/publications',pageData);
 };

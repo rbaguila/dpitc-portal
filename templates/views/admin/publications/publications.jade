@@ -1,40 +1,30 @@
 extends ../../../layouts/admin-default
 
 block content
+    .row
+        .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+            .table-responsive   
+                table.table.table-striped
+                    thead
+                    tr
+                        th Title
+                        th Publication Line
+                        th Publication Type
+                        th Publication Year
+                        th File
+                        th Cover
+                    tbody
+                    each pub in locals.data.publications
+                        tr   
+                            td #{pub.title}
+                            td #{pub.publicationLine}
+                            td #{pub.publicationType}
+                            td #{pub.publicationYear}
+                            td #{pub.file}
+                            td
+                                img.img-rounded(src=pub.cover)
 
-    .container-fluid
-        .row    
-            .col-sm-5.col-md-2
-                p
-            .col-md-10
-                ol.breadcrumb
-                    li.active Publications
-                    li 
-                        a(href='#') Publication Lines
-        .row
-            .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
-                .table-responsive   
-                    table.table.table-striped
-                        thead
-                        tr
-                            th Title
-                            th Publication Line
-                            th Publication Type
-                            th Publication Year
-                            th File
-                            th Cover
-                        tbody
-                        each pub in locals.data.publications
-                            tr   
-                                td #{pub.title}
-                                td #{pub.publicationLine}
-                                td #{pub.publicationType}
-                                td #{pub.publicationYear}
-                                td #{pub.file}
-                                td
-                                    img.img-rounded(src=pub.cover)
-
-                        else
-                            .jumbotron
-                                h3 No data
+                    else
+                        .jumbotron
+                            h3 No data
             
