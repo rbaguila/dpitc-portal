@@ -43,27 +43,28 @@ exports = module.exports = function(req, res) {
 	locals.section = 'users';
 	locals.data = {
 		learning_objects: [],
-        author:[],
+        users:[],
 	};
 
-	// Load LO
-	view.on('init', function (next) {
 
-		var u = keystone.list('LearningObject').model.find().sort({ publishedAt: 1 })
+    view.on('init', function (next) {
+
+		var u = keystone.list('User').model.find()
 
 		u.exec(function (err, results) {
-			locals.data.learning_objects = results;
+			locals.data.users = results;
 			next(err);
 		});
 
 	});
 
-    view.on('init', function (next) {
+	// Load LO
+	view.on('init', function (next) {
 
-		var u = keystone.list('Author').model.find().sort({ publishedAt: 1 })
+		var u = keystone.list('LearningObject').model.find().sort({ publishedAt: -1})
 
 		u.exec(function (err, results) {
-			locals.data.author = results;
+			locals.data.learning_objects = results;
 			next(err);
 		});
 

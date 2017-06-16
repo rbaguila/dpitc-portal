@@ -13,7 +13,7 @@ exports = module.exports = function(req, res) {
 	// Load user
 	view.on('init', function (next) {
 
-		var u = keystone.list('User').model.findOne( { _id: req.params._id } )
+		var u = keystone.list('User').model.findOne( { _id: req.query._id } )
 
 		u.exec(function (err, results) {
 			locals.data.user = results;
@@ -22,6 +22,7 @@ exports = module.exports = function(req, res) {
 
 	});
 	console.log("hi");
+	console.log(locals.data.user);
 
 	view.render('admin/user-profile');
 };

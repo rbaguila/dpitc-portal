@@ -32,7 +32,8 @@ exports = module.exports = function(req, res) {
 	locals.data = {
 		community_views: [],
 		discussion_views:[],
-		group_view:[],
+		group_views:[],
+		report_views:[]
 	};
 
 	// Load Community Views

@@ -14,7 +14,7 @@ exports = module.exports = function(req, res) {
 			{ text: 'Analytics', link: '/admin/community-views'},
 			{ text: 'Community', link: '/admin/community'},
 			{ text: 'Publications', link: '/admin/publications'},
-			{ text: 'Categorie', link: '#'},
+			{ text: 'Categories', link: '#'},
 			{ text: 'ELearning', link: '/admin/learning-objects'}
 		],
 		breadcrumbs:[]
