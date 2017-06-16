@@ -57,10 +57,11 @@ exports = module.exports = function (app) {
 	app.get('/admin/pages', routes.admin.pages);
 	app.get('/admin/base_pages', routes.admin.base_pages);
 	app.get('/admin/users', routes.admin.users);
-	app.get('/admin', routes.admin.admin)
+	app.get('/admin', routes.admin.admin);
 
 	//Signup Route
 	app.get('/signup', routes.views.signup);
+	app.post('/signup', routes.views.signup);
 
 	// User
 

@@ -1,28 +1,28 @@
 doctype html
 html(lang='en')
-    head
-        meta(charset='utf-8')
-        meta(http-equiv='X-UA-Compatible', content='IE=edge')
-        meta(name='viewport', content='width=device-width, initial-scale=1')
-        meta(name='description', content='')
-        meta(name='author', content='')        
-
+    head 
         link(href='styles/bootstrap/signup.css', rel='stylesheet')
 
         block css
 
     block head
 
-    block content
+    block signup
+        
         .main-content
             // Full Name
-            form.form-basic(method='POST', action='/signup')
-                .form-title-row
-                    h1 Sign Up
-                .form-row
-                    label.col-sm-3.control-label(for='firstName') Full Name
-                        .col-sm-9
-                            input#firstName.form-control(type='text', placeholder='First Name', name='first')
+            form.form-basic(method='post', action='/signup')
+                .row  
+                    input(type='hidden', name='action', value='signup')
+                    .form-title-row
+                        h1 Sign Up
+                    .form-row
+                        label.col-sm-3.control-label(for='first') First Name
+                            .col-sm-9
+                                input#firstName.form-control(type='text', placeholder='First Name', name='first')
+                    .form-row
+                        label.col-sm-3.control-label(for='last') Last Name
+                            .col-sm-9
                             input#lastName.form-control(type='text', placeholder='Last Name', name='last')
                 // Email and Password
                 .form-row
@@ -66,7 +66,13 @@ html(lang='en')
                                     label.radio-inline
                                         input#femaleRadio(type='radio', value='Female', name='sex')
                                         | Female
+                // Contact Number
+                .form-row
+                    label.col-sm-3.control-label(for='contactNumber') Contact Number
+                        .col-sm-9
+                            input#email.form-control(type='text', placeholder='09*********', name='contactNumber')    
+
                 // Submit
                 .form-row
                     .col-sm-9.col-sm-offset-3
-                        button.btn.btn-primary.btn-block(type='submit', name='submit') Submit
+                        button.btn.btn-primary.btn-block(type='submit', name='signup') Sign Up

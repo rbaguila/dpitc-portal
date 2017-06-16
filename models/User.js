@@ -20,7 +20,7 @@ User.add({
     many: true
   },
 	location: { type: Types.Location, defaults: { country: 'Philippines' }},
-	agencyAffiliation: { 
+	consumerType: { 
 		type: Types.Select,
 		options: [ 
 		{ value: 'Researcher', label: 'Researcher' },
@@ -32,6 +32,7 @@ User.add({
 		required: true
 	},
 	birthday: { type: Types.Date, initial: true, required: true, index: true },
+	agencyAffiliation: { type: Types.Text, required: false, index: true },
 	sex: {
     type: Types.Select,
     options: [
@@ -41,7 +42,8 @@ User.add({
     initial: false,
     required: false
   },
-	contactNumber: { type: Number, initial: true, required: true, index: true },
+	contactNumber: { type: Types.Number, initial: true, required: true, index: true },
+	
 }, 'Permissions', {
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: false },
   isElearningAdmin: { type: Boolean, label: 'Can access Elearning Admin', index: false},
@@ -115,21 +117,13 @@ User.schema.virtual('canAccessCategories').get(function () {
 	return this.isCategoriesAdmin;
 });
 
-//Store user info from sign up page
-User.schema.post('/signup', function(req, res){
-		new user({
-						fname : req.body.first,
-						lname : req.body.lname,
-						password : req.body.password,
-						birthday : req.body.birthday,
-						consumerType : req.body.consumerType,
-						affiliation: req.body.agencyAffiliation,
-						sex : req.body.sex,
-		}) .save(function (err, doc) {
-						if(err) res.json(err);
-						else 		res.send('Succesfully inserted');
-		});
-});
+
+
+ function getAge(birthday) {
+    var now = new Date();
+    var age = now.getFullYear() - birthday.getFullYear();
+    return this.age;
+	};
 
 
 /**
