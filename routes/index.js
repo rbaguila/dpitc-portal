@@ -108,7 +108,9 @@ exports = module.exports = function (app) {
 	app.get('/eresources/:industry?', routes.eresourcesViews.publications);
 	// app.get('/eresources/publications/:industry?', routes.eresourcesViews.publications);
   app.get('/eresources/page/:page', routes.eresourcesViews.publications);
-	app.get('/eresources/publication/:publication', routes.eresourcesViews.publication);
+  app.get('/eresources/publication/:publication', routes.eresourcesViews.publication);
+	app.post('/eresources/publication/:publication', routes.eresourcesViews.publication);
+  app.post('/eresources/feedback', routes.eresourcesViews.feedback);
 
 	//Analytics Api Route
   app.get('/api/community/analytics/list', keystone.middleware.api, routes.api.communityAnalytics.list);
