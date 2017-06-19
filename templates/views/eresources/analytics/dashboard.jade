@@ -1,0 +1,42 @@
+extends ../../../layouts/eresources
+
+block content
+  #public-content
+    .container-fluid(style="padding: 80px 90.5px 0px 90.5px;")
+      .wrapper
+        .row
+          .col-md-12
+            h3 Publication Reports
+          .col-md-6
+            .panel.panel-default
+              .panel-heading
+                h3.panel-title Top Downloads
+              table.table
+                tr
+                  th Title
+                  th Publication Line
+                  th Downloads
+                each publication in topDownloads
+                  tr
+                    td #{publication.title}
+                    td #{publication.publicationLine.name}
+                    td #{publication.downloads}
+              .panel-body
+                a(href="/keystone/publications") See all
+          .col-md-6
+            .panel.panel-default
+              .panel-heading
+                h3.panel-title Latest Reviews
+              table.table
+                tr
+                  th Title
+                  th User
+                  th Date
+                each review in latestReviews
+                  tr
+                    td #{review.publication.title}
+                    td #{review.user.name.first} #{review.user.name.last}
+                    td #{review.createdAt.toLocaleDateString()}
+              .panel-body
+                a(href="/keystone/publication-feedback") See all
+

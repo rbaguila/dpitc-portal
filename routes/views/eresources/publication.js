@@ -3,6 +3,7 @@ var User = keystone.list('User');
 var Publication = keystone.list('Publication');
 
 exports = module.exports = function(req, res) {
+  console.log('Viewing a publication');
   var view = new keystone.View(req, res);
   var locals = res.locals;
   var pubId = req.params.publication;
