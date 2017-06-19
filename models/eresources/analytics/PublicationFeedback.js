@@ -80,9 +80,21 @@ PublicationFeedback.add({
   },
   comments: {
     type: String
+  },
+  createdAt: {
+    type: Types.Date
   }
 });
 
-PublicationFeedback.defaultColumns = 'publication user';
+PublicationFeedback.schema.virtual('createdAt.date').get(function() {
+
+});
+
+PublicationFeedback.defaultColumns = 'publication user createdAt';
+
+PublicationFeedback.schema.pre('save', function(next) {
+  this.createdAt = new Date();
+  return next();
+});
 
 PublicationFeedback.register();
