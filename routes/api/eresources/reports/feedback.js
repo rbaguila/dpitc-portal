@@ -12,16 +12,16 @@ exports = module.exports = function(req, res) {
     Feedback.model.find({ publication: publicationID }).populate('user publication').exec(function(err, results) {
         if (err) return res.apiError('Error generating report', err);
 
-        contentTally = [0, 0, 0, 0, 0];
-        usefulnessTally = [0, 0, 0, 0, 0];
-        designTally = [0, 0, 0, 0, 0];
-        responseTally = [0, 0, 0, 0, 0];
+        var contentTally = [0, 0, 0, 0, 0];
+        var usefulnessTally = [0, 0, 0, 0, 0];
+        var designTally = [0, 0, 0, 0, 0];
+        var responseTally = [0, 0, 0, 0, 0];
 
         results.forEach(function(feedback) {
-          contentTally = foo(contentTally, feedback.content);
-          usefulnessTally = foo(usefulnessTally, feedback.usefulness);
-          designTally = foo(designTally, feedback.design);
-          responseTally = foo(responseTally, feedback.responseTime);
+          contentTally = tally(contentTally, feedback.content);
+          usefulnessTally = tally(usefulnessTally, feedback.usefulness);
+          designTally = tally(designTally, feedback.design);
+          responseTally = tally(responseTally, feedback.responseTime);
         })
 
         var CSV = publicationTitle + '\n';
@@ -49,7 +49,7 @@ exports = module.exports = function(req, res) {
   }
 }
 
-function foo(tally, answer) {
+function tally(tally, answer) {
   if (answer == 'Outstanding') {
     tally[0]++;
   } else if (answer == 'Very Satisfactory') {
