@@ -51,10 +51,6 @@ Publication.add(
     initial: true,
     required: true
   }},
-  // {publicationLine: {
-  //   type: String,
-  //   default: ''
-  // }},
   {publicationLine: {
     type: Types.Relationship,
     ref: 'PublicationLine',

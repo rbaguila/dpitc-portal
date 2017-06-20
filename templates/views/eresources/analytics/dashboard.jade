@@ -22,7 +22,9 @@ block content
                     td #{publication.publicationLine.name}
                     td #{publication.downloads}
               .panel-body
-                a(href="/keystone/publications") See all
+                .btn-group.btn-group-sm(role='group',aria-label='download-count')
+                  a(href='/keystone/publications',type='button').btn.btn-default See All
+                  a(href='/api/publications/reports/downloads?cols=1010000000000000001',type='button').btn.btn-default Quick Download
           .col-md-6
             .panel.panel-default
               .panel-heading
