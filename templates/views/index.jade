@@ -80,7 +80,7 @@ block content
 				each technology in technologies
 					.col-md-2.col-sm-6.col-xs-12.tech-item
 						a.fh5co-project-item(href=technology.link, style='background-image: url('+technology.image.secure_url+');', target='_blank')
-							.tech-icon
+							//- .tech-icon
 								if technology.category == "agriculture"
 									img(src='/images/exhibit/agri.png')
 								else if technology.category == "aquatic resource"
