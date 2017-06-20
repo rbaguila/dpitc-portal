@@ -10,8 +10,9 @@ exports = module.exports = function(req, res) {
   locals.redirect = '/eresources/reports/publications';
   locals.breadcrumbs = [
     { text: 'E Resources', link: '/eresources' },
-    { text: 'Reports', link: '/eresources/reports' }
-  ]
+    { text: 'Reports', link: '/eresources/reports' },
+    { text: 'Publications', link: '/eresources/reports/publications' }
+  ];
 
   view.on('post', { action: 'generate-publications-report' }, function(next) {
     var data = req.body;
@@ -37,13 +38,10 @@ exports = module.exports = function(req, res) {
     cols = addBit(cols, data.price);
     cols = addBit(cols, data.downloads);
 
-    // return next('/api/publications/reports/publications?cols=' + cols);
-    console.log('/api/publications/reports/publications?cols=' + cols);
     return res.redirect('/api/publications/reports/publications?cols=' + cols);
-
   });
 
-  view.render('eresources/analytics/customReports/publications');
+  view.render('eresources/analytics/reports/publications');
 }
 
 // Add bit to cols if param is present ('on')

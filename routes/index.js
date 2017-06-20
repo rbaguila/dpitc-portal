@@ -114,8 +114,10 @@ exports = module.exports = function (app) {
 
   // E Resources Analytics/Reports
   app.get('/eresources/reports', middleware.requireAdmin, routes.eresourcesViews.analytics.dashboard);
-  app.get('/eresources/reports/publications',middleware.requireAdmin, routes.eresourcesViews.analytics.customReports.publications);
-  app.post('/eresources/reports/publications', middleware.requireAdmin, routes.eresourcesViews.analytics.customReports.publications);
+  app.get('/eresources/reports/publications',middleware.requireAdmin, routes.eresourcesViews.analytics.reports.publications);
+  app.post('/eresources/reports/publications', middleware.requireAdmin, routes.eresourcesViews.analytics.reports.publications);
+  app.get('/eresources/reports/feedback',middleware.requireAdmin, routes.eresourcesViews.analytics.reports.feedback);
+  app.post('/eresources/reports/feedback',middleware.requireAdmin, routes.eresourcesViews.analytics.reports.feedback);
 
 	//Analytics Api Route
   app.get('/api/community/analytics/list', keystone.middleware.api, routes.api.communityAnalytics.list);
