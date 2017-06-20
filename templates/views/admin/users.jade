@@ -1,7 +1,6 @@
 extends ../../layouts/admin-default
 
 block content
-    -var selected = 'Users';
     .row
         .col-sm-9.col-sm-offset-3.col-md-9.col-md-offset-2.main
             input.form-control(type='text', placeholder='Search..')
@@ -17,7 +16,7 @@ block content
                     each user in locals.data.users
                         tr   
                             td 
-                                a(href='?id=' + user._id) #{user.name.first +' '+ user.name.last}
+                                a(href='/admin/users/' + user._id) #{user.name.first +' '+ user.name.last}
                             td #{user.email}
                             td #{user.canAccessKeystone}
                     else

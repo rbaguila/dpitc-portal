@@ -3,4 +3,36 @@ extends ../../layouts/admin-default
 block content
 
     .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
-        a(href='/admin/users'): span.glyphicon.glyphicon-chevron-left Users
+        h1 #{data.user.name.first + ' ' + data.user.name.last}
+        h5 #{'ID: '+data.user._id}
+        br
+        form.form-group.row
+            div.col-md-4               
+                label First Name :
+                input.form-control.input-lg(type='text', value= data.user.name.first)
+            div.col-md-4
+                label Last Name :    
+                input.form-control.input-lg(type='text', value= data.user.name.last)
+        form.form-group.row
+            div.col-md-8
+                label Email :
+                input.form-control.input-lg(type='text', value= data.user.email)
+        form.form-group.row
+            div.col-md-5
+                label Password :
+                button.btn.btn-primary(type='submit') Change Password
+        label.custom-file Photo :
+            input#file.custom-file-input(type='file')
+            span.custom-file-control
+        
+        h3 Elearning
+        form.form-group.row
+            div.col-md-8
+                label Learning Objects Taken
+                select.form-control
+                    option(selected='') Select...
+                    each lo,i in data.learning_objects
+                        option(value=i) #{lo.title}
+
+
+

@@ -32,14 +32,15 @@ exports = module.exports = function(req, res) {
 	// Load users
 	view.on('init', function (next) {
 
-		var u = keystone.list('User').model.find().sort({ 'name.first': 1 })
+		var u = keystone.list('User').model.find().sort( { 'name.first': 1 } )
 
 		u.exec(function (err, results) {
 			locals.data.users = results;
 			next(err);
 		});
-
+	
 	});
+	
 
 
 	view.render('admin/users', pageData);
