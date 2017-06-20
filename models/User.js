@@ -32,7 +32,8 @@ User.add({
 		required: true
 	},
 	birthday: { type: Types.Date, initial: true, required: true, index: true },
-	agencyAffiliation: { type: Types.Text, required: false, index: true },
+	agencyAffiliation: { type: Types.Text, initial: true, required: false, index: true },
+
 	sex: {
     type: Types.Select,
     options: [
@@ -48,6 +49,7 @@ User.add({
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: false },
   isElearningAdmin: { type: Boolean, label: 'Can access Elearning Admin', index: false},
   isElearningUser: { type: Boolean, label: 'Can access Elearning UI', index: false },
+
 	isPostsAdmin: { type: Boolean, label: 'Can access Posts', index: false },
 	isContentsAdmin: { type: Boolean, label: 'Can access Contents', index: false },
 	isPagesAdmin: { type: Boolean, label: 'Can access Pages', index: false },
@@ -57,7 +59,12 @@ User.add({
 	isPublicationsAdmin: { type: Boolean, label: 'Can access Publications Admin', index: false },
 	isPublicationsUser: { type: Boolean, label: 'Can access Publications UI', index: false },
 	isCategoriesAdmin: { type: Boolean, label: 'Can access Categories', index: false },
-});
+
+}, 'Backlog', {
+  needsReviewing: { type: Types.Relationship, ref: 'Publication' }
+}
+);
+
 
 // Provide access to Keystone
 User.schema.virtual('canAccessKeystone').get(function () {
@@ -119,19 +126,13 @@ User.schema.virtual('canAccessCategories').get(function () {
 
 
 
- function getAge(birthday) {
-    var now = new Date();
-    var age = now.getFullYear() - birthday.getFullYear();
-    return this.age;
-	};
-
-
 /**
  * Relationships
  */
 User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
 User.relationship({ ref: 'BlogPost', path: 'blogPosts', refPath: 'author' });
 User.relationship({ ref: 'Comment', path: 'comments', refPath: 'author' });
+User.relationship({ ref: 'PublicationFeedback', path: 'user'});
 
 
 /**

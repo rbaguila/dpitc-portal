@@ -23,7 +23,7 @@ exports.initLocals = function (req, res, next) {
 	[
 		{ label: 'Home', key: 'home', href: '/' },
 		{ label: 'FIESTA', key: 'fiesta', href: 'http://128.199.166.120:3000' },
-		{ label: 'Technology', key: 'tech', href: 'https://pcaarrd-km.herokuapp.com/#/' },
+		{ label: 'Technology', key: 'tech', href: 'http://139.59.125.198/technology' },
 		{ label: 'Community', key: 'community', href: '/community' },
 		{ label: 'eResources', key: 'eresources', href: '/eresources' },
 		// { label: 'Home', key: 'home', href: '/' },

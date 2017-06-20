@@ -126,10 +126,19 @@ Publication.add(
   {price: {
     type: Number,
     min: 0
+  }},
+  {downloads: {
+    type: Number,
+    default: 0,
+    noedit: true,
   }}
 );
 
 // http://keystonejs.com/docs/database/#relationships
+
+Publication.relationship(
+  { ref: 'PublicationFeedback', path: 'publication' }
+);
 
 Publication.schema.virtual('title.trunc').get(function() {
   var truncated = this.title
@@ -163,7 +172,7 @@ Publication.schema.virtual('description.truncGrid').get(function() {
 })
 
 
-Publication.defaultColumns = 'title, publicationLine, publicationType, publicationYear, file, cover'
+Publication.defaultColumns = 'title, downloads, publicationLine, publicationYear, cover'
 
 Publication.register();
 
