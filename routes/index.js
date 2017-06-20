@@ -123,10 +123,15 @@ exports = module.exports = function (app) {
 
   //E Resources
   // app.get('/eresources', routes.eresourcesViews.eresources);
-	app.get('/eresources/:industry?', routes.eresourcesViews.publications);
+	app.get('/eresources', routes.eresourcesViews.publications);
 	// app.get('/eresources/publications/:industry?', routes.eresourcesViews.publications);
   app.get('/eresources/page/:page', routes.eresourcesViews.publications);
-	app.get('/eresources/publication/:publication', routes.eresourcesViews.publication);
+  app.get('/eresources/publication/:publication', routes.eresourcesViews.publication);
+	app.post('/eresources/publication/:publication', routes.eresourcesViews.publication);
+  app.post('/eresources/feedback', routes.eresourcesViews.feedback);
+
+  // E Resources Analytics
+  app.get('/eresources/reports', middleware.requireAdmin, routes.eresourcesViews.analytics.dashboard);
 
 	//Analytics Api Route
   app.get('/api/community/analytics/list', keystone.middleware.api, routes.api.communityAnalytics.list);
