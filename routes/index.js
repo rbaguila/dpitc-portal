@@ -61,10 +61,12 @@ exports = module.exports = function (app) {
 	app.get('/admin/report-views', middleware.requireAnalyticsAdmin, routes.adminCommunityViews.report_views);
 
 	app.get('/admin/users', middleware.requireUsersAdmin, routes.adminViews.users);
+	app.get('/admin/users/:id', middleware.requireUsersAdmin ,routes.adminViews.user_profile);
 	app.get('/admin/community', routes.adminViews.community);
 	app.get('/admin/publications',middleware.requirePublicationsAdmin, routes.adminPublicationViews.publications);
 
 	app.get('/admin/learning-objects', middleware.requireElearningAdmin,routes.adminElearningViews.learning_objects);
+	app.get('/admin/courses', middleware.requireElearningAdmin, routes.adminElearningViews.course);
 	// User
 
 

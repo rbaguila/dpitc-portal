@@ -28,7 +28,6 @@ exports = module.exports = function(req, res) {
   	};
 
 	//init locals
-	locals.section = 'users';
 	locals.data = {
 		community_views: [],
 		discussion_views:[],

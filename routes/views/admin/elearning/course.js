@@ -5,7 +5,7 @@ exports = module.exports = function(req, res) {
 	var locals = res.locals;
 
 	var pageData = {
-		title: 'Learning Objects',
+		title: 'Courses',
 		navLinks: [
 			{ text: 'Home', link: '/admin' },
 			{ text: 'Posts', link: '#'},
@@ -40,36 +40,21 @@ exports = module.exports = function(req, res) {
   	};
 
 	//init locals
-	locals.section = 'users';
 	locals.data = {
-		learning_objects: [],
-        users:[],
+		courses: [],
 	};
 
-
-    view.on('init', function (next) {
-
-		var u = keystone.list('User').model.find()
-
-		u.exec(function (err, results) {
-			locals.data.users = results;
-			next(err);
-		});
-
-	});
-
-	// Load LO
+	// Load courses
 	view.on('init', function (next) {
-
-		var u = keystone.list('LearningObject').model.find().sort({ publishedAt: -1})
+		var u = keystone.list('Course').model.find().sort({ publishedAt: -1});
 
 		u.exec(function (err, results) {
-			locals.data.learning_objects = results;
+			locals.data.courses = results;
 			next(err);
 		});
 
 	});
 
 
-	view.render('admin/elearning/learning_objects',pageData);
+	view.render('admin/elearning/course',pageData);
 };
