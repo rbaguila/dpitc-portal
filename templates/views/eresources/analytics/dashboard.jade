@@ -24,7 +24,7 @@ block content
               .panel-body
                 .btn-group.btn-group-sm(role='group',aria-label='download-count')
                   a(href='/keystone/publications',type='button').btn.btn-default See All
-                  a(href='/api/publications/reports/downloads?cols=1010000000000000001',type='button').btn.btn-default Quick Download
+                  a(href='/api/publications/reports/publications?cols=1010000000000000001',type='button').btn.btn-default Quick Download
           .col-md-6
             .panel.panel-default
               .panel-heading
@@ -40,5 +40,17 @@ block content
                     td #{review.user.name.first} #{review.user.name.last}
                     td #{review.createdAt.toLocaleDateString()}
               .panel-body
-                a(href="/keystone/publication-feedback") See all
+                .btn-group.btn-group-sm(role='group',aria-label='download-count')
+                  a(href='/keystone/publication-feedback',type='button').btn.btn-default See All
+                  a(href='/api/publications/reports/downloads?cols=1010000000000000001',type='button').btn.btn-default Quick Download (This month's reviews)
 
+          .col-md-12
+            .panel.panel-default
+              .panel-heading
+                h3.panel-title Custom Reports
+              .panel-body
+                ul.list-group
+                  li.list-group-item
+                    a(href='#') Publications
+                  li.list-group-item
+                    a(href='#') Publication Feedback

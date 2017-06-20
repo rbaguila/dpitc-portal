@@ -1,7 +1,7 @@
 var keystone = require('keystone');
 var Publication = keystone.list('publications');
 
-exports.generateReport = function(req, res) {
+exports = module.exports = function(req, res) {
   Publication.model.find().populate('publicationLine industry sector commoditys')
     .exec(function(err, results) {
         if (err) return res.apiError('Error generating report', err);
