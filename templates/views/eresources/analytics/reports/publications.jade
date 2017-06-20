@@ -1,0 +1,93 @@
+extends ../../../../layouts/eresources
+
+block content
+  #public-content
+    .container-fluid(style="padding: 80px 90.5px 0px 90.5px;")
+      .wrapper
+        .row
+          .col-md-12
+            h3 Select Data for Publications Report
+          .col-md-12
+            form(method='POST',action=redirect)
+              input(type='hidden',name='action',value='generate-publications-report')
+
+              ul.list-group
+                li.list-group-item: .input-group: label
+                  input(type='checkbox',name='title')
+                  | Title
+
+                li.list-group-item: .input-group: label
+                  input(type='checkbox',name='publicationType')
+                  | Publication Type
+
+                li.list-group-item: .input-group: label
+                  input(type='checkbox',name='publicationLine')
+                  | Publication Line
+
+                li.list-group-item: .input-group: label
+                  input(type='checkbox',name='publisher')
+                  | Publisher
+
+                li.list-group-item: .input-group: label
+                  input(type='checkbox',name='publicationYear')
+                  | Publication Year
+
+                li.list-group-item: .input-group: label
+                  input(type='checkbox',name='description')
+                  | Description
+
+                li.list-group-item: .input-group: label
+                  input(type='checkbox',name='industry')
+                  | Industry
+
+                li.list-group-item: .input-group: label
+                  input(type='checkbox',name='sector')
+                  | Sector
+
+                li.list-group-item: .input-group: label
+                  input(type='checkbox',name='commodity')
+                  | Commodity
+
+                li.list-group-item: .input-group: label
+                  input(type='checkbox',name='technicalEditor')
+                  | Technical Editor
+
+                li.list-group-item: .input-group: label
+                  input(type='checkbox',name='volumeEditor')
+                  | Volume Editor
+
+                li.list-group-item: .input-group: label
+                  input(type='checkbox',name='layoutArtist')
+                  | Layout Artist
+
+                li.list-group-item: .input-group: label
+                  input(type='checkbox',name='ISSN')
+                  | ISSN
+
+                li.list-group-item: .input-group: label
+                  input(type='checkbox',name='ISBN')
+                  | ISBN
+
+                li.list-group-item: .input-group: label
+                  input(type='checkbox',name='printer')
+                  | Printer
+
+                li.list-group-item: .input-group: label
+                  input(type='checkbox',name='format')
+                  | Format
+
+                li.list-group-item: .input-group: label
+                  input(type='checkbox',name='numberOfPages')
+                  | Number of Pages
+
+                li.list-group-item: .input-group: label
+                  input(type='checkbox',name='price')
+                  | Price
+
+                li.list-group-item: .input-group: label
+                  input(type='checkbox',name='downloads')
+                  | Downloads
+
+              button.btn.btn-primary(type='submit') Download Report
+
+
