@@ -1,0 +1,15 @@
+extends ../../layouts/admin-layout
+
+block content
+  .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+    nav.cm-navbar.cm-navbar-default.cm-navbar-slideup
+      .cm-flex
+        .cm-breadcrumb-container
+          ol.breadcrumb
+            li.active
+              a(href='#') Base Pages
+            li
+              a(href='/admin/pages') Pages
+  .jumbotron
+    p No base page found...
+    a.btn.btn-lg.btn-success(href='#', role='button') + Create base page
