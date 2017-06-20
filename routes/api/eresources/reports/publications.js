@@ -2,7 +2,7 @@ var keystone = require('keystone');
 var Publication = keystone.list('publications');
 
 exports = module.exports = function(req, res) {
-  Publication.model.find().populate('publicationLine industry sector commoditys')
+  Publication.model.find().populate('publicationLine industry sector commodity')
     .exec(function(err, results) {
         if (err) return res.apiError('Error generating report', err);
 
@@ -82,19 +82,19 @@ exports = module.exports = function(req, res) {
             csvLine += pub.title;
           }
           if (req.query.cols.charAt(1) == '1') {
-            csvLine += ',' + pub.publicationType;
+            csvLine += ',' + (pub.publicationType ? pub.publicationType : '');
           }
           if (req.query.cols.charAt(2) == '1') {
             csvLine += ',' + (pub.publicationLine? pub.publicationLine.name : '');
           }
           if (req.query.cols.charAt(3) == '1') {
-            csvLine += ',' + pub.publisher
+            csvLine += ',' + (pub.publisher ? pub.publisher : '');
           }
           if (req.query.cols.charAt(4) == '1') {
-            csvLine += ',' + pub.publicationYear
+            csvLine += ',' + (pub.publicationYear ? pub.publicationYear : '');
           }
           if (req.query.cols.charAt(5) == '1') {
-            csvLine += ',' + pub.description
+            csvLine += ',' + (pub.description ? pub.description : '');
           }
           if (req.query.cols.charAt(6) == '1') {
             csvLine += ',' + (pub.industry ? pub.industry.name : '')
@@ -106,25 +106,25 @@ exports = module.exports = function(req, res) {
             csvLine += ',' + (pub.commodity ? pub.commodity.name : '')
           }
           if (req.query.cols.charAt(9) == '1') {
-            csvLine += ',' + pub.technicalEditor
+            csvLine += ',' + (pub.technicalEditor ? pub.technicalEditor : '');
           }
           if (req.query.cols.charAt(10) == '1') {
-            csvLine += ',' + pub.volumeEditor
+            csvLine += ',' + (pub.volumeEditor ? pub.volumeEditor : '');
           }
           if (req.query.cols.charAt(11) == '1') {
-            csvLine += ',' + pub.layoutArtist
+            csvLine += ',' + (pub.layoutArtist ? pub.layoutArtist : '');
           }
           if (req.query.cols.charAt(12) == '1') {
-            csvLine += ',' + pub.ISSN
+            csvLine += ',' + (pub.ISSN ? pub.ISSN : '');
           }
           if (req.query.cols.charAt(13) == '1') {
-            csvLine += ',' + pub.ISBN
+            csvLine += ',' + (pub.ISBN ? pub.ISBN : '');
           }
           if (req.query.cols.charAt(14) == '1') {
-            csvLine += ',' + pub.printer
+            csvLine += ',' + (pub.printer ? pub.printer : '');
           }
           if (req.query.cols.charAt(15) == '1') {
-            csvLine += ',' + pub.format
+            csvLine += ',' + (pub.format ? pub.format : '');
           }
           if (req.query.cols.charAt(16) == '1') {
             csvLine += ',' + pub.numberOfPages

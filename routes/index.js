@@ -112,8 +112,10 @@ exports = module.exports = function (app) {
 	app.post('/eresources/publication/:publication', routes.eresourcesViews.publication);
   app.post('/eresources/feedback', routes.eresourcesViews.feedback);
 
-  // E Resources Analytics
+  // E Resources Analytics/Reports
   app.get('/eresources/reports', middleware.requireAdmin, routes.eresourcesViews.analytics.dashboard);
+  app.get('/eresources/reports/publications',middleware.requireAdmin, routes.eresourcesViews.analytics.customReports.publications);
+  app.post('/eresources/reports/publications', middleware.requireAdmin, routes.eresourcesViews.analytics.customReports.publications);
 
 	//Analytics Api Route
   app.get('/api/community/analytics/list', keystone.middleware.api, routes.api.communityAnalytics.list);
@@ -153,6 +155,7 @@ exports = module.exports = function (app) {
   app.get('/api/publications', keystone.middleware.api, routes.api.eresources.publications.getPublications);
   app.get('/api/publications/search/:searchKey', keystone.middleware.api, routes.api.eresources.publications.findPublication)
   app.get('/api/publications/reports/publications',keystone.middleware.api, routes.api.eresources.reports.publications);
+  app.get('/api/publications/reports/feedback',keystone.middleware.api, routes.api.eresources.reports.feedback);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
