@@ -4,12 +4,24 @@ var Feedback = keystone.list('publication-feedback');
 exports = module.exports = function(req, res) {
   var publicationID = req.query.pubID
   var publicationTitle = req.query.pubTitle
-  // Should reports per user be available?
-  // var userID = req.query.userID
 
   // Publication Specific Report
   if (publicationID) {
-    Feedback.model.find({ publication: publicationID }).populate('user publication').exec(function(err, results) {
+    constraints = {}
+    if (req.query.start && req.query.end) {
+      constraints = {
+        publication: publicationID,
+        createdAt: {
+          $gte: new Date(req.query.start),
+          $lt: new Date(req.query.end)
+        }
+      }
+    }
+    else {
+      constraints = { publication: publicationID }
+    }
+
+    Feedback.model.find(constraints).populate('user publication').exec(function(err, results) {
         if (err) return res.apiError('Error generating report', err);
 
         var contentTally = [0, 0, 0, 0, 0];
