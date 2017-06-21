@@ -119,10 +119,9 @@ html
 							if user
 								if user.canAccessKeystone
 									li: a(href='/keystone') Open Keystone
-									li: a(href='/keystone/signout') Sign Out
-							else
-								li
-									a(href=host+'/login', class="not-active login-link") Sign In
+									li: a(href='/keystone/signout') Sign Out Admin
+							li
+								a(href=host+'/login', class="not-active login-link") Sign In
 
 			//- END NAVBAR
 			#searchCommunityDiv.container(style='display:none;')
