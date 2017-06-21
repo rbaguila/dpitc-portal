@@ -12,7 +12,7 @@ block content
 
           .col-md-12
             ul.list-group
-              table.table
+              table.table.table-striped.table-hover
                 tr
                   th Title
                   th Publication Line
@@ -22,22 +22,24 @@ block content
                     td #{publication.title}
                     td #{publication.publicationLine ? publication.publicationLine.name : '' }
                     td
-                      //- a(href='/api/publications/reports/feedback?publication='+publication._id,type='button').btn.btn-primary All Totals
                       form(method='POST',action=redirect)
                         input(type='hidden',name='action',value='download-all-totals')
                         input(type='hidden',name='publicationID',value=publication._id)
                         input(type='hidden',name='publicationTitle',value=publication.title)
                         button.btn.btn-primary
-                          span.glyphicon.glyphicon-list-alt(aria-hidden='true',type='submit')&nbsp;
+                          span.glyphicon.glyphicon-list-alt(aria-hidden='true',type='submit') &nbsp;
                           | All Totals
-                      //- button.btn.btn-primary(type='button', data-toggle='modal', data-target='#myModal')
-                        span.glyphicon.glyphicon-calendar&nbsp;
+                      button.btn.btn-primary.modal-trigger(type='button', data-toggle='modal', data-target='#myModal',pubid=publication._id,pubtitle=publication.title)
+                        span.glyphicon.glyphicon-calendar &nbsp;
                         | Range
 
         // Modal
         #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
           .modal-dialog(role='document')
-            .modal-content
+            form.modal-content(method='POST',action=redirect)
+              input(type='hidden',name='action',value='download-range')
+              input#hidden-pubid(type='hidden',name='pubID',value='')
+              input#hidden-pubtitle(type='hidden',name='pubTitle',value='')
               .modal-header
                 button.close(type='button', data-dismiss='modal', aria-label='Close')
                   span(aria-hidden='true') ×
@@ -45,15 +47,18 @@ block content
               .modal-body
                 .input-group
                   span.input-group-addon
-                    span.glyphicon.glyphicon-calendar&nbsp;
+                    span.glyphicon.glyphicon-calendar &nbsp;
                     | Start
                   input(type='date',name='start').form-control
                 br
                 .input-group
                   span.input-group-addon
-                    span.glyphicon.glyphicon-calendar&nbsp;
+                    span.glyphicon.glyphicon-calendar &nbsp;
                     | End
                   input(type='date',name='end').form-control
               .modal-footer
                 button.btn.btn-default(type='button', data-dismiss='modal') Cancel
-                button.btn.btn-primary(type='button') Download
+                button.btn.btn-primary(type='submit') Download
+
+block js
+  script(src='/js/eresources/reports/feedback.js')

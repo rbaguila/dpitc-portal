@@ -22,6 +22,14 @@ exports = module.exports = function(req, res) {
     return res.redirect(url);
   });
 
+  view.on('post', { action: 'download-range' }, function(next) {
+    var data = req.body;
+
+    var url = '/api/publications/reports/feedback?pubID=' + data.pubID + '&pubTitle=' + data.pubTitle + '&start=' + data.start + '&end=' + data.end;
+
+    return res.redirect(url);
+  });
+
 
   view.query('publications', keystone.list('publications').model.find({}).populate('publicationLine'));
 
