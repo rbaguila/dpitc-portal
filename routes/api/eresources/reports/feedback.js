@@ -78,11 +78,13 @@ exports = module.exports = function(req, res) {
       CSV += '\nResponse Time,';
       CSV += responseTally.join(',');
 
-      CSV += '\n\nDate/Time,User,Comments\n';
+      CSV += '\n\nDate/Time,Title,User,Comments\n';
 
       results.forEach(function(feedback) {
         CSV += feedback.createdAt;
-        CSV += ','
+        CSV += ',';
+        CSV += feedback.publication.title;
+        CSV += ',';
         CSV += feedback.user.name.first + ' ' + feedback.user.name.last;
         CSV += ',';
         CSV += feedback.comments;
