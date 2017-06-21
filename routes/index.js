@@ -29,7 +29,6 @@ keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
 var routes = {
-	admin: importRoutes('./views/admin'),
 	views: importRoutes('./views'),
 	communityViews: importRoutes('./views/community'),
 	eresourcesViews: importRoutes('./views/eresources'),
@@ -48,22 +47,8 @@ exports = module.exports = function (app) {
 	app.get('/exhibit/:exhibit', routes.views.exhibit);
 	app.get('/gallery', routes.views.gallery);
 
-	//Admin Routes
-	app.get('/admin/posts', routes.admin.posts);
-	app.get('/admin/posts_categories', routes.admin.posts_categories);
-	app.get('/admin/contents_fiesta', routes.admin.contents_fiesta);
-	app.get('/admin/technologies', routes.admin.technologies);
-	app.get('/admin/sliders', routes.admin.sliders);
-	app.get('/admin/pages', routes.admin.pages);
-	app.get('/admin/base_pages', routes.admin.base_pages);
-	app.get('/admin/users', routes.admin.users);
-	app.get('/admin', routes.admin.admin);
-
-	//Signup Route
-	app.get('/signup', routes.views.signup);
-	app.post('/signup', routes.views.signup);
-
 	// User
+
 
 	// User-Elearning Routes
 	app.get('/elearning/signup?', routes.elearningViews.user.signup);

@@ -9,11 +9,11 @@
 
 exports.create = {
   User: [
-    {
-      'name.first': 'Roinand',
-      'name.last': 'Aguila',
-      'email': 'aroinand@gmail.com',
-      'password': 'admin',
+    { 
+      'name.first': 'Roinand', 
+      'name.last': 'Aguila', 
+      'email': 'aroinand@gmail.com', 
+      'password': 'admin', 
       'isAdmin': true,
       'isElearningAdmin': true,
       'isElearningUser': true,
@@ -22,13 +22,13 @@ exports.create = {
       'sex': 'Male'
     },
   //],
-
+  
   /*ELearning Fixtures*/
     {
-      'name.first': 'Juan',
-      'name.last': 'Dela Cruz',
-      'email': 'jdelacruz@gmail.com',
-      'password': 'password',
+      'name.first': 'Juan', 
+      'name.last': 'Dela Cruz', 
+      'email': 'jdelacruz@gmail.com', 
+      'password': 'password', 
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -37,11 +37,11 @@ exports.create = {
       '__ref': 'Juan'
     },
     {
-      'name.first': 'John',
-      'name.last': 'Smith',
-      'email': 'jsmith@gmail.com',
-      'password': 'password',
-      'isAdmin': false,
+      'name.first': 'John', 
+      'name.last': 'Smith', 
+      'email': 'jsmith@gmail.com', 
+      'password': 'password', 
+      'isAdmin': false, 
       'isElearningAdmin': false,
       'isElearningUser': true,
       'birthday': '1997-03-01',
@@ -49,10 +49,10 @@ exports.create = {
       '__ref': 'John'
     },
     {
-      'name.first': 'Jane',
-      'name.last': 'Doe',
-      'email': 'jdoe@gmail.com',
-      'password': 'password',
+      'name.first': 'Jane', 
+      'name.last': 'Doe', 
+      'email': 'jdoe@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -61,10 +61,10 @@ exports.create = {
       '__ref': 'Jane'
     },
     {
-      'name.first': 'Albert',
-      'name.last': 'Kim',
-      'email': 'akim@gmail.com',
-      'password': 'password',
+      'name.first': 'Albert', 
+      'name.last': 'Kim', 
+      'email': 'akim@gmail.com', 
+      'password': 'password', 
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -73,10 +73,10 @@ exports.create = {
       '__ref': 'Albert'
     },
     {
-      'name.first': 'Bryan',
-      'name.last': 'Kim',
-      'email': 'bkim@gmail.com',
-      'password': 'password',
+      'name.first': 'Bryan', 
+      'name.last': 'Kim', 
+      'email': 'bkim@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -85,10 +85,10 @@ exports.create = {
       '__ref': 'Bryan'
     },
     {
-      'name.first': 'Carl',
-      'name.last': 'Kim',
-      'email': 'ckim@gmail.com',
-      'password': 'password',
+      'name.first': 'Carl', 
+      'name.last': 'Kim', 
+      'email': 'ckim@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -97,10 +97,10 @@ exports.create = {
       '__ref': 'Lee'
     },
     {
-      'name.first': 'Daniel',
-      'name.last': 'Kim',
-      'email': 'dkim@gmail.com',
-      'password': 'password',
+      'name.first': 'Daniel', 
+      'name.last': 'Kim', 
+      'email': 'dkim@gmail.com', 
+      'password': 'password', 
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -109,10 +109,10 @@ exports.create = {
       '__ref': 'Daniel'
     },
     {
-      'name.first': 'Ellen',
-      'name.last': 'Kim',
-      'email': 'ekim@gmail.com',
-      'password': 'password',
+      'name.first': 'Ellen', 
+      'name.last': 'Kim', 
+      'email': 'ekim@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -121,10 +121,10 @@ exports.create = {
       '__ref': 'Ellen'
     },
     {
-      'name.first': 'Ferdinand',
-      'name.last': 'Kim',
-      'email': 'fkim@gmail.com',
-      'password': 'password',
+      'name.first': 'Ferdinand', 
+      'name.last': 'Kim', 
+      'email': 'fkim@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -133,10 +133,10 @@ exports.create = {
       '__ref': 'Ferdinand'
     },
     {
-      'name.first': 'Gerald',
-      'name.last': 'Kim',
-      'email': 'gkim@gmail.com',
-      'password': 'password',
+      'name.first': 'Gerald', 
+      'name.last': 'Kim', 
+      'email': 'gkim@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -145,10 +145,10 @@ exports.create = {
       '__ref': 'Gerald'
     },
     {
-      'name.first': 'Harold',
-      'name.last': 'Kim',
-      'email': 'hkim@gmail.com',
-      'password': 'password',
+      'name.first': 'Harold', 
+      'name.last': 'Kim', 
+      'email': 'hkim@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -157,10 +157,10 @@ exports.create = {
       '__ref': 'Harold'
     },
     {
-      'name.first': 'Irish',
-      'name.last': 'Kim',
-      'email': 'ikim@gmail.com',
-      'password': 'password',
+      'name.first': 'Irish', 
+      'name.last': 'Kim', 
+      'email': 'ikim@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -169,10 +169,10 @@ exports.create = {
       '__ref': 'Irish'
     },
     {
-      'name.first': 'Jeff',
-      'name.last': 'Kim',
-      'email': 'jkim@gmail.com',
-      'password': 'password',
+      'name.first': 'Jeff', 
+      'name.last': 'Kim', 
+      'email': 'jkim@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -181,10 +181,10 @@ exports.create = {
       '__ref': 'Jeff'
     },
     {
-      'name.first': 'Karl',
-      'name.last': 'Kim',
-      'email': 'kkim@gmail.com',
-      'password': 'password',
+      'name.first': 'Karl', 
+      'name.last': 'Kim', 
+      'email': 'kkim@gmail.com', 
+      'password': 'password', 
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -193,10 +193,10 @@ exports.create = {
       '__ref': 'Karl'
     },
     {
-      'name.first': 'Logan',
-      'name.last': 'Kim',
-      'email': 'lkim@gmail.com',
-      'password': 'password',
+      'name.first': 'Logan', 
+      'name.last': 'Kim', 
+      'email': 'lkim@gmail.com', 
+      'password': 'password', 
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -205,10 +205,10 @@ exports.create = {
       '__ref': 'Logan'
     },
     {
-      'name.first': 'Manuel',
-      'name.last': 'Kim',
-      'email': 'mkim@gmail.com',
-      'password': 'password',
+      'name.first': 'Manuel', 
+      'name.last': 'Kim', 
+      'email': 'mkim@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -217,10 +217,10 @@ exports.create = {
       '__ref': 'Manuel'
     },
     {
-      'name.first': 'Natalie',
-      'name.last': 'Kim',
-      'email': 'nkim@gmail.com',
-      'password': 'password',
+      'name.first': 'Natalie', 
+      'name.last': 'Kim', 
+      'email': 'nkim@gmail.com', 
+      'password': 'password', 
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -229,10 +229,10 @@ exports.create = {
       '__ref': 'Natalie'
     },
     {
-      'name.first': 'Oliver',
-      'name.last': 'Kim',
-      'email': 'okim@gmail.com',
-      'password': 'password',
+      'name.first': 'Oliver', 
+      'name.last': 'Kim', 
+      'email': 'okim@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -241,10 +241,10 @@ exports.create = {
       '__ref': 'Oliver'
     },
     {
-      'name.first': 'Patricia',
-      'name.last': 'Kim',
-      'email': 'pkim@gmail.com',
-      'password': 'password',
+      'name.first': 'Patricia', 
+      'name.last': 'Kim', 
+      'email': 'pkim@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -253,10 +253,10 @@ exports.create = {
       '__ref': 'Patricia'
     },
     {
-      'name.first': 'Queen',
-      'name.last': 'Kim',
-      'email': 'qkim@gmail.com',
-      'password': 'password',
+      'name.first': 'Queen', 
+      'name.last': 'Kim', 
+      'email': 'qkim@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -265,10 +265,10 @@ exports.create = {
       '__ref': 'Queen'
     },
     {
-      'name.first': 'Rona',
-      'name.last': 'Kim',
-      'email': 'rkim@gmail.com',
-      'password': 'password',
+      'name.first': 'Rona', 
+      'name.last': 'Kim', 
+      'email': 'rkim@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -277,9 +277,9 @@ exports.create = {
       '__ref': 'Rona'
     },
     {
-      'name.first': 'Sally',
-      'name.last': 'Kim',
-      'email': 'skim@gmail.com',
+      'name.first': 'Sally', 
+      'name.last': 'Kim', 
+      'email': 'skim@gmail.com', 
       'password': 'password',
       'isAdmin': false,
       'isElearningAdmin': false,
@@ -289,10 +289,10 @@ exports.create = {
       '__ref': 'Sally'
     },
     {
-      'name.first': 'Tim',
-      'name.last': 'Kim',
-      'email': 'tkim@gmail.com',
-      'password': 'password',
+      'name.first': 'Tim', 
+      'name.last': 'Kim', 
+      'email': 'tkim@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -301,10 +301,10 @@ exports.create = {
       '__ref': 'Tim'
     },
     {
-      'name.first': 'Uvin',
-      'name.last': 'Kim',
-      'email': 'ukim@gmail.com',
-      'password': 'password',
+      'name.first': 'Uvin', 
+      'name.last': 'Kim', 
+      'email': 'ukim@gmail.com', 
+      'password': 'password', 
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -313,10 +313,10 @@ exports.create = {
       '__ref': 'Uvin'
     },
     {
-      'name.first': 'Vince',
-      'name.last': 'Kim',
-      'email': 'vkim@gmail.com',
-      'password': 'password',
+      'name.first': 'Vince', 
+      'name.last': 'Kim', 
+      'email': 'vkim@gmail.com', 
+      'password': 'password', 
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -325,10 +325,10 @@ exports.create = {
       '__ref': 'Vince'
     },
     {
-      'name.first': 'Wilson',
-      'name.last': 'Kim',
-      'email': 'wkim@gmail.com',
-      'password': 'password',
+      'name.first': 'Wilson', 
+      'name.last': 'Kim', 
+      'email': 'wkim@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -337,10 +337,10 @@ exports.create = {
       '__ref': 'Wilson'
     },
     {
-      'name.first': 'Xyrus',
-      'name.last': 'Kim',
-      'email': 'xkim@gmail.com',
-      'password': 'password',
+      'name.first': 'Xyrus', 
+      'name.last': 'Kim', 
+      'email': 'xkim@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -349,10 +349,10 @@ exports.create = {
       '__ref': 'Xyrus'
     },
     {
-      'name.first': 'Yvette',
-      'name.last': 'Kim',
-      'email': 'ykim@gmail.com',
-      'password': 'password',
+      'name.first': 'Yvette', 
+      'name.last': 'Kim', 
+      'email': 'ykim@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -361,10 +361,10 @@ exports.create = {
       '__ref': 'Yvette'
     },
     {
-      'name.first': 'Zend',
-      'name.last': 'Kim',
-      'email': 'zkim@gmail.com',
-      'password': 'password',
+      'name.first': 'Zend', 
+      'name.last': 'Kim', 
+      'email': 'zkim@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -373,10 +373,10 @@ exports.create = {
       '__ref': 'Zend'
     },
     {
-      'name.first': 'Henry',
-      'name.last': 'Lee',
-      'email': 'hlee@gmail.com',
-      'password': 'password',
+      'name.first': 'Henry', 
+      'name.last': 'Lee', 
+      'email': 'hlee@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -385,10 +385,10 @@ exports.create = {
       '__ref': 'Henry'
     },
     {
-      'name.first': 'Angelica',
-      'name.last': 'Lee',
-      'email': 'alee@gmail.com',
-      'password': 'password',
+      'name.first': 'Angelica', 
+      'name.last': 'Lee', 
+      'email': 'alee@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -397,10 +397,10 @@ exports.create = {
       '__ref': 'Angelica'
     },
     {
-      'name.first': 'Kris',
-      'name.last': 'Lee',
-      'email': 'klee@gmail.com',
-      'password': 'password',
+      'name.first': 'Kris', 
+      'name.last': 'Lee', 
+      'email': 'klee@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -409,10 +409,10 @@ exports.create = {
       '__ref': 'Kris'
     },
     {
-      'name.first': 'Luhan',
-      'name.last': 'Lee',
-      'email': 'llee@gmail.com',
-      'password': 'password',
+      'name.first': 'Luhan', 
+      'name.last': 'Lee', 
+      'email': 'llee@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -421,10 +421,10 @@ exports.create = {
       '__ref': 'Luhan'
     },
     {
-      'name.first': 'Amber',
-      'name.last': 'Lee',
-      'email': 'alee@gmail.com',
-      'password': 'password',
+      'name.first': 'Amber', 
+      'name.last': 'Lee', 
+      'email': 'alee@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -433,10 +433,10 @@ exports.create = {
       '__ref': 'Amber'
     },
     {
-      'name.first': 'Victoria',
-      'name.last': 'Lee',
-      'email': 'vlee@gmail.com',
-      'password': 'password',
+      'name.first': 'Victoria', 
+      'name.last': 'Lee', 
+      'email': 'vlee@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -445,10 +445,10 @@ exports.create = {
       '__ref': 'Victoria'
     },
     {
-      'name.first': 'Krystal',
-      'name.last': 'Lee',
-      'email': 'klee@gmail.com',
-      'password': 'password',
+      'name.first': 'Krystal', 
+      'name.last': 'Lee', 
+      'email': 'klee@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -457,10 +457,10 @@ exports.create = {
       '__ref': 'Krystal'
     },
     {
-      'name.first': 'Gary',
-      'name.last': 'Lee',
-      'email': 'glee@gmail.com',
-      'password': 'password',
+      'name.first': 'Gary', 
+      'name.last': 'Lee', 
+      'email': 'glee@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -469,10 +469,10 @@ exports.create = {
       '__ref': 'Gary'
     },
     {
-      'name.first': 'Joon',
-      'name.last': 'Lee',
-      'email': 'jlee@gmail.com',
-      'password': 'password',
+      'name.first': 'Joon', 
+      'name.last': 'Lee', 
+      'email': 'jlee@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -481,10 +481,10 @@ exports.create = {
       '__ref': 'Joon'
     },
     {
-      'name.first': 'Cena',
-      'name.last': 'Lee',
-      'email': 'clee@gmail.com',
-      'password': 'password',
+      'name.first': 'Cena', 
+      'name.last': 'Lee', 
+      'email': 'clee@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -493,10 +493,10 @@ exports.create = {
       '__ref': 'Cena'
     },
     {
-      'name.first': 'Justin',
-      'name.last': 'Lee',
-      'email': 'jlee@gmail.com',
-      'password': 'password',
+      'name.first': 'Justin', 
+      'name.last': 'Lee', 
+      'email': 'jlee@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -505,10 +505,10 @@ exports.create = {
       '__ref': 'Justin'
     },
     {
-      'name.first': 'Christian',
-      'name.last': 'Chim',
-      'email': 'cchim@gmail.com',
-      'password': 'password',
+      'name.first': 'Christian', 
+      'name.last': 'Chim', 
+      'email': 'cchim@gmail.com', 
+      'password': 'password',  
       'isAdmin': false,
       'isElearningAdmin': false,
       'isElearningUser': true,
@@ -576,7 +576,7 @@ exports.create = {
       'industry': 'natural-industry',
       '__ref': 'ies-sector'
     }
-
+    
   ],
 
   ISP: [
@@ -917,7 +917,7 @@ exports.create = {
     */
 
   ],
-  Author: [
+  Author: [ 
     {
       'name': 'Project SARAI',
       '__ref': 'sarai'
@@ -935,13 +935,13 @@ exports.create = {
     {
       'name': 'Volume 1: Introduction to SARAI',
       'description': 'This volume discusses the detailed introduction to the program – its main objectives, various components, and expected outputs',
-
+             
       '__ref': 'corn-vol1-file',
     },
 
     {
       'name': 'Volume 2: Climate, Weather & Climate Change',
-      'description': 'Before the discussion on the numerous technologies and systems to improve their agricultural practices, it is important for them to develop a basic understanding of climate, weather, and climate change',
+      'description': 'Before the discussion on the numerous technologies and systems to improve their agricultural practices, it is important for them to develop a basic understanding of climate, weather, and climate change',     
       '__ref': 'corn-vol2-file',
     },
 
@@ -954,14 +954,14 @@ exports.create = {
     {
       'name': 'Volume 4: Nutrient Management',
       'description': 'This volume emphasizes the importance of providing our farmers with site-specific crop nutrient advisories for maximum crop growth.',
-
+  
       '__ref': 'corn-vol4-file',
     },
 
     {
       'name': 'Volume 5: Soil Moisture Monitoring System',
       'description': 'This volume focuses on three topics: \nModule 1 – Discusses the physical and chemical characteristics of soil and the importance of active soil moisture monitoring. \nModule 2 – Presents the Project SARAI cost-efficient soil moisture monitoring system. Basic steps on how to set up, operate, and roubleshoot the sensors will be discussed \nModule 3 – Includes the use of Water-balanced Assisted Irrigation Decision Support System (WAISS) and how it works.',
-
+        
       '__ref': 'corn-vol5-file',
     },
 
@@ -1030,7 +1030,7 @@ exports.create = {
       'file': 'intro-corn-toolkit-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'intro-corn-toolkit',
     },
 
@@ -1050,7 +1050,7 @@ exports.create = {
       'file': 'corn-vol1-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'corn-vol1',
     },
 
@@ -1070,7 +1070,7 @@ exports.create = {
       'file': 'corn-vol2-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'corn-vol2',
     },
 
@@ -1090,7 +1090,7 @@ exports.create = {
       'file': 'corn-vol3-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'corn-vol3',
     },
 
@@ -1110,7 +1110,7 @@ exports.create = {
       'file': 'corn-vol4-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'corn-vol4',
     },
 
@@ -1130,7 +1130,7 @@ exports.create = {
       'file': 'corn-vol5-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'corn-vol5',
     },
 
@@ -1150,7 +1150,7 @@ exports.create = {
       'file': 'corn-vol6-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'corn-vol6',
     },
 
@@ -1159,7 +1159,7 @@ exports.create = {
     {
       'title': 'Introduction to SARAI Training Toolkit for Rice',
       'state': 'published',
-      'author': 'sarai',
+      'author': 'sarai',      
       'publishedAt': Date.now,
       'content': {
         'brief': 'The SARAI TRAINING TOOLKIT FOR RICE is a user-friendly guide to all the developed technologies and systems of the program. It provides the stakeholders a holistic view of the program, and its direct applications to daily agricultural practices.',
@@ -1172,14 +1172,14 @@ exports.create = {
       'file': 'intro-rice-toolkit-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'intro-rice-toolkit',
     },
 
     {
       'title': 'Volume 1: Introduction to SARAI',
       'state': 'published',
-      'author': 'sarai',
+      'author': 'sarai',      
       'publishedAt': Date.now,
       'content': {
         'brief': 'This volume discusses the detailed introduction to the program – its main objectives, various components, and expected outputs.',
@@ -1192,14 +1192,14 @@ exports.create = {
       'file': 'rice-vol1-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'rice-vol1',
     },
 
     {
       'title': 'Volume 2: Climate, Weather & Climate Change',
       'state': 'published',
-      'author': 'sarai',
+      'author': 'sarai',      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Before the trainers introduce the participants to numerous technologies and systems to improve their agricultural practices, it is important for them to develop a basic understanding of climate, weather, and climate change.',
@@ -1212,14 +1212,14 @@ exports.create = {
       'file': 'rice-vol2-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'rice-vol2',
     },
 
     {
       'title': 'Volume 3: Pests and Diseases of Rice',
       'state': 'published',
-      'author': 'sarai',
+      'author': 'sarai',      
       'publishedAt': Date.now,
       'content': {
         'brief': 'This volume highlights the importance of understanding the plants’ specific growth stage and how their vulnerabilities to particular pests and diseases change over time. ',
@@ -1232,14 +1232,14 @@ exports.create = {
       'file': 'rice-vol3-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'rice-vol3',
     },
 
     {
       'title': 'Volume 4: Nutrient Management',
       'state': 'published',
-      'author': 'sarai',
+      'author': 'sarai',      
       'publishedAt': Date.now,
       'content': {
         'brief': 'This volume emphasizes the importance of providing our farmers with site-specific crop nutrient advisories for maximum crop growth.',
@@ -1252,14 +1252,14 @@ exports.create = {
       'file': 'rice-vol4-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'rice-vol4',
     },
 
     {
       'title': 'Volume 5: SARAI Knowledge Portal',
       'state': 'published',
-      'author': 'sarai',
+      'author': 'sarai',      
       'publishedAt': Date.now,
       'content': {
         'brief': 'This volume gives a walkthrough on the SARAI Knowledge Portal. This portal offers a wide-range of agricultural services in web and mobile platforms for its initial six priority crops.',
@@ -1272,7 +1272,7 @@ exports.create = {
       'file': 'rice-vol5-file',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'rice-vol5',
     },
 
@@ -1280,7 +1280,7 @@ exports.create = {
     {
       'title': 'Land Preparation',
       'state': 'published',
-      'author': 'sarai',
+      'author': 'sarai',      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Tinatalakay sa video na ito ang iba’t ibang uri ng lugar kung saan mainam magtanim ng mais, kung papaano dapat ihanda ang lupang pagtataniman at ang proseso ng pagtatanim ng mais.',
@@ -1293,13 +1293,13 @@ exports.create = {
       'video': 'landpreparation-yt',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'landpreparation-lo',
     },
     {
       'title': 'Corn Pests',
       'state': 'published',
-      'author': 'sarai',
+      'author': 'sarai',      
       'publishedAt': Date.now,
       'content': {
         'brief': 'lamin natin kung ano ang mga pangunahing peste ng mais, at ang mga paraan para mapigilan o mabawasan ang peste ng mais.',
@@ -1312,13 +1312,13 @@ exports.create = {
       'video': 'cornpests-yt',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'cornpests-lo',
     },
     {
       'title': 'Corn Diseases',
       'state': 'published',
-      'author': 'sarai',
+      'author': 'sarai',      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Sa Pilipinas, mayroong higit sa 20 na mga itinalang sakit ng mais. Dito sa video na ito, malalaman natin kung ano ang mga pangunahing sakit ng mais at kung paano ito mapipigilan.',
@@ -1331,14 +1331,14 @@ exports.create = {
       'video': 'corndiseases-yt',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'corndiseases-lo',
     },
 
     {
       'title': 'Growth Stages',
       'state': 'published',
-      'author': 'sarai',
+      'author': 'sarai',      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Ang video na ito ay ipinapakita kung paano tumutubo ang mais simula pagtanim. ',
@@ -1351,14 +1351,14 @@ exports.create = {
       'video': 'stagescorn-yt',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'stagescorn-lo',
     },
 
     {
       'title': 'Corn Mechanization',
       'state': 'published',
-      'author': 'sarai',
+      'author': 'sarai',      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Panoorin ang video na ito para malaman kung ano ba ng iba’t ibang uri ng farm mechanization technologies na ginagamit sa produksyon ng mais.',
@@ -1371,14 +1371,14 @@ exports.create = {
       'video': 'farmmechanization-yt',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'farmmechanization-lo',
     },
 
     {
       'title': 'Corn Processing',
       'state': 'published',
-      'author': 'sarai',
+      'author': 'sarai',      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Sa video na ito, malalaman natin kung ano ba and iba’t ibang parte ng isang corn kernel, and iba’t ibang uri ng mais ayon sa structure, at kung ano ang corn processing at ang mga pinaggagamitan nito.',
@@ -1391,14 +1391,14 @@ exports.create = {
       'video': 'cornprocessing-yt',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'cornprocessing-lo',
     },
 
     {
       'title': 'Corn Fertilization',
       'state': 'published',
-      'author': 'sarai',
+      'author': 'sarai',      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Alamin kung ano ang mga katangian ng lupa na angkop sa pagtatanim ng mais at ang tamang proseso para mapabuti ang kalidad ng lupang pagtataniman.',
@@ -1411,14 +1411,14 @@ exports.create = {
       'video': 'soilfertilization-yt',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'cornfertilization-lo',
     },
 
     /*{
       'title': '',
       'state': 'published',
-      'author': 'sarai',
+      'author': 'sarai',      
       'publishedAt': Date.now,
       'content': {
         'brief': '',
@@ -1431,16 +1431,16 @@ exports.create = {
       'video': '',
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'intro-rice-toolkit',
     },*/
 
 
     /*
-    {
+    { 
       'title': 'Planting Abaca',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Abaca description',
@@ -1451,19 +1451,19 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Ferdinand', 'Gerald', 'Harold', 'Henry', 'Irish', 'Joon', 'Jeff'],
       'happy': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena'],
       'sad': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
-
+      
       'updatedAt': Date.now,
       '__ref': 'plantingabaca-lo'
     },
-    {
+    { 
       'title': 'Planting Banana',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Banana description',
@@ -1474,19 +1474,19 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
       'happy': ['Juan', 'John', 'Jane', 'Amber', 'Angelica', 'Albert', 'Bryan', 'Cena'],
       'sad': ['Ferdinand', 'Gerald', 'Harold', 'Henry', 'Irish', 'Joon', 'Jeff'],
-
+      
       'updatedAt': Date.now,
       '__ref': 'plantingbanana-lo'
     },
-    {
+    { 
       'title': 'Planting Coconut',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Coconut description',
@@ -1497,19 +1497,19 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Juan', 'John', 'Jane'],
       'happy': ['Juan', 'John'],
       'sad': ['Zend'],
-
+      
       'updatedAt': Date.now,
       '__ref': 'plantingcoconut-lo'
     },
-    {
+    { 
       'title': 'Planting Coffee',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Coffee description',
@@ -1520,19 +1520,19 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Justin', 'Krystal', 'Kris', 'Karl', 'Luhan', 'Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'happy': ['Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'sad': ['Sally', 'Tim', 'Uvin', 'Vince', 'Victoria', 'Wilson', 'Xyrus', 'Yvette', 'Zend'],
-
+      
       'updatedAt': Date.now,
       '__ref': 'plantingcoffee-lo'
     },
-    {
+    { 
       'title': 'Planting Mungbean',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Mungbean description',
@@ -1543,19 +1543,19 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': 'Mungbean',
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Sally', 'Tim', 'Uvin', 'Vince', 'Victoria', 'Wilson', 'Xyrus', 'Yvette', 'Zend'],
       'happy': ['Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'sad': ['Justin', 'Krystal', 'Kris', 'Karl', 'Luhan', 'Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
-
+      
       'updatedAt': Date.now,
       '__ref': 'mungbean-lo',
     },
-    {
+    { 
       'title': 'Planting Peanut',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Peanut description',
@@ -1565,19 +1565,19 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': 'Peanut',
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Sally', 'Tim', 'Uvin', 'Vince', 'Victoria', 'Wilson', 'Xyrus', 'Yvette', 'Zend'],
       'happy': ['Justin', 'Krystal', 'Kris', 'Karl', 'Luhan', 'Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'sad': ['Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
-
+      
       'updatedAt': Date.now,
       '__ref': 'peanut-lo',
     },
-    {
+    { 
       'title': 'Planting Mango',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Mango description',
@@ -1588,19 +1588,19 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Juan', 'John', 'Jane'],
       'happy': ['Juan', 'John'],
       'sad': ['Juan'],
-
+      
       'updatedAt': Date.now,
       '__ref': 'plantingmango-lo'
     },
-    {
+    { 
       'title': 'Planting Rice',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Rice description',
@@ -1611,19 +1611,19 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Justin', 'Krystal', 'Kris', 'Karl', 'Luhan', 'Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'happy': ['Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'sad': ['Sally', 'Tim', 'Uvin', 'Vince', 'Victoria', 'Wilson', 'Xyrus', 'Yvette', 'Zend'],
-
+      
       'updatedAt': Date.now,
       '__ref': 'plantingrice-lo'
     },
-    {
+    { 
       'title': 'Planting Sweet Potato',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Sweet Potato description',
@@ -1633,19 +1633,19 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': 'Sweet Potato',
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Juan', 'John', 'Jane'],
       'happy': ['Juan', 'John'],
       'sad': ['Juan'],
-
+      
       'updatedAt': Date.now,
       '__ref': 'sweetpotato-lo',
     },
-    {
+    { 
       'title': 'Planting White Potato',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting White Potato description',
@@ -1656,19 +1656,19 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': 'White Potato',
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Sally', 'Tim', 'Uvin', 'Vince', 'Victoria', 'Wilson', 'Xyrus', 'Yvette', 'Zend'],
       'happy': ['Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'sad': ['Justin', 'Krystal', 'Kris', 'Karl', 'Luhan', 'Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
-
+      
       'updatedAt': Date.now,
       '__ref': 'whitepotato-lo',
     },
-    {
+    { 
       'title': 'Planting Sugarcane',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Sugarcane description',
@@ -1679,19 +1679,19 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Sally', 'Tim', 'Uvin', 'Vince', 'Victoria', 'Wilson', 'Xyrus', 'Yvette', 'Zend'],
       'happy': ['Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'sad': ['Justin', 'Krystal', 'Kris', 'Karl', 'Luhan', 'Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
-
+      
       'updatedAt': Date.now,
       '__ref': 'sugarcane-lo'
     },
-    {
+    { 
       'title': 'Planting Pineapple',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Pineapple description',
@@ -1702,19 +1702,19 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': 'Pineapple',
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Juan', 'John', 'Jane'],
       'happy': ['Juan', 'John'],
       'sad': ['Xyrus'],
-
+      
       'updatedAt': Date.now,
       '__ref': 'pineapple-lo',
     },
-    {
+    { 
       'title': 'Planting Papaya',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Papaya description',
@@ -1725,19 +1725,19 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': 'Papaya',
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Sally', 'Tim', 'Uvin', 'Vince', 'Victoria', 'Wilson', 'Xyrus', 'Yvette', 'Zend', 'Justin', 'Krystal', 'Kris', 'Karl', 'Luhan', 'Logan'],
       'happy': ['Logan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'sad': ['Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
-
+      
       'updatedAt': Date.now,
       '__ref': 'papaya-lo',
     },
-    {
+    { 
       'title': 'Planting Citrus',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Citrus description',
@@ -1748,19 +1748,19 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': 'Citrus',
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
       'happy': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
       'sad': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
-
+      
       'updatedAt': Date.now,
       '__ref': 'citrus-lo',
     },
-    {
+    { 
       'title': 'Planting Jackfruit',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Jackfruit description',
@@ -1771,19 +1771,19 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': 'Jackfruit',
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Amber', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
       'happy': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
       'sad': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
-
+      
       'updatedAt': Date.now,
       '__ref': 'jackfruit-lo',
     },
-    {
+    { 
       'title': 'Planting Durian',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Durian description',
@@ -1794,19 +1794,19 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': 'Durian',
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Amber', 'Angelica', 'Daniel', 'Ellen'],
       'happy': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
       'sad': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
-
+      
       'updatedAt': Date.now,
       '__ref': 'durian-lo',
     },
-    {
+    { 
       'title': 'Planting Vegetable',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Planting Vegetable description',
@@ -1816,18 +1816,18 @@ exports.create = {
       'sector': 'crops-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
       'happy': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
       'sad': ['Amber', 'Cena', 'Daniel', 'Ellen'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Feed Resources',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Feed Resources description',
@@ -1837,18 +1837,18 @@ exports.create = {
       'sector': 'livestock-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
       'happy': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
       'sad': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Dairy Goat',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Dairy Goat description',
@@ -1859,18 +1859,18 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
       'happy': ['Ferdinand', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
       'sad': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Slaughter Goat',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Slaughter Goat description',
@@ -1880,18 +1880,18 @@ exports.create = {
       'sector': 'livestock-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Ferdinand', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
       'happy': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
       'sad': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Dairy Buffalo',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Dairy Buffalo description',
@@ -1901,18 +1901,18 @@ exports.create = {
       'sector': 'livestock-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Juan', 'John'],
       'happy': ['Juan'],
       'sad': ['Kris'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Swine',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Swine description',
@@ -1922,18 +1922,18 @@ exports.create = {
       'sector': 'livestock-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Ferdinand', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
       'happy': ['Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
       'sad': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Duck',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Duck description',
@@ -1944,18 +1944,18 @@ exports.create = {
       'industry': 'agri-industry',
       'specificCommodity': null,
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
       'happy': ['Ferdinand','Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
       'sad': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Native Chicken',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Native Chicken description',
@@ -1965,18 +1965,18 @@ exports.create = {
       'sector': 'livestock-sector',
       'industry': 'agri-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['John'],
       'happy': ['Juan', 'John'],
       'sad': [],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Aquafeeds',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Aquafeeds description',
@@ -1986,19 +1986,19 @@ exports.create = {
       'sector': 'inlandaq-sector',
       'industry': 'aqua-industry',
       'specificCommodity': 'Aquafeeds',
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
       'happy': ['Sally', 'Tim', 'Zend', 'Juan', 'John', 'Jane'],
       'sad': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
-
+      
       'updatedAt': Date.now,
       '__ref': 'aquafeeds-lo',
     },
-    {
+    { 
       'title': 'Learning about Milkfish',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Milkfish description',
@@ -2008,18 +2008,18 @@ exports.create = {
       'sector': 'inlandaq-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
       'sad': ['Sally', 'Tim', 'Uvin', 'Wilson', 'Xyrus', 'Zend'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Mangrove Crab (Mudcrab)',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Mangrove Crab (Mudcrab) description',
@@ -2029,18 +2029,18 @@ exports.create = {
       'sector': 'inlandaq-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver'],
       'happy': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'sad': ['Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Tilapia',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Tilapia description',
@@ -2050,18 +2050,18 @@ exports.create = {
       'sector': 'inlandaq-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Justin', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
       'sad': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Shrimp',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Shrimp description',
@@ -2071,18 +2071,18 @@ exports.create = {
       'sector': 'inlandaq-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
       'happy': ['Justin', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'sad': ['Juan'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Mussel',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Mussel description',
@@ -2092,18 +2092,18 @@ exports.create = {
       'sector': 'inlandaq-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Zend', 'Juan', 'John', 'Jane'],
       'sad': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Blue Swimming Crab',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Blue Swimming Crab description',
@@ -2114,18 +2114,18 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': null,
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
       'happy': ['Juan', 'John', 'Jane'],
       'sad': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Abalone',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Abalone description',
@@ -2135,18 +2135,18 @@ exports.create = {
       'sector': 'marineres-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Juan', 'John', 'Jane', 'Justin'],
       'happy': ['Juan'],
       'sad': ['Juan'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Oyster',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Oyster description',
@@ -2156,18 +2156,18 @@ exports.create = {
       'sector': 'marineres-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'happy': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
       'sad': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Sardines',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Sardines description',
@@ -2177,18 +2177,18 @@ exports.create = {
       'sector': 'marineres-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
       'happy': ['John', 'Jane'],
       'sad': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Sea Cucumber',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Sea Cucumber description',
@@ -2199,18 +2199,18 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': null,
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Juan'],
       'happy': ['Juan'],
       'sad': ['John', 'Jane', 'Justin'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Seaweeds',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Seaweeds description',
@@ -2220,18 +2220,18 @@ exports.create = {
       'sector': 'marineres-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
       'happy': ['Sally', 'Tim', 'Xyrus', 'Zend', 'Juan', 'John', 'Jane'],
       'sad': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Tuna',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Tuna description',
@@ -2241,18 +2241,18 @@ exports.create = {
       'sector': 'marineres-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Sally', 'Tim', 'Uvin', 'Victoria', 'Vince', 'Wilson', 'Xyrus', 'Zend'],
       'happy': ['John', 'Jane'],
       'sad': ['Justin', 'Joon', 'Jeff', 'Krystal', 'Kris', 'Karl', 'Logan', 'Luhan', 'Manuel', 'Natalie', 'Oliver', 'Patricia', 'Queen', 'Rona'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Bathymetry',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Bathymetry description',
@@ -2262,18 +2262,18 @@ exports.create = {
       'sector': 'oes-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
       'happy': ['Ferdinand','Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
       'sad': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel', 'Ellen'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Corals',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Corals description',
@@ -2283,18 +2283,18 @@ exports.create = {
       'sector': 'oes-sector',
       'industry': 'aqua-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Gerald', 'Gary', 'Harold', 'Henry', 'Irish', 'Juan', 'John', 'Juan', 'Jane', 'Justin', 'Joon', 'Jeff'],
       'happy': ['Ferdinand','Juan', 'John', 'Gerald', 'Gary', 'Harold', 'Henry', 'Irish'],
       'sad': ['Amber', 'Angelica', 'Albert', 'Bryan', 'Cena', 'Daniel'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Fishing Maps',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Fishing Maps description',
@@ -2305,18 +2305,18 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': null,
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris', 'Angelica', 'Bryan', 'Daniel', 'Ferdinand', 'Henry', 'Harold', 'Juan'],
       'happy': ['Gary', 'Gerald', 'Irish'],
       'sad': ['John', 'Jane', 'Justin', 'Joon', 'Jeff'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Harmful Algal Blooms',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Harmful Algal Blooms description',
@@ -2327,18 +2327,18 @@ exports.create = {
       'industry': 'aqua-industry',
       'specificCommodity': null,
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
       'happy': ['Gary', 'Gerald', 'Irish'],
       'sad': ['Angelica', 'Bryan', 'Daniel', 'Ferdinand', 'Henry', 'Harold', 'Juan', 'John', 'Jane', 'Justin', 'Joon', 'Jeff'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Cacao',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Cacao description',
@@ -2348,18 +2348,18 @@ exports.create = {
       'sector': 'forestry-sector',
       'industry': 'natural-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
       'happy': ['Gary', 'Gerald', 'Irish', 'Henry', 'Harold'],
       'sad': ['Angelica', 'Bryan', 'Daniel', 'Ferdinand', 'Juan', 'John', 'Jane', 'Justin', 'Joon', 'Jeff'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Bamboo',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Bamboo description',
@@ -2369,18 +2369,18 @@ exports.create = {
       'sector': 'forestry-sector',
       'industry': 'natural-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Harold', 'Juan', 'John', 'Jane', 'Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
       'happy': ['Gary', 'Gerald', 'Irish'],
       'sad': ['Angelica', 'Bryan', 'Daniel', 'Ferdinand', 'Henry', 'Justin', 'Joon', 'Jeff'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Sago',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Sago description',
@@ -2390,18 +2390,18 @@ exports.create = {
       'sector': 'forestry-sector',
       'industry': 'natural-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
       'happy': ['Angelica', 'Bryan', 'Gary', 'Gerald', 'Irish'],
       'sad': ['Daniel', 'Ferdinand', 'Henry', 'Harold', 'Juan', 'John', 'Jane', 'Justin', 'Joon', 'Jeff'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Rubber',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Rubber description',
@@ -2412,18 +2412,18 @@ exports.create = {
       'industry': 'natural-industry',
       'specificCommodity': null,
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
       'happy': ['Gary', 'Gerald', 'Irish', 'Daniel', 'Ferdinand'],
       'sad': ['Angelica', 'Bryan', 'Henry', 'Harold', 'Juan', 'John', 'Jane', 'Justin', 'Joon', 'Jeff'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Industrial Tree Plantation',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Industrial Tree Plantation description',
@@ -2434,18 +2434,18 @@ exports.create = {
       'industry': 'natural-industry',
       'specificCommodity': null,
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
       'happy': ['Gary', 'Gerald', 'Irish', 'Harold', 'Juan', 'John'],
       'sad': ['Angelica', 'Bryan', 'Daniel', 'Ferdinand', 'Henry', 'Jane', 'Justin', 'Joon', 'Jeff'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Biodiversity',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Biodiversity description',
@@ -2456,18 +2456,18 @@ exports.create = {
       'industry': 'natural-industry',
       'specificCommodity': null,
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris', 'Ferdinand', 'Henry', 'Harold'],
       'happy': ['Gary', 'Gerald', 'Irish'],
       'sad': ['Angelica', 'Bryan', 'Daniel', 'Juan', 'John', 'Jane', 'Justin', 'Joon', 'Jeff'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Climate Change',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Climate Change description',
@@ -2478,18 +2478,18 @@ exports.create = {
       'industry': 'natural-industry',
       'specificCommodity': null,
 
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
       'happy': ['Gary', 'Gerald', 'Irish', 'Angelica', 'Bryan', 'Daniel', 'Ferdinand'],
       'sad': ['Henry', 'Harold', 'Juan', 'John', 'Jane', 'Justin', 'Joon', 'Jeff'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Watershed',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Watershed description',
@@ -2499,18 +2499,18 @@ exports.create = {
       'sector': 'ies-sector',
       'industry': 'natural-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
       'happy': ['Gary', 'Gerald', 'Irish', 'Bryan', 'Daniel', 'Ferdinand', 'Henry', 'Harold', 'Juan', 'John', 'Jane', 'Justin', 'Joon', 'Jeff'],
       'sad': ['Angelica'],
-
+      
       'updatedAt': Date.now
     },
-    {
+    { 
       'title': 'Learning about Mangrove',
       'state': 'published',
-
+      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Learning about Mangrove description',
@@ -2520,22 +2520,22 @@ exports.create = {
       'sector': 'ies-sector',
       'industry': 'natural-industry',
       'specificCommodity': null,
-      'createdAt': Date.now,
-
+      'createdAt': Date.now,  
+      
       'likes': ['Amber', 'Albert', 'Cena', 'Ellen', 'Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
       'happy': ['Gary', 'Gerald', 'Irish', 'Karl', 'Krystal', 'Kris'],
       'sad': ['Angelica', 'Bryan', 'Daniel', 'Ferdinand', 'Henry', 'Harold', 'Juan', 'John', 'Jane', 'Justin', 'Joon', 'Jeff'],
-
+      
       'updatedAt': Date.now
     },*/
   ],
-
+  
 
   //Chapter: [
   Course: [
     {
       'title': 'Corn Toolkit',
-      'state': 'published',
+      'state': 'published',      
       'publishedAt': Date.now,
       'content': {
         'brief': 'The SARAI TRAINING TOOLKIT FOR CORN is a user-friendly guide to all the developed technologies and systems of the program. It provides the stakeholders a holistic view of the program, and its direct applications to daily agricultural practices.',
@@ -2552,13 +2552,13 @@ exports.create = {
       ],
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'corn-toolkit',
     },
 
     {
       'title': 'Rice Toolkit',
-      'state': 'published',
+      'state': 'published',      
       'publishedAt': Date.now,
       'content': {
         'brief': 'The SARAI TRAINING TOOLKIT FOR RICE is a user-friendly guide to all the developed technologies and systems of the program. It provides the stakeholders a holistic view of the program, and its direct applications to daily agricultural practices.',
@@ -2574,13 +2574,13 @@ exports.create = {
       ],
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'rice-toolkit',
     },
 
     {
       'title': 'Corn Cultural Management',
-      'state': 'published',
+      'state': 'published',      
       'publishedAt': Date.now,
       'content': {
         'brief': 'Mais ang pangalawa sa pangunahing pananim sa ating bansa. 60% ng mais na itinatanim sa Pilipinas ay ginagamit para maging pakain sa mga hayop at 40% naman ay ginagamit na pagkain o panghalili sa kanin. Ayon sa Kagawaran ng Pagsasaka, mahigit kumulang sa 600,000 ng mga magsasaka ang nakadepende sa mais bilang pangunahing hanapbuhay. Bukod sa mga magsasaka, kumikita rin ang iba’t ibang sektor ng lipunan tulad ng transportasyon sa pagpoproseso at pagbebenta ng mais. ',
@@ -2598,7 +2598,7 @@ exports.create = {
       ],
       'createdAt': Date.now,
       'updatedAt': Date.now,
-      'createdBy': 'admin',
+      'createdBy': 'admin',     
       '__ref': 'rice-toolkit',
     },
 
@@ -2606,15 +2606,15 @@ exports.create = {
       'title': 'Corn',
       //'title': 'Corn Chapter',
       'state': 'published',
-
+      
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
         'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
       },
       'publishedAt': Date.now,
       'outline': [
-        'biotechbtcorn-lo',
-        'feedingprogram-lo',
+        'biotechbtcorn-lo', 
+        'feedingprogram-lo', 
         'grainquality-lo',
         'landpreparation-lo',
         'soilfertilization-lo',
@@ -2626,7 +2626,7 @@ exports.create = {
       'title': 'Legume',
       //'title': 'Legume Chapter',
       'state': 'published',
-
+      
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
         'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
@@ -2635,14 +2635,14 @@ exports.create = {
       'outline': [
         'mungbean-lo',
         'peanut-lo'
-      ],
+      ], 
       '__ref': 'legume-chapter',
     },
     {
       'title': 'Rootcrop',
       //'title': 'Rootcrop Chapter',
       'state': 'published',
-
+      
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
         'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
@@ -2658,7 +2658,7 @@ exports.create = {
       'title': 'Tropical Fruit',
     //  'title': 'Tropical Fruit Chapter',
       'state': 'published',
-
+      
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
         'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
@@ -2677,7 +2677,7 @@ exports.create = {
       'title': 'Feed Resources',
     //  'title': 'Feed Resources Chapter',
       'state': 'published',
-
+      
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
         'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
@@ -2696,7 +2696,7 @@ exports.create = {
     {
       'title': 'Agriculture Course',
       'state': 'published',
-
+      
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
         'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
@@ -2708,12 +2708,12 @@ exports.create = {
         'rootcrop-chapter',
         'legume-chapter'
       ],
-
+      
     },
     {
       'title': 'Aquatic Resources Course',
       'state': 'published',
-
+      
       'content': {
         'brief': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem ligula, varius non vulputate at, sagittis at neque.  ',
         'extended': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia nibh felis, in placerat felis hendrerit quis. Aenean sit amet risus consectetur nulla pellentesque lacinia et quis sem. Etiam non ullamcorper quam, cursus posuere est. Curabitur lectus nulla, pellentesque ultrices rutrum sed, congue porta sem. Nullam vitae posuere diam. Sed velit metus, tristique et ipsum eget, gravida eleifend dui.  ',
@@ -2722,189 +2722,189 @@ exports.create = {
       'outline': [
         'feedres-chapter',
       ],
-
+      
     }
   ],
 */
 
 /*  LOComment: [
-    {
-      'content': 'Hello po!',
-      'author': 'Angelica',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Angelica', 
       'learningObject': 'aquafeeds-lo',
       'createdAt': '2017-01-12'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Amber',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Amber', 
       'learningObject': 'pineapple-lo',
       'createdAt': '2017-01-28'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Albert',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Albert', 
       'learningObject': 'papaya-lo',
       'createdAt': '2017-01-18'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Bryan',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Bryan', 
       'learningObject': 'citrus-lo',
       'createdAt': '2017-01-10'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Cena',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Cena', 
       'learningObject': 'jackfruit-lo',
       'createdAt': '2017-02-09'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Daniel',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Daniel', 
       'learningObject': 'durian-lo',
       'createdAt': '2017-02-26'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Ellen',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Ellen', 
       'learningObject': 'whitepotato-lo',
       'createdAt': '2017-02-07'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Ferdinand',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Ferdinand', 
       'learningObject': 'sweetpotato-lo',
       'createdAt': '2017-03-01'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Gerald',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Gerald', 
       'learningObject': 'peanut-lo',
       'createdAt': '2017-03-11'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Gary',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Gary', 
       'learningObject': 'mungbean-lo',
       'createdAt': '2017-03-09'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Henry',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Henry', 
       'learningObject': 'stagescorn-lo',
       'createdAt': '2017-03-16'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Harold',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Harold', 
       'learningObject': 'soilfertilization-lo',
       'createdAt': '2017-03-19'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Irish',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Irish', 
       'learningObject': 'landpreparation-lo',
       'createdAt': '2017-03-20'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Juan',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Juan', 
       'learningObject': 'biotechbtcorn-lo',
       'createdAt': '2017-03-21'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'John',
+    { 
+      'content': 'Hello po!', 
+      'author': 'John', 
       'learningObject': 'feedingprogram-lo',
       'createdAt': '2017-03-22'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Jane',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Jane', 
       'learningObject': 'grainquality-lo',
       'createdAt': '2017-03-25'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Justin',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Justin', 
       'learningObject': 'sugarcane-lo',
       'createdAt': '2017-03-26'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Joon',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Joon', 
       'learningObject': 'plantingrice-lo',
       'createdAt': '2017-03-20'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Jeff',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Jeff', 
       'learningObject': 'plantingmango-lo',
       'createdAt': '2017-03-23'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Kris',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Kris', 
       'learningObject': 'plantingcoffee-lo',
       'createdAt': '2017-03-23'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Karl',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Karl', 
       'learningObject': 'plantingcoconut-lo',
       'createdAt': '2017-03-24'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Krystal',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Krystal', 
       'learningObject': 'plantingbanana-lo',
       'createdAt': '2017-03-28'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Luhan',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Luhan', 
       'learningObject': 'plantingabaca-lo',
       'createdAt': '2017-03-22'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Logan',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Logan', 
       'learningObject': 'pineapple-lo',
       'createdAt': '2017-03-17'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Manuel',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Manuel', 
       'learningObject': 'aquafeeds-lo',
       'createdAt': '2017-03-16'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Natalie',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Natalie', 
       'learningObject': 'papaya-lo',
       'createdAt': '2017-03-17'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Oliver',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Oliver', 
       'learningObject': 'citrus-lo',
       'createdAt': '2017-03-04'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Patricia',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Patricia', 
       'learningObject': 'jackfruit-lo',
       'createdAt': '2017-04-05'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Queen',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Queen', 
       'learningObject': 'whitepotato-lo',
       'createdAt': '2017-04-04'
     },
-    {
-      'content': 'Hello po!',
-      'author': 'Rona',
+    { 
+      'content': 'Hello po!', 
+      'author': 'Rona', 
       'learningObject': 'durian-lo',
       'createdAt': '2017-04-03'
     },
@@ -2913,1261 +2913,1261 @@ exports.create = {
 */
   LOView: [
 /*
-    {
-      'user': 'Angelica',
+    { 
+      'user': 'Angelica', 
       'learningObject': 'aquafeeds-lo',
       'dateViewed': '2017-01-12',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Rizal'
     },
-    {
-      'user': 'Amber',
+    { 
+      'user': 'Amber', 
       'learningObject': 'pineapple-lo',
       'dateViewed': '2017-01-28',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Cavite'
     },
-    {
-      'user': 'Sally',
+    { 
+      'user': 'Sally', 
       'learningObject': 'pineapple-lo',
       'dateViewed': '2017-01-28',
       'country_code': 'PH',
       'region': 'Northern Mindanao',
       'city': 'Bukidnon'
     },
-    {
-      'user': 'Tim',
+    { 
+      'user': 'Tim', 
       'learningObject': 'pineapple-lo',
       'dateViewed': '2017-01-28',
       'country_code': 'PH',
       'region': 'Western Visayas',
       'city': 'Aklan'
     },
-    {
-      'user': 'Uvin',
+    { 
+      'user': 'Uvin', 
       'learningObject': 'pineapple-lo',
       'dateViewed': '2017-01-28',
       'country_code': 'PH',
       'region': 'Western Visayas',
       'city': 'Antique'
     },
-    {
-      'user': 'Albert',
+    { 
+      'user': 'Albert', 
       'learningObject': 'papaya-lo',
       'dateViewed': '2017-01-18',
       'country_code': 'PH',
       'region': 'Western Visayas',
       'city': 'Capiz'
     },
-    {
-      'user': 'Bryan',
+    { 
+      'user': 'Bryan', 
       'learningObject': 'citrus-lo',
       'dateViewed': '2017-01-10',
       'country_code': 'PH',
       'region': 'Western Visayas',
       'city': 'Guimaras'
     },
-    {
-      'user': 'Cena',
+    { 
+      'user': 'Cena', 
       'learningObject': 'jackfruit-lo',
       'dateViewed': '2017-02-09',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Laguna'
     },
-    {
-      'user': 'Cena',
+    { 
+      'user': 'Cena', 
       'learningObject': 'aquafeeds-lo',
       'dateViewed': '2017-02-09',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Laguna'
     },
-    {
-      'user': 'Cena',
+    { 
+      'user': 'Cena', 
       'learningObject': 'aquafeeds-lo',
       'dateViewed': '2017-02-09',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Laguna'
     },
-    {
-      'user': 'Cena',
+    { 
+      'user': 'Cena', 
       'learningObject': 'aquafeeds-lo',
       'dateViewed': '2017-02-09',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Laguna'
     },
-    {
-      'user': 'Daniel',
+    { 
+      'user': 'Daniel', 
       'learningObject': 'durian-lo',
       'dateViewed': '2017-02-26',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Batangas'
     },
-    {
-      'user': 'Ellen',
+    { 
+      'user': 'Ellen', 
       'learningObject': 'whitepotato-lo',
       'dateViewed': '2017-02-07',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Quezon'
     },
-    {
-      'user': 'Ferdinand',
+    { 
+      'user': 'Ferdinand', 
       'learningObject': 'sweetpotato-lo',
       'dateViewed': '2017-03-01',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Lucena'
     },
-    {
-      'user': 'Victoria',
+    { 
+      'user': 'Victoria', 
       'learningObject': 'sweetpotato-lo',
       'dateViewed': '2017-03-01',
       'country_code': 'PH',
       'region': 'Central Luzon',
       'city': 'Aurora'
     },
-    {
-      'user': 'Vince',
+    { 
+      'user': 'Vince', 
       'learningObject': 'sweetpotato-lo',
       'dateViewed': '2017-03-01',
       'country_code': 'PH',
       'region': 'Central Luzon',
       'city': 'Bataan'
     },
-    {
-      'user': 'Gerald',
+    { 
+      'user': 'Gerald', 
       'learningObject': 'peanut-lo',
       'dateViewed': '2017-03-11',
       'country_code': 'PH',
       'region': 'Mimaropa',
       'city': 'Marinduque'
     },
-    {
-      'user': 'Gary',
+    { 
+      'user': 'Gary', 
       'learningObject': 'mungbean-lo',
       'dateViewed': '2017-02-09',
       'country_code': 'PH',
       'region': 'Mimaropa',
       'city': 'Occidental Mindoro'
     },
-    {
-      'user': 'Henry',
+    { 
+      'user': 'Henry', 
       'learningObject': 'stagescorn-lo',
       'dateViewed': '2017-02-16',
       'country_code': 'PH',
       'region': 'Mimaropa',
       'city': 'Oriental Mindoro'
     },
-    {
-      'user': 'Harold',
+    { 
+      'user': 'Harold', 
       'learningObject': 'soilfertilization-lo',
       'dateViewed': '2017-02-19',
       'country_code': 'PH',
       'region': 'Mimaropa',
       'city': 'Palawan'
     },
-    {
-      'user': 'Irish',
+    { 
+      'user': 'Irish', 
       'learningObject': 'landpreparation-lo',
       'dateViewed': '2017-02-20',
       'country_code': 'PH',
       'region': 'Bicol',
       'city': 'Albay'
     },
-    {
-      'user': 'Juan',
+    { 
+      'user': 'Juan', 
       'learningObject': 'biotechbtcorn-lo',
       'dateViewed': '2017-02-21',
       'country_code': 'PH',
       'region': 'Bicol',
       'city': 'Camarines Norte'
     },
-    {
-      'user': 'John',
+    { 
+      'user': 'John', 
       'learningObject': 'feedingprogram-lo',
       'dateViewed': '2017-02-22',
       'country_code': 'PH',
       'region': 'Bicol',
       'city': 'Camarines Sur'
     },
-    {
-      'user': 'Jane',
+    { 
+      'user': 'Jane', 
       'learningObject': 'grainquality-lo',
       'dateViewed': '2017-03-25',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Caloocan'
     },
-    {
-      'user': 'Wilson',
+    { 
+      'user': 'Wilson', 
       'learningObject': 'grainquality-lo',
       'dateViewed': '2017-03-25',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Makati'
     },
-    {
-      'user': 'Yvette',
+    { 
+      'user': 'Yvette', 
       'learningObject': 'grainquality-lo',
       'dateViewed': '2017-03-25',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Malabon'
     },
-    {
-      'user': 'Xyrus',
+    { 
+      'user': 'Xyrus', 
       'learningObject': 'grainquality-lo',
       'dateViewed': '2017-03-25',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Mandaluyong'
     },
-    {
-      'user': 'Justin',
+    { 
+      'user': 'Justin', 
       'learningObject': 'sugarcane-lo',
       'dateViewed': '2017-03-26',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Manila'
     },
-    {
-      'user': 'Joon',
+    { 
+      'user': 'Joon', 
       'learningObject': 'plantingrice-lo',
       'dateViewed': '2017-03-20',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Marikina'
     },
-    {
-      'user': 'Jeff',
+    { 
+      'user': 'Jeff', 
       'learningObject': 'plantingmango-lo',
       'dateViewed': '2017-03-23',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Muntinlupa'
     },
-    {
-      'user': 'Kris',
+    { 
+      'user': 'Kris', 
       'learningObject': 'plantingcoffee-lo',
       'dateViewed': '2017-03-23',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Navotas'
     },
-    {
-      'user': 'Karl',
+    { 
+      'user': 'Karl', 
       'learningObject': 'plantingcoconut-lo',
       'dateViewed': '2017-03-24',
       'country_code': 'PH',
       'region': 'Cordillera Administrative Region',
       'city': 'Ifugao'
     },
-    {
-      'user': 'Krystal',
+    { 
+      'user': 'Krystal', 
       'learningObject': 'plantingbanana-lo',
       'dateViewed': '2017-03-28',
       'country_code': 'PH',
       'region': 'Cordillera Administrative Region',
       'city': 'Kalinga'
     },
-    {
-      'user': 'Zend',
+    { 
+      'user': 'Zend', 
       'learningObject': 'plantingbanana-lo',
       'dateViewed': '2017-03-28',
       'country_code': 'PH',
       'region': 'Cordillera Administrative Region',
       'city': 'Mountain Province'
     },
-    {
-      'user': 'Luhan',
+    { 
+      'user': 'Luhan', 
       'learningObject': 'plantingabaca-lo',
       'dateViewed': '2017-03-22',
       'country_code': 'PH',
       'region': 'Cordillera Administrative Region',
       'city': 'Baguio'
     },
-    {
-      'user': 'Logan',
+    { 
+      'user': 'Logan', 
       'learningObject': 'pineapple-lo',
       'dateViewed': '2017-04-17',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Pasay'
     },
-    {
-      'user': 'Manuel',
+    { 
+      'user': 'Manuel', 
       'learningObject': 'aquafeeds-lo',
       'dateViewed': '2017-04-16',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Pasig'
     },
-    {
-      'user': 'Natalie',
+    { 
+      'user': 'Natalie', 
       'learningObject': 'papaya-lo',
       'dateViewed': '2017-04-17',
       'country_code': 'PH',
       'region': 'Soccsksargen',
       'city': 'Cotabato'
     },
-    {
-      'user': 'Oliver',
+    { 
+      'user': 'Oliver', 
       'learningObject': 'citrus-lo',
       'dateViewed': '2017-04-04',
       'country_code': 'PH',
       'region': 'Soccsksargen',
       'city': 'Sarangani'
     },
-    {
-      'user': 'Patricia',
+    { 
+      'user': 'Patricia', 
       'learningObject': 'jackfruit-lo',
       'dateViewed': '2017-04-05',
       'country_code': 'PH',
       'region': 'Soccsksargen',
       'city': 'South Cotabato'
     },
-    {
-      'user': 'Queen',
+    { 
+      'user': 'Queen', 
       'learningObject': 'whitepotato-lo',
       'dateViewed': '2017-04-04',
       'country_code': 'PH',
       'region': 'Soccsksargen',
       'city': 'Sultan Kudarat'
     },
-    {
-      'user': 'Rona',
+    { 
+      'user': 'Rona', 
       'learningObject': 'durian-lo',
       'dateViewed': '2017-04-03',
       'country_code': 'PH',
       'region': 'Soccsksargen',
       'city': 'General Santos'
     },
-    {
-      'user': 'Cena',
+    { 
+      'user': 'Cena', 
       'learningObject': 'durian-lo',
       'dateViewed': '2017-04-03',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Dasmarinas'
     },
-    {
-      'user': 'Albert',
+    { 
+      'user': 'Albert', 
       'learningObject': 'durian-lo',
       'dateViewed': '2017-04-03',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Batangas'
     },
-    {
-      'user': 'Angelica',
+    { 
+      'user': 'Angelica', 
       'learningObject': 'aquafeeds-lo',
       'dateViewed': '2017-01-12',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Rizal'
     },
-    {
-      'user': 'Amber',
+    { 
+      'user': 'Amber', 
       'learningObject': 'pineapple-lo',
       'dateViewed': '2017-01-28',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Cavite'
     },
-    {
-      'user': 'Sally',
+    { 
+      'user': 'Sally', 
       'learningObject': 'pineapple-lo',
       'dateViewed': '2017-01-28',
       'country_code': 'PH',
       'region': 'Northern Mindanao',
       'city': 'Bukidnon'
     },
-    {
-      'user': 'Tim',
+    { 
+      'user': 'Tim', 
       'learningObject': 'pineapple-lo',
       'dateViewed': '2017-01-28',
       'country_code': 'PH',
       'region': 'Western Visayas',
       'city': 'Aklan'
     },
-    {
-      'user': 'Uvin',
+    { 
+      'user': 'Uvin', 
       'learningObject': 'pineapple-lo',
       'dateViewed': '2017-01-28',
       'country_code': 'PH',
       'region': 'Western Visayas',
       'city': 'Antique'
     },
-    {
-      'user': 'Albert',
+    { 
+      'user': 'Albert', 
       'learningObject': 'papaya-lo',
       'dateViewed': '2017-01-18',
       'country_code': 'PH',
       'region': 'Western Visayas',
       'city': 'Capiz'
     },
-    {
-      'user': 'Bryan',
+    { 
+      'user': 'Bryan', 
       'learningObject': 'citrus-lo',
       'dateViewed': '2017-01-10',
       'country_code': 'PH',
       'region': 'Western Visayas',
       'city': 'Guimaras'
     },
-    {
-      'user': 'Cena',
+    { 
+      'user': 'Cena', 
       'learningObject': 'jackfruit-lo',
       'dateViewed': '2017-02-09',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Laguna'
     },
-    {
-      'user': 'Daniel',
+    { 
+      'user': 'Daniel', 
       'learningObject': 'durian-lo',
       'dateViewed': '2017-02-26',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Batangas'
     },
-    {
-      'user': 'Ellen',
+    { 
+      'user': 'Ellen', 
       'learningObject': 'whitepotato-lo',
       'dateViewed': '2017-02-07',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Quezon'
     },
-    {
-      'user': 'Ferdinand',
+    { 
+      'user': 'Ferdinand', 
       'learningObject': 'sweetpotato-lo',
       'dateViewed': '2017-03-01',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Lucena'
     },
-    {
-      'user': 'Victoria',
+    { 
+      'user': 'Victoria', 
       'learningObject': 'sweetpotato-lo',
       'dateViewed': '2017-03-01',
       'country_code': 'PH',
       'region': 'Central Luzon',
       'city': 'Aurora'
     },
-    {
-      'user': 'Vince',
+    { 
+      'user': 'Vince', 
       'learningObject': 'sweetpotato-lo',
       'dateViewed': '2017-03-01',
       'country_code': 'PH',
       'region': 'Central Luzon',
       'city': 'Bataan'
     },
-    {
-      'user': 'Gerald',
+    { 
+      'user': 'Gerald', 
       'learningObject': 'peanut-lo',
       'dateViewed': '2017-03-11',
       'country_code': 'PH',
       'region': 'Mimaropa',
       'city': 'Marinduque'
     },
-    {
-      'user': 'Gary',
+    { 
+      'user': 'Gary', 
       'learningObject': 'mungbean-lo',
       'dateViewed': '2017-02-09',
       'country_code': 'PH',
       'region': 'Mimaropa',
       'city': 'Occidental Mindoro'
     },
-    {
-      'user': 'Henry',
+    { 
+      'user': 'Henry', 
       'learningObject': 'stagescorn-lo',
       'dateViewed': '2017-02-16',
       'country_code': 'PH',
       'region': 'Mimaropa',
       'city': 'Oriental Mindoro'
     },
-    {
-      'user': 'Harold',
+    { 
+      'user': 'Harold', 
       'learningObject': 'soilfertilization-lo',
       'dateViewed': '2017-02-19',
       'country_code': 'PH',
       'region': 'Mimaropa',
       'city': 'Palawan'
     },
-    {
-      'user': 'Irish',
+    { 
+      'user': 'Irish', 
       'learningObject': 'landpreparation-lo',
       'dateViewed': '2017-02-20',
       'country_code': 'PH',
       'region': 'Bicol',
       'city': 'Albay'
     },
-    {
-      'user': 'Juan',
+    { 
+      'user': 'Juan', 
       'learningObject': 'biotechbtcorn-lo',
       'dateViewed': '2017-02-21',
       'country_code': 'PH',
       'region': 'Bicol',
       'city': 'Camarines Norte'
     },
-    {
-      'user': 'John',
+    { 
+      'user': 'John', 
       'learningObject': 'feedingprogram-lo',
       'dateViewed': '2017-02-22',
       'country_code': 'PH',
       'region': 'Bicol',
       'city': 'Camarines Sur'
     },
-    {
-      'user': 'Jane',
+    { 
+      'user': 'Jane', 
       'learningObject': 'grainquality-lo',
       'dateViewed': '2017-03-25',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Caloocan'
     },
-    {
-      'user': 'Wilson',
+    { 
+      'user': 'Wilson', 
       'learningObject': 'grainquality-lo',
       'dateViewed': '2017-03-25',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Makati'
     },
-    {
-      'user': 'Yvette',
+    { 
+      'user': 'Yvette', 
       'learningObject': 'grainquality-lo',
       'dateViewed': '2017-03-25',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Malabon'
     },
-    {
-      'user': 'Xyrus',
+    { 
+      'user': 'Xyrus', 
       'learningObject': 'grainquality-lo',
       'dateViewed': '2017-03-25',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Mandaluyong'
     },
-    {
-      'user': 'Justin',
+    { 
+      'user': 'Justin', 
       'learningObject': 'sugarcane-lo',
       'dateViewed': '2017-03-26',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Manila'
     },
-    {
-      'user': 'Joon',
+    { 
+      'user': 'Joon', 
       'learningObject': 'plantingrice-lo',
       'dateViewed': '2017-03-20',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Marikina'
     },
-    {
-      'user': 'Jeff',
+    { 
+      'user': 'Jeff', 
       'learningObject': 'plantingmango-lo',
       'dateViewed': '2017-03-23',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Muntinlupa'
     },
-    {
-      'user': 'Kris',
+    { 
+      'user': 'Kris', 
       'learningObject': 'plantingcoffee-lo',
       'dateViewed': '2017-03-23',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Navotas'
     },
-    {
-      'user': 'Karl',
+    { 
+      'user': 'Karl', 
       'learningObject': 'plantingcoconut-lo',
       'dateViewed': '2017-03-24',
       'country_code': 'PH',
       'region': 'Cordillera Administrative Region',
       'city': 'Ifugao'
     },
-    {
-      'user': 'Krystal',
+    { 
+      'user': 'Krystal', 
       'learningObject': 'plantingbanana-lo',
       'dateViewed': '2017-03-28',
       'country_code': 'PH',
       'region': 'Cordillera Administrative Region',
       'city': 'Kalinga'
     },
-    {
-      'user': 'Zend',
+    { 
+      'user': 'Zend', 
       'learningObject': 'plantingbanana-lo',
       'dateViewed': '2017-03-28',
       'country_code': 'PH',
       'region': 'Cordillera Administrative Region',
       'city': 'Mountain Province'
     },
-    {
-      'user': 'Luhan',
+    { 
+      'user': 'Luhan', 
       'learningObject': 'plantingabaca-lo',
       'dateViewed': '2017-03-22',
       'country_code': 'PH',
       'region': 'Cordillera Administrative Region',
       'city': 'Baguio'
     },
-    {
-      'user': 'Logan',
+    { 
+      'user': 'Logan', 
       'learningObject': 'pineapple-lo',
       'dateViewed': '2017-04-17',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Pasay'
     },
-    {
-      'user': 'Manuel',
+    { 
+      'user': 'Manuel', 
       'learningObject': 'aquafeeds-lo',
       'dateViewed': '2017-04-16',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Pasig'
     },
-    {
-      'user': 'Natalie',
+    { 
+      'user': 'Natalie', 
       'learningObject': 'papaya-lo',
       'dateViewed': '2017-04-17',
       'country_code': 'PH',
       'region': 'Soccsksargen',
       'city': 'Cotabato'
     },
-    {
-      'user': 'Oliver',
+    { 
+      'user': 'Oliver', 
       'learningObject': 'citrus-lo',
       'dateViewed': '2017-04-04',
       'country_code': 'PH',
       'region': 'Soccsksargen',
       'city': 'Sarangani'
     },
-    {
-      'user': 'Patricia',
+    { 
+      'user': 'Patricia', 
       'learningObject': 'jackfruit-lo',
       'dateViewed': '2017-04-05',
       'country_code': 'PH',
       'region': 'Soccsksargen',
       'city': 'South Cotabato'
     },
-    {
-      'user': 'Queen',
+    { 
+      'user': 'Queen', 
       'learningObject': 'whitepotato-lo',
       'dateViewed': '2017-04-04',
       'country_code': 'PH',
       'region': 'Soccsksargen',
       'city': 'Sultan Kudarat'
     },
-    {
-      'user': 'Rona',
+    { 
+      'user': 'Rona', 
       'learningObject': 'durian-lo',
       'dateViewed': '2017-04-03',
       'country_code': 'PH',
       'region': 'Soccsksargen',
       'city': 'General Santos'
     },
-    {
-      'user': 'Cena',
+    { 
+      'user': 'Cena', 
       'learningObject': 'durian-lo',
       'dateViewed': '2017-04-03',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Dasmarinas'
     },
-    {
-      'user': 'Albert',
+    { 
+      'user': 'Albert', 
       'learningObject': 'durian-lo',
       'dateViewed': '2017-04-03',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Batangas'
     }*/
-  ],
+  ], 
 
   ELearningVisit: [
-    /*{
+    /*{ 
       'dateViewed': '2017-01-12',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Rizal'
     },
-    {
+    { 
       'dateViewed': '2017-01-28',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Cavite'
     },
-    {
+    { 
       'dateViewed': '2017-01-28',
       'country_code': 'PH',
       'region': 'Northern Mindanao',
       'city': 'Bukidnon'
     },
-    {
+    { 
       'dateViewed': '2017-01-28',
       'country_code': 'PH',
       'region': 'Western Visayas',
       'city': 'Aklan'
     },
-    {
+    { 
       'dateViewed': '2017-01-28',
       'country_code': 'PH',
       'region': 'Western Visayas',
       'city': 'Antique'
     },
-    {
+    { 
       'dateViewed': '2017-01-18',
       'country_code': 'PH',
       'region': 'Western Visayas',
       'city': 'Capiz'
     },
-    {
+    { 
       'dateViewed': '2017-01-10',
       'country_code': 'PH',
       'region': 'Western Visayas',
       'city': 'Guimaras'
     },
-    {
+    { 
       'dateViewed': '2017-02-09',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Laguna'
     },
-    {
+    { 
       'dateViewed': '2017-02-09',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Laguna'
     },
-    {
+    { 
       'dateViewed': '2017-02-09',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Laguna'
     },
-    {
+    { 
       'dateViewed': '2017-02-09',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Laguna'
     },
-    {
+    { 
       'dateViewed': '2017-02-26',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Batangas'
     },
-    {
+    { 
       'dateViewed': '2017-02-07',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Quezon'
     },
-    {
+    { 
       'dateViewed': '2017-03-01',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Lucena'
     },
-    {
+    { 
       'dateViewed': '2017-03-01',
       'country_code': 'PH',
       'region': 'Central Luzon',
       'city': 'Aurora'
     },
-    {
+    { 
       'dateViewed': '2017-03-01',
       'country_code': 'PH',
       'region': 'Central Luzon',
       'city': 'Bataan'
     },
-    {
+    { 
       'dateViewed': '2017-03-11',
       'country_code': 'PH',
       'region': 'Mimaropa',
       'city': 'Marinduque'
     },
-    {
+    { 
       'dateViewed': '2017-02-09',
       'country_code': 'PH',
       'region': 'Mimaropa',
       'city': 'Occidental Mindoro'
     },
-    {
+    { 
       'dateViewed': '2017-02-16',
       'country_code': 'PH',
       'region': 'Mimaropa',
       'city': 'Oriental Mindoro'
     },
-    {
+    { 
       'dateViewed': '2017-02-19',
       'country_code': 'PH',
       'region': 'Mimaropa',
       'city': 'Palawan'
     },
-    {
+    { 
       'dateViewed': '2017-02-20',
       'country_code': 'PH',
       'region': 'Bicol',
       'city': 'Albay'
     },
-    {
+    { 
       'dateViewed': '2017-02-21',
       'country_code': 'PH',
       'region': 'Bicol',
       'city': 'Camarines Norte'
     },
-    {
+    { 
       'dateViewed': '2017-02-22',
       'country_code': 'PH',
       'region': 'Bicol',
       'city': 'Camarines Sur'
     },
-    {
+    { 
       'dateViewed': '2017-03-25',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Caloocan'
     },
-    {
+    { 
       'dateViewed': '2017-03-25',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Makati'
     },
-    {
+    { 
       'dateViewed': '2017-03-25',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Malabon'
     },
-    {
+    { 
       'dateViewed': '2017-03-25',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Mandaluyong'
     },
-    {
+    { 
       'dateViewed': '2017-03-26',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Manila'
     },
-    {
+    { 
       'dateViewed': '2017-03-20',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Marikina'
     },
-    {
+    { 
       'dateViewed': '2017-03-23',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Muntinlupa'
     },
-    {
+    { 
       'dateViewed': '2017-03-23',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Navotas'
     },
-    {
+    { 
       'dateViewed': '2017-03-24',
       'country_code': 'PH',
       'region': 'Cordillera Administrative Region',
       'city': 'Ifugao'
     },
-    {
+    { 
       'dateViewed': '2017-03-28',
       'country_code': 'PH',
       'region': 'Cordillera Administrative Region',
       'city': 'Kalinga'
     },
-    {
+    { 
       'dateViewed': '2017-03-28',
       'country_code': 'PH',
       'region': 'Cordillera Administrative Region',
       'city': 'Mountain Province'
     },
-    {
+    { 
       'dateViewed': '2017-03-22',
       'country_code': 'PH',
       'region': 'Cordillera Administrative Region',
       'city': 'Baguio'
     },
-    {
+    { 
       'dateViewed': '2017-04-17',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Pasay'
     },
-    {
+    { 
       'dateViewed': '2017-04-16',
       'country_code': 'PH',
       'region': 'National Capital Region',
       'city': 'Pasig'
     },
-    {
+    { 
       'dateViewed': '2017-04-17',
       'country_code': 'PH',
       'region': 'Soccsksargen',
       'city': 'Cotabato'
     },
-    {
+    { 
       'dateViewed': '2017-04-04',
       'country_code': 'PH',
       'region': 'Soccsksargen',
       'city': 'Sarangani'
     },
-    {
+    { 
       'dateViewed': '2017-04-05',
       'country_code': 'PH',
       'region': 'Soccsksargen',
       'city': 'South Cotabato'
     },
-    {
+    { 
       'dateViewed': '2017-04-04',
       'country_code': 'PH',
       'region': 'Soccsksargen',
       'city': 'Sultan Kudarat'
     },
-    {
+    { 
       'dateViewed': '2017-04-03',
       'country_code': 'PH',
       'region': 'Soccsksargen',
       'city': 'General Santos'
     },
-    {
+    { 
       'dateViewed': '2017-04-03',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Dasmarinas'
     },
-    {
+    { 
       'dateViewed': '2017-04-03',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Batangas'
     },
-    {
+    { 
       'dateViewed': '2017-01-12',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Rizal'
     },
-    {
+    { 
       'dateViewed': '2017-01-28',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Cavite'
     },
-    {
+    { 
       'dateViewed': '2017-01-28',
       'country_code': 'PH',
       'region': 'Northern Mindanao',
       'city': 'Bukidnon'
     },
-    {
+    { 
       'dateViewed': '2017-01-28',
       'country_code': 'PH',
       'region': 'Western Visayas',
       'city': 'Aklan'
     },
-    {
+    { 
       'dateViewed': '2017-01-28',
       'country_code': 'PH',
       'region': 'Western Visayas',
       'city': 'Antique'
     },
-    {
+    { 
       'dateViewed': '2017-01-18',
       'country_code': 'PH',
       'region': 'Western Visayas',
       'city': 'Capiz'
     },
-    {
+    { 
       'dateViewed': '2017-01-10',
       'country_code': 'PH',
       'region': 'Western Visayas',
       'city': 'Guimaras'
     },
-    {
+    { 
       'dateViewed': '2017-02-09',
       'country_code': 'PH',
       'region': 'Calabarzon',
       'city': 'Laguna'
     },
-    {
+    { 
       'dateViewed': '2017-02-26',
       'country_code': 'AF'
     },
-    {
+    { 
       'dateViewed': '2017-02-07',
       'country_code': 'AF'
     },
-    {
+    { 
       'dateViewed': '2017-03-01',
       'country_code': 'AR'
     },
-    {
+    { 
       'dateViewed': '2017-03-01',
       'country_code': 'AR'
     },
-    {
+    { 
       'dateViewed': '2017-03-01',
       'country_code': 'AR'
     },
-    {
+    { 
       'dateViewed': '2017-03-11',
       'country_code': 'AR'
     },
-    {
+    { 
       'dateViewed': '2017-02-09',
       'country_code': 'AR'
     },
-    {
+    { 
       'dateViewed': '2017-02-16',
       'country_code': 'AR'
     },
-    {
+    { 
       'dateViewed': '2017-02-19',
       'country_code': 'AR'
     },
-    {
+    { 
       'dateViewed': '2017-02-20',
       'country_code': 'AR'
     },
-    {
+    { 
       'dateViewed': '2017-02-21',
       'country_code': 'BR'
     },
-    {
+    { 
       'dateViewed': '2017-02-22',
       'country_code': 'BR'
     },
-    {
+    { 
       'dateViewed': '2017-03-25',
       'country_code': 'BR'
     },
-    {
+    { 
       'dateViewed': '2017-03-25',
       'country_code': 'BR'
     },
-    {
+    { 
       'dateViewed': '2017-03-25',
       'country_code': 'CA'
     },
-    {
+    { 
       'dateViewed': '2017-03-25',
       'country_code': 'CA'
     },
-    {
+    { 
       'dateViewed': '2017-03-26',
       'country_code': 'CA'
     },
-    {
+    { 
       'dateViewed': '2017-03-20',
       'country_code': 'CA'
     },
-    {
+    { 
       'dateViewed': '2017-03-23',
       'country_code': 'CA'
     },
-    {
+    { 
       'dateViewed': '2017-03-23',
       'country_code': 'CA'
     },
-    {
+    { 
       'dateViewed': '2017-03-24',
       'country_code': 'CL'
     },
-    {
+    { 
       'dateViewed': '2017-03-28',
       'country_code': 'CN'
     },
-    {
+    { 
       'dateViewed': '2017-03-28',
       'country_code': 'CO'
     },
-    {
+    { 
       'dateViewed': '2017-03-22',
       'country_code': 'CO'
     },
-    {
+    { 
       'dateViewed': '2017-04-17',
       'country_code': 'FR'
     },
-    {
+    { 
       'dateViewed': '2017-04-16',
       'country_code': 'FR'
     },
-    {
+    { 
       'dateViewed': '2017-04-17',
       'country_code': 'FR'
     },
-    {
+    { 
       'dateViewed': '2017-04-04',
       'country_code': 'FR'
     },
-    {
+    { 
       'dateViewed': '2017-04-05',
       'country_code': 'FR'
     },
-    {
+    { 
       'dateViewed': '2017-04-04',
       'country_code': 'FR'
     },
-    {
+    { 
       'dateViewed': '2017-04-03',
       'country_code': 'FR'
     },
-    {
+    { 
       'dateViewed': '2017-04-03',
       'country_code': 'DE'
     },
-    {
+    { 
       'dateViewed': '2017-04-03',
       'country_code': 'DE'
     },
-    {
+    { 
       'dateViewed': '2017-02-07',
       'country_code': 'DE'
     },
-    {
+    { 
       'dateViewed': '2017-03-01',
       'country_code': 'ID'
     },
-    {
+    { 
       'dateViewed': '2017-03-01',
       'country_code': 'ID'
     },
-    {
+    { 
       'dateViewed': '2017-03-01',
       'country_code': 'JP'
     },
-    {
+    { 
       'dateViewed': '2017-03-11',
       'country_code': 'JP'
     },
-    {
+    { 
       'dateViewed': '2017-02-09',
       'country_code': 'KR'
     },
-    {
+    { 
       'dateViewed': '2017-02-16',
       'country_code': 'KR'
     },
-    {
+    { 
       'dateViewed': '2017-02-19',
       'country_code': 'KR'
     },
-    {
+    { 
       'dateViewed': '2017-02-20',
       'country_code': 'KR'
     },
-    {
+    { 
       'dateViewed': '2017-02-21',
       'country_code': 'MY'
     },
-    {
+    { 
       'dateViewed': '2017-02-22',
       'country_code': 'MY'
     },
-    {
+    { 
       'dateViewed': '2017-03-25',
       'country_code': 'MY'
     },
-    {
+    { 
       'dateViewed': '2017-03-25',
       'country_code': 'MY'
     },
-    {
+    { 
       'dateViewed': '2017-03-25',
       'country_code': 'MY'
     },
-    {
+    { 
       'dateViewed': '2017-03-25',
       'country_code': 'MY'
     },
-    {
+    { 
       'dateViewed': '2017-03-26',
       'country_code': 'MX'
     },
-    {
+    { 
       'dateViewed': '2017-03-20',
       'country_code': 'SG'
     },
-    {
+    { 
       'dateViewed': '2017-03-23',
       'country_code': 'SG'
     },
-    {
+    { 
       'dateViewed': '2017-03-23',
       'country_code': 'SG'
     },
-    {
+    { 
       'dateViewed': '2017-03-24',
       'country_code': 'SG'
     },
-    {
+    { 
       'dateViewed': '2017-03-28',
       'country_code': 'SG'
     },
-    {
+    { 
       'dateViewed': '2017-03-28',
       'country_code': 'SG'
     },
-    {
+    { 
       'dateViewed': '2017-03-22',
       'country_code': 'SG'
     },
-    {
+    { 
       'dateViewed': '2017-04-17',
       'country_code': 'SG'
     },
-    {
+    { 
       'dateViewed': '2017-04-16',
       'country_code': 'SG'
     },
-    {
+    { 
       'dateViewed': '2017-04-17',
       'country_code': 'SG'
     },
-    {
+    { 
       'dateViewed': '2017-04-04',
       'country_code': 'SG'
     },
-    {
+    { 
       'dateViewed': '2017-04-05',
       'country_code': 'US'
     },
-    {
+    { 
       'dateViewed': '2017-04-04',
       'country_code': 'US'
     },
-    {
+    { 
       'dateViewed': '2017-04-03',
       'country_code': 'US'
     },
-    {
+    { 
       'dateViewed': '2017-04-03',
       'country_code': 'US'
     },
-    {
+    { 
       'dateViewed': '2017-04-03',
       'country_code': 'US'
     }*/
   ]
-
+  
 };
