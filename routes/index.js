@@ -118,6 +118,8 @@ exports = module.exports = function (app) {
   app.post('/eresources/reports/publications', middleware.requireAdmin, routes.eresourcesViews.analytics.reports.publications);
   app.get('/eresources/reports/feedback',middleware.requireAdmin, routes.eresourcesViews.analytics.reports.feedback);
   app.post('/eresources/reports/feedback',middleware.requireAdmin, routes.eresourcesViews.analytics.reports.feedback);
+  app.get('/eresources/reports/feedback-all', middleware.requireAdmin,routes.eresourcesViews.analytics.reports.feedbackAll)
+  app.post('/eresources/reports/feedback-all', middleware.requireAdmin,routes.eresourcesViews.analytics.reports.feedbackAll)
 
 	//Analytics Api Route
   app.get('/api/community/analytics/list', keystone.middleware.api, routes.api.communityAnalytics.list);
