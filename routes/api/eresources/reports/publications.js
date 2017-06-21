@@ -6,7 +6,7 @@ exports = module.exports = function(req, res) {
     .exec(function(err, results) {
         if (err) return res.apiError('Error generating report', err);
 
-        res.header("Content-Disposition", "attachment;filename=report.csv");
+        res.header("Content-Disposition", "attachment;filename=Publications.csv");
         res.set('Content-Type', 'application/octet-stream');
         res.type("text/csv");
 

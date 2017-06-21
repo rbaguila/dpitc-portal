@@ -2,86 +2,101 @@ var keystone = require('keystone');
 var Feedback = keystone.list('publication-feedback');
 
 exports = module.exports = function(req, res) {
-  var publicationID = req.query.pubID
-  var publicationTitle = req.query.pubTitle
+  var pubID = req.query.pubID;
+  var pubTitle = req.query.pubTitle;
+  var pubLine = req.query.pubLine;
+  var pubLineName = req.query.pubLineName;
+  var start = req.query.start;
+  var end = req.query.end;
 
-  // Publication Specific Report
-  if (publicationID) {
-    constraints = {}
-    if (req.query.start && req.query.end) {
-      constraints = {
-        publication: publicationID,
-        createdAt: {
-          $gte: new Date(req.query.start),
-          $lt: new Date(req.query.end)
-        }
+  // Set constraints based on request query
+  var constraints = {}
+
+  // Query by publine doesn't work yet since can't deep query with relationship EVEN if populated -____-
+  if (pubID) {
+    constraints['publication'] = pubID;
+  }
+
+  if (pubLine) {
+    // DEEP query
+  }
+
+  if (start && end) {
+    constraints['createdAt'] = {
+      $gte: new Date(start),
+      $lt: new Date(end)
+    }
+  }
+
+
+  // Fetch feedback that match constraints
+  Feedback.model.find(constraints).sort('createdAt').populate('user publication').exec(function(err, results) {
+      if (err) return res.apiError('Error generating report', err);
+
+      var contentTally = [0, 0, 0, 0, 0];
+      var usefulnessTally = [0, 0, 0, 0, 0];
+      var designTally = [0, 0, 0, 0, 0];
+      var responseTally = [0, 0, 0, 0, 0];
+
+      results.forEach(function(feedback) {
+        console.log('Title: ' + feedback.publication.title + ' pubLine: ' + feedback.publication.publicationLine);
+        contentTally = tally(contentTally, feedback.content);
+        usefulnessTally = tally(usefulnessTally, feedback.usefulness);
+        designTally = tally(designTally, feedback.design);
+        responseTally = tally(responseTally, feedback.responseTime);
+      });
+
+      var CSV = ''
+      if (pubTitle && pubID) {
+        CSV += 'Title:,' + pubTitle + '\n';
+      } else if (pubLineName && pubLine) {
+        CSV += 'PublicationLine:,' + pubLineName + '\n';
+      } else {
+        CSV += 'All Publications\n';
       }
-    }
-    else {
-      constraints = { publication: publicationID }
-    }
 
-    Feedback.model.find(constraints).populate('user publication').exec(function(err, results) {
-        if (err) return res.apiError('Error generating report', err);
+      CSV += 'Date Range:,'
 
-        var contentTally = [0, 0, 0, 0, 0];
-        var usefulnessTally = [0, 0, 0, 0, 0];
-        var designTally = [0, 0, 0, 0, 0];
-        var responseTally = [0, 0, 0, 0, 0];
+      if (start && end) {
+        CSV += start + ' to ' + end;
+      } else {
+        CSV += 'From the beginning'
+      }
 
-        results.forEach(function(feedback) {
-          contentTally = tally(contentTally, feedback.content);
-          usefulnessTally = tally(usefulnessTally, feedback.usefulness);
-          designTally = tally(designTally, feedback.design);
-          responseTally = tally(responseTally, feedback.responseTime);
-        });
+      CSV += '\n';
+      CSV += 'Feedback count:,' + results.length
 
-        var CSV = 'Title:,' + publicationTitle + '\n';
-        CSV += 'Date Range:,'
+      CSV += '\n\n';
 
-        if (req.query.start && req.query.end) {
-          CSV += req.query.start + ' - ' + req.query.end;
-        } else {
-          CSV += 'From the beginning'
-        }
+      CSV += ',Outstanding,Very Satisfactory,Satisfactory,Fair,Unsatisfactory/Needs Improvement';
+      CSV += '\nContent,';
+      CSV += contentTally.join(',');
+      CSV += '\nUsefulness,';
+      CSV += usefulnessTally.join(',');
+      CSV += '\nDesign,';
+      CSV += usefulnessTally.join(',');
+      CSV += '\nResponse Time,';
+      CSV += responseTally.join(',');
 
+      CSV += '\n\nDate/Time,User,Comments\n';
+
+      results.forEach(function(feedback) {
+        CSV += feedback.createdAt;
+        CSV += ','
+        CSV += feedback.user.name.first + ' ' + feedback.user.name.last;
+        CSV += ',';
+        CSV += feedback.comments;
         CSV += '\n';
-        CSV += 'Feedback count:,' + results.length
+      });
 
-        CSV += '\n\n';
+      var filename = getFilename(pubID, pubTitle, start, end);
 
-        CSV += ',Outstanding,Very Satisfactory,Satisfactory,Fair,Unsatisfactory/Needs Improvement';
-        CSV += '\nContent,';
-        CSV += contentTally.join(',');
-        CSV += '\nUsefulness,';
-        CSV += usefulnessTally.join(',');
-        CSV += '\nDesign,';
-        CSV += usefulnessTally.join(',');
-        CSV += '\nResponse Time,';
-        CSV += responseTally.join(',');
+      res.header("Content-Disposition", "attachment;filename=" + filename);
+      res.set('Content-Type', 'application/octet-stream');
+      res.type("text/csv");
 
-        CSV += '\n\nDate,User,Comments\n';
-        results.forEach(function(feedback) {
-          CSV += feedback.createdAt;
-          CSV += ','
-          CSV += feedback.user.name.first + ' ' + feedback.user.name.last;
-          CSV += ',';
-          CSV += feedback.comments;
-          CSV += '\n';
-        });
-
-        res.header("Content-Disposition", "attachment;filename=report.csv");
-        res.set('Content-Type', 'application/octet-stream');
-        res.type("text/csv");
-
-        res.send(CSV);
-      })
-  }
-
-  // Just get it all
-  else {
-    res.send('Sending you EVERYTHING!!!')
-  }
+      res.send(CSV);
+    })
 }
 
 function tally(tally, answer) {
@@ -98,4 +113,23 @@ function tally(tally, answer) {
   }
 
   return tally;
+}
+
+function getFilename(pubID, pubTitle, start, end) {
+  var filename = ''
+  if (pubID && pubTitle) {
+    filename += pubTitle;
+  } else {
+  filename += 'All Publications';
+  }
+
+  if (start && end) {
+    filename += '(' + start + '_' + end + ')';
+  } else {
+    filename += '(Complete)';
+  }
+
+  filename += '.csv';
+
+  return filename;
 }
