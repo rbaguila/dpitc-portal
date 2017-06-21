@@ -34,9 +34,22 @@ exports = module.exports = function(req, res) {
           usefulnessTally = tally(usefulnessTally, feedback.usefulness);
           designTally = tally(designTally, feedback.design);
           responseTally = tally(responseTally, feedback.responseTime);
-        })
+        });
 
-        var CSV = publicationTitle + '\n';
+        var CSV = 'Title:,' + publicationTitle + '\n';
+        CSV += 'Date Range:,'
+
+        if (req.query.start && req.query.end) {
+          CSV += req.query.start + ' - ' + req.query.end;
+        } else {
+          CSV += 'From the beginning'
+        }
+
+        CSV += '\n';
+        CSV += 'Feedback count:,' + results.length
+
+        CSV += '\n\n';
+
         CSV += ',Outstanding,Very Satisfactory,Satisfactory,Fair,Unsatisfactory/Needs Improvement';
         CSV += '\nContent,';
         CSV += contentTally.join(',');
@@ -46,6 +59,16 @@ exports = module.exports = function(req, res) {
         CSV += usefulnessTally.join(',');
         CSV += '\nResponse Time,';
         CSV += responseTally.join(',');
+
+        CSV += '\n\nDate,User,Comments\n';
+        results.forEach(function(feedback) {
+          CSV += feedback.createdAt;
+          CSV += ','
+          CSV += feedback.user.name.first + ' ' + feedback.user.name.last;
+          CSV += ',';
+          CSV += feedback.comments;
+          CSV += '\n';
+        });
 
         res.header("Content-Disposition", "attachment;filename=report.csv");
         res.set('Content-Type', 'application/octet-stream');
