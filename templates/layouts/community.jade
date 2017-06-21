@@ -122,11 +122,7 @@ html
 									li: a(href='/keystone/signout') Sign Out
 							else
 								li
-									if redirect
-										a(href='/keystone/signin?from=' + redirect, class="not-active login-link") Sign In
-									else
-										a(href='/keystone/signin', class="not-active login-link") Sign In
-
+									a(href=host+'/login', class="not-active login-link") Sign In
 
 			//- END NAVBAR
 			#searchCommunityDiv.container(style='display:none;')
