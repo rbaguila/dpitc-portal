@@ -52,7 +52,7 @@ exports = module.exports = function (app) {
 	app.get('/gallery', routes.views.gallery);
 
 	//Admin
-	app.get('/admin', middleware.requireAdmin, routes.adminViews.admin);
+	app.get('/admin', middleware.requireUser, routes.adminViews.admin);
 	
 	//Admin-analytics pages
 	app.get('/admin/community-views', middleware.requireAnalyticsAdmin, routes.adminCommunityViews.community_views);
@@ -62,6 +62,7 @@ exports = module.exports = function (app) {
 
 	app.get('/admin/users', middleware.requireUsersAdmin, routes.adminViews.users);
 	app.get('/admin/users/:id', middleware.requireUsersAdmin ,routes.adminViews.user_profile);
+	app.post('/admin/users/:id', routes.adminViews.user_profile);
 	app.get('/admin/community', routes.adminViews.community);
 	app.get('/admin/publications',middleware.requirePublicationsAdmin, routes.adminPublicationViews.publications);
 

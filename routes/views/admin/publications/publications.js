@@ -31,7 +31,7 @@ exports = module.exports = function(req, res) {
 		publications: [],
 	};
 
-	// Load publications settings
+	// Load publications
 	view.on('init', function (next) {
 
 		var u = keystone.list('Publication').model.find().sort({ title: 1 })

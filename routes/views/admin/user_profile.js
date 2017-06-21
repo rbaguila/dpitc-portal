@@ -29,6 +29,7 @@ exports = module.exports = function(req, res) {
 	locals.data = {
 		user: [],
 		learning_objects:[],
+		publications: [],
 	};
 
 	// Load user
@@ -41,7 +42,25 @@ exports = module.exports = function(req, res) {
 				next(err);
 			});
 	});
+	
+	view.on('post', {action: 'editProfile'}, function(next){
+			var u = keystone.list('User').model.findOneAndUpdate(
+				{_id: locals.user._id},
+				{
+					name:{
+						//first:(locals.formData.first ? locals.formData.first : locals.user.name.first),
+					}
+				},
+				function(err,results){
+					if (err) return next(err);
+					return res.redirect('/admin/users/:id');
+				}
+			);
 
+			var updater = locals.user.getUpdateHandler(req);
+
+			console.log(locals.formData.first)
+	});
 
 	// Load LO
 	view.on('init', function (next) {
@@ -50,6 +69,18 @@ exports = module.exports = function(req, res) {
 
 		u.exec(function (err, results) {
 			locals.data.learning_objects = results;
+			next(err);
+		});
+
+	});
+
+	// Load publications
+	view.on('init', function (next) {
+
+		var u = keystone.list('Publication').model.find().sort({ title: 1 })
+
+		u.exec(function (err, results) {
+			locals.data.publications = results;
 			next(err);
 		});
 
