@@ -1,0 +1,44 @@
+extends ../../layouts/admin-default
+
+block content
+    .row
+        .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+            .table-responsive   
+                table.table.table-striped
+                    thead
+                    if data.path === '/admin/publication-settings'
+                        tr
+                            th Name
+                        tbody
+                        each pub in data.publication_settings
+                            tr
+                                td 
+                                    a(href='#') #{pub.name}
+                        else
+                            .jumbotron
+                                h3 No data
+                    if data.path === '/admin/publications'
+                        if data.publications
+                            tr
+                                th Title
+                                th Publication Line
+                                th Publication Type
+                                th Publication Year
+                                th File
+                                th Cover
+                            tbody
+                            each pub in data.publications
+                                tr   
+                                    td 
+                                        a(href='#') #{pub.title}
+                                    td #{pub.publicationLine}
+                                    td #{pub.publicationType}
+                                    td #{pub.publicationYear}
+                                    td #{pub.file}
+                                    td
+                                        img.img-rounded(src=pub.cover)
+
+                            else
+                                .jumbotron
+                                    h3 No data
+                

@@ -6,7 +6,7 @@ exports = module.exports = function(req, res) {
 	var path;
 
 	var pageData = {
-		title: 'Report Views',
+		title: 'Community Views',
 		navLinks: [
 			{ text: 'Home', link: '/admin' },
 			{ text: 'Posts', link: '#'},
@@ -15,7 +15,7 @@ exports = module.exports = function(req, res) {
 			{ text: 'Users', link: '/admin/users'},
 			{ text: 'Analytics', link: '/admin/community-views'},
 			{ text: 'Community', link: '/admin/community'},
-			{ text: 'Publications', link: '/admin/publications'},
+			{ text: 'Publications', link: '/admin/publication-settings'},
 			{ text: 'Categories', link: '#'},
 			{ text: 'ELearning', link: '/admin/learning-objects'}
 		],
@@ -28,10 +28,49 @@ exports = module.exports = function(req, res) {
   	};
 
 	//init locals
-	locals.section = 'users';
 	locals.data = {
-		report_views: [],
+		community_views: [],
+		discussion_views:[],
+		group_views:[],
+		report_views:[],
+		path:req.path,
 	};
+
+	// Load Community Views
+	view.on('init', function (next) {
+
+		var u = keystone.list('CommunityView').model.find().sort('-time')
+
+		u.exec(function (err, results) {
+			locals.data.community_views = results;
+			next(err);
+		});
+
+	});	
+
+	// Load Discussion Views
+	view.on('init', function (next) {
+
+		var u = keystone.list('DiscussionView').model.find().sort('-time')
+
+		u.exec(function (err, results) {
+			locals.data.discussion_views = results;
+			next(err);
+		});
+
+	});
+
+	// Load Group Views
+	view.on('init', function (next) {
+
+		var u = keystone.list('GroupView').model.find().sort('-time')
+
+		u.exec(function (err, results) {
+			locals.data.group_views = results;
+			next(err);
+		});
+
+	});
 
 	// Load Report Views
 	view.on('init', function (next) {
@@ -45,5 +84,5 @@ exports = module.exports = function(req, res) {
 
 	});
 
-	view.render('admin/analytics/report_views',pageData);
+	view.render('admin/analytics',pageData);
 };

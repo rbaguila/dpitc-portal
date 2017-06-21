@@ -1,0 +1,54 @@
+extends ../../layouts/admin-default
+
+block content
+
+    .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+        .table-responsive   
+            table.table.table-striped
+                thead
+                tr
+                    th ID
+                    th ip
+                    th Time
+                tbody
+                if data.path === '/admin/community-views'
+                    each view in locals.data.community_views
+                        tr   
+                            td 
+                                a(href='#') #{view._id}
+                            td #{view.ip}
+                            td #{view.time}
+                    else
+                        .jumbotron
+                            h3 No data
+                if data.path === '/admin/discussion-views'        
+                    each view in locals.data.discussion_views
+                        tr   
+                            td 
+                                a(href='#') #{view._id}
+                            td #{view.ip}
+                            td #{view.time}
+                    else
+                        .jumbotron
+                            h3 No data
+                if data.path === '/admin/group-views'        
+                    each view in locals.data.group_views
+                        tr   
+                            td 
+                                a(href='#') #{view._id}
+                            td #{view.ip}
+                            td #{view.time}
+                    else
+                        .jumbotron
+                            h3 No data
+                if data.path === '/admin/report-views'        
+                    each view in locals.data.report_views
+                        tr   
+                            td 
+                                a(href='#') #{view._id}
+                            td #{view.ip}
+                            td #{view.time}
+                    else
+                        .jumbotron
+                            h3 No data
+

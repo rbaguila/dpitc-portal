@@ -14,7 +14,7 @@ exports = module.exports = function(req, res) {
 			{ text: 'Users', link: '/admin/users'},
 			{ text: 'Analytics', link: '/admin/community-views'},
 			{ text: 'Community', link: '/admin/community'},
-			{ text: 'Publications', link: '/admin/publications'},
+			{ text: 'Publications', link: '/admin/publication-settings'},
 			{ text: 'Categories', link: '#'},
 			{ text: 'ELearning', link: '/admin/learning-objects'}
 		],
@@ -27,6 +27,10 @@ exports = module.exports = function(req, res) {
 	locals.section = 'users';
 	locals.data = {
 		users: [],
+		user: [],
+		learning_objects:[],
+		publications: [],
+		path:req.path,
 	};
 
 	// Load users
@@ -39,6 +43,60 @@ exports = module.exports = function(req, res) {
 			next(err);
 		});
 	
+	});
+
+	// Load user
+	view.on('init', function (next) {
+
+			var u = keystone.list('User').model.findOne({_id: req.params.id});
+
+			u.exec(function (err, results) {
+				locals.data.user = results;
+				next(err);
+			});
+	});
+	
+	view.on('post', {action: 'editProfile'}, function(next){
+			var u = keystone.list('User').model.findOneAndUpdate(
+				{_id: locals.user._id},
+				{
+					name:{
+						//first:(locals.formData.first ? locals.formData.first : locals.user.name.first),
+					}
+				},
+				function(err,results){
+					if (err) return next(err);
+					return res.redirect('/admin/users/:id');
+				}
+			);
+
+			var updater = locals.user.getUpdateHandler(req);
+
+			console.log(locals.formData.first)
+	});
+
+	// Load LO
+	view.on('init', function (next) {
+
+		var u = keystone.list('LearningObject').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.learning_objects = results;
+			next(err);
+		});
+
+	});
+
+	// Load publications
+	view.on('init', function (next) {
+
+		var u = keystone.list('Publication').model.find().sort({ title: 1 })
+
+		u.exec(function (err, results) {
+			locals.data.publications = results;
+			next(err);
+		});
+
 	});
 	
 

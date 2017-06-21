@@ -31,9 +31,6 @@ keystone.pre('render', middleware.flashMessages);
 var routes = {
 	views: importRoutes('./views'),
 	adminViews: importRoutes('./views/admin'),
-	adminCommunityViews: importRoutes('./views/admin/analytics'),
-	adminPublicationViews: importRoutes('./views/admin/publications'),
-	adminElearningViews: importRoutes('./views/admin/elearning'),
 	communityViews: importRoutes('./views/community'),
 	eresourcesViews: importRoutes('./views/eresources'),
 	elearningViews: importRoutes('./views/elearning'),
@@ -54,20 +51,25 @@ exports = module.exports = function (app) {
 	//Admin
 	app.get('/admin', middleware.requireUser, routes.adminViews.admin);
 	
-	//Admin-analytics pages
-	app.get('/admin/community-views', middleware.requireAnalyticsAdmin, routes.adminCommunityViews.community_views);
-	app.get('/admin/discussion-views', middleware.requireAnalyticsAdmin, routes.adminCommunityViews.discussion_views);
-	app.get('/admin/group-views', middleware.requireAnalyticsAdmin, routes.adminCommunityViews.group_views);
-	app.get('/admin/report-views', middleware.requireAnalyticsAdmin, routes.adminCommunityViews.report_views);
+	//Admin analytics pages
+	app.get('/admin/community-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
+	app.get('/admin/discussion-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
+	app.get('/admin/group-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
+	app.get('/admin/report-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
 
 	app.get('/admin/users', middleware.requireUsersAdmin, routes.adminViews.users);
-	app.get('/admin/users/:id', middleware.requireUsersAdmin ,routes.adminViews.user_profile);
-	app.post('/admin/users/:id', routes.adminViews.user_profile);
-	app.get('/admin/community', routes.adminViews.community);
-	app.get('/admin/publications',middleware.requirePublicationsAdmin, routes.adminPublicationViews.publications);
+	app.get('/admin/users/:id', middleware.requireUsersAdmin ,routes.adminViews.users);
+	//app.post('/admin/users/:id', routes.adminViews.user_profile);
+	
+	//Admin community pages
+	//app.get('/admin/community', routes.adminViews.community);
+	
+	//Admin publications
+	app.get('/admin/publication-settings',middleware.requirePublicationsAdmin, routes.adminViews.publications);
+	app.get('/admin/publications',middleware.requirePublicationsAdmin, routes.adminViews.publications);
 
-	app.get('/admin/learning-objects', middleware.requireElearningAdmin,routes.adminElearningViews.learning_objects);
-	app.get('/admin/courses', middleware.requireElearningAdmin, routes.adminElearningViews.course);
+	app.get('/admin/learning-objects', middleware.requireElearningAdmin,routes.adminViews.elearning);
+	app.get('/admin/courses', middleware.requireElearningAdmin, routes.adminViews.elearning);
 	// User
 
 

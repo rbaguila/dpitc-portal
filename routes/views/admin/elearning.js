@@ -43,16 +43,16 @@ exports = module.exports = function(req, res) {
 	locals.section = 'users';
 	locals.data = {
 		learning_objects: [],
-        users:[],
+		path:req.path,
+	    courses: [],
 	};
 
-
-    view.on('init', function (next) {
-
-		var u = keystone.list('User').model.find()
+	// Load courses
+	view.on('init', function (next) {
+		var u = keystone.list('Course').model.find().sort({ publishedAt: -1});
 
 		u.exec(function (err, results) {
-			locals.data.users = results;
+			locals.data.courses = results;
 			next(err);
 		});
 
@@ -71,5 +71,5 @@ exports = module.exports = function(req, res) {
 	});
 
 
-	view.render('admin/elearning/learning_objects',pageData);
+	view.render('admin/elearning',pageData);
 };
