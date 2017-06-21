@@ -6,7 +6,7 @@ var helper = require('./../helper');
 exports = module.exports = function (req, res) {
 
   var view = new keystone.View(req, res);
-  var locals = res.locals;  
+  var locals = res.locals;
 
   locals.sexTypes = User.fields.sex.ops;
   locals.suburbs = helper.cities;
@@ -20,7 +20,7 @@ exports = module.exports = function (req, res) {
     breadcrumbs: [
       { text: 'elearning', link: '/elearning' },
       { text: 'sign up', link: '/elearning/signup' },
-      
+
     ]
   };
 
@@ -46,11 +46,11 @@ exports = module.exports = function (req, res) {
         flashErrors: true,
         logErrors: true
       }, function(err,result) {
-        if (err) {    
+        if (err) {
           locals.validationErrors = err.errors;
         } else {
-          console.log(newUser);
-          req.flash('success', 'Account created. Please sign in.');         
+          // console.log(newUser);
+          req.flash('success', 'Account created. Please sign in.');
           return res.redirect('/keystone/signin?from=/elearning/profile?');
         }
         next();

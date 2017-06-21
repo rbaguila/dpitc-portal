@@ -115,6 +115,7 @@ html
             ul.nav.navbar-nav.navbar-right#login-controls
               if user
                 if user.canAccessKeystone
+                  li: a(href='/eresources/reports') Reports
                   li: a(href='/keystone') Open Keystone
                   li: a(href='/keystone/signout') Sign Out
               else

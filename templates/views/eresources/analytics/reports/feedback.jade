@@ -1,0 +1,64 @@
+extends ../../../../layouts/eresources
+
+block content
+  #public-content
+    .container-fluid(style="padding: 80px 90.5px 0px 90.5px;")
+      .wrapper
+        .row
+          .col-md-12
+            h3 Publication Feedback Report
+          .col-md-12
+            //- h4 Filter publications
+
+          .col-md-12
+            ul.list-group
+              table.table.table-striped.table-hover
+                tr
+                  th Title
+                  th Publication Line
+                  th Download Options
+                each publication in publications
+                  tr
+                    td #{publication.title}
+                    td #{publication.publicationLine ? publication.publicationLine.name : '' }
+                    td
+                      form(method='POST',action=redirect)
+                        input(type='hidden',name='action',value='download-all-totals')
+                        input(type='hidden',name='publicationID',value=publication._id)
+                        input(type='hidden',name='publicationTitle',value=publication.title)
+                        button.btn.btn-primary
+                          span.glyphicon.glyphicon-list-alt(aria-hidden='true',type='submit') &nbsp;
+                          | All Totals
+                      button.btn.btn-primary.modal-trigger(type='button', data-toggle='modal', data-target='#myModal',pubid=publication._id,pubtitle=publication.title)
+                        span.glyphicon.glyphicon-calendar &nbsp;
+                        | Range
+
+        // Modal
+        #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+          .modal-dialog(role='document')
+            form.modal-content(method='POST',action=redirect)
+              input(type='hidden',name='action',value='download-range')
+              input#hidden-pubid(type='hidden',name='pubID',value='')
+              input#hidden-pubtitle(type='hidden',name='pubTitle',value='')
+              .modal-header
+                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                  span(aria-hidden='true') ×
+                h4#myModalLabel.modal-title Select Date Range
+              .modal-body
+                .input-group
+                  span.input-group-addon
+                    span.glyphicon.glyphicon-calendar &nbsp;
+                    | Start
+                  input(type='date',name='start').form-control
+                br
+                .input-group
+                  span.input-group-addon
+                    span.glyphicon.glyphicon-calendar &nbsp;
+                    | End
+                  input(type='date',name='end').form-control
+              .modal-footer
+                button.btn.btn-default(type='button', data-dismiss='modal') Cancel
+                button.btn.btn-primary(type='submit') Download
+
+block js
+  script(src='/js/eresources/reports/feedback.js')
