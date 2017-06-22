@@ -30,6 +30,7 @@ keystone.pre('render', middleware.flashMessages);
 // Import Route Controllers
 var routes = {
 	views: importRoutes('./views'),
+	adminViews: importRoutes('./views/admin'),
 	communityViews: importRoutes('./views/community'),
 	eresourcesViews: importRoutes('./views/eresources'),
 	elearningViews: importRoutes('./views/elearning'),
@@ -46,6 +47,14 @@ exports = module.exports = function (app) {
 	app.get('/exhibit', routes.views.fiesta);
 	app.get('/exhibit/:exhibit', routes.views.exhibit);
 	app.get('/gallery', routes.views.gallery);
+
+	// Admin Routes
+	app.get('/admin', routes.adminViews.admin);
+	app.get('/admin/posts', routes.adminViews.posts);
+	app.get('/admin/posts-categories', routes.adminViews.posts_categories);
+	app.get('/admin/contents-fiesta', routes.adminViews.contents_fiesta);
+	app.get('/admin/technologies', routes.adminViews.technologies);
+	app.get('/admin/sliders', routes.adminViews.sliders);
 
 	// User
 
