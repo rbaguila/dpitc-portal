@@ -12,7 +12,7 @@ exports = module.exports = function(req, res) {
   ]
 
   view.query('topDownloads', keystone.list('Publication').model.find({}).sort('-downloads').limit(5).populate('publicationLine'));
-  view.query('latestReviews', keystone.list('PublicationFeedback').model.find({}).sort('-createdAt').populate('publication user'));
+  view.query('latestReviews', keystone.list('PublicationFeedback').model.find({}).sort('-createdAt').limit(4).populate('publication user'));
 
   view.render('eresources/analytics/dashboard');
 }
