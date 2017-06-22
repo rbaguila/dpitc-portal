@@ -21,7 +21,7 @@ exports = module.exports = function(req, res) {
 		breadcrumbs:[
 			{ text: 'Learning Objects', link: '/admin/learning-objects'},
 			{ text: 'Courses', link: '/admin/courses'},
-			{ text: 'Learning Contents', link: '#'},
+			{ text: 'Learning Contents', link: '/admin/learning-contents'},
 			{ text: 'ISPs', link: '#'},
 			{ text: 'LIndustries', link: '#'},
 			{ text: 'LSectors', link: '#'},
@@ -45,6 +45,7 @@ exports = module.exports = function(req, res) {
 		learning_objects: [],
 		path:req.path,
 	    courses: [],
+		learning_contents:[],
 	};
 
 	// Load courses
@@ -65,6 +66,18 @@ exports = module.exports = function(req, res) {
 
 		u.exec(function (err, results) {
 			locals.data.learning_objects = results;
+			next(err);
+		});
+
+	});
+
+	// Load Learning contents
+	view.on('init', function (next) {
+
+		var u = keystone.list('LearningContent').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.learning_contents = results;
 			next(err);
 		});
 

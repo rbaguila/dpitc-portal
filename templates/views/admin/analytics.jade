@@ -15,7 +15,7 @@ block content
                     each view in locals.data.community_views
                         tr   
                             td 
-                                a(href='#') #{view._id}
+                                a(href='/admin/community-views/' + view._id) #{view._id}
                             td #{view.ip}
                             td #{view.time}
                     else
@@ -25,7 +25,7 @@ block content
                     each view in locals.data.discussion_views
                         tr   
                             td 
-                                a(href='#') #{view._id}
+                                a(href='/admin/discussion-views/' + view._id) #{view._id}
                             td #{view.ip}
                             td #{view.time}
                     else
@@ -35,7 +35,7 @@ block content
                     each view in locals.data.group_views
                         tr   
                             td 
-                                a(href='#') #{view._id}
+                                a(href='/admin/group-views/' + view._id) #{view._id}
                             td #{view.ip}
                             td #{view.time}
                     else
@@ -45,7 +45,7 @@ block content
                     each view in locals.data.report_views
                         tr   
                             td 
-                                a(href='#') #{view._id}
+                                a(href='/admin/report-views/' + view._id) #{view._id}
                             td #{view.ip}
                             td #{view.time}
                     else

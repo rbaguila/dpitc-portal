@@ -1,0 +1,43 @@
+extends ../../layouts/admin-default
+
+
+block content
+
+    - var path = "/admin/community-view/" + data.community_views._id
+
+    .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+        if data.path == '/admin/community-view'
+            p i work
+        else    
+            div.row
+                h3 #{data.community_views._id}
+            div.row
+                div.col-md-2
+                    p IP
+                div.col-md-3
+                    p #{data.community_views.ip}
+            div.row
+                div.col-md-2
+                    p Time
+                div.col-md-3
+                    p #{data.community_views.time}
+            div.row    
+                div.col-md-2
+                    p City
+                div.col-md-3
+                    p #{data.community_views.city}
+            div.row    
+                div.col-md-2
+                    p Region
+                div.col-md-3   
+                    p #{data.community_views.region}
+            div.row
+                div.col-md-2
+                    p Country
+                div.col-md-3    
+                    p #{data.community_views.country}
+            div.row    
+                div.col-md-2
+                    p Loc
+                div.col-md-3    
+                    p #{data.community_views.loc}

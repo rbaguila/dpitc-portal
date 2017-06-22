@@ -3,12 +3,12 @@ extends ../../layouts/admin-default
 block content
     .row
         .col-sm-9.col-sm-offset-3.col-md-9.col-md-offset-2.main
-            input.form-control(type='text', placeholder='Search..')
-            button.btn.btn-success(type='button') Create Learning Object
-            .table-responsive   
-                table.table.table-striped
-                    thead
-                    if data.path === '/admin/learning-objects'
+            if data.path === '/admin/learning-objects'
+                input.form-control(type='text', placeholder='Search..')
+                button.btn.btn-success(type='button') Create Learning Object
+                .table-responsive   
+                    table.table.table-striped
+                        thead
                         tr
                             th Title
                             th Author
@@ -25,9 +25,14 @@ block content
                                 td #{lo.state}
                                 td #{lo.publishedAt}
                         else
-                            .jumbotron
-                                h3 No data
-                    if data.path === '/admin/course'
+                                    .jumbotron
+                                        h3 No data
+            if data.path === '/admin/course'
+                input.form-control(type='text', placeholder='Search..')
+                button.btn.btn-success(type='button') Create Learning Object
+                .table-responsive   
+                    table.table.table-striped
+                        thead
                         tr
                             th Title
                             th One-paragrapth Description
@@ -44,3 +49,25 @@ block content
                         else
                             .jumbotron
                                 h3 No data
+            if data.path === '/admin/learning-contents'
+                input.form-control(type='text', placeholder='Search..')
+                button.btn.btn-success(type='button') Create Learning Object
+                .table-responsive   
+                    table.table.table-striped
+                        thead
+                        tr
+                            th Title
+                            th One-paragrapth Description
+                            th State
+                            th Published At
+                        tbody
+                        each contents in data.learning_contents
+                            tr   
+                                td 
+                                    a(href='#') #{contents.title}
+                                td #{contents.content.brief}
+                                td #{contents.state}
+                                td #{contents.publishedAt}
+                        else
+                            .jumbotron
+                                h3 No data 
