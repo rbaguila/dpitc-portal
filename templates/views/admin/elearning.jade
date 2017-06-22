@@ -19,7 +19,7 @@ block content
                         each lo in data.learning_objects
                             tr   
                                 td 
-                                    a(href='#') #{lo.title}
+                                    a(href='/admin/learning-objects/'+lo._id) #{lo.title}
                                 td #{lo.author}
                                 td #{lo.content.brief}
                                 td #{lo.state}
@@ -27,7 +27,7 @@ block content
                         else
                                     .jumbotron
                                         h3 No data
-            if data.path === '/admin/course'
+            if data.path === '/admin/courses'
                 input.form-control(type='text', placeholder='Search..')
                 button.btn.btn-success(type='button') Create Learning Object
                 .table-responsive   

@@ -5,7 +5,6 @@ exports = module.exports = function(req, res) {
 	var locals = res.locals;
 
 	var pageData = {
-		title: 'Users',
 		navLinks: [
 			{ text: 'Home', link: '/admin' },
 			{ text: 'Posts', link: '#'},

@@ -70,6 +70,7 @@ exports = module.exports = function (app) {
 	app.get('/admin/publications',middleware.requirePublicationsAdmin, routes.adminViews.publications);
 
 	app.get('/admin/learning-objects', middleware.requireElearningAdmin,routes.adminViews.elearning);
+	app.get('/admin/learning-objects/:id', middleware.requireElearningAdmin, routes.adminViews.elearning_view);
 	app.get('/admin/courses', middleware.requireElearningAdmin, routes.adminViews.elearning);
 	app.get('/admin/learning-contents', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	// User
