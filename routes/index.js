@@ -53,7 +53,7 @@ exports = module.exports = function (app) {
 	
 	//Admin analytics pages
 	app.get('/admin/community-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
-	app.get('/admin/community-views/:id', routes.adminViews.analytics_view);
+	app.get('/admin/community-views/:id',middleware.requireAnalyticsAdmin ,routes.adminViews.analytics_view);
 	app.get('/admin/discussion-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
 	app.get('/admin/group-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
 	app.get('/admin/report-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
