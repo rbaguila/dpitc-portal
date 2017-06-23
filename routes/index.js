@@ -48,6 +48,10 @@ exports = module.exports = function (app) {
 	app.get('/exhibit/:exhibit', routes.views.exhibit);
 	app.get('/gallery', routes.views.gallery);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 98c830dbac373d2c360d04f50d7c4febf807f439
 	//Admin
 	app.get('/admin', middleware.requireUser, routes.adminViews.admin);
 	
@@ -76,13 +80,20 @@ exports = module.exports = function (app) {
 	app.get('/admin/courses', middleware.requireElearningAdmin, routes.adminViews.elearning);
 	app.get('/admin/learning-contents', middleware.requireElearningAdmin,routes.adminViews.elearning);
 
+<<<<<<< HEAD
+=======
+	// Admin Routes
+>>>>>>> 98c830dbac373d2c360d04f50d7c4febf807f439
 	app.get('/admin/posts', routes.adminViews.posts);
 	app.get('/admin/posts-categories', routes.adminViews.posts_categories);
 	app.get('/admin/contents-fiesta', routes.adminViews.contents_fiesta);
 	app.get('/admin/technologies', routes.adminViews.technologies);
 	app.get('/admin/sliders', routes.adminViews.sliders);
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 98c830dbac373d2c360d04f50d7c4febf807f439
 	// User
 
 	// Signup Route
