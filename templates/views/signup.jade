@@ -1,0 +1,77 @@
+doctype html
+html(lang='en')
+    head 
+        link(href='styles/bootstrap/signup.css', rel='stylesheet')
+
+        block css
+
+    block head
+
+    block signup
+        
+        .main-content
+            // Full Name
+            form.form-basic(method='post', action='/signup')
+                .row  
+                    input(type='hidden', name='action', value='signup')
+                    .form-title-row
+                        h1 Sign Up
+                    .form-row
+                        label.col-sm-3.control-label(for='first') First Name
+                            .col-sm-9
+                                input#firstName.form-control(type='text', placeholder='First Name', name='first')
+                    .form-row
+                        label.col-sm-3.control-label(for='last') Last Name
+                            .col-sm-9
+                            input#lastName.form-control(type='text', placeholder='Last Name', name='last')
+                // Email and Password
+                .form-row
+                    label.col-sm-3.control-label(for='email') Email
+                        .col-sm-9
+                            input#email.form-control(type='email', placeholder='Email', name='email')
+                .form-row
+                    label.col-sm-3.control-label(for='password') Password
+                        .col-sm-9
+                            input#password(type='password', placeholder='Password', required='', name='password')
+                // Birthday
+                .form-row
+                    label.col-sm-3.control-label(for='birthDate') Birthday
+                        .col-sm-9
+                            input#birthDate.form-control(type='date', name='birthday')
+                // Costumer Type
+                .form-row
+                    label.col-sm-3.control-label(for='consumerType') Costumer Type
+                        .col-sm-9
+                            select#consumerType.form-control(name='consumerType')
+                                option Researcher
+                                option Business/Private Sector
+                                option Policy Maker
+                                option Other
+                // Agency Affliation
+                .form-row
+                    label.col-sm-3.control-label(for='agencyAffiliation') Agency Affiliation
+                        .col-sm-9
+                            input#agencyAffiliation.form-control(type='text', placeholder='Agency Affiliation', name='agencyAffiliation')
+                // Sex
+                .form-row
+                    label.control-label.col-sm-3 Sex
+                        .col-sm-6
+                            .row
+                                .col-sm-4
+                                    label.radio-inline
+                                        input#maleRadio(type='radio', value='Male', name='sex')
+                                        | Male
+                                .col-sm-4
+                                    label.radio-inline
+                                        input#femaleRadio(type='radio', value='Female', name='sex')
+                                        | Female
+                // Contact Number
+                .form-row
+                    label.col-sm-3.control-label(for='contactNumber') Contact Number
+                        .col-sm-9
+                            input#email.form-control(type='text', placeholder='09*********', name='contactNumber')    
+
+                // Submit
+                .form-row
+                    .col-sm-9.col-sm-offset-3
+                        button.btn.btn-primary.btn-block(type='submit', name='signup') Sign Up

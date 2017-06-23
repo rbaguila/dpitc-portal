@@ -7,8 +7,8 @@ exports = module.exports = function(req, res) {
 		title:'Admin Dashboard',
 		navLinks: [
 			{ text: 'Home', link: '/admin' },
-			{ text: 'Posts', link: '#'},
-			{ text: 'Contents', link: '#'},
+			{ text: 'Posts', link: '/admin/posts'},
+			{ text: 'Contents', link: '/admin/contents-fiesta'},
 			{ text: 'Pages', link: '#'},
 			{ text: 'Users', link: '/admin/users'},
 			{ text: 'Analytics', link: '/admin/community-views'},
@@ -21,4 +21,5 @@ exports = module.exports = function(req, res) {
   	};
 
 	view.render('admin/index',pageData);
+
 };
