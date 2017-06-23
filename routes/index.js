@@ -68,6 +68,8 @@ exports = module.exports = function (app) {
 	//Admin publications
 	app.get('/admin/publication-settings',middleware.requirePublicationsAdmin, routes.adminViews.publications);
 	app.get('/admin/publications',middleware.requirePublicationsAdmin, routes.adminViews.publications);
+	app.get('/admin/publication-lines',middleware.requirePublicationsAdmin, routes.adminViews.publications);
+	app.get('/admin/publication-feedback', middleware.requirePublicationsAdmin, routes.adminViews.publications);
 
 	app.get('/admin/learning-objects', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/learning-objects/:id', middleware.requireElearningAdmin, routes.adminViews.elearning_view);
