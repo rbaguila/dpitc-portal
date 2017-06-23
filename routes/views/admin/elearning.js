@@ -8,12 +8,12 @@ exports = module.exports = function(req, res) {
 		title: 'Learning Objects',
 		navLinks: [
 			{ text: 'Home', link: '/admin' },
-			{ text: 'Posts', link: '#'},
-			{ text: 'Contents', link: '#'},
+			{ text: 'Posts', link: '/admin/posts'},
+			{ text: 'Contents', link: '/admin/contents-fiesta'},
 			{ text: 'Pages', link: '#'},
 			{ text: 'Users', link: '/admin/users'},
 			{ text: 'Analytics', link: '/admin/community-views'},
-			{ text: 'Community', link: '/admin/community'},
+			{ text: 'Community', link: '#'},
 			{ text: 'Publications', link: '/admin/publications'},
 			{ text: 'Categories', link: '#'},
 			{ text: 'ELearning', link: '/admin/learning-objects'}

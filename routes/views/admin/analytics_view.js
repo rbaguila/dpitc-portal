@@ -9,8 +9,8 @@ exports = module.exports = function(req, res) {
 		title: 'Community Views',
 		navLinks: [
 			{ text: 'Home', link: '/admin' },
-			{ text: 'Posts', link: '#'},
-			{ text: 'Contents', link: '#'},
+			{ text: 'Posts', link: '/admin/posts'},
+			{ text: 'Contents', link: '/admin/contents-fiesta'},
 			{ text: 'Pages', link: '#'},
 			{ text: 'Users', link: '/admin/users'},
 			{ text: 'Analytics', link: '/admin/community-views'},

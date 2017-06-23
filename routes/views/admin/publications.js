@@ -8,12 +8,12 @@ exports = module.exports = function(req, res) {
 			title: 'Publications',
 			navLinks: [
 				{ text: 'Home', link: '/admin' },
-				{ text: 'Posts', link: '#'},
-				{ text: 'Contents', link: '#'},
+				{ text: 'Posts', link: '/admin/posts'},
+				{ text: 'Contents', link: '/admin/contents-fiesta'},
 				{ text: 'Pages', link: '#'},
 				{ text: 'Users', link: '/admin/users'},
 				{ text: 'Analytics', link: '/admin/community-views'},
-				{ text: 'Community', link: '/admin/community'},
+				{ text: 'Community', link: '#'},
 				{ text: 'Publications', link: '/admin/publication-settings'},
 				{ text: 'Categories', link: '#'},
 				{ text: 'ELearning', link: '/admin/learning-objects'}
@@ -21,15 +21,18 @@ exports = module.exports = function(req, res) {
 			breadcrumbs:[
 				{ text: 'Publications Settings', link: '/admin/publication-settings'},
 				{ text: 'Publications', link: '/admin/publications'},
-				{ text: 'Publication Lines', link: '#'},
+				{ text: 'Publication Lines', link: '/admin/publication-lines'},
+				{ text: 'Feedback', link: '/admin/publication-feedback'}
 			]
   	};
 
 	//init locals
 	locals.section = 'users';
 	locals.data = {
-		publication_settings: [],
-		publications: [],
+		publication_settings: [] ,
+		publications: [] ,
+		publication_lines:[] ,
+		publication_feedback:[],
 		path:req.path,
 	};
 
@@ -56,6 +59,31 @@ exports = module.exports = function(req, res) {
 		});
 
 	});
+
+	// Load publication-lines
+	view.on('init', function (next) {
+
+		var u = keystone.list('PublicationLine').model.find().sort({ name: 1 })
+
+		u.exec(function (err, results) {
+			locals.data.publication_lines = results;
+			next(err);
+		});
+
+	});
+
+	// Load publication-feedback
+	view.on('init', function (next) {
+
+		var u = keystone.list('PublicationFeedback').model.find().sort({ title: 1 })
+
+		u.exec(function (err, results) {
+			locals.data.publication_feedback = results;
+			next(err);
+		});
+
+	});
+
 
 	view.render('admin/publications',pageData);
 };
