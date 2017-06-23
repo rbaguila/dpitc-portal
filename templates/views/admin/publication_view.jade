@@ -1,0 +1,95 @@
+extends ../../layouts/admin-default
+
+block content
+    .row
+        .col-sm-9.col-sm-offset-3.col-md-9.col-md-offset-3.main
+            form.form-group.row(method='post')
+                input(type='hidden', name= 'action', value='editPublication')
+                .row
+                    .col-md-7
+                        input.form-control.input-lg(type='text', value= data.publications.title, placeholder='Title')
+                h5.help-block #{'ID: '+data.publications._id}
+                .row
+                    .col-md-7
+                        label Publication Type
+                        select.form-control
+                            option #{data.publications.publicationType}
+                .row
+                    .col-md-7
+                        label Publication Line
+                        select.form-control
+                            option #{data.publications.publicationLine}
+                .row
+                    .col-md-7
+                        label Publisher
+                        input.form-control(type='text', value= data.publications.publisher, placeholder='Publisher')
+                .row
+                    .col-md-7
+                        label Cover
+                        img.img-rounded(src=data.publications.cover)
+                        input#file.custom-file-input(type='file')
+                        span.custom-file-control
+                .row
+                    .col-md-7
+                        label File
+                .row
+                    .col-md-7
+                        label Description
+                        textarea.form-control(rows='8') #{data.publications.description}
+                h4 Categories
+                .row
+                    .col-md-7
+                        label Industry
+                        select.form-control
+                            option #{data.publications.industry}
+                .row
+                    .col-md-7
+                        label Sector
+                        select.form-control
+                            option #{data.publications.sector}
+                .row
+                    .col-md-7
+                        label Commodity
+                        select.form-control
+                            option #{data.publications.commodity}
+                h4 Editors
+                .row
+                    .col-md-7
+                        label Technical Editor
+                        input.form-control(type='text', value= data.publications.technicalEditor, placeholder="Technical Editor")
+                .row
+                    .col-md-7
+                        label Volume Editor
+                        input.form-control(type='text', value= data.publications.volumeEditor, placeholder="Volume Editor")
+                .row
+                    .col-md-7
+                        label Layout Artist
+                        input.form-control(type='text', value= data.publications.layoutArtist, placeholder="Layout Artist")
+                h4 International Standard Numbers
+                .row
+                    .col-md-7
+                        label ISSN
+                        input.form-control(type='text', value= data.publications.ISSN)
+                h4 Misc
+                .row
+                    .col-md-7
+                        label Printer
+                        input.form-control(type='text', value= data.publications.printer)
+                .row
+                    .col-md-7
+                        label Format
+                        input.form-control(type='text', value= data.publications.printer)
+                .row
+                    .col-md-7
+                        label Number of pages
+                        input.form-control(type='text', value= data.publications.printer)
+                .row
+                    .col-md-7
+                        label Price
+                        input.form-control(type='text', value= data.publications.printer)
+                .row
+                    .col-md-1
+                        label Downloads
+                    .col-md-1
+                        mark #{data.publications.downloads}
+

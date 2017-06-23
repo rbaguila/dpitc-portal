@@ -30,7 +30,7 @@ block content
                             each pub in data.publications
                                 tr   
                                     td 
-                                        a(href='#') #{pub.title}
+                                        a(href='/admin/publications/'+pub._id) #{pub.title}
                                     td #{pub.publicationLine}
                                     td #{pub.publicationType}
                                     td #{pub.publicationYear}
