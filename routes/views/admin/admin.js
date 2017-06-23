@@ -23,7 +23,4 @@ exports = module.exports = function(req, res) {
 	view.render('admin/index',pageData);
 
 };
-<<<<<<< HEAD
 
-=======
->>>>>>> 98c830dbac373d2c360d04f50d7c4febf807f439
