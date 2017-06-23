@@ -117,8 +117,9 @@ html
                 if user.canAccessKeystone
                   li: a(href='/eresources/reports') Reports
                   li: a(href='/keystone') Open Keystone
-                  li: a(href='/keystone/signout') Sign Out
+                li: a(href='/keystone/signout') Sign Out
               else
+                li: a(href='/signup',class='not-active login-link') Sign Up
                 li
                   if redirect
                     a(href='/keystone/signin?from=' + redirect, class="not-active login-link") Sign In
