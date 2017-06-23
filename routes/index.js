@@ -73,7 +73,19 @@ exports = module.exports = function (app) {
 	app.get('/admin/learning-objects/:id', middleware.requireElearningAdmin, routes.adminViews.elearning_view);
 	app.get('/admin/courses', middleware.requireElearningAdmin, routes.adminViews.elearning);
 	app.get('/admin/learning-contents', middleware.requireElearningAdmin,routes.adminViews.elearning);
+
+	app.get('/admin/posts', routes.adminViews.posts);
+	app.get('/admin/posts-categories', routes.adminViews.posts_categories);
+	app.get('/admin/contents-fiesta', routes.adminViews.contents_fiesta);
+	app.get('/admin/technologies', routes.adminViews.technologies);
+	app.get('/admin/sliders', routes.adminViews.sliders);
+
+
 	// User
+
+	// Signup Route
+	app.get('/signup', routes.views.signup);
+	app.post('/signup', routes.views.signup);
 
 
 	// User-Elearning Routes
