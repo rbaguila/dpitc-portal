@@ -42,7 +42,7 @@ block content
                         each courses in data.courses
                             tr   
                                 td 
-                                    a(href='#') #{courses.title}
+                                    a(href='/admin/courses/'+courses._id) #{courses.title}
                                 td #{courses.content.brief}
                                 td #{courses.state}
                                 td #{courses.publishedAt}
@@ -64,7 +64,7 @@ block content
                         each contents in data.learning_contents
                             tr   
                                 td 
-                                    a(href='#') #{contents.title}
+                                    a(href='/admin/learning-contents/'+ contents._id) #{contents.title}
                                 td #{contents.content.brief}
                                 td #{contents.state}
                                 td #{contents.publishedAt}
