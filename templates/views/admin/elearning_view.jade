@@ -1,0 +1,48 @@
+extends ../../layouts/admin-default
+
+block content
+    .row
+        .col-sm-9.col-sm-offset-3.col-md-9.col-md-offset-3.main
+            form.form-group.row(method='post')
+                input(type='hidden', name= 'action', value='editLO')
+                form.form-group.row
+                    .col-md-7
+                        input.form-control.input-lg(type='text', value= data.learning_objects.title, placeholder='Title')
+                h5.help-block #{'ID: '+data.learning_objects._id}
+                .row
+                    .col-md-7
+                        label State
+                        select.form-control
+                            option #{data.learning_objects.state}
+                .row
+                    .col-md-2
+                        label Published Date
+                        input.form-control(type='date',value=data.learning_objects.publishedAt)
+                    .col-md-2
+                        label Published Time
+                        input.form-control(type='time',value=data.learning_objects.publishedAt)
+                .row
+                    .col-md-7
+                        label One-paragraph Description
+                        textarea.form-control(rows='4') #{data.learning_objects.content.brief}
+                .row
+                    .col-md-7
+                        label Full Description
+                        textarea.form-control(rows='15') #{data.learning_objects.content.extended}
+                h4
+                    label Meta
+                .row
+                    .col-md-1
+                        label Created At
+                    .col-md-2
+                        mark #{data.learning_objects.publishedAt}
+                .row
+                    .col-md-3
+                        label Created By
+                        p.bg-primary
+                .row
+                    .col-md-1
+                        label Updated At
+                    .col-md-2
+                        mark #{data.learning_objects.publishedAt}
+

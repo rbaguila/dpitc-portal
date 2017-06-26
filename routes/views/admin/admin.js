@@ -10,15 +10,17 @@ exports = module.exports = function(req, res) {
 			{ text: 'Posts', link: '/admin/posts'},
 			{ text: 'Contents', link: '/admin/contents-fiesta'},
 			{ text: 'Pages', link: '#'},
-			{ text: 'Users', link: '#'},
-			{ text: 'Analytics', link: '#'},
-			{ text: 'Community', link: '#'},
-			{ text: 'Publications', link: '#'},
+			{ text: 'Users', link: '/admin/users'},
+			{ text: 'Analytics', link: '/admin/community-views'},
+			{ text: 'Community', link: '/admin/community'},
+			{ text: 'Publications', link: '/admin/publication-settings'},
 			{ text: 'Categories', link: '#'},
-			{ text: 'ELearning', link: '#'}
+			{ text: 'ELearning', link: '/admin/learning-objects'}
 		],
 		breadcrumbs:[]
   	};
 
 	view.render('admin/index',pageData);
+
 };
+

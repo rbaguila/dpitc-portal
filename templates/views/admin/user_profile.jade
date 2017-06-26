@@ -1,0 +1,116 @@
+extends ../../layouts/admin-default
+
+block content
+
+    .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+        h2 #{data.user.name.first + ' ' + data.user.name.last}
+        p.help-block #{'ID: '+data.user._id}
+        br
+        form.form-group.row(method="post")
+            //-input(type='hidden', name= 'action', value='editProfile')
+            .row
+                .col-md-3               
+                    label First Name :
+                    input.form-control(type='text', value= data.user.name.first, placeholder='First name')
+                .col-md-4
+                    label Last Name :    
+                    input.form-control(type='text', value= data.user.name.last, placeholder='Last name')
+            .row
+                .col-md-7
+                    label Email :
+                    input.form-control(type='text', value= data.user.email, placeholder='Email')
+            .row
+                .col-md-5
+                    label Password :
+                    button.btn.btn-primary(type='submit') Change Password
+            label.custom-file Photo :
+                input#file.custom-file-input(type='file')
+                span.custom-file-control
+            
+            h3 Elearning
+            .row
+                .col-md-7
+                    label Learning Objects Taken
+                    select.form-control
+                        if data.user.learningObjectsTaken
+                            option(selected='') #{data.user.learningObjectsTaken}
+                        else
+                            option(selected='') Select...
+                        each lo,i in data.learning_objects
+                            option(value=i) #{lo.title}
+            .row
+                .col-md-7
+                    h4 Location
+                    label Street Address
+                    input.form-control(type='text', value= data.user.location.street1, placeholder='Street Address')
+            .row
+                .col-md-4
+                    label Suburb
+                    input.form-control(type='text', value= data.user.location.suburb, placeholder='Suburb')
+                .col-md-3
+                    label State
+                    input.form-control(type='text', value= data.user.location.state, placeholder='State')
+            .row
+                .col-md-3
+                    label Postcode
+                    input.form-control(type='text', value= data.user.location.postcode, placeholder='Postcode')
+                .col-md-4
+                    label Country
+                    input.form-control(type='text', value= data.user.location.country, placeholder='Country')
+            .row
+                .col-md-2
+                    label Birthday
+                    input.form-control(type='date', value= data.user.birthday.toLocaleDateString())
+            .row
+                .col-md-7
+                    label Sex
+                    select.form-control
+                        option(selected='') #{data.user.sex}
+            .row
+                .col-md-3.col-md-offset-1
+                    label Permissions
+                    .checkbox
+                        input(type='checkbox' checked= data.user.isElearningAdmin)
+                        | Can Access Elearning Admin
+                    .checkbox
+                        input(type='checkbox' checked= data.user.isElearningUser)
+                        | Can Access Elearning User
+                    .checkbox
+                        input(type='checkbox' checked= data.user.isPostsAdmin)
+                        | Can access Posts Admin
+                    .checkbox
+                        input(type='checkbox' checked= data.user.isContentsAdmin)
+                        | Can access Contents Admin
+                    .checkbox
+                        input(type='checkbox' checked= data.user.isPagesAdmin)
+                        | Can access Pages Admin
+                    .checkbox
+                        input(type='checkbox' checked= data.user.isUsersAdmin)
+                        | Can access Users Admin
+                    .checkbox
+                        input(type='checkbox' checked= data.user.isAnalyticsAdmin)
+                        | Can access Analytics Admin
+                    .checkbox
+                        input(type='checkbox' checked= data.user.isCommunityAdmin)
+                        | Can access Community Admin
+                    .checkbox
+                        input(type='checkbox' checked= data.user.isPublicationsAdmin)
+                        | Can access Publications Admin
+                    .checkbox
+                        input(type='checkbox' checked= data.user.isPublicationsUser)
+                        | Can access Publications Admin
+                    .checkbox
+                        input(type='checkbox' checked= data.user.isCategoriesAdmin)
+                        | Can access Categories Admin
+            .row
+                .col-md-7
+                    h4 Backlog
+                    label Need Reviewing
+                    select.form-control
+                        if data.user.needsReviewing
+                            option(selected='') #{data.user.needsReviewing}
+                        else
+                            option(selected='') Select...
+                        each pub,i in data.publications
+                            option(value=i) #{pub.title}
+            button.btn.btn-primary(type='submit') Save
