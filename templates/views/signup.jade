@@ -1,6 +1,6 @@
 doctype html
 html(lang='en')
-    head 
+    head
         link(href='styles/bootstrap/signup.css', rel='stylesheet')
 
         block css
@@ -8,11 +8,11 @@ html(lang='en')
     block head
 
     block signup
-        
+
         .main-content
             // Full Name
             form.form-basic(method='post', action='/signup')
-                .row  
+                .row
                     input(type='hidden', name='action', value='signup')
                     .form-title-row
                         h1 Sign Up
@@ -40,7 +40,7 @@ html(lang='en')
                             input#birthDate.form-control(type='date', name='birthday')
                 // Costumer Type
                 .form-row
-                    label.col-sm-3.control-label(for='consumerType') Costumer Type
+                    label.col-sm-3.control-label(for='consumerType') User Type
                         .col-sm-9
                             select#consumerType.form-control(name='consumerType')
                                 option Researcher
@@ -69,7 +69,7 @@ html(lang='en')
                 .form-row
                     label.col-sm-3.control-label(for='contactNumber') Contact Number
                         .col-sm-9
-                            input#email.form-control(type='text', placeholder='09*********', name='contactNumber')    
+                            input#email.form-control(type='text', placeholder='09*********', name='contactNumber')
 
                 // Submit
                 .form-row
