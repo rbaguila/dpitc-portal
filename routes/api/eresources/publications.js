@@ -1,5 +1,6 @@
 var keystone = require('keystone');
 var Publication = keystone.list('publications');
+var Download = keystone.list('PublicationDownload');
 var User = keystone.list('User');
 
 
@@ -8,6 +9,21 @@ exports.downloadPublication = function(req, res) {
   var pubID = req.query.pubID;
 
   if (user && pubID) {
+    //Add internal checking for review backlogs
+
+    // Create Download entry
+    var newDownloadEntry = new Download.model({
+      publication: pubID,
+      user: user._id,
+      date: new Date()
+    });
+
+    newDownloadEntry.save(function(err) {
+      if (err) {
+      } else {
+      }
+    });
+
 
     // Increment analytics
     Publication.model.findOneAndUpdate(

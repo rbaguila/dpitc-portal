@@ -133,7 +133,8 @@ Publication.add(
 // http://keystonejs.com/docs/database/#relationships
 
 Publication.relationship(
-  { ref: 'PublicationFeedback', path: 'publication' }
+  { ref: 'PublicationFeedback', path: 'publication' },
+  { ref: 'PublicationDownload', path: 'publication' }
 );
 
 Publication.schema.virtual('title.trunc').get(function() {
