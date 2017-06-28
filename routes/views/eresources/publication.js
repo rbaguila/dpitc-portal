@@ -3,7 +3,6 @@ var User = keystone.list('User');
 var Publication = keystone.list('Publication');
 
 exports = module.exports = function(req, res) {
-  console.log('Viewing a publication');
   var view = new keystone.View(req, res);
   var locals = res.locals;
   var pubId = req.params.publication;
@@ -52,6 +51,12 @@ exports = module.exports = function(req, res) {
           return next();
         }
       })
+  });
+
+  view.on('post', { action: 'download' }, function(next) {
+    var url = '/api/publications/download?pubID=' + req.body.pubID;
+
+    return res.redirect(url);
   });
 
   view.query('publication', keystone.list('Publication').model.findOne({_id: pubId}).populate('industry sector commodity publicationLine'));
