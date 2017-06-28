@@ -21,7 +21,10 @@ block content
                   input(type='hidden', name='redirect', value=redirect)
                   button.btn.btn-warning(type='submit') Rate Previous Download
               else if needsReviewing && needsReviewing == currentPublicationID
-                a.btn.btn-success(href=publication.file.url,role="button",download) Re-Download
+                form(action=redirect,method='POST')
+                  input(type='hidden',name='action',value='download')
+                  input(type='hidden',name='pubID',value=currentPublicationID)
+                  button.btn.btn-success(type='submit') Re-Download
               else
                 form(action=redirect,method='POST')
                   input(type='hidden',name='action',value='download')
