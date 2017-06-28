@@ -51,7 +51,7 @@ exports = module.exports = function (app) {
 
 	//Admin
 	app.get('/admin', middleware.requireUser, routes.adminViews.admin);
-	
+
 	//Admin analytics pages
 	app.get('/admin/community-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
 	app.get('/admin/community-views/:id',middleware.requireAnalyticsAdmin ,routes.adminViews.communityViews_profile);
@@ -67,12 +67,10 @@ exports = module.exports = function (app) {
 	app.post('/admin/report-views/:id',middleware.requireAnalyticsAdmin ,routes.adminViews.reportViews_profile);
 
 	app.get('/admin/users', middleware.requireUsersAdmin, routes.adminViews.users);
-	app.get('/admin/users/:id', middleware.requireUsersAdmin ,routes.adminViews.user_profile);
-	app.post('/admin/users/:id', middleware.requireUsersAdmin, routes.adminViews.user_profile);
-	
+	app.get('/admin/users/:id', middleware.requireUsersAdmin ,routes.adminViews.users);
 	//Admin community pages
 	//app.get('/admin/community', routes.adminViews.community);
-	
+
 	//Admin publications
 	app.get('/admin/publication-settings',middleware.requirePublicationsAdmin, routes.adminViews.publications);
 	app.get('/admin/publication-settings/:id',middleware.requirePublicationsAdmin, routes.adminViews.publicationsSettings_profile);
@@ -89,7 +87,7 @@ exports = module.exports = function (app) {
 	//Admin posts
 	app.get('/admin/posts', routes.adminViews.posts);
 	app.get('/admin/posts-categories', routes.adminViews.posts_categories);
-	
+
 	//Admin contents
 	app.get('/admin/contents-fiesta', routes.adminViews.contents_fiesta);
 	app.get('/admin/technologies', routes.adminViews.technologies);
@@ -248,6 +246,7 @@ exports = module.exports = function (app) {
 	app.get('/elearning/api/userVisitsRatio', routes.api.elearning.userVisitsRatio);
 
   // Publications API
+  app.get('/api/publications/download/', keystone.middleware.api, routes.api.eresources.publications.downloadPublication);
   app.get('/api/publications', keystone.middleware.api, routes.api.eresources.publications.getPublications);
   app.get('/api/publications/search/:searchKey', keystone.middleware.api, routes.api.eresources.publications.findPublication)
   app.get('/api/publications/reports/publications',keystone.middleware.api, routes.api.eresources.reports.publications);
