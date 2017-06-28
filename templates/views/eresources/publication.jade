@@ -21,16 +21,25 @@ block content
                   input(type='hidden', name='redirect', value=redirect)
                   button.btn.btn-warning(type='submit') Rate Previous Download
               else if needsReviewing && needsReviewing == currentPublicationID
-                a.btn.btn-success(href=publication.file.url,role="button",download) Re-Download
-              else if clearedToDownload
-                a.btn.btn-success(href=publication.file.url,role="button",download) Download
+                form(action=redirect,method='POST')
+                  input(type='hidden',name='action',value='download')
+                  input(type='hidden',name='pubID',value=currentPublicationID)
+                  button.btn.btn-success(type='submit') Re-Download
               else
+                form(action=redirect,method='POST')
+                  input(type='hidden',name='action',value='download')
+                  input(type='hidden',name='pubID',value=currentPublicationID)
+                  button.btn.btn-success(type='submit') Download
+              //- else if clearedToDownload
+                a.btn.btn-success(href=publication.file.url,role="button",download) Download
+              //- else
                 form(action=redirect,method='POST')
                   input(type='hidden',name='action',value='generate-download-link')
                   input(type='hidden',name='toReview',value=currentPublicationID)
                   input(type='hidden',name='publication',value=publication)
                   input(type='hidden', name='userID', value=user._id)
                   button.btn.btn-info(type='submit') Get Download Link
+
             else
               if redirect
                 a.btn.btn-default(href='/keystone/signin?from=' + redirect) Log In to Access
