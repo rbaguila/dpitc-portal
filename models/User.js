@@ -20,15 +20,16 @@ User.add({
     many: true
   },
 	location: { type: Types.Location, defaults: { country: 'Philippines' }},
-  consumerType: { 
+  consumerType: {
 		type: Types.Select,
-		options: [ 
+		options: [
 		{ value: 'Researcher', label: 'Researcher' },
 		{ value: 'Business/Private Sector', label: 'Business/Private Sector' },
 		{ value: 'Policy Maker', label: 'Policy Maker' },
+    { value: 'Admin', label: 'Admin' },
 		{ value: 'Other', label: 'Other' }
 		],
-		initial: false,
+		initial: true,
 		required: true
 	},
 	birthday: { type: Types.Date, initial: true, required: true, index: true },
@@ -43,7 +44,7 @@ User.add({
     required: false
   },
   contactNumber: { type: Types.Number, initial: true, required: true, index: true },
-  
+
 }, 'Permissions', {
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: false },
 
