@@ -208,6 +208,8 @@ exports = module.exports = function (app) {
   app.get('/api/publications/search/:searchKey', keystone.middleware.api, routes.api.eresources.publications.findPublication)
   app.get('/api/publications/reports/publications',keystone.middleware.api, routes.api.eresources.reports.publications);
   app.get('/api/publications/reports/feedback',keystone.middleware.api, routes.api.eresources.reports.feedback);
+  app.get('/api/publications/downloads', keystone.middleware.api, routes.api.eresources.reports.downloads.getAllDownloads);
+  app.get('/api/publications/downloads/current-month', keystone.middleware.api, routes.api.eresources.reports.downloads.getDownloadsCurrentMonth);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

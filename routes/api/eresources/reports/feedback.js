@@ -24,7 +24,7 @@ exports = module.exports = function(req, res) {
   if (start && end) {
     constraints['createdAt'] = {
       $gte: new Date(start),
-      $lt: new Date(end)
+      $lte: new Date(end)
     }
   }
 
