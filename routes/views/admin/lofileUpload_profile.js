@@ -18,7 +18,7 @@ exports = module.exports = function(req, res) {
 			{ text: 'Categories', link: '#'},
 			{ text: 'ELearning', link: '/admin/learning-objects'}
 		],
-breadcrumbs:[
+		breadcrumbs:[
 			{ text: 'Learning Objects', link: '/admin/learning-objects'},
 			{ text: 'Courses', link: '/admin/courses'},
 			{ text: 'Learning Contents', link: '/admin/learning-contents'},
@@ -43,20 +43,20 @@ breadcrumbs:[
 	locals.section = 'users';
 	locals.data = {
 		path:req.path,
-	    learning_contents: [],
+	    lofile_uploads: [],
 	};
 
 	// Load courses
 	view.on('init', function (next) {
-		var u = keystone.list('LearningContent').model.findOne({_id: req.params.id});
+		var u = keystone.list('LOFileUpload').model.findOne({_id: req.params.id});
 
 		u.exec(function (err, results) {
-			locals.data.learning_contents = results;
+			locals.data.lofile_uploads = results;
 			next(err);
 		});
 
 	});
 
 
-	view.render('admin/learningContent_profile',pageData);
+	view.render('admin/lofileUpload_profile',pageData);
 };

@@ -98,7 +98,8 @@ exports = module.exports = function (app) {
 	app.get('/admin/lindustries/:id',middleware.requireElearningAdmin, routes.adminViews.lindustries_profile);
 	app.get('/admin/lsectors', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/lsectors/:id',middleware.requireElearningAdmin, routes.adminViews.lsectors_profile);
-
+	app.get('/admin/lofile-uploads', middleware.requireElearningAdmin,routes.adminViews.elearning);
+	app.get('/admin/lofile-uploads/:id',middleware.requireElearningAdmin, routes.adminViews.lofileUpload_profile);
 
 	// User
 

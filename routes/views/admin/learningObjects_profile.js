@@ -25,7 +25,7 @@ exports = module.exports = function(req, res) {
 			{ text: 'ISPs', link: '/admin/isps'},
 			{ text: 'LIndustries', link: '/admin/lindustries'},
 			{ text: 'LSectors', link: '/admin/lsectors'},
-			{ text: 'LOFile Uploads', link: '#'},
+			{ text: 'LOFile Uploads', link: '/admin/lofile-uploads'},
 			{ text: 'LGalleries', link: '#'},
 			{ text: 'LOLinks', link: '#'},
 			{ text: 'LOVideos', link: '#'},

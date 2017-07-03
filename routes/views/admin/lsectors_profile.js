@@ -25,7 +25,7 @@ exports = module.exports = function(req, res) {
 			{ text: 'ISPs', link: '/admin/isps'},
 			{ text: 'LIndustries', link: '/admin/lindustries'},
 			{ text: 'LSectors', link: '/admin/lsectors'},
-			{ text: 'LOFile Uploads', link: '#'},
+			{ text: 'LOFile Uploads', link: '/admin/lofile-uploads'},
 			{ text: 'LGalleries', link: '#'},
 			{ text: 'LOLinks', link: '#'},
 			{ text: 'LOVideos', link: '#'},
@@ -54,12 +54,13 @@ exports = module.exports = function(req, res) {
 
 		u.exec(function (err, results) {
 			locals.data.lsectors = results;
+            console.log(locals.data.lsectors);
 			next(err);
 		});
 
 	});
 
-    	//Load LIndustries
+    //Load LIndustries
 	view.on('init', function (next) {
 
 		var u = keystone.list('LIndustry').model.find().sort({ publishedAt: -1})

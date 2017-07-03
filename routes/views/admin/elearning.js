@@ -25,7 +25,7 @@ exports = module.exports = function(req, res) {
 			{ text: 'ISPs', link: '/admin/isps'},
 			{ text: 'LIndustries', link: '/admin/lindustries'},
 			{ text: 'LSectors', link: '/admin/lsectors'},
-			{ text: 'LOFile Uploads', link: '#'},
+			{ text: 'LOFile Uploads', link: '/admin/lofile-uploads'},
 			{ text: 'LGalleries', link: '#'},
 			{ text: 'LOLinks', link: '#'},
 			{ text: 'LOVideos', link: '#'},
@@ -49,6 +49,7 @@ exports = module.exports = function(req, res) {
 		isps:[],
 		lindustries:[],
 		lsectors:[],
+		lofile_uploads:[],
 	};
 
 	// Load courses
@@ -117,6 +118,18 @@ exports = module.exports = function(req, res) {
 
 		u.exec(function (err, results) {
 			locals.data.lsectors = results;
+			next(err);
+		});
+
+	});
+
+	//Load LOFile-upload
+	view.on('init', function (next) {
+
+		var u = keystone.list('LOFileUpload').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.lofile_uploads = results;
 			next(err);
 		});
 
