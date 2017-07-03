@@ -24,7 +24,7 @@ exports = module.exports = function(req, res) {
 			{ text: 'Learning Contents', link: '/admin/learning-contents'},
 			{ text: 'ISPs', link: '/admin/isps'},
 			{ text: 'LIndustries', link: '/admin/lindustries'},
-			{ text: 'LSectors', link: '#'},
+			{ text: 'LSectors', link: '/admin/lsectors'},
 			{ text: 'LOFile Uploads', link: '#'},
 			{ text: 'LGalleries', link: '#'},
 			{ text: 'LOLinks', link: '#'},
@@ -48,6 +48,7 @@ exports = module.exports = function(req, res) {
 		learning_contents:[],
 		isps:[],
 		lindustries:[],
+		lsectors:[],
 	};
 
 	// Load courses
@@ -108,6 +109,19 @@ exports = module.exports = function(req, res) {
 		});
 
 	});
+
+	//Load LSectors
+	view.on('init', function (next) {
+
+		var u = keystone.list('LSector').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.lsectors = results;
+			next(err);
+		});
+
+	});
+
 
 
 	view.render('admin/elearning',pageData);

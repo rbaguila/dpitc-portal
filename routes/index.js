@@ -96,6 +96,9 @@ exports = module.exports = function (app) {
 	app.get('/admin/isps/:id',middleware.requireElearningAdmin, routes.adminViews.isps_profile);
 	app.get('/admin/lindustries', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/lindustries/:id',middleware.requireElearningAdmin, routes.adminViews.lindustries_profile);
+	app.get('/admin/lsectors', middleware.requireElearningAdmin,routes.adminViews.elearning);
+	app.get('/admin/lsectors/:id',middleware.requireElearningAdmin, routes.adminViews.lsectors_profile);
+
 
 	// User
 

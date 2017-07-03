@@ -43,13 +43,26 @@ exports = module.exports = function(req, res) {
 	locals.section = 'users';
 	locals.data = {
 		path:req.path,
-		lindustries:[],
+		lsectors:[],
+        lindustries:[],
 	};
 
-    //Load LIndustries
+    //Load LSector
 	view.on('init', function (next) {
 
-		var u = keystone.list('LIndustry').model.findOne({_id: req.params.id});
+		var u = keystone.list('LSector').model.findOne({_id: req.params.id});
+
+		u.exec(function (err, results) {
+			locals.data.lsectors = results;
+			next(err);
+		});
+
+	});
+
+    	//Load LIndustries
+	view.on('init', function (next) {
+
+		var u = keystone.list('LIndustry').model.find().sort({ publishedAt: -1})
 
 		u.exec(function (err, results) {
 			locals.data.lindustries = results;
@@ -59,6 +72,6 @@ exports = module.exports = function(req, res) {
 	});
 
 
-	view.render('admin/lindustries_profile',pageData);
+	view.render('admin/lsectors_profile',pageData);
 };
 

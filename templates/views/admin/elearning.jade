@@ -105,3 +105,22 @@ block content
                         else
                             .jumbotron
                                     h3 No data
+            if data.path === '/admin/lsectors'
+                input.form-control(type='text', placeholder='Search..')
+                button.btn.btn-success(type='button') Create LSector
+                .table-responsive   
+                    table.table.table-striped
+                        thead
+                        tr
+                            th Name
+                            th Industry
+                        tbody
+                        each lsector in data.lsectors
+                            tr
+                                td 
+                                    a(href='/admin/lsectors/'+ lsector._id) #{lsector.name}
+                                td #{lsector.industry}
+                        else
+                            .jumbotron
+                                    h3 No data
+            
