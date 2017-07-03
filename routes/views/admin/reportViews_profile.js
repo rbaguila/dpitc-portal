@@ -29,48 +29,9 @@ exports = module.exports = function(req, res) {
 
 	//init locals
 	locals.data = {
-		community_views: [],
-		discussion_views:[],
-		group_views:[],
 		report_views:[],
 		path:req.path,
 	};
-
-	// Load Community Views
-	view.on('init', function (next) {
-
-		var u = keystone.list('CommunityView').model.findOne({_id: req.params.id})
-
-		u.exec(function (err, results) {
-			locals.data.community_views = results;
-            next(err);
-		});
-
-	});	
-
-	// Load Discussion Views
-	view.on('init', function (next) {
-
-		var u = keystone.list('DiscussionView').model.findOne({_id: req.params.id})
-
-		u.exec(function (err, results) {
-			locals.data.discussion_views = results;
-			next(err);
-		});
-
-	});
-
-	// Load Group Views
-	view.on('init', function (next) {
-
-		var u = keystone.list('GroupView').model.findOne({_id: req.params.id})
-
-		u.exec(function (err, results) {
-			locals.data.group_views = results;
-			next(err);
-		});
-
-	});
 
 	// Load Report Views
 	view.on('init', function (next) {
@@ -84,5 +45,5 @@ exports = module.exports = function(req, res) {
 
 	});
 
-	view.render('admin/analytics_view',pageData);
+	view.render('admin/reportViews_profile',pageData);
 };

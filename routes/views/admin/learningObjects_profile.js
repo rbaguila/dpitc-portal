@@ -22,7 +22,7 @@ exports = module.exports = function(req, res) {
 			{ text: 'Learning Objects', link: '/admin/learning-objects'},
 			{ text: 'Courses', link: '/admin/courses'},
 			{ text: 'Learning Contents', link: '/admin/learning-contents'},
-			{ text: 'ISPs', link: '#'},
+			{ text: 'ISPs', link: '/admin/isps'},
 			{ text: 'LIndustries', link: '#'},
 			{ text: 'LSectors', link: '#'},
 			{ text: 'LOFile Uploads', link: '#'},
@@ -42,8 +42,11 @@ exports = module.exports = function(req, res) {
 	//init locals
 	locals.section = 'users';
 	locals.data = {
+		learning_objects: [],
 		path:req.path,
 	    courses: [],
+		learning_contents:[],
+        author:[],
 	};
 
 	// Load courses
@@ -57,6 +60,43 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	// Load LO
+	view.on('init', function (next) {
 
-	view.render('admin/courses_view',pageData);
+		var u = keystone.list('LearningObject').model.findOne({_id: req.params.id});
+		u.exec(function (err, results) {
+			locals.data.learning_objects = results;
+			next(err);
+		});
+
+	});
+
+	// Load Learning contents
+	view.on('init', function (next) {
+
+		var u = keystone.list('LearningContent').model.findOne({_id: req.params.id});
+
+		u.exec(function (err, results) {
+			locals.data.learning_contents = results;
+			next(err);
+		});
+
+	});
+
+    //Load author
+    view.on('init', function (next) {
+        var id = locals.data.learning_objects.author;
+		var u = keystone.list('User').model.findOne({ _id: id });
+
+		u.exec(function (err, results) {
+			locals.data.author = results;
+            console.log(id)
+            console.log(results)
+			next(err);
+		});
+
+	});
+
+
+	view.render('admin/learningObjects_profile',pageData);
 };

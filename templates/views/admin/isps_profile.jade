@@ -1,0 +1,21 @@
+extends ../../layouts/admin-default
+
+block content
+    .row
+        .col-sm-9.col-sm-offset-3.col-md-9.col-md-offset-3.main
+            form.form-group.row(method='post')
+                .row
+                    .col-md-7
+                        input.form-control.input-lg(type='text', value= data.isps.name, placeholder='Name')
+                h5.help-block #{'ID: '+data.isps._id}
+                .row
+                    .col-md-7
+                        label Sector
+                        select.form-control
+                            if data.isps.sector
+                                option(selected='') #{data.isps.sector}
+                            else
+                                option(selected='') Select...
+                            each ls,i in data.lsectors
+                                option(value=i) #{ls.name}
+                button.btn.btn-primary(type='submit') Save   

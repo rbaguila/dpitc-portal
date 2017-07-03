@@ -1,11 +1,11 @@
 var keystone = require('keystone');
-var ObjectId = require('mongodb').ObjectId;
 
 exports = module.exports = function(req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 
 	var pageData = {
+		title: 'Learning Objects',
 		navLinks: [
 			{ text: 'Home', link: '/admin' },
 			{ text: 'Posts', link: '/admin/posts'},
@@ -14,7 +14,7 @@ exports = module.exports = function(req, res) {
 			{ text: 'Users', link: '/admin/users'},
 			{ text: 'Analytics', link: '/admin/community-views'},
 			{ text: 'Community', link: '#'},
-			{ text: 'Publications', link: '/admin/publication-settings'},
+			{ text: 'Publications', link: '/admin/publications'},
 			{ text: 'Categories', link: '#'},
 			{ text: 'ELearning', link: '/admin/learning-objects'}
 		],
@@ -22,8 +22,8 @@ exports = module.exports = function(req, res) {
 			{ text: 'Learning Objects', link: '/admin/learning-objects'},
 			{ text: 'Courses', link: '/admin/courses'},
 			{ text: 'Learning Contents', link: '/admin/learning-contents'},
-			{ text: 'ISPs', link: '#'},
-			{ text: 'LIndustries', link: '#'},
+			{ text: 'ISPs', link: '/admin/isps'},
+			{ text: 'LIndustries', link: '/admin/lindustries'},
 			{ text: 'LSectors', link: '#'},
 			{ text: 'LOFile Uploads', link: '#'},
 			{ text: 'LGalleries', link: '#'},
@@ -42,61 +42,23 @@ exports = module.exports = function(req, res) {
 	//init locals
 	locals.section = 'users';
 	locals.data = {
-		learning_objects: [],
 		path:req.path,
-	    courses: [],
-		learning_contents:[],
-        author:[],
+		lindustries:[],
 	};
 
-	// Load courses
-	view.on('init', function (next) {
-		var u = keystone.list('Course').model.findOne({_id: req.params.id});
-
-		u.exec(function (err, results) {
-			locals.data.courses = results;
-			next(err);
-		});
-
-	});
-
-	// Load LO
+    //Load LIndustries
 	view.on('init', function (next) {
 
-		var u = keystone.list('LearningObject').model.findOne({_id: req.params.id});
-		u.exec(function (err, results) {
-			locals.data.learning_objects = results;
-			next(err);
-		});
-
-	});
-
-	// Load Learning contents
-	view.on('init', function (next) {
-
-		var u = keystone.list('LearningContent').model.findOne({_id: req.params.id});
+		var u = keystone.list('LIndustry').model.findOne({_id: req.params.id});
 
 		u.exec(function (err, results) {
-			locals.data.learning_contents = results;
-			next(err);
-		});
-
-	});
-
-    //Load author
-    view.on('init', function (next) {
-        var id = locals.data.learning_objects.author;
-		var u = keystone.list('User').model.findOne({ _id: id });
-
-		u.exec(function (err, results) {
-			locals.data.author = results;
-            console.log(id)
-            console.log(results)
+			locals.data.lindustries = results;
 			next(err);
 		});
 
 	});
 
 
-	view.render('admin/elearning_view',pageData);
+	view.render('admin/lindustries_profile',pageData);
 };
+

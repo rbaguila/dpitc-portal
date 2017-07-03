@@ -22,7 +22,7 @@ exports = module.exports = function(req, res) {
 			{ text: 'Learning Objects', link: '/admin/learning-objects'},
 			{ text: 'Courses', link: '/admin/courses'},
 			{ text: 'Learning Contents', link: '/admin/learning-contents'},
-			{ text: 'ISPs', link: '#'},
+			{ text: 'ISPs', link: '/admin/isps'},
 			{ text: 'LIndustries', link: '#'},
 			{ text: 'LSectors', link: '#'},
 			{ text: 'LOFile Uploads', link: '#'},
@@ -43,20 +43,32 @@ exports = module.exports = function(req, res) {
 	locals.section = 'users';
 	locals.data = {
 		path:req.path,
-	    learning_contents: [],
+	    isps: [],
+		lsectors:[]
 	};
 
-	// Load courses
+	// Load ISPs
 	view.on('init', function (next) {
-		var u = keystone.list('LearningContent').model.findOne({_id: req.params.id});
+		var u = keystone.list('ISP').model.findOne({_id: req.params.id});
 
 		u.exec(function (err, results) {
-			locals.data.learning_contents = results;
+			locals.data.isps = results;
+			next(err);
+		});
+
+	});
+
+	view.on('init', function (next) {
+		var u = keystone.list('LSector').model.find();
+
+		u.exec(function (err, results) {
+			locals.data.lsectors = results;
 			next(err);
 		});
 
 	});
 
 
-	view.render('admin/learning_content_view',pageData);
+
+	view.render('admin/isps_profile',pageData);
 };

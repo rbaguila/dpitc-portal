@@ -29,7 +29,7 @@ block content
                                         h3 No data
             if data.path === '/admin/courses'
                 input.form-control(type='text', placeholder='Search..')
-                button.btn.btn-success(type='button') Create Learning Object
+                button.btn.btn-success(type='button') Create Course
                 .table-responsive   
                     table.table.table-striped
                         thead
@@ -51,7 +51,7 @@ block content
                                 h3 No data
             if data.path === '/admin/learning-contents'
                 input.form-control(type='text', placeholder='Search..')
-                button.btn.btn-success(type='button') Create Learning Object
+                button.btn.btn-success(type='button') Create Learning Content
                 .table-responsive   
                     table.table.table-striped
                         thead
@@ -70,4 +70,38 @@ block content
                                 td #{contents.publishedAt}
                         else
                             .jumbotron
-                                h3 No data 
+                                h3 No data
+            if data.path === '/admin/isps'
+                input.form-control(type='text', placeholder='Search..')
+                button.btn.btn-success(type='button') Create ISP
+                .table-responsive   
+                    table.table.table-striped
+                        thead
+                        tr
+                            th Name
+                            th Sector
+                        tbody
+                        each isp in data.isps
+                            tr
+                                td 
+                                    a(href='/admin/isps/'+ isp._id) #{isp.name}
+                                td #{isp.sector}
+                        else
+                            .jumbotron
+                                    h3 No data
+            if data.path === '/admin/lindustries'
+                input.form-control(type='text', placeholder='Search..')
+                button.btn.btn-success(type='button') Create LIndustry
+                .table-responsive   
+                    table.table.table-striped
+                        thead
+                        tr
+                            th Name
+                        tbody
+                        each lindustry in data.lindustries
+                            tr
+                                td 
+                                    a(href='/admin/lindustries/'+ lindustry._id) #{lindustry.name}
+                        else
+                            .jumbotron
+                                    h3 No data

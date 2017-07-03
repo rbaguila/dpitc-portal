@@ -54,13 +54,16 @@ exports = module.exports = function (app) {
 	
 	//Admin analytics pages
 	app.get('/admin/community-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
-	app.get('/admin/community-views/:id',middleware.requireAnalyticsAdmin ,routes.adminViews.analytics_view);
+	app.get('/admin/community-views/:id',middleware.requireAnalyticsAdmin ,routes.adminViews.communityViews_profile);
 	app.get('/admin/discussion-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
+	app.get('/admin/discussion-views/:id',middleware.requireAnalyticsAdmin ,routes.adminViews.discussionViews_profile);
 	app.get('/admin/group-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
+	app.get('/admin/group-views/:id',middleware.requireAnalyticsAdmin ,routes.adminViews.groupViews_profile);
 	app.get('/admin/report-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
+	app.get('/admin/report-views/:id',middleware.requireAnalyticsAdmin ,routes.adminViews.reportViews_profile);
 
 	app.get('/admin/users', middleware.requireUsersAdmin, routes.adminViews.users);
-	app.get('/admin/users/:id', middleware.requireUsersAdmin ,routes.adminViews.users);
+	app.get('/admin/users/:id', middleware.requireUsersAdmin ,routes.adminViews.user_profile);
 	//app.post('/admin/users/:id', routes.adminViews.users);
 	
 	//Admin community pages
@@ -69,7 +72,7 @@ exports = module.exports = function (app) {
 	//Admin publications
 	app.get('/admin/publication-settings',middleware.requirePublicationsAdmin, routes.adminViews.publications);
 	app.get('/admin/publications',middleware.requirePublicationsAdmin, routes.adminViews.publications);
-	app.get('/admin/publications/:id', middleware.requirePublicationsAdmin, routes.adminViews.publication_view);
+	app.get('/admin/publications/:id', middleware.requirePublicationsAdmin, routes.adminViews.publication_profile);
 	app.get('/admin/publication-lines',middleware.requirePublicationsAdmin, routes.adminViews.publications);
 	app.get('/admin/publication-feedback', middleware.requirePublicationsAdmin, routes.adminViews.publications);
 
@@ -84,11 +87,15 @@ exports = module.exports = function (app) {
 
 	//Admin Elearning
 	app.get('/admin/learning-objects', middleware.requireElearningAdmin,routes.adminViews.elearning);
-	app.get('/admin/learning-objects/:id', middleware.requireElearningAdmin, routes.adminViews.elearning_view);
+	app.get('/admin/learning-objects/:id', middleware.requireElearningAdmin, routes.adminViews.learningObjects_profile);
 	app.get('/admin/courses', middleware.requireElearningAdmin, routes.adminViews.elearning);
-	app.get('/admin/courses/:id',middleware.requireElearningAdmin, routes.adminViews.courses_view);
+	app.get('/admin/courses/:id',middleware.requireElearningAdmin, routes.adminViews.courses_profile);
 	app.get('/admin/learning-contents', middleware.requireElearningAdmin,routes.adminViews.elearning);
-	app.get('/admin/learning-contents/:id',middleware.requireElearningAdmin, routes.adminViews.learning_content_view);
+	app.get('/admin/learning-contents/:id',middleware.requireElearningAdmin, routes.adminViews.learningContent_profile);
+	app.get('/admin/isps', middleware.requireElearningAdmin,routes.adminViews.elearning);
+	app.get('/admin/isps/:id',middleware.requireElearningAdmin, routes.adminViews.isps_profile);
+	app.get('/admin/lindustries', middleware.requireElearningAdmin,routes.adminViews.elearning);
+	app.get('/admin/lindustries/:id',middleware.requireElearningAdmin, routes.adminViews.lindustries_profile);
 
 	// User
 

@@ -1,11 +1,11 @@
 var keystone = require('keystone');
+var ObjectId = require('mongodb').ObjectId;
 
 exports = module.exports = function(req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 
 	var pageData = {
-		title: 'Learning Objects',
 		navLinks: [
 			{ text: 'Home', link: '/admin' },
 			{ text: 'Posts', link: '/admin/posts'},
@@ -14,7 +14,7 @@ exports = module.exports = function(req, res) {
 			{ text: 'Users', link: '/admin/users'},
 			{ text: 'Analytics', link: '/admin/community-views'},
 			{ text: 'Community', link: '#'},
-			{ text: 'Publications', link: '/admin/publications'},
+			{ text: 'Publications', link: '/admin/publication-settings'},
 			{ text: 'Categories', link: '#'},
 			{ text: 'ELearning', link: '/admin/learning-objects'}
 		],
@@ -23,7 +23,7 @@ exports = module.exports = function(req, res) {
 			{ text: 'Courses', link: '/admin/courses'},
 			{ text: 'Learning Contents', link: '/admin/learning-contents'},
 			{ text: 'ISPs', link: '/admin/isps'},
-			{ text: 'LIndustries', link: '/admin/lindustries'},
+			{ text: 'LIndustries', link: '#'},
 			{ text: 'LSectors', link: '#'},
 			{ text: 'LOFile Uploads', link: '#'},
 			{ text: 'LGalleries', link: '#'},
@@ -42,17 +42,13 @@ exports = module.exports = function(req, res) {
 	//init locals
 	locals.section = 'users';
 	locals.data = {
-		learning_objects: [],
 		path:req.path,
 	    courses: [],
-		learning_contents:[],
-		isps:[],
-		lindustries:[],
 	};
 
 	// Load courses
 	view.on('init', function (next) {
-		var u = keystone.list('Course').model.find().sort({ publishedAt: -1});
+		var u = keystone.list('Course').model.findOne({_id: req.params.id});
 
 		u.exec(function (err, results) {
 			locals.data.courses = results;
@@ -61,54 +57,6 @@ exports = module.exports = function(req, res) {
 
 	});
 
-	// Load LO
-	view.on('init', function (next) {
 
-		var u = keystone.list('LearningObject').model.find().sort({ publishedAt: -1})
-
-		u.exec(function (err, results) {
-			locals.data.learning_objects = results;
-			next(err);
-		});
-
-	});
-
-	// Load Learning contents
-	view.on('init', function (next) {
-
-		var u = keystone.list('LearningContent').model.find().sort({ publishedAt: -1})
-
-		u.exec(function (err, results) {
-			locals.data.learning_contents = results;
-			next(err);
-		});
-
-	});
-
-	//Load ISPs
-	view.on('init', function (next) {
-
-		var u = keystone.list('ISP').model.find().sort({ publishedAt: -1})
-
-		u.exec(function (err, results) {
-			locals.data.isps = results;
-			next(err);
-		});
-
-	});
-
-	//Load LIndustries
-	view.on('init', function (next) {
-
-		var u = keystone.list('LIndustry').model.find().sort({ publishedAt: -1})
-
-		u.exec(function (err, results) {
-			locals.data.lindustries = results;
-			next(err);
-		});
-
-	});
-
-
-	view.render('admin/elearning',pageData);
+	view.render('admin/courses_profile',pageData);
 };

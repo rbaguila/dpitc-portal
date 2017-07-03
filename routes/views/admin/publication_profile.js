@@ -60,5 +60,5 @@ exports = module.exports = function(req, res) {
 
 
 
-	view.render('admin/publication_view',pageData);
+	view.render('admin/publication_profile',pageData);
 };
