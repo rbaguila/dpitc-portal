@@ -3,52 +3,104 @@ extends ../../layouts/admin-default
 block content
 
     .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
-        .table-responsive   
-            table.table.table-striped
-                thead
-                tr
-                    th ID
-                    th ip
-                    th Time
-                tbody
-                if data.path === '/admin/community-views'
-                    each view in locals.data.community_views
-                        tr   
-                            td 
-                                a(href='/admin/community-views/' + view._id) #{view._id}
-                            td #{view.ip}
-                            td #{view.time}
-                    else
-                        .jumbotron
-                            h3 No data
-                if data.path === '/admin/discussion-views'        
-                    each view in locals.data.discussion_views
-                        tr   
-                            td 
-                                a(href='/admin/discussion-views/' + view._id) #{view._id}
-                            td #{view.ip}
-                            td #{view.time}
-                    else
-                        .jumbotron
-                            h3 No data
-                if data.path === '/admin/group-views'        
-                    each view in locals.data.group_views
-                        tr   
-                            td 
-                                a(href='/admin/group-views/' + view._id) #{view._id}
-                            td #{view.ip}
-                            td #{view.time}
-                    else
-                        .jumbotron
-                            h3 No data
-                if data.path === '/admin/report-views'        
-                    each view in locals.data.report_views
-                        tr   
-                            td 
-                                a(href='/admin/report-views/' + view._id) #{view._id}
-                            td #{view.ip}
-                            td #{view.time}
-                    else
-                        .jumbotron
-                            h3 No data
+        if data.path === '/admin/community-views'
+            if data.community_views.length > 0
+                .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create Community View 
+                .table-responsive   
+                    table.table.table-striped
+                        thead
+                        tr
+                            th ID
+                            th ip
+                            th Time
+                        tbody
+                        each view in data.community_views
+                            tr   
+                                td 
+                                    a(href='/admin/community-views/' + view._id) #{view._id}
+                                td #{view.ip}
+                                td #{view.time}
+            else
+                .jumbotron
+                    h3 No Community View found
+                    button.btn.btn-success(type='button') Create Community View 
+        if data.path === '/admin/discussion-views'
+            if data.discussion_views.length > 0
+                .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create Discussion View 
+                .table-responsive   
+                    table.table.table-striped
+                        thead
+                        tr
+                            th ID
+                            th ip
+                            th Time
+                        tbody        
+                        each view in data.discussion_views
+                            tr   
+                                td 
+                                    a(href='/admin/discussion-views/' + view._id) #{view._id}
+                                td #{view.ip}
+                                td #{view.time}
+            else
+                .jumbotron
+                    h3 No Discussion View found
+                    button.btn.btn-success(type='button') Create Discussion View 
+        if data.path === '/admin/group-views'
+            if data.group_views.length > 0
+                .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create Group View 
+                .table-responsive   
+                    table.table.table-striped
+                        thead
+                        tr
+                            th ID
+                            th ip
+                            th Time
+                        tbody        
+                        each view in data.group_views
+                            tr   
+                                td 
+                                    a(href='/admin/group-views/' + view._id) #{view._id}
+                                td #{view.ip}
+                                td #{view.time}
+            else
+                .jumbotron
+                    h3 No Group View found
+                    button.btn.btn-success(type='button') Create Group View 
+        if data.path === '/admin/report-views'
+            if data.report_views.length > 0
+                .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create Report View 
+                .table-responsive   
+                    table.table.table-striped
+                        thead
+                        tr
+                            th ID
+                            th ip
+                            th Time
+                        tbody        
+                        each view in data.report_views
+                            tr   
+                                td 
+                                    a(href='/admin/report-views/' + view._id) #{view._id}
+                                td #{view.ip}
+                                td #{view.time}
+            else
+                .jumbotron
+                    h3 No Report View found
+                    button.btn.btn-success(type='button') Create Report View 
 

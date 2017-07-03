@@ -7,18 +7,30 @@ block content
                 table.table.table-striped
                     thead
                     if data.path === '/admin/publication-settings'
-                        tr
-                            th Name
-                        tbody
-                        each pub in data.publication_settings
+                        if data.publication_settings.length > 0
+                            .row
+                                .col-md-6
+                                    input.form-control(type='text', placeholder='Search..')
+                                .col-md-2
+                                    button.btn.btn-success(type='button') Create Publication Setting
                             tr
-                                td 
-                                    a(href='#') #{pub.name}
+                                th Name
+                            tbody
+                            each pub in data.publication_settings
+                                tr
+                                    td 
+                                        a(href='#') #{pub.name}
                         else
                             .jumbotron
-                                h3 No data
+                                h3 No Publication Setting found
+                                button.btn.btn-success(type='button') Create Publication Setting
                     if data.path === '/admin/publications'
-                        if data.publications
+                        if data.publications.length > 0
+                            .row
+                                .col-md-6
+                                    input.form-control(type='text', placeholder='Search..')
+                                .col-md-2
+                                    button.btn.btn-success(type='button') Create Publication
                             tr  
                                 th Title
                                 th Publication Line
@@ -38,11 +50,18 @@ block content
                                     td
                                         img.img-rounded(src=pub.cover)
 
-                            else
-                                .jumbotron
-                                    h3 No data
+                        else
+                            .jumbotron
+                                h3 No Publication found
+                                button.btn.btn-success(type='button') Create Publication
                     if data.path === '/admin/publication-lines'
-                        tr
+                        if data.publication_lines.length > 0
+                            .row
+                                .col-md-6
+                                    input.form-control(type='text', placeholder='Search..')
+                                .col-md-2
+                                    button.btn.btn-success(type='button') Create Publication Line
+                            tr
                                 th Name
                             tbody
                             each pub in data.publication_lines
@@ -50,21 +69,28 @@ block content
                                     td 
                                         a(href='#') #{pub.name}
 
-                            else
-                                .jumbotron
-                                    h3 No data
-                    if data.path === '/admin/publication-feedback'
-                        tr
-                            th Title
-                            th User
-                            th createdAt
-                        tbody
-                        each pub in data.publication_feedback
-                            tr
-                                td
-                                    a(href='#') #{pub.title}
-                                td #{pub.user}
-                                td #{pub.createdAt}
                         else
+                            .jumbotron
+                                h3 No Publication Line
+                                button Create Publication Line
+                    if data.path === '/admin/publication-feedback'
+                         if data.publication_feedback.length > 0
+                            .row
+                                .col-md-6
+                                    input.form-control(type='text', placeholder='Search..')
+                                .col-md-2
+                                    button.btn.btn-success(type='button') Create Feedback
+                            tr
+                                th Title
+                                th User
+                                th createdAt
+                            tbody
+                            each pub in data.publication_feedback
+                                tr
+                                    td
+                                        a(href='#') #{pub.title}
+                                    td #{pub.user}
+                                    td #{pub.createdAt}
+                         else
                             .jumbotron
                                 h3 No Feedback
