@@ -26,9 +26,9 @@ exports = module.exports = function(req, res) {
 			{ text: 'LIndustries', link: '/admin/lindustries'},
 			{ text: 'LSectors', link: '/admin/lsectors'},
 			{ text: 'LOFile Uploads', link: '/admin/lofile-uploads'},
-			{ text: 'LGalleries', link: '#'},
-			{ text: 'LOLinks', link: '#'},
-			{ text: 'LOVideos', link: '#'},
+			{ text: 'LGalleries', link: '/admin/logalleries'},
+			{ text: 'LOLinks', link: '/admin/lolinks'},
+			{ text: 'LOVideos', link: '/admin/lovideos'},
 			{ text: 'Authors', link: '#'},
 			{ text: 'LOComments', link: '#'},
 			{ text: 'LOFeedbacks', link: '#'},
@@ -50,6 +50,9 @@ exports = module.exports = function(req, res) {
 		lindustries:[],
 		lsectors:[],
 		lofile_uploads:[],
+		logalleries:[],
+		lolinks:[],
+		lovideos:[],
 	};
 
 	// Load courses
@@ -135,6 +138,41 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	//Load LOGallery
+	view.on('init', function (next) {
+
+		var u = keystone.list('LOGallery').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.logalleries = results;
+			next(err);
+		});
+
+	});
+
+	//Load LOLink
+	view.on('init', function (next) {
+
+		var u = keystone.list('LOLink').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.lolinks = results;
+			next(err);
+		});
+
+	});
+
+		//Load LOVideo
+	view.on('init', function (next) {
+
+		var u = keystone.list('LOVideo').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.lovideos = results;
+			next(err);
+		});
+
+	});
 
 
 	view.render('admin/elearning',pageData);
