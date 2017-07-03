@@ -255,3 +255,27 @@ block content
                     .jumbotron
                         h3 No LOVideo found
                         button.btn.btn-success(type='button') Create LOVideo
+            if data.path === '/admin/authors'
+                if data.lovideos.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create Author
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th Name
+                                th Organization
+                            tbody
+                            each author in data.authors
+                                tr
+                                    td 
+                                        a(href='/admin/authors/'+ author._id) #{author.name}
+                                    td #{author.organization}
+
+                else
+                    .jumbotron
+                        h3 No Author found
+                        button.btn.btn-success(type='button') Create Author

@@ -29,7 +29,7 @@ exports = module.exports = function(req, res) {
 			{ text: 'LGalleries', link: '/admin/logalleries'},
 			{ text: 'LOLinks', link: '/admin/lolinks'},
 			{ text: 'LOVideos', link: '/admin/lovideos'},
-			{ text: 'Authors', link: '#'},
+			{ text: 'Authors', link: '/admin/authors'},
 			{ text: 'LOComments', link: '#'},
 			{ text: 'LOFeedbacks', link: '#'},
 			{ text: 'LORatings', link: '#'},

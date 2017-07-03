@@ -1,11 +1,11 @@
 var keystone = require('keystone');
-var ObjectId = require('mongodb').ObjectId;
 
 exports = module.exports = function(req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 
 	var pageData = {
+		title: 'Learning Objects',
 		navLinks: [
 			{ text: 'Home', link: '/admin' },
 			{ text: 'Posts', link: '/admin/posts'},
@@ -14,7 +14,7 @@ exports = module.exports = function(req, res) {
 			{ text: 'Users', link: '/admin/users'},
 			{ text: 'Analytics', link: '/admin/community-views'},
 			{ text: 'Community', link: '#'},
-			{ text: 'Publications', link: '/admin/publication-settings'},
+			{ text: 'Publications', link: '/admin/publications'},
 			{ text: 'Categories', link: '#'},
 			{ text: 'ELearning', link: '/admin/learning-objects'}
 		],
@@ -43,20 +43,22 @@ exports = module.exports = function(req, res) {
 	locals.section = 'users';
 	locals.data = {
 		path:req.path,
-	    learning_contents: [],
+		authors:[],
 	};
 
-	// Load courses
+    //Load LOVideo
 	view.on('init', function (next) {
-		var u = keystone.list('LearningContent').model.findOne({_id: req.params.id});
+
+		var u = keystone.list('Author').model.findOne({_id: req.params.id});
 
 		u.exec(function (err, results) {
-			locals.data.learning_contents = results;
+			locals.data.authors = results;
 			next(err);
 		});
 
 	});
 
 
-	view.render('admin/learningContent_profile',pageData);
+	view.render('admin/authors_profile',pageData);
 };
+

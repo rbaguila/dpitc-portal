@@ -1,0 +1,17 @@
+extends ../../layouts/admin-default
+
+block content
+    .row
+        .col-sm-9.col-sm-offset-3.col-md-9.col-md-offset-3.main
+            h3 #{data.authors._id}
+            form.form-group.row(method='post')
+                .row
+                    .col-md-7
+                        input.form-control.input-lg(type='text', value= data.authors.name, placeholder='Name')
+                h5.help-block #{'Key: '+data.authors.key}
+                h5.help-block #{'ID: '+data.authors._id}
+                .row
+                    .col-md-7
+                        label Organization
+                        input.form-control(type='text', value= data.authors.organization, placeholder='Organization')
+                button.btn.btn-primary(type='submit') Save   

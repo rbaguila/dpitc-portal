@@ -29,7 +29,7 @@ exports = module.exports = function(req, res) {
 			{ text: 'LGalleries', link: '/admin/logalleries'},
 			{ text: 'LOLinks', link: '/admin/lolinks'},
 			{ text: 'LOVideos', link: '/admin/lovideos'},
-			{ text: 'Authors', link: '#'},
+			{ text: 'Authors', link: '/admin/authors'},
 			{ text: 'LOComments', link: '#'},
 			{ text: 'LOFeedbacks', link: '#'},
 			{ text: 'LORatings', link: '#'},
@@ -53,6 +53,7 @@ exports = module.exports = function(req, res) {
 		logalleries:[],
 		lolinks:[],
 		lovideos:[],
+		authors:[],
 	};
 
 	// Load courses
@@ -162,7 +163,7 @@ exports = module.exports = function(req, res) {
 
 	});
 
-		//Load LOVideo
+	//Load LOVideo
 	view.on('init', function (next) {
 
 		var u = keystone.list('LOVideo').model.find().sort({ publishedAt: -1})
@@ -174,6 +175,17 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	//Load Author
+	view.on('init', function (next) {
+
+		var u = keystone.list('Author').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.authors = results;
+			next(err);
+		});
+
+	});
 
 	view.render('admin/elearning',pageData);
 };
