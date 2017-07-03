@@ -106,8 +106,9 @@ exports = module.exports = function (app) {
 	app.get('/admin/lovideos/:id',middleware.requireElearningAdmin, routes.adminViews.lovideos_profile);
 	app.get('/admin/authors', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/authors/:id',middleware.requireElearningAdmin, routes.adminViews.authors_profile);
+	app.get('/admin/locomments', middleware.requireElearningAdmin,routes.adminViews.elearning);
+	app.get('/admin/lofeedbacks', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	
-
 	// User
 
 	// Signup Route

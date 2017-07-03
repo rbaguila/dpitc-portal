@@ -30,8 +30,8 @@ exports = module.exports = function(req, res) {
 			{ text: 'LOLinks', link: '/admin/lolinks'},
 			{ text: 'LOVideos', link: '/admin/lovideos'},
 			{ text: 'Authors', link: '/admin/authors'},
-			{ text: 'LOComments', link: '#'},
-			{ text: 'LOFeedbacks', link: '#'},
+			{ text: 'LOComments', link: '/admin/locomments'},
+			{ text: 'LOFeedbacks', link: '/admin/lofeedbacks'},
 			{ text: 'LORatings', link: '#'},
 			{ text: 'LOViews', link: '#'},
 			{ text: 'Elearning LORating', link: '#'},
@@ -54,6 +54,8 @@ exports = module.exports = function(req, res) {
 		lolinks:[],
 		lovideos:[],
 		authors:[],
+		locomments:[],
+		lofeedbacks:[],
 	};
 
 	// Load courses
@@ -186,6 +188,31 @@ exports = module.exports = function(req, res) {
 		});
 
 	});
+
+	//Load LOComment
+	view.on('init', function (next) {
+
+		var u = keystone.list('LOComment').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.locomments = results;
+			next(err);
+		});
+
+	});
+
+		//Load LOFeedback
+	view.on('init', function (next) {
+
+		var u = keystone.list('LOFeedback').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.lofeedbacks = results;
+			next(err);
+		});
+
+	});
+
 
 	view.render('admin/elearning',pageData);
 };
