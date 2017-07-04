@@ -19,7 +19,7 @@ block content
                             each pub in data.publication_settings
                                 tr
                                     td 
-                                        a(href='#') #{pub.name}
+                                        a(href='/admin/publication-settings/'+pub._id) #{pub.name}
                 else
                     .jumbotron
                         h3 No Publication Setting found

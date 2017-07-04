@@ -71,6 +71,7 @@ exports = module.exports = function (app) {
 	
 	//Admin publications
 	app.get('/admin/publication-settings',middleware.requirePublicationsAdmin, routes.adminViews.publications);
+	app.get('/admin/publication-settings/:id',middleware.requirePublicationsAdmin, routes.adminViews.publicationsSettings_profile);
 	app.get('/admin/publications',middleware.requirePublicationsAdmin, routes.adminViews.publications);
 	app.get('/admin/publications/:id', middleware.requirePublicationsAdmin, routes.adminViews.publication_profile);
 	app.get('/admin/publication-lines',middleware.requirePublicationsAdmin, routes.adminViews.publications);
