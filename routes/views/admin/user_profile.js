@@ -1,5 +1,4 @@
 var keystone = require('keystone');
-var ObjectId = require('mongodb').ObjectId;
 
 exports = module.exports = function(req, res) {
 	var view = new keystone.View(req, res);
@@ -26,6 +25,8 @@ exports = module.exports = function(req, res) {
 
 	//init locals
 	locals.section = 'users_profile';
+	locals.formData = req.body || {};
+	locals.validationErrors = {};
 	locals.data = {
 		user: [],
 		learning_objects:[],
@@ -39,27 +40,53 @@ exports = module.exports = function(req, res) {
 
 			u.exec(function (err, results) {
 				locals.data.user = results;
+				console.log(locals.data.user);
 				next(err);
 			});
 	});
 	
-	view.on('post', {action: 'editProfile'}, function(next){
+	view.on('post', {action: 'editUser'}, function(next){
 			var u = keystone.list('User').model.findOneAndUpdate(
-				{_id: locals.user._id},
+				{ _id:locals.data.user._id},
 				{
-					name:{
-						//first:(locals.formData.first ? locals.formData.first : locals.user.name.first),
-					}
+					name: { 
+						first: (locals.formData.first ? locals.formData.first : locals.data.user.name.first),
+						last: (locals.formData.last ? locals.formData.last : locals.data.user.name.last),  
+					},
+					email: locals.formData.email,
+					location: {
+						suburb: locals.formData.suburb,
+						state: locals.formData.state,
+						country: (locals.formData.country ? locals.formData.country : locals.data.user.location.country),
+					}, 
+					consumerType: locals.formData.consumerType,
+					birthday: locals.formData.birthday,
+					agencyAffiliation: locals.formData.agencyAffiliation,
+					sex: locals.formData.sex,
+					contantNumber: locals.formData.contactNumber
 				},
 				function(err,results){
-					if (err) return next(err);
-					return res.redirect('/admin/users/:id');
+					if(err) return next(err);
+					return res.redirect('/admin/users');
+					next();
+				})
+
+			var updater = locals.data.user.getUpdateHandler(req);
+
+			updater.process(req.body, {
+			//fields: 'name',
+			flashErrors: true,
+			logErrors: true
+			}, function (err, result) {
+			if (err) {    
+				locals.validationErrors = err.errors; 
+				} else {
+				console.log(locals.data.user);
+				req.flash('success', 'Account updated.');         
+				return res.redirect('/admin/users');
 				}
-			);
-
-			var updater = locals.user.getUpdateHandler(req);
-
-			console.log(locals.formData.first)
+				next();
+			});
 	});
 
 	// Load LO

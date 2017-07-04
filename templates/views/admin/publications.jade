@@ -3,16 +3,16 @@ extends ../../layouts/admin-default
 block content
     .row
         .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
-            .table-responsive   
-                table.table.table-striped
-                    thead
-                    if data.path === '/admin/publication-settings'
-                        if data.publication_settings.length > 0
-                            .row
-                                .col-md-6
-                                    input.form-control(type='text', placeholder='Search..')
-                                .col-md-2
-                                    button.btn.btn-success(type='button') Create Publication Setting
+            if data.path === '/admin/publication-settings'
+                if data.publication_settings.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create Publication Setting
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
                             tr
                                 th Name
                             tbody
@@ -20,17 +20,20 @@ block content
                                 tr
                                     td 
                                         a(href='#') #{pub.name}
-                        else
-                            .jumbotron
-                                h3 No Publication Setting found
-                                button.btn.btn-success(type='button') Create Publication Setting
-                    if data.path === '/admin/publications'
-                        if data.publications.length > 0
-                            .row
-                                .col-md-6
-                                    input.form-control(type='text', placeholder='Search..')
-                                .col-md-2
-                                    button.btn.btn-success(type='button') Create Publication
+                else
+                    .jumbotron
+                        h3 No Publication Setting found
+                        button.btn.btn-success(type='button') Create Publication Setting
+            if data.path === '/admin/publications'
+                if data.publications.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create Publication
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
                             tr  
                                 th Title
                                 th Publication Line
@@ -49,18 +52,20 @@ block content
                                     td #{pub.file}
                                     td
                                         img.img-rounded(src=pub.cover)
-
-                        else
-                            .jumbotron
-                                h3 No Publication found
-                                button.btn.btn-success(type='button') Create Publication
-                    if data.path === '/admin/publication-lines'
-                        if data.publication_lines.length > 0
-                            .row
-                                .col-md-6
-                                    input.form-control(type='text', placeholder='Search..')
-                                .col-md-2
-                                    button.btn.btn-success(type='button') Create Publication Line
+                else
+                    .jumbotron
+                        h3 No Publication found
+                        button.btn.btn-success(type='button') Create Publication
+            if data.path === '/admin/publication-lines'
+                if data.publication_lines.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create Publication Line
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
                             tr
                                 th Name
                             tbody
@@ -68,18 +73,20 @@ block content
                                 tr   
                                     td 
                                         a(href='#') #{pub.name}
-
-                        else
-                            .jumbotron
-                                h3 No Publication Line
-                                button Create Publication Line
-                    if data.path === '/admin/publication-feedback'
-                         if data.publication_feedback.length > 0
-                            .row
-                                .col-md-6
-                                    input.form-control(type='text', placeholder='Search..')
-                                .col-md-2
-                                    button.btn.btn-success(type='button') Create Feedback
+                else
+                    .jumbotron
+                        h3 No Publication Line
+                        button Create Publication Line
+            if data.path === '/admin/publication-feedback'
+                if data.publication_feedback.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create Feedback
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
                             tr
                                 th Title
                                 th User
@@ -91,6 +98,6 @@ block content
                                         a(href='#') #{pub.title}
                                     td #{pub.user}
                                     td #{pub.createdAt}
-                         else
-                            .jumbotron
-                                h3 No Feedback
+                else
+                    .jumbotron
+                        h3 No Feedback

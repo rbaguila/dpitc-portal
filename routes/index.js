@@ -64,7 +64,7 @@ exports = module.exports = function (app) {
 
 	app.get('/admin/users', middleware.requireUsersAdmin, routes.adminViews.users);
 	app.get('/admin/users/:id', middleware.requireUsersAdmin ,routes.adminViews.user_profile);
-	//app.post('/admin/users/:id', routes.adminViews.users);
+	//app.post('/admin/users/:id', routes.adminViews.user_profile);
 	
 	//Admin community pages
 	//app.get('/admin/community', routes.adminViews.community);
@@ -106,6 +106,7 @@ exports = module.exports = function (app) {
 	app.get('/admin/lovideos/:id',middleware.requireElearningAdmin, routes.adminViews.lovideos_profile);
 	app.get('/admin/authors', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/authors/:id',middleware.requireElearningAdmin, routes.adminViews.authors_profile);
+	app.post('/admin/authors/:id',middleware.requireElearningAdmin, routes.adminViews.authors_profile);
 	app.get('/admin/locomments', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/lofeedbacks', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/loratings', middleware.requireElearningAdmin,routes.adminViews.elearning);

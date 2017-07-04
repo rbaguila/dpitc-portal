@@ -6,19 +6,19 @@ block content
         h2 #{data.user.name.first + ' ' + data.user.name.last}
         p.help-block #{'ID: '+data.user._id}
         br
-        form.row(method="post")
-                    //-input(type='hidden', name= 'action', value='editProfile')
+        form.row(method="post", action='/admin/users/'+data.user._id)
+            input(type='hidden', name= 'action', value='editUser')
             .row
                 .col-md-3               
                     label First Name
-                    input.form-control(type='text', value= data.user.name.first, placeholder='First name')
+                    input.form-control(type='text', value= data.user.name.first, placeholder='First name', name='first')
                 .col-md-4
                     label Last Name :    
-                    input.form-control(type='text', value= data.user.name.last, placeholder='Last name')
+                    input.form-control(type='text', value= data.user.name.last, placeholder='Last name', name='last')
             .row
                 .col-md-7
                     label Email
-                    input.form-control(type='text', value= data.user.email, placeholder='Email')
+                    input.form-control(type='text', value= data.user.email, placeholder='Email', name='email')
             .row
                 .col-md-5
                     label Password
@@ -42,36 +42,49 @@ block content
                 .col-md-7
                     h4 Location
                     label Street Address
-                    input.form-control(type='text', value= data.user.location.street1, placeholder='Street Address')
+                    input.form-control(type='text', value= data.user.location.street1, placeholder='Street Address', name = 'streetAddress')
             .row
                 .col-md-4
                     label Suburb
-                    input.form-control(type='text', value= data.user.location.suburb, placeholder='Suburb')
+                    input.form-control(type='text', value= data.user.location.suburb, placeholder='Suburb', name = 'suburb')
                 .col-md-3
                     label State
-                    input.form-control(type='text', value= data.user.location.state, placeholder='State')
+                    input.form-control(type='text', value= data.user.location.state, placeholder='State', name = 'state')
             .row
                 .col-md-3
                     label Postcode
-                    input.form-control(type='text', value= data.user.location.postcode, placeholder='Postcode')
+                    input.form-control(type='text', value= data.user.location.postcode, placeholder='Postcode', name= 'postcode')
                 .col-md-4
                     label Country
-                    input.form-control(type='text', value= data.user.location.country, placeholder='Country')
+                    input.form-control(type='text', value= data.user.location.country, placeholder='Country' , name='country')
+            .row
+                .col-md-7
+                    label Consumer Type
+                    select.form-control
+                        option(selected='') #{data.user.consumerType}
             .row
                 .col-md-2
                     label Birthday
-                    input.form-control(type='date', value= data.user.birthday.toLocaleDateString())
+                    input.form-control(type='date', value= data.user.birthday, name='birthday')
+            .row
+                .col-md-7
+                    label Agency Affiliation
+                    input.form-control(type='text', value= data.user.agencyAffiliation, placeholder='Agency Affiliation' , name='agencyAffiliation')
             .row
                 .col-md-7
                     label Sex
                     select.form-control
                         option(selected='') #{data.user.sex}
             .row
+                .col-md-7
+                    label Contact Number
+                    input.form-control(type='text', value= data.user.contactNumber, placeholder='Contact Number' , name='contactNumber')
+            .row
                 .col-md-1
                     label Permissions
                 .col-md-3
                     .checkbox
-                        input(type='checkbox' checked= data.user.isElearningAdmin)
+                        input(type='checkbox' checked= data.user.isElearningAdmin, name = 'isElearningAdmin')
                         | Can Access Elearning Admin
                     .checkbox
                         input(type='checkbox' checked= data.user.isElearningUser)
@@ -114,5 +127,5 @@ block content
                             option(selected='') Select...
                         each pub,i in data.publications
                             option(value=i) #{pub.title}
-            button.btn.btn-primary(type='submit') Save           
+            button.btn.btn-primary(type='submit', name='editUser') Save           
                 

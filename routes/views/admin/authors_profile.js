@@ -41,6 +41,8 @@ exports = module.exports = function(req, res) {
 
 	//init locals
 	locals.section = 'users';
+	locals.formData = req.body || {};
+	locals.validationErrors = {};
 	locals.data = {
 		path:req.path,
 		authors:[],
@@ -58,6 +60,35 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', {action: 'editAuthor'}, function(next){
+			var u = keystone.list('Author').model.findOneAndUpdate(
+				{ _id:locals.data.authors._id},
+				{
+					name:locals.formData.name,
+					organization:locals.formData.organization,
+				},
+				function(err,results){
+					if(err) return next(err);
+					return res.redirect('/admin/authors');
+					next();
+				})
+
+			var updater = locals.data.authors.getUpdateHandler(req);
+
+			updater.process(req.body, {
+			//fields: 'name',
+			flashErrors: true,
+			logErrors: true
+			}, function (err, result) {
+			if (err) {    
+				locals.validationErrors = err.errors; 
+				} else {
+				req.flash('success', 'Author updated.');         
+				return res.redirect('/admin/authors');
+				}
+				next();
+			});
+	});
 
 	view.render('admin/authors_profile',pageData);
 };
