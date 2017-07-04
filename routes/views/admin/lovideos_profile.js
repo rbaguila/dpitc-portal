@@ -32,10 +32,10 @@ exports = module.exports = function(req, res) {
 			{ text: 'Authors', link: '/admin/authors'},
 			{ text: 'LOComments', link: '/admin/locomments'},
 			{ text: 'LOFeedbacks', link: '/admin/lofeedbacks'},
-			{ text: 'LORatings', link: '#'},
-			{ text: 'LOViews', link: '#'},
-			{ text: 'Elearning LORating', link: '#'},
-			{ text: 'Elearning Visits', link: '#'},
+			{ text: 'LORatings', link: '/admin/loratings'},
+			{ text: 'LOViews', link: '/admin/loviews'},
+			{ text: 'Elearning Log', link: '/admin/elearning-logs'},
+			{ text: 'Elearning Visits', link: '/admin/elearning-visits'},
 		]
   	};
 

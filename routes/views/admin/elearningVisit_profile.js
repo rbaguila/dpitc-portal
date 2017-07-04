@@ -5,7 +5,6 @@ exports = module.exports = function(req, res) {
 	var locals = res.locals;
 
 	var pageData = {
-		title: 'Learning Objects',
 		navLinks: [
 			{ text: 'Home', link: '/admin' },
 			{ text: 'Posts', link: '/admin/posts'},
@@ -43,22 +42,22 @@ exports = module.exports = function(req, res) {
 	locals.section = 'users';
 	locals.data = {
 		path:req.path,
-		authors:[],
+		elearning_visits:[],
 	};
 
-    //Load LOVideo
+    //Load ELearning Log
 	view.on('init', function (next) {
 
-		var u = keystone.list('Author').model.findOne({_id: req.params.id});
+		var u = keystone.list('ELearningVisit').model.findOne({_id: req.params.id});
 
 		u.exec(function (err, results) {
-			locals.data.authors = results;
+			locals.data.elearning_visits = results;
 			next(err);
 		});
 
 	});
 
 
-	view.render('admin/authors_profile',pageData);
+	view.render('admin/elearningVisit_profile',pageData);
 };
 

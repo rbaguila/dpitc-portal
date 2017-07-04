@@ -335,3 +335,111 @@ block content
                     .jumbotron
                         h3 No LOFeedback found
                         button.btn.btn-success(type='button') Create LOFeedback
+            if data.path === '/admin/loratings'
+                if data.loratings.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create LORating
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th Learning Object
+                                th CreatedBy
+                                th Rating
+                                th CreatedAt
+                            tbody
+                            each lorating in data.loratings
+                                tr
+                                    td 
+                                        a(href='/admin/loratings/'+ lorating._id) #{lorating.learningObject}
+                                    td #{lorating.createdBy}
+                                    td #{lorating.rating}
+                                    td #{lorating.createdAt}
+
+                else
+                    .jumbotron
+                        h3 No LORating found
+                        button.btn.btn-success(type='button') Create LORating
+            if data.path === '/admin/loviews'
+                if data.loviews.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create LOView
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th Learning Object
+                                th User
+                                th Date Viewed
+                                th CreatedAt
+                            tbody
+                            each loview in data.loviews
+                                tr
+                                    td 
+                                        a(href='/admin/loviews/'+ loview._id) #{loview.learningObject}
+                                    td #{loview.user}
+                                    td #{loview.dateViewed}
+                                    td #{loview.createdAt}
+
+                else
+                    .jumbotron
+                        h3 No LOView found
+                        button.btn.btn-success(type='button') Create LOView
+            if data.path === '/admin/elearning-logs'
+                if data.elearning_logs.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create ELearning Log
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th User
+                                th Event
+                                th CreatedAt
+                            tbody
+                            each elearning_log in data.elearning_logs
+                                tr
+                                    td 
+                                        a(href='/admin/elearning-logs/'+ elearning_log._id) #{elearning_log.user}
+                                    td #{elearning_log.event}
+                                    td #{elearning_log.createdAt}
+
+                else
+                    .jumbotron
+                        h3 No ELearning Log found
+                        button.btn.btn-success(type='button') Create ELearning Log
+            if data.path === '/admin/elearning-visits'
+                if data.elearning_visits.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create ELearning Visits
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th IP
+                                th Date Viewed
+                                th CreatedAt
+                            tbody
+                            each elearning_visit in data.elearning_visits
+                                tr
+                                    td 
+                                        a(href='/admin/elearning-visits/'+ elearning_visit._id) #{elearning_visit.ip}
+                                    td #{elearning_visit.dateViewed}
+                                    td #{elearning_visit.createdAt}
+
+                else
+                    .jumbotron
+                        h3 No ELearning Visits found
+                        button.btn.btn-success(type='button') Create ELearning Visits

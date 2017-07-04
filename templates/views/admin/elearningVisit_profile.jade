@@ -1,0 +1,47 @@
+extends ../../layouts/admin-default
+
+
+block content
+
+    .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-3.main 
+        .row
+            h3 #{data.elearning_visits._id}
+        form.row
+            .row
+                .col-md-7
+                    label IP
+                    input.form-control(type='text', value=data.elearning_visits.ip)
+            .row
+                .col-md-7
+                    label Country Code
+                    input.form-control(type='text', value=data.elearning_visits.country_code)
+            .row
+                .col-md-7
+                    label Region
+                    input.form-control(type='text', value=data.elearning_visits.region)
+            .row
+                .col-md-7
+                    label City
+                    input.form-control(type='text', value=data.elearning_visits.city)
+            .row
+                .col-md-3
+                    label Date Viewed
+                    input.form-control(type='date', value=data.elearning_visits.dateViewed)
+            .row
+                .col-md-3.col-md-offset-1
+                    .checkbox
+                        input(type='checkbox' checked= data.elearning_visits.isUser)
+                        | is User
+            .row
+                h4 Meta
+            .row
+                .col-md-1
+                    p CreatedAt
+                .col-md-3
+                    mark #{data.elearning_visits.createdAt}
+            .row
+                .col-md-1
+                    p UpdatedAt
+                .col-md-3
+                    mark #{data.elearning_visits.updatedAt}
+            button.btn.btn-primary(type='submit') Save

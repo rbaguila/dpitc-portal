@@ -32,10 +32,10 @@ exports = module.exports = function(req, res) {
 			{ text: 'Authors', link: '/admin/authors'},
 			{ text: 'LOComments', link: '/admin/locomments'},
 			{ text: 'LOFeedbacks', link: '/admin/lofeedbacks'},
-			{ text: 'LORatings', link: '#'},
-			{ text: 'LOViews', link: '#'},
-			{ text: 'Elearning LORating', link: '#'},
-			{ text: 'Elearning Visits', link: '#'},
+			{ text: 'LORatings', link: '/admin/loratings'},
+			{ text: 'LOViews', link: '/admin/loviews'},
+			{ text: 'ELearning Logs', link: '/admin/elearning-logs'},
+			{ text: 'ELearning Visits', link: '/admin/elearning-visits'},
 		]
   	};
 
@@ -56,6 +56,10 @@ exports = module.exports = function(req, res) {
 		authors:[],
 		locomments:[],
 		lofeedbacks:[],
+		loratings:[],
+		loviews:[],
+		elearning_logs:[],
+		elearning_visits:[]
 	};
 
 	// Load courses
@@ -201,13 +205,61 @@ exports = module.exports = function(req, res) {
 
 	});
 
-		//Load LOFeedback
+	//Load LOFeedback
 	view.on('init', function (next) {
 
 		var u = keystone.list('LOFeedback').model.find().sort({ publishedAt: -1})
 
 		u.exec(function (err, results) {
 			locals.data.lofeedbacks = results;
+			next(err);
+		});
+
+	});
+
+	//Load LORating
+	view.on('init', function (next) {
+
+		var u = keystone.list('LORating').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.loratings = results;
+			next(err);
+		});
+
+	});
+
+	//Load LOView
+	view.on('init', function (next) {
+
+		var u = keystone.list('LOView').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.loviews = results;
+			next(err);
+		});
+
+	});
+
+	//Load Elearning Log
+	view.on('init', function (next) {
+
+		var u = keystone.list('ELearningLog').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.elearning_logs = results;
+			next(err);
+		});
+
+	});
+
+	//Load Elearning Visit
+	view.on('init', function (next) {
+
+		var u = keystone.list('ELearningVisit').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.elearning_visits = results;
 			next(err);
 		});
 
