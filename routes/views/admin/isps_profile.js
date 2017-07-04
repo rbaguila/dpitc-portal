@@ -91,7 +91,7 @@ exports = module.exports = function(req, res) {
 			}, function (err, result) {
 			if (err) {    
 				locals.validationErrors = err.errors; 
-				} else {
+			} else {
 				req.flash('success', 'ISP updated.');         
 				return res.redirect('/admin/isps');
 				}

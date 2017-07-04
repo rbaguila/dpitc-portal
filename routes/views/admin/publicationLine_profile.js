@@ -29,41 +29,14 @@ exports = module.exports = function(req, res) {
 	//init locals
 	locals.section = 'users';
 	locals.data = {
-		publication_settings: [] ,
-		publications: [] ,
-		publication_lines:[] ,
-		publication_feedbacks:[],
+		publication_lines: [] ,
 		path:req.path,
 	};
-
-	// Load publication-settings
-	view.on('init', function (next) {
-
-		var u = keystone.list('publicationsSettings').model.find().sort({ name: 1 })
-
-		u.exec(function (err, results) {
-			locals.data.publication_settings = results;
-			next(err);
-		});
-
-	});
 
 	// Load publications
 	view.on('init', function (next) {
 
-		var u = keystone.list('Publication').model.find().sort({ title: 1 })
-
-		u.exec(function (err, results) {
-			locals.data.publications = results;
-			next(err);
-		});
-
-	});
-
-	// Load publication-lines
-	view.on('init', function (next) {
-
-		var u = keystone.list('PublicationLine').model.find().sort({ name: 1 })
+		var u = keystone.list('PublicationLine').model.findOne({_id: req.params.id});
 
 		u.exec(function (err, results) {
 			locals.data.publication_lines = results;
@@ -72,18 +45,5 @@ exports = module.exports = function(req, res) {
 
 	});
 
-	// Load publication-feedback
-	view.on('init', function (next) {
-
-		var u = keystone.list('PublicationFeedback').model.find().sort({ title: 1 })
-
-		u.exec(function (err, results) {
-			locals.data.publication_feedbacks = results;
-			next(err);
-		});
-
-	});
-
-
-	view.render('admin/publications',pageData);
+	view.render('admin/publicationLine_profile',pageData);
 };

@@ -72,12 +72,12 @@ block content
                             each pub in data.publication_lines
                                 tr   
                                     td 
-                                        a(href='#') #{pub.name}
+                                        a(href='/admin/publication-lines'+pub._id) #{pub.name}
                 else
                     .jumbotron
                         h3 No Publication Line
                         button Create Publication Line
-            if data.path === '/admin/publication-feedback'
+            if data.path === '/admin/publication-feedbacks'
                 if data.publication_feedback.length > 0
                     .row
                         .col-md-6
@@ -92,10 +92,10 @@ block content
                                 th User
                                 th createdAt
                             tbody
-                            each pub in data.publication_feedback
+                            each pub in data.publication_feedbacks
                                 tr
                                     td
-                                        a(href='#') #{pub.title}
+                                        a(href='/admin/publication-feedbacks'+pub._id) #{pub.title}
                                     td #{pub.user}
                                     td #{pub.createdAt}
                 else
