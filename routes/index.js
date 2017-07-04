@@ -206,10 +206,15 @@ exports = module.exports = function (app) {
   app.get('/api/publications/download/', keystone.middleware.api, routes.api.eresources.publications.downloadPublication);
   app.get('/api/publications', keystone.middleware.api, routes.api.eresources.publications.getPublications);
   app.get('/api/publications/search/:searchKey', keystone.middleware.api, routes.api.eresources.publications.findPublication)
+  app.get('/api/publications/downloads', keystone.middleware.api, routes.api.eresources.data.downloads.getAllDownloads);
+  app.get('/api/publications/downloads/current-month', keystone.middleware.api, routes.api.eresources.data.downloads.getDownloadsCurrentMonth);
+  // TO IMPLEMENT
+  // app.get('/api/publications/feedback/', keystone.middleware.api, routes.api.eresources.data.downloads.getAllFeedback);
+  app.get('/api/publications/feedback/current-month', keystone.middleware.api, routes.api.eresources.data.feedback.getFeedbackCurrentMonth);
+
+  // Publications Reports API
   app.get('/api/publications/reports/publications',keystone.middleware.api, routes.api.eresources.reports.publications);
   app.get('/api/publications/reports/feedback',keystone.middleware.api, routes.api.eresources.reports.feedback);
-  app.get('/api/publications/downloads', keystone.middleware.api, routes.api.eresources.reports.downloads.getAllDownloads);
-  app.get('/api/publications/downloads/current-month', keystone.middleware.api, routes.api.eresources.reports.downloads.getDownloadsCurrentMonth);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

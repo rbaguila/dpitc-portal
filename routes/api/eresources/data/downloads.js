@@ -1,10 +1,10 @@
 var keystone = require('keystone');
-var Feedback = keystone.list('PublicationDownload');
+var Downloads = keystone.list('PublicationDownload');
 
 exports.getAllDownloads = function(req, res) {
   var pubID = req.query.pubID;
 
-  Feedback.model.find()
+  Downloads.model.find()
     .exec(function(err, results) {
       if (err) {
         res.send({});
@@ -22,14 +22,14 @@ exports.getDownloadsCurrentMonth = function(req, res) {
   var start = new Date(now.getFullYear(), now.getMonth(), 1);
   var end = new Date(now.getFullYear(), now.getMonth() + 1, 0);
 
-  Feedback.model.find({ date: { $gte: start, $lte: end } }).exec(function(err, results) {
+  Downloads.model.find({ date: { $gte: start, $lte: end } }).exec(function(err, results) {
     if (err) {
       console.log('Error getting feedback');
       res.send({});
     } else {
-      res.send(results)
+      res.send(results);
     }
-  })
+  });
 }
 
 exports.getDownloadsByRange = function(req, res) {
