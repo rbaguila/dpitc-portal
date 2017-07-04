@@ -41,6 +41,8 @@ exports = module.exports = function(req, res) {
 
 	//init locals
 	locals.section = 'users';
+	locals.formData = req.body || {};
+	locals.validationErrors = {};
 	locals.data = {
 		learning_objects: [],
 		path:req.path,
@@ -83,18 +85,37 @@ exports = module.exports = function(req, res) {
 
 	});
 
-    //Load author
-    view.on('init', function (next) {
-        var id = locals.data.learning_objects.author;
-		var u = keystone.list('User').model.findOne({ _id: id });
+	view.on('post', {action: 'editLearningObject'}, function(next){
+			var u = keystone.list('LearningObject').model.findOneAndUpdate(
+				{ _id:locals.data.learning_objects._id},
+				{
+					title:locals.formData.title,
+					content:{
+						brief:locals.formData.content.brief,
+						extended:locals.formData.content.extended
+					},
+				},
+				function(err,results){
+					if(err) return next(err);
+					return res.redirect('/admin/learning-objects');
+					next();
+				})
 
-		u.exec(function (err, results) {
-			locals.data.author = results;
-            console.log(id)
-            console.log(results)
-			next(err);
-		});
+			var updater = locals.data.learning_objects.getUpdateHandler(req);
 
+			updater.process(req.body, {
+			//fields: 'name',
+			flashErrors: true,
+			logErrors: true
+			}, function (err, result) {
+			if (err) {    
+				locals.validationErrors = err.errors; 
+				} else {
+				req.flash('success', 'Learning Object updated.');         
+				return res.redirect('/admin/learning-objects');
+				}
+				next();
+			});
 	});
 
 

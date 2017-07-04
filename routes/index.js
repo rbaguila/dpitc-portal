@@ -88,12 +88,14 @@ exports = module.exports = function (app) {
 	//Admin Elearning
 	app.get('/admin/learning-objects', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/learning-objects/:id', middleware.requireElearningAdmin, routes.adminViews.learningObjects_profile);
+	//app.post('/admin/learning-objects/:id', middleware.requireElearningAdmin, routes.adminViews.learningObjects_profile);
 	app.get('/admin/courses', middleware.requireElearningAdmin, routes.adminViews.elearning);
 	app.get('/admin/courses/:id',middleware.requireElearningAdmin, routes.adminViews.courses_profile);
 	app.get('/admin/learning-contents', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/learning-contents/:id',middleware.requireElearningAdmin, routes.adminViews.learningContent_profile);
 	app.get('/admin/isps', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/isps/:id',middleware.requireElearningAdmin, routes.adminViews.isps_profile);
+	app.post('/admin/isps/:id',middleware.requireElearningAdmin, routes.adminViews.isps_profile);
 	app.get('/admin/lindustries', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/lindustries/:id',middleware.requireElearningAdmin, routes.adminViews.lindustries_profile);
 	app.get('/admin/lsectors', middleware.requireElearningAdmin,routes.adminViews.elearning);

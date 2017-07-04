@@ -29,7 +29,7 @@ exports = module.exports = function(req, res) {
 			{ text: 'LGalleries', link: '/admin/logalleries'},
 			{ text: 'LOLinks', link: '/admin/lolinks'},
 			{ text: 'LOVideos', link: '/admin/lovideos'},
-			{ text: 'Authors', link: '/admin/authors'},
+			{ text: 'isps', link: '/admin/isps'},
 			{ text: 'LOComments', link: '/admin/locomments'},
 			{ text: 'LOFeedbacks', link: '/admin/lofeedbacks'},
 			{ text: 'LORatings', link: '/admin/loratings'},
@@ -40,7 +40,8 @@ exports = module.exports = function(req, res) {
   	};
 
 	//init locals
-	locals.section = 'users';
+	locals.formData = req.body || {};
+	locals.validationErrors = {};
 	locals.data = {
 		path:req.path,
 	    isps: [],
@@ -68,7 +69,35 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', {action: 'editISP'}, function(next){
+			var u = keystone.list('ISP').model.findOneAndUpdate(
+				{ _id:locals.data.isps._id},
+				{
+					name:locals.formData.name,
+					
+				},
+				function(err,results){
+					if(err) return next(err);
+					return res.redirect('/admin/isps');
+					next();
+				})
 
+			var updater = locals.data.isps.getUpdateHandler(req);
+
+			updater.process(req.body, {
+			//fields: 'name',
+			flashErrors: true,
+			logErrors: true
+			}, function (err, result) {
+			if (err) {    
+				locals.validationErrors = err.errors; 
+				} else {
+				req.flash('success', 'ISP updated.');         
+				return res.redirect('/admin/isps');
+				}
+				next();
+			});
+	});
 
 	view.render('admin/isps_profile',pageData);
 };
