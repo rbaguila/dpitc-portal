@@ -58,6 +58,20 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', {action: 'deletePublication'}, function(next){
+		var u = keystone.list('Publication').model.remove({_id: req.params.id});
+
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','Publication deleted');
+				return res.redirect('/admin/publications');
+			}
+			
+		})
+
+	});
+
 
 
 	view.render('admin/publication_profile',pageData);

@@ -25,3 +25,6 @@ block content
                         label Publications Heading
                         input.form-control(type='text', value= data.publications_settings.publicationsHeading, placeholder='Publications Heading', name='publicationsHeading')
                 button.btn.btn-primary(type='submit', name='editPublciationSetting') Save   
+            form.form-group.row(method='post', action='/admin/publication-settings/'+data.publications_settings._id)
+                input(type='hidden', name='action', value='deletePublicationSetting')
+                button.btn.btn-link(type='submit', name='deletePublicationSetting') Delete Publication Setting

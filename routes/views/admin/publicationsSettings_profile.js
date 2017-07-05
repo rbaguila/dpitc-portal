@@ -45,5 +45,20 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', {action: 'deletePublicationSetting'}, function(next){
+		var u = keystone.list('publicationsSettings').model.remove({_id: req.params.id});
+
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','Publication Setting deleted');
+				return res.redirect('/admin/publication-settings');
+			}
+			
+		})
+
+	});
+
+
 	view.render('admin/publicationsSettings_profile',pageData);
 };

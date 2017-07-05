@@ -10,3 +10,6 @@ block content
                         input.form-control.input-lg(type='text', value= data.publication_lines.name, placeholder='Name', name='name')
                 h5.help-block #{'ID: '+data.publication_lines._id}
                 button.btn.btn-primary(type='submit', name='editPublicationLine') Save   
+            form.form-group.row(method='post', action='/admin/publication-lines/'+data.publication_lines._id)
+                input(type='hidden', name='action', value='deletePublicationLine')
+                button.btn.btn-link(type='submit', name='deletePublicationLine') Delete Publication Line

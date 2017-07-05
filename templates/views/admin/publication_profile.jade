@@ -92,4 +92,8 @@ block content
                         label Downloads
                     .col-md-1
                         mark #{data.publications.downloads}
+                button.btn.btn-primary(type='submit', name='editPublication') Save
+            form.form-group.row(method='post', action='/admin/publications/'+data.publications._id)
+                input(type='hidden', name='action', value='deletePublication')
+                button.btn.btn-link(type='submit', name='deletePublication') Delete Publication
 

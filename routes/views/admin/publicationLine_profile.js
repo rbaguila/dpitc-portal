@@ -45,5 +45,20 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', {action: 'deletePublicationLine'}, function(next){
+		var u = keystone.list('PublicationLine').model.remove({_id: req.params.id});
+
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','Publication Line deleted');
+				return res.redirect('/admin/publication-lines');
+			}
+			
+		})
+
+	});
+
+
 	view.render('admin/publicationLine_profile',pageData);
 };
