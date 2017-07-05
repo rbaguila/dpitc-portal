@@ -71,6 +71,20 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', {action: 'deleteLSector'}, function(next){
+		var u = keystone.list('LSector').model.remove({_id: req.params.id});
+
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','LSector deleted');
+				return res.redirect('/admin/lsectors');
+			}
+			
+		})
+
+	});
+
 
 	view.render('admin/lsectors_profile',pageData);
 };

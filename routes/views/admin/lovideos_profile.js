@@ -58,6 +58,21 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', {action: 'deleteLOVideo'}, function(next){
+		var u = keystone.list('LOVideo').model.remove({_id: req.params.id});
+
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','LOVideo deleted');
+				return res.redirect('/admin/lovideos');
+			}
+			
+		})
+
+	});
+
+
 
 	view.render('admin/lovideos_profile',pageData);
 };

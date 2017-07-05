@@ -57,6 +57,20 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', {action: 'deleteELearningVisit'}, function(next){
+		var u = keystone.list('ELearningVisit').model.remove({_id: req.params.id});
+
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','ELearning Visit deleted');
+				return res.redirect('/admin/elearning-visits');
+			}
+			
+		})
+
+	});
+
 
 	view.render('admin/elearningVisit_profile',pageData);
 };

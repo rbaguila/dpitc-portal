@@ -55,4 +55,6 @@ block content
                     label File Type
                     
             button.btn.btn-primary(type='submit') Save
-            
+        form.form-group.row(method='post', action='/admin/lofile-uploads/'+data.lofile_uploads._id)
+                input(type='hidden', name='action', value='deleteLOFileUpload')
+                button.btn.btn-link(type='submit', name='deleteLOFileUpload') Delete LOFile Upload

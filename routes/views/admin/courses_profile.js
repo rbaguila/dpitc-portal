@@ -57,6 +57,20 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', {action: 'deleteCourse'}, function(next){
+		var u = keystone.list('Course').model.remove({_id: req.params.id});
+
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','Course deleted');
+				return res.redirect('/admin/courses');
+			}
+			
+		})
+
+	});
+
 
 	view.render('admin/courses_profile',pageData);
 };

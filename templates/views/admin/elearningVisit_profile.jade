@@ -48,3 +48,6 @@ block content
                 .col-md-3
                     mark #{data.elearning_visits.updatedAt}
             button.btn.btn-primary(type='submit') Save
+        form.form-group.row(method='post', action='/admin/elearning-visits/'+data.elearning_visits._id)
+                input(type='hidden', name='action', value='deleteELearningVisit')
+                button.btn.btn-link(type='submit', name='deleteELearningVisit') Delete ELearning Visit

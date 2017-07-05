@@ -57,6 +57,20 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', {action: 'deleteLearningContent'}, function(next){
+		var u = keystone.list('LearningContent').model.remove({_id: req.params.id});
+
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','Learning Content deleted');
+				return res.redirect('/admin/learning-contents');
+			}
+			
+		})
+
+	});
+
 
 	view.render('admin/learningContent_profile',pageData);
 };

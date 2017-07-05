@@ -57,6 +57,20 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', {action: 'deleteELearningLog'}, function(next){
+		var u = keystone.list('ELearningLog').model.remove({_id: req.params.id});
+
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','ELearning Log deleted');
+				return res.redirect('/admin/elearning-logs');
+			}
+			
+		})
+
+	});
+
 
 	view.render('admin/elearningLog_profile',pageData);
 };

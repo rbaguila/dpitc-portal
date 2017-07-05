@@ -57,6 +57,21 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', {action: 'deleteLOFileUpload'}, function(next){
+		var u = keystone.list('LOFileUpload').model.remove({_id: req.params.id});
+
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','LOFile Upload deleted');
+				return res.redirect('/admin/lofile-uploads');
+			}
+			
+		})
+
+	});
+
+
 
 	view.render('admin/lofileUpload_profile',pageData);
 };

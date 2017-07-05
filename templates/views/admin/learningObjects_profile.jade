@@ -46,3 +46,6 @@ block content
                     .col-md-2
                         mark #{data.learning_objects.publishedAt}
                 button.btn.btn-primary(type='submit', name='editLearningObject') Save
+            form.form-group.row(method='post', action='/admin/learning-objects/'+data.learning_objects._id)
+                input(type='hidden', name='action', value='deleteLearningObject')
+                button.btn.btn-link(type='submit', name='deleteLearningObject') Delete Learning Object

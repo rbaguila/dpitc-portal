@@ -58,6 +58,20 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', {action: 'deleteLIndustry'}, function(next){
+		var u = keystone.list('LIndustry').model.remove({_id: req.params.id});
+
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','LIndustry deleted');
+				return res.redirect('/admin/lindustries');
+			}
+			
+		})
+
+	});
+
 
 	view.render('admin/lindustries_profile',pageData);
 };

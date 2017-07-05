@@ -18,4 +18,7 @@ block content
                     .col-md-7
                         label Description
                         textarea.form-control(rows='10') #{data.lovideos.description}
-                button.btn.btn-primary(type='submit') Save   
+                button.btn.btn-primary(type='submit') Save
+            form.form-group.row(method='post', action='/admin/lovideos/'+data.lovideos._id)
+                input(type='hidden', name='action', value='deleteLOVideo')
+                button.btn.btn-link(type='submit', name='deleteLOVideo') Delete LOVideo

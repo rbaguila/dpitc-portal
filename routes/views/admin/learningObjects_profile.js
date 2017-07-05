@@ -118,6 +118,20 @@ exports = module.exports = function(req, res) {
 			});
 	});
 
+	view.on('post', {action: 'deleteLearningObject'}, function(next){
+		var u = keystone.list('LearningObject').model.remove({_id: req.params.id});
+
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','Course deleted');
+				return res.redirect('/admin/learning-objects');
+			}
+			
+		})
+
+	});
+
 
 	view.render('admin/learningObjects_profile',pageData);
 };

@@ -19,4 +19,7 @@ block content
                                 option(selected='') Select...
                             each li,i in data.lindustries
                                 option(value=i) #{li.name}
-                button.btn.btn-primary(type='submit') Save   
+                button.btn.btn-primary(type='submit') Save  
+            form.form-group.row(method='post', action='/admin/lsectors/'+data.lsectors._id)
+                input(type='hidden', name='action', value='deleteLSector')
+                button.btn.btn-link(type='submit', name='deleteLSector') Delete LSector
