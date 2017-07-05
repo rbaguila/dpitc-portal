@@ -45,4 +45,7 @@ block content
                         label Updated At
                     .col-md-2
                         mark #{data.courses.publishedAt}
-
+                button.btn.btn-primary(type='submit') Save
+            form.form-group.row(method='post', action='/admin/courses/'+data.courses._id)
+                input(type='hidden', name='action', value='deleteCourse')
+                button.btn.btn-link(type='submit', name='deleteCourse') Delete Course

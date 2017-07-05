@@ -22,20 +22,20 @@ exports = module.exports = function(req, res) {
 			{ text: 'Learning Objects', link: '/admin/learning-objects'},
 			{ text: 'Courses', link: '/admin/courses'},
 			{ text: 'Learning Contents', link: '/admin/learning-contents'},
-			{ text: 'ISPs', link: '#'},
-			{ text: 'LIndustries', link: '#'},
-			{ text: 'LSectors', link: '#'},
-			{ text: 'LOFile Uploads', link: '#'},
-			{ text: 'LGalleries', link: '#'},
-			{ text: 'LOLinks', link: '#'},
-			{ text: 'LOVideos', link: '#'},
-			{ text: 'Authors', link: '#'},
-			{ text: 'LOComments', link: '#'},
-			{ text: 'LOFeedbacks', link: '#'},
-			{ text: 'LORatings', link: '#'},
-			{ text: 'LOViews', link: '#'},
-			{ text: 'Elearning LORating', link: '#'},
-			{ text: 'Elearning Visits', link: '#'},
+			{ text: 'ISPs', link: '/admin/isps'},
+			{ text: 'LIndustries', link: '/admin/lindustries'},
+			{ text: 'LSectors', link: '/admin/lsectors'},
+			{ text: 'LOFile Uploads', link: '/admin/lofile-uploads'},
+			{ text: 'LGalleries', link: '/admin/logalleries'},
+			{ text: 'LOLinks', link: '/admin/lolinks'},
+			{ text: 'LOVideos', link: '/admin/lovideos'},
+			{ text: 'Authors', link: '/admin/authors'},
+			{ text: 'LOComments', link: '/admin/locomments'},
+			{ text: 'LOFeedbacks', link: '/admin/lofeedbacks'},
+			{ text: 'LORatings', link: '/admin/loratings'},
+			{ text: 'LOViews', link: '/admin/loviews'},
+			{ text: 'ELearning Logs', link: '/admin/elearning-logs'},
+			{ text: 'ELearning Visits', link: '/admin/elearning-visits'},
 		]
   	};
 
@@ -46,6 +46,20 @@ exports = module.exports = function(req, res) {
 		path:req.path,
 	    courses: [],
 		learning_contents:[],
+		isps:[],
+		lindustries:[],
+		lsectors:[],
+		lofile_uploads:[],
+		logalleries:[],
+		lolinks:[],
+		lovideos:[],
+		authors:[],
+		locomments:[],
+		lofeedbacks:[],
+		loratings:[],
+		loviews:[],
+		elearning_logs:[],
+		elearning_visits:[]
 	};
 
 	// Load courses
@@ -78,6 +92,174 @@ exports = module.exports = function(req, res) {
 
 		u.exec(function (err, results) {
 			locals.data.learning_contents = results;
+			next(err);
+		});
+
+	});
+
+	//Load ISPs
+	view.on('init', function (next) {
+
+		var u = keystone.list('ISP').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.isps = results;
+			next(err);
+		});
+
+	});
+
+	//Load LIndustries
+	view.on('init', function (next) {
+
+		var u = keystone.list('LIndustry').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.lindustries = results;
+			next(err);
+		});
+
+	});
+
+	//Load LSectors
+	view.on('init', function (next) {
+
+		var u = keystone.list('LSector').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.lsectors = results;
+			next(err);
+		});
+
+	});
+
+	//Load LOFile-upload
+	view.on('init', function (next) {
+
+		var u = keystone.list('LOFileUpload').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.lofile_uploads = results;
+			next(err);
+		});
+
+	});
+
+	//Load LOGallery
+	view.on('init', function (next) {
+
+		var u = keystone.list('LOGallery').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.logalleries = results;
+			next(err);
+		});
+
+	});
+
+	//Load LOLink
+	view.on('init', function (next) {
+
+		var u = keystone.list('LOLink').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.lolinks = results;
+			next(err);
+		});
+
+	});
+
+	//Load LOVideo
+	view.on('init', function (next) {
+
+		var u = keystone.list('LOVideo').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.lovideos = results;
+			next(err);
+		});
+
+	});
+
+	//Load Author
+	view.on('init', function (next) {
+
+		var u = keystone.list('Author').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.authors = results;
+			next(err);
+		});
+
+	});
+
+	//Load LOComment
+	view.on('init', function (next) {
+
+		var u = keystone.list('LOComment').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.locomments = results;
+			next(err);
+		});
+
+	});
+
+	//Load LOFeedback
+	view.on('init', function (next) {
+
+		var u = keystone.list('LOFeedback').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.lofeedbacks = results;
+			next(err);
+		});
+
+	});
+
+	//Load LORating
+	view.on('init', function (next) {
+
+		var u = keystone.list('LORating').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.loratings = results;
+			next(err);
+		});
+
+	});
+
+	//Load LOView
+	view.on('init', function (next) {
+
+		var u = keystone.list('LOView').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.loviews = results;
+			next(err);
+		});
+
+	});
+
+	//Load Elearning Log
+	view.on('init', function (next) {
+
+		var u = keystone.list('ELearningLog').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.elearning_logs = results;
+			next(err);
+		});
+
+	});
+
+	//Load Elearning Visit
+	view.on('init', function (next) {
+
+		var u = keystone.list('ELearningVisit').model.find().sort({ publishedAt: -1})
+
+		u.exec(function (err, results) {
+			locals.data.elearning_visits = results;
 			next(err);
 		});
 

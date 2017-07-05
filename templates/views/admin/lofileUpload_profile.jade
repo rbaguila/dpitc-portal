@@ -1,0 +1,60 @@
+extends ../../layouts/admin-default
+
+block content
+
+    .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-3.main
+        h2 #{data.lofile_uploads.name}
+        p.help-block #{'ID: '+data.lofile_uploads._id}
+        br
+        form.row(method="post")
+            .row
+                .col-md-7
+                    label Name
+                    input.form-control(type='text', value= data.lofile_uploads.name, placeholde='Name')
+            label.custom-file File
+                input#file.custom-file-input(type='file', value=data.lofile_uploads.file)
+                span.custom-file-control
+            .row
+                .col-md-3
+                    label Created Time Stamp
+                    input.form-control(type='date')
+            .row
+                .col-md-7
+                    label Description
+                    textarea.form-control(rows='10') #{data.lofile_uploads.description}
+            .row
+                .col-md-7
+                    label Alt 1
+                    input.form-control(type='text', value= data.lofile_uploads.alt1)
+            .row
+                .col-md-7
+                    label Attributes 1
+                    input.form-control(type='text', value= data.lofile_uploads.attributes1)
+            .row
+                .col-md-7
+                    label Category
+                    input.form-control(type='text', value= data.lofile_uploads.category)
+            .row
+                .col-md-7
+                    label Priority ID
+                    input.form-control(type='text', value= data.lofile_uploads.priorityId)
+            .row
+                .col-md-7
+                    label Parent
+                    input.form-control(type='text', value= data.lofile_uploads.parent)
+            .row
+                .col-md-7
+                    label Children
+                    input.form-control(type='text', value= data.lofile_uploads.children)
+            .row
+                .col-md-7
+                    label URL
+                    input.form-control(type='text', value= data.lofile_uploads.url)
+            .row
+                .col-md-7
+                    label File Type
+                    
+            button.btn.btn-primary(type='submit') Save
+        form.form-group.row(method='post', action='/admin/lofile-uploads/'+data.lofile_uploads._id)
+                input(type='hidden', name='action', value='deleteLOFileUpload')
+                button.btn.btn-link(type='submit', name='deleteLOFileUpload') Delete LOFile Upload

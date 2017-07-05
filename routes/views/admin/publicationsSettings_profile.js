@@ -29,36 +29,36 @@ exports = module.exports = function(req, res) {
 	//init locals
 	locals.section = 'users';
 	locals.data = {
-		publications: [] ,
-		publication_lines:[] ,
+		publications_settings: [] ,
 		path:req.path,
 	};
 
 	// Load publications
 	view.on('init', function (next) {
 
-		var u = keystone.list('Publication').model.findOne({_id: req.params.id});
+		var u = keystone.list('publicationsSettings').model.findOne({_id: req.params.id});
 
 		u.exec(function (err, results) {
-			locals.data.publications = results;
+			locals.data.publications_settings = results;
 			next(err);
 		});
 
 	});
 
-    	// Load publication-lines
-	view.on('init', function (next) {
+	view.on('post', {action: 'deletePublicationSetting'}, function(next){
+		var u = keystone.list('publicationsSettings').model.remove({_id: req.params.id});
 
-		var u = keystone.list('PublicationLine').model.findOne({_id: req.params.id});
-
-		u.exec(function (err, results) {
-			locals.data.publication_lines = results;
-			next(err);
-		});
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','Publication Setting deleted');
+				return res.redirect('/admin/publication-settings');
+			}
+			
+		})
 
 	});
 
 
-
-	view.render('admin/publication_view',pageData);
+	view.render('admin/publicationsSettings_profile',pageData);
 };

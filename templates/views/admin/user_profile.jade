@@ -2,33 +2,33 @@ extends ../../layouts/admin-default
 
 block content
 
-    .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+    .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-3.main
         h2 #{data.user.name.first + ' ' + data.user.name.last}
         p.help-block #{'ID: '+data.user._id}
         br
-        form.form-group.row(method="post")
-            //-input(type='hidden', name= 'action', value='editProfile')
+        form.row(method="post", action='/admin/users/'+data.user._id)
+            input(type='hidden', name= 'action', value='editUser')
             .row
                 .col-md-3               
-                    label First Name :
-                    input.form-control(type='text', value= data.user.name.first, placeholder='First name')
+                    label First Name
+                    input.form-control(type='text', value= data.user.name.first, placeholder='First name', name='first')
                 .col-md-4
                     label Last Name :    
-                    input.form-control(type='text', value= data.user.name.last, placeholder='Last name')
+                    input.form-control(type='text', value= data.user.name.last, placeholder='Last name', name='last')
             .row
                 .col-md-7
-                    label Email :
-                    input.form-control(type='text', value= data.user.email, placeholder='Email')
+                    label Email
+                    input.form-control(type='text', value= data.user.email, placeholder='Email', name='email')
             .row
                 .col-md-5
-                    label Password :
+                    label Password
                     button.btn.btn-primary(type='submit') Change Password
-            label.custom-file Photo :
+            
+            label.custom-file Photo
                 input#file.custom-file-input(type='file')
                 span.custom-file-control
-            
-            h3 Elearning
             .row
+                h3 Elearning
                 .col-md-7
                     label Learning Objects Taken
                     select.form-control
@@ -42,35 +42,49 @@ block content
                 .col-md-7
                     h4 Location
                     label Street Address
-                    input.form-control(type='text', value= data.user.location.street1, placeholder='Street Address')
+                    input.form-control(type='text', value= data.user.location.street1, placeholder='Street Address', name = 'streetAddress')
             .row
                 .col-md-4
                     label Suburb
-                    input.form-control(type='text', value= data.user.location.suburb, placeholder='Suburb')
+                    input.form-control(type='text', value= data.user.location.suburb, placeholder='Suburb', name = 'suburb')
                 .col-md-3
                     label State
-                    input.form-control(type='text', value= data.user.location.state, placeholder='State')
+                    input.form-control(type='text', value= data.user.location.state, placeholder='State', name = 'state')
             .row
                 .col-md-3
                     label Postcode
-                    input.form-control(type='text', value= data.user.location.postcode, placeholder='Postcode')
+                    input.form-control(type='text', value= data.user.location.postcode, placeholder='Postcode', name= 'postcode')
                 .col-md-4
                     label Country
-                    input.form-control(type='text', value= data.user.location.country, placeholder='Country')
+                    input.form-control(type='text', value= data.user.location.country, placeholder='Country' , name='country')
+            .row
+                .col-md-7
+                    label Consumer Type
+                    select.form-control
+                        option(selected='') #{data.user.consumerType}
             .row
                 .col-md-2
                     label Birthday
-                    input.form-control(type='date', value= data.user.birthday.toLocaleDateString())
+                    input.form-control(type='date', value= data.user.birthday, name='birthday')
+            .row
+                .col-md-7
+                    label Agency Affiliation
+                    input.form-control(type='text', value= data.user.agencyAffiliation, placeholder='Agency Affiliation' , name='agencyAffiliation')
             .row
                 .col-md-7
                     label Sex
                     select.form-control
                         option(selected='') #{data.user.sex}
             .row
-                .col-md-3.col-md-offset-1
+                .col-md-7
+                    label Contact Number
+                    input.form-control(type='text', value= data.user.contactNumber, placeholder='Contact Number' , name='contactNumber')
+            .row
+                .col-md-1
                     label Permissions
+                .col-md-3
                     .checkbox
-                        input(type='checkbox' checked= data.user.isElearningAdmin)
+                        input(type='checkbox' checked= data.user.isElearningAdmin, name = 'isElearningAdmin')
                         | Can Access Elearning Admin
                     .checkbox
                         input(type='checkbox' checked= data.user.isElearningUser)
@@ -113,4 +127,8 @@ block content
                             option(selected='') Select...
                         each pub,i in data.publications
                             option(value=i) #{pub.title}
-            button.btn.btn-primary(type='submit') Save
+            button.btn.btn-primary(type='submit', name='editUser') Save
+        form.form-group.row(method='post', action='/admin/users/'+data.user._id)
+            input(type='hidden', name='action', value='deleteUser')
+            button.btn.btn-link(type='submit', name='deleteUser') Delete User       
+                

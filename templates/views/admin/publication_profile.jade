@@ -78,18 +78,22 @@ block content
                 .row
                     .col-md-7
                         label Format
-                        input.form-control(type='text', value= data.publications.printer)
+                        input.form-control(type='text', value= data.publications.format)
                 .row
                     .col-md-7
                         label Number of pages
-                        input.form-control(type='text', value= data.publications.printer)
+                        input.form-control(type='text', value= data.publications.numberOfPages)
                 .row
                     .col-md-7
                         label Price
-                        input.form-control(type='text', value= data.publications.printer)
+                        input.form-control(type='text', value= data.publications.price)
                 .row
                     .col-md-1
                         label Downloads
                     .col-md-1
                         mark #{data.publications.downloads}
+                button.btn.btn-primary(type='submit', name='editPublication') Save
+            form.form-group.row(method='post', action='/admin/publications/'+data.publications._id)
+                input(type='hidden', name='action', value='deletePublication')
+                button.btn.btn-link(type='submit', name='deletePublication') Delete Publication
 

@@ -1,0 +1,24 @@
+extends ../../layouts/admin-default
+
+block content
+    .row
+        .col-sm-9.col-sm-offset-3.col-md-9.col-md-offset-3.main
+            h3 #{data.lovideos._id}
+            form.form-group.row(method='post')
+                .row
+                    .col-md-7
+                        input.form-control.input-lg(type='text', value= data.lovideos.title, placeholder='Title')
+                h5.help-block #{'Key: '+data.lovideos.key}
+                h5.help-block #{'ID: '+data.lovideos._id}
+                .row
+                    .col-md-7
+                        label Youtube URL
+                        input.form-control(type='text', value= data.lovideos.url, placeholder='URL')
+                .row
+                    .col-md-7
+                        label Description
+                        textarea.form-control(rows='10') #{data.lovideos.description}
+                button.btn.btn-primary(type='submit') Save
+            form.form-group.row(method='post', action='/admin/lovideos/'+data.lovideos._id)
+                input(type='hidden', name='action', value='deleteLOVideo')
+                button.btn.btn-link(type='submit', name='deleteLOVideo') Delete LOVideo

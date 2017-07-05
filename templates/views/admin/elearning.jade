@@ -4,70 +4,442 @@ block content
     .row
         .col-sm-9.col-sm-offset-3.col-md-9.col-md-offset-2.main
             if data.path === '/admin/learning-objects'
-                input.form-control(type='text', placeholder='Search..')
-                button.btn.btn-success(type='button') Create Learning Object
-                .table-responsive   
-                    table.table.table-striped
-                        thead
-                        tr
-                            th Title
-                            th Author
-                            th One-paragrapth Description
-                            th State
-                            th Published At
-                        tbody
-                        each lo in data.learning_objects
-                            tr   
-                                td 
-                                    a(href='/admin/learning-objects/'+lo._id) #{lo.title}
-                                td #{lo.author}
-                                td #{lo.content.brief}
-                                td #{lo.state}
-                                td #{lo.publishedAt}
-                        else
-                                    .jumbotron
-                                        h3 No data
+                if data.learning_objects.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create Learning Objects            
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th Title
+                                th Author
+                                th One-paragrapth Description
+                                th State
+                                th Published At
+                            tbody
+                            each lo in data.learning_objects
+                                tr   
+                                    td 
+                                        a(href='/admin/learning-objects/'+lo._id) #{lo.title}
+                                    td #{lo.author}
+                                    td #{lo.content.brief}
+                                    td #{lo.state}
+                                    td #{lo.publishedAt}
+                else
+                    .jumbotron
+                        h3 No Learning Object found
+                        button.btn.btn-success(type='button') Create Learning Object 
             if data.path === '/admin/courses'
-                input.form-control(type='text', placeholder='Search..')
-                button.btn.btn-success(type='button') Create Learning Object
-                .table-responsive   
-                    table.table.table-striped
-                        thead
-                        tr
-                            th Title
-                            th One-paragrapth Description
-                            th State
-                            th Published At
-                        tbody
-                        each courses in data.courses
-                            tr   
-                                td 
-                                    a(href='/admin/courses/'+courses._id) #{courses.title}
-                                td #{courses.content.brief}
-                                td #{courses.state}
-                                td #{courses.publishedAt}
-                        else
-                            .jumbotron
-                                h3 No data
+                if data.courses.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create Course                
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th Title
+                                th One-paragrapth Description
+                                th State
+                                th Published At
+                            tbody
+                            each courses in data.courses
+                                tr   
+                                    td 
+                                        a(href='/admin/courses/'+courses._id) #{courses.title}
+                                    td #{courses.content.brief}
+                                    td #{courses.state}
+                                    td #{courses.publishedAt}
+                else
+                    .jumbotron
+                        h3 No Course found
+                        button.btn.btn-success(type='button') Create Course  
             if data.path === '/admin/learning-contents'
-                input.form-control(type='text', placeholder='Search..')
-                button.btn.btn-success(type='button') Create Learning Object
-                .table-responsive   
-                    table.table.table-striped
-                        thead
-                        tr
-                            th Title
-                            th One-paragrapth Description
-                            th State
-                            th Published At
-                        tbody
-                        each contents in data.learning_contents
-                            tr   
-                                td 
-                                    a(href='/admin/learning-contents/'+ contents._id) #{contents.title}
-                                td #{contents.content.brief}
-                                td #{contents.state}
-                                td #{contents.publishedAt}
-                        else
-                            .jumbotron
-                                h3 No data 
+                if data.learning_contents.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create Learning Content               
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th Title
+                                th One-paragrapth Description
+                                th State
+                                th Published At
+                            tbody
+                            each contents in data.learning_contents
+                                tr   
+                                    td 
+                                        a(href='/admin/learning-contents/'+ contents._id) #{contents.title}
+                                    td #{contents.content.brief}
+                                    td #{contents.state}
+                                    td #{contents.publishedAt}
+                else
+                    .jumbotron
+                        h3 No Learning Content found
+                        button.btn.btn-success(type='button') Create Learning Content
+            if data.path === '/admin/isps'
+                if data.isps.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create ISP             
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th Name
+                                th Sector
+                            tbody
+                            each isp in data.isps
+                                tr
+                                    td 
+                                        a(href='/admin/isps/'+ isp._id) #{isp.name}
+                                    td #{isp.sector}
+                else
+                    .jumbotron
+                        h3 No ISP found
+                        button.btn.btn-success(type='button') Create ISP
+            if data.path === '/admin/lindustries'
+                if data.lindustries.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create LOIndustry              
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th Name
+                            tbody
+                            each lindustry in data.lindustries
+                                tr
+                                    td 
+                                        a(href='/admin/lindustries/'+ lindustry._id) #{lindustry.name}
+                else
+                    .jumbotron
+                        h3 No LIndustry found
+                        button.btn.btn-success(type='button') Create LIndustry
+            if data.path === '/admin/lsectors'
+                if data.lsectors.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create LOSectorr              
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th Name
+                                th Industry
+                            tbody
+                            each lsector in data.lsectors
+                                tr
+                                    td 
+                                        a(href='/admin/lsectors/'+ lsector._id) #{lsector.name}
+                                    td #{lsector.industry}
+                else
+                    .jumbotron
+                        h3 No LSector found
+                        button.btn.btn-success(type='button') Create LSector
+            if data.path === '/admin/lofile-uploads'
+                if data.lofile_uploads.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create LOFile Upload
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th Name
+                                th Created Time Stamp
+                                th File Type
+                            tbody
+                            each lofile in data.lofile_uploads
+                                tr
+                                    td 
+                                        a(href='/admin/lofile-uploads/'+ lofile._id) #{lofile.name}
+                                    td #{lofile.createdTimeStamp}
+                                    td #{lofile.fileType}
+                else
+                    .jumbotron
+                        h3 No LOFile Uploud found
+                        button.btn.btn-success(type='button') Create LOFile Upload
+            if data.path === '/admin/logalleries'
+                if data.logalleries.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create LOGallery
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th Name
+                                th Description
+                                th Published At
+                            tbody
+                            each logallery in data.logalleries
+                                tr
+                                    td 
+                                        a(href='/admin/logalleries/'+ logallery._id) #{logallery.name}
+                                    td #{logallery.description}
+                                    td #{logallery.publishedAt}
+                else
+                    .jumbotron
+                        h3 No LOGallery found
+                        button.btn.btn-success(type='button') Create LOGallery
+            if data.path === '/admin/lolinks'
+                if data.lolinks.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create LOLink
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th Name
+                                th URL
+                                th Description
+                            tbody
+                            each lolink in data.lolinks
+                                tr
+                                    td 
+                                        a(href='/admin/lolinks/'+ lolink._id) #{lolink.name}
+                                    td #{lolink.url}
+                                    td #{lolink.description}
+                else
+                    .jumbotron
+                        h3 No LOLink found
+                        button.btn.btn-success(type='button') Create LOLink
+            if data.path === '/admin/lovideos'
+                if data.lovideos.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create LOVideo
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th ID
+                                th Youtube URL
+                                th Description
+                            tbody
+                            each lovideo in data.lovideos
+                                tr
+                                    td 
+                                        a(href='/admin/lovideos/'+ lovideo._id) #{lovideo._id}
+                                    td 
+                                        a(href=lovideo.url) #{lovideo.url}
+                                    td #{lovideo.description}
+
+                else
+                    .jumbotron
+                        h3 No LOVideo found
+                        button.btn.btn-success(type='button') Create LOVideo
+            if data.path === '/admin/authors'
+                if data.authors.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create Author
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th Name
+                                th Organization
+                            tbody
+                            each author in data.authors
+                                tr
+                                    td 
+                                        a(href='/admin/authors/'+ author._id) #{author.name}
+                                    td #{author.organization}
+
+                else
+                    .jumbotron
+                        h3 No Author found
+                        button.btn.btn-success(type='button') Create Author
+            if data.path === '/admin/locomments'
+                if data.locomments.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create LOComment
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th Learning Object
+                                th CreatedBy
+                                th Content
+                                th CreatedAt
+                            tbody
+                            each locomment in data.locomments
+                                tr
+                                    td 
+                                        a(href='/admin/locomments/'+ locomment._id) #{locomment.learningObject}
+                                    td #{locomment.createdBy}
+                                    td #{locomment.content}
+                                    td #{locomment.createdAt}
+
+                else
+                    .jumbotron
+                        h3 No LOComment found
+                        button.btn.btn-success(type='button') Create LOComment
+            if data.path === '/admin/lofeedbacks'
+                if data.lofeedbacks.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create LOFeedback
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th Name
+                                th Email
+                                th Enquiry Type
+                                th CreatedAt
+                            tbody
+                            each lofeedback in data.lofeedbacks
+                                tr
+                                    td 
+                                        a(href='/admin/lofeedbacks/'+ lofeedback._id) #{lofeedback.name}
+                                    td #{lofeedback.email}
+                                    td #{lofeedback.enquiryType}
+                                    td #{lofeedback.createdAt}
+
+                else
+                    .jumbotron
+                        h3 No LOFeedback found
+                        button.btn.btn-success(type='button') Create LOFeedback
+            if data.path === '/admin/loratings'
+                if data.loratings.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create LORating
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th Learning Object
+                                th CreatedBy
+                                th Rating
+                                th CreatedAt
+                            tbody
+                            each lorating in data.loratings
+                                tr
+                                    td 
+                                        a(href='/admin/loratings/'+ lorating._id) #{lorating.learningObject}
+                                    td #{lorating.createdBy}
+                                    td #{lorating.rating}
+                                    td #{lorating.createdAt}
+
+                else
+                    .jumbotron
+                        h3 No LORating found
+                        button.btn.btn-success(type='button') Create LORating
+            if data.path === '/admin/loviews'
+                if data.loviews.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create LOView
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th Learning Object
+                                th User
+                                th Date Viewed
+                                th CreatedAt
+                            tbody
+                            each loview in data.loviews
+                                tr
+                                    td 
+                                        a(href='/admin/loviews/'+ loview._id) #{loview.learningObject}
+                                    td #{loview.user}
+                                    td #{loview.dateViewed}
+                                    td #{loview.createdAt}
+
+                else
+                    .jumbotron
+                        h3 No LOView found
+                        button.btn.btn-success(type='button') Create LOView
+            if data.path === '/admin/elearning-logs'
+                if data.elearning_logs.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create ELearning Log
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th User
+                                th Event
+                                th CreatedAt
+                            tbody
+                            each elearning_log in data.elearning_logs
+                                tr
+                                    td 
+                                        a(href='/admin/elearning-logs/'+ elearning_log._id) #{elearning_log.user}
+                                    td #{elearning_log.event}
+                                    td #{elearning_log.createdAt}
+
+                else
+                    .jumbotron
+                        h3 No ELearning Log found
+                        button.btn.btn-success(type='button') Create ELearning Log
+            if data.path === '/admin/elearning-visits'
+                if data.elearning_visits.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create ELearning Visits
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th IP
+                                th Date Viewed
+                                th CreatedAt
+                            tbody
+                            each elearning_visit in data.elearning_visits
+                                tr
+                                    td 
+                                        a(href='/admin/elearning-visits/'+ elearning_visit._id) #{elearning_visit.ip}
+                                    td #{elearning_visit.dateViewed}
+                                    td #{elearning_visit.createdAt}
+
+                else
+                    .jumbotron
+                        h3 No ELearning Visits found
+                        button.btn.btn-success(type='button') Create ELearning Visits
