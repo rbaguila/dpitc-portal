@@ -45,5 +45,19 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', {action: 'deleteReportView'}, function(next){
+		var u = keystone.list('ReportView').model.remove({_id: req.params.id});
+
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','Report View deleted');
+				return res.redirect('/admin/report-views');
+			}
+			
+		})
+
+	});
+
 	view.render('admin/reportViews_profile',pageData);
 };

@@ -17,4 +17,7 @@ block content
                                 option(selected='',name='sector') #{data.isps.sector}
                             each ls,i in data.lsectors
                                 option(value=i, name='sector') #{ls.name}
-                button.btn.btn-primary(type='submit', name='editISP') Save   
+                button.btn.btn-primary(type='submit', name='editISP') Save
+            form.form-group.row(method='post', action='/admin/isps/'+data.isps._id)
+                input(type='hidden', name='action', value='deleteISP')
+                button.btn.btn-link(type='submit', name='deleteISP') Delete ISP

@@ -36,3 +36,6 @@ block content
                 p Loc
             .col-md-3    
                 mark #{data.report_views.loc}
+        form.form-group.row(method='post', action='/admin/report-views/'+data.report_views._id)
+                input(type='hidden', name='action', value='deleteReportView')
+                button.btn.btn-link(type='submit', name='deleteReportView') Delete Report View

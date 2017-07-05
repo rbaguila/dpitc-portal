@@ -44,5 +44,19 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', {action: 'deleteDiscussionView'}, function(next){
+		var u = keystone.list('DiscussionView').model.remove({_id: req.params.id});
+
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','Discussion View deleted');
+				return res.redirect('/admin/discussion-views');
+			}
+			
+		})
+
+	});
+
 	view.render('admin/discussionViews_profile',pageData);
 };

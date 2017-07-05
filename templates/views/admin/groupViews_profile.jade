@@ -36,4 +36,6 @@ block content
                 p Loc
             .col-md-3    
                 mark #{data.group_views.loc}
-        
+        form.form-group.row(method='post', action='/admin/group-views/'+data.group_views._id)
+                input(type='hidden', name='action', value='deleteGroupView')
+                button.btn.btn-link(type='submit', name='deleteGroupView') Delete Group View

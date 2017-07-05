@@ -36,4 +36,7 @@ block content
                 p Loc
             .col-md-3    
                 mark #{data.community_views.loc}
+        form.form-group.row(method='post', action='/admin/community-views/'+data.community_views._id)
+                input(type='hidden', name='action', value='deleteCommunityView')
+                button.btn.btn-link(type='submit', name='deleteCommunityView') Delete Community View
         

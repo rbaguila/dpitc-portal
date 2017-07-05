@@ -15,4 +15,7 @@ block content
                     .col-md-7
                         label Organization
                         input.form-control(type='text', value= data.authors.organization, placeholder='Organization', name='organization')
-                button.btn.btn-primary(type='submit', name='editAuthor') Save   
+                button.btn.btn-primary(type='submit', name='editAuthor') Save
+            form.form-group.row(method='post', action='/admin/authors/'+data.authors._id)
+                input(type='hidden', name='action', value='deleteAuthor')
+                button.btn.btn-link(type='submit', name='deleteAuthor') Delete Author

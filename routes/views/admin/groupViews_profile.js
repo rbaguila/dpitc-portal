@@ -45,6 +45,20 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', {action: 'deleteGroupView'}, function(next){
+		var u = keystone.list('GroupView').model.remove({_id: req.params.id});
+
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','Group View deleted');
+				return res.redirect('/admin/group-views');
+			}
+			
+		})
+
+	});
+
 
 	view.render('admin/groupViews_profile',pageData);
 };

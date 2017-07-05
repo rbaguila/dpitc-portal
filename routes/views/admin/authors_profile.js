@@ -90,6 +90,20 @@ exports = module.exports = function(req, res) {
 			});
 	});
 
+	view.on('post', {action: 'deleteAuthor'}, function(next){
+		var u = keystone.list('Author').model.remove({_id: req.params.id});
+
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','Author deleted');
+				return res.redirect('/admin/authors');
+			}
+			
+		})
+
+	});
+
 	view.render('admin/authors_profile',pageData);
 };
 

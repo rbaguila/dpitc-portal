@@ -70,7 +70,7 @@ exports = module.exports = function(req, res) {
 	});
 
 	view.on('post', {action: 'editISP'}, function(next){
-			var u = keystone.list('ISP').model.findOneAndUpdate(
+			var u = keystone.list('ISP').model.updateOne(
 				{ _id:locals.data.isps._id},
 				{
 					name:locals.formData.name,
@@ -79,7 +79,6 @@ exports = module.exports = function(req, res) {
 				function(err,results){
 					if(err) return next(err);
 					return res.redirect('/admin/isps');
-					next();
 				})
 
 			var updater = locals.data.isps.getUpdateHandler(req);
@@ -97,6 +96,20 @@ exports = module.exports = function(req, res) {
 				}
 				next();
 			});
+	});
+
+	view.on('post', {action: 'deleteISP'}, function(next){
+		var u = keystone.list('ISP').model.remove({_id: req.params.id});
+
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','ISP deleted');
+				return res.redirect('/admin/isps');
+			}
+			
+		})
+
 	});
 
 	view.render('admin/isps_profile',pageData);

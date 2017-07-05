@@ -43,7 +43,21 @@ exports = module.exports = function(req, res) {
             next(err);
 		});
 
-	});	
+	});
+
+	view.on('post', {action: 'deleteCommunityView'}, function(next){
+		var u = keystone.list('CommunityView').model.remove({_id: req.params.id});
+
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','Community View deleted');
+				return res.redirect('/admin/community-views');
+			}
+			
+		})
+
+	});
 
 	view.render('admin/communityViews_profile',pageData);
 };

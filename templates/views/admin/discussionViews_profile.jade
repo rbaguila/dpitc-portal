@@ -36,4 +36,6 @@ block content
                 p Loc
             .col-md-3    
                 mark #{data.discussion_views.loc}
-        
+        form.form-group.row(method='post', action='/admin/discussion-views/'+data.discussion_views._id)
+                input(type='hidden', name='action', value='deleteDiscussionView')
+                button.btn.btn-link(type='submit', name='deleteDiscussionView') Delete Discussion View
