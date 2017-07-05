@@ -127,5 +127,8 @@ block content
                             option(selected='') Select...
                         each pub,i in data.publications
                             option(value=i) #{pub.title}
-            button.btn.btn-primary(type='submit', name='editUser') Save           
+            button.btn.btn-primary(type='submit', name='editUser') Save
+        form.form-group.row(method='post', action='/admin/users/'+data.user._id)
+            input(type='hidden', name='action', value='deleteUser')
+            button.btn.btn-link(type='submit', name='deleteUser') Delete User       
                 

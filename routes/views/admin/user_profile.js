@@ -40,7 +40,6 @@ exports = module.exports = function(req, res) {
 
 			u.exec(function (err, results) {
 				locals.data.user = results;
-				console.log(locals.data.user);
 				next(err);
 			});
 	});
@@ -81,7 +80,6 @@ exports = module.exports = function(req, res) {
 			if (err) {    
 				locals.validationErrors = err.errors; 
 				} else {
-				console.log(locals.data.user);
 				req.flash('success', 'Account updated.');         
 				return res.redirect('/admin/users');
 				}
@@ -112,6 +110,21 @@ exports = module.exports = function(req, res) {
 		});
 
 	});
+	
+	view.on('post', {action: 'deleteUser'}, function(next){
+		var u = keystone.list('User').model.remove({_id: req.params.id});
+
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','User deleted');
+				return res.redirect('/admin/users');
+			}
+			
+		})
+
+	});
+
 
 
 	view.render('admin/user_profile',pageData);
