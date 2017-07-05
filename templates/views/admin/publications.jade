@@ -3,22 +3,37 @@ extends ../../layouts/admin-default
 block content
     .row
         .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
-            .table-responsive   
-                table.table.table-striped
-                    thead
-                    if data.path === '/admin/publication-settings'
-                        tr
-                            th Name
-                        tbody
-                        each pub in data.publication_settings
+            if data.path === '/admin/publication-settings'
+                if data.publication_settings.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create Publication Setting
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
                             tr
-                                td 
-                                    a(href='#') #{pub.name}
-                        else
-                            .jumbotron
-                                h3 No data
-                    if data.path === '/admin/publications'
-                        if data.publications
+                                th Name
+                            tbody
+                            each pub in data.publication_settings
+                                tr
+                                    td 
+                                        a(href='/admin/publication-settings/'+pub._id) #{pub.name}
+                else
+                    .jumbotron
+                        h3 No Publication Setting found
+                        button.btn.btn-success(type='button') Create Publication Setting
+            if data.path === '/admin/publications'
+                if data.publications.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create Publication
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
                             tr  
                                 th Title
                                 th Publication Line
@@ -37,34 +52,52 @@ block content
                                     td #{pub.file}
                                     td
                                         img.img-rounded(src=pub.cover)
-
-                            else
-                                .jumbotron
-                                    h3 No data
-                    if data.path === '/admin/publication-lines'
-                        tr
+                else
+                    .jumbotron
+                        h3 No Publication found
+                        button.btn.btn-success(type='button') Create Publication
+            if data.path === '/admin/publication-lines'
+                if data.publication_lines.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create Publication Line
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
                                 th Name
                             tbody
                             each pub in data.publication_lines
                                 tr   
                                     td 
-                                        a(href='#') #{pub.name}
-
-                            else
-                                .jumbotron
-                                    h3 No data
-                    if data.path === '/admin/publication-feedback'
-                        tr
-                            th Title
-                            th User
-                            th createdAt
-                        tbody
-                        each pub in data.publication_feedback
+                                        a(href='/admin/publication-lines/'+pub._id) #{pub.name}
+                else
+                    .jumbotron
+                        h3 No Publication Line
+                        button.btn.btn-success Create Publication Line
+            if data.path === '/admin/publication-feedbacks'
+                if data.publication_feedbacks.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button') Create Feedback
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
                             tr
-                                td
-                                    a(href='#') #{pub.title}
-                                td #{pub.user}
-                                td #{pub.createdAt}
-                        else
-                            .jumbotron
-                                h3 No Feedback
+                                th Title
+                                th User
+                                th createdAt
+                            tbody
+                            each pub in data.publication_feedbacks
+                                tr
+                                    td
+                                        a(href='/admin/publication-feedbacks/'+pub._id) #{pub.title}
+                                    td #{pub.user}
+                                    td #{pub.createdAt}
+                else
+                    .jumbotron
+                        h3 No Feedback

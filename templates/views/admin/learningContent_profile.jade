@@ -45,4 +45,7 @@ block content
                         label Updated At
                     .col-md-2
                         mark #{data.learning_contents.publishedAt}
-
+                button.btn.btn-primary(type='submit') Save
+            form.form-group.row(method='post', action='/admin/learning-contents/'+data.learning_contents._id)
+                input(type='hidden', name='action', value='deleteLearningContent')
+                button.btn.btn-link(type='submit', name='deleteLearningContent') Delete Learning Content

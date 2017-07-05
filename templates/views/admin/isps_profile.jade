@@ -1,0 +1,23 @@
+extends ../../layouts/admin-default
+
+block content
+    .row
+        .col-sm-9.col-sm-offset-3.col-md-9.col-md-offset-3.main
+            form.form-group.row(method='post', action='/admin/isps/'+data.isps._id)
+                input(type='hidden', name='action', value='editISP')
+                .row
+                    .col-md-7
+                        input.form-control.input-lg(type='text', value= data.isps.name, placeholder='Name', name='name')
+                h5.help-block #{'ID: '+data.isps._id}
+                .row
+                    .col-md-7
+                        label Sector
+                        select.form-control
+                            if data.isps.sector
+                                option(selected='',name='sector') #{data.isps.sector}
+                            each ls,i in data.lsectors
+                                option(value=i, name='sector') #{ls.name}
+                button.btn.btn-primary(type='submit', name='editISP') Save
+            form.form-group.row(method='post', action='/admin/isps/'+data.isps._id)
+                input(type='hidden', name='action', value='deleteISP')
+                button.btn.btn-link(type='submit', name='deleteISP') Delete ISP

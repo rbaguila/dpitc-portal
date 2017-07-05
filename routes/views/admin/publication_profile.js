@@ -22,36 +22,22 @@ exports = module.exports = function(req, res) {
 				{ text: 'Publications Settings', link: '/admin/publication-settings'},
 				{ text: 'Publications', link: '/admin/publications'},
 				{ text: 'Publication Lines', link: '/admin/publication-lines'},
-				{ text: 'Feedback', link: '/admin/publication-feedbacks'}
+				{ text: 'Feedback', link: '/admin/publication-feedback'}
 			]
   	};
 
 	//init locals
 	locals.section = 'users';
 	locals.data = {
-		publication_settings: [] ,
 		publications: [] ,
 		publication_lines:[] ,
-		publication_feedbacks:[],
 		path:req.path,
 	};
-
-	// Load publication-settings
-	view.on('init', function (next) {
-
-		var u = keystone.list('publicationsSettings').model.find().sort({ name: 1 })
-
-		u.exec(function (err, results) {
-			locals.data.publication_settings = results;
-			next(err);
-		});
-
-	});
 
 	// Load publications
 	view.on('init', function (next) {
 
-		var u = keystone.list('Publication').model.find().sort({ title: 1 })
+		var u = keystone.list('Publication').model.findOne({_id: req.params.id});
 
 		u.exec(function (err, results) {
 			locals.data.publications = results;
@@ -60,10 +46,10 @@ exports = module.exports = function(req, res) {
 
 	});
 
-	// Load publication-lines
+    	// Load publication-lines
 	view.on('init', function (next) {
 
-		var u = keystone.list('PublicationLine').model.find().sort({ name: 1 })
+		var u = keystone.list('PublicationLine').model.findOne({_id: req.params.id});
 
 		u.exec(function (err, results) {
 			locals.data.publication_lines = results;
@@ -72,18 +58,21 @@ exports = module.exports = function(req, res) {
 
 	});
 
-	// Load publication-feedback
-	view.on('init', function (next) {
+	view.on('post', {action: 'deletePublication'}, function(next){
+		var u = keystone.list('Publication').model.remove({_id: req.params.id});
 
-		var u = keystone.list('PublicationFeedback').model.find().sort({ title: 1 })
-
-		u.exec(function (err, results) {
-			locals.data.publication_feedbacks = results;
-			next(err);
-		});
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','Publication deleted');
+				return res.redirect('/admin/publications');
+			}
+			
+		})
 
 	});
 
 
-	view.render('admin/publications',pageData);
+
+	view.render('admin/publication_profile',pageData);
 };

@@ -29,36 +29,9 @@ exports = module.exports = function(req, res) {
 
 	//init locals
 	locals.data = {
-		community_views: [],
-		discussion_views:[],
 		group_views:[],
-		report_views:[],
-		path:req.path,
+        path:req.path,
 	};
-
-	// Load Community Views
-	view.on('init', function (next) {
-
-		var u = keystone.list('CommunityView').model.findOne({_id: req.params.id})
-
-		u.exec(function (err, results) {
-			locals.data.community_views = results;
-            next(err);
-		});
-
-	});	
-
-	// Load Discussion Views
-	view.on('init', function (next) {
-
-		var u = keystone.list('DiscussionView').model.findOne({_id: req.params.id})
-
-		u.exec(function (err, results) {
-			locals.data.discussion_views = results;
-			next(err);
-		});
-
-	});
 
 	// Load Group Views
 	view.on('init', function (next) {
@@ -72,17 +45,20 @@ exports = module.exports = function(req, res) {
 
 	});
 
-	// Load Report Views
-	view.on('init', function (next) {
+	view.on('post', {action: 'deleteGroupView'}, function(next){
+		var u = keystone.list('GroupView').model.remove({_id: req.params.id});
 
-		var u = keystone.list('ReportView').model.findOne({_id: req.params.id})
-
-		u.exec(function (err, results) {
-			locals.data.report_views = results;
-			next(err);
-		});
+		u.exec(function (err, results){
+			if(err){}
+			else{
+				req.flash('success','Group View deleted');
+				return res.redirect('/admin/group-views');
+			}
+			
+		})
 
 	});
 
-	view.render('admin/analytics_view',pageData);
+
+	view.render('admin/groupViews_profile',pageData);
 };
