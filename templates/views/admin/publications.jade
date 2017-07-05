@@ -72,7 +72,7 @@ block content
                             each pub in data.publication_lines
                                 tr   
                                     td 
-                                        a(href='/admin/publication-lines'+pub._id) #{pub.name}
+                                        a(href='/admin/publication-lines/'+pub._id) #{pub.name}
                 else
                     .jumbotron
                         h3 No Publication Line
@@ -95,7 +95,7 @@ block content
                             each pub in data.publication_feedbacks
                                 tr
                                     td
-                                        a(href='/admin/publication-feedbacks'+pub._id) #{pub.title}
+                                        a(href='/admin/publication-feedbacks/'+pub._id) #{pub.title}
                                     td #{pub.user}
                                     td #{pub.createdAt}
                 else
