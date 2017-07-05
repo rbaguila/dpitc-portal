@@ -22,7 +22,7 @@ exports = module.exports = function(req, res) {
 				{ text: 'Publications Settings', link: '/admin/publication-settings'},
 				{ text: 'Publications', link: '/admin/publications'},
 				{ text: 'Publication Lines', link: '/admin/publication-lines'},
-				{ text: 'Feedback', link: '/admin/publication-feedback'}
+				{ text: 'Feedback', link: '/admin/publication-feedbacks'}
 			]
   	};
 
