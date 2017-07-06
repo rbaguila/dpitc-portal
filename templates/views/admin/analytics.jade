@@ -6,10 +6,10 @@ block content
         if data.path === '/admin/community-views'
             if data.community_views.length > 0
                 .row
-                        .col-md-6
-                            input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create Community View 
+                    .col-md-6
+                        input.form-control(type='text', placeholder='Search..')
+                    .col-md-2
+                        button.btn.btn-success(type='button', data-toggle='modal', data-target='#createCommunityView') Create Community View
                 .table-responsive   
                     table.table.table-striped
                         thead
@@ -27,14 +27,27 @@ block content
             else
                 .jumbotron
                     h3 No Community View found
-                    button.btn.btn-success(type='button') Create Community View 
+                    button.btn.btn-success(type='button', data-toggle='modal', data-target='#createCommunityView') Create Community View
+        #createCommunityView.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createCommunityViewLabel')
+                        .modal-dialog(role='document')
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                        span(aria-hidden='true') ×
+                                    h4#createCommunityViewLabel.modal-title Create a new Community View
+                                .modal-body
+                                .modal-footer
+                                    form.form-group.row(method='post', action='/admin/community-views')
+                                        input(type='hidden', name='action', value='createCommunityView')
+                                        button.btn.btn-primary(type='submit', name='createCommunityView') Create
+                                        button.btn.btn-default(type='button', data-dismiss='modal') Close
         if data.path === '/admin/discussion-views'
             if data.discussion_views.length > 0
                 .row
                         .col-md-6
                             input.form-control(type='text', placeholder='Search..')
                         .col-md-2
-                            button.btn.btn-success(type='button') Create Discussion View 
+                            button.btn.btn-success(type='button', data-toggle='modal', data-target='#createDiscussionView') Create Discussion View 
                 .table-responsive   
                     table.table.table-striped
                         thead
@@ -52,14 +65,27 @@ block content
             else
                 .jumbotron
                     h3 No Discussion View found
-                    button.btn.btn-success(type='button') Create Discussion View 
+                    button.btn.btn-success(type='button') Create Discussion View
+        #createDiscussionView.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createDiscussionViewLabel')
+                        .modal-dialog(role='document')
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                        span(aria-hidden='true') ×
+                                    h4#createDiscussionViewLabel.modal-title Create a new Discussion View
+                                .modal-body
+                                .modal-footer
+                                    form.form-group.row(method='post', action='/admin/discussion-views')
+                                        input(type='hidden', name='action', value='createDiscussionView')
+                                        button.btn.btn-primary(type='submit', name='createDiscussionView') Create
+                                        button.btn.btn-default(type='button', data-dismiss='modal') Close 
         if data.path === '/admin/group-views'
             if data.group_views.length > 0
                 .row
                         .col-md-6
                             input.form-control(type='text', placeholder='Search..')
                         .col-md-2
-                            button.btn.btn-success(type='button') Create Group View 
+                            button.btn.btn-success(type='button', data-toggle='modal', data-target='#createGroupView') Create Group View 
                 .table-responsive   
                     table.table.table-striped
                         thead
@@ -77,14 +103,27 @@ block content
             else
                 .jumbotron
                     h3 No Group View found
-                    button.btn.btn-success(type='button') Create Group View 
+                    button.btn.btn-success(type='button') Create Group View
+        #createGroupView.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createGroupViewLabel')
+                        .modal-dialog(role='document')
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                        span(aria-hidden='true') ×
+                                    h4#createGroupViewLabel.modal-title Create a new Group View
+                                .modal-body
+                                .modal-footer
+                                    form.form-group.row(method='post', action='/admin/group-views')
+                                        input(type='hidden', name='action', value='createGroupView')
+                                        button.btn.btn-primary(type='submit', name='createGroupView') Create
+                                        button.btn.btn-default(type='button', data-dismiss='modal') Close 
         if data.path === '/admin/report-views'
             if data.report_views.length > 0
                 .row
                         .col-md-6
                             input.form-control(type='text', placeholder='Search..')
                         .col-md-2
-                            button.btn.btn-success(type='button') Create Report View 
+                            button.btn.btn-success(type='button', data-toggle='modal', data-target='#createReportView') Create Report View 
                 .table-responsive   
                     table.table.table-striped
                         thead
@@ -102,5 +141,18 @@ block content
             else
                 .jumbotron
                     h3 No Report View found
-                    button.btn.btn-success(type='button') Create Report View 
+                    button.btn.btn-success(type='button') Create Report View
+        #createReportView.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createReportViewLabel')
+                        .modal-dialog(role='document')
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                        span(aria-hidden='true') ×
+                                    h4#createReportViewLabel.modal-title Create a new Report View
+                                .modal-body
+                                .modal-footer
+                                    form.form-group.row(method='post', action='/admin/report-views')
+                                        input(type='hidden', name='action', value='createReportView')
+                                        button.btn.btn-primary(type='submit', name='createReportView') Create
+                                        button.btn.btn-default(type='button', data-dismiss='modal') Close 
 

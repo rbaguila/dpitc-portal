@@ -1,4 +1,8 @@
 var keystone = require('keystone');
+var CommunityView = keystone.list('CommunityView');
+var DiscussionView = keystone.list('DiscussionView');
+var GroupView = keystone.list('GroupView');
+var ReportView = keystone.list('ReportView');
 
 exports = module.exports = function(req, res) {
 	var view = new keystone.View(req, res);
@@ -46,6 +50,26 @@ exports = module.exports = function(req, res) {
 			next(err);
 		});
 
+	});
+
+	view.on('post',{action: 'createCommunityView'}, function (next) {
+		var newView = new CommunityView.model();
+
+		var updater = newView.getUpdateHandler(req);
+
+		updater.process(req.body, {
+        flashErrors: true,
+        logErrors: true
+      	}, function(err,result) {
+        	if (err) {    
+          		locals.validationErrors = err.errors;
+        	} else {
+          		console.log(newView);
+          		req.flash('success', 'Community View created');         
+          		return res.redirect('/admin/community-views');
+       	 	}
+        next();
+      	});
 	});	
 
 	// Load Discussion Views
@@ -60,6 +84,26 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post',{action: 'createDiscussionView'}, function (next) {
+		var newView = new DiscussionView.model();
+
+		var updater = newView.getUpdateHandler(req);
+
+		updater.process(req.body, {
+        flashErrors: true,
+        logErrors: true
+      	}, function(err,result) {
+        	if (err) {    
+          		locals.validationErrors = err.errors;
+        	} else {
+          		console.log(newView);
+          		req.flash('success', 'Discussion View created');         
+          		return res.redirect('/admin/discussion-views');
+       	 	}
+        next();
+      	});
+	});	
+
 	// Load Group Views
 	view.on('init', function (next) {
 
@@ -72,6 +116,26 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post',{action: 'createGroupView'}, function (next) {
+		var newView = new GroupView.model();
+
+		var updater = newView.getUpdateHandler(req);
+
+		updater.process(req.body, {
+        flashErrors: true,
+        logErrors: true
+      	}, function(err,result) {
+        	if (err) {    
+          		locals.validationErrors = err.errors;
+        	} else {
+          		console.log(newView);
+          		req.flash('success', 'Group View created');         
+          		return res.redirect('/admin/group-views');
+       	 	}
+        next();
+    	});
+	});	
+
 	// Load Report Views
 	view.on('init', function (next) {
 
@@ -83,6 +147,26 @@ exports = module.exports = function(req, res) {
 		});
 
 	});
+
+	view.on('post',{action: 'createReportView'}, function (next) {
+		var newView = new ReportView.model();
+
+		var updater = newView.getUpdateHandler(req);
+
+		updater.process(req.body, {
+        flashErrors: true,
+        logErrors: true
+      	}, function(err,result) {
+        	if (err) {    
+          		locals.validationErrors = err.errors;
+        	} else {
+          		console.log(newView);
+          		req.flash('success', 'Report View created');         
+          		return res.redirect('/admin/report-views');
+       	 	}
+        next();
+    	});
+	});	
 
 	view.render('admin/analytics',pageData);
 };

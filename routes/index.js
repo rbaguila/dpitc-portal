@@ -54,15 +54,22 @@ exports = module.exports = function (app) {
 	
 	//Admin analytics pages
 	app.get('/admin/community-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
+	app.post('/admin/community-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
 	app.get('/admin/community-views/:id',middleware.requireAnalyticsAdmin ,routes.adminViews.communityViews_profile);
 	app.post('/admin/community-views/:id',middleware.requireAnalyticsAdmin ,routes.adminViews.communityViews_profile);
+	
 	app.get('/admin/discussion-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
+	app.post('/admin/discussion-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
 	app.get('/admin/discussion-views/:id',middleware.requireAnalyticsAdmin ,routes.adminViews.discussionViews_profile);
 	app.post('/admin/discussion-views/:id',middleware.requireAnalyticsAdmin ,routes.adminViews.discussionViews_profile);
+	
 	app.get('/admin/group-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
+	app.post('/admin/group-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
 	app.get('/admin/group-views/:id',middleware.requireAnalyticsAdmin ,routes.adminViews.groupViews_profile);
 	app.post('/admin/group-views/:id',middleware.requireAnalyticsAdmin ,routes.adminViews.groupViews_profile);
+	
 	app.get('/admin/report-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
+	app.post('/admin/report-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
 	app.get('/admin/report-views/:id',middleware.requireAnalyticsAdmin ,routes.adminViews.reportViews_profile);
 	app.post('/admin/report-views/:id',middleware.requireAnalyticsAdmin ,routes.adminViews.reportViews_profile);
 
