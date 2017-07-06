@@ -93,7 +93,19 @@ block content
                     .col-md-1
                         mark #{data.publications.downloads}
                 button.btn.btn-primary(type='submit', name='editPublication') Save
-            form.form-group.row(method='post', action='/admin/publications/'+data.publications._id)
-                input(type='hidden', name='action', value='deletePublication')
-                button.btn.btn-link(type='submit', name='deletePublication') Delete Publication
+                button.btn.btn-link(type='button', data-toggle='modal', data-target='#deletePublication') Delete Publication
+            #deletePublication.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deletePublicationLabel')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                span(aria-hidden='true') ×
+                            h4#deletePublicationLabel.modal-title #{'Are you sure you want to delete '+data.publications.title+'?'}
+                        .modal-body
+                            p This cannot be undone
+                        .modal-footer
+                            form.form-group.row(method='post', action='/admin/publications/'+data.publications._id)
+                                input(type='hidden', name='action', value='deletePublication')  
+                                button.btn.btn-danger(type='submit', name='deletePublication') Delete
+                                button.btn.btn-default(type='button', data-dismiss='modal') Close
 

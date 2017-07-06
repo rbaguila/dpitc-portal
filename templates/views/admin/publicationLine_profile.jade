@@ -10,6 +10,18 @@ block content
                         input.form-control.input-lg(type='text', value= data.publication_lines.name, placeholder='Name', name='name')
                 h5.help-block #{'ID: '+data.publication_lines._id}
                 button.btn.btn-primary(type='submit', name='editPublicationLine') Save   
-            form.form-group.row(method='post', action='/admin/publication-lines/'+data.publication_lines._id)
-                input(type='hidden', name='action', value='deletePublicationLine')
-                button.btn.btn-link(type='submit', name='deletePublicationLine') Delete Publication Line
+                button.btn.btn-link(type='button', data-toggle='modal', data-target='#deletePublicationLine') Delete Publication Line
+            #deletePublicationLine.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deletePublicationLineLabel')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                span(aria-hidden='true') ×
+                            h4#deletePublicationLineLabel.modal-title #{'Are you sure you want to delete '+data.publication_lines.name+'?'}
+                        .modal-body
+                            p This cannot be undone
+                        .modal-footer
+                            form.form-group.row(method='post', action='/admin/publication-lines/'+data.publication_lines._id)
+                                input(type='hidden', name='action', value='deletePublicationLine')  
+                                button.btn.btn-danger(type='submit', name='deletePublicationLine') Delete
+                                button.btn.btn-default(type='button', data-dismiss='modal') Close

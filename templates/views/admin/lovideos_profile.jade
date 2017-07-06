@@ -19,6 +19,18 @@ block content
                         label Description
                         textarea.form-control(rows='10') #{data.lovideos.description}
                 button.btn.btn-primary(type='submit') Save
-            form.form-group.row(method='post', action='/admin/lovideos/'+data.lovideos._id)
-                input(type='hidden', name='action', value='deleteLOVideo')
-                button.btn.btn-link(type='submit', name='deleteLOVideo') Delete LOVideo
+                button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteLOVideo') Delete LOVideo
+            #deleteLOVideo.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteLOVideoLabel')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                span(aria-hidden='true') ×
+                            h4#deleteLOVideoLabel.modal-title #{'Are you sure you want to delete '+data.lovideos.title+'?'}
+                        .modal-body
+                            p This cannot be undone
+                        .modal-footer
+                            form.form-group.row(method='post', action='/admin/lovideos/'+data.lovideos._id)
+                                input(type='hidden', name='action', value='deleteLOVideo')  
+                                button.btn.btn-danger(type='submit', name='deleteLOVideo') Delete
+                                button.btn.btn-default(type='button', data-dismiss='modal') Close

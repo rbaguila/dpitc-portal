@@ -1,4 +1,7 @@
 var keystone = require('keystone');
+var PublicationsSetting = keystone.list('publicationsSettings');
+var Publication = keystone.list('Publication');
+var PublicationLine = keystone.list('PublicationLine');
 
 exports = module.exports = function(req, res) {
 	var view = new keystone.View(req, res);
@@ -28,6 +31,7 @@ exports = module.exports = function(req, res) {
 
 	//init locals
 	locals.section = 'users';
+	locals.formData = req.body;
 	locals.data = {
 		publication_settings: [] ,
 		publications: [] ,
@@ -39,7 +43,7 @@ exports = module.exports = function(req, res) {
 	// Load publication-settings
 	view.on('init', function (next) {
 
-		var u = keystone.list('publicationsSettings').model.find().sort({ name: 1 })
+		var u = PublicationsSetting.model.find().sort({ name: 1 })
 
 		u.exec(function (err, results) {
 			locals.data.publication_settings = results;
@@ -48,10 +52,32 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post',{action: 'createPublicationSetting'}, function (next) {
+		var newPub = new PublicationsSetting.model({
+			title:locals.formData.title
+		});
+
+		var updater = newPub.getUpdateHandler(req);
+
+		updater.process(req.body, {
+        flashErrors: true,
+        logErrors: true
+      	}, function(err,result) {
+        	if (err) {    
+          		locals.validationErrors = err.errors;
+        	} else {
+          		console.log(newPub);
+          		req.flash('success', 'Publication Setting created');         
+          		return res.redirect('/admin/publication-settings');
+       	 	}
+        next();
+    	});
+	});
+
 	// Load publications
 	view.on('init', function (next) {
 
-		var u = keystone.list('Publication').model.find().sort({ title: 1 })
+		var u = Publication.model.find().sort({ title: 1 })
 
 		u.exec(function (err, results) {
 			locals.data.publications = results;
@@ -60,16 +86,60 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post',{action: 'createPublication'}, function (next) {
+		var newPub = new Publication.model({
+			name:locals.formData.name
+		});
+
+		var updater = newPub.getUpdateHandler(req);
+
+		updater.process(req.body, {
+        flashErrors: true,
+        logErrors: true
+      	}, function(err,result) {
+        	if (err) {    
+          		locals.validationErrors = err.errors;
+        	} else {
+          		console.log(newPub);
+          		req.flash('success', 'Publication created');         
+          		return res.redirect('/admin/publications');
+       	 	}
+        next();
+    	});
+	});
+
 	// Load publication-lines
 	view.on('init', function (next) {
 
-		var u = keystone.list('PublicationLine').model.find().sort({ name: 1 })
+		var u = PublicationLine.model.find().sort({ name: 1 })
 
 		u.exec(function (err, results) {
 			locals.data.publication_lines = results;
 			next(err);
 		});
 
+	});
+
+	view.on('post',{action: 'createPublicationLine'}, function (next) {
+		var newPub = new PublicationLine.model({
+			name:locals.formData.name
+		});
+
+		var updater = newPub.getUpdateHandler(req);
+
+		updater.process(req.body, {
+        flashErrors: true,
+        logErrors: true
+      	}, function(err,result) {
+        	if (err) {    
+          		locals.validationErrors = err.errors;
+        	} else {
+          		console.log(newPub);
+          		req.flash('success', 'Publication Line created');         
+          		return res.redirect('/admin/publication-lines');
+       	 	}
+        next();
+    	});
 	});
 
 	// Load publication-feedback

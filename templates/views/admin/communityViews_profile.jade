@@ -36,7 +36,18 @@ block content
                 p Loc
             .col-md-3    
                 mark #{data.community_views.loc}
-        form.form-group.row(method='post', action='/admin/community-views/'+data.community_views._id)
-                input(type='hidden', name='action', value='deleteCommunityView')
-                button.btn.btn-link(type='submit', name='deleteCommunityView') Delete Community View
-        
+        button.btn.btn-link(type='submit', data-toggle='modal', data-target='#deleteCommunityView') Delete Community View
+    #deleteCommunityView.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteCommunityViewLabel')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') ×
+                    h4#deleteCommunityViewLabel.modal-title #{'Are you sure you want to delete '+data.community_views._id+'?'}
+                .modal-body
+                    p This cannot be undone
+                .modal-footer
+                    form.form-group.row(method='post', action='/admin/community-views/'+data.community_views._id)
+                        input(type='hidden', name='action', value='deleteCommunityView')  
+                        button.btn.btn-danger(type='submit', name='deleteCommunityView') Delete
+                        button.btn.btn-default(type='button', data-dismiss='modal') Close

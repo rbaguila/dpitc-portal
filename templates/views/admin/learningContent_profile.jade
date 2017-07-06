@@ -7,7 +7,7 @@ block content
                 input(type='hidden', name= 'action', value='editLearningContent')
                 .row
                     .col-md-7
-                        input.form-control.input-lg(type='text', value= data.learning_contents.title, placeholder='First name')
+                        input.form-control.input-lg(type='text', value= data.learning_contents.title, placeholder='Title')
                 h5.help-block #{'ID: '+data.learning_contents._id}
                 .row
                     .col-md-7
@@ -46,6 +46,18 @@ block content
                     .col-md-2
                         mark #{data.learning_contents.publishedAt}
                 button.btn.btn-primary(type='submit') Save
-            form.form-group.row(method='post', action='/admin/learning-contents/'+data.learning_contents._id)
-                input(type='hidden', name='action', value='deleteLearningContent')
-                button.btn.btn-link(type='submit', name='deleteLearningContent') Delete Learning Content
+                button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteLearningContent') Delete Learning Content
+            #deleteLearningContent.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteLearningContentLabel')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                span(aria-hidden='true') ×
+                            h4#deleteLearningContentLabel.modal-title #{'Are you sure you want to delete '+data.learning_contents.title+'?'}
+                        .modal-body
+                            p This cannot be undone
+                        .modal-footer
+                            form.form-group.row(method='post', action='/admin/learning-contents/'+data.learning_contents._id)
+                                input(type='hidden', name='action', value='deleteLearningContent')  
+                                button.btn.btn-danger(type='submit', name='deleteLearningContent') Delete
+                                button.btn.btn-default(type='button', data-dismiss='modal') Close

@@ -1,4 +1,5 @@
 var keystone = require('keystone');
+var User = keystone.list('User');
 
 exports = module.exports = function(req, res) {
 	var view = new keystone.View(req, res);
@@ -36,7 +37,7 @@ exports = module.exports = function(req, res) {
 	// Load user
 	view.on('init', function (next) {
 
-			var u = keystone.list('User').model.findOne({_id: req.params.id});
+			var u = User.model.findOne({_id: req.params.id});
 
 			u.exec(function (err, results) {
 				locals.data.user = results;
@@ -45,7 +46,7 @@ exports = module.exports = function(req, res) {
 	});
 	
 	view.on('post', {action: 'editUser'}, function(next){
-			var u = keystone.list('User').model.findOneAndUpdate(
+			var u = User.model.findOneAndUpdate(
 				{ _id:locals.data.user._id},
 				{
 					name: { 
@@ -112,7 +113,7 @@ exports = module.exports = function(req, res) {
 	});
 	
 	view.on('post', {action: 'deleteUser'}, function(next){
-		var u = keystone.list('User').model.remove({_id: req.params.id});
+		var u = User.model.remove({_id: req.params.id});
 
 		u.exec(function (err, results){
 			if(err){}

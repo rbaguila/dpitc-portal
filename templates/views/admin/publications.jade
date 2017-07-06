@@ -4,79 +4,133 @@ block content
     .row
         .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
             if data.path === '/admin/publication-settings'
-                if data.publication_settings.length > 0
-                    .row
-                        .col-md-6
-                            input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create Publication Setting
-                    .table-responsive   
-                        table.table.table-striped
-                            thead
-                            tr
-                                th Name
-                            tbody
-                            each pub in data.publication_settings
+                form.form-group.row(method='post', action='/admin/publication-settings')
+                    input(type='hidden', name='action', value='createPublicationSetting')
+                    if data.publication_settings.length > 0
+                        .row
+                            .col-md-6
+                                input.form-control(type='text', placeholder='Search..')
+                            .col-md-2
+                                button.btn.btn-success(type='button', data-toggle='modal', data-target='#createPublicationSetting') Create Publication Setting
+                        .table-responsive   
+                            table.table.table-striped
+                                thead
                                 tr
-                                    td 
-                                        a(href='/admin/publication-settings/'+pub._id) #{pub.name}
-                else
-                    .jumbotron
-                        h3 No Publication Setting found
-                        button.btn.btn-success(type='button') Create Publication Setting
+                                    th Name
+                                tbody
+                                each pub in data.publication_settings
+                                    tr
+                                        td 
+                                            a(href='/admin/publication-settings/'+pub._id) #{pub.name}
+                    else
+                        .jumbotron
+                            h3 No Publication Setting found
+                            button.btn.btn-success(type='button', data-toggle='modal', data-target='#createPublicationSetting') Create Publication Setting
+                    #createPublicationSetting.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createPublicationSettingLabel')
+                        .modal-dialog(role='document')
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                        span(aria-hidden='true') ×
+                                    h4#createPublicationSettingLabel.modal-title Create a new Publication Setting
+                                .modal-body
+                                    .row
+                                        .col-md-12   
+                                            label Name
+                                            input.form-control(type='text', placeholder='Name', name='name')
+                                .modal-footer                                    
+                                    button.btn.btn-primary(type='submit', name='createPublicationSetting') Create
+                                    button.btn.btn-default(type='button', data-dismiss='modal') Close
             if data.path === '/admin/publications'
-                if data.publications.length > 0
-                    .row
-                        .col-md-6
-                            input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create Publication
-                    .table-responsive   
-                        table.table.table-striped
-                            thead
-                            tr  
-                                th Title
-                                th Publication Line
-                                th Publication Type
-                                th Publication Year
-                                th File
-                                th Cover
-                            tbody
-                            each pub in data.publications
-                                tr   
-                                    td 
-                                        a(href='/admin/publications/'+pub._id) #{pub.title}
-                                    td #{pub.publicationLine}
-                                    td #{pub.publicationType}
-                                    td #{pub.publicationYear}
-                                    td #{pub.file}
-                                    td
-                                        img.img-rounded(src=pub.cover)
-                else
-                    .jumbotron
-                        h3 No Publication found
-                        button.btn.btn-success(type='button') Create Publication
+                form.form-group.row(method='post', action='/admin/publications')
+                    input(type='hidden', name='action', value='createPublication')
+                    if data.publications.length > 0
+                        .row
+                            .col-md-6
+                                input.form-control(type='text', placeholder='Search..')
+                            .col-md-2
+                                button.btn.btn-success(type='button', data-toggle='modal', data-target='#createPublication') Create Publication
+                        .table-responsive   
+                            table.table.table-striped
+                                thead
+                                tr  
+                                    th Title
+                                    th Publication Line
+                                    th Publication Type
+                                    th Publication Year
+                                    th File
+                                    th Cover
+                                tbody
+                                each pub in data.publications
+                                    tr   
+                                        td 
+                                            a(href='/admin/publications/'+pub._id) #{pub.title}
+                                        td #{pub.publicationLine}
+                                        td #{pub.publicationType}
+                                        td #{pub.publicationYear}
+                                        td #{pub.file}
+                                        td
+                                            img.img-rounded(src=pub.cover)
+                    else
+                        .jumbotron
+                            h3 No Publication found
+                            button.btn.btn-success(type='button', data-toggle='modal', data-target='#createPublication') Create Publication
+                    #createPublication.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createPublicationLabel')
+                        .modal-dialog(role='document')
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                        span(aria-hidden='true') ×
+                                    h4#createPublicationLabel.modal-title Create a new Publication
+                                .modal-body
+                                    .row
+                                        .col-md-12   
+                                            label Title
+                                            input.form-control(type='text', placeholder='Title', name='title')
+                                    .row
+                                        .col-md-10
+                                            label Publication Type
+                                .modal-footer                                    
+                                    button.btn.btn-primary(type='submit', name='createPublication') Create
+                                    button.btn.btn-default(type='button', data-dismiss='modal') Close
             if data.path === '/admin/publication-lines'
-                if data.publication_lines.length > 0
-                    .row
-                        .col-md-6
-                            input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create Publication Line
-                    .table-responsive   
-                        table.table.table-striped
-                            thead
-                            tr
-                                th Name
-                            tbody
-                            each pub in data.publication_lines
-                                tr   
-                                    td 
-                                        a(href='/admin/publication-lines/'+pub._id) #{pub.name}
-                else
-                    .jumbotron
-                        h3 No Publication Line
-                        button.btn.btn-success Create Publication Line
+                form.form-group.row(method='post', action='/admin/publication-lines')
+                    input(type='hidden', name='action', value='createPublicationLine')
+                    if data.publication_lines.length > 0
+                        .row
+                            .col-md-6
+                                input.form-control(type='text', placeholder='Search..')
+                            .col-md-2
+                                button.btn.btn-success(type='button', data-toggle='modal', data-target='#createPublicationLine') Create Publication Line
+                        .table-responsive   
+                            table.table.table-striped
+                                thead
+                                tr
+                                    th Name
+                                tbody
+                                each pub in data.publication_lines
+                                    tr   
+                                        td 
+                                            a(href='/admin/publication-lines/'+pub._id) #{pub.name}
+                    else
+                        .jumbotron
+                            h3 No Publication Line
+                            button.btn.btn-success(type='button', data-toggle='modal', data-target='#createPublicationLine') Create Publication Line
+                    #createPublicationLine.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createPublicationLine')
+                        .modal-dialog(role='document')
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                        span(aria-hidden='true') ×
+                                    h4#createPublicationLineLabel.modal-title Create a new Publication Line
+                                .modal-body
+                                    .row
+                                        .col-md-12   
+                                            label Name
+                                            input.form-control(type='text', placeholder='Name', name='name')
+                                .modal-footer                                    
+                                    button.btn.btn-primary(type='submit', name='createPublicationLine') Create
+                                    button.btn.btn-default(type='button', data-dismiss='modal') Close
             if data.path === '/admin/publication-feedbacks'
                 if data.publication_feedbacks.length > 0
                     .row
