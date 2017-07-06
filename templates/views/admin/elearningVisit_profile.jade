@@ -49,17 +49,17 @@ block content
                     mark #{data.elearning_visits.updatedAt}
             button.btn.btn-primary(type='submit') Save
             button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteELearningVisit') Delete ELearning Visit
-            #deleteELearningVisit.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteELearningVisitLabel')
-                .modal-dialog(role='document')
-                    .modal-content
-                        .modal-header
-                            button.close(type='button', data-dismiss='modal', aria-label='Close')
-                                span(aria-hidden='true') ×
-                            h4#deleteELearningVisitLabel.modal-title #{'Are you sure you want to delete '+data.elearning_visits._id+'?'}
-                        .modal-body
-                            p This cannot be undone
-                        .modal-footer
-                            form.form-group.row(method='post', action='/admin/elearning-visits/'+data.elearning_visits._id)
-                                input(type='hidden', name='action', value='deleteELearningVisit')  
-                                button.btn.btn-danger(type='submit', name='deleteELearningVisit') Delete
-                                button.btn.btn-default(type='button', data-dismiss='modal') Close
+        #deleteELearningVisit.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteELearningVisitLabel')
+            .modal-dialog(role='document')
+                .modal-content
+                    .modal-header
+                        button.close(type='button', data-dismiss='modal', aria-label='Close')
+                            span(aria-hidden='true') ×
+                        h4#deleteELearningVisitLabel.modal-title #{'Are you sure you want to delete '+data.elearning_visits._id+'?'}
+                    .modal-body
+                        p This cannot be undone
+                    .modal-footer
+                        form.form-group.row(method='post', action='/admin/elearning-visits/'+data.elearning_visits._id)
+                            input(type='hidden', name='action', value='deleteELearningVisit')  
+                            button.btn.btn-danger(type='submit', name='deleteELearningVisit') Delete
+                            button.btn.btn-default(type='button', data-dismiss='modal') Close
