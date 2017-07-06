@@ -43,7 +43,7 @@ exports = module.exports = function(req, res) {
 	// Load Community Views
 	view.on('init', function (next) {
 
-		var u = keystone.list('CommunityView').model.find().sort('-time')
+		var u = CommunityView.model.find().sort('-time')
 
 		u.exec(function (err, results) {
 			locals.data.community_views = results;
@@ -75,7 +75,7 @@ exports = module.exports = function(req, res) {
 	// Load Discussion Views
 	view.on('init', function (next) {
 
-		var u = keystone.list('DiscussionView').model.find().sort('-time')
+		var u = DiscussionView.model.find().sort('-time')
 
 		u.exec(function (err, results) {
 			locals.data.discussion_views = results;
@@ -107,7 +107,7 @@ exports = module.exports = function(req, res) {
 	// Load Group Views
 	view.on('init', function (next) {
 
-		var u = keystone.list('GroupView').model.find().sort('-time')
+		var u = GroupView.model.find().sort('-time')
 
 		u.exec(function (err, results) {
 			locals.data.group_views = results;
@@ -139,7 +139,7 @@ exports = module.exports = function(req, res) {
 	// Load Report Views
 	view.on('init', function (next) {
 
-		var u = keystone.list('ReportView').model.find().sort('-time')
+		var u = ReportView.model.find().sort('-time')
 
 		u.exec(function (err, results) {
 			locals.data.report_views = results;

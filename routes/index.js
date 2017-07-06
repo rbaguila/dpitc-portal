@@ -82,14 +82,20 @@ exports = module.exports = function (app) {
 	
 	//Admin publications
 	app.get('/admin/publication-settings',middleware.requirePublicationsAdmin, routes.adminViews.publications);
+	app.post('/admin/publication-settings',middleware.requirePublicationsAdmin, routes.adminViews.publications);
 	app.get('/admin/publication-settings/:id',middleware.requirePublicationsAdmin, routes.adminViews.publicationsSettings_profile);
 	app.post('/admin/publication-settings/:id',middleware.requirePublicationsAdmin, routes.adminViews.publicationsSettings_profile);
+	
 	app.get('/admin/publications',middleware.requirePublicationsAdmin, routes.adminViews.publications);
+	app.post('/admin/publications',middleware.requirePublicationsAdmin, routes.adminViews.publications);
 	app.get('/admin/publications/:id', middleware.requirePublicationsAdmin, routes.adminViews.publication_profile);
 	app.post('/admin/publications/:id', middleware.requirePublicationsAdmin, routes.adminViews.publication_profile);
+	
 	app.get('/admin/publication-lines',middleware.requirePublicationsAdmin, routes.adminViews.publications);
+	app.post('/admin/publication-lines',middleware.requirePublicationsAdmin, routes.adminViews.publications);
 	app.get('/admin/publication-lines/:id', middleware.requirePublicationsAdmin, routes.adminViews.publicationLine_profile);
 	app.post('/admin/publication-lines/:id', middleware.requirePublicationsAdmin, routes.adminViews.publicationLine_profile);
+	
 	app.get('/admin/publication-feedbacks', middleware.requirePublicationsAdmin, routes.adminViews.publications);
 	//app.get('/admin/publication-feedbacks/:id', middleware.requirePublicationsAdmin, routes.adminViews.publicationFeedback_profile);
 

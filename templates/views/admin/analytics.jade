@@ -65,7 +65,7 @@ block content
             else
                 .jumbotron
                     h3 No Discussion View found
-                    button.btn.btn-success(type='button') Create Discussion View
+                    button.btn.btn-success(type='button', data-toggle='modal', data-target='#createDiscussionView') Create Discussion View
         #createDiscussionView.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createDiscussionViewLabel')
                         .modal-dialog(role='document')
                             .modal-content
@@ -103,7 +103,7 @@ block content
             else
                 .jumbotron
                     h3 No Group View found
-                    button.btn.btn-success(type='button') Create Group View
+                    button.btn.btn-success(type='button', data-toggle='modal', data-target='#createGroupView') Create Group View 
         #createGroupView.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createGroupViewLabel')
                         .modal-dialog(role='document')
                             .modal-content
@@ -141,7 +141,7 @@ block content
             else
                 .jumbotron
                     h3 No Report View found
-                    button.btn.btn-success(type='button') Create Report View
+                    button.btn.btn-success(type='button', data-toggle='modal', data-target='#createReportView') Create Report View 
         #createReportView.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createReportViewLabel')
                         .modal-dialog(role='document')
                             .modal-content
