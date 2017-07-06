@@ -74,7 +74,8 @@ exports = module.exports = function (app) {
 	app.post('/admin/report-views/:id',middleware.requireAnalyticsAdmin ,routes.adminViews.reportViews_profile);
 
 	app.get('/admin/users', middleware.requireUsersAdmin, routes.adminViews.users);
-	app.get('/admin/users/:id', middleware.requireUsersAdmin ,routes.adminViews.users);
+	app.post('/admin/users', middleware.requireUsersAdmin, routes.adminViews.users);
+	app.get('/admin/users/:id', middleware.requireUsersAdmin ,routes.adminViews.user_profile);
 	app.post('/admin/users/:id', middleware.requireUsersAdmin, routes.adminViews.user_profile);
 
 	//Admin community pages
@@ -112,38 +113,56 @@ exports = module.exports = function (app) {
 	app.get('/admin/learning-objects', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/learning-objects/:id', middleware.requireElearningAdmin, routes.adminViews.learningObjects_profile);
 	app.post('/admin/learning-objects/:id', middleware.requireElearningAdmin, routes.adminViews.learningObjects_profile);
+	
 	app.get('/admin/courses', middleware.requireElearningAdmin, routes.adminViews.elearning);
 	app.get('/admin/courses/:id',middleware.requireElearningAdmin, routes.adminViews.courses_profile);
 	app.post('/admin/courses/:id',middleware.requireElearningAdmin, routes.adminViews.courses_profile);
+	
 	app.get('/admin/learning-contents', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/learning-contents/:id',middleware.requireElearningAdmin, routes.adminViews.learningContent_profile);
 	app.post('/admin/learning-contents/:id',middleware.requireElearningAdmin, routes.adminViews.learningContent_profile);
+	
 	app.get('/admin/isps', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/isps/:id',middleware.requireElearningAdmin, routes.adminViews.isps_profile);
 	app.post('/admin/isps/:id',middleware.requireElearningAdmin, routes.adminViews.isps_profile);
+	
 	app.get('/admin/lindustries', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/lindustries/:id',middleware.requireElearningAdmin, routes.adminViews.lindustries_profile);
 	app.post('/admin/lindustries/:id',middleware.requireElearningAdmin, routes.adminViews.lindustries_profile);
+	
 	app.get('/admin/lsectors', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/lsectors/:id',middleware.requireElearningAdmin, routes.adminViews.lsectors_profile);
+	
 	app.get('/admin/lofile-uploads', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/lofile-uploads/:id',middleware.requireElearningAdmin, routes.adminViews.lofileUpload_profile);
 	app.post('/admin/lofile-uploads/:id',middleware.requireElearningAdmin, routes.adminViews.lofileUpload_profile);
+	
 	app.get('/admin/logalleries', middleware.requireElearningAdmin,routes.adminViews.elearning);
+	
 	app.get('/admin/lolinks', middleware.requireElearningAdmin,routes.adminViews.elearning);
+	
 	app.get('/admin/lovideos', middleware.requireElearningAdmin,routes.adminViews.elearning);
+	
 	app.get('/admin/lovideos/:id',middleware.requireElearningAdmin, routes.adminViews.lovideos_profile);
+	
 	app.post('/admin/lovideos/:id',middleware.requireElearningAdmin, routes.adminViews.lovideos_profile);
+	
 	app.get('/admin/authors', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/authors/:id',middleware.requireElearningAdmin, routes.adminViews.authors_profile);
 	app.post('/admin/authors/:id',middleware.requireElearningAdmin, routes.adminViews.authors_profile);
+	
 	app.get('/admin/locomments', middleware.requireElearningAdmin,routes.adminViews.elearning);
+	
 	app.get('/admin/lofeedbacks', middleware.requireElearningAdmin,routes.adminViews.elearning);
+	
 	app.get('/admin/loratings', middleware.requireElearningAdmin,routes.adminViews.elearning);
+	
 	app.get('/admin/loviews', middleware.requireElearningAdmin,routes.adminViews.elearning);
+	
 	app.get('/admin/elearning-logs', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/elearning-logs/:id',middleware.requireElearningAdmin, routes.adminViews.elearningLog_profile);
 	app.post('/admin/elearning-logs/:id',middleware.requireElearningAdmin, routes.adminViews.elearningLog_profile);
+	
 	app.get('/admin/elearning-visits', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/elearning-visits/:id',middleware.requireElearningAdmin, routes.adminViews.elearningVisit_profile);
 	app.post('/admin/elearning-visits/:id',middleware.requireElearningAdmin, routes.adminViews.elearningVisit_profile);

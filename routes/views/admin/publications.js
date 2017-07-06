@@ -31,7 +31,7 @@ exports = module.exports = function(req, res) {
 
 	//init locals
 	locals.section = 'users';
-	locals.form = req.body;
+	locals.formData = req.body;
 	locals.data = {
 		publication_settings: [] ,
 		publications: [] ,
@@ -54,7 +54,7 @@ exports = module.exports = function(req, res) {
 
 	view.on('post',{action: 'createPublicationSetting'}, function (next) {
 		var newPub = new PublicationsSetting.model({
-			title:locals.form.title
+			title:locals.formData.title
 		});
 
 		var updater = newPub.getUpdateHandler(req);
@@ -88,7 +88,7 @@ exports = module.exports = function(req, res) {
 
 	view.on('post',{action: 'createPublication'}, function (next) {
 		var newPub = new Publication.model({
-			name:locals.form.name
+			name:locals.formData.name
 		});
 
 		var updater = newPub.getUpdateHandler(req);
@@ -121,8 +121,8 @@ exports = module.exports = function(req, res) {
 	});
 
 	view.on('post',{action: 'createPublicationLine'}, function (next) {
-		var newPub = new PublicationsLine.model({
-			name:locals.form.name
+		var newPub = new PublicationLine.model({
+			name:locals.formData.name
 		});
 
 		var updater = newPub.getUpdateHandler(req);
