@@ -132,6 +132,7 @@ exports = module.exports = function (app) {
 	
 	app.get('/admin/lsectors', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/lsectors/:id',middleware.requireElearningAdmin, routes.adminViews.lsectors_profile);
+	app.post('/admin/lsectors/:id',middleware.requireElearningAdmin, routes.adminViews.lsectors_profile);
 	
 	app.get('/admin/lofile-uploads', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	app.get('/admin/lofile-uploads/:id',middleware.requireElearningAdmin, routes.adminViews.lofileUpload_profile);
@@ -142,9 +143,7 @@ exports = module.exports = function (app) {
 	app.get('/admin/lolinks', middleware.requireElearningAdmin,routes.adminViews.elearning);
 	
 	app.get('/admin/lovideos', middleware.requireElearningAdmin,routes.adminViews.elearning);
-	
 	app.get('/admin/lovideos/:id',middleware.requireElearningAdmin, routes.adminViews.lovideos_profile);
-	
 	app.post('/admin/lovideos/:id',middleware.requireElearningAdmin, routes.adminViews.lovideos_profile);
 	
 	app.get('/admin/authors', middleware.requireElearningAdmin,routes.adminViews.elearning);

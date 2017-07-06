@@ -30,6 +30,19 @@ block content
                 .col-md-3
                     mark #{data.elearning_logs.updatedAt}
             button.btn.btn-primary(type='submit') Save
-        form.form-group.row(method='post', action='/admin/elearning-logs/'+data.elearning_logs._id)
-            input(type='hidden', name='action', value='deleteELearningLog')
-            button.btn.btn-link(type='submit', name='deleteELearningLog') Delete ELearning Log
+            button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteELearningLog') Delete ELearning Log
+            #deleteELearningLog.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteELearningLogLabel')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                span(aria-hidden='true') ×
+                            h4#deleteELearningLogLabel.modal-title #{'Are you sure you want to delete '+data.elearning_logs._id+'?'}
+                        .modal-body
+                            p This cannot be undone
+                        .modal-footer
+                            form.form-group.row(method='post', action='/admin/elearning-logs/'+data.elearning_logs._id)
+                                input(type='hidden', name='action', value='deleteELearningLog')  
+                                button.btn.btn-danger(type='submit', name='deleteELearningLog') Delete
+                                button.btn.btn-default(type='button', data-dismiss='modal') Close
+

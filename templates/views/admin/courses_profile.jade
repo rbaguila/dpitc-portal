@@ -7,7 +7,7 @@ block content
                 input(type='hidden', name= 'action', value='editCourse')
                 .row
                     .col-md-7
-                        input.form-control.input-lg(type='text', value= data.courses.title, placeholder='First name')
+                        input.form-control.input-lg(type='text', value= data.courses.title, placeholder='Title')
                 h5.help-block #{'ID: '+data.courses._id}
                 .row
                     .col-md-7
@@ -46,6 +46,18 @@ block content
                     .col-md-2
                         mark #{data.courses.publishedAt}
                 button.btn.btn-primary(type='submit') Save
-            form.form-group.row(method='post', action='/admin/courses/'+data.courses._id)
-                input(type='hidden', name='action', value='deleteCourse')
-                button.btn.btn-link(type='submit', name='deleteCourse') Delete Course
+                button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteCourse') Delete Course
+            #deleteCourse.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteCourseLabel')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                span(aria-hidden='true') ×
+                            h4#deleteCourseLabel.modal-title #{'Are you sure you want to delete '+data.courses.title+'?'}
+                        .modal-body
+                            p This cannot be undone
+                        .modal-footer
+                            form.form-group.row(method='post', action='/admin/courses/'+data.courses._id)
+                                input(type='hidden', name='action', value='deleteCourse')  
+                                button.btn.btn-danger(type='submit', name='deleteCourse') Delete
+                                button.btn.btn-default(type='button', data-dismiss='modal') Close

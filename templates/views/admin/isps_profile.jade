@@ -18,6 +18,18 @@ block content
                             each ls,i in data.lsectors
                                 option(value=i, name='sector') #{ls.name}
                 button.btn.btn-primary(type='submit', name='editISP') Save
-            form.form-group.row(method='post', action='/admin/isps/'+data.isps._id)
-                input(type='hidden', name='action', value='deleteISP')
-                button.btn.btn-link(type='submit', name='deleteISP') Delete ISP
+                button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteISP') Delete ISP
+            #deleteISP.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteISPLabel')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                span(aria-hidden='true') ×
+                            h4#deleteISPLabel.modal-title #{'Are you sure you want to delete '+data.isps.name+'?'}
+                        .modal-body
+                            p This cannot be undone
+                        .modal-footer
+                            form.form-group.row(method='post', action='/admin/isps/'+data.isps._id)
+                                input(type='hidden', name='action', value='deleteISP')  
+                                button.btn.btn-danger(type='submit', name='deleteISP') Delete
+                                button.btn.btn-default(type='button', data-dismiss='modal') Close
