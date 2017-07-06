@@ -24,7 +24,7 @@ exports = module.exports = function(req, res) {
   if (start && end) {
     constraints['createdAt'] = {
       $gte: new Date(start),
-      $lt: new Date(end)
+      $lte: new Date(end)
     }
   }
 
@@ -39,7 +39,6 @@ exports = module.exports = function(req, res) {
       var responseTally = [0, 0, 0, 0, 0];
 
       results.forEach(function(feedback) {
-        console.log('Title: ' + feedback.publication.title + ' pubLine: ' + feedback.publication.publicationLine);
         contentTally = tally(contentTally, feedback.content);
         usefulnessTally = tally(usefulnessTally, feedback.usefulness);
         designTally = tally(designTally, feedback.design);
