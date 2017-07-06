@@ -36,6 +36,18 @@ block content
                 p Loc
             .col-md-3    
                 mark #{data.discussion_views.loc}
-        form.form-group.row(method='post', action='/admin/discussion-views/'+data.discussion_views._id)
-                input(type='hidden', name='action', value='deleteDiscussionView')
-                button.btn.btn-link(type='submit', name='deleteDiscussionView') Delete Discussion View
+        button.btn.btn-link(type='submit', data-toggle='modal', data-target='#deleteDiscussionView') Delete Discussion View
+    #deleteDiscussionView.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteDiscussionViewLabel')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') ×
+                    h4#deleteDiscussionViewLabel.modal-title #{'Are you sure you want to delete '+data.discussion_views._id+'?'}
+                .modal-body
+                    p This cannot be undone
+                .modal-footer
+                    form.form-group.row(method='post', action='/admin/discussion-views/'+data.discussion_views._id)
+                        input(type='hidden', name='action', value='deleteDiscussionView')  
+                        button.btn.btn-danger(type='submit', name='deleteDiscussionView') Delete
+                        button.btn.btn-default(type='button', data-dismiss='modal') Close

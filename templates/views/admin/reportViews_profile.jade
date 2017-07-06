@@ -36,6 +36,18 @@ block content
                 p Loc
             .col-md-3    
                 mark #{data.report_views.loc}
-        form.form-group.row(method='post', action='/admin/report-views/'+data.report_views._id)
-                input(type='hidden', name='action', value='deleteReportView')
-                button.btn.btn-link(type='submit', name='deleteReportView') Delete Report View
+        button.btn.btn-link(type='submit', data-toggle='modal', data-target='#deleteReportView') Delete Group View
+    #deleteReportView.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteReportViewLabel')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') ×
+                    h4#deleteReportViewLabel.modal-title #{'Are you sure you want to delete '+data.report_views._id+'?'}
+                .modal-body
+                    p This cannot be undone
+                .modal-footer
+                    form.form-group.row(method='post', action='/admin/report-views/'+data.report_views._id)
+                        input(type='hidden', name='action', value='deleteReportView')  
+                        button.btn.btn-danger(type='submit', name='deleteReportView') Delete
+                        button.btn.btn-default(type='button', data-dismiss='modal') Close
