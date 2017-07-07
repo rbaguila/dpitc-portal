@@ -60,8 +60,11 @@ block content
             .row
                 .col-md-7
                     label Consumer Type
-                    select.form-control
-                        option(selected='') #{data.user.consumerType}
+                    select.form-control(name='consumerType')
+                        option Researcher
+                        option Business/Private Sector
+                        option Policy Maker
+                        option Other
             .row
                 .col-md-2
                     label Birthday
@@ -73,8 +76,9 @@ block content
             .row
                 .col-md-7
                     label Sex
-                    select.form-control
-                        option(selected='') #{data.user.sex}
+                    select.form-control(name='sex')
+                        option Male
+                        option Female                        
             .row
                 .col-md-7
                     label Contact Number
