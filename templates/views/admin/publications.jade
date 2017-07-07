@@ -26,7 +26,7 @@ block content
                         .jumbotron
                             h3 No Publication Setting found
                             button.btn.btn-success(type='button', data-toggle='modal', data-target='#createPublicationSetting') Create Publication Setting
-                    #createPublicationSetting.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createPublicationSettingLabel')
+                    #createPublicationSetting.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createPublicationSettingLabel', onclick='window.location.reload();')
                         .modal-dialog(role='document')
                             .modal-content
                                 .modal-header
@@ -79,7 +79,7 @@ block content
                         .modal-dialog(role='document')
                             .modal-content
                                 .modal-header
-                                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='window.location.reload();')
                                         span(aria-hidden='true') ×
                                     h4#createPublicationLabel.modal-title Create a new Publication
                                 .modal-body
@@ -120,7 +120,7 @@ block content
                         .modal-dialog(role='document')
                             .modal-content
                                 .modal-header
-                                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='window.location.reload();')
                                         span(aria-hidden='true') ×
                                     h4#createPublicationLineLabel.modal-title Create a new Publication Line
                                 .modal-body
