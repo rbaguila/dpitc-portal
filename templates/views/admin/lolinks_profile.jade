@@ -1,0 +1,37 @@
+extends ../../layouts/admin-default
+
+block content
+    .row
+        .col-sm-9.col-sm-offset-3.col-md-9.col-md-offset-3.main
+            h3 #{data.lolinks._id}
+            form.form-group.row(method='post', action='/admin/lolinks/'+data.lolinks._id)
+                input(type='hidden', name='action', value='editLOLink')
+                .row
+                    .col-md-7
+                        input.form-control.input-lg(type='text', value= data.lolinks.name, placeholder='Name',name='name')
+                h5.help-block #{'Key: '+data.lolinks.key}
+                h5.help-block #{'ID: '+data.lolinks._id}
+                .row
+                    .col-md-7
+                        label URL
+                        input.form-control(type='url', placeholder='URL', value=data.lolinks.url, name='url')
+                .row
+                    .col-md-7
+                        label Description
+                        textarea.form-control(rows='15', name='description') #{data.lolinks.description}
+                button.btn.btn-primary(type='submit', name='editLOLink') Save
+                button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteLOLink') Delete LOLink
+            #deleteLOLink.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteLOLinkLabel')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                span(aria-hidden='true') ×
+                            h4#deleteLOLinkLabel.modal-title #{'Are you sure you want to delete '+data.lolinks.name+'?'}
+                        .modal-body
+                            p This cannot be undone
+                        .modal-footer
+                            form.form-group.row(method='post', action='/admin/lolinks/'+data.lolinks._id)
+                                input(type='hidden', name='action', value='deleteLOLink')  
+                                button.btn.btn-danger(type='submit', name='deleteLOLink') Delete
+                                button.btn.btn-default(type='button', data-dismiss='modal') Close
