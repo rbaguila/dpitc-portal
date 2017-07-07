@@ -40,7 +40,7 @@ block content
                                             input.form-control(type='text', placeholder='Name', name='name')
                                 .modal-footer                                    
                                     button.btn.btn-primary(type='submit', name='createPublicationSetting') Create
-                                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/publications'
                 form.form-group.row(method='post', action='/admin/publications')
                     input(type='hidden', name='action', value='createPublication')
@@ -92,7 +92,7 @@ block content
                                             label Publication Type
                                 .modal-footer                                    
                                     button.btn.btn-primary(type='submit', name='createPublication') Create
-                                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/publication-lines'
                 form.form-group.row(method='post', action='/admin/publication-lines')
                     input(type='hidden', name='action', value='createPublicationLine')
@@ -130,7 +130,7 @@ block content
                                             input.form-control(type='text', placeholder='Name', name='name')
                                 .modal-footer                                    
                                     button.btn.btn-primary(type='submit', name='createPublicationLine') Create
-                                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/publication-feedbacks'
                 if data.publication_feedbacks.length > 0
                     .row

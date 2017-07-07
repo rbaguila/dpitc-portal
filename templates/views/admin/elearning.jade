@@ -48,7 +48,7 @@ block content
                                             input.form-control(type='text', placeholder='Title', name='title')                                    
                                 .modal-footer                                    
                                     button.btn.btn-primary(type='submit', name='createLearningObject') Create
-                                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/courses'
                 form.form-group.row(method='post', action='/admin/courses')
                     input(type='hidden', name='action', value='createCourse')
@@ -92,7 +92,7 @@ block content
                                             input.form-control(type='text', placeholder='Title', name='title')                                    
                                 .modal-footer                                    
                                     button.btn.btn-primary(type='submit', name='createCourse') Create
-                                    button.btn.btn-default(type='button', data-dismiss='modal') Close                    
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close                    
             if data.path === '/admin/learning-contents'
                 form.form-group.row(method='post', action='/admin/learning-contents')
                     input(type='hidden', name='action', value='createLearningContent')
@@ -136,7 +136,7 @@ block content
                                             input.form-control(type='text', placeholder='Title', name='title')                                    
                                 .modal-footer                                    
                                     button.btn.btn-primary(type='submit', name='createLearningContent') Create
-                                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/isps'
                 form.form-group.row(method='post', action='/admin/isps')
                     input(type='hidden', name='action', value='createISP')
@@ -179,7 +179,7 @@ block content
                                             label Sector                  
                                 .modal-footer                                    
                                     button.btn.btn-primary(type='submit', name='createISP') Create
-                                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/lindustries'
                 form.form-group.row(method='post', action='/admin/lindustries')
                     input(type='hidden', name='action', value='createLIndustry')                
@@ -217,7 +217,7 @@ block content
                                             input.form-control(type='text', placeholder='Name', name='name')                    
                                 .modal-footer                                    
                                     button.btn.btn-primary(type='submit', name='createISP') Create
-                                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/lsectors'
                 form.form-group.row(method='post', action='/admin/lsectors')
                     input(type='hidden', name='action', value='createLSector')    
@@ -260,7 +260,7 @@ block content
                                             label Industry
                                 .modal-footer                                    
                                     button.btn.btn-primary(type='submit', name='createLSector') Create
-                                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/lofile-uploads'
                 form.form-group.row(method='post', action='/admin/lofile-uploads')
                     input(type='hidden', name='action', value='createLOFileUpload')
@@ -302,7 +302,7 @@ block content
                                             input.form-control(type='text', placeholder='Name', name='name')
                                 .modal-footer                                    
                                     button.btn.btn-primary(type='submit', name='createLOFileUpload') Create
-                                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/logalleries'
                 form.form-group.row(method='post', action='/admin/logalleries')
                     input(type='hidden', name='action', value='createLOGallery')
@@ -340,7 +340,7 @@ block content
                                             input.form-control(type='text', placeholder='Name', name='name')
                                 .modal-footer                                    
                                     button.btn.btn-primary(type='submit', name='createLOGallery') Create
-                                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/lolinks'
                 form.form-group.row(method='post', action='/admin/lolinks')
                     input(type='hidden', name='action', value='createLOLink')
@@ -386,7 +386,7 @@ block content
                                             input.form-control(type='url', placeholder='URL', name='url')
                                 .modal-footer                                    
                                     button.btn.btn-primary(type='submit', name='createLOLink') Create
-                                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/lovideos'
                 form.form-group.row(method='post', action='/admin/lovideos')
                     input(type='hidden', name='action', value='createLOVideo')
@@ -434,7 +434,7 @@ block content
                                             input.form-control(type='url', placeholder='URL', name='url')
                                 .modal-footer                                    
                                     button.btn.btn-primary(type='submit', name='createLOVideo') Create
-                                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/authors'
                 form.form-group.row(method='post', action='/admin/authors')
                     input(type='hidden', name='action', value='createAuthor')
@@ -475,7 +475,7 @@ block content
                                             input.form-control(type='text', placeholder='Name', name='name')
                                 .modal-footer                                    
                                     button.btn.btn-primary(type='submit', name='createAuthor') Create
-                                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/locomments'
                 form.form-group.row(method='post', action='/admin/locomments')
                     input(type='hidden', name='action', value='createLOComment')
