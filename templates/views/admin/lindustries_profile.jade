@@ -9,8 +9,12 @@ block content
                         input.form-control.input-lg(type='text', value= data.lindustries.name, placeholder='Name')
                 h5.help-block #{'Key: ' + data.lindustries.key}
                 h5.help-block #{'ID: ' + data.lindustries._id}
-                button.btn.btn-primary(type='submit') Save
-                button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteLIndustry') Delete LIndustry
+                br
+                br
+                footer.footer
+                    .container
+                        button.btn.btn-primary(type='submit') Save
+                        button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteLIndustry') Delete LIndustry
             #deleteLIndustry.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteLIndustryLabel')
                 .modal-dialog(role='document')
                     .modal-content

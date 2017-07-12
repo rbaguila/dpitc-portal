@@ -15,8 +15,12 @@ block content
                     .col-md-7
                         label Organization
                         input.form-control(type='text', value= data.authors.organization, placeholder='Organization', name='organization')
-                button.btn.btn-primary(type='submit', name='editAuthor') Save
-                button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteAuthor') Delete Author
+                br
+                br
+                footer.footer
+                    .container
+                        button.btn.btn-primary(type='submit', name='editAuthor') Save
+                        button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteAuthor') Delete Author
             #deleteAuthor.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteAuthorLabel')
                 .modal-dialog(role='document')
                     .modal-content

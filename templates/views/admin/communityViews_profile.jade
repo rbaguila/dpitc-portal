@@ -36,7 +36,11 @@ block content
                 p Loc
             .col-md-3    
                 mark #{data.community_views.loc}
-        button.btn.btn-link(type='submit', data-toggle='modal', data-target='#deleteCommunityView') Delete Community View
+        br
+        br
+        footer.footer
+            .container
+                button.btn.btn-link(type='submit', data-toggle='modal', data-target='#deleteCommunityView') Delete Community View
     #deleteCommunityView.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteCommunityViewLabel')
         .modal-dialog(role='document')
             .modal-content

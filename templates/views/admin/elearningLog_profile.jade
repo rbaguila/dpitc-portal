@@ -29,8 +29,12 @@ block content
                     p UpdatedAt
                 .col-md-3
                     mark #{data.elearning_logs.updatedAt}
-            button.btn.btn-primary(type='submit') Save
-            button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteELearningLog') Delete ELearning Log
+            br
+            br
+            footer.footer
+                .container        
+                    button.btn.btn-primary(type='submit') Save
+                    button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteELearningLog') Delete ELearning Log
         #deleteELearningLog.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteELearningLogLabel')
             .modal-dialog(role='document')
                 .modal-content

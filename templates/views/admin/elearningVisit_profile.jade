@@ -47,8 +47,12 @@ block content
                     p UpdatedAt
                 .col-md-3
                     mark #{data.elearning_visits.updatedAt}
-            button.btn.btn-primary(type='submit') Save
-            button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteELearningVisit') Delete ELearning Visit
+            br
+            br
+            footer.footer
+                .container
+                    button.btn.btn-primary(type='submit') Save
+                    button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteELearningVisit') Delete ELearning Visit
         #deleteELearningVisit.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteELearningVisitLabel')
             .modal-dialog(role='document')
                 .modal-content

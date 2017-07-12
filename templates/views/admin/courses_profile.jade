@@ -45,8 +45,12 @@ block content
                         label Updated At
                     .col-md-2
                         mark #{data.courses.publishedAt}
-                button.btn.btn-primary(type='submit') Save
-                button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteCourse') Delete Course
+                br
+                br
+                footer.footer
+                    .container
+                        button.btn.btn-primary(type='submit') Save
+                        button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteCourse') Delete Course
             #deleteCourse.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteCourseLabel')
                 .modal-dialog(role='document')
                     .modal-content

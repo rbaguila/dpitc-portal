@@ -17,8 +17,12 @@ block content
                                 option(selected='',name='sector') #{data.isps.sector}
                             each ls,i in data.lsectors
                                 option(value=i, name='sector') #{ls.name}
-                button.btn.btn-primary(type='submit', name='editISP') Save
-                button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteISP') Delete ISP
+                br
+                br
+                footer.footer
+                    .container
+                        button.btn.btn-primary(type='submit', name='editISP') Save
+                        button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteISP') Delete ISP
             #deleteISP.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteISPLabel')
                 .modal-dialog(role='document')
                     .modal-content

@@ -45,8 +45,12 @@ block content
                         label Updated At
                     .col-md-2
                         mark #{data.learning_objects.publishedAt}
-                button.btn.btn-primary(type='submit', name='editLearningObject') Save
-                button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteLearningObject') Delete Learning Object
+                br
+                br
+                footer.footer
+                    .container
+                        button.btn.btn-primary(type='submit', name='editLearningObject') Save
+                        button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteLearningObject') Delete Learning Object
             #deleteLearningObject.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteLearningObjectLabel')
                 .modal-dialog(role='document')
                     .modal-content

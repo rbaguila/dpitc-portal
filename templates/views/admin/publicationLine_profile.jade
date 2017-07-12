@@ -9,8 +9,12 @@ block content
                     .col-md-7
                         input.form-control.input-lg(type='text', value= data.publication_lines.name, placeholder='Name', name='name')
                 h5.help-block #{'ID: '+data.publication_lines._id}
-                button.btn.btn-primary(type='submit', name='editPublicationLine') Save   
-                button.btn.btn-link(type='button', data-toggle='modal', data-target='#deletePublicationLine') Delete Publication Line
+                br
+                br
+                footer.footer
+                    .container
+                        button.btn.btn-primary(type='submit', name='editPublicationLine') Save   
+                        button.btn.btn-link(type='button', data-toggle='modal', data-target='#deletePublicationLine') Delete Publication Line
             #deletePublicationLine.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deletePublicationLineLabel')
                 .modal-dialog(role='document')
                     .modal-content

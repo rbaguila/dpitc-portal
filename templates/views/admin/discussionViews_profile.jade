@@ -36,7 +36,11 @@ block content
                 p Loc
             .col-md-3    
                 mark #{data.discussion_views.loc}
-        button.btn.btn-link(type='submit', data-toggle='modal', data-target='#deleteDiscussionView') Delete Discussion View
+        br
+        br
+        footer.footer
+            .container
+                button.btn.btn-link(type='submit', data-toggle='modal', data-target='#deleteDiscussionView') Delete Discussion View
     #deleteDiscussionView.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteDiscussionViewLabel')
         .modal-dialog(role='document')
             .modal-content

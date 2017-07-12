@@ -32,8 +32,12 @@ block content
                         label Images
                             input#file.custom-file-input(type='file')
                             span.custom-file-control
-                button.btn.btn-primary(type='submit', name='editLOGallery') Save
-                button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteLOGallery') Delete LOGallery
+                br
+                br
+                footer.footer
+                    .container    
+                        button.btn.btn-primary(type='submit', name='editLOGallery') Save
+                        button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteLOGallery') Delete LOGallery
             #deleteLOGallery.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteLOGalleryLabel')
                 .modal-dialog(role='document')
                     .modal-content
