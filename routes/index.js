@@ -51,6 +51,9 @@ exports = module.exports = function (app) {
 
 	//Admin
 	app.get('/admin', middleware.requireUser, routes.adminViews.admin);
+	app.get('/admin/settings', routes.adminViews.settings);
+	app.post('/admin/settings', routes.adminViews.settings);
+	app.get('/admin/settings/:id', routes.adminViews.settings_profile);
 
 	//Admin analytics pages
 	app.get('/admin/community-views', middleware.requireAnalyticsAdmin, routes.adminViews.analytics);
