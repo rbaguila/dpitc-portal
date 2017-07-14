@@ -70,7 +70,7 @@ block content
                                         td #{pub.publicationYear}
                                         td #{pub.file}
                                         td
-                                            img.img-rounded(src=pub.cover)
+                                            img.img-rounded(src=pub.cover.secure_url, width='50', height='50')
                     else
                         .jumbotron
                             h3 No Publication found
