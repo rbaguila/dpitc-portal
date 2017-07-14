@@ -52,6 +52,7 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	// Create Publication Setting function
 	view.on('post',{action: 'createPublicationSetting'}, function (next) {
 		var newPub = new PublicationsSetting.model({
 			title:locals.formData.title
@@ -122,7 +123,8 @@ exports = module.exports = function(req, res) {
 
 	view.on('post',{action: 'createPublicationLine'}, function (next) {
 		var newPub = new PublicationLine.model({
-			name:locals.formData.name
+			name:locals.formData.name,
+			publicationType: locals.formData.publicationType,
 		});
 
 		var updater = newPub.getUpdateHandler(req);

@@ -4,316 +4,510 @@ block content
     .row
         .col-sm-9.col-sm-offset-3.col-md-9.col-md-offset-2.main
             if data.path === '/admin/learning-objects'
-                if data.learning_objects.length > 0
-                    .row
-                        .col-md-6
-                            input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create Learning Objects            
-                    .table-responsive   
-                        table.table.table-striped
-                            thead
-                            tr
-                                th Title
-                                th Author
-                                th One-paragrapth Description
-                                th State
-                                th Published At
-                            tbody
-                            each lo in data.learning_objects
-                                tr   
-                                    td 
-                                        a(href='/admin/learning-objects/'+lo._id) #{lo.title}
-                                    td #{lo.author}
-                                    td #{lo.content.brief}
-                                    td #{lo.state}
-                                    td #{lo.publishedAt}
-                else
-                    .jumbotron
-                        h3 No Learning Object found
-                        button.btn.btn-success(type='button') Create Learning Object 
+                form.form-group.row(method='post', action='/admin/learning-objects')
+                    input(type='hidden', name='action', value='createLearningObject')
+                    if data.learning_objects.length > 0
+                        .row
+                            .col-md-6
+                                input.form-control(type='text', placeholder='Search..')
+                            .col-md-2
+                                button.btn.btn-success(type='button', data-toggle='modal', data-target='#createLearningObject') Create Learning Objects            
+                        .table-responsive   
+                            table.table.table-striped
+                                thead
+                                tr
+                                    th Title
+                                    th Author
+                                    th One-paragrapth Description
+                                    th State
+                                    th Published At
+                                tbody
+                                each lo in data.learning_objects
+                                    tr   
+                                        td 
+                                            a(href='/admin/learning-objects/'+lo._id) #{lo.title}
+                                        td #{lo.author}
+                                        td #{lo.content.brief}
+                                        td #{lo.state}
+                                        td #{lo.publishedAt}
+                    else
+                        .jumbotron
+                            h3 No Learning Object found
+                            button.btn.btn-success(type='button', data-toggle='modal', data-target='#createLearningObject') Create Learning Object
+                    #createLearningObject.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createLearningObjectLabel')
+                        .modal-dialog(role='document')
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='window.location.reload();')
+                                        span(aria-hidden='true') ×
+                                    h4#createLearningObjectLabel.modal-title Create a new Learning Object
+                                .modal-body
+                                    .row
+                                        .col-md-12
+                                            label Title
+                                            input.form-control(type='text', placeholder='Title', name='title')                                    
+                                .modal-footer                                    
+                                    button.btn.btn-primary(type='submit', name='createLearningObject') Create
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/courses'
-                if data.courses.length > 0
-                    .row
-                        .col-md-6
-                            input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create Course                
-                    .table-responsive   
-                        table.table.table-striped
-                            thead
-                            tr
-                                th Title
-                                th One-paragrapth Description
-                                th State
-                                th Published At
-                            tbody
-                            each courses in data.courses
-                                tr   
-                                    td 
-                                        a(href='/admin/courses/'+courses._id) #{courses.title}
-                                    td #{courses.content.brief}
-                                    td #{courses.state}
-                                    td #{courses.publishedAt}
-                else
-                    .jumbotron
-                        h3 No Course found
-                        button.btn.btn-success(type='button') Create Course  
+                form.form-group.row(method='post', action='/admin/courses')
+                    input(type='hidden', name='action', value='createCourse')
+                    if data.courses.length > 0
+                        .row
+                            .col-md-6
+                                input.form-control(type='text', placeholder='Search..')
+                            .col-md-2
+                                button.btn.btn-success(type='button', data-toggle='modal', data-target='#createCourse') Create Course                
+                        .table-responsive   
+                            table.table.table-striped
+                                thead
+                                tr
+                                    th Title
+                                    th One-paragrapth Description
+                                    th State
+                                    th Published At
+                                tbody
+                                each courses in data.courses
+                                    tr   
+                                        td 
+                                            a(href='/admin/courses/'+courses._id) #{courses.title}
+                                        td #{courses.content.brief}
+                                        td #{courses.state}
+                                        td #{courses.publishedAt}
+                    else
+                        .jumbotron
+                            h3 No Course found
+                            button.btn.btn-success(type='button', data-toggle='modal', data-target='#createCourse') Create Course
+                    #createCourse.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createCourseLabel')
+                        .modal-dialog(role='document')
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='window.location.reload();')
+                                        span(aria-hidden='true') ×
+                                    h4#createCourseLabel.modal-title Create a new Course
+                                .modal-body
+                                    .row
+                                        .col-md-12
+                                            label Title
+                                            input.form-control(type='text', placeholder='Title', name='title')                                    
+                                .modal-footer                                    
+                                    button.btn.btn-primary(type='submit', name='createCourse') Create
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close                    
             if data.path === '/admin/learning-contents'
-                if data.learning_contents.length > 0
-                    .row
-                        .col-md-6
-                            input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create Learning Content               
-                    .table-responsive   
-                        table.table.table-striped
-                            thead
-                            tr
-                                th Title
-                                th One-paragrapth Description
-                                th State
-                                th Published At
-                            tbody
-                            each contents in data.learning_contents
-                                tr   
-                                    td 
-                                        a(href='/admin/learning-contents/'+ contents._id) #{contents.title}
-                                    td #{contents.content.brief}
-                                    td #{contents.state}
-                                    td #{contents.publishedAt}
-                else
-                    .jumbotron
-                        h3 No Learning Content found
-                        button.btn.btn-success(type='button') Create Learning Content
+                form.form-group.row(method='post', action='/admin/learning-contents')
+                    input(type='hidden', name='action', value='createLearningContent')
+                    if data.learning_contents.length > 0
+                        .row
+                            .col-md-6
+                                input.form-control(type='text', placeholder='Search..')
+                            .col-md-2
+                                button.btn.btn-success(type='button', data-toggle='modal', data-target='#createLearningContent') Create Learning Content               
+                        .table-responsive   
+                            table.table.table-striped
+                                thead
+                                tr
+                                    th Title
+                                    th One-paragrapth Description
+                                    th State
+                                    th Published At
+                                tbody
+                                each contents in data.learning_contents
+                                    tr   
+                                        td 
+                                            a(href='/admin/learning-contents/'+ contents._id) #{contents.title}
+                                        td #{contents.content.brief}
+                                        td #{contents.state}
+                                        td #{contents.publishedAt}
+                    else
+                        .jumbotron
+                            h3 No Learning Content found
+                            button.btn.btn-success(type='button', data-toggle='modal', data-target='#createLearningContent') Create Learning Content
+                    #createLearningContent.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createLearningContentLabel')
+                        .modal-dialog(role='document')
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='window.location.reload();')
+                                        span(aria-hidden='true') ×
+                                    h4#createLearningContentLabel.modal-title Create a new Learning Content
+                                .modal-body
+                                    .row
+                                        .col-md-12
+                                            label Title
+                                            input.form-control(type='text', placeholder='Title', name='title')                                    
+                                .modal-footer                                    
+                                    button.btn.btn-primary(type='submit', name='createLearningContent') Create
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/isps'
-                if data.isps.length > 0
-                    .row
-                        .col-md-6
-                            input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create ISP             
-                    .table-responsive   
-                        table.table.table-striped
-                            thead
-                            tr
-                                th Name
-                                th Sector
-                            tbody
-                            each isp in data.isps
+                form.form-group.row(method='post', action='/admin/isps')
+                    input(type='hidden', name='action', value='createISP')
+                    if data.isps.length > 0
+                        .row
+                            .col-md-6
+                                input.form-control(type='text', placeholder='Search..')
+                            .col-md-2
+                                button.btn.btn-success(type='button', data-toggle='modal', data-target='#createISP') Create ISP             
+                        .table-responsive   
+                            table.table.table-striped
+                                thead
                                 tr
-                                    td 
-                                        a(href='/admin/isps/'+ isp._id) #{isp.name}
-                                    td #{isp.sector}
-                else
-                    .jumbotron
-                        h3 No ISP found
-                        button.btn.btn-success(type='button') Create ISP
+                                    th Name
+                                    th Sector
+                                tbody
+                                each isp in data.isps
+                                    tr
+                                        td 
+                                            a(href='/admin/isps/'+ isp._id) #{isp.name}
+                                        td #{isp.sector}
+                    else
+                        .jumbotron
+                            h3 No ISP found
+                            button.btn.btn-success(type='button', data-toggle='modal', data-target='#createISP') Create ISP
+                    #createISP.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createISPLabel')
+                        .modal-dialog(role='document')
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='window.location.reload();')
+                                        span(aria-hidden='true') ×
+                                    h4#createISPLabel.modal-title Create a new ISP
+                                .modal-body
+                                    .row
+                                        .col-md-12
+                                            label Name
+                                            input.form-control(type='text', placeholder='Name', name='name')              
+                                    .row    
+                                        .col-md-12
+                                            label Sector                  
+                                .modal-footer                                    
+                                    button.btn.btn-primary(type='submit', name='createISP') Create
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/lindustries'
-                if data.lindustries.length > 0
-                    .row
-                        .col-md-6
-                            input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create LOIndustry              
-                    .table-responsive   
-                        table.table.table-striped
-                            thead
-                            tr
-                                th Name
-                            tbody
-                            each lindustry in data.lindustries
+                form.form-group.row(method='post', action='/admin/lindustries')
+                    input(type='hidden', name='action', value='createLIndustry')                
+                    if data.lindustries.length > 0
+                        .row
+                            .col-md-6
+                                input.form-control(type='text', placeholder='Search..')
+                            .col-md-2
+                                button.btn.btn-success(type='button', data-toggle='modal', data-target='#createLIndustry') Create LOIndustry              
+                        .table-responsive   
+                            table.table.table-striped
+                                thead
                                 tr
-                                    td 
-                                        a(href='/admin/lindustries/'+ lindustry._id) #{lindustry.name}
-                else
-                    .jumbotron
-                        h3 No LIndustry found
-                        button.btn.btn-success(type='button') Create LIndustry
+                                    th Name
+                                tbody
+                                each lindustry in data.lindustries
+                                    tr
+                                        td 
+                                            a(href='/admin/lindustries/'+ lindustry._id) #{lindustry.name}
+                    else
+                        .jumbotron
+                            h3 No LIndustry found
+                            button.btn.btn-success(type='button', data-toggle='modal', data-target='#createLIndustry') Create LIndustry
+                    #createLIndustry.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createLIndustryLabel')
+                        .modal-dialog(role='document')
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='window.location.reload();')
+                                        span(aria-hidden='true') ×
+                                    h4#createLIndustryLabel.modal-title Create a new LIndustry
+                                .modal-body
+                                    .row
+                                        .col-md-12
+                                            label Name
+                                            input.form-control(type='text', placeholder='Name', name='name')                    
+                                .modal-footer                                    
+                                    button.btn.btn-primary(type='submit', name='createISP') Create
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/lsectors'
-                if data.lsectors.length > 0
-                    .row
-                        .col-md-6
-                            input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create LOSectorr              
-                    .table-responsive   
-                        table.table.table-striped
-                            thead
-                            tr
-                                th Name
-                                th Industry
-                            tbody
-                            each lsector in data.lsectors
+                form.form-group.row(method='post', action='/admin/lsectors')
+                    input(type='hidden', name='action', value='createLSector')    
+                    if data.lsectors.length > 0
+                        .row
+                            .col-md-6
+                                input.form-control(type='text', placeholder='Search..')
+                            .col-md-2
+                                button.btn.btn-success(type='button', data-toggle='modal', data-target='#createLSector') Create LSector            
+                        .table-responsive   
+                            table.table.table-striped
+                                thead
                                 tr
-                                    td 
-                                        a(href='/admin/lsectors/'+ lsector._id) #{lsector.name}
-                                    td #{lsector.industry}
-                else
-                    .jumbotron
-                        h3 No LSector found
-                        button.btn.btn-success(type='button') Create LSector
+                                    th Name
+                                    th Industry
+                                tbody
+                                each lsector in data.lsectors
+                                    tr
+                                        td 
+                                            a(href='/admin/lsectors/'+ lsector._id) #{lsector.name}
+                                        td #{lsector.industry}
+                    else
+                        .jumbotron
+                            h3 No LSector found
+                            button.btn.btn-success(type='button', data-toggle='modal', data-target='#createLSector') Create LSector
+                    #createLSector.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createLSectorLabel')
+                        .modal-dialog(role='document')
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='window.location.reload();')
+                                        span(aria-hidden='true') ×
+                                    h4#createLSectorLabel.modal-title Create a new LSector
+                                .modal-body
+                                    .row
+                                        .col-md-12
+                                            label Name
+                                            input.form-control(type='text', placeholder='Name', name='name')
+                                    .row
+                                        .col-md-12
+                                            label Industry
+                                .modal-footer                                    
+                                    button.btn.btn-primary(type='submit', name='createLSector') Create
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/lofile-uploads'
-                if data.lofile_uploads.length > 0
-                    .row
-                        .col-md-6
-                            input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create LOFile Upload
-                    .table-responsive   
-                        table.table.table-striped
-                            thead
-                            tr
-                                th Name
-                                th Created Time Stamp
-                                th File Type
-                            tbody
-                            each lofile in data.lofile_uploads
+                form.form-group.row(method='post', action='/admin/lofile-uploads')
+                    input(type='hidden', name='action', value='createLOFileUpload')
+                    if data.lofile_uploads.length > 0
+                        .row
+                            .col-md-6
+                                input.form-control(type='text', placeholder='Search..')
+                            .col-md-2
+                                button.btn.btn-success(type='button', data-toggle='modal', data-target='#createLOFileUpload') Create LOFile Upload
+                        .table-responsive   
+                            table.table.table-striped
+                                thead
                                 tr
-                                    td 
-                                        a(href='/admin/lofile-uploads/'+ lofile._id) #{lofile.name}
-                                    td #{lofile.createdTimeStamp}
-                                    td #{lofile.fileType}
-                else
-                    .jumbotron
-                        h3 No LOFile Uploud found
-                        button.btn.btn-success(type='button') Create LOFile Upload
+                                    th Name
+                                    th Created Time Stamp
+                                    th File Type
+                                tbody
+                                each lofile in data.lofile_uploads
+                                    tr
+                                        td 
+                                            a(href='/admin/lofile-uploads/'+ lofile._id) #{lofile.name}
+                                        td #{lofile.createdTimeStamp}
+                                        td #{lofile.fileType}
+                    else
+                        .jumbotron
+                            h3 No LOFile Upload found
+                            button.btn.btn-success(type='button', data-toggle='modal', data-target='#createLOFileUpload') Create LOFile Upload
+                    #createLOFileUpload.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createLOFileUploadLabel')
+                        .modal-dialog(role='document')
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='window.location.reload();')
+                                        span(aria-hidden='true') ×
+                                    h4#createLOFileUploadLabel.modal-title Create a new LOFile Upload
+                                .modal-body
+                                    .row
+                                        .col-md-12
+                                            label Name
+                                            input.form-control(type='text', placeholder='Name', name='name')
+                                .modal-footer                                    
+                                    button.btn.btn-primary(type='submit', name='createLOFileUpload') Create
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/logalleries'
-                if data.logalleries.length > 0
-                    .row
-                        .col-md-6
-                            input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create LOGallery
-                    .table-responsive   
-                        table.table.table-striped
-                            thead
-                            tr
-                                th Name
-                                th Description
-                                th Published At
-                            tbody
-                            each logallery in data.logalleries
+                form.form-group.row(method='post', action='/admin/logalleries')
+                    input(type='hidden', name='action', value='createLOGallery')
+                    if data.logalleries.length > 0
+                        .row
+                            .col-md-6
+                                input.form-control(type='text', placeholder='Search..')
+                            .col-md-2
+                                button.btn.btn-success(type='button', data-toggle='modal', data-target='#createLOGallery') Create LOGallery
+                        .table-responsive   
+                            table.table.table-striped
+                                thead
                                 tr
-                                    td 
-                                        a(href='/admin/logalleries/'+ logallery._id) #{logallery.name}
-                                    td #{logallery.description}
-                                    td #{logallery.publishedAt}
-                else
-                    .jumbotron
-                        h3 No LOGallery found
-                        button.btn.btn-success(type='button') Create LOGallery
+                                    th Name
+                                tbody
+                                each logallery in data.logalleries
+                                    tr
+                                        td 
+                                            a(href='/admin/logalleries/'+ logallery._id) #{logallery.name}
+                    else
+                        .jumbotron
+                            h3 No LOGallery found
+                            button.btn.btn-success(type='button', data-toggle='modal', data-target='#createLOGallery') Create LOGallery
+                    #createLOGallery.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createLOGalleryLabel')
+                        .modal-dialog(role='document')
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='window.location.reload();')
+                                        span(aria-hidden='true') ×
+                                    h4#createLOGalleryLabel.modal-title Create a new LOGallery
+                                .modal-body
+                                    .row
+                                        .col-md-12
+                                            label Name
+                                            input.form-control(type='text', placeholder='Name', name='name')
+                                .modal-footer                                    
+                                    button.btn.btn-primary(type='submit', name='createLOGallery') Create
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/lolinks'
-                if data.lolinks.length > 0
-                    .row
-                        .col-md-6
-                            input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create LOLink
-                    .table-responsive   
-                        table.table.table-striped
-                            thead
-                            tr
-                                th Name
-                                th URL
-                                th Description
-                            tbody
-                            each lolink in data.lolinks
+                form.form-group.row(method='post', action='/admin/lolinks')
+                    input(type='hidden', name='action', value='createLOLink')
+                    if data.lolinks.length > 0
+                        .row
+                            .col-md-6
+                                input.form-control(type='text', placeholder='Search..')
+                            .col-md-2
+                                button.btn.btn-success(type='button', data-toggle='modal', data-target='#createLOLink') Create LOLink
+                        .table-responsive   
+                            table.table.table-striped
+                                thead
                                 tr
-                                    td 
-                                        a(href='/admin/lolinks/'+ lolink._id) #{lolink.name}
-                                    td #{lolink.url}
-                                    td #{lolink.description}
-                else
-                    .jumbotron
-                        h3 No LOLink found
-                        button.btn.btn-success(type='button') Create LOLink
+                                    th Name
+                                    th URL
+                                    th Description
+                                tbody
+                                each lolink in data.lolinks
+                                    tr
+                                        td 
+                                            a(href='/admin/lolinks/'+ lolink._id) #{lolink.name}
+                                        td #{lolink.url}
+                                        td #{lolink.description}
+                    else
+                        .jumbotron
+                            h3 No LOLink found
+                            button.btn.btn-success(type='button', data-toggle='modal', data-target='#createLOLink') Create LOLink
+                    #createLOLink.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createLOLinkLabel')
+                        .modal-dialog(role='document')
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='window.location.reload();')
+                                        span(aria-hidden='true') ×
+                                    h4#createLOLinkLabel.modal-title Create a new LOLink
+                                .modal-body
+                                    .row
+                                        .col-md-12
+                                            label Name
+                                            input.form-control(type='text', placeholder='Name', name='name')
+                                    .row
+                                        .col-md-12
+                                            label URL
+                                            input.form-control(type='url', placeholder='URL', name='url')
+                                .modal-footer                                    
+                                    button.btn.btn-primary(type='submit', name='createLOLink') Create
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/lovideos'
-                if data.lovideos.length > 0
-                    .row
-                        .col-md-6
-                            input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create LOVideo
-                    .table-responsive   
-                        table.table.table-striped
-                            thead
-                            tr
-                                th ID
-                                th Youtube URL
-                                th Description
-                            tbody
-                            each lovideo in data.lovideos
+                form.form-group.row(method='post', action='/admin/lovideos')
+                    input(type='hidden', name='action', value='createLOVideo')
+                    if data.lovideos.length > 0
+                        .row
+                            .col-md-6
+                                input.form-control(type='text', placeholder='Search..')
+                            .col-md-2
+                                button.btn.btn-success(type='button', data-toggle='modal', data-target='#createLOVideo') Create LOVideo
+                        .table-responsive   
+                            table.table.table-striped
+                                thead
                                 tr
-                                    td 
-                                        a(href='/admin/lovideos/'+ lovideo._id) #{lovideo._id}
-                                    td 
-                                        a(href=lovideo.url) #{lovideo.url}
-                                    td #{lovideo.description}
+                                    th ID
+                                    th Youtube URL
+                                    th Description
+                                tbody
+                                each lovideo in data.lovideos
+                                    tr
+                                        td 
+                                            a(href='/admin/lovideos/'+ lovideo._id) #{lovideo._id}
+                                        td 
+                                            a(href=lovideo.url) #{lovideo.url}
+                                        td #{lovideo.description}
 
-                else
-                    .jumbotron
-                        h3 No LOVideo found
-                        button.btn.btn-success(type='button') Create LOVideo
+                    else
+                        .jumbotron
+                            h3 No LOVideo found
+                            button.btn.btn-success(type='button', data-toggle='modal', data-target='#createLOVideo') Create LOVideo
+                    #createLOVideo.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createLOVideoLabel')
+                        .modal-dialog(role='document')
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='window.location.reload();')
+                                        span(aria-hidden='true') ×
+                                    h4#createLOVideoLabel.modal-title Create a new LOVideo
+                                .modal-body
+                                    .row
+                                        .col-md-12
+                                            label Name
+                                            input.form-control(type='text', placeholder='Name', name='name')
+                                    .row
+                                        .col-md-12
+                                            label Youtube URL
+                                            input.form-control(type='url', placeholder='URL', name='url')
+                                .modal-footer                                    
+                                    button.btn.btn-primary(type='submit', name='createLOVideo') Create
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/authors'
-                if data.authors.length > 0
-                    .row
-                        .col-md-6
-                            input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create Author
-                    .table-responsive   
-                        table.table.table-striped
-                            thead
-                            tr
-                                th Name
-                                th Organization
-                            tbody
-                            each author in data.authors
+                form.form-group.row(method='post', action='/admin/authors')
+                    input(type='hidden', name='action', value='createAuthor')
+                    if data.authors.length > 0
+                        .row
+                            .col-md-6
+                                input.form-control(type='text', placeholder='Search..')
+                            .col-md-2
+                                button.btn.btn-success(type='button', data-toggle='modal', data-target='#createAuthor') Create Author
+                        .table-responsive   
+                            table.table.table-striped
+                                thead
                                 tr
-                                    td 
-                                        a(href='/admin/authors/'+ author._id) #{author.name}
-                                    td #{author.organization}
+                                    th Name
+                                    th Organization
+                                tbody
+                                each author in data.authors
+                                    tr
+                                        td 
+                                            a(href='/admin/authors/'+ author._id) #{author.name}
+                                        td #{author.organization}
 
-                else
-                    .jumbotron
-                        h3 No Author found
-                        button.btn.btn-success(type='button') Create Author
+                    else
+                        .jumbotron
+                            h3 No Author found
+                            button.btn.btn-success(type='button', data-toggle='modal', data-target='#createAuthor') Create Author
+                    #createAuthor.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createAuthorLabel')
+                        .modal-dialog(role='document')
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='window.location.reload();')
+                                        span(aria-hidden='true') ×
+                                    h4#createAuthorLabel.modal-title Create a new Author
+                                .modal-body
+                                    .row
+                                        .col-md-12
+                                            label Name
+                                            input.form-control(type='text', placeholder='Name', name='name')
+                                .modal-footer                                    
+                                    button.btn.btn-primary(type='submit', name='createAuthor') Create
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/locomments'
-                if data.locomments.length > 0
-                    .row
-                        .col-md-6
-                            input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create LOComment
-                    .table-responsive   
-                        table.table.table-striped
-                            thead
-                            tr
-                                th Learning Object
-                                th CreatedBy
-                                th Content
-                                th CreatedAt
-                            tbody
-                            each locomment in data.locomments
+                form.form-group.row(method='post', action='/admin/locomments')
+                    input(type='hidden', name='action', value='createLOComment')
+                    if data.locomments.length > 0
+                        .row
+                            .col-md-6
+                                input.form-control(type='text', placeholder='Search..')
+                        .table-responsive   
+                            table.table.table-striped
+                                thead
                                 tr
-                                    td 
-                                        a(href='/admin/locomments/'+ locomment._id) #{locomment.learningObject}
-                                    td #{locomment.createdBy}
-                                    td #{locomment.content}
-                                    td #{locomment.createdAt}
+                                    th Learning Object
+                                    th CreatedBy
+                                    th Content
+                                    th CreatedAt
+                                tbody
+                                each locomment in data.locomments
+                                    tr
+                                        td 
+                                            a(href='/admin/locomments/'+ locomment._id) #{locomment.learningObject}
+                                        td #{locomment.createdBy}
+                                        td #{locomment.content}
+                                        td #{locomment.createdAt}
 
-                else
-                    .jumbotron
-                        h3 No LOComment found
-                        button.btn.btn-success(type='button') Create LOComment
+                    else
+                        .jumbotron
+                            h3 No LOComment found
             if data.path === '/admin/lofeedbacks'
                 if data.lofeedbacks.length > 0
                     .row
                         .col-md-6
                             input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create LOFeedback
                     .table-responsive   
                         table.table.table-striped
                             thead
@@ -334,14 +528,11 @@ block content
                 else
                     .jumbotron
                         h3 No LOFeedback found
-                        button.btn.btn-success(type='button') Create LOFeedback
             if data.path === '/admin/loratings'
                 if data.loratings.length > 0
                     .row
                         .col-md-6
                             input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create LORating
                     .table-responsive   
                         table.table.table-striped
                             thead
@@ -362,14 +553,11 @@ block content
                 else
                     .jumbotron
                         h3 No LORating found
-                        button.btn.btn-success(type='button') Create LORating
             if data.path === '/admin/loviews'
                 if data.loviews.length > 0
                     .row
                         .col-md-6
                             input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create LOView
                     .table-responsive   
                         table.table.table-striped
                             thead
@@ -390,14 +578,11 @@ block content
                 else
                     .jumbotron
                         h3 No LOView found
-                        button.btn.btn-success(type='button') Create LOView
             if data.path === '/admin/elearning-logs'
                 if data.elearning_logs.length > 0
                     .row
                         .col-md-6
                             input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create ELearning Log
                     .table-responsive   
                         table.table.table-striped
                             thead
@@ -416,14 +601,11 @@ block content
                 else
                     .jumbotron
                         h3 No ELearning Log found
-                        button.btn.btn-success(type='button') Create ELearning Log
             if data.path === '/admin/elearning-visits'
                 if data.elearning_visits.length > 0
                     .row
                         .col-md-6
                             input.form-control(type='text', placeholder='Search..')
-                        .col-md-2
-                            button.btn.btn-success(type='button') Create ELearning Visits
                     .table-responsive   
                         table.table.table-striped
                             thead
@@ -442,4 +624,3 @@ block content
                 else
                     .jumbotron
                         h3 No ELearning Visits found
-                        button.btn.btn-success(type='button') Create ELearning Visits

@@ -30,7 +30,7 @@ block content
                         .modal-dialog(role='document')
                             .modal-content
                                 .modal-header
-                                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='window.location.reload();')
                                         span(aria-hidden='true') ×
                                     h4#createPublicationSettingLabel.modal-title Create a new Publication Setting
                                 .modal-body
@@ -40,7 +40,7 @@ block content
                                             input.form-control(type='text', placeholder='Name', name='name')
                                 .modal-footer                                    
                                     button.btn.btn-primary(type='submit', name='createPublicationSetting') Create
-                                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/publications'
                 form.form-group.row(method='post', action='/admin/publications')
                     input(type='hidden', name='action', value='createPublication')
@@ -70,7 +70,7 @@ block content
                                         td #{pub.publicationYear}
                                         td #{pub.file}
                                         td
-                                            img.img-rounded(src=pub.cover)
+                                            img.img-rounded(src=pub.cover.secure_url, width='50', height='50')
                     else
                         .jumbotron
                             h3 No Publication found
@@ -79,7 +79,7 @@ block content
                         .modal-dialog(role='document')
                             .modal-content
                                 .modal-header
-                                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='window.location.reload();')
                                         span(aria-hidden='true') ×
                                     h4#createPublicationLabel.modal-title Create a new Publication
                                 .modal-body
@@ -90,9 +90,17 @@ block content
                                     .row
                                         .col-md-10
                                             label Publication Type
+                                            select.form-control(name = 'publicationType')
+                                                option Book
+                                                option Brochure
+                                                option Comics
+                                                option Flyer
+                                                option Leaflet
+                                                option Primer
+                                                option Report
                                 .modal-footer                                    
                                     button.btn.btn-primary(type='submit', name='createPublication') Create
-                                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/publication-lines'
                 form.form-group.row(method='post', action='/admin/publication-lines')
                     input(type='hidden', name='action', value='createPublicationLine')
@@ -120,7 +128,7 @@ block content
                         .modal-dialog(role='document')
                             .modal-content
                                 .modal-header
-                                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='window.location.reload();')
                                         span(aria-hidden='true') ×
                                     h4#createPublicationLineLabel.modal-title Create a new Publication Line
                                 .modal-body
@@ -130,7 +138,7 @@ block content
                                             input.form-control(type='text', placeholder='Name', name='name')
                                 .modal-footer                                    
                                     button.btn.btn-primary(type='submit', name='createPublicationLine') Create
-                                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                    button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
             if data.path === '/admin/publication-feedbacks'
                 if data.publication_feedbacks.length > 0
                     .row

@@ -53,9 +53,12 @@ block content
             .row
                 .col-md-7
                     label File Type
-                    
-            button.btn.btn-primary(type='submit') Save
-            button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteLOFileUpload') Delete LIndustry
+            br
+            br
+            footer.footer
+                .container
+                    button.btn.btn-primary(type='submit') Save
+                    button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteLOFileUpload') Delete LIndustry
             #deleteLOFileUpload.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteLOFileUploadLabel')
                 .modal-dialog(role='document')
                     .modal-content

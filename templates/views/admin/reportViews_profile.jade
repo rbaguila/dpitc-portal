@@ -36,7 +36,11 @@ block content
                 p Loc
             .col-md-3    
                 mark #{data.report_views.loc}
-        button.btn.btn-link(type='submit', data-toggle='modal', data-target='#deleteReportView') Delete Group View
+        br
+        br
+        footer.footer
+            .container
+                button.btn.btn-link(type='submit', data-toggle='modal', data-target='#deleteReportView') Delete Group View
     #deleteReportView.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteReportViewLabel')
         .modal-dialog(role='document')
             .modal-content

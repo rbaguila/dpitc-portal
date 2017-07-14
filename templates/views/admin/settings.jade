@@ -1,0 +1,42 @@
+extends ../../layouts/admin-default
+
+block content
+    .row
+        .col-sm-9.col-sm-offset-3.col-md-9.col-md-offset-2.main
+            form.form-group.row(method='post', action='/admin/settings')
+                input(type='hidden', name='action', value='createSetting')
+                if data.settings.length > 0
+                    .row
+                        .col-md-6
+                            input.form-control(type='text', placeholder='Search..')
+                        .col-md-2
+                            button.btn.btn-success(type='button', data-toggle='modal', data-target='#createSetting') Create Setting 
+                    .table-responsive   
+                        table.table.table-striped
+                            thead
+                            tr
+                                th Name
+                            tbody
+                            each setting in data.settings
+                                tr   
+                                    td 
+                                        a(href='/admin/settings/' + setting._id) #{setting.name}
+                else
+                    .jumbotron
+                        h3 No Setting found
+                        button.btn.btn-success(type='button', data-toggle='modal', data-target='#createSetting') Create Setting
+                #createSetting.modal.fade(tabindex='-1', role='dialog', aria-labelledby='createSettingLabel')
+                    .modal-dialog(role='document')
+                        .modal-content
+                            .modal-header
+                                button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='window.location.reload();')
+                                    span(aria-hidden='true') ×
+                                h4#createSettingLabel.modal-title Create a new Setting
+                            .modal-body
+                                .row
+                                    .col-md-12
+                                        label Name
+                                        input.form-control(type='text', placeholder='Name', name='name')                             
+                            .modal-footer                                    
+                                button.btn.btn-primary(type='submit', name='createSetting') Create
+                                button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close

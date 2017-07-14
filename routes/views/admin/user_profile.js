@@ -1,5 +1,8 @@
 var keystone = require('keystone');
 var User = keystone.list('User');
+var Publication = keystone.list('Publication');
+var LearningObject = keystone.list('LearningObject');
+async = require('async');
 
 exports = module.exports = function(req, res) {
 	var view = new keystone.View(req, res);
@@ -46,7 +49,7 @@ exports = module.exports = function(req, res) {
 	});
 	
 	view.on('post', {action: 'editUser'}, function(next){
-			var u = User.model.findOneAndUpdate(
+			var u = User.model.update(
 				{ _id:locals.data.user._id},
 				{
 					name: { 
@@ -66,8 +69,13 @@ exports = module.exports = function(req, res) {
 					contantNumber: locals.formData.contactNumber
 				},
 				function(err,results){
-					if(err) return next(err);
-					return res.redirect('/admin/users');
+					if(err){
+						locals.validationErrors = err.errors;
+					}else{
+						req.flash('success','User updated')
+						return res.redirect('/admin/users');
+					}
+					
 					next();
 				})
 
@@ -80,10 +88,10 @@ exports = module.exports = function(req, res) {
 			}, function (err, result) {
 			if (err) {    
 				locals.validationErrors = err.errors; 
-				} else {
+			} else {
 				req.flash('success', 'Account updated.');         
 				return res.redirect('/admin/users');
-				}
+			}
 				next();
 			});
 	});
@@ -91,7 +99,7 @@ exports = module.exports = function(req, res) {
 	// Load LO
 	view.on('init', function (next) {
 
-		var u = keystone.list('LearningObject').model.find().sort({ publishedAt: -1})
+		var u = LearningObject.model.find().sort({ publishedAt: -1})
 
 		u.exec(function (err, results) {
 			locals.data.learning_objects = results;
@@ -103,7 +111,7 @@ exports = module.exports = function(req, res) {
 	// Load publications
 	view.on('init', function (next) {
 
-		var u = keystone.list('Publication').model.find().sort({ title: 1 })
+		var u = Publication.model.find().sort({ title: 1 })
 
 		u.exec(function (err, results) {
 			locals.data.publications = results;
@@ -116,7 +124,9 @@ exports = module.exports = function(req, res) {
 		var u = User.model.remove({_id: req.params.id});
 
 		u.exec(function (err, results){
-			if(err){}
+			if(err){
+				return res.send();
+			}
 			else{
 				req.flash('success','User deleted');
 				return res.redirect('/admin/users');

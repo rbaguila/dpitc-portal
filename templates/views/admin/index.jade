@@ -5,5 +5,128 @@ block content
     .row
         .col-sm-9.col-sm-offset-3.col-md-9.col-md-offset-2.main
                 .page-header
-
                     h2 DPITC Content Management System
+                h4 Site Settings
+                .row
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/settings') #{'Settings: '+ data.settings_count}
+                            a.btn.btn-success(href='/admin/settings',data-toggle='modal', data-target='#createSetting') +
+                h4 Posts
+                .row
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default
+                            a.btn.btn-success +
+                h4 Contents
+                h4 Pages
+                h4 Users
+                .row
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/users') #{'Users: '+ data.users_count}
+                            a.btn.btn-success +
+                h4 Analytics
+                .row
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/community-views') #{'Community Views: '+data.communityViews_count}
+                            a.btn.btn-success +
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/discussion-views') #{'Discussion Views: '+data.discussionViews_count}
+                            a.btn.btn-success +
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/group-views') #{'Group Views: '+data.groupViews_count}
+                            a.btn.btn-success +
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/report-views') #{'Report Views: '+data.reportViews_count}
+                            a.btn.btn-success +
+                h4 Community
+                h4 Publications
+                .row
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/publication-settings') #{'Publication Settings: '+data.publicationSetting_count}
+                            a.btn.btn-success +
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/publications') #{'Publications: '+data.publications_count}
+                            a.btn.btn-success +
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/publication-lines') #{'Publication Lines: '+data.publicationLines_count}
+                            a.btn.btn-success +
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/publication-feedbacks') #{'Feedback: '+data.publicationFeedbacks_count}
+                            a.btn.btn-success +
+                h4 Categories
+                h4 ELearning
+                .row
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/learning-objects') #{'Learning Objects: '+data.learningObjects_count}
+                            a.btn.btn-success +
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/courses') #{'Courses: '+data.courses_count}
+                            a.btn.btn-success +
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/learning-contents') #{'Learning Content: '+data.learningContents_count}
+                            a.btn.btn-success +
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/isps') #{'ISPs: '+data.isps_count}
+                            a.btn.btn-success +
+                br
+                .row
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/lindustries') #{'LIndustries: '+data.lindustries_count}
+                            a.btn.btn-success +
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/lsectors') #{'LSectors: '+data.lsectors_count}
+                            a.btn.btn-success +
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/lofile-uploads') #{'LOFile Uploads: '+data.lofileUploads_count}
+                            a.btn.btn-success +
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/logalleries') #{'LOGalleries: '+data.logalleries_count}
+                            a.btn.btn-success +
+                br
+                .row
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/lolinks') #{'LOLinks: '+data.lolinks_count}
+                            a.btn.btn-success +
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/lovideos') #{'LOVideos: '+data.lovideos_count}
+                            a.btn.btn-success +
+                    .col-md-3
+                        .btn-group.btn-group-lg
+                            a.btn.btn-default(href='/admin/authors') #{'Authors: '+data.authors_count}
+                            a.btn.btn-success +
+                    .col-md-3
+                        a.btn.btn-default.btn-lg(href='/admin/locomments') #{'LOComments: '+data.locomments_count}
+                br
+                .row
+                    .col-md-3
+                        a.btn.btn-default.btn-lg(href='/admin/lofeedbacks') #{'LOFeedbacks: '+data.lofeedbacks_count}
+                    .col-md-3
+                        a.btn.btn-default.btn-lg(href='/admin/loratings') #{'LORatings: '+data.loratings_count}
+                    .col-md-3
+                        a.btn.btn-default.btn-lg(href='/admin/loviews') #{'LOViews: '+data.loviews_count}
+                    .col-md-3
+                        a.btn.btn-default.btn-lg(href='/admin/elearning-logs') #{'ELearning Logs: '+data.elearningLogs_count}
+                br
+                .row
+                    .col-md-3
+                        a.btn.btn-default.btn-lg(href='/admin/elearning-visits') #{'ELearning Visits: '+data.elearningVisits_count}

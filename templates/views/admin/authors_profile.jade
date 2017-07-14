@@ -15,8 +15,12 @@ block content
                     .col-md-7
                         label Organization
                         input.form-control(type='text', value= data.authors.organization, placeholder='Organization', name='organization')
-                button.btn.btn-primary(type='submit', name='editAuthor') Save
-                button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteAuthor') Delete Author
+                br
+                br
+                footer.footer
+                    .container
+                        button.btn.btn-primary(type='submit', name='editAuthor') Save
+                        button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteAuthor') Delete Author
             #deleteAuthor.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteAuthorLabel')
                 .modal-dialog(role='document')
                     .modal-content
@@ -27,7 +31,7 @@ block content
                         .modal-body
                             p This cannot be undone
                         .modal-footer
-                            form.form-group.row(method='post', action='/admin/author/'+data.authors._id)
+                            form.form-group.row(method='post', action='/admin/authors/'+data.authors._id)
                                 input(type='hidden', name='action', value='deleteAuthor')  
                                 button.btn.btn-danger(type='submit', name='deleteAuthor') Delete
                                 button.btn.btn-default(type='button', data-dismiss='modal') Close

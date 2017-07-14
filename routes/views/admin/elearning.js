@@ -1,4 +1,21 @@
 var keystone = require('keystone');
+var Course = keystone.list('Course');
+var LearningObject = keystone.list('LearningObject');
+var LearningContent = keystone.list('LearningContent');
+var ISP = keystone.list('ISP');
+var LIndustry = keystone.list('LIndustry');
+var LSector = keystone.list('LSector');
+var LOFileUpload = keystone.list('LOFileUpload');
+var LOGallery = keystone.list('LOGallery');
+var LOLink = keystone.list('LOLink');
+var LOVideo = keystone.list('LOVideo');
+var Author = keystone.list('Author');
+var LOComment = keystone.list('LOComment');
+var LOFeedback = keystone.list('LOFeedback');
+var LORating = keystone.list('LORating');
+var LOView = keystone.list('LOView');
+var ELearningLog = keystone.list('ELearningLog');
+var ELearningVisit = keystone.list('ELearningVisit');
 
 exports = module.exports = function(req, res) {
 	var view = new keystone.View(req, res);
@@ -14,7 +31,7 @@ exports = module.exports = function(req, res) {
 			{ text: 'Users', link: '/admin/users'},
 			{ text: 'Analytics', link: '/admin/community-views'},
 			{ text: 'Community', link: '#'},
-			{ text: 'Publications', link: '/admin/publications'},
+			{ text: 'Publications', link: '/admin/publication-settings'},
 			{ text: 'Categories', link: '#'},
 			{ text: 'ELearning', link: '/admin/learning-objects'}
 		],
@@ -41,6 +58,7 @@ exports = module.exports = function(req, res) {
 
 	//init locals
 	locals.section = 'users';
+	locals.formData = req.body;
 	locals.data = {
 		learning_objects: [],
 		path:req.path,
@@ -64,7 +82,7 @@ exports = module.exports = function(req, res) {
 
 	// Load courses
 	view.on('init', function (next) {
-		var u = keystone.list('Course').model.find().sort({ publishedAt: -1});
+		var u = Course.model.find().sort({ publishedAt: -1});
 
 		u.exec(function (err, results) {
 			locals.data.courses = results;
@@ -73,10 +91,34 @@ exports = module.exports = function(req, res) {
 
 	});
 
-	// Load LO
+	view.on('post', { action: 'createCourse' }, function(next) {
+		var newDocument = new Course.model({
+			title:locals.formData.title,
+			createdBy: locals.user,
+		});
+
+		var updater = newDocument.getUpdateHandler(req);		
+		
+		updater.process(req.body, {
+        flashErrors: true,
+        logErrors: true
+      	}, function(err,result) {
+        	if (err) {    
+          		locals.validationErrors = err.errors;
+        	} else {
+          		console.log(newDocument);
+          		req.flash('success', 'Course created');         
+          		return res.redirect('/admin/courses');
+       	 	}
+        next();
+      	});
+		
+	});
+
+	// Load LObjects
 	view.on('init', function (next) {
 
-		var u = keystone.list('LearningObject').model.find().sort({ publishedAt: -1})
+		var u = LearningObject.model.find().sort({ publishedAt: -1})
 
 		u.exec(function (err, results) {
 			locals.data.learning_objects = results;
@@ -85,10 +127,34 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', { action: 'createLearningObject' }, function(next) {
+		var newDocument = new LearningObject.model({
+			title:locals.formData.title,
+			createdBy: locals.user,
+		});
+
+		var updater = newDocument.getUpdateHandler(req);		
+		
+		updater.process(req.body, {
+        flashErrors: true,
+        logErrors: true
+      	}, function(err,result) {
+        	if (err) {    
+          		locals.validationErrors = err.errors;
+        	} else {
+          		console.log(newDocument);
+          		req.flash('success', 'Learning Object created');         
+          		return res.redirect('/admin/learning-objects');
+       	 	}
+        next();
+      	});
+		
+	});
+
 	// Load Learning contents
 	view.on('init', function (next) {
 
-		var u = keystone.list('LearningContent').model.find().sort({ publishedAt: -1})
+		var u = LearningContent.model.find().sort({ publishedAt: -1})
 
 		u.exec(function (err, results) {
 			locals.data.learning_contents = results;
@@ -97,16 +163,64 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', { action: 'createLearningContent' }, function(next) {
+		var newDocument = new LearningContent.model({
+			title:locals.formData.title,
+			createdBy: locals.user,
+		});
+
+		var updater = newDocument.getUpdateHandler(req);		
+		
+		updater.process(req.body, {
+        flashErrors: true,
+        logErrors: true
+      	}, function(err,result) {
+        	if (err) {    
+          		locals.validationErrors = err.errors;
+        	} else {
+          		console.log(newDocument);
+          		req.flash('success', 'Learning Content created');         
+          		return res.redirect('/admin/learning-contents');
+       	 	}
+        next();
+      	});
+		
+	});
+
 	//Load ISPs
 	view.on('init', function (next) {
 
-		var u = keystone.list('ISP').model.find().sort({ publishedAt: -1})
+		var u = ISP.model.find().sort({ publishedAt: -1})
 
 		u.exec(function (err, results) {
 			locals.data.isps = results;
 			next(err);
 		});
 
+	});
+
+	view.on('post', { action: 'createISP' }, function(next) {
+		var newDocument = new ISP.model({
+			title:locals.formData.title,
+			createdBy: locals.user,
+		});
+
+		var updater = newDocument.getUpdateHandler(req);		
+		
+		updater.process(req.body, {
+        flashErrors: true,
+        logErrors: true
+      	}, function(err,result) {
+        	if (err) {    
+          		locals.validationErrors = err.errors;
+        	} else {
+          		console.log(newDocument);
+          		req.flash('success', 'ISP created');         
+          		return res.redirect('/admin/isps');
+       	 	}
+        next();
+      	});
+		
 	});
 
 	//Load LIndustries
@@ -121,6 +235,29 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', { action: 'createLIndustry' }, function(next) {
+		var newDocument = new LIndustry.model({
+			name: locals.formData.name,
+		});
+
+		var updater = newDocument.getUpdateHandler(req);		
+		
+		updater.process(req.body, {
+        flashErrors: true,
+        logErrors: true
+      	}, function(err,result) {
+        	if (err) {    
+          		locals.validationErrors = err.errors;
+        	} else {
+          		console.log(newDocument);
+          		req.flash('success', 'LIndustry created');         
+          		return res.redirect('/admin/lindustries');
+       	 	}
+        next();
+      	});
+		
+	});
+
 	//Load LSectors
 	view.on('init', function (next) {
 
@@ -131,6 +268,30 @@ exports = module.exports = function(req, res) {
 			next(err);
 		});
 
+	});
+
+	view.on('post', { action: 'createLSector' }, function(next) {
+		var newDocument = new LSector.model({
+			name: locals.formData.name,
+			industry: locals.formData.industry
+		});
+
+		var updater = newDocument.getUpdateHandler(req);		
+		
+		updater.process(req.body, {
+        flashErrors: true,
+        logErrors: true
+      	}, function(err,result) {
+        	if (err) {    
+          		locals.validationErrors = err.errors;
+        	} else {
+          		console.log(newDocument);
+          		req.flash('success', 'LSector created');         
+          		return res.redirect('/admin/lsectors');
+       	 	}
+        next();
+      	});
+		
 	});
 
 	//Load LOFile-upload
@@ -145,6 +306,29 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', { action: 'createLOFileUpload' }, function(next) {
+		var newDocument = new LOFileUpload.model({
+			name: locals.formData.name,
+		});
+
+		var updater = newDocument.getUpdateHandler(req);		
+		
+		updater.process(req.body, {
+        flashErrors: true,
+        logErrors: true
+      	}, function(err,result) {
+        	if (err) {    
+          		locals.validationErrors = err.errors;
+        	} else {
+          		console.log(newDocument);
+          		req.flash('success', 'LOFile Upload created');         
+          		return res.redirect('/admin/lofile-uploads');
+       	 	}
+        next();
+      	});
+		
+	});
+
 	//Load LOGallery
 	view.on('init', function (next) {
 
@@ -155,6 +339,29 @@ exports = module.exports = function(req, res) {
 			next(err);
 		});
 
+	});
+
+	view.on('post', { action: 'createLOGallery' }, function(next) {
+		var newDocument = new LOGallery.model({
+			name: locals.formData.name,
+		});
+
+		var updater = newDocument.getUpdateHandler(req);		
+		
+		updater.process(req.body, {
+        flashErrors: true,
+        logErrors: true
+      	}, function(err,result) {
+        	if (err) {    
+          		locals.validationErrors = err.errors;
+        	} else {
+          		console.log(newDocument);
+          		req.flash('success', 'LOGallery created');         
+          		return res.redirect('/admin/logalleries');
+       	 	}
+        next();
+      	});
+		
 	});
 
 	//Load LOLink
@@ -169,6 +376,30 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	view.on('post', { action: 'createLOLink' }, function(next) {
+		var newDocument = new LOLink.model({
+			name: locals.formData.name,
+			url: locals.formData.url
+		});
+
+		var updater = newDocument.getUpdateHandler(req);		
+		
+		updater.process(req.body, {
+        flashErrors: true,
+        logErrors: true
+      	}, function(err,result) {
+        	if (err) {    
+          		locals.validationErrors = err.errors;
+        	} else {
+          		console.log(newDocument);
+          		req.flash('success', 'LOLink created');         
+          		return res.redirect('/admin/lolinks');
+       	 	}
+        next();
+      	});
+		
+	});
+
 	//Load LOVideo
 	view.on('init', function (next) {
 
@@ -179,6 +410,30 @@ exports = module.exports = function(req, res) {
 			next(err);
 		});
 
+	});
+	
+	view.on('post', { action: 'createLOVideo' }, function(next) {
+		var newDocument = new LOVideo.model({
+			name: locals.formData.name,
+			url: locals.formData.url
+		});
+
+		var updater = newDocument.getUpdateHandler(req);		
+		
+		updater.process(req.body, {
+        flashErrors: true,
+        logErrors: true
+      	}, function(err,result) {
+        	if (err) {    
+          		locals.validationErrors = err.errors;
+        	} else {
+          		console.log(newDocument);
+          		req.flash('success', 'LOVideo created');         
+          		return res.redirect('/admin/lovideos');
+       	 	}
+        next();
+      	});
+		
 	});
 
 	//Load Author
@@ -192,6 +447,30 @@ exports = module.exports = function(req, res) {
 		});
 
 	});
+
+	view.on('post', { action: 'createAuthor' }, function(next) {
+		var newDocument = new Author.model({
+			name: locals.formData.name,
+		});
+
+		var updater = newDocument.getUpdateHandler(req);		
+		
+		updater.process(req.body, {
+        flashErrors: true,
+        logErrors: true
+      	}, function(err,result) {
+        	if (err) {    
+          		locals.validationErrors = err.errors;
+        	} else {
+          		console.log(newDocument);
+          		req.flash('success', 'Author created');         
+          		return res.redirect('/admin/authors');
+       	 	}
+        next();
+      	});
+		
+	});
+
 
 	//Load LOComment
 	view.on('init', function (next) {

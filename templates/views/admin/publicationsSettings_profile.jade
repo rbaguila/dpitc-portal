@@ -24,8 +24,12 @@ block content
                     .col-md-7
                         label Publications Heading
                         input.form-control(type='text', value= data.publications_settings.publicationsHeading, placeholder='Publications Heading', name='publicationsHeading')
-                button.btn.btn-primary(type='submit', name='editPublciationSetting') Save   
-                button.btn.btn-link(type='button', data-toggle='modal', data-target='#deletePublicationSetting') Delete Publication
+                br
+                br
+                footer.footer
+                    .container
+                        button.btn.btn-primary(type='submit', name='editPublciationSetting') Save   
+                        button.btn.btn-link(type='button', data-toggle='modal', data-target='#deletePublicationSetting') Delete Publication
             #deletePublicationSetting.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deletePublicationSettingLabel')
                 .modal-dialog(role='document')
                     .modal-content

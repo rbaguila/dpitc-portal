@@ -1,0 +1,219 @@
+extends ../../layouts/admin-default
+
+block content
+
+    .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-3.main
+        form.row(method="post", action='/admin/settings/'+data.settings._id)
+            input(type='hidden', name= 'action', value='editUser')
+            .row
+                .col-md-7
+                    input.form-control.input-lg(type='text', value=data.settings.name, placeholder='Name', name='name')
+            p.help-block #{'Key: '+data.settings.key}
+            p.help-block #{'ID: '+data.settings._id}
+            label.custom-file Logo Image
+                input#file.custom-file-input(type='file')
+                span.custom-file-control
+            img.img-thumbnail(src=data.settings.logoImage.secure_url, width='230', height='190')
+            br
+            h4 Fiesta Section
+            .row
+                .col-md-7
+                    label Fiesta Title
+                    input.form-control(type='text', value=data.settings.fiestaTitle, placeholder='fiestaTitle', name='fiestaTitle')
+            .row
+                .col-md-7
+                    label Fiesta Description
+                    textarea.form-control(rows='7', name='fiestaDescription') #{data.settings.fiestaDescription}
+            br
+            h4 Technology Section
+            .row
+                .col-md-7
+                    label Technology Title
+                    input.form-control(type='text', value=data.settings.technologyTitle, placeholder='technologyTitle', name='technologyTitle')
+            .row
+                .col-md-7
+                    label Technology Description
+                    textarea.form-control(rows='7', name='technologyDescription') #{data.settings.technologyDescription}
+            br
+            h4 Community Section
+            .row
+                .col-md-7
+                    label Community Title
+                    input.form-control(type='text', value=data.settings.communityTitle, placeholder='communityTitle', name='communityTitle')
+            .row
+                .col-md-7
+                    label Community Description
+                    textarea.form-control(rows='7', name='communityDescription') #{data.settings.communityDescription}
+            label.custom-file Community Banner
+                input#file.custom-file-input(type='file')
+                span.custom-file-control
+            if data.settings.communityBanner.secure_url > 0
+                img.img-thumbnail(src=data.settings.communityBanner.secure_url, width='230', height='190')
+            .row
+                .col-md-7
+                    label Community Button Text
+                    input.form-control(type='text', value=data.settings.communityButtonText, placeholder='communityButtonText', name='communityButtonText')
+            .row
+                .col-md-7
+                    label Community Link
+                    input.form-control(type='url', value=data.settings.communityLink, placeholder='communityLink', name='communityLink')
+            br
+            h4 About Section
+            .row
+                .col-md-7
+                    label About Title
+                    input.form-control(type='text', value=data.settings.aboutTitle, placeholder='aboutTitle', name='aboutTitle')
+            .row
+                .col-md-7
+                    label About Description
+                    textarea.form-control(rows='7', name='aboutDescription') #{data.settings.aboutDescription}
+            label.custom-file About Banner
+                input#file.custom-file-input(type='file')
+                span.custom-file-control
+            if data.settings.aboutBanner.secure_url > 0
+                img.img-thumbnail(src=data.settings.aboutBanner.secure_url, width='230', height='190')
+            .row
+                .col-md-7
+                    label About Button Text
+                    input.form-control(type='text', value=data.settings.aboutButtonText, placeholder='aboutButtonText', name='aboutButtonText')
+            .row
+                .col-md-7
+                    label About Link
+                    input.form-control(type='url', value=data.settings.aboutLink, placeholder='aboutLink', name='aboutLink')
+            br
+            h4 Footer Section
+            .row
+                .col-md-7
+                    label Stay Connected Title
+                    input.form-control(type='text', value=data.settings.stayConnected.title, placeholder='Stay Connected Title', name='stayConnectedTitle')
+            .row
+                .col-md-7
+                    label Stay Connected Row 1 Text
+                    input.form-control(type='text', value=data.settings.stayConnected.row1Text, placeholder='Stay Connected Row 1 Text', name='stayConnectedR1')
+            .row
+                .col-md-7
+                    label Stay Connected Row 2 Text
+                    input.form-control(type='text', value=data.settings.stayConnected.row2Text, placeholder='Stay Connected Row 2 Text', name='stayConnectedR2')
+            .row
+                .col-md-7
+                    label Stay Connected Row 3 Text
+                    input.form-control(type='text', value=data.settings.stayConnected.row3Text, placeholder='Stay Connected Row 3 Text', name='stayConnectedR3')
+            .row
+                .col-md-7
+                    label Stay Connected Row 4 Text
+                    input.form-control(type='text', value=data.settings.stayConnected.row4Text, placeholder='Stay Connected  Row 4 Text', name='stayConnectedR4')
+            .row
+                .col-md-7
+                    label Get Involved Title
+                    input.form-control(type='text', value=data.settings.getInvolved.title, placeholder='Get Involved Title', name='getInvolvedTitle')
+            .row
+                .col-md-7
+                    label Get Involved Row 1 Text
+                    input.form-control(type='text', value=data.settings.getInvolved.row1Text, placeholder='Get Involved Row 1 Text', name='getInvolvedR1T')
+            .row
+                .col-md-7
+                    label Get Involved Row 1 Link
+                    input.form-control(type='text', value=data.settings.getInvolved.row1Link, placeholder='Get Involved Row 1 Link', name='getInvolvedR1L')
+            .row
+                .col-md-7
+                    label Get Involved Row 2 Text
+                    input.form-control(type='text', value=data.settings.getInvolved.row2Text, placeholder='Get Involved Row 2 Text', name='getInvolvedR2T')
+            .row
+                .col-md-7
+                    label Get Involved Row 2 Link
+                    input.form-control(type='text', value=data.settings.getInvolved.row2Link, placeholder='Get Involved Row 2 Link', name='getInvolvedR2L')
+            .row
+                .col-md-7
+                    label Get Involved Row 3 Text
+                    input.form-control(type='text', value=data.settings.getInvolved.row3Text, placeholder='Get Involved Row 3 Text', name='getInvolvedR3T')
+            .row
+                .col-md-7
+                    label Get Involved Row 3 Link
+                    input.form-control(type='text', value=data.settings.getInvolved.row3Link, placeholder='Get Involved Row 3 Link', name='getInvolvedR3L')
+            .row
+                .col-md-7
+                    label About Footer Title
+                    input.form-control(type='text', value=data.settings.aboutFooter.title, placeholder='aboutFooter', name='aboutFooterTitle')
+            .row
+                .col-md-7
+                    label About Footer Description
+                    textarea.form-control(rows='7', name='aboutFooterDescription') #{data.settings.aboutFooter.description}
+            label.custom-file About Footer Logo 1
+                input#file.custom-file-input(type='file')
+                span.custom-file-control
+            if data.settings.aboutFooter.logo1.secure_url > 0
+                img.img-thumbnail(src=data.settings.aboutFooter.logo1.secure_url, width='230', height='190')
+            .row
+                .col-md-7
+                    label About Footer Link 1
+                    input.form-control(type='url', value=data.settings.aboutFooter.logoLink1, placeholder='aboutFooterLogoLink1', name='aboutFooterLL1')
+            label.custom-file About Footer Logo 2
+                input#file.custom-file-input(type='file')
+                span.custom-file-control
+            if data.settings.aboutFooter.logo2.secure_url > 0
+                img.img-thumbnail(src=data.settings.aboutFooter.logo2.secure_url, width='230', height='190')
+            .row
+                .col-md-7
+                    label About Footer Link 2
+                    input.form-control(type='url', value=data.settings.aboutFooter.logoLink2, placeholder='aboutFooterLogoLink2', name='aboutFooterLL2')
+             label.custom-file About Footer Logo 3
+                input#file.custom-file-input(type='file')
+                span.custom-file-control
+            if data.settings.aboutFooter.logo3.secure_url > 0
+                img.img-thumbnail(src=data.settings.aboutFooter.logo3.secure_url, width='230', height='190')
+            .row
+                .col-md-7
+                    label About Footer Link 3
+                    input.form-control(type='url', value=data.settings.aboutFooter.logoLink3, placeholder='aboutFooterLogoLink3', name='aboutFooterLL3')
+            .row
+                .col-md-7
+                    label Copyright
+                    textarea.form-control(rows='7', name='copyright') #{data.settings.copyright}
+            br
+            h4 Social Media Link
+            .row
+                .col-md-7
+                    label Community Social Link
+                    input.form-control(type='url', value=data.settings.communitySocialLink, placeholder='communitySocialLink', name='communitySocialLink')
+             label.custom-file Community Social Image
+                input#file.custom-file-input(type='file')
+                span.custom-file-control
+            if data.settings.communitySocialImage.secure_url > 0
+                img.img-thumbnail(src=data.settings.communitySocialImage.secure_url, width='230', height='190')
+            .row
+                .col-md-7
+                    label Facebook Link
+                    input.form-control(type='url', value=data.settings.facebookLink, placeholder='facebookLink', name='facebookLink')
+            .row
+                .col-md-7
+                    label Twitter Link
+                    input.form-control(type='url', value=data.settings.twitterLink, placeholder='twitterLink', name='twitterLink')
+            .row
+                .col-md-7
+                    label Youtube Link
+                    input.form-control(type='url', value=data.settings.youtubeLink, placeholder='youtubeLink', name='youtubeLink')
+            .row
+                .col-md-7
+                    label Email
+                    input.form-control(type='email', value=data.settings.email, placeholder='email', name='email')
+            br
+            br
+            footer.footer
+                .container
+                    button.btn.btn-primary(type='submit', name='editUser') Save
+                    button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteSetting') Delete User
+        #deleteSetting.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteSettingLabel')
+            .modal-dialog(role='document')
+                .modal-content
+                    .modal-header
+                        button.close(type='button', data-dismiss='modal', aria-label='Close')
+                            span(aria-hidden='true') ×
+                        h4#deleteSettingLabel.modal-title #{'Are you sure you want to delete '+data.settings.name+'?'}
+                    .modal-body
+                        p This cannot be undone
+                    .modal-footer
+                        form.form-group.row(method='post', action='/admin/settings/'+data.settings._id)
+                            input(type='hidden', name='action', value='deleteSetting')  
+                            button.btn.btn-danger(type='submit', name='deleteSetting') Delete
+                            button.btn.btn-default(type='button', data-dismiss='modal') Close    
+                
