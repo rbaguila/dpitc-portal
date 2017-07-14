@@ -13,8 +13,7 @@ block content
             label.custom-file Logo Image
                 input#file.custom-file-input(type='file')
                 span.custom-file-control
-            if data.settings.logoImage.secure_url > 0
-                img.img-thumbnail(src=data.settings.logoImage.secure_url, width='230', height='190')
+            img.img-thumbnail(src=data.settings.logoImage.secure_url, width='230', height='190')
             br
             h4 Fiesta Section
             .row

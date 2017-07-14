@@ -31,7 +31,7 @@ block content
                 h3 Elearning
                 .col-md-7
                     label Learning Objects Taken
-                    select.form-control
+                    select.form-control(name = 'learningObjectsTaken')
                         if data.user.learningObjectsTaken
                             option(selected='') #{data.user.learningObjectsTaken}
                         else
@@ -91,52 +91,52 @@ block content
                         input(type='checkbox' checked= data.user.isElearningAdmin, name = 'isElearningAdmin')
                         | Can Access Elearning Admin
                     .checkbox
-                        input(type='checkbox' checked= data.user.isElearningUser)
+                        input(type='checkbox' checked= data.user.isElearningUser, name = 'isElearningUser')
                         | Can Access Elearning User
                     .checkbox
-                        input(type='checkbox' checked= data.user.isPostsAdmin)
+                        input(type='checkbox' checked= data.user.isPostsAdmin, name = 'isPostsAdmin')
                         | Can access Posts Admin
                     .checkbox
-                        input(type='checkbox' checked= data.user.isContentsAdmin)
+                        input(type='checkbox' checked= data.user.isContentsAdmin, name = 'isContentsAdmin')
                         | Can access Contents Admin
                     .checkbox
-                        input(type='checkbox' checked= data.user.isPagesAdmin)
+                        input(type='checkbox' checked= data.user.isPagesAdmin, name = 'isPagesAdmin')
                         | Can access Pages Admin
                     .checkbox
-                        input(type='checkbox' checked= data.user.isUsersAdmin)
+                        input(type='checkbox' checked= data.user.isUsersAdmin, name = 'isUserAdmin')
                         | Can access Users Admin
                     .checkbox
-                        input(type='checkbox' checked= data.user.isAnalyticsAdmin)
+                        input(type='checkbox' checked= data.user.isAnalyticsAdmin, name = 'isAnalyticsAdmin')
                         | Can access Analytics Admin
                     .checkbox
-                        input(type='checkbox' checked= data.user.isCommunityAdmin)
+                        input(type='checkbox' checked= data.user.isCommunityAdmin, name = 'isCommunityAdmin')
                         | Can access Community Admin
                     .checkbox
-                        input(type='checkbox' checked= data.user.isPublicationsAdmin)
+                        input(type='checkbox' checked= data.user.isPublicationsAdmin, name = 'isPublicationsAdmin')
                         | Can access Publications Admin
                     .checkbox
-                        input(type='checkbox' checked= data.user.isPublicationsUser)
+                        input(type='checkbox' checked= data.user.isPublicationsUser, name = 'isPublicationUser')
                         | Can access Publications Admin
                     .checkbox
-                        input(type='checkbox' checked= data.user.isCategoriesAdmin)
+                        input(type='checkbox' checked= data.user.isCategoriesAdmin, name = 'isCategoriesAdmin')
                         | Can access Categories Admin
             .row
                 .col-md-7
                     h4 Backlog
                     label Need Reviewing
-                    select.form-control
+                    select.form-control(name = 'needsReviewing')
                         if data.user.needsReviewing
                             option(selected='') #{data.user.needsReviewing}
                         else
                             option(selected='') Select...
                         each pub,i in data.publications
                             option(value=i) #{pub.title}
-        br
-        br
-        footer.footer
-            .container
-                button.btn.btn-primary(type='submit', name='editUser') Save
-                button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteUser') Delete User
+            br
+            br
+            footer.footer
+                .container
+                    button.btn.btn-primary(type='submit', name='editUser') Save
+                    button.btn.btn-link(type='button', data-toggle='modal', data-target='#deleteUser') Delete User
         #deleteUser.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deleteUserLabel')
             .modal-dialog(role='document')
                 .modal-content

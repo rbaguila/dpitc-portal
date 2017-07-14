@@ -90,6 +90,14 @@ block content
                                     .row
                                         .col-md-10
                                             label Publication Type
+                                            select.form-control(name = 'publicationType')
+                                                option Book
+                                                option Brochure
+                                                option Comics
+                                                option Flyer
+                                                option Leaflet
+                                                option Primer
+                                                option Report
                                 .modal-footer                                    
                                     button.btn.btn-primary(type='submit', name='createPublication') Create
                                     button.btn.btn-default(type='button', data-dismiss='modal', onclick='window.location.reload();') Close
