@@ -36,21 +36,7 @@ block content
                   a(href="/eresources/publications", style="color: white;")
                     button.btn.btn-lg(style="background-color: #3062B7;" onMouseOver="this.style.color='#FFF'") More Publications
 
-
-          .section.col-md-3
-            .section-title Top Categories
-              .title-hr.btm.col-xs-12
-            .section-content
-              .row
-                //- if data.industries && data.industries.length
-                each industry in data.industries
-                    .col-xs-12
-                      | #{industry.name} &nbsp;
-                      span.badge #{industry.publicationCount}
-
-          if links.length > 0
-            .section.col-md-9(style="padding: 10px 16px;")
-              //- .row(style="margin-bottom:1em").blue-black-seperator
+            if links.length > 0
               .section-title.focus.row
                 .title.col-md-5.col-xs-4
                   .skew.col-xs-12
@@ -68,23 +54,25 @@ block content
                   .col-xs-12.more-link
                     //- a(href="/eresources/links") More Links
 
-          if videos.length > 0
-            .section.col-md-9(style="padding: 10px 16px;")
-              //- .row(style="margin-bottom:1em").blue-black-seperator
-              .section-title.focus.row
-                .title.col-md-5.col-xs-4
-                  .skew.col-xs-12
-                  .skewed-text Videos
-
+          .section.col-md-3
+            if videos.length > 0
+              .section-title Videos
               .section-content
                 .row
                   each video in videos
-                    .col-xs-12.eresources-video
-                      //- img(src=link._.image.fill(200, 150, {})).image
-                      iframe(width="355", height="200", src="https://www.youtube.com/embed/" + video.url + "?rel=0", frameborder=0, allowfullscreen).video
+                    .col-xs-12
+                      iframe(width="100%", height="auto", src="https://www.youtube.com/embed/" + video.url + "?rel=0", frameborder=0, allowfullscreen).video
                       .data
-                        .title
-                          //- a(href=link.url) #{link.name}
                         .description #{video.description}
                   .col-xs-12.more-link
                     //- a(href="/eresources/links") More Links
+
+            .section-title Top Categories
+              .title-hr.btm.col-xs-12
+            .section-content
+              .row
+                //- if data.industries && data.industries.length
+                each industry in data.industries
+                    .col-xs-12
+                      | #{industry.name} &nbsp;
+                      span.badge #{industry.publicationCount}
