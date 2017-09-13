@@ -7,7 +7,7 @@ var Video = new keystone.List('Video', {
 
 Video.add({
   title: { type: String, required: true, initial: true },
-  url: { type: Types.Url, required: true, initial: true, label: 'Youtube URL' },
+  url: { type: Types.Url, required: true, initial: true, label: 'Youtube Video ID' },
   description: { type: Types.Textarea, height: 80 },
   industry: { type: Types.Relationship, ref: 'Industry' },
   sector: { type: Types.Relationship, ref: 'Sector', filters: { industry: ':industry' } },
