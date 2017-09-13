@@ -14,12 +14,13 @@ exports = module.exports = function (req, res) {
     publications: []
   };
 
-  locals.redirect = '/eresources'
+  locals.redirect = '/eresources/publications'
   locals.breadcrumbs = [
     { text: 'E Resources', link: '/eresources'},
+    { text: 'Publications', link: '/eresources/publications'},
   ]
   // console.log(req._parsedUrl.query);
-  locals.endpoint = '/eresources'
+  locals.endpoint = '/eresources/publications'
   locals.query = ''
 
   var viewStyle = req.query.view == undefined ? 'grid' : req.query.view
