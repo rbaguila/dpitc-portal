@@ -6,3 +6,25 @@ block content
     .container-fluid(style="padding: 80px 90.5px 0px 90.5px;")
       .wrapper
         .row
+          .col-lg-12
+            h2 #{gallery.name} &nbsp;
+              small #{gallery.images.length} images
+
+            if gallery.industry
+              span.label.label-default #{gallery.industry.name}
+              | &nbsp;
+
+            if gallery.sector
+              span.label.label-default #{gallery.sector.name}
+              | &nbsp;
+
+            if gallery.commodity
+              span.label.label-default #{gallery.commodity.name}
+            br
+            br
+
+            p(style="font-size: 1.3em; border-bottom:1px solid #d9d9d9; padding-bottom: 10px; margin-bottom: 10px;") #{gallery.description}
+
+          each image in gallery.images
+            .col-sm-12.col-md-6.col-lg-4
+              img(src=image.url, style="width:100%;height:auto;").image

@@ -11,7 +11,7 @@ block content
               img(src=gallery._.heroImage.fill(200, 150, {})).image
               .data
                 .title
-                  a(href="#") #{gallery.name}
+                  a(href="/eresources/galleries/"+gallery._id) #{gallery.name}
                 .description #{gallery.description}
 
         //- PAGINATION

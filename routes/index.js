@@ -237,8 +237,10 @@ exports = module.exports = function (app) {
 
 	app.get('/eresources/videos', routes.eresourcesViews.videos);
 	app.get('/eresources/links', routes.eresourcesViews.links);
+	
+	// E Resources - Gallery
 	app.get('/eresources/galleries', routes.eresourcesViews.galleries);
-	app.get('/eresources/gallery', routes.eresourcesViews.gallery);
+	app.get('/eresources/galleries/:galleryId', routes.eresourcesViews.galleries);
 
   // E Resources Analytics/Reports
   app.get('/eresources/reports', middleware.requireAdmin, routes.eresourcesViews.analytics.dashboard);
