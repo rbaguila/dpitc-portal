@@ -1,0 +1,49 @@
+extends ../../layouts/eresources
+
+block content
+
+  #public-content
+    .container-fluid(style="padding: 80px 90.5px 0px 90.5px;")
+      .wrapper
+        .row
+          each gallery in galleries.results
+            .col-sm-12.col-md-12.col-lg-9.eresources-link
+              img(src=gallery._.heroImage.fill(200, 150, {})).image
+              .data
+                .title
+                  a(href="/eresources/galleries/"+gallery._id) #{gallery.name}
+                .description #{gallery.description}
+
+        //- PAGINATION
+        .row
+          .col-md-12(style="text-align: center;")
+            nav(aria-label='...')
+              ul.pagination
+                //- PREVIOUS
+                if galleries.currentPage == 1
+                  li.disabled
+                    a(href='#' + galleries.previous, aria-label='Previous', style="pointer-events: none;")
+                      span(aria-hidden='true') «
+                else
+                  li
+                    a(href= endpoint + '?' + 'page=' + galleries.previous + query, aria-label='Previous')
+                      span(aria-hidden='true') «
+
+                //- PAGES
+                if galleries
+                  each page in galleries.pages
+                    if page == galleries.currentPage
+                      li.active: a(href='#', style="pointer-events: none;") #{page}
+                    else
+                      li: a(href= endpoint + '?' + 'page=' + page + query) #{page}
+
+                //- NEXT
+                if galleries.currentPage == galleries.totalPages
+                  li.disabled
+                    a(href='#', aria-label='Next',style="pointer-events: none;")
+                      span(aria-hidden='true') »
+                else
+                  li
+                    a(href= endpoint + '?' + 'page=' + galleries.next + query, aria-label='Next')
+                      span(aria-hidden='true') »
+        //- END PAGINATION

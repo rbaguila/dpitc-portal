@@ -34,7 +34,27 @@ block content
                             small #{publication.get('title.trunc')}
                 .col-xs-12.more-link
                   a(href="/eresources/publications", style="color: white;")
-                    button.btn.btn-lg(style="background-color: #3062B7;" onMouseOver="this.style.color='#FFF'") More Publications
+                    button.btn.btn-lg(style="background-color: #3062B7;" onMouseOver="this.style.backgroundColor='#3f7ef3'" onMouseLeave="this.style.backgroundColor='#3062B7'") More Publications
+
+            if galleries.length > 0
+              .section-title.focus.row
+                .title.col-md-5.col-xs-4
+                  .skew.col-xs-12
+                  .skewed-text Galleries
+
+              .section-content
+                .row
+                  each gallery in galleries
+                    .col-xs-12.eresources-link
+                      img(src=gallery._.heroImage.fill(200, 150, {})).image
+                      .data
+                        .title
+                          a(href="/eresources/galleries/" + gallery._id) #{gallery.name}
+                        .description #{gallery.description}
+                  if galleries.length == 3
+                    .col-xs-12.more-link
+                      a(href="/eresources/galleries", style="color: white;")
+                        button.btn.btn-lg(style="background-color: #3062B7;" onMouseOver="this.style.color='#FFF'") More Galleries
 
             if links.length > 0
               .section-title.focus.row
@@ -51,8 +71,10 @@ block content
                         .title
                           a(href=link.url) #{link.name}
                         .description #{link.description}
-                  .col-xs-12.more-link
-                    //- a(href="/eresources/links") More Links
+                  if links.length == 3
+                    .col-xs-12.more-link
+                      a(href="/eresources/links", style="color: white;")
+                      button.btn.btn-lg(style="background-color: #3062B7;" onMouseOver="this.style.color='#FFF'") More Links
 
           .section.col-md-3
             if videos.length > 0
@@ -64,8 +86,10 @@ block content
                       iframe(width="100%", height="auto", src="https://www.youtube.com/embed/" + video.url + "?rel=0", frameborder=0, allowfullscreen).video
                       .data
                         .description #{video.description}
-                  .col-xs-12.more-link
-                    //- a(href="/eresources/links") More Links
+                  if videos.length == 3
+                    .col-xs-12.more-link
+                      a(href="/eresources/videos", style="color: white;")
+                      button.btn.btn-lg(style="background-color: #3062B7;" onMouseOver="this.style.color='#FFF'") More Videos
 
             .section-title Top Categories
               .title-hr.btm.col-xs-12

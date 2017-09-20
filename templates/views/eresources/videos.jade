@@ -1,0 +1,47 @@
+extends ../../layouts/eresources
+
+block content
+
+  #public-content
+    .container-fluid(style="padding: 80px 90.5px 0px 90.5px;")
+      .wrapper
+        .row
+          each video in videos.results
+            .col-sm-12.col-md-6.col-lg-4
+              iframe(width="100%", height="auto", src="https://www.youtube.com/embed/" + video.url + "?rel=0", frameborder=0, allowfullscreen).video
+              .description(style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;")
+                | #{video.description}
+
+        //- PAGINATION
+        .row
+          .col-md-12(style="text-align: center;")
+            nav(aria-label='...')
+              ul.pagination
+                //- PREVIOUS
+                if videos.currentPage == 1
+                  li.disabled
+                    a(href='#' + videos.previous, aria-label='Previous', style="pointer-events: none;")
+                      span(aria-hidden='true') «
+                else
+                  li
+                    a(href= endpoint + '?' + 'page=' + videos.previous + query, aria-label='Previous')
+                      span(aria-hidden='true') «
+
+                //- PAGES
+                if videos
+                  each page in videos.pages
+                    if page == videos.currentPage
+                      li.active: a(href='#', style="pointer-events: none;") #{page}
+                    else
+                      li: a(href= endpoint + '?' + 'page=' + page + query) #{page}
+
+                //- NEXT
+                if videos.currentPage == videos.totalPages
+                  li.disabled
+                    a(href='#', aria-label='Next',style="pointer-events: none;")
+                      span(aria-hidden='true') »
+                else
+                  li
+                    a(href= endpoint + '?' + 'page=' + videos.next + query, aria-label='Next')
+                      span(aria-hidden='true') »
+        //- END PAGINATION

@@ -233,7 +233,14 @@ exports = module.exports = function (app) {
   app.get('/eresources/page/:page', routes.eresourcesViews.publications);
   app.get('/eresources/publication/:publication', routes.eresourcesViews.publication);
 	app.post('/eresources/publication/:publication', routes.eresourcesViews.publication);
-  app.post('/eresources/feedback', routes.eresourcesViews.feedback);
+	app.post('/eresources/feedback', routes.eresourcesViews.feedback);
+
+	app.get('/eresources/videos', routes.eresourcesViews.videos);
+	app.get('/eresources/links', routes.eresourcesViews.links);
+	
+	// E Resources - Gallery
+	app.get('/eresources/galleries', routes.eresourcesViews.galleries);
+	app.get('/eresources/galleries/:galleryId', routes.eresourcesViews.galleries);
 
   // E Resources Analytics/Reports
   app.get('/eresources/reports', middleware.requireAdmin, routes.eresourcesViews.analytics.dashboard);
