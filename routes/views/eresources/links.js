@@ -5,27 +5,27 @@ exports = module.exports = function(req, res) {
   var locals = res.locals;
 
   locals.section = 'eresources';
-  locals.redirect = '/eresources/videos/';
+  locals.redirect = '/eresources/links/';
 
   locals.breadcrumbs = [
     { text: 'E Resources', link: '/eresources'},
-    { text: 'Videos', link: '/eresources/videos'}
+    { text: 'Links', link: '/eresources/links'}
   ];
 
-  locals.endpoint = '/eresources/videos';
+  locals.endpoint = '/eresources/links';
   locals.query = '';
-  locals.videos = [];
+  locals.links = [];
 
-  var Videos = keystone.list('Video');
-  Videos.paginate({
+  var Links = keystone.list('Link');
+  Links.paginate({
     page: req.query.page || 1,
-    perPage: 12,
+    perPage: 10,
     maxPage: 10,
     filters: {}
   }).exec(function(err, results) {
-    locals.videos = results;
+    locals.links = results;
 
-    view.render('eresources/videos');
+    view.render('eresources/links');
   });
 
 }

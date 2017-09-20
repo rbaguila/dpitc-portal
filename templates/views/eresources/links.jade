@@ -1,0 +1,49 @@
+extends ../../layouts/eresources
+
+block content
+
+  #public-content
+    .container-fluid(style="padding: 80px 90.5px 0px 90.5px;")
+      .wrapper
+        .row
+          each link in links.results
+            .col-sm-12.col-md-12.col-lg-9.eresources-link
+              img(src=link._.image.fill(200, 150, {})).image
+              .data
+                .title
+                  a(href=link.url) #{link.name}
+                .description #{link.description}
+
+        //- PAGINATION
+        .row
+          .col-md-12(style="text-align: center;")
+            nav(aria-label='...')
+              ul.pagination
+                //- PREVIOUS
+                if links.currentPage == 1
+                  li.disabled
+                    a(href='#' + links.previous, aria-label='Previous', style="pointer-events: none;")
+                      span(aria-hidden='true') «
+                else
+                  li
+                    a(href= endpoint + '?' + 'page=' + links.previous + query, aria-label='Previous')
+                      span(aria-hidden='true') «
+
+                //- PAGES
+                if links
+                  each page in links.pages
+                    if page == links.currentPage
+                      li.active: a(href='#', style="pointer-events: none;") #{page}
+                    else
+                      li: a(href= endpoint + '?' + 'page=' + page + query) #{page}
+
+                //- NEXT
+                if links.currentPage == links.totalPages
+                  li.disabled
+                    a(href='#', aria-label='Next',style="pointer-events: none;")
+                      span(aria-hidden='true') »
+                else
+                  li
+                    a(href= endpoint + '?' + 'page=' + links.next + query, aria-label='Next')
+                      span(aria-hidden='true') »
+        //- END PAGINATION

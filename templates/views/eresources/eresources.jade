@@ -49,7 +49,7 @@ block content
                       img(src=gallery._.heroImage.fill(200, 150, {})).image
                       .data
                         .title
-                          a(href="#") #{gallery.name}
+                          a(href="/eresources/gallery?gallery=" + gallery._id) #{gallery.name}
                         .description #{gallery.description}
                   if galleries.length == 3
                     .col-xs-12.more-link
