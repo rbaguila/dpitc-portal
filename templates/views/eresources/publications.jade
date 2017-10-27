@@ -50,9 +50,7 @@ block content
 											a(href=endpoint + query + '?view=list')
 												span(aria-hidden="true").glyphicon.glyphicon-th-list
 
-
 					.col-md-9
-						h4#publications-title #{publicationsSettings.publicationsHeading}
 						block publications
 
 						//- PAGINATION
@@ -90,55 +88,18 @@ block content
 						//- END PAGINATION
 
 					.col-md-3
-						ul.list-group
-							li.list-group-item.disabled(style="cursor: default;") Publication Lines
-							a(href=endpoint): li.list-group-item(style="padding: 5px 10px; font-size: 14px;") All Publications
-							each line in publicationLines
-								a(href= endpoint + '?pubLine=' + line._id): li.list-group-item(style="padding: 5px 10px; font-size: 14px;") #{line.name}
-
-					//- .col-md-3
-						//- .list-group
-						//-   li.list-group-item.list-group-item-header Industries
-						//-   each industry in industries
-						//-     a.list-group-item #{industry.name}
-						//-   li.list-group-item.list-group-item-header Sectors
-						//-   each sector in sectors
-						//-     a.list-group-item #{sector.name}
-						//-   li.list-group-item.list-group-item-header Commodities
-						//-   each commodity in commodities
-						//-     a.list-group-item #{commodity.name}
-						form.navbar-form
-							#accordion.panel-group
-							.panel.panel-default
-								.panel-heading
-									h4.panel-title
-										a(data-toggle='collapse', data-parent='#accordion', href='#collapse1')
-											i.fa.fa-industry(aria-hidden='true') &nbsp; Industries
-								#collapse1.panel-collapse.collapse
-									.panel-body.left-side-bar
-										each industry in industries
-											li(style='list-style-type:none;')
-											a(href='/eresources/publications?industry=#{industry.key}') #{industry.name}
-
-								.panel-heading
-									h4.panel-title
-										a(data-toggle='collapse', data-parent='#accordion', href='#collapse2')
-											i.fa.fa-balance-scale(aria-hidden='true') &nbsp; Sectors
-								#collapse2.panel-collapse.collapse
-									.panel-body.left-side-bar
-										each sector in sectors
-											li(style='list-style-type:none;')
-											a(href='/eresources/publications?sector=#{sector.key}') #{sector.name}
-
-								.panel-heading
-									h4.panel-title
-										a(data-toggle='collapse', data-parent='#accordion', href='#collapse3')
-											i.i.fa.fa-leaf(aria-hidden='true', style='margin-right:10px;') &nbsp; Commodities
-								#collapse3.panel-collapse.collapse
-									.panel-body.left-side-bar
-										each commodity in commodities
-											li(style='list-style-type:none;')
-											a(href='/eresources/publications?commodity=#{commodity.key}') #{commodity.name}
-
-
-
+						//- .row
+							.col-xs-12
+								form
+									.input-group
+										input(type="hidden",name="action",value="search")
+										input(type="text",placeholder="Search...").form-control
+										span.input-group-btn
+											button(type="submit").btn.btn-default.form-control Go
+						.row
+							.col-xs-12
+								ul.list-group
+									li.list-group-item.disabled(style="cursor: default;") Publication Lines
+									a(href=endpoint): li.list-group-item(style="padding: 5px 10px; font-size: 14px;") All Publications
+									each line in publicationLines
+										a(href= endpoint + '?pubLine=' + line._id): li.list-group-item(style="padding: 5px 10px; font-size: 14px;") #{line.name}

@@ -11,7 +11,8 @@ exports = module.exports = function(req, res) {
   locals.currentPublicationID = req.params.publication;
   locals.redirect = '/eresources/publication/' + req.params.publication;
   locals.breadcrumbs = [
-    { text: 'E Resources', link: '/eresources'}
+    { text: 'E Resources', link: '/eresources' },
+    { text: 'Publications', link: '/eresources/publications' }
   ];
 
   // Check if user needs to rate a previous download

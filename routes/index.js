@@ -237,7 +237,7 @@ exports = module.exports = function (app) {
 
 	app.get('/eresources/videos', routes.eresourcesViews.videos);
 	app.get('/eresources/links', routes.eresourcesViews.links);
-	
+
 	// E Resources - Gallery
 	app.get('/eresources/galleries', routes.eresourcesViews.galleries);
 	app.get('/eresources/galleries/:galleryId', routes.eresourcesViews.galleries);
