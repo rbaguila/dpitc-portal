@@ -3,9 +3,8 @@ extends ./publications
 block publications
   .row
     if data.publications.results
-      if pubLine.name != "ALL"
-        h4(style='text-align:center') #{pubLine.name}
-      
+      h4(style='text-align:center') #{resultsHeading}
+
       each publication in data.publications.results
         .col-sm-6.col-md-4.col-lg-3(style='padding-left:0')
           .thumbnail(style='padding:10px')

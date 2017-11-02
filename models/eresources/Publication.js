@@ -34,7 +34,8 @@ Publication.add(
   {title: {
     type: String,
     required: true,
-    default: ''
+    default: '',
+    index: true
   }},
   {publicationType: {
     type: Types.Select,

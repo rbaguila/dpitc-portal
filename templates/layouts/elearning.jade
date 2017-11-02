@@ -61,10 +61,12 @@ html
             ul.nav.navbar-nav.navbar-right.links
               each link in navLinks
                 li: a(href=link.href, class=section == link.key ? 'active' :"not-active")= link.label
-              li: a(class="not-active" onclick="toggleButton()", style="margin-right: 2em;")
-                i.fa.fa-search#toggleIcon
-              //- li: a(href='#', class="not-active")
-              //-   button#versionbutton ALPHA
+              li
+                form(style="margin-top:7px;",method="get",action="/eresources/publications")
+                  .input-group(style="width:200px;")
+                    input(type="text",name="searchKey",placeholder="Search...").form-control
+                    span.input-group-btn
+                      button(type="submit").btn.btn-default.form-control Go
 
       //- SUB NAVBAR
       div#elearning-nav.navbar-fixed-top
@@ -76,7 +78,7 @@ html
           each breadcrumb in breadcrumbs
             li
               a(href=breadcrumb.link) #{breadcrumb.text}
-              
+
 
         #user-login-links
           if user
@@ -86,7 +88,7 @@ html
                 i.fa.fa-bell-o(aria-hidden="true")
                 | &emsp;
               a(href='/keystone/signout').not-active.login-link Sign Out
-              
+
           else
             a(href='/keystone/signin?from=' + loginRedirect, class="not-active login-link") Sign In
             | &emsp;
@@ -96,13 +98,13 @@ html
 
     //- BODY
     #body
-      
+
       //- NOTE:
       //- There is no .container wrapping class around body blocks to allow more flexibility in design.
       //- Remember to include it in your templates when you override the intro and content blocks!
 
       //- The Intro block appears above flash messages (used for temporary information display)
-        
+
       .elearning-body
         block intro
         +flash-messages(messages)
@@ -170,14 +172,14 @@ html
               b  ABOUT DPITC
             p.white-text
             | A One-Stop-Shop 'Convergence Hub' for inventors and technology users in the agriculture, aquatic, and natural resources sectors in the Philippines within every Juan's reach.
-            br 
+            br
 
             a(href='http://www.dost.gov.ph/', title='DOST')
               img.logos-class(src='images/dost.png')
             a(href='http://www.pcaarrd.dost.gov.ph/home/portal/', title='PCAARRD')
               img.logos-class(src='images/pcaarrd.png')
             a(href='http://www.uplb.edu.ph/', title='UPLB')
-              img.logos-class(src='images/uplb.png')          
+              img.logos-class(src='images/uplb.png')
     .footer-copyright
       .container
         | © Copyright 2017. DOST-PCAARRD. All rights reserved.
@@ -195,7 +197,7 @@ html
     //- them specifically here, instead of bootstrap-3.3.5.min.js
     script(src='/js/bootstrap/bootstrap-3.3.5.min.js')
     script(type="text/javascript" src="/styles/slick/slick.min.js")
-    
+
     //- The KeystoneJS Content Editor provides support for ks-editable data attributes,
     //- which generate links to edit content for users who can access Keystone
     if user && user.canAccessKeystone

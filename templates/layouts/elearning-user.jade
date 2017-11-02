@@ -22,7 +22,7 @@ html
     //- link(rel="stylesheet" type="text/css" href="/styles/cards.css")
 
     //- link(rel="stylesheet" type="text/css" href="/styles/technology.css")
-    
+
     script(src='/js/d3/d3.min.js')
     script(src='/js/d3pie/d3pie.min.js')
 
@@ -51,7 +51,7 @@ html
     #header
       //- Customise your site's navigation by changing the navLinks Array in ./routes/middleware.js
       //- ... or completely change this header to suit your design.
-    
+
       div(role="navigation").navbar.navbar-style1.navbar-fixed-top
         div(style="height:85px; background-color:white;")
           .navbar-header
@@ -66,10 +66,12 @@ html
             ul.nav.navbar-nav.navbar-right.links
               each link in navLinks
                 li: a(href=link.href, class=section == link.key ? 'active' :"not-active")= link.label
-              li: a(class="not-active" onclick="toggleButton()", style="margin-right: 2em;")
-                i.fa.fa-search#toggleIcon
-              //- li: a(href='#', class="not-active")
-              //-   button#versionbutton ALPHA
+              li
+								form(style="margin-top:7px;",method="get",action="/eresources/publications")
+									.input-group(style="width:200px;")
+										input(type="text",name="searchKey",placeholder="Search...").form-control
+										span.input-group-btn
+											button(type="submit").btn.btn-default.form-control Go
 
       //- SUB NAVBAR
       div#elearning-nav.navbar-fixed-top
@@ -79,7 +81,7 @@ html
           each breadcrumb in breadcrumbs
             li
               a(href=breadcrumb.link) #{breadcrumb.text}
-              
+
         #user-login-links
           if user
             if user.isElearningAdmin == true
@@ -92,7 +94,7 @@ html
             a(href='/keystone/signin?from=' + loginRedirect).not-active.login-link Sign In
             | &emsp;
             a(href='/elearning/signup?from=' + loginRedirect).not-active.login-link Sign Up
-  
+
     //- BODY
     #body
 
@@ -109,7 +111,7 @@ html
       +flash-messages(messages)
       block content
 
-    
+
 
     footer.page-footer
       .container
@@ -187,7 +189,7 @@ html
     script(src='/bower_components/highcharts/modules/solid-gauge.js')
     script(src='/js/highcharts/custom/world.js')
     script(src='/js/highcharts/custom/ph-all.js')
-    
+
 
     //- Customise which Bootstrap javascript files are served by including
     //- them specifically here, instead of bootstrap-3.3.5.min.js
